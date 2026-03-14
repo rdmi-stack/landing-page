@@ -34,6 +34,19 @@ async function sendEmail(params: Record<string, string>) {
 }
 
 export async function POST(req: NextRequest) {
+  // Guard: ensure env vars are present
+  if (!MAILGUN_API_KEY || !MAILGUN_DOMAIN || !MAILGUN_FROM_EMAIL) {
+    console.error("Missing Mailgun env vars:", {
+      MAILGUN_API_KEY: !!MAILGUN_API_KEY,
+      MAILGUN_DOMAIN: !!MAILGUN_DOMAIN,
+      MAILGUN_FROM_EMAIL: !!MAILGUN_FROM_EMAIL,
+    });
+    return NextResponse.json(
+      { error: "Server misconfiguration. Please contact us directly at info@rdmi.in" },
+      { status: 500 }
+    );
+  }
+
   try {
     const { name, email, phone, company, budget, message } = await req.json();
 
@@ -249,9 +262,10 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("Contact API error:", err);
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("[contact] API error:", message);
     return NextResponse.json(
-      { error: "Failed to send message. Please try again." },
+      { error: "Failed to send message. Please try again or email us at info@rdmi.in" },
       { status: 500 }
     );
   }
