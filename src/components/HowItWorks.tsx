@@ -112,7 +112,7 @@ export default function HowItWorks() {
           className="text-center mt-12"
         >
           <button
-            onClick={openModal}
+            onClick={() => openModal()}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-semibold transition-all hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105 cursor-pointer"
           >
             Book Free Discovery Call

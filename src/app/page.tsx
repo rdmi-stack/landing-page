@@ -5,8 +5,8 @@ import USPSection from "@/components/USPSection";
 import Services from "@/components/Services";
 import HowItWorks from "@/components/HowItWorks";
 import TechStack from "@/components/TechStack";
+import ProductShowcase from "@/components/ProductShowcase";
 import CaseStudies from "@/components/CaseStudies";
-import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
@@ -22,8 +22,8 @@ export default function Home() {
       <Services />
       <HowItWorks />
       <TechStack />
+      <ProductShowcase />
       <CaseStudies />
-      <Pricing />
       <Testimonials />
       <FAQ />
       <CTASection />

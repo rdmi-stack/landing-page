@@ -51,7 +51,7 @@ export default function CTASection() {
           {/* Big CTA button */}
           <div>
             <button
-              onClick={openModal}
+              onClick={() => openModal()}
               className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-semibold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all hover:shadow-2xl hover:shadow-indigo-500/30 hover:scale-105 cursor-pointer"
             >
               Get Free Quote & Prototype
@@ -73,10 +73,10 @@ export default function CTASection() {
             <p className="text-sm text-zinc-500 mb-2">Prefer to reach out directly?</p>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-zinc-400">
               <span>
-                Email: <span className="text-white">hello@rdmiwebservices.com</span>
+                Email: <span className="text-white">info@rdmi.in</span>
               </span>
               <span>
-                WhatsApp: <span className="text-white">+91 98XXX XXXXX</span>
+                WhatsApp: <span className="text-white">+91 98185 65561</span>
               </span>
             </div>
           </div>

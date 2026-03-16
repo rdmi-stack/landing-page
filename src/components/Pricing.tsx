@@ -130,7 +130,7 @@ export default function Pricing() {
               </ul>
 
               <button
-                onClick={openModal}
+                onClick={() => openModal()}
                 className={`w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all cursor-pointer ${
                   plan.popular
                     ? "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 hover:shadow-lg hover:shadow-indigo-500/25"
@@ -144,7 +144,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* Hourly rates */}
+        {/* AI Team note */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -153,9 +153,9 @@ export default function Pricing() {
         >
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
             <span className="text-sm text-zinc-400">
-              Prefer hourly? Senior developers at{" "}
-              <span className="text-white font-semibold">$40-80/hr</span>
-              <span className="text-zinc-600"> (vs $150-250/hr US/UK)</span>
+              All projects powered by our{" "}
+              <span className="text-white font-semibold">AI-Powered Development Team</span>
+              <span className="text-zinc-600"> — 2x faster delivery, 50% less cost</span>
             </span>
           </div>
         </motion.div>

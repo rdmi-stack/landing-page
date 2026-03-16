@@ -8,8 +8,8 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Tech Stack", href: "#tech-stack" },
+  { label: "Products", href: "#products" },
   { label: "Case Studies", href: "#case-studies" },
-  { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -44,7 +44,7 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-4">
             <button
-              onClick={openModal}
+              onClick={() => openModal()}
               className="px-5 py-2.5 text-sm font-semibold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all hover:shadow-lg hover:shadow-indigo-500/25 cursor-pointer"
             >
               Get Free Quote

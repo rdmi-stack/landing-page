@@ -4,29 +4,28 @@ import { Zap } from "lucide-react";
 
 const footerLinks = {
   Services: [
-    "Custom Software Development",
-    "Web Application Development",
-    "Mobile App Development",
-    "SaaS Development",
-    "E-Commerce Development",
-    "AI/ML Development",
-    "Cloud & DevOps",
-    "API Development",
+    { label: "Custom Software Development", href: "/services" },
+    { label: "Web Application Development", href: "/services" },
+    { label: "Mobile App Development", href: "/services" },
+    { label: "SaaS Development", href: "/services" },
+    { label: "E-Commerce Development", href: "/products" },
+    { label: "AI/ML Development", href: "/products" },
+    { label: "Product Showcase", href: "/products" },
+    { label: "Get Free Quote", href: "/get-quote" },
   ],
   Company: [
-    "About Us",
-    "Case Studies",
-    "Blog",
-    "Careers",
-    "Contact",
+    { label: "About Us", href: "/about" },
+    { label: "Case Studies", href: "/case-studies" },
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "Contact", href: "/contact" },
+    { label: "FAQ", href: "/faq" },
   ],
   Resources: [
-    "How It Works",
-    "Pricing",
-    "Tech Stack",
-    "FAQ",
-    "Privacy Policy",
-    "Terms of Service",
+    { label: "Services", href: "/services" },
+    { label: "Products", href: "/products" },
+    { label: "Tech Stack", href: "/#tech-stack" },
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms of Service", href: "#" },
   ],
 };
 
@@ -46,13 +45,13 @@ export default function Footer() {
               </span>
             </a>
             <p className="text-sm text-zinc-500 max-w-sm leading-relaxed">
-              India&apos;s AI-first custom software development company.
+              India&apos;s AI-powered custom software &amp; web application development company.
               Talk to developers directly. Save 50% cost.
               Building intelligent software for startups & enterprises worldwide.
             </p>
             <div className="space-y-1 text-sm text-zinc-500">
-              <p>hello@rdmiwebservices.com</p>
-              <p>+91 98XXX XXXXX</p>
+              <p>info@rdmi.in</p>
+              <p>+91 98185 65561</p>
               <p>India | USA | UK</p>
             </div>
           </div>
@@ -63,12 +62,12 @@ export default function Footer() {
               <h4 className="text-sm font-semibold mb-4">{category}</h4>
               <ul className="space-y-2.5">
                 {links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="text-sm text-zinc-500 hover:text-white transition-colors"
                     >
-                      {link}
+                      {link.label}
                     </a>
                   </li>
                 ))}

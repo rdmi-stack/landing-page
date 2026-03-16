@@ -40,7 +40,7 @@ export default function Hero() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-sm">
             <Bot className="w-4 h-4" />
-            <span>AI-First Software Development Company</span>
+            <span>AI-Powered Development Team</span>
             <ArrowRight className="w-3 h-3" />
           </div>
         </motion.div>
@@ -57,9 +57,9 @@ export default function Hero() {
             <span className="gradient-text-orange">Ships</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
-            India&apos;s premier AI-first development company. Talk directly to senior developers
-            — no middlemen, no project managers inflating your bill.{" "}
-            <span className="text-white font-medium">Save 50% compared to US/UK agencies.</span>
+            India&apos;s premier AI-powered development team. Custom web applications, mobile apps
+            & SaaS platforms — talk directly to developers, no middlemen.{" "}
+            <span className="text-white font-medium">Save 50% with our AI-first approach.</span>
           </p>
         </motion.div>
 
@@ -72,7 +72,7 @@ export default function Hero() {
           {[
             { icon: MessageCircle, text: "Talk to Developers Directly" },
             { icon: IndianRupee, text: "Save 50% Development Cost" },
-            { icon: Bot, text: "AI-First Approach" },
+            { icon: Bot, text: "AI-Powered Development Team" },
           ].map((usp) => (
             <div
               key={usp.text}
@@ -91,7 +91,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
         >
           <button
-            onClick={openModal}
+            onClick={() => openModal()}
             className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all hover:shadow-xl hover:shadow-indigo-500/25 hover:scale-105 cursor-pointer"
           >
             Start Your Project

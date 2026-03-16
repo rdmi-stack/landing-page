@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const faqs = [
   {
     q: "How much does custom software development cost in India?",
-    a: "Custom software development in India typically ranges from $3,000 for MVPs to $50,000+ for enterprise solutions. At RDMI, our senior developers charge $40-80/hr — saving you 50-60% compared to US/UK agencies ($150-250/hr) without compromising on quality. We offer both fixed-price and hourly engagement models.",
+    a: "Custom software development in India typically ranges from ₹1.5 Lakh for MVPs to ₹25 Lakh+ for enterprise solutions. At RDMI, our AI-powered development team delivers 50-60% cost savings compared to US/UK agencies without compromising on quality. We offer fixed-price project models with transparent pricing.",
   },
   {
     q: "How long does it take to build a custom web application?",

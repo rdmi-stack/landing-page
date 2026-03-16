@@ -7,11 +7,12 @@ import { useState } from "react";
 interface QuoteModalProps {
   isOpen: boolean;
   onClose: () => void;
+  productName?: string;
 }
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
+export default function QuoteModal({ isOpen, onClose, productName }: QuoteModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,7 +33,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, message: productName ? `[Product: ${productName}]\n${formData.message}` : formData.message }),
       });
 
       const data = await res.json();
@@ -115,6 +116,11 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                       Free Consultation
                     </div>
                     <h3 className="text-2xl font-bold">Get Your Free Quote</h3>
+                    {productName && (
+                      <p className="text-sm text-indigo-400 mt-1 font-medium">
+                        Product: {productName}
+                      </p>
+                    )}
                     <p className="text-sm text-zinc-500 mt-1">
                       Talk to a senior developer — not a sales rep. We respond within 2 hours.
                     </p>
@@ -165,7 +171,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           className={field}
-                          placeholder="+91 98XXX XXXXX"
+                          placeholder="+91 98185 65561"
                         />
                       </div>
                       <div>
@@ -190,11 +196,12 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         className={field}
                       >
                         <option value="" className="bg-zinc-900">Select budget range</option>
-                        <option value="₹50,000 - ₹1,00,000" className="bg-zinc-900">₹50,000 – ₹1,00,000</option>
-                        <option value="₹1,00,000 - ₹3,00,000" className="bg-zinc-900">₹1,00,000 – ₹3,00,000</option>
+                        <option value="₹1,50,000 - ₹3,00,000" className="bg-zinc-900">₹1,50,000 – ₹3,00,000</option>
                         <option value="₹3,00,000 - ₹5,00,000" className="bg-zinc-900">₹3,00,000 – ₹5,00,000</option>
                         <option value="₹5,00,000 - ₹10,00,000" className="bg-zinc-900">₹5,00,000 – ₹10,00,000</option>
-                        <option value="₹10,00,000+" className="bg-zinc-900">₹10,00,000+</option>
+                        <option value="₹10,00,000 - ₹15,00,000" className="bg-zinc-900">₹10,00,000 – ₹15,00,000</option>
+                        <option value="₹15,00,000 - ₹25,00,000" className="bg-zinc-900">₹15,00,000 – ₹25,00,000</option>
+                        <option value="₹25,00,000+" className="bg-zinc-900">₹25,00,000+</option>
                       </select>
                     </div>
 

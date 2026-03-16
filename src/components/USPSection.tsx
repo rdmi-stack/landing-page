@@ -24,19 +24,19 @@ const usps = [
     title: "Save 50% Development Cost",
     headline: "Same Quality. Half the Price.",
     description:
-      "Why pay $150-250/hr to US/UK agencies when our senior developers in India deliver the same quality at $40-80/hr? We're not a body shop — we're a product-minded team that happens to be in the most cost-effective timezone.",
+      "Our AI-powered development team in India delivers the same quality as US/UK agencies at half the cost. We're not a body shop — we're a product-minded team with AI-accelerated workflows that cut timelines and costs dramatically.",
     features: [
-      "Senior devs at $40-80/hr (vs $150-250/hr US/UK)",
+      "AI-powered team delivers 2x faster at 50% less cost",
       "Fixed-price projects with no hidden costs",
-      "No recruitment, training, or infrastructure costs",
-      "Transparent billing — pay only for dev hours",
+      "No recruitment, training, or infrastructure overhead",
+      "Transparent pricing — know the full cost upfront",
     ],
     gradient: "from-emerald-500 to-green-600",
     bgGlow: "bg-emerald-600/20",
   },
   {
     icon: Bot,
-    title: "AI-First Development",
+    title: "AI-Powered Development Team",
     headline: "Ship 3x Faster with AI.",
     description:
       "Every project leverages AI from day one — AI-assisted code generation, automated testing, intelligent debugging, and AI-powered features built into your product. We don't just build software, we build intelligent software.",
