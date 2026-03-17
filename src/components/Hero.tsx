@@ -46,15 +46,15 @@ const showcaseCards: ShowcaseCard[] = [
     icon: BarChart3,
     gradient: "from-indigo-500 to-blue-600",
     color: "#6366f1",
-    metrics: [{ label: "Revenue", value: "$48.2K" }, { label: "Users", value: "12.4K" }],
+    metrics: [{ label: "Stack", value: "Next.js" }, { label: "Timeline", value: "8 Weeks" }],
     chart: [35, 50, 42, 65, 58, 72, 85],
   },
   {
-    title: "E-Commerce App",
+    title: "E-Commerce Platform",
     icon: ShoppingCart,
     gradient: "from-emerald-500 to-green-600",
     color: "#10b981",
-    metrics: [{ label: "Orders", value: "2,847" }, { label: "GMV", value: "₹18L" }],
+    metrics: [{ label: "Stack", value: "React" }, { label: "Timeline", value: "10 Weeks" }],
     chart: [20, 35, 30, 55, 48, 60, 75],
   },
   {
@@ -62,7 +62,7 @@ const showcaseCards: ShowcaseCard[] = [
     icon: Bot,
     gradient: "from-purple-500 to-violet-600",
     color: "#8b5cf6",
-    metrics: [{ label: "Resolved", value: "94%" }, { label: "Avg Time", value: "1.2s" }],
+    metrics: [{ label: "Stack", value: "Python" }, { label: "Timeline", value: "6 Weeks" }],
     chart: [40, 55, 60, 70, 65, 80, 92],
   },
   {
@@ -70,7 +70,7 @@ const showcaseCards: ShowcaseCard[] = [
     icon: Wallet,
     gradient: "from-amber-500 to-orange-600",
     color: "#f59e0b",
-    metrics: [{ label: "Txns", value: "58K" }, { label: "Volume", value: "₹2.1Cr" }],
+    metrics: [{ label: "Stack", value: "Flutter" }, { label: "Timeline", value: "12 Weeks" }],
     chart: [30, 45, 55, 50, 65, 78, 88],
   },
   {
@@ -78,7 +78,7 @@ const showcaseCards: ShowcaseCard[] = [
     icon: Stethoscope,
     gradient: "from-rose-500 to-pink-600",
     color: "#f43f5e",
-    metrics: [{ label: "Patients", value: "8,200" }, { label: "Consults", value: "340/day" }],
+    metrics: [{ label: "Stack", value: "React Native" }, { label: "Timeline", value: "10 Weeks" }],
     chart: [25, 40, 35, 50, 60, 55, 70],
   },
   {
@@ -86,7 +86,7 @@ const showcaseCards: ShowcaseCard[] = [
     icon: GraduationCap,
     gradient: "from-cyan-500 to-teal-600",
     color: "#06b6d4",
-    metrics: [{ label: "Students", value: "25K" }, { label: "Courses", value: "180" }],
+    metrics: [{ label: "Stack", value: "Next.js" }, { label: "Timeline", value: "8 Weeks" }],
     chart: [20, 30, 45, 40, 55, 65, 80],
   },
   {
@@ -94,23 +94,23 @@ const showcaseCards: ShowcaseCard[] = [
     icon: Home,
     gradient: "from-sky-500 to-blue-600",
     color: "#0ea5e9",
-    metrics: [{ label: "Listings", value: "4,500" }, { label: "Leads", value: "890" }],
+    metrics: [{ label: "Stack", value: "Node.js" }, { label: "Timeline", value: "10 Weeks" }],
     chart: [35, 42, 38, 55, 62, 58, 75],
   },
   {
-    title: "Logistics Fleet",
+    title: "Logistics Platform",
     icon: Truck,
     gradient: "from-lime-500 to-green-600",
     color: "#84cc16",
-    metrics: [{ label: "Vehicles", value: "320" }, { label: "On-time", value: "97.2%" }],
+    metrics: [{ label: "Stack", value: "Go" }, { label: "Timeline", value: "12 Weeks" }],
     chart: [50, 55, 60, 58, 70, 75, 85],
   },
   {
-    title: "HR & Payroll",
+    title: "HR & Payroll System",
     icon: Users,
     gradient: "from-fuchsia-500 to-purple-600",
     color: "#d946ef",
-    metrics: [{ label: "Employees", value: "1,200" }, { label: "Payroll", value: "₹4.8Cr" }],
+    metrics: [{ label: "Stack", value: "Python" }, { label: "Timeline", value: "10 Weeks" }],
     chart: [40, 45, 50, 55, 52, 65, 72],
   },
   {
@@ -118,7 +118,7 @@ const showcaseCards: ShowcaseCard[] = [
     icon: Smartphone,
     gradient: "from-red-500 to-rose-600",
     color: "#ef4444",
-    metrics: [{ label: "Downloads", value: "120K" }, { label: "DAU", value: "28K" }],
+    metrics: [{ label: "Stack", value: "Flutter" }, { label: "Timeline", value: "14 Weeks" }],
     chart: [15, 30, 45, 55, 65, 78, 90],
   },
   {
@@ -126,7 +126,7 @@ const showcaseCards: ShowcaseCard[] = [
     icon: Brain,
     gradient: "from-violet-500 to-indigo-600",
     color: "#7c3aed",
-    metrics: [{ label: "Docs", value: "50K" }, { label: "Accuracy", value: "96%" }],
+    metrics: [{ label: "Stack", value: "LangChain" }, { label: "Timeline", value: "6 Weeks" }],
     chart: [45, 50, 58, 62, 70, 78, 95],
   },
   {
@@ -134,7 +134,7 @@ const showcaseCards: ShowcaseCard[] = [
     icon: Workflow,
     gradient: "from-teal-500 to-emerald-600",
     color: "#14b8a6",
-    metrics: [{ label: "Automations", value: "2,400" }, { label: "Saved", value: "180hr/mo" }],
+    metrics: [{ label: "Stack", value: "Node.js" }, { label: "Timeline", value: "8 Weeks" }],
     chart: [30, 40, 50, 55, 68, 75, 82],
   },
   {
@@ -142,7 +142,7 @@ const showcaseCards: ShowcaseCard[] = [
     icon: Shield,
     gradient: "from-slate-500 to-zinc-600",
     color: "#64748b",
-    metrics: [{ label: "Threats", value: "0" }, { label: "Uptime", value: "99.99%" }],
+    metrics: [{ label: "Stack", value: "AWS" }, { label: "Timeline", value: "8 Weeks" }],
     chart: [60, 65, 70, 68, 75, 80, 90],
   },
 ];
@@ -188,11 +188,11 @@ function ProductCard({ card }: { card: ShowcaseCard }) {
         </div>
         <div>
           <p className="text-xs font-semibold leading-tight">{card.title}</p>
-          <p className="text-[9px] text-zinc-600">Live Preview</p>
+          <p className="text-[9px] text-zinc-600">We Build This</p>
         </div>
         <div className="ml-auto flex items-center gap-1">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-[9px] text-emerald-400/80">Live</span>
+          <span className="text-[9px] text-emerald-400/80">Ready</span>
         </div>
       </div>
 

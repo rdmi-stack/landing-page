@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CaseStudies from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
@@ -22,8 +21,8 @@ export const metadata: Metadata = {
 export default function CaseStudiesPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
-      <Navbar />
-      <div className="pt-20">
+
+      <div>
         <CaseStudies />
         <Testimonials />
         <CTASection />

@@ -39,6 +39,7 @@ import {
   Mic,
   Zap,
 } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 // ─── SEO SERVICES ─────────────────────────────────────
 
@@ -63,7 +64,7 @@ const seoServices = [
   { icon: Bot, title: "AI Overview & Zero-Click SEO", category: "Next-Gen AI", description: "Win Google's AI Overviews, featured snippets, PAA boxes & knowledge panels. Maximize visibility even when users don't click through.", deliverables: ["AI Overview targeting", "Featured snippet optimization", "PAA strategy", "Knowledge panel building", "Zero-click content"], gradient: "from-indigo-500 to-violet-600", impact: "28+ AI Overview wins" },
   { icon: Mic, title: "Answer Engine Optimization (AEO)", category: "Next-Gen AI", description: "Structure content for voice search, AI assistants (Siri, Alexa, Google Assistant) & conversational queries. The future of search is questions.", deliverables: ["FAQ schema optimization", "Conversational keywords", "Voice search content", "Q&A strategy", "Speakable schema"], gradient: "from-teal-500 to-emerald-600", impact: "3x voice search visibility" },
   { icon: Network, title: "Entity & Topical Authority", category: "Next-Gen AI", description: "Build your brand as a recognized entity in Google's Knowledge Graph. Establish topical authority through comprehensive, interconnected content hubs.", deliverables: ["Entity mapping", "Knowledge graph optimization", "Topical clusters", "E-E-A-T signals", "Author authority building"], gradient: "from-orange-500 to-amber-600", impact: "Become the topical authority" },
-  { icon: Video, title: "Social & Video Search SEO", category: "Next-Gen AI", description: "Optimize for TikTok search, YouTube SEO, Instagram search & Reddit rankings. Gen-Z uses social platforms as search engines — meet them there.", deliverables: ["YouTube SEO", "TikTok optimization", "Reddit content strategy", "Video schema", "Short-form content calendar"], gradient: "from-red-500 to-rose-600", impact: "5M+ video views for clients" },
+  { icon: Video, title: "Social & Video Search SEO", category: "Next-Gen AI", description: "Optimize for YouTube SEO, Instagram search & Reddit rankings. Gen-Z uses social platforms as search engines — meet them there.", deliverables: ["YouTube SEO", "Instagram optimization", "Reddit content strategy", "Video schema", "Short-form content calendar"], gradient: "from-red-500 to-rose-600", impact: "5M+ video views for clients" },
 ];
 
 // ─── SEO PROCESS ──────────────────────────────────────
@@ -338,7 +339,7 @@ export default function SEOServicesPage() {
             {[
               { stat: "60%", label: "of Google searches end without a click", desc: "Zero-click SEO is now critical" },
               { stat: "30%+", label: "of searches show AI Overviews", desc: "Google AI answers before blue links" },
-              { stat: "40%", label: "of Gen-Z use TikTok as search engine", desc: "Social search is real, not a trend" },
+              { stat: "40%", label: "of Gen-Z use social platforms as search engines", desc: "Social search is real, not a trend" },
             ].map((s, i) => (
               <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] text-center">
                 <p className="text-3xl font-extrabold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">{s.stat}</p>
@@ -348,7 +349,7 @@ export default function SEOServicesPage() {
             ))}
           </div>
           <p className="text-center text-sm text-zinc-400 mt-6">
-            We optimize for <span className="text-white font-semibold">ALL search surfaces</span> — Google, ChatGPT, Perplexity, Gemini, AI Overviews, YouTube, TikTok & voice assistants.
+            We optimize for <span className="text-white font-semibold">ALL search surfaces</span> — Google, ChatGPT, Perplexity, Gemini, AI Overviews, YouTube & voice assistants.
           </p>
         </div>
       </section>
@@ -557,7 +558,7 @@ export default function SEOServicesPage() {
                 Get Free SEO Audit <ArrowRight className="w-4 h-4" />
               </a>
               <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 font-medium text-sm transition-all">
-                <MessageCircle className="w-4 h-4 text-emerald-400" /> WhatsApp Us
+                <WhatsAppIcon className="w-4 h-4 text-emerald-400" /> WhatsApp Us
               </a>
             </div>
             <div className="mt-6 flex items-center justify-center gap-4 text-xs text-zinc-600">

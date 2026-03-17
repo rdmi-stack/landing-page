@@ -1,47 +1,56 @@
 "use client";
 
-import { ArrowUpRight, TrendingUp } from "lucide-react";
+import { Shield } from "lucide-react";
 import { motion } from "framer-motion";
 
-const caseStudies = [
+const projects = [
   {
     tag: "SaaS Platform",
-    title: "AI-Powered HR Management Platform",
-    description:
-      "Built a complete HRMS SaaS with AI-driven resume screening, automated payroll, attendance tracking, and employee analytics dashboard. Scaled to 10,000+ users.",
-    metrics: [
-      { label: "Dev Cost Saved", value: "52%" },
-      { label: "Time to Market", value: "14 weeks" },
-      { label: "Active Users", value: "10K+" },
-    ],
+    title: "AI-Powered HR Management System",
+    description: "Complete HRMS SaaS with AI-driven resume screening, automated payroll, attendance tracking & employee analytics dashboard.",
     tech: ["Next.js", "Node.js", "PostgreSQL", "OpenAI", "AWS"],
+    timeline: "14 weeks",
     gradient: "from-blue-600 to-indigo-600",
   },
   {
     tag: "E-Commerce",
-    title: "Multi-Vendor Marketplace with AI Recommendations",
-    description:
-      "Custom marketplace with 500+ vendors, AI-powered product recommendations, Razorpay/Stripe payments, real-time inventory management, and admin analytics.",
-    metrics: [
-      { label: "Revenue Increase", value: "340%" },
-      { label: "Vendors Onboarded", value: "500+" },
-      { label: "Orders/Month", value: "50K+" },
-    ],
+    title: "Multi-Vendor Marketplace Platform",
+    description: "Custom marketplace with vendor onboarding, AI recommendations, payment gateway integration, real-time inventory & admin analytics.",
     tech: ["React", "Python", "MongoDB", "Redis", "Razorpay"],
+    timeline: "16 weeks",
     gradient: "from-emerald-600 to-green-600",
   },
   {
     tag: "FinTech",
-    title: "Digital Lending Platform for NBFCs",
-    description:
-      "End-to-end digital lending solution with KYC verification, credit scoring ML model, loan management, EMI collection, and regulatory compliance dashboard.",
-    metrics: [
-      { label: "Loan Processing", value: "3x faster" },
-      { label: "Default Rate Drop", value: "28%" },
-      { label: "Loans Processed", value: "₹50Cr+" },
-    ],
+    title: "Digital Lending & Credit Platform",
+    description: "End-to-end digital lending solution with KYC verification, ML credit scoring, loan management, EMI collection & compliance dashboard.",
     tech: ["React Native", "Django", "TensorFlow", "AWS", "PostgreSQL"],
+    timeline: "20 weeks",
     gradient: "from-orange-600 to-red-600",
+  },
+  {
+    tag: "Healthcare",
+    title: "Telemedicine & Patient Management",
+    description: "Video consultation platform with appointment booking, e-prescriptions, health records, lab integration & wearable sync.",
+    tech: ["Flutter", "Node.js", "PostgreSQL", "WebRTC", "GCP"],
+    timeline: "12 weeks",
+    gradient: "from-rose-600 to-pink-600",
+  },
+  {
+    tag: "AI Agent",
+    title: "Custom RAG Knowledge Base System",
+    description: "AI-powered internal knowledge system with document ingestion, semantic search, chat interface & CRM integration.",
+    tech: ["Python", "LangChain", "Pinecone", "OpenAI", "Next.js"],
+    timeline: "8 weeks",
+    gradient: "from-purple-600 to-violet-600",
+  },
+  {
+    tag: "Logistics",
+    title: "Fleet Management & Route Optimization",
+    description: "Real-time GPS tracking, route optimization, driver management, proof-of-delivery, analytics & multi-depot support.",
+    tech: ["React", "Go", "PostgreSQL", "Redis", "AWS"],
+    timeline: "14 weeks",
+    gradient: "from-amber-600 to-yellow-600",
   },
 ];
 
@@ -56,70 +65,49 @@ export default function CaseStudies() {
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            Case Studies
+            What We Build
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-            Real Projects.{" "}
-            <span className="gradient-text">Real Results.</span>
+            Types of Projects{" "}
+            <span className="gradient-text">We Deliver</span>
           </h2>
           <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
-            See how we&apos;ve helped startups and enterprises build software that drives growth.
+            We work under NDA with every client. Here are the types of products our team builds regularly.
           </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-400 mt-4">
+            <Shield className="w-3 h-3 text-indigo-400" />
+            All projects are NDA protected — no client names or data shared
+          </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          {caseStudies.map((study, i) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, i) => (
             <motion.div
-              key={study.title}
+              key={project.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className="group relative rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/30 transition-all overflow-hidden"
             >
-              {/* Gradient header */}
-              <div
-                className={`h-2 bg-gradient-to-r ${study.gradient}`}
-              />
+              <div className={`h-1.5 bg-gradient-to-r ${project.gradient}`} />
 
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span
-                    className={`px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r ${study.gradient} text-white`}
-                  >
-                    {study.tag}
+                  <span className={`px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r ${project.gradient} text-white`}>
+                    {project.tag}
                   </span>
-                  <ArrowUpRight className="w-4 h-4 text-zinc-600 group-hover:text-indigo-400 transition-colors" />
+                  <span className="text-[10px] text-zinc-600">{project.timeline}</span>
                 </div>
 
-                <h3 className="text-xl font-bold mb-3 group-hover:text-indigo-300 transition-colors">
-                  {study.title}
+                <h3 className="text-lg font-bold mb-3 group-hover:text-indigo-300 transition-colors">
+                  {project.title}
                 </h3>
-                <p className="text-sm text-zinc-500 leading-relaxed mb-6">{study.description}</p>
+                <p className="text-sm text-zinc-500 leading-relaxed mb-5">{project.description}</p>
 
-                {/* Metrics */}
-                <div className="grid grid-cols-3 gap-3 mb-6">
-                  {study.metrics.map((metric) => (
-                    <div
-                      key={metric.label}
-                      className="text-center p-3 rounded-xl bg-white/[0.03] border border-white/5"
-                    >
-                      <div className="flex items-center justify-center gap-1 text-emerald-400 text-sm font-bold">
-                        <TrendingUp className="w-3 h-3" />
-                        {metric.value}
-                      </div>
-                      <div className="text-[10px] text-zinc-600 mt-1">{metric.label}</div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Tech tags */}
                 <div className="flex flex-wrap gap-1.5">
-                  {study.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2 py-0.5 text-xs rounded bg-white/5 text-zinc-500"
-                    >
+                  {project.tech.map((t) => (
+                    <span key={t} className="px-2 py-0.5 text-xs rounded bg-white/5 text-zinc-500">
                       {t}
                     </span>
                   ))}

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Phone, X, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
+import { Phone, X, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -122,7 +123,7 @@ export default function FloatingWidget() {
           className="w-12 h-12 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/30 flex items-center justify-center transition-all hover:shadow-xl hover:shadow-emerald-500/40"
           aria-label="Chat on WhatsApp"
         >
-          <MessageCircle className="w-5 h-5 text-white" />
+          <WhatsAppIcon className="w-5 h-5 text-white" />
         </motion.a>
       </div>
     </div>

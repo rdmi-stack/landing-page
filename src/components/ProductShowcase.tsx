@@ -251,7 +251,7 @@ const products: Product[] = [
   },
   {
     name: "Social Commerce Platform",
-    description: "Instagram/TikTok-style shoppable feeds, live selling, influencer storefronts & UGC integration",
+    description: "Instagram-style shoppable feeds, live selling, influencer storefronts & UGC integration",
     category: "E-Commerce",
     icon: Megaphone,
     price: "₹4L – ₹10L",

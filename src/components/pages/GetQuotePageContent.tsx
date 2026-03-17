@@ -42,7 +42,7 @@ export default function GetQuotePageContent() {
   const field = "w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-zinc-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-colors";
 
   return (
-    <section className="pt-28 pb-20 lg:pt-36 lg:pb-32 relative">
+    <section className="pb-20 lg:pb-32 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/20 via-transparent to-transparent" />
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">

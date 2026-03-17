@@ -31,6 +31,7 @@ import {
   Eye,
   MessageCircle,
 } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 // ─── SERVICES DATA ────────────────────────────────────────
 
@@ -554,7 +555,7 @@ export default function DigitalMarketingPage() {
                 Get Free Audit <ArrowRight className="w-4 h-4" />
               </a>
               <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 font-medium text-sm transition-all">
-                <MessageCircle className="w-4 h-4 text-emerald-400" /> WhatsApp Us
+                <WhatsAppIcon className="w-4 h-4 text-emerald-400" /> WhatsApp Us
               </a>
             </div>
             <div className="mt-6 flex items-center justify-center gap-4 text-xs text-zinc-600">
