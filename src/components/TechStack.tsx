@@ -31,7 +31,7 @@ const categories = [
 
 export default function TechStack() {
   return (
-    <section id="tech-stack" className="py-20 lg:py-32 relative">
+    <section id="tech-stack" className="py-20 lg:py-32 relative bg-[#161616]">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/10 to-transparent" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

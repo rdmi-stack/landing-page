@@ -4,28 +4,23 @@ import { Zap } from "lucide-react";
 
 const footerLinks = {
   Services: [
-    { label: "Custom Software Development", href: "/services" },
-    { label: "Web Application Development", href: "/services" },
-    { label: "Mobile App Development", href: "/services" },
-    { label: "SaaS Development", href: "/services" },
-    { label: "E-Commerce Development", href: "/products" },
+    { label: "Custom Software", href: "/services" },
+    { label: "Mobile Apps", href: "/services" },
     { label: "AI/ML Development", href: "/products" },
-    { label: "Product Showcase", href: "/products" },
-    { label: "Get Free Quote", href: "/get-quote" },
+    { label: "Digital Marketing", href: "/digital-marketing" },
+    { label: "SEO & GEO", href: "/seo-services" },
   ],
   Company: [
     { label: "About Us", href: "/about" },
     { label: "Case Studies", href: "/case-studies" },
-    { label: "How It Works", href: "/how-it-works" },
     { label: "Contact", href: "/contact" },
-    { label: "FAQ", href: "/faq" },
+    { label: "Get Free Quote", href: "/get-quote" },
   ],
   Resources: [
-    { label: "Services", href: "/services" },
-    { label: "Products", href: "/products" },
-    { label: "Tech Stack", href: "/#tech-stack" },
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Product Showcase", href: "/products" },
+    { label: "Free SEO Course", href: "/seo-course" },
+    { label: "Experiment Lab", href: "/lab" },
+    { label: "Live Dashboard", href: "/dashboard" },
   ],
 };
 

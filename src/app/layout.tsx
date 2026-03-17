@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ModalProvider from "@/components/ModalProvider";
+import FloatingWidget from "@/components/FloatingWidget";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -30,7 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        <ModalProvider>{children}</ModalProvider>
+        <ModalProvider>
+          {children}
+          <FloatingWidget />
+          <ExitIntentPopup />
+        </ModalProvider>
       </body>
     </html>
   );

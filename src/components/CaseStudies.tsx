@@ -47,7 +47,7 @@ const caseStudies = [
 
 export default function CaseStudies() {
   return (
-    <section id="case-studies" className="py-20 lg:py-32 relative">
+    <section id="case-studies" className="py-20 lg:py-32 relative bg-[#161616]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

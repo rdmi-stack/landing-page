@@ -74,7 +74,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 lg:py-32 relative">
+    <section id="services" className="py-20 lg:py-32 relative bg-[#161616]">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/10 to-transparent" />
 
@@ -106,7 +106,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="group relative p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/30 hover:bg-white/[0.04] transition-all duration-300"
+              className="group relative p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-indigo-500/30 hover:bg-white/[0.06] transition-all duration-300"
             >
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <service.icon className="w-6 h-6 text-indigo-400" />

@@ -28,7 +28,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #0e0e0e;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -107,6 +107,39 @@ html {
 
 .animate-float {
   animation: float 4s ease-in-out infinite;
+}
+
+/* Range slider */
+.range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+  cursor: pointer;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #22c55e);
+  border: 2px solid #0a0a0a;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  cursor: pointer;
+}
+
+.range-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #22c55e);
+  border: 2px solid #0a0a0a;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  cursor: pointer;
 }
 
 /* Counter animation */

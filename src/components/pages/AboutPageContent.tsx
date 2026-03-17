@@ -31,7 +31,7 @@ export default function AboutPageContent() {
   const { openModal } = useModal();
 
   return (
-    <div className="pt-28 pb-20 lg:pt-36 lg:pb-32">
+    <div className="pb-20 lg:pb-32">
       {/* Hero */}
       <section className="relative mb-20">
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/20 via-transparent to-transparent" />

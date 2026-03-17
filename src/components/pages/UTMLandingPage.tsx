@@ -439,7 +439,7 @@ function LandingPageContent() {
   ];
 
   return (
-    <div className="pt-20">
+    <div className="pt-8">
       {/* ── HERO ────────────────────────────────────────── */}
       <section className="relative py-16 lg:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/30 via-purple-950/10 to-transparent" />
