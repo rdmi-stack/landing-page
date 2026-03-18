@@ -189,67 +189,83 @@ Custom software, mobile apps, SaaS, web apps, e-commerce, enterprise (ERP/CRM)
 
 ### Keyword Groups (Data-Backed from Google Keyword Planner Feb 2026)
 
-**10 groups, ~50 high-intent keywords total. Sorted by revenue potential (CPC × volume).**
+**11 groups, 471 high-intent keywords with CPC data. Sorted by revenue potential.**
 
-#### Group 1: Custom Software Development (₹1,109 CPC — highest value)
-- **Primary**: custom software development company
-- **Secondary**: custom software development services, custom software development agency, bespoke software development services, custom software design companies, custom software development firms
-- **Slug**: `/kw/custom-software-development`
-- **Ad Group**: Campaign 1 / AG1
+#### Group 1: Custom Software Development (12 keywords, ₹99–1,109 CPC)
+- **Slug**: `/kw/custom-software-development` | **Ad Group**: Campaign 1 / AG1
+- **Primary (5K vol)**: custom software development, custom software development companies, custom software development services, custom software development agency, custom software development firms, bespoke software development services, custom software design companies, custom software engineering
+- **Secondary (500 vol)**: custom application development services, custom app development services, custom app development company, custom application development company
+- **Long-tail to target later**: bespoke software, top custom software development companies
 
-#### Group 2: Mobile App Development (₹268–278 CPC, 5K+ volume)
-- **Primary**: mobile app development company
-- **Secondary**: app development company, android app development company, best mobile app development companies, mobile application development companies
-- **Slug**: `/kw/mobile-app-development`
-- **Ad Group**: Campaign 2 / AG1
+#### Group 2: Mobile App Development (133 keywords, ₹15–4,226 CPC)
+- **Slug**: `/kw/mobile-app-development` | **Ad Group**: Campaign 2 / AG1
+- **Mega (50K vol)**: mobile app developer, mobile app developers
+- **Primary (5K vol)**: mobile app development company, app development company, android app development company, best mobile app development companies, flutter app development company, ecommerce app development company, ai app development company, mobile application development companies, mobile development company, mobile software development company, astrology app development company
+- **High CPC (500 vol, ₹400+)**: grocery delivery app development company (₹4,226), grocery app development company (₹2,436), restaurant app development company (₹2,040), medicine delivery app development company (₹1,062), matrimony app development company (₹901), custom mobile app development company (₹794), us mobile app development companies (₹676), healthcare app development company (₹643), fitness app development company (₹553), top mobile app development companies (₹541), healthcare app development services (₹532), salesforce mobile app development (₹509), ios app development companies (₹501), mobile app development firm (₹482), custom mobile app development services (₹454), mobile app development company website (₹434)
+- **Medium CPC (500 vol, ₹200–400)**: ios app development services (₹383), ott app development company (₹358), mobile app development near me (₹310), enterprise mobile app development (₹299), mobile app development company near me (₹288), ios app developer (₹281), best app design company (₹277), app development agency (₹268), mobile app development agency (₹268), app development service (₹268), freelance mobile app developer (₹234), web and app development company (₹218), best app developers (₹210), e commerce app development services (₹206), custom mobile development (₹205)
+- **Long-tail (500 vol, <₹200)**: ai app development services (₹194), educational app development company (₹165), ios development company (₹163), android app developer (₹161), fintech app development company (₹158), astrology app development company (₹153), android app development service (₹152), top 10 mobile app development companies (₹143), flutter app development services (₹139), android application development company (₹128), cross platform app development services (₹93), pharmacy app development company (₹78), flutter mobile app development (₹69)
 
-#### Group 3: Web Development & Web Apps (₹128–152 CPC, 5K volume)
-- **Primary**: web development company
-- **Secondary**: web development agency, web application development, web development services, web designing company, web dev company
-- **Slug**: `/kw/web-development-company`
-- **Ad Group**: Campaign 5 / AG3
+#### Group 3: Web Development & Web Apps (164 keywords, ₹48–876 CPC)
+- **Slug**: `/kw/web-development-company` | **Ad Group**: Campaign 5 / AG3
+- **Mega (50K vol)**: website developer (₹121)
+- **Primary (5K vol)**: web development agency (₹152), web application development (₹129), web development company (₹128), website development company (₹128), web designing company (₹122), wordpress development companies (₹164), indian web design company (₹161), web development services (₹116), front end developer technologies (₹741)
+- **High CPC (500 vol, ₹300+)**: laravel development company (₹876), web development ad (₹856), cms website development services (₹378), ecommerce website design companies (₹358), us web development company (₹337)
+- **Medium CPC (500 vol, ₹150–300)**: front end development services (₹224), wordpress development service (₹219), web application development companies (₹218), australian web development companies (₹217), custom web app development services (₹211), web app development agency (₹205), ecommerce web development company (₹200), wordpress website development services (₹198), web design and development agency (₹190), american web design company (₹188), best web development services (₹186), custom website developer (₹185), website building agency (₹180), travel website development company (₹179), php web development company (₹177), custom web development services (₹176), real estate website development company (₹171), ecommerce website developer (₹168), best website developers (₹166), shopify web development agency (₹163), ecommerce website development company (₹158), ecommerce web development services (₹153), shopify website development (₹152), professional web design services (₹150)
+- **Long-tail (500 vol, <₹150)**: php development company (₹144), shopify web designer (₹143), progressive web application development (₹139), top web design companies (₹139), affordable web development company (₹136), website developers for small business (₹136), shopify website development services (₹131), web development agency near me (₹130), best website design companies (₹128), shopify website developer (₹128), top web development companies (₹122), wordpress development agency (₹118), custom web application development company (₹118), custom web design services (₹117), best indian web development companies (₹112), custom web development (₹111), wordpress website development company (₹106), responsive web development services (₹101), website development firm (₹100), best web design companies (₹98), software & website development company (₹97), web development with ai (₹94), shopify website design company (₹90), custom web designs (₹86), shopify website development cost (₹84), wordpress web design company (₹67), seo in website development (₹48)
 
-#### Group 4: AI & ML Development (₹145–298 CPC, rising demand)
-- **Primary**: ai app development company
-- **Secondary**: ai software development, ai app development services, ai software development companies, web development with ai
-- **Slug**: `/kw/ai-software-development`
-- **Ad Group**: Campaign 4 / AG1
+#### Group 4: AI / ML / Agents (5 keywords, ₹145–298 CPC — fast rising)
+- **Slug**: `/kw/ai-software-development` | **Ad Group**: Campaign 4 / AG1
+- **Primary (5K vol)**: ai app development company (₹298), ai software development (₹145)
+- **Secondary (500 vol)**: ai app development services (₹194), ai software development companies (₹179), ai app developer (₹153)
+- **Note**: This group will expand rapidly as AI agent/chatbot/RAG keywords gain volume. Monitor monthly.
 
-#### Group 5: E-Commerce & Marketplace (₹142–358 CPC)
-- **Primary**: ecommerce app development company
-- **Secondary**: shopify app development, ecommerce web development company, marketplace development, shopify ecommerce development
-- **Slug**: `/kw/ecommerce-development`
-- **Ad Group**: Campaign 5 / AG2
+#### Group 5: E-Commerce & Marketplace (38 keywords, ₹31–4,226 CPC)
+- **Slug**: `/kw/ecommerce-development` | **Ad Group**: Campaign 5 / AG2
+- **Primary (5K vol)**: ecommerce app development company (₹204), shopify app development (₹142), b2b commerce platform (₹388)
+- **Ultra-High CPC (500 vol)**: grocery delivery app development company (₹4,226), grocery delivery app development (₹3,406), grocery app development company (₹2,436), restaurant app development company (₹2,040)
+- **High CPC (500 vol, ₹150+)**: ecommerce website design companies (₹358), shopify ecommerce development (₹250), ecommerce web development company (₹200), grocery app development (₹171), ecommerce website developer (₹168), shopify web development agency (₹163), ecommerce website development company (₹158), ecommerce web development services (₹153), shopify website development (₹152), shopify web development company (₹152), ecommerce website development services (₹151)
+- **Medium CPC (500 vol)**: shopify web designer (₹143), ecommerce website design services (₹142), shopify website development services (₹131), shopify website developer (₹128), ecommerce development company (₹125), shopify ecommerce website development (₹106), shopify website design company (₹90), shopify website development cost (₹84), global ecommerce platform (₹69)
 
-#### Group 6: Enterprise Software — ERP/CRM (₹343–510 CPC)
-- **Primary**: enterprise software development
-- **Secondary**: enterprise software, erp software development company, best crm software, enterprise asset management software
-- **Slug**: `/kw/enterprise-software-development`
-- **Ad Group**: Campaign 5 / AG1
+#### Group 6: Enterprise Software — ERP/CRM (67 keywords, ₹50–676 CPC)
+- **Slug**: `/kw/enterprise-software-development` | **Ad Group**: Campaign 5 / AG1
+- **Mega (50K vol)**: enterprise resource planning software (₹123), sap erp software (₹102), quantum erp system (₹102), zoho erp software (₹83)
+- **Primary (5K vol)**: enterprise software (₹510), best crm software (₹508), enterprise asset management software (₹506), salesforce crm software (₹364), best erp software (₹143), oracle erp software (₹111), sap crm software (₹110)
+- **High CPC (500 vol, ₹200+)**: list of crm software (₹676), crm software companies (₹539), enterprise software solutions (₹509), enterprise software development (₹372), enterprise app development (₹372), small business management software (₹368), service business management software (₹367), erp software development company (₹343), erp system for manufacturing company (₹316), enterprise mobile app development (₹299), custom erp software (₹291), custom erp software development (₹274), erp software development services (₹273), best manufacturing erp software (₹269), netsuite erp system (₹262), best crm software for small businesses (₹261), best crm software for real estate (₹255), best business intelligence software (₹254), netsuite erp software (₹252), crm development company (₹245), business crm software (₹239), ifs erp system (₹236), erp enterprise software (₹232), small business erp software (₹221), erp software companies (₹216), erp development company (₹214)
+- **Long-tail (500 vol, <₹200)**: enterprise resource planning management (₹153), pharma erp software (₹148), open source business management software (₹148), erp company (₹143), erp system logistics (₹137), crm software development company (₹134), microsoft erp software (₹132), oracle enterprise resource planning cloud (₹132), microsoft crm software (₹123), zoho crm software (₹122), oracle erp system (₹121), crm software development services (₹112), crm software development (₹108), enterprise software development company (₹56), sap enterprise software (₹50)
 
-#### Group 7: SaaS & MVP Development (₹120–611 CPC)
-- **Primary**: saas development company
-- **Secondary**: saas product development services, saas product development company, mvp development company
-- **Slug**: `/kw/saas-mvp-development`
-- **Ad Group**: Campaign 3 / AG1–AG2
+#### Group 7: SaaS & MVP / Startup (5 keywords, ₹120–611 CPC)
+- **Slug**: `/kw/saas-mvp-development` | **Ad Group**: Campaign 3 / AG1–AG2
+- **All keywords**: saas product development services (₹611), saas management platform (₹560), hr software for startups (₹516), saas development company (₹215), saas product development company (₹120)
+- **Zero CPC (still target)**: saas application development services, saas application development company, saas app development services
 
-#### Group 8: Flutter & Cross-Platform Apps (₹214–450 CPC)
-- **Primary**: flutter app development company
-- **Secondary**: react native development companies, cross platform app development company, cross platform mobile app development
-- **Slug**: `/kw/flutter-react-native-development`
-- **Ad Group**: Campaign 2 / AG2
+#### Group 8: Flutter & Cross-Platform Apps (16 keywords, ₹69–982 CPC)
+- **Slug**: `/kw/flutter-react-native-development` | **Ad Group**: Campaign 2 / AG2
+- **Primary (5K vol)**: flutter app development company (₹214)
+- **High CPC (500 vol)**: react native development companies (₹982), cross platform app development company (₹450), cross platform mobile app development companies (₹450), cross platform mobile development company (₹450), flutter development company (₹259), react native app development companies (₹252)
+- **Long-tail (500 vol)**: flutter app development services (₹139), cross platform app development services (₹93), flutter company (₹85), ionic app development (₹84), flutter mobile app development (₹69)
 
-#### Group 9: IT Outsourcing & Hire Developers (₹127–285 CPC)
-- **Primary**: outsourcing software development
-- **Secondary**: offshore software development company, software development outsourcing companies, us software development company
-- **Slug**: `/kw/it-outsourcing-hire-developers`
-- **Ad Group**: Campaign 1 / AG3–AG4
+#### Group 9: IT Outsourcing & Hire Developers (6 keywords, ₹127–378 CPC)
+- **Slug**: `/kw/it-outsourcing-hire-developers` | **Ad Group**: Campaign 1 / AG3–AG4
+- **Primary (5K vol)**: us software development company (₹378)
+- **All keywords**: us web development company (₹337), outsourcing software development (₹285), software outsourcing development (₹285), offshore software development (₹158), offshore software development company (₹127)
+- **Zero CPC (still target)**: offshore software development services, php outsourcing company
 
-#### Group 10: Industry-Specific Apps (₹553–4,226 CPC — ultra-high value niche)
-- **Primary**: healthcare app development company
-- **Secondary**: fintech software development companies, grocery delivery app development, restaurant app development company, fitness app development company
-- **Slug**: `/kw/industry-specific-app-development`
-- **Ad Group**: Custom niche campaigns
+#### Group 10: Industry-Specific Apps (23 keywords, ₹48–643 CPC — high-value niches)
+- **Slug**: `/kw/industry-specific-app-development` | **Ad Group**: Custom niche campaigns
+- **Healthcare**: healthcare app development company (₹643), healthcare app development services (₹532), healthcare software development companies (₹272)
+- **Fitness**: fitness app development company (₹553)
+- **FinTech**: fintech software development companies (₹385), fintech app development company (₹158)
+- **Real Estate**: real estate app development (₹286), best real estate management software (₹205), real estate website development company (₹171), real estate developer website (₹102)
+- **Logistics**: logistics software development company (₹233), logistics management software (₹175), logistics software companies (₹156)
+- **Education**: educational app development company (₹165), educational app development services (₹118)
+- **Pharma**: pharma distribution software (₹166), pharma erp software (₹148), pharmacy app development company (₹78), pharmasoft software (₹75), sfa pharma software (₹61), marg medical software (₹48)
+- **Travel**: travel website development company (₹179)
+- **On-Demand**: on demand app development (₹206)
+
+#### Group 11: Blockchain / Web3 (2 keywords, ₹195 CPC — watch list)
+- **Slug**: `/kw/blockchain-web3-development` | **Ad Group**: Future campaign
+- **Primary (5K vol)**: web3 development company (₹195), web3 development companies (₹195)
+- **Zero CPC (still target)**: blockchain software development companies, blockchain app development companies
 
 ---
 
