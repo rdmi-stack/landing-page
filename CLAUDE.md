@@ -187,24 +187,75 @@ Custom software, mobile apps, SaaS, web apps, e-commerce, enterprise (ERP/CRM)
 
 **Strategy**: Keyword groups and landing pages should be easy to swap/add. When a service category gains traction (search volume up, CPC rising), spin up a new keyword group + landing page within hours using the existing system. The admin panel should surface trending keywords and suggest new page opportunities.
 
-### Keyword Groups (User will provide curated list)
-Groups will be defined after keyword research is finalized. Expected ~10+ groups covering:
-1. Custom Software Development
-2. App Development (Mobile)
-3. SaaS / MVP Development
-4. AI Agents & Automation
-5. AI/ML Development & RAG Systems
-6. E-Commerce & Marketplace Development
-7. Enterprise Software (ERP/CRM)
-8. Hire Developers (Staff Augmentation)
-9. IT Outsourcing / Offshore
-10. Web Application Development
-11. Workflow Automation & Integration
-12. Industry-Specific (FinTech, Healthcare, Logistics, etc.)
+### Keyword Groups (Data-Backed from Google Keyword Planner Feb 2026)
+
+**10 groups, ~50 high-intent keywords total. Sorted by revenue potential (CPC × volume).**
+
+#### Group 1: Custom Software Development (₹1,109 CPC — highest value)
+- **Primary**: custom software development company
+- **Secondary**: custom software development services, custom software development agency, bespoke software development services, custom software design companies, custom software development firms
+- **Slug**: `/kw/custom-software-development`
+- **Ad Group**: Campaign 1 / AG1
+
+#### Group 2: Mobile App Development (₹268–278 CPC, 5K+ volume)
+- **Primary**: mobile app development company
+- **Secondary**: app development company, android app development company, best mobile app development companies, mobile application development companies
+- **Slug**: `/kw/mobile-app-development`
+- **Ad Group**: Campaign 2 / AG1
+
+#### Group 3: Web Development & Web Apps (₹128–152 CPC, 5K volume)
+- **Primary**: web development company
+- **Secondary**: web development agency, web application development, web development services, web designing company, web dev company
+- **Slug**: `/kw/web-development-company`
+- **Ad Group**: Campaign 5 / AG3
+
+#### Group 4: AI & ML Development (₹145–298 CPC, rising demand)
+- **Primary**: ai app development company
+- **Secondary**: ai software development, ai app development services, ai software development companies, web development with ai
+- **Slug**: `/kw/ai-software-development`
+- **Ad Group**: Campaign 4 / AG1
+
+#### Group 5: E-Commerce & Marketplace (₹142–358 CPC)
+- **Primary**: ecommerce app development company
+- **Secondary**: shopify app development, ecommerce web development company, marketplace development, shopify ecommerce development
+- **Slug**: `/kw/ecommerce-development`
+- **Ad Group**: Campaign 5 / AG2
+
+#### Group 6: Enterprise Software — ERP/CRM (₹343–510 CPC)
+- **Primary**: enterprise software development
+- **Secondary**: enterprise software, erp software development company, best crm software, enterprise asset management software
+- **Slug**: `/kw/enterprise-software-development`
+- **Ad Group**: Campaign 5 / AG1
+
+#### Group 7: SaaS & MVP Development (₹120–611 CPC)
+- **Primary**: saas development company
+- **Secondary**: saas product development services, saas product development company, mvp development company
+- **Slug**: `/kw/saas-mvp-development`
+- **Ad Group**: Campaign 3 / AG1–AG2
+
+#### Group 8: Flutter & Cross-Platform Apps (₹214–450 CPC)
+- **Primary**: flutter app development company
+- **Secondary**: react native development companies, cross platform app development company, cross platform mobile app development
+- **Slug**: `/kw/flutter-react-native-development`
+- **Ad Group**: Campaign 2 / AG2
+
+#### Group 9: IT Outsourcing & Hire Developers (₹127–285 CPC)
+- **Primary**: outsourcing software development
+- **Secondary**: offshore software development company, software development outsourcing companies, us software development company
+- **Slug**: `/kw/it-outsourcing-hire-developers`
+- **Ad Group**: Campaign 1 / AG3–AG4
+
+#### Group 10: Industry-Specific Apps (₹553–4,226 CPC — ultra-high value niche)
+- **Primary**: healthcare app development company
+- **Secondary**: fintech software development companies, grocery delivery app development, restaurant app development company, fitness app development company
+- **Slug**: `/kw/industry-specific-app-development`
+- **Ad Group**: Custom niche campaigns
 
 ---
 
 ## SEO Target Keywords (High Commercial Intent)
+
+**Data source**: Google Keyword Planner (Feb 2026), 4,036 keywords analyzed. Filtered for high commercial intent (CPC ≥ ₹100, volume ≥ 500).
 
 ### Primary Keywords (Highest Value — target in homepage title, H1, meta)
 | Keyword | Intent | Monthly Search | Est. CPC |
@@ -252,6 +303,57 @@ Groups will be defined after keyword research is finalized. Expected ~10+ groups
 | logistics software development India |
 | custom LMS development company India |
 | on demand app development India |
+
+### High-Volume Keywords from Google Keyword Planner (Feb 2026)
+
+**Tier 1 — 50,000 monthly searches** (broad, high volume):
+| Keyword | Volume | CPC (High) | Competition |
+|---------|--------|-----------|-------------|
+| mobile app developer | 50,000 | ₹148 | Low (4) |
+| website developer | 50,000 | ₹121 | Medium (61) |
+| enterprise resource planning software | 50,000 | ₹123 | Low (15) |
+| company management software | 50,000 | ₹160 | Low (2) |
+
+**Tier 2 — 5,000 monthly searches** (targeted, high intent):
+| Keyword | Volume | CPC (High) | Competition |
+|---------|--------|-----------|-------------|
+| custom software development | 5,000 | ₹1,109 | Low (12) |
+| custom software development companies | 5,000 | ₹1,109 | Low (6) |
+| custom software development services | 5,000 | ₹1,109 | Low (6) |
+| custom software development agency | 5,000 | ₹1,109 | Low (6) |
+| bespoke software development services | 5,000 | ₹1,109 | Low (6) |
+| enterprise software | 5,000 | ₹510 | Low (8) |
+| ai app development company | 5,000 | ₹298 | Low (6) |
+| mobile app development company | 5,000 | ₹278 | Low (12) |
+| android app development company | 5,000 | ₹269 | Low (5) |
+| app development company | 5,000 | ₹268 | Low (19) |
+| flutter app development company | 5,000 | ₹214 | Low (2) |
+| ecommerce app development company | 5,000 | ₹204 | Low (1) |
+| web development agency | 5,000 | ₹152 | Medium (35) |
+| software development company | 5,000 | ₹152 | Low (13) |
+| ai software development | 5,000 | ₹145 | Medium (34) |
+| web application development | 5,000 | ₹129 | Low (20) |
+| web development company | 5,000 | ₹128 | Low (22) |
+| software development services | 5,000 | ₹111 | Low (8) |
+
+**Tier 3 — 500 monthly searches** (ultra-high CPC, niche intent):
+| Keyword | Volume | CPC (High) | Competition |
+|---------|--------|-----------|-------------|
+| grocery delivery app development company | 500 | ₹4,226 | Low (4) |
+| grocery app development company | 500 | ₹2,436 | Low (7) |
+| restaurant app development company | 500 | ₹2,040 | Low (5) |
+| medicine delivery app development company | 500 | ₹1,062 | Low (1) |
+| react native development companies | 500 | ₹982 | Low (4) |
+| matrimony app development company | 500 | ₹901 | Low (2) |
+| mlm software development company | 500 | ₹865 | Low (3) |
+| custom mobile app development company | 500 | ₹794 | Low (7) |
+| healthcare app development company | 500 | ₹643 | Low (4) |
+| saas product development services | 500 | ₹611 | Low (3) |
+| fintech software development companies | 500 | ₹385 | Low (1) |
+| enterprise software development | 500 | ₹372 | Low (8) |
+| erp software development company | 500 | ₹343 | Low (4) |
+| outsourcing software development | 500 | ₹285 | Low (8) |
+| saas development company | 500 | ₹215 | Low (5) |
 
 ---
 
