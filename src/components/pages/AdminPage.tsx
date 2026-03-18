@@ -9,6 +9,7 @@ import {
   Search,
   Filter,
   ExternalLink,
+  LogOut,
   Tag,
   Clock,
   Mail,
@@ -48,7 +49,7 @@ interface Lead {
 // ─── Inline data (avoids server import in client component) ───
 
 const landingPages: LandingPageData[] = [
-  { name: "Homepage", route: "/", type: "homepage", hasNavbar: true, status: "live" },
+  { name: "Homepage", route: "/", type: "homepage", hasNavbar: true, status: "live", keywords: ["software development company India", "custom software development company India", "app development company India", "mobile app development company India", "hire software developers India", "SaaS development company India", "AI development company India", "web application development company India", "IT outsourcing company India", "MVP development company India"] },
   { name: "Get Free Quote", route: "/get-quote", type: "sitelink", hasNavbar: false, status: "live" },
   { name: "Products", route: "/products", type: "sitelink", hasNavbar: false, status: "live" },
   { name: "Services", route: "/services", type: "sitelink", hasNavbar: true, status: "live" },
@@ -63,6 +64,7 @@ const landingPages: LandingPageData[] = [
   { name: "Free SEO Course", route: "/seo-course", type: "landing", hasNavbar: false, status: "live" },
   { name: "Experiment Lab", route: "/lab", type: "landing", hasNavbar: false, status: "live" },
   { name: "Live Dashboard", route: "/dashboard", type: "landing", hasNavbar: false, status: "live" },
+  { name: "Admin Panel", route: "/admin", type: "landing", hasNavbar: false, status: "live" },
   // Keyword landing pages
   {
     name: "Custom Software Development",
@@ -347,12 +349,23 @@ export default function AdminPage() {
                 <p className="text-[11px] text-zinc-500">Landing Pages & Leads</p>
               </div>
             </div>
-            <a
-              href="/"
-              className="text-xs text-zinc-500 hover:text-white transition-colors flex items-center gap-1"
-            >
-              <ExternalLink className="w-3 h-3" /> View Site
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="/"
+                className="text-xs text-zinc-500 hover:text-white transition-colors flex items-center gap-1"
+              >
+                <ExternalLink className="w-3 h-3" /> View Site
+              </a>
+              <button
+                onClick={async () => {
+                  await fetch("/api/auth", { method: "DELETE" });
+                  window.location.href = "/admin/login";
+                }}
+                className="text-xs text-zinc-500 hover:text-red-400 transition-colors flex items-center gap-1"
+              >
+                <LogOut className="w-3 h-3" /> Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>

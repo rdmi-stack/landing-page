@@ -161,7 +161,7 @@ export interface LandingPage {
 }
 
 export const allLandingPages: LandingPage[] = [
-  { name: "Homepage", route: "/", type: "homepage", hasNavbar: true, status: "live" },
+  { name: "Homepage", route: "/", type: "homepage", hasNavbar: true, status: "live", keywords: ["software development company India", "custom software development company India", "app development company India", "mobile app development company India", "hire software developers India", "SaaS development company India", "AI development company India", "web application development company India", "IT outsourcing company India", "MVP development company India"] },
   { name: "Get Free Quote", route: "/get-quote", type: "sitelink", hasNavbar: false, status: "live" },
   { name: "Products", route: "/products", type: "sitelink", hasNavbar: false, status: "live" },
   { name: "Services", route: "/services", type: "sitelink", hasNavbar: true, status: "live" },
@@ -176,6 +176,7 @@ export const allLandingPages: LandingPage[] = [
   { name: "Free SEO Course", route: "/seo-course", type: "landing", hasNavbar: false, status: "live" },
   { name: "Experiment Lab", route: "/lab", type: "landing", hasNavbar: false, status: "live" },
   { name: "Live Dashboard", route: "/dashboard", type: "landing", hasNavbar: false, status: "live" },
+  { name: "Admin Panel", route: "/admin", type: "landing", hasNavbar: false, status: "live" },
   // Keyword landing pages
   ...keywordGroups.map((g) => ({
     name: g.name,
