@@ -40,22 +40,28 @@ npx tsc --noEmit     # Type check without emitting
 
 ### Page Structure
 
-| Route | Type | Purpose |
-|-------|------|---------|
-| `/` | Homepage | Full landing page — Hero, TrustBar, USP, Services, HowItWorks, TechStack, ProductShowcase, CaseStudies, Testimonials, FAQ, CTA, Footer |
-| `/get-quote` | Sitelink | Full-page quote form with benefits sidebar |
-| `/products` | Sitelink | 50+ product showcase with category filters |
-| `/services` | Sitelink | USPs + 8 services + tech stack |
-| `/about` | Sitelink | Company story, stats, values |
-| `/how-it-works` | Sitelink | 4-step dev process |
-| `/case-studies` | Sitelink | Portfolio + testimonials |
-| `/contact` | Sitelink | Email, phone, WhatsApp, offices |
-| `/faq` | Sitelink | Common questions |
-| `/lp` | UTM Dynamic | Paid ads landing page — content changes by UTM params |
+| Route | Navbar | Type | Purpose |
+|-------|--------|------|---------|
+| `/` | Yes | Homepage | Full landing — Hero, TrustBar, USP, Services, HowItWorks, TechStack, ProductShowcase, FAQ, CTA, Footer |
+| `/get-quote` | No | Sitelink | Full-page quote form with benefits sidebar |
+| `/products` | No | Sitelink | 50+ product showcase with category filters |
+| `/services` | Yes | Sitelink | USPs + 8 services + tech stack |
+| `/about` | No | Sitelink | Company story, stats, values |
+| `/how-it-works` | Yes | Sitelink | 4-step dev process |
+| `/case-studies` | Yes | Sitelink | Portfolio + testimonials |
+| `/contact` | No | Sitelink | Email, phone, WhatsApp, offices |
+| `/faq` | Yes | Sitelink | Common questions |
+| `/lp` | No | UTM Dynamic | Paid ads — content changes by UTM params |
+| `/seo-services` | No | Landing | 14 SEO services with tools |
+| `/digital-marketing` | No | Landing | 11 DM services with tools |
+| `/seo-course` | No | Landing | Free 7-day SEO course |
+| `/lab` | No | Landing | Experiment lab with 8 experiments |
+| `/dashboard` | No | Landing | Live stats dashboard |
+| `/kw/<slug>` | No | Keyword LP | Keyword-specific landing pages (~10 planned) |
 
-- `/get-quote`, `/about`, `/contact` use dedicated components from `src/components/pages/`
-- Other sitelink pages reuse section components with Navbar/Footer wrapper and `pt-20` for fixed nav
-- Each page exports its own `Metadata` object for SEO sitelinks
+- Pages without Navbar use Footer only + FloatingWidget (WhatsApp + Callback)
+- Pages with Navbar use `pt-20` for fixed nav offset
+- Each page exports its own `Metadata` object for SEO
 
 ### UTM Dynamic Landing Page (`/lp`)
 
@@ -101,6 +107,100 @@ MAILGUN_DOMAIN=hello.rdmi.in
 MAILGUN_FROM_EMAIL=info@rdmi.in
 MAILGUN_REGION=US
 ```
+
+---
+
+## Keyword-Specific Landing Pages Strategy
+
+### Overview
+~50 high-intent keywords grouped into ~10 dedicated landing pages (~5 keywords per group). Each landing page is a standalone route (no Navbar, Footer only) built from real project data — no mock stats, no fake case studies, no placeholder metrics. All content must be sourced from actual RDMI capabilities, tech stack, process, and NDA-compliant descriptions.
+
+### Architecture
+- **Routes**: `/kw/<slug>` (e.g., `/kw/custom-software-development-india`)
+- **Component**: Shared `KeywordLandingPage` component in `src/components/pages/` that takes keyword group config as props
+- **Data**: Keyword groups defined in `src/data/keyword-groups.ts` — each group has: slug, primary keyword, secondary keywords (4-5), headline, subheadline, services list, FAQ, CTA text, meta title/description
+- **No Navbar**: Landing pages never have navigation — only Footer + FloatingWidget
+- **CTA**: All CTAs use `openModal(primaryKeyword)` to pre-fill the quote form with keyword context
+- **UTM Capture**: Form submissions capture the page slug + UTM params for attribution
+- **SEO**: Each page has unique `Metadata` with primary keyword in title, H1, meta description, and URL slug
+- **noindex**: Paid traffic pages are `noindex, nofollow`; organic-targeted pages are indexed
+
+### Keyword Grouping Principles (for max Quality Score & conversion)
+1. **Tight theme**: All keywords in a group share the same search intent and service category
+2. **Single CTA focus**: One clear action per page — no competing CTAs
+3. **Ad-to-page match**: Headline mirrors the ad headline for Quality Score boost
+4. **Keyword in H1, title, meta, URL**: Primary keyword appears in all four
+5. **Secondary keywords**: Woven naturally into H2s, body copy, FAQ questions
+
+### Content Rules (NDA-Compliant)
+- **No client names** — use "a leading fintech company" style references
+- **No revenue/user metrics** from client projects
+- **Tech stack mentions are OK** — React, Next.js, Node.js, Python, Flutter, etc.
+- **Process details are OK** — discovery, sprint planning, CI/CD, testing
+- **Budget ranges are OK** — ₹1.5L–₹25L+ based on complexity
+- **Team size/composition OK** — "dedicated team of 3-5 senior developers"
+- **Deliverables OK** — source code, documentation, deployment, support
+
+### Admin Panel (Planned)
+- Separate admin dashboard to manage all keyword landing pages
+- CRUD for keyword groups and page content
+- Lead tracking: form submissions with source page, UTM data, timestamps
+- Conversion metrics per landing page
+
+### Geo-Targeting Strategy
+**Phase 1 — India (Top Metro Cities)**:
+Mumbai, Delhi/NCR, Bangalore, Hyderabad, Chennai, Pune, Kolkata, Ahmedabad
+
+- Keyword pages will include city-specific variants (e.g., "software development company in Mumbai")
+- Google Ads location targeting by city for higher relevance score
+- Landing page content can reference local presence / timezone alignment
+
+**Phase 2 — International (Top Markets)**:
+USA, UK, Canada, Australia, UAE, Singapore, Germany
+
+- Focus on "hire developers from India" / "outsource to India" angle
+- USD/GBP/AUD pricing references where applicable
+- Timezone overlap and communication as trust signals
+
+### Service Evolution Strategy (Forward-Looking)
+Traditional software development demand will shift over time. The keyword landing page system and ad campaigns must be adaptable to emerging high-demand services. Current trajectory:
+
+**Now (2025-2026) — Core Revenue**:
+Custom software, mobile apps, SaaS, web apps, e-commerce, enterprise (ERP/CRM)
+
+**Rising Fast (2025-2027) — Invest Now**:
+- AI Agents & Autonomous Workflows (LangChain, CrewAI, AutoGen)
+- AI-Powered SaaS (embedded AI features, copilots, smart dashboards)
+- RAG Systems & Knowledge Bases (enterprise search, document AI)
+- Workflow Automation (n8n, Make, custom orchestration)
+- AI Chatbots & Conversational AI (customer support, sales bots)
+- Voice AI & Telephony Agents
+
+**Next Wave (2026-2028) — Watch & Prepare**:
+- AI Agent Marketplaces & Platforms
+- Autonomous Business Operations (AI replacing manual workflows end-to-end)
+- Vertical AI SaaS (industry-specific AI products — legal, healthcare, finance, logistics)
+- AI-Native Mobile Apps (on-device models, personalized UX)
+- Computer Vision & IoT Integration
+- Blockchain/Web3 enterprise applications
+- GEO/AEO Optimization Services (AI search visibility)
+
+**Strategy**: Keyword groups and landing pages should be easy to swap/add. When a service category gains traction (search volume up, CPC rising), spin up a new keyword group + landing page within hours using the existing system. The admin panel should surface trending keywords and suggest new page opportunities.
+
+### Keyword Groups (User will provide curated list)
+Groups will be defined after keyword research is finalized. Expected ~10+ groups covering:
+1. Custom Software Development
+2. App Development (Mobile)
+3. SaaS / MVP Development
+4. AI Agents & Automation
+5. AI/ML Development & RAG Systems
+6. E-Commerce & Marketplace Development
+7. Enterprise Software (ERP/CRM)
+8. Hire Developers (Staff Augmentation)
+9. IT Outsourcing / Offshore
+10. Web Application Development
+11. Workflow Automation & Integration
+12. Industry-Specific (FinTech, Healthcare, Logistics, etc.)
 
 ---
 

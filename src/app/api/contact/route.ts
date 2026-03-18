@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { saveLead } from "@/data/leads";
 
 const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY!;
 const MAILGUN_DOMAIN = process.env.MAILGUN_DOMAIN!;
@@ -280,6 +281,26 @@ export async function POST(req: NextRequest) {
 
     const formType = detectFormType(message);
     const customerEmail = getCustomerEmail(formType, name, email, phone || "", company || "", budget || "", message);
+
+    // Store lead locally for admin panel
+    const referer = req.headers.get("referer") || "";
+    const sourcePage = referer ? new URL(referer).pathname : "unknown";
+    try {
+      saveLead({
+        id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        name,
+        email,
+        phone: phone || "",
+        company: company || "",
+        budget: budget || "",
+        message,
+        formType,
+        source: sourcePage,
+        timestamp: new Date().toISOString(),
+      });
+    } catch (e) {
+      console.error("[contact] Failed to save lead locally:", e);
+    }
 
     // 1. Send context-aware customer email
     await sendEmail({
