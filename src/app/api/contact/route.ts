@@ -227,22 +227,57 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
     // UTM and default software inquiry
     default:
       return {
-        subject: "We received your project inquiry — RDMI Tech Ventures",
+        subject: `${firstName}, your free prototype request is confirmed — RDMI AI`,
         html: emailWrapper(
-          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, we've got your request!</h2>
-          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">Thank you for reaching out. A <strong style="color:#fff;">senior developer</strong> (not a sales rep) will review your project and get back within <strong style="color:#a5b4fc;">2 business hours</strong>.</p>
+          `<h2 style="margin:0 0 8px;font-size:22px;color:#fff;">Hi ${firstName}, great news!</h2>
+          <p style="margin:0 0 20px;font-size:15px;line-height:1.7;color:#ccc;">Your request has been received. A <strong style="color:#fff;">senior developer</strong> — not a salesperson — is reviewing your project right now and will reach out within <strong style="color:#a5b4fc;">2 hours</strong>.</p>
+
           ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Company", company], ["Budget", budget], ["Project", message.replace(/\[.*?\]\n?/, "")]])}
-          <p style="margin:0 0 12px;font-size:14px;font-weight:600;color:#fff;">What happens next:</p>
+
+          <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#fff;">Here's exactly what happens next:</p>
           ${stepsBlock([
-            ["01", "Developer review", "A senior dev reviews your requirements & prepares questions"],
-            ["02", "Discovery call", "30-min no-obligation call to understand your vision"],
-            ["03", "Free prototype", "We build a clickable prototype before you commit"],
+            ["01", "Developer Call (Within 2 Hours)", "A 5+ year senior developer calls to discuss your project — not a BDM or sales rep"],
+            ["02", "Free Prototype (Within 48 Hours)", "You receive a clickable prototype with architecture, timeline & fixed-price quote"],
+            ["03", "Review & Approve", "Love it? We start. Don't love it? Walk away — ₹0 cost, zero obligation"],
+            ["04", "Sprint Development Begins", "2-week sprints with live demos. You see working software every 14 days"],
           ])}
-          ${ctaButton("WhatsApp Us for Faster Response", "https://wa.me/919818565561?text=Hi, I just submitted a project inquiry", "linear-gradient(135deg,#4f46e5,#7c3aed)")}
-          <p style="margin:0;font-size:12px;color:#555;text-align:center;">Questions? Reply to this email or reach us at <a href="mailto:info@rdmi.in" style="color:#6366f1;">info@rdmi.in</a></p>`,
-          "linear-gradient(135deg,#4f46e5,#7c3aed)", "RDMI Tech Ventures", "Custom Software & App Development"
+
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin:28px 0 20px;background:#1a1a1a;border-radius:12px;border:1px solid #2a2a2a;"><tr><td style="padding:24px;">
+            <p style="margin:0 0 16px;font-size:14px;font-weight:700;color:#fff;text-align:center;">Why 200+ Clients Trust RDMI AI</p>
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="padding:8px 0;font-size:13px;color:#aaa;"><span style="color:#a5b4fc;font-weight:700;">✦</span> <strong style="color:#e5e5e5;">Talk to Developers Directly</strong> — No middlemen, no PM markup. Direct WhatsApp/Slack with your dev team.</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:13px;color:#aaa;"><span style="color:#10b981;font-weight:700;">✦</span> <strong style="color:#e5e5e5;">Save 50% vs US/UK Agencies</strong> — Same React/Next.js/Flutter stack, same senior devs. AI-powered delivery = half the cost.</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:13px;color:#aaa;"><span style="color:#c084fc;font-weight:700;">✦</span> <strong style="color:#e5e5e5;">AI-First = 3x Faster</strong> — AI-assisted coding, testing & QA. 12-week projects done in 4. That's not a typo.</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:13px;color:#aaa;"><span style="color:#fbbf24;font-weight:700;">✦</span> <strong style="color:#e5e5e5;">Money-Back Deadline Guarantee</strong> — Fixed price. If we miss the deadline, you get a refund. No fine print.</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:13px;color:#aaa;"><span style="color:#f87171;font-weight:700;">✦</span> <strong style="color:#e5e5e5;">You Own 100% of the Code</strong> — NDA signed before first call. Full IP transfer. No lock-in, ever.</td>
+              </tr>
+            </table>
+          </td></tr></table>
+
+          ${ctaButton("WhatsApp Us for Faster Response", "https://wa.me/919818565561?text=Hi%2C%20I%20just%20submitted%20a%20project%20inquiry.%20Can%20we%20discuss%3F", "linear-gradient(135deg,#4f46e5,#7c3aed)")}
+
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0;"><tr>
+            <td style="text-align:center;">
+              <p style="margin:0 0 4px;font-size:12px;color:#666;">Or call us directly:</p>
+              <a href="tel:+919818565561" style="font-size:14px;color:#a5b4fc;text-decoration:none;font-weight:600;">+91 98185 65561</a>
+              <span style="color:#333;margin:0 8px;">|</span>
+              <a href="mailto:info@rdmi.in" style="font-size:14px;color:#a5b4fc;text-decoration:none;font-weight:600;">info@rdmi.in</a>
+            </td>
+          </tr></table>
+
+          <p style="margin:16px 0 0;font-size:11px;color:#444;text-align:center;line-height:1.6;">₹47Cr+ client revenue generated · 200+ projects shipped · NDA protected · India | USA | UK</p>`,
+          "linear-gradient(135deg,#4f46e5,#7c3aed)", "RDMI AI", "Custom Software & App Development"
         ),
-        text: `Hi ${firstName},\n\nThank you for your project inquiry! A senior developer will reach out within 2 business hours.\n\nYour submission:\nName: ${name}\nEmail: ${email}\n${phone ? `Phone: ${phone}\n` : ""}${company ? `Company: ${company}\n` : ""}${budget ? `Budget: ${budget}\n` : ""}Project: ${message}\n\n— RDMI Tech Ventures Pvt. Ltd.\ninfo@rdmi.in`,
+        text: `Hi ${firstName},\n\nYour project request has been received! A senior developer (not a salesperson) will reach out within 2 hours.\n\nYour submission:\nName: ${name}\nEmail: ${email}\n${phone ? `Phone: ${phone}\n` : ""}${company ? `Company: ${company}\n` : ""}${budget ? `Budget: ${budget}\n` : ""}Project: ${message}\n\nWhat happens next:\n1. Developer calls within 2 hours\n2. Free prototype in 48 hours\n3. Review & approve (₹0 if you don't like it)\n4. Sprint development begins\n\nWhy RDMI AI:\n• Talk to developers directly — no middlemen\n• Save 50% vs US/UK agencies\n• AI-first = 3x faster delivery\n• Money-back deadline guarantee\n• You own 100% of the code\n\nWhatsApp: +91 98185 65561\nEmail: info@rdmi.in\n\n— RDMI Tech Ventures Pvt. Ltd.`,
       };
   }
 }
