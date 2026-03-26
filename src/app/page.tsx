@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import USPSection from "@/components/USPSection";
 import Services from "@/components/Services";
+import AICapabilities from "@/components/AICapabilities";
 import HowItWorks from "@/components/HowItWorks";
 import TechStack from "@/components/TechStack";
 import ProductShowcase from "@/components/ProductShowcase";
@@ -50,6 +51,7 @@ export default function Home() {
       <TrustBar />
       <USPSection />
       <Services />
+      <AICapabilities />
       <HowItWorks />
       <TechStack />
       <ProductShowcase />
