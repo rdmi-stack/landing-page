@@ -11,9 +11,18 @@ export interface KeywordGroup {
     cta2: string;
     trustPoints: string[];
   };
+  images: {
+    hero: string;
+    process: string;
+    team: string;
+    services: string[];
+    portfolio: string[];
+    cta: string;
+  };
   stats: { value: string; label: string }[];
   services: { title: string; description: string; tags: string[] }[];
   uspHeadlines: { direct: string; cost: string; ai: string };
+  process: { step: string; title: string; description: string }[];
   faq: { q: string; a: string }[];
   ctaSection: { headline: string; subtitle: string; buttonText: string };
   targetKeywords: string[];
@@ -36,6 +45,28 @@ export const keywordGroups: KeywordGroup[] = [
       cta2: "See 50+ Live Products",
       trustPoints: ["Money-back guarantee on first milestone", "Full source code ownership — no lock-in", "2-hour response, 7 days a week", "NDA signed before first call"],
     },
+    images: {
+      hero: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1600&q=80",
+      process: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
+      team: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
+      services: [
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+      ],
+      portfolio: [
+        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+        "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+      ],
+      cta: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80",
+    },
+    process: [
+      { step: "01", title: "Discovery Call", description: "Senior developer calls you within 2 hours. We map your requirements, define scope, and identify the fastest path to ROI." },
+      { step: "02", title: "Free Prototype", description: "Clickable prototype in 48 hours — see exactly what you're getting before committing a single rupee." },
+      { step: "03", title: "Sprint Development", description: "2-week agile sprints with live demos. You see working software every 14 days, not just status reports." },
+      { step: "04", title: "Launch & Scale", description: "Production deployment with CI/CD, monitoring, and 30-60 days free support. Your software starts generating revenue." },
+    ],
     stats: [
       { value: "200+", label: "Custom Software Projects Delivered" },
       { value: "₹47Cr+", label: "Revenue Generated for Clients" },
@@ -88,6 +119,28 @@ export const keywordGroups: KeywordGroup[] = [
       cta2: "See Our App Portfolio",
       trustPoints: ["120K+ app downloads delivered", "Flutter, React Native, Swift & Kotlin", "Money-back deadline guarantee", "Talk to developers — no sales middlemen"],
     },
+    images: {
+      hero: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600&q=80",
+      process: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80",
+      team: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80",
+      services: [
+        "https://images.unsplash.com/photo-1601972599720-36938d4ecd31?w=800&q=80",
+        "https://images.unsplash.com/photo-1526498460520-4c246339dccb?w=800&q=80",
+        "https://images.unsplash.com/photo-1605170439002-90845e8c0137?w=800&q=80",
+      ],
+      portfolio: [
+        "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=80",
+        "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80",
+        "https://images.unsplash.com/photo-1596558450268-9c27524ba856?w=800&q=80",
+      ],
+      cta: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80",
+    },
+    process: [
+      { step: "01", title: "App Strategy Call", description: "Senior mobile developer discusses your app idea, target platform, and monetization strategy within 2 hours." },
+      { step: "02", title: "UI/UX & Prototype", description: "Figma designs and clickable prototype in 72 hours. Test user flows before a single line of code." },
+      { step: "03", title: "Agile Development", description: "2-week sprints with TestFlight/Play Store builds. You test real app on your phone every sprint." },
+      { step: "04", title: "Store Launch", description: "App Store & Play Store submission, ASO optimization, and 30-day post-launch support included." },
+    ],
     stats: [
       { value: "120K+", label: "App Downloads Delivered" },
       { value: "4x", label: "Avg User Retention Uplift" },
@@ -140,6 +193,28 @@ export const keywordGroups: KeywordGroup[] = [
       cta2: "Talk to a Developer Now",
       trustPoints: ["Senior developers — not sales team", "₹1.5L–₹25L+ fixed-price", "30-day money-back guarantee", "Source code on Day 1 of go-live"],
     },
+    images: {
+      hero: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600&q=80",
+      process: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=1200&q=80",
+      team: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1200&q=80",
+      services: [
+        "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+        "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
+        "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80",
+      ],
+      portfolio: [
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+      ],
+      cta: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80",
+    },
+    process: [
+      { step: "01", title: "Free Discovery Call", description: "Senior web developer discusses your project, recommends tech stack, and provides a fixed-price estimate in 2 hours." },
+      { step: "02", title: "Design & Prototype", description: "Figma wireframes and interactive prototype. Approve every screen before development starts." },
+      { step: "03", title: "Sprint Development", description: "Live staging URL after week 2. Working software every sprint — you see progress, not promises." },
+      { step: "04", title: "Launch & Handover", description: "Production deploy, full source code handover, documentation, and 30-day free post-launch support." },
+    ],
     stats: [
       { value: "50+", label: "Web Apps Shipped" },
       { value: "6–12 Wks", label: "Avg Time to Go-Live" },
@@ -192,6 +267,28 @@ export const keywordGroups: KeywordGroup[] = [
       cta2: "See AI Products We Built",
       trustPoints: ["Chatbots handling 80% of tier-1 tickets", "Recommendation engines boosting AOV 35%", "RAG cutting research time 60%", "Agents replacing 10+ hrs/week manual work"],
     },
+    images: {
+      hero: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=80",
+      process: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80",
+      team: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80",
+      services: [
+        "https://images.unsplash.com/photo-1655720828018-edd71a68420e?w=800&q=80",
+        "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&q=80",
+        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+      ],
+      portfolio: [
+        "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=80",
+        "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=80",
+        "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=800&q=80",
+      ],
+      cta: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80",
+    },
+    process: [
+      { step: "01", title: "AI Strategy Call", description: "Senior AI engineer assesses your use case, data readiness, and recommends the right AI approach — LLM, RAG, agents, or ML." },
+      { step: "02", title: "Proof of Concept", description: "Working AI prototype in 2 weeks. Test with real data before committing to full build." },
+      { step: "03", title: "Production Build", description: "Production-grade AI with monitoring, fallbacks, and performance benchmarks. Tested against agreed accuracy targets." },
+      { step: "04", title: "Deploy & Optimize", description: "Production deployment, model monitoring, and 30-day tuning period. Performance guaranteed or we iterate free." },
+    ],
     stats: [
       { value: "6–12 wks", label: "Avg AI App Delivery" },
       { value: "80%", label: "Support Tickets Auto-Resolved" },
@@ -244,6 +341,28 @@ export const keywordGroups: KeywordGroup[] = [
       cta2: "See Our E-Commerce Work",
       trustPoints: ["Shopify & headless commerce experts", "Razorpay, Stripe & PayU included", "4x avg conversion rate improvement", "100% source code — no lock-in"],
     },
+    images: {
+      hero: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=80",
+      process: "https://images.unsplash.com/photo-1556742111-a301076d9d18?w=1200&q=80",
+      team: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80",
+      services: [
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
+        "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80",
+        "https://images.unsplash.com/photo-1607082349566-187342175e2f?w=800&q=80",
+      ],
+      portfolio: [
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
+        "https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&q=80",
+      ],
+      cta: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80",
+    },
+    process: [
+      { step: "01", title: "E-Commerce Strategy", description: "Senior developer maps your catalogue, payment needs, delivery model, and recommends Shopify vs custom build." },
+      { step: "02", title: "Design & Prototype", description: "Store design in Figma with mobile-first UX. Approve checkout flow, product pages, and admin panel before build." },
+      { step: "03", title: "Build & Integrate", description: "2-week sprints with live staging store. Payment gateways, inventory, shipping integrated and tested." },
+      { step: "04", title: "Launch & Optimize", description: "Go live with SEO setup, analytics, and 60-day free support. Conversion rate optimization included." },
+    ],
     stats: [
       { value: "₹2Cr+", label: "Monthly GMV on Our Platforms" },
       { value: "4x", label: "Avg Conversion Rate Lift" },
