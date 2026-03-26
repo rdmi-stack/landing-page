@@ -15,6 +15,7 @@ import {
   Phone,
 } from "lucide-react";
 import { useModal } from "@/components/ModalProvider";
+import AICapabilities from "@/components/AICapabilities";
 import Footer from "@/components/Footer";
 import type { KeywordGroup } from "@/data/keyword-groups";
 
@@ -146,6 +147,9 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           </div>
         </div>
       </section>
+
+      {/* ─── AI CAPABILITIES ─── */}
+      <AICapabilities />
 
       {/* ─── HOW WE WORK (Process with Image) ─── */}
       <section className="py-20 lg:py-28 relative">
