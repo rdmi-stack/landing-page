@@ -234,34 +234,34 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Badge */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-sm font-medium">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-sm font-medium backdrop-blur-sm">
             <Shield className="w-4 h-4" />
-            <span>100% Money-Back Guarantee If We Miss Your Deadline</span>
+            <span>Guaranteed Delivery · AI-Native · Money-Back Promise</span>
           </div>
         </div>
 
-        {/* Headline — ROI-focused, result-driven */}
+        {/* Headline */}
         <div className="text-center max-w-5xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-            We Build <span className="gradient-text">Custom Software</span> That{" "}
-            <span className="gradient-text-orange">Makes You Money</span>
+            We Build <span className="gradient-text">Intelligent Software</span> That{" "}
+            <span className="gradient-text-orange">Works 24/7</span>
           </h1>
-          <p className="mt-6 text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
-            Not just another app development company.{" "}
-            <strong className="text-white">We&apos;ve generated ₹47Cr+ in revenue</strong> for clients through{" "}
-            custom software, mobile apps & AI solutions.{" "}
-            <span className="text-emerald-400 font-semibold">You talk to developers, not salespeople. You pay 50% less. You ship 3x faster.</span>
+          <p className="mt-6 text-lg sm:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed">
+            AI Agents. AI Chatbots. Smart Workflows. Powered by{" "}
+            <strong className="text-white">OpenAI, Claude, Gemini & LangChain</strong>.{" "}
+            Not traditional apps — <strong className="text-white">AI-native platforms</strong> that sell, support, and scale while you sleep.{" "}
+            <span className="text-emerald-400 font-semibold">₹47Cr+ revenue generated. 200+ products shipped. Deadline guaranteed.</span>
           </p>
         </div>
 
-        {/* USP pills — result-focused */}
+        {/* USP pills */}
         <div className="flex flex-wrap justify-center gap-3 mt-8">
           {[
             { icon: MessageCircle, text: "Talk to Developers, Not Salespeople" },
-            { icon: IndianRupee, text: "50% Less Than US/UK Agencies" },
-            { icon: Bot, text: "AI-Powered = 3x Faster Delivery" },
+            { icon: IndianRupee, text: "50% Less — AI-Powered Delivery" },
+            { icon: Bot, text: "Every App Ships AI-Ready" },
           ].map((usp) => (
-            <div key={usp.text} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-zinc-300">
+            <div key={usp.text} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-zinc-300 backdrop-blur-sm">
               <usp.icon className="w-4 h-4 text-indigo-400" />
               {usp.text}
             </div>
