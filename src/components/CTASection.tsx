@@ -23,16 +23,16 @@ export default function CTASection() {
         <div className="space-y-8">
           <div>
             <p className="text-emerald-400 text-sm font-semibold uppercase tracking-widest mb-3">
-              Stop Researching. Start Building.
+              Your Competitors Are Already Building. Are You?
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-              Get a Free Prototype in{" "}
-              <span className="gradient-text">48 Hours</span>
+              Your AI-Powered App.{" "}
+              <span className="gradient-text">Live in Weeks.</span>
             </h2>
-            <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
-              Every week you delay is revenue your competitor captures.
-              Talk to a senior developer in 2 hours. Get a clickable prototype in 48.{" "}
-              <strong className="text-white">If you don&apos;t love it, walk away — zero cost.</strong>
+            <p className="mt-4 text-zinc-300 text-lg max-w-2xl mx-auto">
+              Intelligent software that sells, supports, and scales — while you sleep.
+              A senior developer calls you in 2 hours. Free prototype in 48.{" "}
+              <strong className="text-white">Don&apos;t love it? Walk away. ₹0 cost. Zero risk.</strong>
             </p>
           </div>
 

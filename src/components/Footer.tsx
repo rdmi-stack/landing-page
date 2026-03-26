@@ -20,7 +20,7 @@ export default function Footer() {
               </span>
             </a>
             <p className="text-sm text-zinc-500 leading-relaxed">
-              AI-native software that works 24/7. AI Agents, Chatbots, RAG Systems & Smart Workflows — powered by OpenAI, Claude, Gemini & LangChain. 200+ intelligent products shipped. Guaranteed delivery.
+              We build intelligent software that works 24/7 — AI agents, chatbots, smart workflows & automation. 200+ products shipped. Every deadline guaranteed.
             </p>
             <div className="space-y-2 text-sm text-zinc-500">
               <a href="mailto:info@rdmi.in" className="flex items-center gap-2 hover:text-white transition-colors">
