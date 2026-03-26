@@ -13,35 +13,31 @@ export default function CTASection() {
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div
-         
-         
-         
-          className="space-y-8"
-        >
+        <div className="space-y-8">
           <div>
-            <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-              Start Your Project
+            <p className="text-emerald-400 text-sm font-semibold uppercase tracking-widest mb-3">
+              Stop Researching. Start Building.
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-              Hire Our{" "}
-              <span className="gradient-text">Custom Software Development</span> Team
+              Get a Free Prototype in{" "}
+              <span className="gradient-text">48 Hours</span>
             </h2>
             <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
-              Talk to a senior mobile app developer or web developer in 2 hours — not a sales rep.
-              Get a free prototype and detailed proposal before you commit a single rupee.
+              Every week you delay is revenue your competitor captures.
+              Talk to a senior developer in 2 hours. Get a clickable prototype in 48.{" "}
+              <strong className="text-white">If you don&apos;t love it, walk away — zero cost.</strong>
             </p>
           </div>
 
-          {/* Trust points */}
+          {/* Trust points — guarantee heavy */}
           <div className="flex flex-wrap justify-center gap-6">
             {[
-              { icon: MessageCircle, text: "Free 30-min consultation" },
-              { icon: Phone, text: "Response in 2 hours" },
-              { icon: Mail, text: "NDA protected" },
+              { icon: MessageCircle, text: "Developer calls you in 2 hours" },
+              { icon: Phone, text: "Free prototype before any payment" },
+              { icon: Mail, text: "Money-back deadline guarantee" },
             ].map((item) => (
               <div key={item.text} className="flex items-center gap-2 text-sm text-zinc-400">
-                <item.icon className="w-4 h-4 text-indigo-400" />
+                <item.icon className="w-4 h-4 text-emerald-400" />
                 {item.text}
               </div>
             ))}
@@ -53,13 +49,13 @@ export default function CTASection() {
               onClick={() => openModal()}
               className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-semibold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all hover:shadow-2xl hover:shadow-indigo-500/30 hover:scale-105 cursor-pointer"
             >
-              Get Free Quote & Prototype
+              Get Free Prototype — No Payment Required
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-zinc-500">
-            {["No upfront payment", "100% source code ownership", "Cancel anytime"].map((item) => (
+            {["₹0 upfront", "You own 100% of code", "NDA signed before we start", "Cancel anytime, keep everything"].map((item) => (
               <span key={item} className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
                 {item}
@@ -69,7 +65,7 @@ export default function CTASection() {
 
           {/* Direct contact */}
           <div className="pt-8 border-t border-white/5">
-            <p className="text-sm text-zinc-500 mb-2">Prefer to reach out directly?</p>
+            <p className="text-sm text-zinc-500 mb-2">Want to talk right now?</p>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-zinc-400">
               <span>
                 Email: <span className="text-white">info@rdmi.in</span>

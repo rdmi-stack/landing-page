@@ -6,43 +6,43 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     q: "How much does custom software development cost in India?",
-    a: "Custom software development in India typically ranges from ₹1.5 Lakh for MVPs to ₹25 Lakh+ for enterprise solutions. At RDMI, our AI-powered development team delivers 50-60% cost savings compared to US/UK agencies without compromising on quality. We offer fixed-price project models with transparent pricing.",
+    a: "₹1.5L for MVPs, ₹5-15L for full products, ₹25L+ for enterprise. But here's what matters: that ₹5L app we built for a logistics client now processes ₹2Cr/month in orders. The question isn't cost — it's ROI. We give you a fixed price before we start. No surprises. The quote IS the final bill.",
   },
   {
-    q: "How long does it take to build a custom web application?",
-    a: "A typical MVP takes 4-8 weeks, a full-featured web application takes 8-16 weeks, and enterprise solutions can take 4-6 months. We provide a detailed timeline during our free discovery call, and we show you a clickable prototype before you commit to the full build.",
+    q: "What's your guarantee? What if the project fails?",
+    a: "Money-back deadline guarantee: if we miss the agreed launch date, you get a refund. No fine print. We also show you a working prototype within 48 hours — before any money changes hands. If you don't like it, walk away at zero cost. 200+ projects delivered. Our track record IS the guarantee.",
   },
   {
-    q: "Do I get to talk to the developers directly?",
-    a: "Absolutely — this is our #1 USP. You get a direct Slack or WhatsApp channel with the senior developers building your product. No project managers acting as middlemen, no communication delays. Daily standups, real-time updates, and technical discussions directly with the people writing the code.",
+    q: "Why should I hire RDMI instead of a US/UK agency?",
+    a: "Same senior developers. Same tech stack. Same quality. 50% less cost. We use AI to write code 3x faster, so your budget goes further. A $50K project in San Francisco costs ₹15L here — and ships faster. You talk to developers, not account managers.",
   },
   {
-    q: "What is your AI-first development approach?",
-    a: "We integrate AI into every phase of development: AI-assisted code generation (3x faster delivery), AI-powered testing & QA, and AI features built into your product (chatbots, recommendation engines, automation). Every project benefits from AI even if the end product isn't AI-focused.",
+    q: "How fast can you build my app?",
+    a: "MVP in 4-6 weeks. Full product in 8-14 weeks. Enterprise in 4-6 months. Our AI-powered workflow compresses traditional 12-week timelines to 4-5 weeks. Last quarter, we shipped a SaaS dashboard in 3.5 weeks that a competitor quoted 12 weeks for. Speed without shortcuts.",
   },
   {
-    q: "Do you work with startups or only enterprises?",
-    a: "We work with everyone — from solo founders building their first MVP to Fortune 500 companies modernizing legacy systems. About 60% of our clients are startups and growth-stage companies, and 40% are enterprises. Our flexible engagement models adapt to your size and budget.",
+    q: "Do I really talk to developers, not salespeople?",
+    a: "Yes. Within 2 hours, a 5+ year senior developer calls you — not a BDM, not a PM, not a sales rep. You get a direct WhatsApp/Slack channel with the actual team building your product. This is why we have 73% fewer revisions than the industry average.",
   },
   {
-    q: "What technologies do you specialize in?",
-    a: "Our core stack includes React/Next.js, Node.js, Python, React Native, Flutter, PostgreSQL, MongoDB, AWS/GCP, and AI/ML tools (OpenAI, LangChain, TensorFlow). We choose the best tech for your specific use case — not what's trendy.",
+    q: "What results have your clients achieved?",
+    a: "₹47Cr+ in combined client revenue generated. A fintech app processing ₹2Cr/month, an e-commerce platform that 4x'd conversions, a healthcare SaaS that cut operational costs 60%. We can't share names (NDA), but we share architectures and approaches in your proposal.",
   },
   {
-    q: "Do I own the source code?",
-    a: "100% yes. You get complete ownership of all source code, documentation, design files, and intellectual property from day one. We sign an NDA before we start, and everything we build belongs entirely to you.",
+    q: "Do I own 100% of the source code?",
+    a: "Every line. Every design file. Every documentation page. NDA signed before the first call. Full IP transfer on day one. If you ever want to leave, you take everything. No lock-in. No vendor dependency. Your code, your servers, your terms.",
   },
   {
-    q: "What happens after the project launches?",
-    a: "All plans include 30-60 days of free post-launch support. After that, we offer flexible maintenance packages — from ad-hoc bug fixes to a dedicated team for ongoing development. Most clients continue working with us as their product evolves.",
+    q: "What if I need changes after launch?",
+    a: "30-60 days free post-launch support included. After that, most clients keep us on retainer (₹50K-2L/month) for ongoing features. 87% of our clients continue beyond the first project — because the ROI keeps compounding.",
   },
   {
-    q: "How do you ensure code quality?",
-    a: "We follow strict engineering practices: code reviews on every PR, automated testing (unit + integration + E2E), CI/CD pipelines, comprehensive documentation, and regular security audits. Our AI-powered QA catches bugs before they reach production.",
+    q: "What technologies do you use?",
+    a: "React/Next.js, Node.js, Python, Flutter, React Native, PostgreSQL, AWS/GCP, OpenAI, LangChain — we pick based on YOUR requirements. Every tech choice comes with a written justification. We optimize for performance, maintainability, and hiring ease.",
   },
   {
-    q: "Can you show me a prototype before I commit?",
-    a: "Yes! This is part of our process. After the discovery call, we create a detailed proposal with wireframes and a clickable prototype. You see exactly what you're getting before committing any significant budget. Preview before you commit — that's our promise.",
+    q: "How do I get started?",
+    a: "Step 1: Fill the form (60 seconds). Step 2: Senior developer calls within 2 hours. Step 3: Free clickable prototype in 48 hours. Step 4: Approve and we start. ₹0 upfront. Zero risk. Don't love the prototype? We part as friends.",
   },
 ];
 
