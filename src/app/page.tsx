@@ -14,25 +14,30 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "RDMI Web Services | #1 Custom Software Development Company India | Save 50%",
+  title: "Custom Software Development Company India | App Development | RDMI — Save 50%",
   description:
-    "India's top custom software & app development company. Hire dedicated developers, build SaaS, mobile apps, AI solutions & enterprise software. Talk to developers directly — save 50% cost. NDA protected, full source code ownership.",
+    "RDMI is India's #1 custom software development company. Mobile app development, web application development & AI software — talk to developers directly, save 50%. 200+ projects delivered. Free consultation.",
   keywords: [
-    "software development company India",
+    "custom software development",
+    "software development company",
+    "mobile app development company",
+    "app development company",
+    "custom software development services",
+    "web development company",
+    "mobile app developer",
+    "ai app development company",
+    "android app development company",
+    "web application development",
     "custom software development company India",
-    "app development company India",
     "mobile app development company India",
-    "hire software developers India",
-    "SaaS development company India",
-    "AI development company India",
+    "software development services",
+    "app development company India",
     "web application development company India",
-    "IT outsourcing company India",
-    "MVP development company India",
   ].join(", "),
   openGraph: {
-    title: "RDMI Web Services | Custom Software & App Development Company India",
+    title: "Custom Software Development Company India | Mobile App & Web Development | RDMI",
     description:
-      "Talk to developers directly. Save 50% cost. AI-first custom software, mobile apps, SaaS & enterprise solutions. NDA protected.",
+      "India's #1 custom software & app development company. Talk to developers directly. Save 50% cost. AI-powered delivery. 200+ projects. Free consultation & prototype.",
     type: "website",
   },
 };

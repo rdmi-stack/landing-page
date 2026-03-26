@@ -488,17 +488,17 @@ export default function ProductShowcase() {
           className="text-center mb-12"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            What We Build
+            Software Development Services
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-            50+ Products Ready to{" "}
+            50+ Custom Software{" "}
             <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-              Build & Launch
+              Solutions We Build
             </span>
           </h2>
           <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
-            From AI agents to fintech platforms — battle-tested architectures for 2025 and beyond.
-            Click any product to get a free quote.
+            Mobile apps, web applications, AI software, e-commerce platforms & enterprise solutions —
+            built by our app development company for startups and enterprises.
           </p>
         </motion.div>
 

@@ -60,11 +60,11 @@ export default function FAQ() {
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            FAQ
+            Custom Software Development FAQ
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-            Frequently Asked{" "}
-            <span className="gradient-text">Questions</span>
+            App Development{" "}
+            <span className="gradient-text">Questions Answered</span>
           </h2>
         </motion.div>
 

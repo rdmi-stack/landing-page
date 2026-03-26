@@ -246,17 +246,19 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline — H1 targets: custom software development, app development company, software development company */}
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-center max-w-5xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-            Custom Software Development{" "}
-            <span className="gradient-text">That Actually</span>{" "}
-            <span className="gradient-text-orange">Ships</span>
+            <span className="gradient-text">Custom Software Development</span>{" "}
+            &{" "}App Development Company{" "}
+            <span className="gradient-text-orange">in India</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
-            India&apos;s premier AI-powered development team. Custom web applications, mobile apps
-            & SaaS platforms — talk directly to developers, no middlemen.{" "}
-            <span className="text-white font-medium">Save 50% with our AI-first approach.</span>
+            We are a <strong className="text-white">software development company</strong> that builds{" "}
+            <strong className="text-white">mobile apps</strong>,{" "}
+            <strong className="text-white">web applications</strong> &{" "}
+            <strong className="text-white">AI software</strong> — you talk directly to senior developers, not salespeople.{" "}
+            <span className="text-indigo-400 font-semibold">Save 50% with our AI-powered development team.</span>
           </p>
         </motion.div>
 

@@ -65,14 +65,14 @@ export default function CaseStudies() {
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            What We Build
+            Custom Software Development Portfolio
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-            Types of Projects{" "}
-            <span className="gradient-text">We Deliver</span>
+            200+ Projects{" "}
+            <span className="gradient-text">Delivered by Our Team</span>
           </h2>
           <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
-            We work under NDA with every client. Here are the types of products our team builds regularly.
+            Mobile app development, web applications, AI software & enterprise solutions — built under NDA for startups and enterprises worldwide.
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-400 mt-4">
             <Shield className="w-3 h-3 text-indigo-400" />

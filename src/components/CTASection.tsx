@@ -22,15 +22,15 @@ export default function CTASection() {
         >
           <div>
             <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-              Get Started Today
+              Start Your Project
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-              Let&apos;s Build Your{" "}
-              <span className="gradient-text">Next Big Thing</span>
+              Hire Our{" "}
+              <span className="gradient-text">Custom Software Development</span> Team
             </h2>
             <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
-              Book a free 30-minute discovery call with a senior developer.
-              Get a detailed proposal with prototype — before you commit.
+              Talk to a senior mobile app developer or web developer in 2 hours — not a sales rep.
+              Get a free prototype and detailed proposal before you commit a single rupee.
             </p>
           </div>
 

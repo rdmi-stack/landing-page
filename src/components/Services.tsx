@@ -16,58 +16,58 @@ import { motion } from "framer-motion";
 const services = [
   {
     icon: Globe,
-    title: "Custom Web Application Development",
+    title: "Web Application Development",
     description:
-      "Full-stack web applications built with React, Next.js, Node.js. From SaaS platforms to enterprise dashboards — scalable, secure, and blazing fast.",
+      "Custom web applications built with React, Next.js & Node.js. From SaaS dashboards to enterprise portals — our web development company delivers scalable, production-ready software.",
     tags: ["React", "Next.js", "Node.js", "TypeScript"],
   },
   {
     icon: Smartphone,
-    title: "Mobile App Development",
+    title: "Mobile App Development Company",
     description:
-      "Native and cross-platform mobile apps for iOS & Android. React Native & Flutter expertise for startups and enterprises.",
+      "Android app development & iOS apps built with Flutter and React Native. Our mobile app developers ship cross-platform apps for startups and enterprises alike.",
     tags: ["React Native", "Flutter", "iOS", "Android"],
   },
   {
     icon: Cloud,
-    title: "SaaS Product Development",
+    title: "Custom Software Development Services",
     description:
-      "End-to-end SaaS development from MVP to scale. Multi-tenant architecture, subscription billing, analytics dashboards, and more.",
-    tags: ["Multi-tenant", "Stripe", "Analytics", "API"],
+      "End-to-end SaaS product development from MVP to scale. Multi-tenant architecture, subscription billing, analytics — bespoke software development that ships.",
+    tags: ["SaaS", "Multi-tenant", "Stripe", "API"],
   },
   {
     icon: ShoppingCart,
-    title: "E-Commerce Development",
+    title: "E-Commerce App Development",
     description:
-      "Custom e-commerce solutions, Shopify apps, and marketplace platforms. Payment gateway integration with Razorpay, Stripe & more.",
-    tags: ["Shopify", "Razorpay", "Stripe", "Headless"],
+      "Shopify apps, custom marketplace platforms, and e-commerce solutions. Payment integration with Razorpay, Stripe — complete ecommerce development company services.",
+    tags: ["Shopify", "Razorpay", "Marketplace", "Headless"],
   },
   {
     icon: Cpu,
-    title: "AI/ML Software Development",
+    title: "AI App Development Company",
     description:
-      "AI-powered applications with ChatGPT integration, recommendation engines, computer vision, NLP, and predictive analytics built in.",
-    tags: ["OpenAI", "LangChain", "Python", "TensorFlow"],
+      "AI software development with ChatGPT, LangChain, and custom ML models. AI agents, chatbots, recommendation engines, RAG systems — built by our AI-powered development team.",
+    tags: ["OpenAI", "LangChain", "Python", "CrewAI"],
   },
   {
     icon: Layers,
-    title: "Enterprise Software Solutions",
+    title: "Enterprise Software Development",
     description:
-      "ERP systems, CRM platforms, workflow automation, and internal tools. Built for scale with enterprise-grade security and compliance.",
+      "Custom ERP software, CRM platforms, workflow automation, and enterprise applications. Built for scale with enterprise-grade security and compliance.",
     tags: ["ERP", "CRM", "Microservices", "Security"],
   },
   {
     icon: Database,
-    title: "Cloud & DevOps Services",
+    title: "Cloud & DevOps Engineering",
     description:
-      "AWS, GCP, Azure deployment. CI/CD pipelines, Docker, Kubernetes, infrastructure as code. We handle your entire cloud architecture.",
+      "AWS, Google Cloud, Azure deployment. CI/CD pipelines, Docker, Kubernetes, infrastructure as code. Complete cloud architecture for your software development services.",
     tags: ["AWS", "Docker", "Kubernetes", "Terraform"],
   },
   {
     icon: Code2,
-    title: "API Development & Integration",
+    title: "API & Integration Development",
     description:
-      "RESTful & GraphQL API design, third-party integrations, payment gateways, CRM systems, and microservices architecture.",
+      "RESTful & GraphQL API design, third-party integrations, payment gateways, CRM systems — the backbone of modern web application development.",
     tags: ["REST", "GraphQL", "Microservices", "OAuth"],
   },
 ];
@@ -86,15 +86,16 @@ export default function Services() {
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            Our Services
+            Custom Software Development Services
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-            Custom Software Development{" "}
-            <span className="gradient-text">Services in India</span>
+            Mobile App Development,{" "}
+            <span className="gradient-text">Web Application Development</span>{" "}
+            & AI Software
           </h2>
           <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
-            From web and mobile apps to AI-powered enterprise solutions — we build software
-            that drives revenue and scales with your business.
+            Full-stack app development company building custom software, Android & iOS apps,
+            SaaS platforms, and AI-powered enterprise solutions — powered by senior developers in India.
           </p>
         </motion.div>
 

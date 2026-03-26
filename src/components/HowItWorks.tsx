@@ -52,14 +52,14 @@ export default function HowItWorks() {
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            How It Works
+            Our Software Development Process
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-            From Idea to Launch in{" "}
-            <span className="gradient-text">4 Simple Steps</span>
+            How We Build Your{" "}
+            <span className="gradient-text">Custom Software</span>
           </h2>
           <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
-            We show you a working preview before you commit. No surprises, no scope creep, no wasted budget.
+            Our mobile app development & web application development process: preview before you commit. No surprises, no scope creep, no wasted budget.
           </p>
         </motion.div>
 

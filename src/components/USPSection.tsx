@@ -62,11 +62,11 @@ export default function USPSection() {
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            Why RDMI Web Services
+            Why Choose Our Software Development Company
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-            Three Reasons Clients{" "}
-            <span className="gradient-text">Choose Us</span>
+            Why 200+ Clients Choose RDMI for{" "}
+            <span className="gradient-text">Custom Software Development</span>
           </h2>
         </motion.div>
 

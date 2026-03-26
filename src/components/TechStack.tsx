@@ -41,15 +41,15 @@ export default function TechStack() {
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            Technology Stack
+            Software Development Technologies
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-            We Build With the{" "}
-            <span className="gradient-text">Best Tech</span>
+            Our App Development{" "}
+            <span className="gradient-text">Tech Stack</span>
           </h2>
           <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
-            Our full-stack developers are experts in the most in-demand technologies.
-            We pick the right stack for your project — not just what&apos;s trendy.
+            Our mobile app developers & web developers are experts in React, Next.js, Flutter, Python, Node.js, AWS & AI/ML.
+            Right technology for your custom software — not just what&apos;s trendy.
           </p>
         </motion.div>
 
