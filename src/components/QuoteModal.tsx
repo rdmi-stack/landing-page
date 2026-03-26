@@ -3,6 +3,7 @@
 import { X, ArrowRight, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -13,6 +14,7 @@ interface QuoteModalProps {
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function QuoteModal({ isOpen, onClose, productName }: QuoteModalProps) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,11 +45,14 @@ export default function QuoteModal({ isOpen, onClose, productName }: QuoteModalP
       }
 
       setStatus("success");
-      setTimeout(() => {
-        setStatus("idle");
-        setFormData({ name: "", email: "", phone: "", company: "", budget: "", message: "" });
-        onClose();
-      }, 4000);
+      // Redirect to thank-you page with conversion tracking
+      const params = new URLSearchParams();
+      if (formData.name) params.set("name", formData.name);
+      if (productName) params.set("product", productName);
+      setFormData({ name: "", email: "", phone: "", company: "", budget: "", message: "" });
+      onClose();
+      router.push(`/thank-you?${params.toString()}`);
+      setStatus("idle");
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Failed to send. Please try again.");
       setStatus("error");
