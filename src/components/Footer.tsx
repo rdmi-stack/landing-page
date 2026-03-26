@@ -20,7 +20,7 @@ export default function Footer() {
               </span>
             </a>
             <p className="text-sm text-zinc-500 leading-relaxed">
-              Custom software that makes you money. 200+ products shipped. ₹47Cr+ client revenue generated.
+              AI-native software that works 24/7. AI Agents, Chatbots, RAG Systems & Smart Workflows — powered by OpenAI, Claude, Gemini & LangChain. 200+ intelligent products shipped. Guaranteed delivery.
             </p>
             <div className="space-y-2 text-sm text-zinc-500">
               <a href="mailto:info@rdmi.in" className="flex items-center gap-2 hover:text-white transition-colors">
@@ -38,7 +38,7 @@ export default function Footer() {
           {/* CTA */}
           <div className="text-center lg:text-right space-y-4">
             <p className="text-sm text-zinc-400">
-              Ready to build software that generates revenue?
+              Ready to build intelligent software that runs your business?
             </p>
             <button
               onClick={() => openModal()}
