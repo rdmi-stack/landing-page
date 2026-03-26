@@ -252,7 +252,7 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
                 <td style="padding:8px 0;font-size:13px;color:#aaa;"><span style="color:#10b981;font-weight:700;">✦</span> <strong style="color:#e5e5e5;">Save 50% vs US/UK Agencies</strong> — Same React/Next.js/Flutter stack, same senior devs. AI-powered delivery = half the cost.</td>
               </tr>
               <tr>
-                <td style="padding:8px 0;font-size:13px;color:#aaa;"><span style="color:#c084fc;font-weight:700;">✦</span> <strong style="color:#e5e5e5;">AI-First = 3x Faster</strong> — AI-assisted coding, testing & QA. 12-week projects done in 4. That's not a typo.</td>
+                <td style="padding:8px 0;font-size:13px;color:#aaa;"><span style="color:#c084fc;font-weight:700;">✦</span> <strong style="color:#e5e5e5;">AI-Native Development</strong> — Every product ships with AI built-in: OpenAI, Claude, Gemini, LangChain, CrewAI. Not bolted on later.</td>
               </tr>
               <tr>
                 <td style="padding:8px 0;font-size:13px;color:#aaa;"><span style="color:#fbbf24;font-weight:700;">✦</span> <strong style="color:#e5e5e5;">Money-Back Deadline Guarantee</strong> — Fixed price. If we miss the deadline, you get a refund. No fine print.</td>
@@ -261,6 +261,33 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
                 <td style="padding:8px 0;font-size:13px;color:#aaa;"><span style="color:#f87171;font-weight:700;">✦</span> <strong style="color:#e5e5e5;">You Own 100% of the Code</strong> — NDA signed before first call. Full IP transfer. No lock-in, ever.</td>
               </tr>
             </table>
+          </td></tr></table>
+
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;background:linear-gradient(135deg,#1a1028,#0f172a);border-radius:12px;border:1px solid #312e81;"><tr><td style="padding:24px;">
+            <p style="margin:0 0 4px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#818cf8;">AI-Powered by</p>
+            <p style="margin:0 0 16px;font-size:14px;font-weight:700;color:#fff;">OpenAI · Claude · Gemini · LangChain · CrewAI · n8n</p>
+            <p style="margin:0 0 14px;font-size:13px;color:#aaa;line-height:1.7;">We don't just build apps — we build <strong style="color:#e5e5e5;">intelligent software</strong> with AI baked into the core:</p>
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="padding:6px 0;font-size:12px;color:#94a3b8;">🤖 <strong style="color:#c4b5fd;">AI Chatbots & Voice Agents</strong> — 24/7 customer support that handles 80% of tickets automatically</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 0;font-size:12px;color:#94a3b8;">🧠 <strong style="color:#c4b5fd;">AI Agents & Autonomous Workflows</strong> — LangChain/CrewAI agents that replace 10+ hrs/week of manual tasks</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 0;font-size:12px;color:#94a3b8;">📄 <strong style="color:#c4b5fd;">RAG Knowledge Bases</strong> — Query your documents, PDFs & databases in plain English. 60% faster research.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 0;font-size:12px;color:#94a3b8;">⚡ <strong style="color:#c4b5fd;">AI Workflow Automation</strong> — n8n + custom orchestration replacing repetitive business processes end-to-end</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 0;font-size:12px;color:#94a3b8;">🎯 <strong style="color:#c4b5fd;">Smart Recommendations & Copilots</strong> — Boost AOV 35%, personalize UX, in-app AI assistants</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 0;font-size:12px;color:#94a3b8;">👁️ <strong style="color:#c4b5fd;">Computer Vision & Document AI</strong> — OCR, image recognition, invoice processing, ID verification</td>
+              </tr>
+            </table>
+            <p style="margin:14px 0 0;font-size:12px;color:#6366f1;font-weight:600;text-align:center;">Every project gets AI capabilities — even if you didn't ask for them. That's our edge.</p>
           </td></tr></table>
 
           ${ctaButton("WhatsApp Us for Faster Response", "https://wa.me/919818565561?text=Hi%2C%20I%20just%20submitted%20a%20project%20inquiry.%20Can%20we%20discuss%3F", "linear-gradient(135deg,#4f46e5,#7c3aed)")}
@@ -277,7 +304,7 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
           <p style="margin:16px 0 0;font-size:11px;color:#444;text-align:center;line-height:1.6;">₹47Cr+ client revenue generated · 200+ projects shipped · NDA protected · India | USA | UK</p>`,
           "linear-gradient(135deg,#4f46e5,#7c3aed)", "RDMI AI", "Custom Software & App Development"
         ),
-        text: `Hi ${firstName},\n\nYour project request has been received! A senior developer (not a salesperson) will reach out within 2 hours.\n\nYour submission:\nName: ${name}\nEmail: ${email}\n${phone ? `Phone: ${phone}\n` : ""}${company ? `Company: ${company}\n` : ""}${budget ? `Budget: ${budget}\n` : ""}Project: ${message}\n\nWhat happens next:\n1. Developer calls within 2 hours\n2. Free prototype in 48 hours\n3. Review & approve (₹0 if you don't like it)\n4. Sprint development begins\n\nWhy RDMI AI:\n• Talk to developers directly — no middlemen\n• Save 50% vs US/UK agencies\n• AI-first = 3x faster delivery\n• Money-back deadline guarantee\n• You own 100% of the code\n\nWhatsApp: +91 98185 65561\nEmail: info@rdmi.in\n\n— RDMI Tech Ventures Pvt. Ltd.`,
+        text: `Hi ${firstName},\n\nYour project request has been received! A senior developer (not a salesperson) will reach out within 2 hours.\n\nYour submission:\nName: ${name}\nEmail: ${email}\n${phone ? `Phone: ${phone}\n` : ""}${company ? `Company: ${company}\n` : ""}${budget ? `Budget: ${budget}\n` : ""}Project: ${message}\n\nWhat happens next:\n1. Developer calls within 2 hours\n2. Free prototype in 48 hours\n3. Review & approve (₹0 if you don't like it)\n4. Sprint development begins\n\nWhy RDMI AI:\n• Talk to developers directly — no middlemen\n• Save 50% vs US/UK agencies\n• AI-native development (OpenAI, Claude, Gemini, LangChain, CrewAI)\n• Money-back deadline guarantee\n• You own 100% of the code\n\nAI-Powered Products We Build:\n• AI Chatbots & Voice Agents — 24/7 support, 80% ticket deflection\n• AI Agents & Workflows — LangChain/CrewAI autonomous task execution\n• RAG Knowledge Bases — query documents in plain English\n• AI Workflow Automation — n8n + custom orchestration\n• Smart Recommendations & Copilots — boost AOV 35%\n• Computer Vision & Document AI — OCR, image recognition\n\nWhatsApp: +91 98185 65561\nEmail: info@rdmi.in\n\n— RDMI Tech Ventures Pvt. Ltd.`,
       };
   }
 }
