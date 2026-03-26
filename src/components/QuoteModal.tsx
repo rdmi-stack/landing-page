@@ -1,7 +1,6 @@
 "use client";
 
 import { X, ArrowRight, Loader2 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -62,24 +61,24 @@ export default function QuoteModal({ isOpen, onClose, productName }: QuoteModalP
   const field = "w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-zinc-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-colors";
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
+           
+           
+           
             onClick={status !== "loading" ? onClose : undefined}
             className="absolute inset-0 bg-black/70 backdrop-blur-sm"
           />
 
           {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.2 }}
+          <div
+           
+           
+           
+           
             className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-[#111] border border-white/10 shadow-2xl shadow-indigo-500/10"
           >
             {/* Close button */}
@@ -95,9 +94,9 @@ export default function QuoteModal({ isOpen, onClose, productName }: QuoteModalP
             <div className="p-6 sm:p-8">
               {/* Success */}
               {status === "success" ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                <div
+                 
+                 
                   className="text-center py-12"
                 >
                   <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4">
@@ -112,7 +111,7 @@ export default function QuoteModal({ isOpen, onClose, productName }: QuoteModalP
                   <p className="text-xs text-zinc-600">
                     Check your inbox — we&apos;ve sent a confirmation email.
                   </p>
-                </motion.div>
+                </div>
               ) : (
                 <>
                   {/* Header */}
@@ -248,9 +247,9 @@ export default function QuoteModal({ isOpen, onClose, productName }: QuoteModalP
                 </>
               )}
             </div>
-          </motion.div>
+          </div>
         </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

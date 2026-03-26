@@ -1,7 +1,6 @@
 "use client";
 
 import { MessageSquare, FileSearch, Code2, Rocket, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 import { useModal } from "./ModalProvider";
 
 const steps = [
@@ -45,10 +44,10 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="py-20 lg:py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -61,7 +60,7 @@ export default function HowItWorks() {
           <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
             Our mobile app development & web application development process: preview before you commit. No surprises, no scope creep, no wasted budget.
           </p>
-        </motion.div>
+        </div>
 
         <div className="relative">
           {/* Connection line */}
@@ -69,12 +68,12 @@ export default function HowItWorks() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((step, i) => (
-              <motion.div
+              <div
                 key={step.step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+               
+               
+               
+               
                 className="relative group"
               >
                 <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/30 transition-all h-full">
@@ -99,16 +98,16 @@ export default function HowItWorks() {
                     {step.detail}
                   </span>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="text-center mt-12"
         >
           <button
@@ -118,7 +117,7 @@ export default function HowItWorks() {
             Book Free Discovery Call
             <ArrowRight className="w-4 h-4" />
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

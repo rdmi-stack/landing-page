@@ -1,7 +1,4 @@
 "use client";
-
-import { motion } from "framer-motion";
-
 const techStack = [
   // AI & LLM
   { name: "OpenAI", category: "ai" },
@@ -77,10 +74,8 @@ export default function TrustBar() {
         <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-[#161616] to-transparent z-10 pointer-events-none" />
 
         <div className="overflow-hidden">
-          <motion.div
+          <div
             className="flex gap-3"
-            animate={{ x: [0, -totalWidth] }}
-            transition={{ x: { duration: 40, repeat: Infinity, ease: "linear" } }}
           >
             {doubled.map((tech, i) => (
               <div
@@ -91,7 +86,7 @@ export default function TrustBar() {
                 {tech.name}
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

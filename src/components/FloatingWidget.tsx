@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Phone, X, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
 import WhatsAppIcon from "./WhatsAppIcon";
 
@@ -43,13 +42,13 @@ export default function FloatingWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-[90] flex flex-col items-end gap-3">
       {/* Callback form */}
-      <AnimatePresence>
+      
         {open && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+          <div
+           
+           
+           
+           
             className="w-72 p-4 rounded-2xl bg-[#111] border border-white/10 shadow-2xl shadow-black/50"
           >
             <div className="flex items-center justify-between mb-3">
@@ -96,27 +95,27 @@ export default function FloatingWidget() {
                 )}
               </>
             )}
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
+      
 
       {/* Buttons */}
       <div className="flex flex-col gap-2">
         {/* Callback button */}
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+        <button
+         
+         
           onClick={() => setOpen(!open)}
           className="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg shadow-indigo-500/30 flex items-center justify-center transition-all hover:shadow-xl hover:shadow-indigo-500/40"
           aria-label="Request callback"
         >
           <Phone className="w-5 h-5 text-white" />
-        </motion.button>
+        </button>
 
         {/* WhatsApp button */}
-        <motion.a
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+        <a
+         
+         
           href="https://wa.me/919818565561?text=Hi%20RDMI%2C%20I%20need%20help%20with%20a%20project"
           target="_blank"
           rel="noopener noreferrer"
@@ -124,7 +123,7 @@ export default function FloatingWidget() {
           aria-label="Chat on WhatsApp"
         >
           <WhatsAppIcon className="w-5 h-5 text-white" />
-        </motion.a>
+        </a>
       </div>
     </div>
   );

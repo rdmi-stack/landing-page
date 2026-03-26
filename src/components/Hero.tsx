@@ -21,7 +21,6 @@ import {
   Workflow,
   type LucideIcon,
 } from "lucide-react";
-import { motion } from "framer-motion";
 import { useModal } from "./ModalProvider";
 
 const stats = [
@@ -216,8 +215,6 @@ function ProductCard({ card }: { card: ShowcaseCard }) {
 
 export default function Hero() {
   const { openModal } = useModal();
-  const cardWidth = 260 + 16; // card width + gap
-  const totalWidth = showcaseCards.length * cardWidth;
 
   return (
     <section className="relative pt-28 pb-10 lg:pt-40 lg:pb-16 overflow-hidden">
@@ -238,16 +235,16 @@ export default function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Badge */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex justify-center mb-8">
+        <div className="flex justify-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-sm">
             <Bot className="w-4 h-4" />
             <span>AI-Powered Development Team</span>
             <ArrowRight className="w-3 h-3" />
           </div>
-        </motion.div>
+        </div>
 
         {/* Headline — H1 targets: custom software development, app development company, software development company */}
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-center max-w-5xl mx-auto">
+        <div className="text-center max-w-5xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">
             <span className="gradient-text">Custom Software Development</span>{" "}
             &{" "}App Development Company{" "}
@@ -260,10 +257,10 @@ export default function Hero() {
             <strong className="text-white">AI software</strong> — you talk directly to senior developers, not salespeople.{" "}
             <span className="text-indigo-400 font-semibold">Save 50% with our AI-powered development team.</span>
           </p>
-        </motion.div>
+        </div>
 
         {/* USP pills */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex flex-wrap justify-center gap-3 mt-8">
+        <div className="flex flex-wrap justify-center gap-3 mt-8">
           {[
             { icon: MessageCircle, text: "Talk to Developers Directly" },
             { icon: IndianRupee, text: "Save 50% Development Cost" },
@@ -274,10 +271,10 @@ export default function Hero() {
               {usp.text}
             </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* CTAs */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
           <button
             onClick={() => openModal()}
             className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all hover:shadow-xl hover:shadow-indigo-500/25 hover:scale-105 cursor-pointer"
@@ -289,24 +286,24 @@ export default function Hero() {
             <Play className="w-4 h-4" />
             See Our Work
           </a>
-        </motion.div>
+        </div>
 
         {/* Trust line */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.6 }} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 text-sm text-zinc-500">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 text-sm text-zinc-500">
           {["No upfront payment", "Free consultation", "NDA protected", "100% source code ownership"].map((item) => (
             <span key={item} className="flex items-center gap-1.5">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
               {item}
             </span>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* ─── INFINITE SLIDING PRODUCT SHOWCASE ─────────── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
+      <div
+       
+       
+       
         className="relative mt-16 lg:mt-20"
       >
         {/* Edge fades */}
@@ -315,30 +312,20 @@ export default function Hero() {
 
         {/* Sliding row */}
         <div className="overflow-hidden">
-          <motion.div
-            className="flex gap-4 py-2"
-            animate={{ x: [0, -totalWidth] }}
-            transition={{
-              x: {
-                duration: 60,
-                repeat: Infinity,
-                ease: "linear",
-              },
-            }}
-          >
+          <div className="flex gap-4 py-2 animate-marquee">
             {doubledCards.map((card, i) => (
               <ProductCard key={`${card.title}-${i}`} card={card} />
             ))}
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Stats */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
+        <div
+         
+         
+         
           className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-12 max-w-3xl mx-auto"
         >
           {stats.map((stat) => (
@@ -347,7 +334,7 @@ export default function Hero() {
               <div className="text-xs sm:text-sm text-zinc-500 mt-1">{stat.label}</div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

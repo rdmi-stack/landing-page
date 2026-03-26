@@ -4,7 +4,6 @@ import { useState } from "react";
 import SEOScoreCalculator from "@/components/seo-tools/SEOScoreCalculator";
 import ROICalculator from "@/components/seo-tools/ROICalculator";
 import QuizFunnel from "@/components/QuizFunnel";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Loader2,
@@ -227,7 +226,7 @@ export default function SEOServicesPage() {
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left */}
-            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="space-y-6">
+            <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-sm">
                 <Bot className="w-4 h-4" />
                 AI-Powered SEO Agency India
@@ -277,10 +276,10 @@ export default function SEOServicesPage() {
                   <p className="text-xs text-zinc-500">50+ businesses trust our SEO</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Right — Form */}
-            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="p-6 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-2xl shadow-emerald-500/5">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-2xl shadow-emerald-500/5">
               <div className="mb-5">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-medium mb-2">
                   <Search className="w-3 h-3" /> Free 300+ Point SEO Audit
@@ -289,7 +288,7 @@ export default function SEOServicesPage() {
                 <p className="text-sm text-zinc-500 mt-1">Comprehensive audit with actionable fixes — delivered in 48 hours.</p>
               </div>
               <SEOLeadForm />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -297,13 +296,13 @@ export default function SEOServicesPage() {
       {/* ══════ BEFORE/AFTER RESULTS ══════ */}
       <section className="py-14 bg-[#161616] border-y border-white/[0.06]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+          <div className="text-center mb-10">
             <p className="text-emerald-400 text-sm font-semibold uppercase tracking-widest mb-2">Real Results</p>
             <h2 className="text-2xl sm:text-3xl font-bold">Before & After RDMI SEO</h2>
-          </motion.div>
+          </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {seoResults.map((r, i) => (
-              <motion.div key={r.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-center">
+              <div key={r.label} className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-center">
                 <p className="text-[10px] uppercase tracking-widest text-zinc-600 mb-3">{r.industry}</p>
                 <div className="flex items-center justify-center gap-3 mb-2">
                   <div>
@@ -317,7 +316,7 @@ export default function SEOServicesPage() {
                   </div>
                 </div>
                 <p className="text-xs text-zinc-400 font-medium">{r.label}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -326,7 +325,7 @@ export default function SEOServicesPage() {
       {/* ══════ 2025 SEO LANDSCAPE ══════ */}
       <section className="py-16 lg:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+          <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-medium mb-3">
               <Zap className="w-3 h-3" /> The SEO Landscape Has Changed
             </div>
@@ -334,18 +333,18 @@ export default function SEOServicesPage() {
               It&apos;s Not Just Google Anymore —{" "}
               <span className="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">It&apos;s AI Everywhere</span>
             </h2>
-          </motion.div>
+          </div>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               { stat: "60%", label: "of Google searches end without a click", desc: "Zero-click SEO is now critical" },
               { stat: "30%+", label: "of searches show AI Overviews", desc: "Google AI answers before blue links" },
               { stat: "40%", label: "of Gen-Z use social platforms as search engines", desc: "Social search is real, not a trend" },
             ].map((s, i) => (
-              <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] text-center">
+              <div key={s.label} className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] text-center">
                 <p className="text-3xl font-extrabold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">{s.stat}</p>
                 <p className="text-xs font-medium mt-2">{s.label}</p>
                 <p className="text-[10px] text-zinc-500 mt-1">{s.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
           <p className="text-center text-sm text-zinc-400 mt-6">
@@ -361,14 +360,14 @@ export default function SEOServicesPage() {
       <section className="py-20 lg:py-32 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-950/5 to-transparent" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+          <div className="text-center mb-10">
             <p className="text-emerald-400 text-sm font-semibold uppercase tracking-widest mb-3">Our SEO Services</p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
               SEO + GEO Solutions{" "}
               <span className="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">for 2025 & Beyond</span>
             </h2>
             <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">From technical foundations to AI-era optimization — 14 services covering every search surface.</p>
-          </motion.div>
+          </div>
 
           {/* Category tabs */}
           <div className="flex gap-2 justify-center flex-wrap mb-10">
@@ -382,7 +381,7 @@ export default function SEOServicesPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {(serviceTab === "All" ? seoServices : seoServices.filter((s) => s.category === serviceTab)).map((s, i) => (
-              <motion.div key={s.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }} className="group p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 hover:bg-white/[0.04] transition-all duration-300">
+              <div key={s.title} className="group p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 hover:bg-white/[0.04] transition-all duration-300">
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
                   <s.icon className="w-5 h-5 text-white" />
                 </div>
@@ -398,7 +397,7 @@ export default function SEOServicesPage() {
                 <div className="flex items-center gap-1.5 text-[10px] text-emerald-400 font-medium pt-2 border-t border-white/[0.05]">
                   <TrendingUp className="w-3 h-3" />{s.impact}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -407,18 +406,18 @@ export default function SEOServicesPage() {
       {/* ══════ WHAT YOU GET ══════ */}
       <section className="py-20 lg:py-28 bg-[#161616]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+          <div className="text-center mb-12">
             <p className="text-emerald-400 text-sm font-semibold uppercase tracking-widest mb-3">What&apos;s Included</p>
             <h2 className="text-3xl sm:text-4xl font-bold">Everything You Get{" "}
               <span className="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">Every Month</span>
             </h2>
-          </motion.div>
+          </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
             {deliverables.map((d, i) => (
-              <motion.div key={d.text} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }} className="flex items-center gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <div key={d.text} className="flex items-center gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
                 <d.icon className="w-5 h-5 text-emerald-400 flex-shrink-0" />
                 <span className="text-xs font-medium">{d.text}</span>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -430,20 +429,20 @@ export default function SEOServicesPage() {
       {/* ══════ PROCESS ══════ */}
       <section className="py-20 lg:py-28">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <div className="text-center mb-14">
             <p className="text-emerald-400 text-sm font-semibold uppercase tracking-widest mb-3">Our Process</p>
             <h2 className="text-3xl sm:text-4xl font-bold">
               From Audit to{" "}
               <span className="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">Page 1 Rankings</span>
             </h2>
-          </motion.div>
+          </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {seoProcess.map((p, i) => (
-              <motion.div key={p.step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div key={p.step} className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-r from-emerald-600 to-green-600 flex items-center justify-center mx-auto mb-4 text-sm font-bold">{p.step}</div>
                 <h3 className="font-semibold mb-2">{p.title}</h3>
                 <p className="text-sm text-zinc-500">{p.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -456,13 +455,13 @@ export default function SEOServicesPage() {
           <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-[#161616] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-[#161616] to-transparent z-10 pointer-events-none" />
           <div className="overflow-hidden">
-            <motion.div className="flex gap-3" animate={{ x: [0, -(seoTools.length * 145)] }} transition={{ x: { duration: 30, repeat: Infinity, ease: "linear" } }}>
+            <div className="flex gap-3">
               {[...seoTools, ...seoTools].map((tool, i) => (
                 <div key={`${tool}-${i}`} className="flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-emerald-500/10 text-xs font-medium text-zinc-400 whitespace-nowrap">
                   <Search className="w-3 h-3 text-emerald-400" />{tool}
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -470,12 +469,12 @@ export default function SEOServicesPage() {
       {/* ══════ WHY RDMI SEO ══════ */}
       <section className="py-20 lg:py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <div className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold">
               Why Brands Choose{" "}
               <span className="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">RDMI for SEO</span>
             </h2>
-          </motion.div>
+          </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { icon: Bot, title: "AI-Powered SEO", desc: "AI for keyword clustering, content optimization, predictive ranking & competitor gap analysis. Not manual spreadsheet work." },
@@ -485,13 +484,13 @@ export default function SEOServicesPage() {
               { icon: Shield, title: "No Lock-in Contracts", desc: "Month-to-month. We earn your business with rankings, not paperwork. Cancel anytime." },
               { icon: Eye, title: "Full Transparency", desc: "Real-time rank tracking dashboard, weekly updates, monthly strategy calls. You see everything." },
             ].map((v, i) => (
-              <motion.div key={v.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/20 transition-all">
+              <div key={v.title} className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/20 transition-all">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-green-500/20 border border-emerald-500/20 flex items-center justify-center mb-4">
                   <v.icon className="w-6 h-6 text-emerald-400" />
                 </div>
                 <h3 className="text-base font-semibold mb-2">{v.title}</h3>
                 <p className="text-sm text-zinc-500 leading-relaxed">{v.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -500,14 +499,14 @@ export default function SEOServicesPage() {
       {/* ══════ TESTIMONIAL ══════ */}
       <section className="py-16 bg-[#161616]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-emerald-500/5 to-green-500/5 border border-emerald-500/10 text-center">
+          <div className="p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-emerald-500/5 to-green-500/5 border border-emerald-500/10 text-center">
             <div className="flex justify-center gap-0.5 mb-4">{[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-amber-400 fill-amber-400" />)}</div>
             <p className="text-lg text-zinc-300 leading-relaxed mb-4">
               &ldquo;We went from 2,400 monthly organic visitors to 28,000 in 7 months with RDMI. Their AI-powered content strategy and technical SEO fixes were game-changers. The best part? Their dev team implemented all fixes — we didn&apos;t have to touch anything.&rdquo;
             </p>
             <p className="text-sm font-semibold">Vikram R.</p>
             <p className="text-xs text-zinc-500">Founder, SaaS Platform — Bangalore</p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -517,28 +516,28 @@ export default function SEOServicesPage() {
       {/* ══════ FAQ ══════ */}
       <section className="py-20 lg:py-32">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <div className="text-center mb-14">
             <p className="text-emerald-400 text-sm font-semibold uppercase tracking-widest mb-3">SEO FAQ</p>
             <h2 className="text-3xl sm:text-4xl font-bold">
               Frequently Asked{" "}
               <span className="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">Questions</span>
             </h2>
-          </motion.div>
+          </div>
           <div className="space-y-3">
             {faqs.map((faq, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }} className="rounded-xl bg-white/[0.03] border border-white/[0.08] overflow-hidden">
+              <div key={i} className="rounded-xl bg-white/[0.03] border border-white/[0.08] overflow-hidden">
                 <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between gap-4 p-5 text-left">
                   <span className="text-sm font-semibold">{faq.q}</span>
                   <ChevronDown className={`w-4 h-4 text-zinc-500 transition-transform flex-shrink-0 ${openFaq === i ? "rotate-180" : ""}`} />
                 </button>
-                <AnimatePresence>
+                
                   {openFaq === i && (
-                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}>
+                    <div>
                       <p className="px-5 pb-5 text-sm text-zinc-400 leading-relaxed">{faq.a}</p>
-                    </motion.div>
+                    </div>
                   )}
-                </AnimatePresence>
-              </motion.div>
+                
+              </div>
             ))}
           </div>
         </div>
@@ -547,7 +546,7 @@ export default function SEOServicesPage() {
       {/* ══════ BOTTOM CTA ══════ */}
       <section className="py-20 lg:py-28 bg-[#161616]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-green-500/5 border border-emerald-500/20">
+          <div className="p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-green-500/5 border border-emerald-500/20">
             <Search className="w-10 h-10 text-emerald-400 mx-auto mb-4" />
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">Ready to Dominate Search Results?</h2>
             <p className="text-zinc-400 mb-6 max-w-md mx-auto">
@@ -568,7 +567,7 @@ export default function SEOServicesPage() {
               <span>•</span>
               <span>+91 98185 65561</span>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

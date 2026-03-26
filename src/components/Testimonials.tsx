@@ -1,7 +1,6 @@
 "use client";
 
 import { Star, Quote } from "lucide-react";
-import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -46,10 +45,10 @@ export default function Testimonials() {
   return (
     <section className="py-20 lg:py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -59,16 +58,16 @@ export default function Testimonials() {
             Trusted by 200+{" "}
             <span className="gradient-text">Happy Clients</span>
           </h2>
-        </motion.div>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
-            <motion.div
+            <div
               key={t.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
+             
+             
+             
+             
               className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/20 transition-all"
             >
               <Quote className="w-8 h-8 text-indigo-500/20 mb-4" />
@@ -92,7 +91,7 @@ export default function Testimonials() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

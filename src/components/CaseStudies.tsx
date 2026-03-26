@@ -1,7 +1,6 @@
 "use client";
 
 import { Shield } from "lucide-react";
-import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -58,10 +57,10 @@ export default function CaseStudies() {
   return (
     <section id="case-studies" className="py-20 lg:py-32 relative bg-[#161616]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -78,16 +77,16 @@ export default function CaseStudies() {
             <Shield className="w-3 h-3 text-indigo-400" />
             All projects are NDA protected — no client names or data shared
           </div>
-        </motion.div>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
-            <motion.div
+            <div
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+             
+             
+             
+             
               className="group relative rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/30 transition-all overflow-hidden"
             >
               <div className={`h-1.5 bg-gradient-to-r ${project.gradient}`} />
@@ -113,7 +112,7 @@ export default function CaseStudies() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

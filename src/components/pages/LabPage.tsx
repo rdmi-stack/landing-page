@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
 import { FlaskConical, TrendingUp, ArrowRight, Zap } from "lucide-react";
 import { experiments, experimentCategories, type Experiment } from "@/data/experiments";
 import { useModal } from "@/components/ModalProvider";
@@ -22,11 +21,11 @@ function ExperimentCard({ exp, index }: { exp: Experiment; index: number }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
+    <div
+     
+     
+     
+     
       className="rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/20 transition-all overflow-hidden"
     >
       <div className="p-5 cursor-pointer" onClick={() => setExpanded(!expanded)}>
@@ -50,7 +49,7 @@ function ExperimentCard({ exp, index }: { exp: Experiment; index: number }) {
       </div>
 
       {expanded && (
-        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} className="px-5 pb-5 border-t border-white/[0.06] pt-4 space-y-4">
+        <div className="px-5 pb-5 border-t border-white/[0.06] pt-4 space-y-4">
           <div>
             <p className="text-[10px] uppercase tracking-widest text-zinc-600 mb-1">Hypothesis</p>
             <p className="text-sm text-zinc-400">{exp.hypothesis}</p>
@@ -86,9 +85,9 @@ function ExperimentCard({ exp, index }: { exp: Experiment; index: number }) {
               <span key={tag} className="px-2 py-0.5 rounded text-[9px] bg-white/5 text-zinc-500 border border-white/5">#{tag}</span>
             ))}
           </div>
-        </motion.div>
+        </div>
       )}
-    </motion.div>
+    </div>
   );
 }
 
@@ -107,7 +106,7 @@ export default function LabPage() {
       <section className="relative mb-14">
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/20 via-transparent to-transparent" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <div>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 text-sm font-medium mb-6">
               <FlaskConical className="w-4 h-4" /> Original Research & Experiments
             </div>
@@ -118,7 +117,7 @@ export default function LabPage() {
             <p className="mt-4 text-lg text-zinc-400 max-w-2xl mx-auto">
               Real experiments. Real data. No opinions. We test SEO, PPC, and conversion hypotheses so you don&apos;t have to.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -153,14 +152,14 @@ export default function LabPage() {
 
       {/* CTA */}
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/5 border border-indigo-500/20">
+        <div className="p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/5 border border-indigo-500/20">
           <Zap className="w-8 h-8 text-indigo-400 mx-auto mb-3" />
           <h2 className="text-xl sm:text-2xl font-bold mb-2">Want Us to Run Experiments for Your Business?</h2>
           <p className="text-zinc-400 text-sm mb-4">We apply these learnings to every client campaign. Get data-driven marketing for your brand.</p>
           <button onClick={() => openModal()} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 font-semibold text-sm hover:shadow-lg hover:shadow-indigo-500/25 transition-all">
             Get Free Marketing Audit <ArrowRight className="w-4 h-4" />
           </button>
-        </motion.div>
+        </div>
       </section>
     </div>
   );

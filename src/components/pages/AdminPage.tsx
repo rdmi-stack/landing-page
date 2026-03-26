@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { motion } from "framer-motion";
 import {
   LayoutDashboard,
   Globe,
@@ -186,9 +185,9 @@ function LeadCard({ lead }: { lead: Lead }) {
   const timeAgo = getTimeAgo(date);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+    <div
+     
+     
       className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4 hover:border-indigo-500/20 transition-colors"
     >
       <div className="flex items-start justify-between gap-3">
@@ -229,7 +228,7 @@ function LeadCard({ lead }: { lead: Lead }) {
           </p>
         </div>
       )}
-    </motion.div>
+    </div>
   );
 }
 
@@ -481,10 +480,10 @@ export default function AdminPage() {
         {activeTab === "pages" && (
           <div className="space-y-3">
             {filteredPages.map((page) => (
-              <motion.div
+              <div
                 key={page.route}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+               
+               
                 className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4 hover:border-indigo-500/20 transition-colors"
               >
                 <div className="flex items-start justify-between gap-4">
@@ -525,7 +524,7 @@ export default function AdminPage() {
                     </a>
                   )}
                 </div>
-              </motion.div>
+              </div>
             ))}
 
             {filteredPages.length === 0 && (

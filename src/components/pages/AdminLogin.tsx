@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Lock, Eye, EyeOff, ArrowRight, Shield } from "lucide-react";
 
 export default function AdminLogin() {
@@ -36,9 +35,9 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div
+       
+       
         className="w-full max-w-sm"
       >
         <div className="text-center mb-8">
@@ -82,7 +81,7 @@ export default function AdminLogin() {
             {!loading && <ArrowRight className="w-4 h-4" />}
           </button>
         </form>
-      </motion.div>
+      </div>
     </div>
   );
 }

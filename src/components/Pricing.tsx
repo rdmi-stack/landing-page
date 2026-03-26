@@ -1,7 +1,6 @@
 "use client";
 
 import { Check, ArrowRight, Star } from "lucide-react";
-import { motion } from "framer-motion";
 import { useModal } from "./ModalProvider";
 
 const plans = [
@@ -70,10 +69,10 @@ export default function Pricing() {
     <section id="pricing" className="py-20 lg:py-32 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/10 to-transparent" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -87,16 +86,16 @@ export default function Pricing() {
             No hidden fees. No surprise invoices. Fixed-price projects or flexible hourly engagement
             — you choose what works best.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {plans.map((plan, i) => (
-            <motion.div
+            <div
               key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+             
+             
+             
+             
               className={`relative rounded-2xl p-6 lg:p-8 transition-all ${
                 plan.popular
                   ? "bg-gradient-to-b from-indigo-500/10 to-purple-500/5 border-2 border-indigo-500/30 scale-[1.02] lg:scale-105"
@@ -140,15 +139,15 @@ export default function Pricing() {
                 {plan.cta}
                 <ArrowRight className="w-4 h-4" />
               </button>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* AI Team note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="mt-12 text-center"
         >
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
@@ -158,7 +157,7 @@ export default function Pricing() {
               <span className="text-zinc-600"> — 2x faster delivery, 50% less cost</span>
             </span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Bot,
   Brain,
@@ -481,10 +480,10 @@ export default function ProductShowcase() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="text-center mb-12"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -500,7 +499,7 @@ export default function ProductShowcase() {
             Mobile apps, web applications, AI software, e-commerce platforms & enterprise solutions —
             built by our app development company for startups and enterprises.
           </p>
-        </motion.div>
+        </div>
 
         {/* Category Tabs */}
         <div className="flex gap-2 mb-10 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-center sm:flex-wrap">
@@ -525,22 +524,22 @@ export default function ProductShowcase() {
         </div>
 
         {/* Product Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
+        
+          <div
             key={active}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
+           
+           
+           
+           
             className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4"
           >
             {filtered.map((product, i) => (
-              <motion.div
+              <div
                 key={product.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: Math.min(i * 0.03, 0.5) }}
+               
+               
+               
+               
                 onClick={() => openModal(product.name)}
                 className="group relative p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/30 hover:bg-white/[0.04] transition-all duration-300 cursor-pointer"
               >
@@ -578,16 +577,16 @@ export default function ProductShowcase() {
                     Get Quote →
                   </span>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        
 
         {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="text-center mt-12"
         >
           <p className="text-zinc-500 text-sm mb-4">
@@ -600,7 +599,7 @@ export default function ProductShowcase() {
             <Clock className="w-4 h-4 text-indigo-400" />
             Request Custom Product Quote
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

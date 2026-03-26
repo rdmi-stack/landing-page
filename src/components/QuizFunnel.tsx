@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, Target, Layers, ArrowRight, ArrowLeft, Loader2, CheckCircle2,
   Building2, ShoppingCart, Stethoscope, GraduationCap, Home, Wallet, Briefcase, Factory, Globe,
@@ -94,13 +93,13 @@ export default function QuizFunnel() {
   return (
     <section className="py-20 lg:py-28">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+        <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold">
             Get a{" "}
             <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Personalized Plan</span>
           </h2>
           <p className="mt-3 text-zinc-400">Answer 4 quick questions. Get a custom marketing recommendation.</p>
-        </motion.div>
+        </div>
 
         <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/[0.08]">
           {/* Progress */}
@@ -111,14 +110,14 @@ export default function QuizFunnel() {
                 <span>{Math.round(((step + 1) / totalSteps) * 100)}%</span>
               </div>
               <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
-                <motion.div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" animate={{ width: `${((step + 1) / totalSteps) * 100}%` }} transition={{ duration: 0.3 }} />
+                <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-500" style={{ width: `${((step + 1) / totalSteps) * 100}%` }} />
               </div>
             </div>
           )}
 
-          <AnimatePresence mode="wait">
+          
             {status === "success" ? (
-              <motion.div key="result" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center py-4">
+              <div key="result" className="text-center py-4">
                 <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-2">Your Recommended Package</h3>
                 <div className="p-5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 mb-4">
@@ -133,9 +132,9 @@ export default function QuizFunnel() {
                   </ul>
                 </div>
                 <p className="text-sm text-zinc-400">Our strategist will reach out within 2 hours with a detailed proposal.</p>
-              </motion.div>
+              </div>
             ) : (
-              <motion.div key={step} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
+              <div key={step}>
                 {/* Step 0: Challenge */}
                 {step === 0 && (
                   <div>
@@ -226,9 +225,9 @@ export default function QuizFunnel() {
                     {step < 4 && <ArrowRight className="w-4 h-4" />}
                   </button>
                 </div>
-              </motion.div>
+              </div>
             )}
-          </AnimatePresence>
+          
         </div>
       </div>
     </section>

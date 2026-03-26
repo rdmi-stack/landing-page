@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
@@ -53,10 +52,10 @@ export default function FAQ() {
   return (
     <section id="faq" className="py-20 lg:py-32 relative bg-[#161616]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -66,16 +65,16 @@ export default function FAQ() {
             App Development{" "}
             <span className="gradient-text">Questions Answered</span>
           </h2>
-        </motion.div>
+        </div>
 
         <div className="space-y-3">
           {faqs.map((faq, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.03 }}
+             
+             
+             
+             
               className="rounded-xl border border-white/[0.06] bg-white/[0.02] overflow-hidden"
             >
               <button
@@ -89,21 +88,21 @@ export default function FAQ() {
                   }`}
                 />
               </button>
-              <AnimatePresence>
+              
                 {openIndex === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                  <div
+                   
+                   
+                   
+                   
                   >
                     <div className="px-5 pb-5 text-sm text-zinc-400 leading-relaxed">
                       {faq.a}
                     </div>
-                  </motion.div>
+                  </div>
                 )}
-              </AnimatePresence>
-            </motion.div>
+              
+            </div>
           ))}
         </div>
       </div>

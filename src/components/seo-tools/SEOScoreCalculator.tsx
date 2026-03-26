@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Search, ArrowRight, Loader2, CheckCircle2, AlertTriangle, XCircle, Lock, Gauge } from "lucide-react";
 
 type Status = "idle" | "loading" | "done" | "error";
@@ -37,12 +36,12 @@ function ScoreGauge({ score }: { score: number }) {
     <div className="relative w-28 h-28 mx-auto">
       <svg className="w-28 h-28 -rotate-90" viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="8" />
-        <motion.circle
+        <circle
           cx="50" cy="50" r="45" fill="none" stroke={color} strokeWidth="8" strokeLinecap="round"
           strokeDasharray={circumference}
-          initial={{ strokeDashoffset: circumference }}
-          animate={{ strokeDashoffset: offset }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+         
+         
+         
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -124,7 +123,7 @@ export default function SEOScoreCalculator() {
   return (
     <section className="py-20 lg:py-28 bg-[#161616]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+        <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-medium mb-3">
             <Gauge className="w-3 h-3" /> Free SEO Tool
           </div>
@@ -135,7 +134,7 @@ export default function SEOScoreCalculator() {
           <p className="mt-3 text-zinc-400 max-w-lg mx-auto">
             Enter your URL and get an instant SEO audit with actionable fixes.
           </p>
-        </motion.div>
+        </div>
 
         {/* Input */}
         <form onSubmit={handleAudit} className="flex gap-3 max-w-xl mx-auto mb-10">
@@ -161,19 +160,19 @@ export default function SEOScoreCalculator() {
         </form>
 
         {/* Loading */}
-        <AnimatePresence>
+        
           {status === "loading" && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-center py-10">
+            <div className="text-center py-10">
               <Loader2 className="w-8 h-8 animate-spin text-emerald-400 mx-auto mb-4" />
-              <motion.p key={loadingIdx} initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="text-sm text-zinc-400">
+              <p key={loadingIdx} className="text-sm text-zinc-400">
                 {loadingMessages[loadingIdx]}
-              </motion.p>
+              </p>
               <div className="w-48 h-1.5 rounded-full bg-white/5 mx-auto mt-4 overflow-hidden">
-                <motion.div className="h-full bg-gradient-to-r from-emerald-500 to-green-500 rounded-full" initial={{ width: "0%" }} animate={{ width: "90%" }} transition={{ duration: 15, ease: "linear" }} />
+                <div className="h-full bg-gradient-to-r from-emerald-500 to-green-500 rounded-full" />
               </div>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
+        
 
         {/* Error */}
         {status === "error" && (
@@ -185,9 +184,9 @@ export default function SEOScoreCalculator() {
         )}
 
         {/* Results */}
-        <AnimatePresence>
+        
           {status === "done" && result && (
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="space-y-6">
+            <div className="space-y-6">
               {/* Score + PageSpeed */}
               <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08]">
                 <div className="grid sm:grid-cols-2 gap-6 items-center">
@@ -287,9 +286,9 @@ export default function SEOScoreCalculator() {
                   </div>
                 )}
               </div>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
+        
       </div>
     </section>
   );

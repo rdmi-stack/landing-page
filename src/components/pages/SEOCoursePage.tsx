@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { ArrowRight, Loader2, CheckCircle2, GraduationCap, Search, FileText, Code2, Link2, MapPin, BarChart3, Zap, Star, Users, Clock } from "lucide-react";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -45,7 +44,7 @@ export default function SEOCoursePage() {
       <section className="relative mb-16">
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-transparent to-transparent" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <div>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400 text-sm font-medium mb-6">
               <GraduationCap className="w-4 h-4" /> 100% Free — No Credit Card Required
             </div>
@@ -63,18 +62,18 @@ export default function SEOCoursePage() {
               <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-400" /> 4.9/5 rating</span>
               <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-indigo-400" /> 10 min/day</span>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Email capture — top */}
       <section className="max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         {status === "success" ? (
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center">
+          <div className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center">
             <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto mb-3" />
             <h3 className="text-lg font-bold mb-1">You&apos;re In!</h3>
             <p className="text-sm text-zinc-400">Check your inbox — Day 1 is on its way.</p>
-          </motion.div>
+          </div>
         ) : (
           <form onSubmit={handleSubmit} className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] space-y-3">
             <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={field} placeholder="Your Name" />
@@ -91,13 +90,13 @@ export default function SEOCoursePage() {
 
       {/* Curriculum */}
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+        <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold">What You&apos;ll Learn</h2>
           <p className="text-zinc-500 mt-2">7 days. 7 actionable lessons. Zero fluff.</p>
-        </motion.div>
+        </div>
         <div className="space-y-4">
           {days.map((d, i) => (
-            <motion.div key={d.day} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="flex gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/20 transition-all">
+            <div key={d.day} className="flex gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/20 transition-all">
               <div className="w-12 h-12 rounded-full bg-gradient-to-r from-emerald-600 to-green-600 flex items-center justify-center flex-shrink-0 text-sm font-bold">
                 {d.day}
               </div>
@@ -114,21 +113,21 @@ export default function SEOCoursePage() {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* Bottom CTA */}
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-green-500/5 border border-emerald-500/20">
+        <div className="p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-green-500/5 border border-emerald-500/20">
           <Zap className="w-8 h-8 text-emerald-400 mx-auto mb-3" />
           <h2 className="text-xl sm:text-2xl font-bold mb-2">Ready to Learn SEO?</h2>
           <p className="text-zinc-400 text-sm mb-4">Join 2,000+ students. Start getting results in 7 days.</p>
           <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-emerald-600 to-green-600 font-semibold text-sm hover:shadow-lg hover:shadow-emerald-500/25 transition-all">
             Enroll Free <ArrowRight className="w-4 h-4" />
           </button>
-        </motion.div>
+        </div>
       </section>
     </div>
   );

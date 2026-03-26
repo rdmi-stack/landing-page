@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Target, ArrowRight, Loader2, CheckCircle2, AlertTriangle, XCircle, Lock, Gauge } from "lucide-react";
 
 type Status = "idle" | "loading" | "done" | "error";
@@ -29,7 +28,7 @@ function ScoreGauge({ score, grade }: { score: number; grade: string }) {
     <div className="relative w-28 h-28 mx-auto">
       <svg className="w-28 h-28 -rotate-90" viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="8" />
-        <motion.circle cx="50" cy="50" r="45" fill="none" stroke={color} strokeWidth="8" strokeLinecap="round" strokeDasharray={circumference} initial={{ strokeDashoffset: circumference }} animate={{ strokeDashoffset: offset }} transition={{ duration: 1.5, ease: "easeOut" }} />
+        <circle cx="50" cy="50" r="45" fill="none" stroke={color} strokeWidth="8" strokeLinecap="round" strokeDasharray={circumference} />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span className="text-3xl font-extrabold" style={{ color }}>{grade}</span>
@@ -96,7 +95,7 @@ export default function AdsGrader() {
   return (
     <section className="py-20 lg:py-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+        <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-medium mb-3">
             <Gauge className="w-3 h-3" /> Free Tool
           </div>
@@ -105,7 +104,7 @@ export default function AdsGrader() {
             <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Ad Account</span>
           </h2>
           <p className="mt-3 text-zinc-400 max-w-lg mx-auto">Enter your current metrics and get an instant performance score with actionable recommendations.</p>
-        </motion.div>
+        </div>
 
         {status === "idle" || status === "loading" || status === "error" ? (
           <form onSubmit={handleGrade} className="max-w-md mx-auto p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] space-y-4">
@@ -141,9 +140,9 @@ export default function AdsGrader() {
         ) : null}
 
         {/* Results */}
-        <AnimatePresence>
+        
           {status === "done" && result && (
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6 max-w-2xl mx-auto">
+            <div className="space-y-6 max-w-2xl mx-auto">
               {/* Score + Summary */}
               <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-center">
                 <ScoreGauge score={result.score} grade={result.grade} />
@@ -225,9 +224,9 @@ export default function AdsGrader() {
               <div className="text-center">
                 <button onClick={() => { setStatus("idle"); setResult(null); }} className="text-xs text-zinc-500 hover:text-white transition-colors">Grade another account →</button>
               </div>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
+        
       </div>
     </section>
   );

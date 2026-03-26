@@ -2,7 +2,6 @@
 
 import { useSearchParams } from "next/navigation";
 import { Suspense, useState, useMemo } from "react";
-import { motion } from "framer-motion";
 import {
   ArrowRight,
   Loader2,
@@ -297,9 +296,9 @@ function LeadForm({
 
   if (status === "success") {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
+      <div
+       
+       
         className="text-center py-12"
       >
         <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4">
@@ -312,7 +311,7 @@ function LeadForm({
         <p className="text-xs text-zinc-600 mt-1">
           Check your inbox for confirmation.
         </p>
-      </motion.div>
+      </div>
     );
   }
 
@@ -446,10 +445,10 @@ function LandingPageContent() {
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             {/* Left — Copy */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+            <div
+             
+             
+             
               className="space-y-6"
             >
               {/* Urgency bar */}
@@ -518,13 +517,13 @@ function LandingPageContent() {
                   <p className="text-xs text-zinc-500">{config.socialProof}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Right — Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+            <div
+             
+             
+             
               className="p-6 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-2xl shadow-indigo-500/5"
             >
               <div className="mb-5">
@@ -534,7 +533,7 @@ function LandingPageContent() {
                 </p>
               </div>
               <LeadForm ctaText={config.ctaText} utmData={utmData} />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -558,10 +557,10 @@ function LandingPageContent() {
       {/* ── USP SECTION ────────────────────────────────── */}
       <section className="py-16 lg:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
+           
+           
+           
             className="text-center mb-10"
           >
             <h2 className="text-2xl sm:text-3xl font-bold">
@@ -571,15 +570,15 @@ function LandingPageContent() {
               </span>{" "}
               Choose RDMI
             </h2>
-          </motion.div>
+          </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {usps.map((usp, i) => (
-              <motion.div
+              <div
                 key={usp.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+               
+               
+               
+               
                 className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/30 transition-all text-center"
               >
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/20 flex items-center justify-center mx-auto mb-3">
@@ -587,7 +586,7 @@ function LandingPageContent() {
                 </div>
                 <h3 className="font-semibold text-sm mb-1">{usp.title}</h3>
                 <p className="text-xs text-zinc-500">{usp.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -597,10 +596,10 @@ function LandingPageContent() {
       <section className="py-16 lg:py-20 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/10 to-transparent" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
+           
+           
+           
             className="text-center mb-10"
           >
             <h2 className="text-2xl sm:text-3xl font-bold">
@@ -609,7 +608,7 @@ function LandingPageContent() {
                 Simple & Fast
               </span>
             </h2>
-          </motion.div>
+          </div>
           <div className="grid sm:grid-cols-4 gap-4">
             {[
               {
@@ -633,12 +632,12 @@ function LandingPageContent() {
                 desc: "Agile sprints. Weekly demos. You own everything.",
               },
             ].map((s, i) => (
-              <motion.div
+              <div
                 key={s.step}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+               
+               
+               
+               
                 className="text-center p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]"
               >
                 <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center mx-auto mb-3 text-sm font-bold">
@@ -646,7 +645,7 @@ function LandingPageContent() {
                 </div>
                 <h3 className="font-semibold text-sm mb-1">{s.title}</h3>
                 <p className="text-xs text-zinc-500">{s.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -655,10 +654,10 @@ function LandingPageContent() {
       {/* ── TESTIMONIAL ────────────────────────────────── */}
       <section className="py-16 lg:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
+           
+           
+           
             className="p-8 rounded-2xl bg-gradient-to-br from-indigo-500/5 to-purple-500/5 border border-indigo-500/10 text-center"
           >
             <div className="flex justify-center gap-0.5 mb-4">
@@ -678,17 +677,17 @@ function LandingPageContent() {
             <p className="text-xs text-zinc-500">
               CTO, HealthTech Startup — San Francisco
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* ── BOTTOM CTA ─────────────────────────────────── */}
       <section className="py-16 lg:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
+           
+           
+           
           >
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">
               Ready to Start?
@@ -726,7 +725,7 @@ function LandingPageContent() {
               <span>•</span>
               <span>+91 98185 65561</span>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

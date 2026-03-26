@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { TrendingUp, ArrowRight, IndianRupee } from "lucide-react";
 import { useModal } from "@/components/ModalProvider";
 
@@ -28,7 +27,7 @@ export default function ROICalculator() {
   return (
     <section className="py-20 lg:py-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+        <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-medium mb-3">
             <IndianRupee className="w-3 h-3" /> ROI Calculator
           </div>
@@ -37,9 +36,9 @@ export default function ROICalculator() {
             <span className="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">SEO Generate</span> for You?
           </h2>
           <p className="mt-3 text-zinc-400 max-w-lg mx-auto">Adjust the sliders to see your projected organic revenue.</p>
-        </motion.div>
+        </div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-6 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/[0.08]">
+        <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/[0.08]">
           {/* Sliders */}
           <div className="space-y-6 mb-8">
             <div>
@@ -127,7 +126,7 @@ export default function ROICalculator() {
               <TrendingUp className="w-4 h-4" /> Let Us Build This Growth for You <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

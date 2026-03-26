@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight, MessageCircle, Phone, Mail, CheckCircle2 } from "lucide-react";
-import { motion } from "framer-motion";
 import { useModal } from "./ModalProvider";
 
 export default function CTASection() {
@@ -14,10 +13,10 @@ export default function CTASection() {
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="space-y-8"
         >
           <div>
@@ -80,7 +79,7 @@ export default function CTASection() {
               </span>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,4 @@
 "use client";
-
-import { motion } from "framer-motion";
-
 const categories = [
   {
     label: "Frontend",
@@ -34,10 +31,10 @@ export default function TechStack() {
     <section id="tech-stack" className="py-20 lg:py-32 relative bg-[#161616]">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/10 to-transparent" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -51,16 +48,16 @@ export default function TechStack() {
             Our mobile app developers & web developers are experts in React, Next.js, Flutter, Python, Node.js, AWS & AI/ML.
             Right technology for your custom software — not just what&apos;s trendy.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, i) => (
-            <motion.div
+            <div
               key={category.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
+             
+             
+             
+             
               className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/20 transition-all"
             >
               <h3 className="text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-4">
@@ -76,7 +73,7 @@ export default function TechStack() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

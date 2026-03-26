@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight, Loader2, Shield, Clock, Users, Zap } from "lucide-react";
-import { motion } from "framer-motion";
 import { useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -46,7 +45,7 @@ export default function GetQuotePageContent() {
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/20 via-transparent to-transparent" />
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="space-y-8">
+          <div className="space-y-8">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-medium mb-4">
                 Free Consultation
@@ -78,9 +77,9 @@ export default function GetQuotePageContent() {
               </p>
               <p className="text-xs text-zinc-500 mt-2">— Startup Founder, San Francisco</p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+          <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
             {status === "success" ? (
               <div className="text-center py-16">
                 <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4">
@@ -142,7 +141,7 @@ export default function GetQuotePageContent() {
                 </form>
               </>
             )}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

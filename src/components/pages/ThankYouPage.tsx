@@ -2,7 +2,6 @@
 
 import { useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { motion } from "framer-motion";
 import {
   CheckCircle2,
   Clock,
@@ -87,20 +86,20 @@ function ThankYouContent() {
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Success hero */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <div
+           
+           
+           
             className="text-center mb-16"
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+            <div
+             
+             
+             
               className="w-20 h-20 rounded-full bg-emerald-500/20 border-2 border-emerald-500/40 flex items-center justify-center mx-auto mb-6"
             >
               <CheckCircle2 className="w-10 h-10 text-emerald-400" />
-            </motion.div>
+            </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
               Thank You, {name.split(" ")[0]}!
@@ -115,22 +114,22 @@ function ThankYouContent() {
             </p>
 
             {/* Urgency bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+            <div
+             
+             
+             
               className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium"
             >
               <Clock className="w-4 h-4" />
               Avg. response time: 47 minutes
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Next steps */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
+          <div
+           
+           
+           
             className="mb-16"
           >
             <h2 className="text-2xl font-bold text-center mb-8">
@@ -139,11 +138,11 @@ function ThankYouContent() {
 
             <div className="grid sm:grid-cols-2 gap-4">
               {nextSteps.map((step, i) => (
-                <motion.div
+                <div
                   key={step.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + i * 0.1 }}
+                 
+                 
+                 
                   className="relative p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-indigo-500/20 transition-all"
                 >
                   <div className="flex items-start gap-4">
@@ -161,16 +160,16 @@ function ThankYouContent() {
                       <p className="text-sm text-zinc-500 leading-relaxed">{step.description}</p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Direct contact */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
+          <div
+           
+           
+           
             className="text-center p-8 rounded-2xl bg-white/[0.03] border border-white/[0.08]"
           >
             <h3 className="text-lg font-semibold mb-2">Need Faster Response?</h3>
@@ -195,7 +194,7 @@ function ThankYouContent() {
                 Call +91 98185 65561
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Back to homepage */}
           <div className="text-center mt-8">

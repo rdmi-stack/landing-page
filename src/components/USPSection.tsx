@@ -1,7 +1,6 @@
 "use client";
 
 import { MessageCircle, IndianRupee, Bot, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 
 const usps = [
   {
@@ -55,10 +54,10 @@ export default function USPSection() {
   return (
     <section className="py-20 lg:py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -68,16 +67,16 @@ export default function USPSection() {
             Why 200+ Clients Choose RDMI for{" "}
             <span className="gradient-text">Custom Software Development</span>
           </h2>
-        </motion.div>
+        </div>
 
         <div className="space-y-20">
           {usps.map((usp, i) => (
-            <motion.div
+            <div
               key={usp.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+             
+             
+             
+             
               className={`flex flex-col ${
                 i % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
               } items-center gap-12 lg:gap-20`}
@@ -130,7 +129,7 @@ export default function USPSection() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

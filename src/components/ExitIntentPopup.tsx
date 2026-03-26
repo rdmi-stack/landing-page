@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import { X, Loader2, CheckCircle2, MessageCircle, ArrowRight, Phone, Clock } from "lucide-react";
 import { useExitIntent } from "@/hooks/useExitIntent";
 import { useModal } from "./ModalProvider";
@@ -45,22 +44,22 @@ export default function ExitIntentPopup() {
   };
 
   return (
-    <AnimatePresence>
+    <>
       {showPopup && (
         <div className="fixed inset-0 z-[95] flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
+           
+           
+           
             onClick={dismiss}
             className="absolute inset-0 bg-black/70 backdrop-blur-sm"
           />
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ duration: 0.25 }}
+          <div
+           
+           
+           
+           
             className="relative w-full max-w-md rounded-2xl bg-[#111] border border-white/10 shadow-2xl shadow-indigo-500/10 overflow-hidden"
           >
             <div className="h-1.5 bg-gradient-to-r from-indigo-500 to-purple-600" />
@@ -179,9 +178,9 @@ export default function ExitIntentPopup() {
                 </>
               )}
             </div>
-          </motion.div>
+          </div>
         </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

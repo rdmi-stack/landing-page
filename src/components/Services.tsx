@@ -11,7 +11,6 @@ import {
   Code2,
   ArrowRight,
 } from "lucide-react";
-import { motion } from "framer-motion";
 
 const services = [
   {
@@ -79,10 +78,10 @@ export default function Services() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/10 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+         
+         
+         
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -97,16 +96,16 @@ export default function Services() {
             Full-stack app development company building custom software, Android & iOS apps,
             SaaS platforms, and AI-powered enterprise solutions — powered by senior developers in India.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {services.map((service, i) => (
-            <motion.div
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
+             
+             
+             
+             
               className="group relative p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-indigo-500/30 hover:bg-white/[0.06] transition-all duration-300"
             >
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -129,7 +128,7 @@ export default function Services() {
               <div className="mt-4 flex items-center gap-1 text-sm text-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity">
                 Learn more <ArrowRight className="w-3 h-3" />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
