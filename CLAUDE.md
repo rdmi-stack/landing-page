@@ -269,6 +269,203 @@ Custom software, mobile apps, SaaS, web apps, e-commerce, enterprise (ERP/CRM)
 
 ---
 
+## Google Ads — Campaign & Ad Group Structure
+
+### Campaign 1: Custom Software Development (Broad)
+**Landing Page**: `/lp?utm_source=google&utm_medium=cpc&utm_campaign=outsourcing`
+**Budget**: ₹1,500–3,000/day | **Bid Strategy**: Maximize conversions
+
+| Ad Group | Keywords (Phrase/Exact Match) | Match |
+|----------|------------------------------|-------|
+| **AG1: Custom Software** | custom software development company India, custom software development services India, bespoke software development India | Phrase + Exact |
+| **AG2: Software Company** | software development company in India, best software development company India, top software company India | Phrase + Exact |
+| **AG3: IT Outsourcing** | IT outsourcing company India, offshore software development India, outsource software development India | Phrase + Exact |
+| **AG4: Hire Developers** | hire software developers India, hire dedicated developers India, hire remote developers India | Phrase + Exact |
+
+**Negative Keywords**: free, tutorial, course, salary, internship, jobs, wiki, what is, download
+
+### Campaign 2: App Development
+**Landing Page**: `/lp?utm_source=google&utm_medium=cpc&utm_campaign=mobile`
+**Budget**: ₹1,000–2,000/day
+
+| Ad Group | Keywords | Match |
+|----------|----------|-------|
+| **AG1: Mobile App** | mobile app development company India, app development company India, android app development India, iOS app development India | Phrase + Exact |
+| **AG2: Cross-Platform** | React Native development company India, Flutter development company India, cross platform app development India | Phrase + Exact |
+| **AG3: App Cost** | mobile app development cost India, how much does app development cost India, app development pricing India | Phrase + Exact |
+
+### Campaign 3: SaaS & MVP
+**Landing Page**: `/lp?utm_source=google&utm_medium=cpc&utm_campaign=saas` or `mvp`
+**Budget**: ₹800–1,500/day
+
+| Ad Group | Keywords | Match |
+|----------|----------|-------|
+| **AG1: SaaS Development** | SaaS development company India, SaaS product development India, build SaaS platform India | Phrase + Exact |
+| **AG2: MVP Development** | MVP development company India, MVP development cost India, startup software development India | Phrase + Exact |
+| **AG3: Startup Dev** | software development for startups India, hire developers for startup India, tech co-founder India | Phrase + Exact |
+
+### Campaign 4: AI & ML
+**Landing Page**: `/lp?utm_source=google&utm_medium=cpc&utm_campaign=ai`
+**Budget**: ₹800–1,500/day
+
+| Ad Group | Keywords | Match |
+|----------|----------|-------|
+| **AG1: AI Development** | AI development company India, AI software development India, AI app development India | Phrase + Exact |
+| **AG2: ChatBot & Agents** | AI chatbot development India, custom AI agent development, AI automation company India | Phrase + Exact |
+| **AG3: ML & Data** | machine learning development India, predictive analytics development, computer vision development India | Phrase + Exact |
+
+### Campaign 5: Enterprise & E-Commerce
+**Landing Page**: `/lp?utm_source=google&utm_medium=cpc&utm_campaign=enterprise` or `ecommerce`
+**Budget**: ₹800–1,500/day
+
+| Ad Group | Keywords | Match |
+|----------|----------|-------|
+| **AG1: Enterprise** | enterprise software development India, ERP development company India, CRM development company India | Phrase + Exact |
+| **AG2: E-Commerce** | ecommerce development company India, custom ecommerce development India, marketplace development India | Phrase + Exact |
+| **AG3: Web App** | web application development company India, custom web development India, full stack development India | Phrase + Exact |
+
+### Campaign 6: Retargeting (Display + Search)
+**Landing Page**: `/lp?utm_source=google&utm_medium=cpc&utm_campaign=retarget`
+**Budget**: ₹500–1,000/day | **Audience**: Website visitors (7-30 days)
+
+| Ad Group | Strategy |
+|----------|----------|
+| **AG1: Site Visitors** | RLSA — bid +50% on past visitors searching any campaign keyword |
+| **AG2: Quote Abandoners** | Display remarketing to users who opened quote modal but didn't submit |
+| **AG3: Page Viewers** | Display remarketing to /products and /services page visitors |
+
+### Google Ads Copy Templates
+
+**Headline 1** (30 chars): Custom Software Dev India
+**Headline 2** (30 chars): Save 50% — Talk to Devs
+**Headline 3** (30 chars): AI-First Development
+**Description 1** (90 chars): Senior developers, not sales reps. AI-powered delivery. Free quote in 2 hours.
+**Description 2** (90 chars): 50+ projects delivered. NDA protected. Full source code ownership. ₹1.5L onwards.
+
+**Sitelink Extensions**:
+- Get Free Quote → /get-quote
+- Our Products (50+) → /products
+- Case Studies → /case-studies
+- How It Works → /how-it-works
+- About Us → /about
+- Contact Us → /contact
+
+**Callout Extensions**: Free Consultation | NDA Protected | Source Code Ownership | 2-Hour Response | AI-First Approach | 50% Cost Savings
+
+**Structured Snippets**:
+- Services: Web Apps, Mobile Apps, SaaS, AI/ML, E-Commerce, Enterprise Software
+- Types: React, Next.js, Node.js, Python, Flutter, React Native
+
+### 5 Priority Ad Groups with Keyword-Optimized Landing Pages
+
+**These 5 ad groups are the highest ROI targets. Each gets a dedicated `/kw/<slug>` landing page with exact keyword-to-H1 match for 10/10 Quality Score.**
+
+#### Priority AG1: Custom Software Development → `/kw/custom-software-development`
+| Keyword | Vol | CPC | Match |
+|---------|-----|-----|-------|
+| custom software development | 5K | ₹1,109 | Exact + Phrase |
+| custom software development companies | 5K | ₹1,109 | Phrase |
+| custom software development services | 5K | ₹1,109 | Phrase |
+| custom software development agency | 5K | ₹1,109 | Phrase |
+| bespoke software development services | 5K | ₹1,109 | Phrase |
+| custom software development firms | 5K | ₹1,109 | Phrase |
+| custom app development company | 500 | ₹268 | Phrase |
+| software development company | 5K | ₹152 | Phrase |
+
+**Ad H1 → LP H1**: "Custom Software Dev India" → "Custom Software Development That Makes You ₹47Cr+"
+
+#### Priority AG2: Mobile App Development → `/kw/mobile-app-development`
+| Keyword | Vol | CPC | Match |
+|---------|-----|-----|-------|
+| mobile app development company | 5K | ₹278 | Exact + Phrase |
+| app development company | 5K | ₹268 | Phrase |
+| android app development company | 5K | ₹269 | Phrase |
+| best mobile app development companies | 5K | ₹268 | Phrase |
+| mobile app developer | 50K | ₹148 | Phrase |
+| ios app development companies | 500 | ₹501 | Phrase |
+| custom mobile app development company | 500 | ₹794 | Exact |
+| flutter app development company | 5K | ₹214 | Phrase |
+
+**Ad H1 → LP H1**: "Mobile App Development Co" → "Mobile App Development Company — 120K+ Downloads"
+
+#### Priority AG3: Web Development Company → `/kw/web-development-company`
+| Keyword | Vol | CPC | Match |
+|---------|-----|-----|-------|
+| web development company | 5K | ₹128 | Exact + Phrase |
+| web development agency | 5K | ₹152 | Phrase |
+| web application development | 5K | ₹129 | Phrase |
+| website development company | 5K | ₹128 | Phrase |
+| web development services | 5K | ₹116 | Phrase |
+| custom web development services | 500 | ₹176 | Phrase |
+| web app development agency | 500 | ₹205 | Phrase |
+| best web development companies | 500 | ₹153 | Phrase |
+
+**Ad H1 → LP H1**: "Web Development Company" → "Web Development Company — SaaS to Enterprise"
+
+#### Priority AG4: AI Software Development → `/kw/ai-software-development`
+| Keyword | Vol | CPC | Match |
+|---------|-----|-----|-------|
+| ai app development company | 5K | ₹298 | Exact + Phrase |
+| ai software development | 5K | ₹145 | Phrase |
+| ai app development services | 500 | ₹194 | Phrase |
+| ai software development companies | 500 | ₹179 | Phrase |
+| ai app developer | 500 | ₹153 | Phrase |
+
+**Ad H1 → LP H1**: "AI Software Development" → "AI Software Development — ROI From Month One"
+
+#### Priority AG5: E-Commerce Development → `/kw/ecommerce-development`
+| Keyword | Vol | CPC | Match |
+|---------|-----|-----|-------|
+| ecommerce app development company | 5K | ₹204 | Exact + Phrase |
+| ecommerce website development company | 500 | ₹158 | Phrase |
+| ecommerce web development company | 500 | ₹200 | Phrase |
+| shopify app development | 5K | ₹142 | Phrase |
+| ecommerce website design companies | 500 | ₹358 | Phrase |
+| shopify web development company | 500 | ₹152 | Phrase |
+| ecommerce development company | 500 | ₹125 | Phrase |
+| grocery delivery app development company | 500 | ₹4,226 | Exact |
+
+**Ad H1 → LP H1**: "Ecommerce App Development" → "E-Commerce Development — 4x Your Conversions"
+
+**Shared Negative Keywords**: free, tutorial, course, salary, internship, jobs, wiki, what is, download, learn, PDF, open source, github, youtube
+
+---
+
+## UTM URL Quick Reference
+
+```
+# Google Ads
+/lp?utm_source=google&utm_medium=cpc&utm_campaign=mvp
+/lp?utm_source=google&utm_medium=cpc&utm_campaign=saas
+/lp?utm_source=google&utm_medium=cpc&utm_campaign=mobile
+/lp?utm_source=google&utm_medium=cpc&utm_campaign=ai
+/lp?utm_source=google&utm_medium=cpc&utm_campaign=ecommerce
+/lp?utm_source=google&utm_medium=cpc&utm_campaign=enterprise
+/lp?utm_source=google&utm_medium=cpc&utm_campaign=startup
+/lp?utm_source=google&utm_medium=cpc&utm_campaign=outsourcing
+/lp?utm_source=google&utm_medium=cpc&utm_campaign=retarget
+
+# Social Ads
+/lp?utm_source=facebook&utm_medium=social&utm_campaign=mvp
+/lp?utm_source=instagram&utm_medium=social&utm_campaign=mobile
+/lp?utm_source=linkedin&utm_medium=social&utm_campaign=enterprise
+
+# Email Campaigns
+/lp?utm_source=email&utm_medium=email&utm_campaign=retarget
+/lp?utm_source=newsletter&utm_medium=email&utm_campaign=saas
+
+# Keyword Injection (dynamic headline from search term)
+/lp?utm_source=google&utm_medium=cpc&utm_term=hire+react+developers+india
+/lp?utm_source=google&utm_medium=cpc&utm_term=custom+crm+development+india
+
+# Partners & Communities
+/lp?utm_source=producthunt&utm_medium=referral&utm_campaign=startup
+/lp?utm_source=reddit&utm_medium=social&utm_campaign=mvp
+/lp?utm_source=partner&utm_medium=referral&utm_campaign=outsourcing
+```
+
+---
+
 ## SEO Target Keywords (High Commercial Intent)
 
 **Data source**: Google Keyword Planner (Feb 2026), 4,036 keywords analyzed. Filtered for high commercial intent (CPC ≥ ₹100, volume ≥ 500).
