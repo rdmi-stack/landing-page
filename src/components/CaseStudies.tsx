@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Shield } from "lucide-react";
 
 const projects = [
@@ -10,6 +11,7 @@ const projects = [
     tech: ["Next.js", "Node.js", "PostgreSQL", "OpenAI", "AWS"],
     timeline: "14 weeks",
     gradient: "from-blue-600 to-indigo-600",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
   },
   {
     tag: "E-Commerce",
@@ -18,6 +20,7 @@ const projects = [
     tech: ["React", "Python", "MongoDB", "Redis", "Razorpay"],
     timeline: "16 weeks",
     gradient: "from-emerald-600 to-green-600",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
   },
   {
     tag: "FinTech",
@@ -26,6 +29,7 @@ const projects = [
     tech: ["React Native", "Django", "TensorFlow", "AWS", "PostgreSQL"],
     timeline: "20 weeks",
     gradient: "from-orange-600 to-red-600",
+    image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=800&q=80",
   },
   {
     tag: "Healthcare",
@@ -34,6 +38,7 @@ const projects = [
     tech: ["Flutter", "Node.js", "PostgreSQL", "WebRTC", "GCP"],
     timeline: "12 weeks",
     gradient: "from-rose-600 to-pink-600",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
   },
   {
     tag: "AI Agent",
@@ -42,6 +47,7 @@ const projects = [
     tech: ["Python", "LangChain", "Pinecone", "OpenAI", "Next.js"],
     timeline: "8 weeks",
     gradient: "from-purple-600 to-violet-600",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
   },
   {
     tag: "Logistics",
@@ -50,6 +56,7 @@ const projects = [
     tech: ["React", "Go", "PostgreSQL", "Redis", "AWS"],
     timeline: "14 weeks",
     gradient: "from-amber-600 to-yellow-600",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
   },
 ];
 
@@ -89,20 +96,34 @@ export default function CaseStudies() {
              
               className="group relative rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/30 transition-all overflow-hidden"
             >
-              <div className={`h-1.5 bg-gradient-to-r ${project.gradient}`} />
-
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
+              {/* Project image */}
+              <div className="relative h-40 overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent" />
+                <div className="absolute top-3 left-3 flex items-center gap-2">
                   <span className={`px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r ${project.gradient} text-white`}>
                     {project.tag}
                   </span>
-                  <span className="text-[10px] text-zinc-600">{project.timeline}</span>
                 </div>
+                <div className="absolute top-3 right-3">
+                  <span className="px-2 py-1 text-[10px] text-zinc-300 bg-black/50 backdrop-blur-sm rounded-md border border-white/10">{project.timeline}</span>
+                </div>
+                <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
+                  <Shield className="w-3 h-3 text-indigo-400" />
+                  <span className="text-[10px] text-zinc-400">NDA Protected</span>
+                </div>
+              </div>
 
-                <h3 className="text-lg font-bold mb-3 group-hover:text-indigo-300 transition-colors">
+              <div className="p-5">
+                <h3 className="text-base font-bold mb-2 group-hover:text-indigo-300 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-sm text-zinc-500 leading-relaxed mb-5">{project.description}</p>
+                <p className="text-sm text-zinc-500 leading-relaxed mb-4">{project.description}</p>
 
                 <div className="flex flex-wrap gap-1.5">
                   {project.tech.map((t) => (

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { MessageSquare, FileSearch, Code2, Rocket, ArrowRight } from "lucide-react";
 import { useModal } from "./ModalProvider";
 
@@ -103,13 +104,23 @@ export default function HowItWorks() {
           </div>
         </div>
 
+        {/* Process image */}
+        <div className="mt-12 mb-12 relative rounded-2xl overflow-hidden aspect-[21/9] max-w-4xl mx-auto">
+          <Image
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&q=80"
+            alt="Our development process"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 to-transparent" />
+          <div className="absolute bottom-4 left-4 right-4 text-center">
+            <p className="text-sm font-semibold text-emerald-400">Preview Before You Pay</p>
+            <p className="text-xs text-zinc-300 mt-1">Free clickable prototype in 48 hours — zero commitment</p>
+          </div>
+        </div>
+
         {/* CTA */}
-        <div
-         
-         
-         
-          className="text-center mt-12"
-        >
+        <div className="text-center">
           <button
             onClick={() => openModal()}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-semibold transition-all hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105 cursor-pointer"

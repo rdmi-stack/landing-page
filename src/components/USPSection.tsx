@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { MessageCircle, IndianRupee, Bot, ArrowRight } from "lucide-react";
 
 const usps = [
@@ -7,6 +8,7 @@ const usps = [
     icon: MessageCircle,
     title: "Talk to Developers Directly",
     headline: "Your CTO on Speed Dial. For Free.",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
     description:
       "Other agencies charge you ₹2L/month for a 'project manager' who forwards your emails. At RDMI, you get a direct line to the 5+ year senior developers writing your code. Result? 73% fewer revisions, 40% faster approvals, and software that actually matches what you asked for.",
     features: [
@@ -22,6 +24,7 @@ const usps = [
     icon: IndianRupee,
     title: "Guaranteed 50% Cost Savings",
     headline: "₹15L Here = ₹30L in the US. Same Code. Same Quality.",
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80",
     description:
       "We don't compete on cheap labor. We compete on AI-accelerated delivery. Our team writes production code 3x faster using AI tools — so your ₹15L budget buys what ₹30L buys elsewhere. Fixed price. No surprises. Money-back guarantee if we miss your deadline.",
     features: [
@@ -37,6 +40,7 @@ const usps = [
     icon: Bot,
     title: "AI-First = 3x Faster Delivery",
     headline: "12-Week Projects Done in 4. That's Not a Typo.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
     description:
       "Every RDMI developer uses AI code generation, AI testing, and AI debugging — daily. This isn't a buzzword. Our last 20 projects shipped 2.8x faster than client estimates. Your competitors are still hiring. You're already launching.",
     features: [
@@ -101,28 +105,34 @@ export default function USPSection() {
                 </ul>
               </div>
 
-              {/* Visual card */}
+              {/* Visual — Image + feature overlay */}
               <div className="flex-1 w-full max-w-lg">
                 <div className="relative">
                   <div className={`absolute inset-0 ${usp.bgGlow} rounded-3xl blur-[80px]`} />
-                  <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm">
-                    <div
-                      className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${usp.gradient} flex items-center justify-center mb-6`}
-                    >
-                      <usp.icon className="w-8 h-8 text-white" />
+                  <div className="relative rounded-2xl overflow-hidden border border-white/10">
+                    {/* Image */}
+                    <div className="relative aspect-[4/3]">
+                      <Image
+                        src={usp.image}
+                        alt={usp.title}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
                     </div>
-                    <div className="space-y-4">
+                    {/* Feature cards overlaid at bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 space-y-2">
                       {usp.features.map((feature, fi) => (
                         <div
                           key={fi}
-                          className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5"
+                          className="flex items-center gap-3 p-2.5 rounded-lg bg-black/60 backdrop-blur-md border border-white/10"
                         >
                           <div
-                            className={`w-8 h-8 rounded-lg bg-gradient-to-br ${usp.gradient} flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}
+                            className={`w-7 h-7 rounded-md bg-gradient-to-br ${usp.gradient} flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0`}
                           >
                             {fi + 1}
                           </div>
-                          <span className="text-sm text-zinc-300">{feature}</span>
+                          <span className="text-xs text-zinc-200">{feature}</span>
                         </div>
                       ))}
                     </div>

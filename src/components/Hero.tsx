@@ -21,6 +21,7 @@ import {
   Workflow,
   type LucideIcon,
 } from "lucide-react";
+import Image from "next/image";
 import { useModal } from "./ModalProvider";
 
 const stats = [
@@ -218,20 +219,17 @@ export default function Hero() {
 
   return (
     <section className="relative pt-28 pb-10 lg:pt-40 lg:pb-16 overflow-hidden">
-      {/* BG */}
+      {/* Hero background image */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[128px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/15 rounded-full blur-[128px]" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+        <Image
+          src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=80"
+          alt="Software development team"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/95 via-[#0a0a0a]/85 to-[#0a0a0a]" />
       </div>
-
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Badge */}

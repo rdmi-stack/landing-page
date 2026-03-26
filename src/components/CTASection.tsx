@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight, MessageCircle, Phone, Mail, CheckCircle2 } from "lucide-react";
 import { useModal } from "./ModalProvider";
 
@@ -7,9 +8,15 @@ export default function CTASection() {
   const { openModal } = useModal();
 
   return (
-    <section id="contact" className="py-20 lg:py-32 relative">
+    <section id="contact" className="py-20 lg:py-32 relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[128px]" />
+        <Image
+          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=80"
+          alt="Get started with RDMI"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0a0a0a]/85 backdrop-blur-sm" />
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
