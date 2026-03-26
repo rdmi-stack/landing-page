@@ -41,11 +41,14 @@ export default function AdminLogin() {
         className="w-full max-w-sm"
       >
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mx-auto mb-4">
-            <Shield className="w-7 h-7 text-white" />
+          <div className="flex items-center justify-center gap-2.5 mb-4">
+            <span className="text-2xl font-extrabold tracking-tight text-white">RDMI</span>
+            <span className="relative px-2.5 py-0.5 text-xs font-bold tracking-wider uppercase rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+              AI
+              <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            </span>
           </div>
           <h1 className="text-xl font-bold text-white">Admin Access</h1>
-          <p className="text-sm text-zinc-500 mt-1">RDMI Web Services</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

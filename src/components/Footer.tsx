@@ -1,6 +1,6 @@
 "use client";
 
-import { Zap, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { useModal } from "./ModalProvider";
 
 export default function Footer() {
@@ -12,12 +12,11 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10">
           {/* Brand + contact */}
           <div className="space-y-4 max-w-sm">
-            <a href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                <Zap className="w-4 h-4 text-white" />
-              </div>
-              <span className="text-lg font-bold">
-                RDMI<span className="text-indigo-400"> Web Services</span>
+            <a href="/" className="flex items-center gap-2.5">
+              <span className="text-xl font-extrabold tracking-tight">RDMI</span>
+              <span className="relative px-2.5 py-0.5 text-xs font-bold tracking-wider uppercase rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+                AI
+                <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               </span>
             </a>
             <p className="text-sm text-zinc-500 leading-relaxed">

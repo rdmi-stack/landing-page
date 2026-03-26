@@ -218,7 +218,7 @@ export default function Hero() {
   const { openModal } = useModal();
 
   return (
-    <section className="relative pt-28 pb-10 lg:pt-40 lg:pb-16 overflow-hidden">
+    <section className="relative pt-24 pb-10 lg:pt-32 lg:pb-16 overflow-hidden">
       {/* Hero background image */}
       <div className="absolute inset-0">
         <Image

@@ -1,22 +1,23 @@
 "use client";
 
-import { Zap, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { useModal } from "./ModalProvider";
 
 export default function Navbar() {
   const { openModal } = useModal();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/[0.06]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Zap className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-lg font-bold tracking-tight">
-              RDMI<span className="text-indigo-400"> Web Services</span>
+          <a href="/" className="flex items-center gap-2.5 group">
+            <span className="text-xl font-extrabold tracking-tight">
+              RDMI
+            </span>
+            <span className="relative px-2.5 py-0.5 text-xs font-bold tracking-wider uppercase rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+              AI
+              <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             </span>
           </a>
 
