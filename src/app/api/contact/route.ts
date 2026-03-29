@@ -33,9 +33,10 @@ async function sendEmail(params: Record<string, string>) {
 
 // ─── DETECT FORM TYPE ─────────────────────────────────
 
-type FormType = "software" | "seo" | "digital-marketing" | "callback" | "lead-magnet" | "seo-tool" | "quiz" | "seo-course" | "utm";
+type FormType = "software" | "ai-agent" | "seo" | "digital-marketing" | "callback" | "lead-magnet" | "seo-tool" | "quiz" | "seo-course" | "utm";
 
 function detectFormType(message: string): FormType {
+  if (message.startsWith("[AI Agent")) return "ai-agent";
   if (message.startsWith("[SEO Services")) return "seo";
   if (message.startsWith("[Digital Marketing")) return "digital-marketing";
   if (message.startsWith("[Callback]")) return "callback";
@@ -92,6 +93,61 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
   const firstName = name.split(" ")[0] || name;
 
   switch (type) {
+    case "ai-agent":
+      return {
+        subject: `${firstName}, your AI strategy session is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 8px;font-size:22px;color:#fff;">Hi ${firstName}, your AI project is in expert hands.</h2>
+          <p style="margin:0 0 20px;font-size:15px;line-height:1.7;color:#ccc;">A <strong style="color:#fff;">senior AI engineer</strong> — not a sales rep — is reviewing your requirements right now and will call you within <strong style="color:#c4b5fd;">2 hours</strong>.</p>
+
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Company", company], ["Budget", budget], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+
+          <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#fff;">Your AI Journey — Step by Step:</p>
+          ${stepsBlock([
+            ["01", "AI Strategy Call (Within 2 Hours)", "Senior AI engineer assesses your use case, data readiness, and recommends: LLM vs RAG vs Agent vs ML pipeline"],
+            ["02", "Working Prototype (2 Weeks)", "Real AI processing YOUR data — not a slide deck. Test it, break it, validate ROI before committing"],
+            ["03", "Production Build (4-8 Weeks)", "Enterprise-grade: monitoring, fallbacks, human-in-the-loop, audit logs. Contracted accuracy benchmarks"],
+            ["04", "Deploy & Scale", "Production launch with KPI dashboard. 30-day free optimization. Model retraining included"],
+          ])}
+
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin:28px 0 20px;background:linear-gradient(135deg,#1a1028,#0f172a);border-radius:12px;border:1px solid #312e81;"><tr><td style="padding:24px;">
+            <p style="margin:0 0 4px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#818cf8;">AI Solutions We Build</p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:12px;">
+              <tr><td style="padding:6px 0;font-size:12px;color:#94a3b8;">🤖 <strong style="color:#c4b5fd;">AI Chatbots & Voice Agents</strong> — 24/7 support, 80% deflection, WhatsApp/Web/Slack/Phone</td></tr>
+              <tr><td style="padding:6px 0;font-size:12px;color:#94a3b8;">🧠 <strong style="color:#c4b5fd;">Autonomous AI Agents</strong> — LangChain/CrewAI agents that research, draft, execute end-to-end</td></tr>
+              <tr><td style="padding:6px 0;font-size:12px;color:#94a3b8;">📄 <strong style="color:#c4b5fd;">RAG Knowledge Bases</strong> — Query 50K+ docs in plain English, zero hallucination</td></tr>
+              <tr><td style="padding:6px 0;font-size:12px;color:#94a3b8;">⚡ <strong style="color:#c4b5fd;">Workflow Automation</strong> — n8n + custom orchestration, ₹1.2Cr/year saved for one client</td></tr>
+              <tr><td style="padding:6px 0;font-size:12px;color:#94a3b8;">🎯 <strong style="color:#c4b5fd;">AI Copilots & SaaS Features</strong> — Smart search, recommendations, in-app AI assistant</td></tr>
+              <tr><td style="padding:6px 0;font-size:12px;color:#94a3b8;">👁️ <strong style="color:#c4b5fd;">Computer Vision & Document AI</strong> — OCR, image recognition, ID verification, 95%+ accuracy</td></tr>
+            </table>
+          </td></tr></table>
+
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin:20px 0;background:#1a1a1a;border-radius:12px;border:1px solid #2a2a2a;"><tr><td style="padding:20px;">
+            <p style="margin:0 0 12px;font-size:13px;font-weight:700;color:#fff;text-align:center;">Our AI Guarantee</p>
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr><td style="padding:6px 0;font-size:12px;color:#aaa;"><span style="color:#10b981;font-weight:700;">✓</span> Contracted accuracy benchmarks — not met? We iterate free</td></tr>
+              <tr><td style="padding:6px 0;font-size:12px;color:#aaa;"><span style="color:#10b981;font-weight:700;">✓</span> 14-day money-back on discovery sprints</td></tr>
+              <tr><td style="padding:6px 0;font-size:12px;color:#aaa;"><span style="color:#10b981;font-weight:700;">✓</span> Full source code + model weights ownership on final payment</td></tr>
+              <tr><td style="padding:6px 0;font-size:12px;color:#aaa;"><span style="color:#10b981;font-weight:700;">✓</span> NDA signed before first call — your data stays your data</td></tr>
+            </table>
+          </td></tr></table>
+
+          ${ctaButton("WhatsApp Our AI Team Now", "https://wa.me/919818565561?text=Hi%2C%20I%20just%20submitted%20an%20AI%20project%20inquiry.%20Can%20we%20discuss%3F", "linear-gradient(135deg,#7c3aed,#4f46e5)")}
+
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0;"><tr>
+            <td style="text-align:center;">
+              <a href="tel:+919818565561" style="font-size:14px;color:#c4b5fd;text-decoration:none;font-weight:600;">+91 98185 65561</a>
+              <span style="color:#333;margin:0 8px;">|</span>
+              <a href="mailto:info@rdmi.in" style="font-size:14px;color:#c4b5fd;text-decoration:none;font-weight:600;">info@rdmi.in</a>
+            </td>
+          </tr></table>
+
+          <p style="margin:16px 0 0;font-size:11px;color:#444;text-align:center;line-height:1.6;">76% of enterprises buy AI, not build it · 50+ AI products shipped · Performance guaranteed · India | USA | UK</p>`,
+          "linear-gradient(135deg,#7c3aed,#4f46e5)", "RDMI AI", "AI Agent & GenAI Consulting"
+        ),
+        text: `Hi ${firstName},\n\nYour AI project inquiry is confirmed! A senior AI engineer will call within 2 hours.\n\n${message}\n\nNext steps:\n1. AI Strategy Call — within 2 hours\n2. Working Prototype — 2 weeks\n3. Production Build — 4-8 weeks\n4. Deploy & Scale\n\nAI Solutions:\n• AI Chatbots & Voice Agents\n• Autonomous AI Agents (LangChain/CrewAI)\n• RAG Knowledge Bases\n• Workflow Automation (n8n)\n• AI Copilots & SaaS Features\n• Computer Vision & Document AI\n\nGuarantee: Contracted accuracy benchmarks or we iterate free. 14-day money-back on discovery.\n\nWhatsApp: +91 98185 65561\nEmail: info@rdmi.in\n\n— RDMI Tech Ventures Pvt. Ltd.`,
+      };
+
     case "seo":
       return {
         subject: "Your SEO & GEO Audit Request — RDMI Tech Ventures",
@@ -313,6 +369,7 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
 
 const formTypeLabels: Record<FormType, string> = {
   software: "Software Inquiry",
+  "ai-agent": "🤖 AI Agent / GenAI Inquiry",
   seo: "SEO Services",
   "digital-marketing": "Digital Marketing",
   callback: "Callback Request",

@@ -15,6 +15,7 @@ import {
   Phone,
 } from "lucide-react";
 import { useModal } from "@/components/ModalProvider";
+import AIQuoteModal from "@/components/AIQuoteModal";
 import AICapabilities from "@/components/AICapabilities";
 import Footer from "@/components/Footer";
 import type { KeywordGroup } from "@/data/keyword-groups";
@@ -22,6 +23,16 @@ import type { KeywordGroup } from "@/data/keyword-groups";
 export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const { openModal } = useModal();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [aiModalOpen, setAiModalOpen] = useState(false);
+
+  const isAIPage = data.slug.includes("ai-agent") || data.slug === "ai-software-development";
+  const handleCTA = () => {
+    if (isAIPage) {
+      setAiModalOpen(true);
+    } else {
+      openModal(data.primaryKeyword);
+    }
+  };
 
   return (
     <>
@@ -61,7 +72,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
             <button
-              onClick={() => openModal(data.primaryKeyword)}
+              onClick={handleCTA}
               className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all hover:shadow-xl hover:shadow-indigo-500/25 hover:scale-105 cursor-pointer"
             >
               {data.hero.cta1}
@@ -263,7 +274,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
           <div className="grid sm:grid-cols-3 gap-4">
             {data.images.portfolio.map((img, i) => (
-              <div key={i} className="relative rounded-2xl overflow-hidden aspect-video group cursor-pointer" onClick={() => openModal(data.primaryKeyword)}>
+              <div key={i} className="relative rounded-2xl overflow-hidden aspect-video group cursor-pointer" onClick={handleCTA}>
                 <Image
                   src={img}
                   alt={`${data.primaryKeyword} project ${i + 1}`}
@@ -341,7 +352,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           </div>
 
           <button
-            onClick={() => openModal(data.primaryKeyword)}
+            onClick={handleCTA}
             className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-semibold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all hover:shadow-2xl hover:shadow-indigo-500/30 hover:scale-105 cursor-pointer"
           >
             {data.ctaSection.buttonText}
@@ -370,6 +381,15 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       <Footer />
+
+      {/* AI Quote Modal — only rendered on AI pages */}
+      {isAIPage && (
+        <AIQuoteModal
+          isOpen={aiModalOpen}
+          onClose={() => setAiModalOpen(false)}
+          productName={data.primaryKeyword}
+        />
+      )}
     </>
   );
 }
