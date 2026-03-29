@@ -691,3 +691,146 @@ Custom software, mobile apps, SaaS, web apps, e-commerce, enterprise (ERP/CRM)
 /lp?utm_source=reddit&utm_medium=social&utm_campaign=mvp
 /lp?utm_source=partner&utm_medium=referral&utm_campaign=outsourcing
 ```
+
+---
+
+## AI Business Intelligence — Market Research (Updated 2026-03-29)
+
+**Source**: Deep research across McKinsey, Menlo Ventures, CBRE, Gartner, foundit, DFSA, OpenAI Enterprise Data, LinkedIn Economic Graph, Deloitte, IBM, Clutch, G2, Upwork.
+
+### Top 10 Industries Buying AI Agent & Workflow Services (Ranked by Revenue Potential)
+
+| Rank | Industry | Adoption Stage | Typical Budget | Key Signal |
+|------|----------|---------------|---------------|------------|
+| 1 | **Healthcare & Life Sciences** | Scaling | $20K–$500K+ | $1.5B vertical AI spend in 2025 (Menlo); ambient scribes alone = $600M |
+| 2 | **Financial Services (BFSI)** | Mature/Scaling | $25K–$750K+ | 52% DIFC firms use AI (DFSA); India BFSI AI hiring +41% YoY |
+| 3 | **Software / SaaS / Tech** | Most Mature | $15K–$300K+ | 88% tech orgs use genAI (McKinsey); coding AI = $4B market |
+| 4 | **Retail & E-Commerce** | Scaling | $10K–$250K+ | 9/10 retailers adopting AI (NVIDIA) |
+| 5 | **Manufacturing** | Scaling | $15K–$300K+ | India manufacturing AI hiring +34% YoY |
+| 6 | **Logistics & Supply Chain** | Early-Scale | $10K–$250K+ | 98% logistics leaders say AI vital (CSCMP); only 23% have AI strategy (Gartner) |
+| 7 | **Professional Services (Legal, Accounting)** | Scaling | $5K–$150K+ | Legal AI = $650M market; 70% legal workers use AI |
+| 8 | **Telecom & Media** | Scaling | $25K–$500K+ | 97% telcos adopting AI (NVIDIA) |
+| 9 | **Energy & Utilities** | Early-Scale | $25K–$1M+ | 94% utility CIOs increasing AI spend (Gartner) |
+| 10 | **Real Estate / PropTech** | Emerging | $5K–$150K+ | PropTech funding rebound 2025; Prop-AI raised $1.5M |
+
+### Geographic Demand Analysis
+
+**USA — Top AI Markets (CBRE 2025)**:
+- SF Bay Area: software, AI startups, developer tooling, copilots
+- Seattle: cloud, enterprise software, support automation
+- New York: finance/insurance, legal, media, enterprise ops
+- Austin: SaaS, cybersecurity, mid-market workflow automation
+- Boston: healthcare AI, biotech, enterprise research
+- Best industries: Healthcare, BFSI, Transportation/Logistics, SaaS, Professional Services
+
+**Dubai/UAE — Institutional AI Demand**:
+- 52% DIFC firms actively using AI (DFSA 2025), up from 33% in 2024
+- 22 Chief AI Officers appointed across Dubai government entities
+- Dubai AI Campus: 500+ tech companies, 3,000+ jobs by 2028
+- DIFC AI & Web3 License for AI builders
+- Dubai AI Week 2026: April 6-9
+- Best sectors: DIFC finance, DHA healthcare, DP World logistics, PropTech, government
+- Free zones: DIFC, ADGM, Dubai AI Campus
+
+**India — Enterprise AI Demand Market**:
+- 290K active AI job postings in 2025, projecting 382K in 2026
+- City split: Bengaluru 26%, Delhi-NCR 18%, Hyderabad 12%, Pune 8%, Mumbai 7%
+- MNCs/large enterprises = 49% of AI jobs; mid-sized = 28%; startups = 23%
+- Top sectors: IT/Software 37%, BFSI 15.8% (+41% YoY), Manufacturing 6% (+34% YoY)
+- IndiaAI Mission: ₹10,300+ Cr cabinet allocation
+
+### Top 20 High-Intent Keywords for Google Ads (Cross-Market)
+
+| Keyword | Intent | USA Vol/CPC | Dubai Vol/CPC | India Vol/CPC |
+|---------|--------|------------|--------------|--------------|
+| ai consulting services | BOFU | 1K-5K / $45-80 | 100-500 / $1-4 | 100-500 / $15-35 |
+| ai development company | BOFU | 500-2K / $25-45 | 50-300 / $1-3 | 100-500 / $8-20 |
+| ai agent development | BOFU | 100-1K / $20-40 | 20-200 / $1-3 | 50-300 / $5-15 |
+| ai automation agency | BOFU | 100-1K / $20-40 | 20-200 / $1-3 | 50-300 / $5-15 |
+| business process automation | MOFU/BOFU | 1K-10K / $35-40 | 100-1K / $2-5 | 1K-10K / $20-26 |
+| workflow automation services | BOFU | 500-2K / $20-35 | 50-300 / $1-4 | 100-1K / $8-18 |
+| ai chatbot development company | BOFU | 500-2K / $20-40 | 50-300 / $1-3 | 100-500 / $6-15 |
+| enterprise ai solutions | BOFU | 100-1K / $20-45 | 20-200 / $1-4 | 50-300 / $8-20 |
+| custom software development company | BOFU | 1K-10K / $10-25 | 100-1K / $1-3 | 1K-10K / $8-20 |
+| hire ai developers | BOFU | 500-2K / $15-35 | 20-200 / $1-3 | 100-500 / $5-15 |
+
+### Long-Tail Keywords (Lower CPC, Higher Conversion)
+
+- ai chatbot for customer support
+- rag chatbot development company
+- llm app development company
+- workflow automation for insurance
+- workflow automation for logistics company
+- custom software development company for healthcare
+- ai automation for accounting firm
+- hire ai developers for startup mvp
+- enterprise ai solutions for customer service
+- business process automation consulting for manufacturing
+- whatsapp chatbot development company dubai
+- ai agent development company usa
+
+### Competitive Pricing Intelligence
+
+| Market | Hourly Rate Range | Project Range | Source |
+|--------|------------------|--------------|--------|
+| **USA agencies** | $100-$300/hr | $75K-$500K+ | Clutch 2026 |
+| **Dubai agencies** | $50-$99/hr | $10K-$200K+ | Clutch UAE |
+| **India agencies** | $25-$49/hr | $10K-$100K+ | Clutch India |
+| **RDMI positioning** | $40-$80/hr (export) | $5K-$150K+ | Internal |
+
+### Google Ads Budget Split (Recommended)
+
+- **USA**: 55% of budget (largest demand, highest CPCs)
+- **India**: 25% of budget (cheaper testing, strong enterprise demand)
+- **Dubai/UAE**: 20% of budget (smaller volume, higher deal sizes)
+
+### Outreach Target Signals (Who to Prospect)
+
+**Signal A — "AI Pilot to Production"**: Firms hiring AI engineer, MLOps, automation lead but not staffed to execute. 74% plan agentic AI within 2 years, only 21% have governance (Deloitte).
+
+**Signal B — "Ops Efficiency"**: Support-heavy, back-office-heavy businesses. Insurers, lenders, clinics, logistics, retail, B2B SaaS.
+
+**Signal C — "Growth After Funding"**: Newly funded startups, GCCs, free-zone entrants needing to ship fast without in-house team.
+
+### Ad Copy Templates (By Market)
+
+**USA**:
+- H1: "AI Agents & Custom Software That Ship"
+- H2: "Automate Ops With Production-Ready AI"
+- Desc: "We design AI agents, workflow automation, and custom software for growth-stage and enterprise teams. Fast discovery, clear scope, senior delivery."
+
+**Dubai/UAE**:
+- H1: "AI Solutions Built for UAE Businesses"
+- H2: "Dubai AI Agents, Automation & Apps"
+- Desc: "Launch AI agents, customer-service automation, and custom platforms with a partner that understands regulated, multilingual, high-touch markets."
+
+**India**:
+- H1: "AI Automation & Custom Software India"
+- H2: "Build AI Agents for Ops, Sales & Support"
+- Desc: "We help Indian enterprises and startups deploy AI agents, process automation, and custom software with speed, clarity, and strong engineering."
+
+### Service Evolution Strategy (Forward-Looking)
+
+**Now (2025-2026) — Core Revenue**:
+Custom software, mobile apps, SaaS, web apps, e-commerce, enterprise (ERP/CRM)
+
+**Rising Fast (2025-2027) — Invest Now**:
+- AI Agents & Autonomous Workflows (LangChain, CrewAI, AutoGen)
+- AI-Powered SaaS (embedded AI features, copilots, smart dashboards)
+- RAG Systems & Knowledge Bases (enterprise search, document AI)
+- Workflow Automation (n8n, Make, custom orchestration)
+- AI Chatbots & Conversational AI (customer support, sales bots)
+- Voice AI & Telephony Agents
+
+**Next Wave (2026-2028) — Watch & Prepare**:
+- AI Agent Marketplaces & Platforms
+- Autonomous Business Operations (AI replacing manual workflows end-to-end)
+- Vertical AI SaaS (industry-specific AI products — legal, healthcare, finance, logistics)
+- AI-Native Mobile Apps (on-device models, personalized UX)
+- Computer Vision & IoT Integration
+- Blockchain/Web3 enterprise applications
+- GEO/AEO Optimization Services (AI search visibility)
+
+**Strategy**: Keyword groups and landing pages should be easy to swap/add. When a service category gains traction (search volume up, CPC rising), spin up a new keyword group + landing page within hours using the existing system. The admin panel should surface trending keywords and suggest new page opportunities.
+
+### Keyword Groups (Data-Backed from Google Keyword Planner Feb 2026)
