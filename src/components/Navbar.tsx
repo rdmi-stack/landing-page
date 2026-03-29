@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Phone } from "lucide-react";
 import { useModal } from "./ModalProvider";
 
@@ -11,7 +12,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5 group">
+          <Link href="/" className="flex items-center gap-2.5 group">
             <span className="text-xl font-extrabold tracking-tight">
               RDMI
             </span>
@@ -19,7 +20,7 @@ export default function Navbar() {
               AI
               <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             </span>
-          </a>
+          </Link>
 
           {/* Right: phone + CTA */}
           <div className="flex items-center gap-3 sm:gap-4">

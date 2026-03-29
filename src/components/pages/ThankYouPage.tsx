@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, Suspense } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
   CheckCircle2,
@@ -198,13 +199,13 @@ function ThankYouContent() {
 
           {/* Back to homepage */}
           <div className="text-center mt-8">
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-indigo-400 transition-colors"
             >
               <ArrowRight className="w-3 h-3 rotate-180" />
               Back to Homepage
-            </a>
+            </Link>
           </div>
         </div>
       </section>

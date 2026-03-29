@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Lock, Eye, EyeOff, ArrowRight, Shield } from "lucide-react";
+import { Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 
 export default function AdminLogin() {
   const [password, setPassword] = useState("");

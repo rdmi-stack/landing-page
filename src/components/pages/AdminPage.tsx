@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useState, useEffect, useMemo } from "react";
 import {
   LayoutDashboard,
@@ -349,12 +351,12 @@ export default function AdminPage() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <a
+              <Link
                 href="/"
                 className="text-xs text-zinc-500 hover:text-white transition-colors flex items-center gap-1"
               >
                 <ExternalLink className="w-3 h-3" /> View Site
-              </a>
+              </Link>
               <button
                 onClick={async () => {
                   await fetch("/api/auth", { method: "DELETE" });

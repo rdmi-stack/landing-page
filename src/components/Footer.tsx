@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useModal } from "./ModalProvider";
 
@@ -12,13 +13,13 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10">
           {/* Brand + contact */}
           <div className="space-y-4 max-w-sm">
-            <a href="/" className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center gap-2.5">
               <span className="text-xl font-extrabold tracking-tight">RDMI</span>
               <span className="relative px-2.5 py-0.5 text-xs font-bold tracking-wider uppercase rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
                 AI
                 <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               </span>
-            </a>
+            </Link>
             <p className="text-sm text-zinc-500 leading-relaxed">
               We build intelligent software that works 24/7 — AI agents, chatbots, smart workflows & automation. 200+ products shipped. Every deadline guaranteed.
             </p>
@@ -58,9 +59,9 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} RDMI Tech Ventures Pvt. Ltd. All rights reserved.
           </div>
           <div className="flex items-center gap-4 text-xs text-zinc-700">
-            <a href="/about" className="hover:text-zinc-400 transition-colors">About</a>
-            <a href="/contact" className="hover:text-zinc-400 transition-colors">Contact</a>
-            <a href="/get-quote" className="hover:text-zinc-400 transition-colors">Get Quote</a>
+            <Link href="/about" className="hover:text-zinc-400 transition-colors">About</Link>
+            <Link href="/contact" className="hover:text-zinc-400 transition-colors">Contact</Link>
+            <Link href="/get-quote" className="hover:text-zinc-400 transition-colors">Get Quote</Link>
           </div>
         </div>
       </div>
