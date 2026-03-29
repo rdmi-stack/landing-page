@@ -8,6 +8,7 @@ interface AIQuoteModalProps {
   isOpen: boolean;
   onClose: () => void;
   productName?: string;
+  region?: "india" | "usa" | "dubai";
 }
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -24,7 +25,33 @@ const aiUseCases = [
   "Other / Not Sure Yet",
 ];
 
-export default function AIQuoteModal({ isOpen, onClose, productName }: AIQuoteModalProps) {
+const budgetOptions = {
+  india: [
+    { value: "₹3,00,000 - ₹5,00,000", label: "₹3,00,000 – ₹5,00,000" },
+    { value: "₹5,00,000 - ₹10,00,000", label: "₹5,00,000 – ₹10,00,000" },
+    { value: "₹10,00,000 - ₹20,00,000", label: "₹10,00,000 – ₹20,00,000" },
+    { value: "₹20,00,000 - ₹50,00,000", label: "₹20,00,000 – ₹50,00,000" },
+    { value: "₹50,00,000 - ₹1,00,00,000", label: "₹50,00,000 – ₹1 Crore" },
+    { value: "₹1,00,00,000+", label: "₹1 Crore+" },
+  ],
+  usa: [
+    { value: "$5,000 - $15,000", label: "$5,000 – $15,000" },
+    { value: "$15,000 - $25,000", label: "$15,000 – $25,000" },
+    { value: "$25,000 - $50,000", label: "$25,000 – $50,000" },
+    { value: "$50,000 - $100,000", label: "$50,000 – $100,000" },
+    { value: "$100,000 - $250,000", label: "$100,000 – $250,000" },
+    { value: "$250,000+", label: "$250,000+" },
+  ],
+  dubai: [
+    { value: "AED 35,000 - AED 75,000 / $10K-$20K", label: "AED 35K – 75K ($10K – $20K)" },
+    { value: "AED 75,000 - AED 175,000 / $20K-$50K", label: "AED 75K – 175K ($20K – $50K)" },
+    { value: "AED 175,000 - AED 350,000 / $50K-$100K", label: "AED 175K – 350K ($50K – $100K)" },
+    { value: "AED 350,000 - AED 750,000 / $100K-$200K", label: "AED 350K – 750K ($100K – $200K)" },
+    { value: "AED 750,000+ / $200K+", label: "AED 750K+ ($200K+)" },
+  ],
+};
+
+export default function AIQuoteModal({ isOpen, onClose, productName, region = "india" }: AIQuoteModalProps) {
   const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
@@ -171,16 +198,9 @@ export default function AIQuoteModal({ isOpen, onClose, productName }: AIQuoteMo
                     <label className="block text-xs text-zinc-500 mb-1.5">Investment Budget</label>
                     <select disabled={status === "loading"} value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })} className={field}>
                       <option value="" className="bg-zinc-900">Select budget range</option>
-                      <option value="₹3,00,000 - ₹5,00,000" className="bg-zinc-900">₹3,00,000 – ₹5,00,000</option>
-                      <option value="₹5,00,000 - ₹10,00,000" className="bg-zinc-900">₹5,00,000 – ₹10,00,000</option>
-                      <option value="₹10,00,000 - ₹20,00,000" className="bg-zinc-900">₹10,00,000 – ₹20,00,000</option>
-                      <option value="₹20,00,000 - ₹50,00,000" className="bg-zinc-900">₹20,00,000 – ₹50,00,000</option>
-                      <option value="₹50,00,000 - ₹1,00,00,000" className="bg-zinc-900">₹50,00,000 – ₹1 Crore</option>
-                      <option value="₹1,00,00,000+" className="bg-zinc-900">₹1 Crore+</option>
-                      <option value="$10,000 - $25,000" className="bg-zinc-900">$10,000 – $25,000</option>
-                      <option value="$25,000 - $50,000" className="bg-zinc-900">$25,000 – $50,000</option>
-                      <option value="$50,000 - $100,000" className="bg-zinc-900">$50,000 – $100,000</option>
-                      <option value="$100,000+" className="bg-zinc-900">$100,000+</option>
+                      {budgetOptions[region].map((opt) => (
+                        <option key={opt.value} value={opt.value} className="bg-zinc-900">{opt.label}</option>
+                      ))}
                     </select>
                   </div>
                   <div>

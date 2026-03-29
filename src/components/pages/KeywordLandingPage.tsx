@@ -25,7 +25,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [aiModalOpen, setAiModalOpen] = useState(false);
 
-  const isAIPage = data.slug.includes("ai-agent") || data.slug === "ai-software-development";
+  const isAIPage = data.slug.includes("ai-") || data.slug.includes("-dubai") || data.slug.includes("-usa");
   const handleCTA = () => {
     if (isAIPage) {
       setAiModalOpen(true);
@@ -382,12 +382,13 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
       <Footer />
 
-      {/* AI Quote Modal — only rendered on AI pages */}
+      {/* AI Quote Modal — only rendered on AI/geo pages */}
       {isAIPage && (
         <AIQuoteModal
           isOpen={aiModalOpen}
           onClose={() => setAiModalOpen(false)}
           productName={data.primaryKeyword}
+          region={data.slug.includes("-dubai") ? "dubai" : data.slug.includes("-usa") ? "usa" : "india"}
         />
       )}
     </>
