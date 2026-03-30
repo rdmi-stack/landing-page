@@ -1,7 +1,7 @@
 # RDMI AI Master Project — Autonomous Service Delivery System
 
 ## Vision
-RDMI is not an agency. RDMI is an **AI-powered production company** that builds intelligent software systems. The goal is to automate 70-80% of service delivery using AI agents, so humans supervise and architect — not build.
+RDMI is not an agency. Not a SaaS company. RDMI is an **AI-powered production company** — a services business that uses AI to deliver at 10x the speed and 50% the cost of any traditional firm. We sell outcomes (revenue, cost savings, automation) — not software subscriptions, not hourly billing. The goal is to automate 70-80% of service delivery using AI agents, so humans supervise and architect — not build.
 
 **Target**: ₹1,000 Cr+ revenue. $3M/month run rate within 18 months.
 
@@ -184,11 +184,11 @@ Done — Human only reviews, doesn't build
 **Goal**: Scale to ₹2-3 Cr/month with same team size.
 
 ### Phase 4: Platform (Days 90-180)
-- [ ] Self-service AI agent builder for clients
-- [ ] Template marketplace (reusable project architectures)
-- [ ] White-label delivery for partner agencies
-- [ ] Recurring revenue from managed AI systems
-**Goal**: Transform from services to platform. ₹10Cr+/month.
+- [ ] White-label delivery for partner agencies (instant 3x pipeline)
+- [ ] Template library: 500+ reusable project architectures (internal, not sold)
+- [ ] Managed AI retainers: 50+ clients on recurring monthly
+- [ ] Industry-specific delivery teams (Healthcare, BFSI, Logistics, Legal)
+**Goal**: ₹10Cr+/month from pure services + managed AI retainers.
 
 ---
 
@@ -701,7 +701,7 @@ Q1 2030:       2,500 people  →  ₹1,000Cr/month →  ₹12,000Cr/year
 - 5 → 15 people (3 AI engineers, 2 full-stack, 2 ops, 3 growth)
 - Launch 3 vertical packages: Healthcare AI, FinTech AI, E-Commerce AI
 - White-label delivery for 2-3 partner agencies (instant 3x pipeline)
-- Template marketplace internal: every project starts 70% pre-built
+- Internal template library: every project starts 70% pre-built
 - AI proposal agent live: proposals in 30 min, not 2 hours
 - Revenue target: ₹2Cr → ₹5Cr/month by September
 
@@ -709,35 +709,35 @@ Q1 2030:       2,500 people  →  ₹1,000Cr/month →  ₹12,000Cr/year
 - 15 → 50 people across India + USA (remote)
 - Enterprise sales team: 3 closers for $100K+ deals
 - Managed AI retainers: 30+ clients on $2K-$10K/month recurring
-- Platform MVP: self-service AI agent builder for SMBs
-- Proprietary prompt library: 500+ instructions, fine-tuned on 200+ delivered projects
+- Proprietary prompt library: 500+ instructions, refined across 200+ delivered projects
 - Revenue target: ₹5Cr → ₹20Cr/month by March 2027
 
-### Year 2 (2027) — PLATFORM: ₹240Cr → ₹1,800Cr/year
+### Year 2 (2027) — DOMINATE VERTICALS: ₹240Cr → ₹1,800Cr/year
 
-- 50 → 400 people, but AI does 85% of delivery
-- Industry-specific AI practices: Healthcare, BFSI, Legal, Logistics, Retail, EdTech
-- RDMI AI Platform launched: clients configure + deploy AI agents themselves
-- Template marketplace public: agencies buy RDMI templates
+- 50 → 400 people, AI does 85% of delivery, humans architect + manage relationships
+- Industry-specific delivery teams: Healthcare AI, BFSI AI, Legal AI, Logistics AI, Retail AI, EdTech AI
+- Each vertical team: 3-5 AI-augmented engineers + 1 industry expert + 1 account manager
 - SOC2 Type II, HIPAA, ISO 27001 certified
 - Offices: India (3 cities), USA (NYC, SF), Dubai (DIFC)
 - Government contracts: India (IndiaAI), UAE (Dubai AI initiatives)
 - Acquire 2-3 smaller AI agencies for talent + client base
+- 200+ managed AI retainer clients ($2K-$15K/month each = ₹40Cr+/year recurring)
+- White-label delivery for 20+ partner agencies worldwide
 - Revenue: ₹240Cr → ₹1,800Cr/year
 
 ### Year 3-5 (2028-2030) — EMPIRE: ₹1,800Cr → ₹12,000Cr/year
 
-- Platform + services hybrid (like Accenture + Salesforce combined)
-- 2,500 people, 90%+ delivery by AI, humans = architects + relationship managers
-- Proprietary LLMs fine-tuned on 10,000+ delivered projects
-- AI agent marketplace: 1,000+ pre-built agents, pay-per-use
-- IPO-ready or strategic acquisition by $10B+ company
-- Presence in 15+ countries
+- 2,500 people, 90%+ delivery by AI, humans = architects + relationship managers + deal closers
+- Proprietary AI delivery system trained on 10,000+ completed projects — unmatched speed
+- Enterprise accounts: 50+ clients on $500K+/year managed AI contracts
+- Global presence: 15+ countries, partnerships with Big 4 consulting for AI execution
+- Revenue mix: 60% project delivery + 40% managed AI retainers (recurring)
+- The new Accenture — but 100x more profitable per employee because AI does the work
 - Revenue: ₹12,000Cr/year ($1.4B+)
 
 ### The Unfair Advantage
 Traditional agencies scale linearly: 2x people = 2x revenue.
-RDMI scales exponentially: AI agents + prompt library + platform = **10x revenue per person added**.
+RDMI scales exponentially: AI agents + prompt library + reusable templates = **10x revenue per person added**.
 
 Every project makes RDMI smarter:
 - New prompt patterns → faster future delivery
