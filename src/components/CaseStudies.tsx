@@ -85,6 +85,33 @@ const projects = [
     gradient: "from-cyan-600 to-blue-600",
     image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80",
   },
+  {
+    tag: "📞 Voice AI",
+    title: "RecoverLine — AI Front Desk That Books Appointments 24/7",
+    description: "AI voice agent handles inbound calls, qualifies leads, books appointments, sends SMS follow-ups — after hours, weekends, holidays. One dental chain recovered 340 missed calls/month. Revenue went up 28%.",
+    tech: ["Twilio", "OpenAI", "LangChain", "n8n", "PostgreSQL"],
+    timeline: "Delivered: 6 wks",
+    gradient: "from-violet-600 to-purple-600",
+    image: "https://images.unsplash.com/photo-1596524430615-b46475ddff6e?w=800&q=80",
+  },
+  {
+    tag: "📧 Inbox AI",
+    title: "InboxPilot — AI That Runs Your Shared Inbox Like a Team of 5",
+    description: "Multi-agent inbox automation: classifies, prioritizes, drafts replies, updates CRM, creates tickets — across sales@, support@, billing@. One MSP cut response time from 4 hours to 12 minutes. 73% of emails auto-resolved.",
+    tech: ["OpenAI", "Gmail API", "n8n", "HubSpot", "Next.js"],
+    timeline: "Delivered: 8 wks",
+    gradient: "from-blue-600 to-cyan-600",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+  },
+  {
+    tag: "⚙️ Workflow AI",
+    title: "PortalForge — Automating Legacy Portal Work Nobody Wants to Do",
+    description: "AI agent that logs into insurer portals, freight boards, supplier sites — extracts data, fills forms, processes documents. One insurance broker automated 500 BOLs/day with zero human touch. ₹45L/year saved.",
+    tech: ["Python", "Playwright", "LangChain", "CrewAI", "AWS"],
+    timeline: "Delivered: 10 wks",
+    gradient: "from-fuchsia-600 to-pink-600",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+  },
 ];
 
 export default function CaseStudies() {
