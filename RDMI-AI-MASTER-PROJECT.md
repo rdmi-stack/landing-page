@@ -672,53 +672,68 @@ Accenture took 30 years to reach $60B+ revenue with 700K+ employees. In the AI e
 - Platform + templates = near-zero marginal cost per project
 - AI compounds — every project makes the system smarter
 
-### The 5-Year Trajectory
+### The 5-Year Trajectory (Aggressive — AI Compounds Exponentially)
+
+AI capability doubles every 6 months. What takes 5 people today will take 1 person in 18 months. The window to build an AI-native services empire is 2025-2027 — after that, the moat is built or it's too late.
 
 ```
-Year 0 (Now):     5 people  →  ₹2Cr/month    →  ₹24Cr/year
-Year 1:          20 people  →  ₹10Cr/month   →  ₹120Cr/year
-Year 2:          80 people  →  ₹40Cr/month   →  ₹500Cr/year
-Year 3:         250 people  →  ₹100Cr/month  →  ₹1,200Cr/year
-Year 4:         800 people  →  ₹300Cr/month  →  ₹3,600Cr/year
-Year 5:       2,000 people  →  ₹800Cr/month  →  ₹10,000Cr/year
+Q1 2026 (Now):     5 people  →  ₹50L/month     →  ₹6Cr/year run rate
+Q3 2026:          15 people  →  ₹5Cr/month     →  ₹60Cr/year run rate
+Q1 2027:          50 people  →  ₹20Cr/month    →  ₹240Cr/year run rate
+Q3 2027:         150 people  →  ₹60Cr/month    →  ₹720Cr/year run rate
+Q1 2028:         400 people  →  ₹150Cr/month   →  ₹1,800Cr/year
+Q1 2029:       1,000 people  →  ₹400Cr/month   →  ₹5,000Cr/year
+Q1 2030:       2,500 people  →  ₹1,000Cr/month →  ₹12,000Cr/year
 ```
 
-### What Changes at Each Stage
+### Year 1 (2026) — BLITZ: ₹6Cr → ₹240Cr/year
 
-**Year 0-1: Prove the Model**
-- 5→20 people, all AI-augmented
-- Deliver 20+ projects/month
-- Build prompt library to 500+ reusable instructions
-- Establish presence in India, USA, Dubai
-- Revenue: ₹24Cr → ₹120Cr/year
+**Q1 (Now → June 2026): Prove & Close**
+- 5 people, 100% AI-augmented
+- Ship 15-20 projects/month via Claude Code + AI agents
+- Build prompt library to 200+ battle-tested instructions
+- Close first $50K+ USA deal and first AED 100K+ Dubai deal
+- Google Ads live on all 8 landing pages, ₹5K/day budget
+- AI email outreach: 150 personalized emails/week
+- Revenue target: ₹50L → ₹2Cr/month by June
 
-**Year 1-2: Productize & Scale**
-- 20→80 people across 3 offices (India, USA, Dubai)
-- Launch self-service AI agent builder (platform)
-- White-label delivery for partner agencies
-- Template marketplace (reusable project architectures)
-- Revenue: ₹120Cr → ₹500Cr/year
+**Q2 (July → Sept 2026): Scale Revenue**
+- 5 → 15 people (3 AI engineers, 2 full-stack, 2 ops, 3 growth)
+- Launch 3 vertical packages: Healthcare AI, FinTech AI, E-Commerce AI
+- White-label delivery for 2-3 partner agencies (instant 3x pipeline)
+- Template marketplace internal: every project starts 70% pre-built
+- AI proposal agent live: proposals in 30 min, not 2 hours
+- Revenue target: ₹2Cr → ₹5Cr/month by September
 
-**Year 2-3: Enterprise & Vertical**
-- 80→250 people, industry-specific teams
-- Dedicated practices: Healthcare AI, FinTech AI, Logistics AI, Legal AI
-- Enterprise sales team for $500K+ deals
-- SOC2 Type II, HIPAA, ISO 27001 certifications
-- Revenue: ₹500Cr → ₹1,200Cr/year
+**Q3-Q4 (Oct 2026 → Mar 2027): Dominate**
+- 15 → 50 people across India + USA (remote)
+- Enterprise sales team: 3 closers for $100K+ deals
+- Managed AI retainers: 30+ clients on $2K-$10K/month recurring
+- Platform MVP: self-service AI agent builder for SMBs
+- Proprietary prompt library: 500+ instructions, fine-tuned on 200+ delivered projects
+- Revenue target: ₹5Cr → ₹20Cr/month by March 2027
 
-**Year 3-4: Global Expansion**
-- 250→800 people, 10+ countries
-- Acquire smaller AI agencies for talent + clients
-- Government contracts (India, UAE, UK)
-- AI agent marketplace (clients buy pre-built agents)
-- Revenue: ₹1,200Cr → ₹3,600Cr/year
+### Year 2 (2027) — PLATFORM: ₹240Cr → ₹1,800Cr/year
 
-**Year 4-5: Platform Dominance**
-- 800→2,000 people, but AI handles 90%+ of delivery
-- RDMI AI becomes a platform company (like Accenture + Salesforce combined)
-- IPO or strategic funding round
-- Own proprietary AI models fine-tuned on 10,000+ delivered projects
-- Revenue: ₹3,600Cr → ₹10,000Cr/year
+- 50 → 400 people, but AI does 85% of delivery
+- Industry-specific AI practices: Healthcare, BFSI, Legal, Logistics, Retail, EdTech
+- RDMI AI Platform launched: clients configure + deploy AI agents themselves
+- Template marketplace public: agencies buy RDMI templates
+- SOC2 Type II, HIPAA, ISO 27001 certified
+- Offices: India (3 cities), USA (NYC, SF), Dubai (DIFC)
+- Government contracts: India (IndiaAI), UAE (Dubai AI initiatives)
+- Acquire 2-3 smaller AI agencies for talent + client base
+- Revenue: ₹240Cr → ₹1,800Cr/year
+
+### Year 3-5 (2028-2030) — EMPIRE: ₹1,800Cr → ₹12,000Cr/year
+
+- Platform + services hybrid (like Accenture + Salesforce combined)
+- 2,500 people, 90%+ delivery by AI, humans = architects + relationship managers
+- Proprietary LLMs fine-tuned on 10,000+ delivered projects
+- AI agent marketplace: 1,000+ pre-built agents, pay-per-use
+- IPO-ready or strategic acquisition by $10B+ company
+- Presence in 15+ countries
+- Revenue: ₹12,000Cr/year ($1.4B+)
 
 ### The Unfair Advantage
 Traditional agencies scale linearly: 2x people = 2x revenue.
