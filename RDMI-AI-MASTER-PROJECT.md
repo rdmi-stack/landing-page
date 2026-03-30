@@ -746,3 +746,415 @@ Every project makes RDMI smarter:
 - More data → better AI agents
 
 **This is the compounding moat that Accenture/Cognizant cannot replicate** — they have 700K people writing code manually. RDMI has AI agents that learn from every project.
+
+---
+
+## SOPs (Standard Operating Procedures)
+
+Every process at RDMI is documented as an SOP. SOPs are written by AI (Claude), reviewed by humans, and stored in this repo. When a new team member joins, they follow SOPs — not tribal knowledge.
+
+### SOP 1: New Lead → Closed Deal
+```
+1. Lead arrives (form, WhatsApp, email, ad click)
+2. AI auto-scores lead (1-10) based on budget, industry, message quality
+3. Hot (8-10): WhatsApp alert + developer assigned within 30 min
+4. Warm (5-7): AI sends personalized follow-up email within 2 hours
+5. Cold (1-4): Added to nurture sequence (7-day email drip)
+6. Developer/AI engineer calls lead (within 2 hours for Hot)
+7. Strategy Agent generates project plan + cost estimate
+8. Proposal Agent creates branded proposal (30 min)
+9. Human reviews proposal, sends to client
+10. Client reviews prototype (free, 48 hours)
+11. Client approves → NDA signed → Sprint 1 starts
+12. Client declines → tagged in CRM → retarget in 30 days
+```
+
+### SOP 2: Project Delivery (Sprint Cycle)
+```
+1. Dev Architect Agent creates sprint plan from approved SOW
+2. Tasks created in Linear/GitHub Issues
+3. Engineer prompts Claude Code for each task (no manual coding)
+4. PR created → human code review → merge
+5. QA Agent runs automated tests (every PR)
+6. Sprint demo to client (every 2 weeks)
+7. Client feedback → next sprint backlog
+8. Repeat until launch
+9. Delivery Agent: deploy, docs, handover, Loom walkthrough
+10. 30-60 day post-launch support begins
+```
+
+### SOP 3: Content & Marketing
+```
+1. Every Monday: AI generates 3 blog post drafts (targeting long-tail keywords)
+2. Human reviews + publishes 1-2 per week
+3. Every Monday: AI drafts 5 LinkedIn posts from blog content
+4. Every Wednesday: AI generates 50 personalized outreach emails
+5. Human reviews → approves → Mailgun sends
+6. Every Friday: Review Google Ads performance → pause losers → scale winners
+7. Monthly: New landing page for trending keyword group
+```
+
+### SOP 4: Client Communication
+```
+1. Dedicated Slack/WhatsApp channel per client (created on Day 1)
+2. Daily async update (Loom or text — what was done, what's next, any blockers)
+3. Weekly 30-min video standup (same time every week)
+4. Sprint demo at end of each 2-week sprint
+5. Client can message anytime — response within 2 hours during business hours
+6. Escalation: if client is unhappy → founder gets notified within 1 hour
+```
+
+---
+
+## Ad Copy & Landing Page Playbook
+
+### How to Create a New Landing Page (for any keyword group)
+```
+1. Open CSV from Google Keyword Planner
+2. Claude Code: "Read this CSV, find top 10 high-intent keywords with CPC > ₹100
+   and volume > 500. Group them by theme. Suggest a slug, H1, and meta description."
+3. Claude Code: "Add a new keyword group to src/data/keyword-groups.ts with these
+   keywords. Use the same structure as existing groups. Make copy ROI-focused with
+   specific numbers. Include images, process steps, 8 FAQs, and 6 services."
+4. Build and test: `npm run dev` → preview → `npm run build`
+5. Push to main → auto-deploys to Netlify
+6. Add keywords to Google Ads campaign (phrase + exact match)
+7. Point ad group to new landing page URL
+```
+
+### Ad Copy Formula (10/10 Quality Score)
+```
+Headline 1 (30 chars): [Primary keyword] + India/USA/Dubai
+Headline 2 (30 chars): Save 50% / Talk to Devs / AI-First
+Headline 3 (30 chars): Free Quote in 2 Hours
+Description 1 (90 chars): [Result] + [Differentiator] + [CTA]
+Description 2 (90 chars): [Social proof] + [Guarantee] + [Budget range]
+
+Rule: Ad headline MUST appear in landing page H1.
+Rule: Landing page URL MUST contain primary keyword.
+Rule: Every ad group → 1 dedicated landing page. Never share.
+```
+
+### Keyword CSV Analysis Prompt
+```
+Read the attached CSV from Google Keyword Planner. For each keyword:
+1. Filter: CPC > ₹100, Volume > 500
+2. Group by commercial intent theme
+3. Rank groups by (volume × CPC) = revenue potential
+4. For top 5 groups, suggest: slug, H1, target keywords, match type
+5. Flag any keywords that overlap with existing groups in CLAUDE.md
+6. Identify long-tail keywords (4+ words) with low competition
+```
+
+---
+
+## HR & People Operations
+
+### Job Description Templates (AI-Generated)
+
+#### AI Engineer JD
+```
+Role: AI Engineer (Prompt-First Development)
+Company: RDMI Tech Ventures Pvt. Ltd.
+Location: Remote (India) / Hybrid (Delhi NCR)
+
+What You'll Do:
+- Build production AI agents, RAG systems, and workflow automation
+- Use Claude Code — you prompt, AI writes code, you review
+- Ship 3-5 AI projects/month using LangChain, CrewAI, OpenAI APIs
+- Work directly with clients (no PM layer between you and the customer)
+
+Requirements:
+- 3+ years Python/Node.js + AI/ML experience
+- Hands-on with LangChain, OpenAI API, or similar
+- Comfortable with prompt-first development (Claude Code, Cursor, Copilot)
+- Can ship production code, not just notebooks
+- Strong English communication (you'll talk to US/UAE clients directly)
+
+We Offer:
+- Work on cutting-edge AI (not CRUD apps)
+- Remote-first, async-friendly
+- Performance-based pay (top performers earn 2-3x market)
+- Direct access to founder — no corporate hierarchy
+- Every tool you need: Claude Code, GPT-5, all premium AI subscriptions
+```
+
+#### Full-Stack Engineer JD
+```
+Role: Full-Stack Engineer (AI-Augmented)
+What You'll Do:
+- Ship web apps, mobile apps, SaaS platforms using Claude Code
+- You prompt, review, and ship — not write boilerplate manually
+- Tech: Next.js, React, Node.js, Flutter, MongoDB Atlas, Vercel, Railway
+- 3-5 projects/month alongside AI tools
+
+Requirements:
+- 3+ years React/Next.js + Node.js
+- Comfortable letting AI write code while you architect and review
+- Can deploy to Vercel, Railway, and manage CI/CD
+- Strong communication — you'll demo directly to clients
+```
+
+### Employee Onboarding SOP
+```
+Day 1:
+- NDA + employment agreement signed
+- Access: GitHub (private repos only), Slack, Linear, Claude Code license
+- Read: RDMI-AI-MASTER-PROJECT.md (this file)
+- Read: CLAUDE.md (project conventions)
+- Setup: Claude Code VS Code extension, Vercel CLI, Railway CLI, Netlify CLI
+
+Day 2-3:
+- Shadow a senior engineer on a live project
+- Complete 3 practice prompts from the Prompt Library
+- Ship a small feature using Claude Code (reviewed by senior)
+
+Day 4-5:
+- Assigned to first real client project (junior tasks, reviewed by senior)
+- First client interaction (observe, then participate)
+- Feedback session with founder
+
+Week 2:
+- Independent sprint tasks (still reviewed)
+- First solo client demo (with senior backup)
+```
+
+### HR Email Templates
+
+#### Offer Letter Email
+```
+Subject: Welcome to RDMI AI — Offer Letter Enclosed
+
+Hi [Name],
+
+Congratulations! We're excited to offer you the role of [Role] at RDMI Tech Ventures Pvt. Ltd.
+
+Key details:
+- Role: [Role]
+- CTC: ₹[X] LPA (performance bonuses additional)
+- Start date: [Date]
+- Location: Remote / [Office]
+- Reporting to: [Name]
+
+Please find your offer letter attached. Sign and return by [Date].
+
+What makes RDMI different:
+- You'll use AI (Claude Code) to write code — we value thinking over typing
+- You'll talk to clients directly — no PM layer
+- Performance-based culture — top performers earn 2-3x
+- Every AI tool subscription provided (Claude, GPT-5, Copilot, etc.)
+
+Looking forward to building the future with you.
+
+— RDMI Tech Ventures Pvt. Ltd.
+info@rdmi.in | +91 98185 65561
+```
+
+#### Rejection Email
+```
+Subject: Update on your application — RDMI AI
+
+Hi [Name],
+
+Thank you for your interest in RDMI and the time you invested in our process.
+
+After careful consideration, we've decided to move forward with another candidate whose experience more closely matches our current needs.
+
+This doesn't reflect on your abilities — our bar is exceptionally high because we hire senior-only and expect AI-augmented output from day one.
+
+We'd love to stay connected. If a better-fit role opens, we'll reach out.
+
+Best,
+RDMI Tech Ventures Pvt. Ltd.
+```
+
+#### Performance Warning Email
+```
+Subject: Performance Discussion — Action Required
+
+Hi [Name],
+
+This is a formal note following our conversation on [Date] about performance expectations.
+
+Areas requiring improvement:
+- [Specific metric/behavior 1]
+- [Specific metric/behavior 2]
+
+Expected improvement:
+- [Specific target] by [Date]
+
+Support provided:
+- [Training/mentorship/tools offered]
+
+Next review: [Date]. If targets are not met, we will discuss next steps including potential separation.
+
+Please acknowledge receipt of this email.
+
+— [Manager Name], RDMI Tech Ventures Pvt. Ltd.
+```
+
+---
+
+## Employee Handbook (Core Policies)
+
+### 1. Code of Conduct
+- Client NDA is sacred — breach = immediate termination + legal action
+- All code lives in RDMI GitHub repos — never personal accounts
+- No client data on personal devices or personal cloud storage
+- All communication via official channels (Slack, email) — never personal WhatsApp for client work
+
+### 2. IP & Non-Compete Protection
+- All work product belongs to RDMI Tech Ventures Pvt. Ltd.
+- Employees sign IP assignment + non-compete (12 months, same industry)
+- No freelancing for competing services during employment
+- No soliciting RDMI clients for 24 months after departure
+- Source code access revoked within 1 hour of separation
+
+### 3. Preventing Employee Theft / Copying
+> This is critical. The #1 risk in a services company is employees stealing clients, code, or processes.
+
+**Technical Controls:**
+- GitHub repos: branch protection, no force push, audit logs enabled
+- All commits tied to RDMI GitHub accounts (not personal)
+- No local code storage — everything in cloud repos
+- Vercel/Railway/Netlify credentials: team accounts, not personal
+- MongoDB Atlas: IP whitelisting, role-based access, audit logs
+- Claude Code: company license, usage tracked
+- All client credentials in 1Password team vault — never shared directly
+
+**Process Controls:**
+- No single person has full access to any client's entire system
+- Separation of duties: dev builds, ops deploys, founder holds keys
+- Client relationships owned by RDMI (founder on every client Slack/WhatsApp)
+- Proposals, SOWs, invoices sent from RDMI email (info@rdmi.in) — never personal
+- All client calls recorded (with consent) for quality and protection
+- Exit interview + access revocation checklist (mandatory, same day)
+
+**Legal Controls:**
+- Employment agreement with IP assignment clause
+- Non-compete: 12 months, same industry, same geography
+- Non-solicitation: 24 months for RDMI clients
+- Confidentiality: perpetual, survives termination
+- Penalty clause for breach: ₹10L-50L depending on severity
+
+**Cultural Controls (Who Not How):**
+- Pay top-of-market (people don't steal when they're well compensated)
+- Give ownership and growth (people don't leave when they see upside)
+- Transparent revenue sharing for senior roles
+- Build loyalty through mission, not control
+- "If you want to start your own thing, tell us — we might fund you instead"
+
+### 4. Work Hours & Leave
+- Core hours: 10am-2pm IST (for overlap with Dubai/USA clients)
+- Flexible otherwise — output measured, not hours
+- Unlimited PTO (with 2 weeks minimum per year)
+- No meetings before 10am or after 7pm IST unless client-critical
+
+### 5. Performance Review
+- Monthly 1:1 with direct manager
+- Quarterly performance review (metrics-based)
+- Metrics: projects shipped, client satisfaction, code quality, revenue generated
+- Top performers: bonus + promotion + equity discussion
+- Underperformers: 30-day improvement plan → separation if no improvement
+
+### 6. Tools Provided (Company Paid)
+- Claude Code (VS Code Extension) — unlimited
+- Claude Pro / ChatGPT Plus / Gemini Advanced
+- GitHub Copilot
+- Cursor Pro
+- Vercel Pro, Railway, Netlify
+- MongoDB Atlas
+- Slack, Linear, Notion
+- Figma
+- Loom Business
+- 1Password Teams
+- Any other tool needed — just ask
+
+---
+
+## Book Principles → RDMI Implementation
+
+### Who Not How (Dan Sullivan & Benjamin Hardy)
+| Principle | RDMI Implementation |
+|-----------|-------------------|
+| Ask "Who can do this?" not "How do I do this?" | Every task → which AI agent handles it? |
+| Free your time from $10/hour tasks | Founder only does >₹10,000/hour work (deals, architecture, vision) |
+| Invest in people, not in doing | Hire 5 senior A-players, give them AI tools, let them 10x |
+| Results, not effort | Pay for output (projects shipped) not input (hours worked) |
+
+### Buy Back Your Time (Dan Martell)
+| Principle | RDMI Implementation |
+|-----------|-------------------|
+| Calculate your buyback rate | Founder: ₹10,000/hr. Anything below → AI agent or delegate |
+| Replacement Ladder: VA → Specialist → Manager | AI Agent → Senior Engineer → Ops Lead → Founder only for deals |
+| Energy audit: delete, delegate, design | Delete: manual proposals, repetitive emails. Delegate to AI: code, testing, docs. Design: systems, client relationships |
+| Don't hire to fill seats, hire to free yourself | Each hire must free 20+ hours/week of founder time |
+
+### 10x Is Easier Than 2x (Dan Sullivan & Benjamin Hardy)
+| Principle | RDMI Implementation |
+|-----------|-------------------|
+| 10x forces "Who" thinking, 2x keeps you in "How" | ₹1000Cr target is impossible with manual work → forces AI agents |
+| Drop the 80% that doesn't serve 10x | Stop: small projects <₹1L, hourly billing, manual proposals |
+| 10x requires entirely new capabilities | Build: AI delivery system, prompt library, automated outreach |
+| Quality > Quantity at 10x | 20 high-ticket projects/month > 100 small freelance gigs |
+
+### Zero to One (Peter Thiel)
+| Principle | RDMI Implementation |
+|-----------|-------------------|
+| Create monopoly, don't compete | Monopoly: AI-native services company (nobody else has this delivery speed) |
+| Start small, dominate, then expand | Start: AI agents for healthcare + BFSI → expand to all industries |
+| Proprietary technology = moat | Moat: 500+ prompt library + reusable templates + delivery system trained on 200+ projects |
+| Definite optimism | RDMI will be ₹10,000Cr company — plan backward from that |
+
+### The Almanack of Naval Ravikant
+| Principle | RDMI Implementation |
+|-----------|-------------------|
+| Wealth = leverage (code, capital, media, labor) | Code: Claude Code writes all software. Capital: Google Ads. Media: Landing pages + content. Labor: 5 AI-augmented people |
+| Specific knowledge + accountability + leverage | Specific knowledge: AI delivery at speed. Accountability: founder's name on every deal. Leverage: AI agents |
+| Build something that works while you sleep | AI chatbots, landing pages, email sequences — all work 24/7 |
+| Earn with your mind, not your time | Founder designs systems, doesn't write code or manage tasks |
+
+### Essentialism (Greg McKeown)
+| Principle | RDMI Implementation |
+|-----------|-------------------|
+| Less but better | 5 people doing 10x work > 50 people doing 1x work |
+| Say NO to everything that isn't essential | NO: small projects, hourly billing, scope creep, clients who don't value AI |
+| Trade-offs are real — choose deliberately | Trade-off: fewer clients, higher ticket, better delivery, more profit |
+| Routine enables creativity | SOPs for everything repetitive → frees brainpower for strategy |
+
+### Traction (Gino Wickman — EOS)
+| Principle | RDMI Implementation |
+|-----------|-------------------|
+| Vision, People, Data, Issues, Process, Traction | Vision: ₹10,000Cr AI services company. People: 5 A-players. Data: revenue, projects, satisfaction. Process: SOPs above. Traction: weekly scorecard |
+| Rocks (90-day priorities) | Q1 Rock: Ship 15 projects, close first $50K deal, launch AI email outreach |
+| Weekly L10 meeting | Every Monday: founder + 5 team → 90 min. Scorecard, rocks, issues, to-dos |
+| Right people, right seats | AI Engineer builds agents. Full-Stack ships apps. Ops delivers. Growth acquires. Founder architects + closes |
+
+---
+
+## Weekly Execution Rhythm
+
+### Monday: Plan & Align
+- 10am IST: L10 meeting (founder + team, 90 min)
+- Review: last week's scorecard (projects shipped, revenue, leads, satisfaction)
+- Set: this week's priorities (rocks, blockers, decisions)
+- AI generates: 3 blog drafts, 50 outreach emails, Google Ads report
+
+### Tuesday-Thursday: Build & Ship
+- Engineers: prompt Claude Code, review PRs, ship features
+- Ops: client demos, QA, deployments, documentation
+- Growth: approve + send outreach, manage ads, publish content
+- Founder: close deals, architect new systems, client relationships
+
+### Friday: Review & Improve
+- Sprint demos to clients
+- Review: what worked, what didn't, what to automate next
+- Update: prompt library, SOPs, templates with learnings from the week
+- Plan: next week's sprint priorities
+
+### Saturday-Sunday: AI Works, Humans Rest
+- Landing pages capture leads 24/7
+- AI chatbots handle inquiries
+- Email sequences nurture leads
+- Google Ads run continuously
+- The system works while the team recharges
