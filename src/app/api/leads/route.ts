@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
   const limit = parseInt(searchParams.get("limit") || "100", 10);
   const offset = parseInt(searchParams.get("offset") || "0", 10);
 
-  let leads = getLeads();
+  let leads = await getLeads();
 
   if (source) {
     leads = leads.filter((l) => l.source === source);

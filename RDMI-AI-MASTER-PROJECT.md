@@ -313,50 +313,265 @@ All outbound requires human approval before sending. AI drafts, human approves.
 
 ---
 
-## Tech Stack
+## Tech Stack (Production)
 
-### AI & LLM
-- OpenAI GPT-4o/5.4, Claude, Gemini, Llama 3, Mistral
-- LangChain, LlamaIndex, CrewAI, AutoGen
-- Pinecone, pgvector, Weaviate (vector DBs)
+### Primary Development Tool
+- **Claude Code (VS Code Extension)** — THE development tool. No developer writes code manually. Every line is prompted and instructed through Claude Code.
 
 ### Development
-- Next.js, React, Node.js, Python, Go
-- Flutter, React Native (mobile)
-- PostgreSQL, MongoDB, Redis
-- AWS, GCP, Azure, Vercel
+- **Next.js** — all web apps, SaaS, landing pages, dashboards
+- **Tailwind CSS** — all styling, no custom CSS unless required
+- **React Native / Flutter** — mobile apps
+- **Node.js / Python** — backend APIs, AI pipelines
+- **TypeScript** — strict mode everywhere
+
+### Database
+- **MongoDB Atlas** — primary database for all projects
+- **Pinecone / pgvector** — vector storage for RAG systems
+
+### Authentication
+- **NextAuth.js** — all auth (Google, GitHub, email, credentials)
+
+### Deployment & Hosting
+- **Vercel** — primary hosting for Next.js apps (auto-deploy from GitHub)
+- **Netlify CLI** — secondary hosting, current landing page (`netlify deploy --prod`)
+- **Railway** (`railway up`) — backend services, Python APIs, n8n, databases
+- **GitHub Actions** — CI/CD pipelines
+
+### AI & LLM
+- OpenAI GPT-4o/5.4, Claude (Anthropic), Gemini (Google), Llama 3, Mistral
+- LangChain, LlamaIndex, CrewAI, AutoGen
+- Vercel AI SDK — streaming AI responses in Next.js
 
 ### Automation
-- n8n (self-hosted, primary)
-- Make (client-facing)
+- n8n (self-hosted on Railway) — primary workflow engine
+- Make — client-facing automation
 - Custom API orchestration
 
 ### Communication
-- Mailgun (email)
+- Mailgun (email — domain: hello.rdmi.in)
 - WhatsApp Business API
-- Twilio (voice)
+- Twilio (voice AI agents)
 - Slack/Teams integration
 
 ### Monitoring
-- GA4, Google Ads conversion tracking
+- GA4 (G-MNG2DGKSZV), Google Ads conversion tracking
 - Custom KPI dashboards
 - Agent performance monitoring
+
+---
+
+## Prompt-First Development (Zero Manual Code)
+
+### The Rule
+> **No developer writes a single line of code. Every line is prompted and instructed through Claude Code.**
+
+### How It Works
+1. **Architect prompts** → Claude Code generates code
+2. **Review output** → approve or refine with follow-up prompts
+3. **Test** → Claude Code runs tests, fixes issues
+4. **Ship** → Claude Code commits, pushes, deploys
+
+### Prompt Library (Reusable Instructions)
+
+#### Project Setup
+```
+Create a Next.js 16 app with TypeScript strict mode, Tailwind CSS, NextAuth.js
+(Google + credentials), MongoDB Atlas connection via Mongoose, and deploy to
+Vercel. Use src/ directory, app router, path alias @/*. Add .env.local template.
+```
+
+#### SaaS MVP
+```
+Build a multi-tenant SaaS with: NextAuth (Google + email), MongoDB Atlas,
+Stripe subscription billing (3 tiers), admin dashboard, user dashboard,
+role-based access (admin/user/viewer), API rate limiting, and Vercel deployment.
+Include seed data script.
+```
+
+#### AI Chatbot
+```
+Build a RAG chatbot using LangChain + OpenAI + Pinecone. Features: document
+upload (PDF/DOCX), chunk + embed on upload, conversational retrieval with
+source citations, chat history in MongoDB, streaming responses via Vercel AI
+SDK, and a clean chat UI with Tailwind. Deploy frontend to Vercel, backend
+to Railway.
+```
+
+#### AI Agent Workflow
+```
+Build an autonomous AI agent using LangChain + CrewAI that: reads incoming
+emails via Gmail API, classifies intent, extracts key data, drafts responses,
+updates MongoDB CRM collection, and sends approved responses via Mailgun.
+Include human-in-the-loop approval queue UI in Next.js. Deploy to Railway.
+```
+
+#### E-Commerce
+```
+Build a Shopify-like e-commerce platform with: Next.js storefront, MongoDB
+Atlas (products, orders, users), Razorpay + Stripe payments, admin panel
+with inventory management, product search with Algolia, and mobile-responsive
+Tailwind UI. Deploy to Vercel.
+```
+
+#### Mobile App
+```
+Build a cross-platform mobile app with Flutter. Features: Firebase Auth,
+MongoDB Atlas backend via REST API (Node.js on Railway), push notifications,
+in-app payments (Razorpay), offline mode, and responsive UI. Include both
+iOS and Android build configs.
+```
+
+#### Landing Page (Like This Project)
+```
+Build a high-converting landing page with Next.js 16, Tailwind CSS, dark theme.
+Sections: Hero with background image, Stats, Services grid, AI Capabilities,
+Process steps, USP with images, Portfolio gallery, FAQ accordion, CTA with
+background image, Footer. Include QuoteModal with Mailgun email, GA4 tracking,
+floating WhatsApp widget, exit-intent popup. SEO optimized with keyword-rich
+H1/H2/meta. Deploy to Netlify via GitHub Actions.
+```
+
+#### Workflow Automation
+```
+Build an n8n workflow that: triggers on new form submission (webhook),
+scores lead (1-10 via OpenAI), routes hot leads to WhatsApp alert +
+calendar booking, sends personalized email sequence via Mailgun (day 1,
+3, 6, 9), updates MongoDB lead collection, and posts to Slack channel.
+Deploy n8n to Railway.
+```
+
+### Prompt Best Practices
+- **Be specific**: Include tech stack, features, deployment target
+- **Reference existing patterns**: "Use the same card pattern as ProductShowcase.tsx"
+- **Include constraints**: "No framer-motion, use CSS animations only"
+- **Specify output**: "TypeScript strict, ESLint clean, production build passes"
+- **Include data**: Paste actual content, keywords, pricing into prompts
+- **Iterate**: Start with scaffold → add features → refine → ship
+
+---
+
+## Client Acquisition Engine
+
+### Channel 1: Google Search Ads (Primary)
+**Goal**: Capture existing high-intent demand
+
+**Structure** (from CLAUDE.md):
+- Campaign 1: Custom Software Development (₹1,500-3,000/day)
+- Campaign 2: App Development (₹1,000-2,000/day)
+- Campaign 3: SaaS & MVP (₹800-1,500/day)
+- Campaign 4: AI & ML (₹800-1,500/day)
+- Campaign 5: Enterprise & E-Commerce (₹800-1,500/day)
+- Campaign 6: Retargeting (₹500-1,000/day)
+
+**Keyword-to-Landing-Page Match** (10/10 Quality Score):
+- Each ad group → dedicated `/kw/<slug>` landing page
+- Ad headline matches landing page H1 exactly
+- 8 live landing pages targeting 471 keywords
+- Geo-specific pages: USA, Dubai, India
+
+**Conversion Flow**:
+Ad click → Landing page → CTA click → Quote modal → Form submit → /thank-you (GA4 conversion fires) → Welcome email → Developer calls in 2 hours
+
+### Channel 2: AI-Powered Email Outreach (Revenue Engine)
+**Goal**: Create demand where it doesn't exist yet
+
+**How It Works**:
+1. **Signal Detection** (automated): Monitor LinkedIn for AI hiring, funding announcements, product launches
+2. **AI Drafts Email** (Claude API): Personalized cold email mentioning specific company signal + one workflow improvement
+3. **Human Approves** (mandatory): No auto-sending. Ever.
+4. **Send via Mailgun**: Tracked, personalized, branded
+5. **Follow-Up Sequence**: Day 1 → Day 3 (value-add) → Day 6 (use case) → Day 9 (case study) → Day 12 (close loop)
+
+**Email Template (AI-Generated, Human-Approved)**:
+```
+Subject: Idea to automate [specific workflow] at [Company]
+
+Hi [Name] — noticed [signal: hiring AI engineer / expanding ops / launching product].
+
+We help teams turn AI ideas into shipped systems: AI agents, workflow automation,
+and custom internal tools.
+
+One use case I'd explore for [Company]: [specific workflow] — e.g. reduce manual
+[support/onboarding/reporting] work by connecting [tool 1] + [tool 2] + an AI layer.
+
+If useful, I can send a 5-bullet teardown with scope, risks, and a rough
+implementation path. No pitch deck unless you want one.
+
+— Ranjit, RDMI AI
+```
+
+**Volume**: 50 personalized emails/market/week = 150 total. Quality > quantity.
+
+### Channel 3: Content & SEO (Long-Term)
+- Weekly blog posts (AI-generated, human-edited) targeting long-tail keywords
+- Case study pages per industry (NDA-compliant)
+- Free tools on website (SEO score calculator, ROI calculator, ads grader)
+- SEO Course (/seo-course) as lead magnet
+
+---
+
+## Sales Model: Sell ROI, Not Hours
+
+### What We Sell
+> "We don't sell development hours. We sell revenue and cost savings — guaranteed."
+
+### The RDMI Guarantee Stack
+1. **Preview Before Payment**: Free clickable prototype in 48 hours. Don't love it? Walk away. ₹0.
+2. **Fixed-Price Contracts**: The quote IS the final bill. No hourly billing. No scope creep charges.
+3. **Money-Back Deadline Guarantee**: Miss the agreed deadline? Client gets refund. No fine print.
+4. **Contracted AI Benchmarks**: Deflection ≥70%, accuracy ≥90% — whatever matters. Not met? We iterate free.
+5. **100% Code Ownership**: NDA from day one. Full IP transfer. Zero lock-in. Client takes everything.
+
+### ROI-First Proposal Structure
+Every proposal includes:
+1. **Current Cost** — what the client spends today (manual labor, SaaS subscriptions, lost revenue)
+2. **RDMI Solution Cost** — fixed-price build
+3. **Projected Savings/Revenue** — what the AI system generates in Year 1
+4. **ROI Timeline** — when the investment pays back (typically 60-90 days for AI agents)
+5. **Guarantee** — what happens if we underperform
+
+Example:
+```
+Current: 3 support staff at ₹4L/year each = ₹12L/year
+RDMI AI Chatbot: ₹5L one-time build
+Year 1 savings: ₹8L-10L (chatbot handles 80% of tickets)
+ROI payback: 7 months
+Guarantee: ≥70% deflection or we iterate free
+```
+
+### Show Before Commit Model
+```
+Day 0: Client submits inquiry
+Day 0: Senior developer/AI engineer calls (within 2 hours)
+Day 1-2: Free clickable prototype delivered
+Day 2: Client reviews prototype
+    → Love it? Sign contract, we start. ₹0 paid so far.
+    → Don't love it? Walk away. Zero cost. Zero obligation.
+Day 3+: Sprint development begins (2-week cycles with demos)
+```
 
 ---
 
 ## The Founder's Role (Critical)
 
 You are NOT:
-- A developer
-- An operator
-- A project manager
+- A developer (Claude Code writes the code)
+- An operator (AI agents run operations)
+- A project manager (systems manage projects)
 
 You ARE:
-- **System Architect** — design the AI agent system
-- **Deal Closer** — close high-ticket clients
-- **Vision Setter** — ₹1000 Cr direction
+- **System Architect** — design prompts, instructions, and AI agent workflows
+- **Deal Closer** — close high-ticket clients on ROI-based proposals
+- **Vision Setter** — ₹1000 Cr direction, market positioning, partnerships
 
 **Buy Back Your Time**: If a task is below ₹10,000/hour value → AI agent does it or it doesn't get done.
+
+**The Leverage Stack**:
+- Claude Code writes all code (leverage: code)
+- AI agents run operations (leverage: automation)
+- Landing pages capture leads 24/7 (leverage: media)
+- Google Ads + outreach generate pipeline (leverage: capital)
 
 ---
 
@@ -374,14 +589,145 @@ You ARE:
 
 ---
 
+## Team Structure: 5 Humans + Unlimited AI
+
+### The 5-Person AI-Augmented Team
+Each human operates with 5-10x leverage via AI tools. A 5-person RDMI team outperforms a 50-person traditional agency.
+
+| Role | Person | AI Multiplier | Effective Output |
+|------|--------|--------------|-----------------|
+| **System Architect / CEO** | Founder | Claude Code + AI Agents | Designs systems, closes deals, sets vision |
+| **AI Engineer** | Senior Dev | Claude Code + LangChain + CrewAI | Builds AI agents, RAG systems, workflows — via prompts |
+| **Full-Stack Engineer** | Senior Dev | Claude Code + Vercel + Railway | Ships web/mobile/SaaS apps — via prompts, no manual code |
+| **Ops & Delivery Lead** | Ops | n8n + AI agents + dashboards | Manages client delivery, QA, deployment, handover |
+| **Growth & Outreach** | Marketing | Claude API + Google Ads + Mailgun | Runs ads, drafts outreach (AI), manages pipeline |
+
+### How 5 People Beat 50
+- Traditional agency: 50 people → 10 projects/month → ₹50L/month
+- RDMI (5 people + AI): 5 people → 20+ projects/month → ₹2-3Cr/month
+
+**The math**: Each person does 10x work because:
+1. Claude Code writes all code (saves 300+ hours/month per dev)
+2. AI agents handle proposals, follow-ups, testing, docs (saves 200+ hours/month)
+3. n8n automates client communication, lead routing, reporting (saves 100+ hours/month)
+4. Prompt library = reusable patterns (every new project starts 60% done)
+
+### Scaling Model (Forward-Thinking)
+```
+Phase 1 (Now): 5 humans + AI → 20 projects/month → ₹2Cr/month
+Phase 2 (6 months): 10 humans + AI → 50 projects/month → ₹5Cr/month
+Phase 3 (12 months): 20 humans + AI → 100+ projects/month → ₹10Cr+/month
+Phase 4 (24 months): 50 humans + AI → Platform + services → ₹50Cr+/month
+```
+
+Each new hire is an **AI-augmented operator**, not a traditional developer:
+- Every engineer uses Claude Code (zero manual coding)
+- Every ops person uses AI agents (zero manual reporting)
+- Every marketer uses AI outreach (zero generic cold emails)
+
+### Hiring Criteria
+- Must be comfortable with prompt-first development
+- Must think in systems, not tasks
+- Must deliver 10x output vs traditional role
+- Senior only — no juniors, no training overhead
+- Remote-first, async-friendly, outcome-measured
+
+### Competitive Advantage: Why RDMI Outranks Traditional Agencies
+| Traditional Agency | RDMI AI |
+|---|---|
+| 50 developers write code manually | 5 people prompt Claude Code |
+| 2-week sprints, 3-month delivery | 1-week sprints, 4-8 week delivery |
+| Generic proposals in 3-5 days | AI-generated proposals in 2 hours |
+| ₹8K-15K/hour billing | Fixed-price, ROI-guaranteed |
+| Sell development hours | Sell revenue and cost savings |
+| Tools collection | Integrated AI system |
+| Reactive to client requests | Proactive with AI-powered insights |
+| Scale by hiring more people | Scale by building better AI agents |
+
+---
+
 ## Success Metrics
 
 | Metric | Current | Phase 1 Target | Phase 3 Target |
 |--------|---------|---------------|---------------|
+| Team size | 5 | 5 (same) | 10-20 |
 | Lead response time | 2-4 hours | <30 min (auto) | <5 min (auto) |
 | Proposal turnaround | 2-3 days | 2 hours (auto) | 30 min (auto) |
-| Projects/month | 3-5 | 8-10 | 20+ |
-| Revenue/month | ₹15-25L | ₹50L-1Cr | ₹2-3Cr |
-| Human hours/project | 400-600 | 200-300 | 100-150 |
+| Projects/month | 3-5 | 15-20 | 50+ |
+| Revenue/month | ₹15-25L | ₹1-2Cr | ₹5-10Cr |
+| Human hours/project | 400-600 | 100-200 | 50-100 |
 | Client satisfaction | 4.5/5 | 4.7/5 | 4.9/5 |
 | Repeat clients | 40% | 60% | 80%+ |
+| Code written by AI | 30% | 70% | 90%+ |
+| Outreach personalization | Manual | AI-drafted, human-approved | Fully AI with approval gate |
+
+---
+
+## 5-Year Scale Plan: RDMI → Accenture-Scale AI Company
+
+### Why This Is Possible Now (Age of AI)
+Accenture took 30 years to reach $60B+ revenue with 700K+ employees. In the AI era, the same scale is achievable in 5 years with 1/100th the headcount because:
+- AI agents replace 80% of traditional consulting/dev work
+- Prompt-first development = 10x faster delivery per person
+- Platform + templates = near-zero marginal cost per project
+- AI compounds — every project makes the system smarter
+
+### The 5-Year Trajectory
+
+```
+Year 0 (Now):     5 people  →  ₹2Cr/month    →  ₹24Cr/year
+Year 1:          20 people  →  ₹10Cr/month   →  ₹120Cr/year
+Year 2:          80 people  →  ₹40Cr/month   →  ₹500Cr/year
+Year 3:         250 people  →  ₹100Cr/month  →  ₹1,200Cr/year
+Year 4:         800 people  →  ₹300Cr/month  →  ₹3,600Cr/year
+Year 5:       2,000 people  →  ₹800Cr/month  →  ₹10,000Cr/year
+```
+
+### What Changes at Each Stage
+
+**Year 0-1: Prove the Model**
+- 5→20 people, all AI-augmented
+- Deliver 20+ projects/month
+- Build prompt library to 500+ reusable instructions
+- Establish presence in India, USA, Dubai
+- Revenue: ₹24Cr → ₹120Cr/year
+
+**Year 1-2: Productize & Scale**
+- 20→80 people across 3 offices (India, USA, Dubai)
+- Launch self-service AI agent builder (platform)
+- White-label delivery for partner agencies
+- Template marketplace (reusable project architectures)
+- Revenue: ₹120Cr → ₹500Cr/year
+
+**Year 2-3: Enterprise & Vertical**
+- 80→250 people, industry-specific teams
+- Dedicated practices: Healthcare AI, FinTech AI, Logistics AI, Legal AI
+- Enterprise sales team for $500K+ deals
+- SOC2 Type II, HIPAA, ISO 27001 certifications
+- Revenue: ₹500Cr → ₹1,200Cr/year
+
+**Year 3-4: Global Expansion**
+- 250→800 people, 10+ countries
+- Acquire smaller AI agencies for talent + clients
+- Government contracts (India, UAE, UK)
+- AI agent marketplace (clients buy pre-built agents)
+- Revenue: ₹1,200Cr → ₹3,600Cr/year
+
+**Year 4-5: Platform Dominance**
+- 800→2,000 people, but AI handles 90%+ of delivery
+- RDMI AI becomes a platform company (like Accenture + Salesforce combined)
+- IPO or strategic funding round
+- Own proprietary AI models fine-tuned on 10,000+ delivered projects
+- Revenue: ₹3,600Cr → ₹10,000Cr/year
+
+### The Unfair Advantage
+Traditional agencies scale linearly: 2x people = 2x revenue.
+RDMI scales exponentially: AI agents + prompt library + platform = **10x revenue per person added**.
+
+Every project makes RDMI smarter:
+- New prompt patterns → faster future delivery
+- New industry knowledge → better proposals
+- New workflows → reusable templates
+- More data → better AI agents
+
+**This is the compounding moat that Accenture/Cognizant cannot replicate** — they have 700K people writing code manually. RDMI has AI agents that learn from every project.

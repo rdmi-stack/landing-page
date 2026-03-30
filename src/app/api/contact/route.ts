@@ -405,7 +405,7 @@ export async function POST(req: NextRequest) {
     const referer = req.headers.get("referer") || "";
     const sourcePage = referer ? new URL(referer).pathname : "unknown";
     try {
-      saveLead({
+      await saveLead({
         id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
         name,
         email,

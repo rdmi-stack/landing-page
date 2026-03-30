@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { getMongoDb } from "@/lib/mongodb";
 
 export interface Lead {
   id: string;
@@ -15,6 +16,7 @@ export interface Lead {
 }
 
 const LEADS_FILE = path.join(process.cwd(), "data", "leads.json");
+const LEADS_COLLECTION = process.env.MONGODB_LEADS_COLLECTION || "landing_page_leads";
 
 function ensureDir() {
   const dir = path.dirname(LEADS_FILE);
@@ -23,7 +25,7 @@ function ensureDir() {
   }
 }
 
-export function getLeads(): Lead[] {
+function getLocalLeads(): Lead[] {
   ensureDir();
   if (!fs.existsSync(LEADS_FILE)) return [];
   try {
@@ -34,9 +36,44 @@ export function getLeads(): Lead[] {
   }
 }
 
-export function saveLead(lead: Lead): void {
+function saveLocalLead(lead: Lead): void {
   ensureDir();
-  const leads = getLeads();
+  const leads = getLocalLeads();
   leads.unshift(lead); // newest first
   fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2));
+}
+
+export async function getLeads(): Promise<Lead[]> {
+  const db = await getMongoDb();
+
+  if (!db) {
+    return getLocalLeads();
+  }
+
+  try {
+    return await db
+      .collection<Lead>(LEADS_COLLECTION)
+      .find({})
+      .sort({ timestamp: -1 })
+      .toArray();
+  } catch (error) {
+    console.error("[leads] Failed to read from MongoDB, using local fallback:", error);
+    return getLocalLeads();
+  }
+}
+
+export async function saveLead(lead: Lead): Promise<void> {
+  const db = await getMongoDb();
+
+  if (!db) {
+    saveLocalLead(lead);
+    return;
+  }
+
+  try {
+    await db.collection<Lead>(LEADS_COLLECTION).insertOne(lead);
+  } catch (error) {
+    console.error("[leads] Failed to write to MongoDB, using local fallback:", error);
+    saveLocalLead(lead);
+  }
 }

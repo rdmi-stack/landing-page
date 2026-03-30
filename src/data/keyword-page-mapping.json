@@ -1,0 +1,108 @@
+{
+  "generatedAt": "2026-03-30",
+  "defaultDomain": "https://rdmi-landing-page.netlify.app",
+  "campaigns": [
+    {
+      "campaign": "Broad Software Development",
+      "adGroup": "Homepage Broad Intent",
+      "landingPagePath": "/",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/",
+      "keywordTheme": "broad-commercial",
+      "keywords": [
+        "software development company india",
+        "custom software development company",
+        "custom software development services",
+        "app development company india",
+        "mobile app development company",
+        "web application development company",
+        "web development company india",
+        "saas development company",
+        "ai software development company",
+        "enterprise software development company",
+        "hire software developers india"
+      ]
+    },
+    {
+      "campaign": "Custom Software Development",
+      "adGroup": "Custom Software Development",
+      "landingPagePath": "/kw/custom-software-development",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/custom-software-development",
+      "keywordTheme": "custom-software",
+      "keywords": [
+        "custom software development",
+        "custom software development companies",
+        "custom software development services",
+        "custom software development agency",
+        "bespoke software development services",
+        "custom software development firms",
+        "custom app development company",
+        "software development company"
+      ]
+    },
+    {
+      "campaign": "Mobile App Development",
+      "adGroup": "Mobile App Development",
+      "landingPagePath": "/kw/mobile-app-development",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/mobile-app-development",
+      "keywordTheme": "mobile-app-development",
+      "keywords": [
+        "mobile app development company",
+        "app development company",
+        "android app development company",
+        "best mobile app development companies",
+        "mobile app developer",
+        "ios app development companies",
+        "custom mobile app development company",
+        "flutter app development company"
+      ]
+    },
+    {
+      "campaign": "Web Development",
+      "adGroup": "Web Development Company",
+      "landingPagePath": "/kw/web-development-company",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/web-development-company",
+      "keywordTheme": "web-development",
+      "keywords": [
+        "web development company",
+        "web development agency",
+        "web application development",
+        "website development company",
+        "web development services",
+        "custom web development services",
+        "web app development agency",
+        "best web development companies"
+      ]
+    },
+    {
+      "campaign": "AI Software Development",
+      "adGroup": "AI Software Development",
+      "landingPagePath": "/kw/ai-software-development",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/ai-software-development",
+      "keywordTheme": "ai-software",
+      "keywords": [
+        "ai app development company",
+        "ai software development",
+        "ai app development services",
+        "ai software development companies",
+        "ai app developer"
+      ]
+    },
+    {
+      "campaign": "E-Commerce Development",
+      "adGroup": "E-Commerce Development",
+      "landingPagePath": "/kw/ecommerce-development",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/ecommerce-development",
+      "keywordTheme": "ecommerce-development",
+      "keywords": [
+        "ecommerce app development company",
+        "ecommerce website development company",
+        "ecommerce web development company",
+        "shopify app development",
+        "ecommerce website design companies",
+        "shopify web development company",
+        "ecommerce development company",
+        "grocery delivery app development company"
+      ]
+    }
+  ]
+}
