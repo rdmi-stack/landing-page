@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   ArrowRight,
   CheckCircle2,
@@ -10,9 +11,11 @@ import {
   IndianRupee,
   Bot,
   Shield,
-  Play,
+
   Mail,
   Phone,
+  Loader2,
+  Star,
 } from "lucide-react";
 import { useModal } from "@/components/ModalProvider";
 import AIQuoteModal from "@/components/AIQuoteModal";
@@ -22,8 +25,11 @@ import type { KeywordGroup } from "@/data/keyword-groups";
 
 export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const { openModal } = useModal();
+  const router = useRouter();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [aiModalOpen, setAiModalOpen] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const isAIPage = data.slug.includes("ai-") || data.slug.includes("-dubai") || data.slug.includes("-usa");
   const handleCTA = () => {
@@ -34,64 +40,117 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
     }
   };
 
+  const handleInlineForm = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          message: `[${data.primaryKeyword}] ${formData.message}`,
+        }),
+      });
+      if (!res.ok) throw new Error();
+      setFormStatus("success");
+      const params = new URLSearchParams();
+      if (formData.name) params.set("name", formData.name);
+      params.set("product", data.primaryKeyword);
+      router.push(`/thank-you?${params.toString()}`);
+    } catch {
+      setFormStatus("error");
+    }
+  };
+
+  const field = "w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-zinc-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-colors";
+
   return (
     <>
-      {/* ─── HERO WITH BACKGROUND IMAGE ─── */}
-      <section className="relative pt-16 pb-16 lg:pt-24 lg:pb-24 overflow-hidden">
-        {/* Hero background image */}
+      {/* ─── HERO: 2-Column — Copy Left + Form Right ─── */}
+      <section className="relative pt-12 pb-16 lg:pt-20 lg:pb-24 overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src={data.images.hero}
-            alt={data.primaryKeyword}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/90 via-[#0a0a0a]/80 to-[#0a0a0a]" />
+          <Image src={data.images.hero} alt={data.primaryKeyword} fill className="object-cover" priority />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/85 to-[#0a0a0a]/70 lg:to-[#0a0a0a]/50" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Badge */}
-          <div className="flex justify-center mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-sm font-medium backdrop-blur-sm">
-              <Shield className="w-4 h-4" />
-              {data.hero.badge}
+          <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
+            {/* Left: Copy (3 cols) */}
+            <div className="lg:col-span-3 space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-sm font-medium backdrop-blur-sm">
+                <Shield className="w-4 h-4" />
+                {data.hero.badge}
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight">
+                {data.hero.h1}
+              </h1>
+
+              <p className="text-base sm:text-lg text-zinc-300 leading-relaxed max-w-2xl">
+                {data.hero.subtitle}
+              </p>
+
+              {/* Trust points */}
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-400">
+                {data.hero.trustPoints.map((item) => (
+                  <span key={item} className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              {/* Social proof */}
+              <div className="flex items-center gap-3 pt-2">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 border-2 border-[#0a0a0a] flex items-center justify-center text-[10px] font-bold">
+                      {String.fromCharCode(64 + i)}
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div className="flex gap-0.5">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <p className="text-xs text-zinc-500">200+ projects delivered · 4.9/5 rating</p>
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* H1 */}
-          <div className="text-center max-w-5xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-              {data.hero.h1}
-            </h1>
-            <p className="mt-6 text-lg sm:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed">
-              {data.hero.subtitle}
-            </p>
-          </div>
+            {/* Right: Inline Form (2 cols) */}
+            <div className="lg:col-span-2">
+              <div className="p-5 sm:p-6 rounded-2xl bg-[#111]/90 backdrop-blur-xl border border-white/10 shadow-2xl shadow-indigo-500/5">
+                <div className="mb-4">
+                  <h3 className="text-lg font-bold">Get Free Quote & Prototype</h3>
+                  <p className="text-xs text-zinc-500 mt-1">Senior developer responds in 2 hours. Not a sales rep.</p>
+                </div>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-            <button
-              onClick={handleCTA}
-              className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all hover:shadow-xl hover:shadow-indigo-500/25 hover:scale-105 cursor-pointer"
-            >
-              {data.hero.cta1}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <a href="#services" className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-full border border-white/20 hover:bg-white/5 backdrop-blur-sm transition-all">
-              <Play className="w-4 h-4" />
-              {data.hero.cta2}
-            </a>
-          </div>
+                {formStatus === "error" && (
+                  <div className="mb-3 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-400">
+                    Failed to send. Try again or WhatsApp us.
+                  </div>
+                )}
 
-          {/* Trust */}
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 text-sm text-zinc-400">
-            {data.hero.trustPoints.map((item) => (
-              <span key={item} className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                {item}
-              </span>
-            ))}
+                <form onSubmit={handleInlineForm} className="space-y-3">
+                  <input type="text" required disabled={formStatus === "loading"} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={field} placeholder="Full Name *" />
+                  <input type="email" required disabled={formStatus === "loading"} value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={field} placeholder="Work Email *" />
+                  <input type="tel" disabled={formStatus === "loading"} value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={field} placeholder="Phone / WhatsApp" />
+                  <textarea required rows={2} disabled={formStatus === "loading"} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={`${field} resize-none`} placeholder="Briefly describe your project..." />
+
+                  <button type="submit" disabled={formStatus === "loading"} className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-semibold text-sm transition-all hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed">
+                    {formStatus === "loading" ? (<><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>) : (<>{data.hero.cta1} <ArrowRight className="w-4 h-4" /></>)}
+                  </button>
+                </form>
+
+                <p className="text-[10px] text-zinc-600 text-center mt-3">
+                  ₹0 upfront · NDA before first call · Money-back deadline guarantee
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
