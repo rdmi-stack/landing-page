@@ -28,7 +28,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const router = useRouter();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [aiModalOpen, setAiModalOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", industry: "", timeline: "", challenge: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const isAIPage = data.slug.includes("ai-") || data.slug.includes("-dubai") || data.slug.includes("-usa");
@@ -44,12 +44,22 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
     e.preventDefault();
     setFormStatus("loading");
     try {
+      const message = [
+        `[${data.primaryKeyword} Consultation]`,
+        formData.projectType ? `Project: ${formData.projectType}` : "",
+        formData.industry ? `Industry: ${formData.industry}` : "",
+        formData.timeline ? `Timeline: ${formData.timeline}` : "",
+        formData.challenge ? `Challenge: ${formData.challenge}` : "",
+      ].filter(Boolean).join("\n");
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formData,
-          message: `[${data.primaryKeyword}] ${formData.message}`,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message,
         }),
       });
       if (!res.ok) throw new Error();
@@ -62,6 +72,12 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       setFormStatus("error");
     }
   };
+
+  const projectTypes = isAIPage
+    ? ["AI Chatbot / Voice Agent", "AI Agent / Workflow Automation", "RAG / Knowledge Base", "AI Integration into Existing Software", "AI Consulting / Strategy", "Other / Not Sure"]
+    : ["Custom Website", "Web Application / SaaS", "E-Commerce Store", "Mobile App", "Landing Page / Microsite", "Website Redesign", "Other / Not Sure"];
+
+  const industries = ["Healthcare", "Finance / Insurance", "E-Commerce / Retail", "SaaS / Technology", "Travel / Hospitality", "Education", "Real Estate", "Logistics", "Legal", "Manufacturing", "Other"];
 
   const field = "w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-zinc-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-colors";
 
@@ -170,11 +186,33 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                   </div>
                 )}
 
-                <form onSubmit={handleInlineForm} className="space-y-3">
-                  <input type="text" required disabled={formStatus === "loading"} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={field} placeholder="Full Name *" />
+                <form onSubmit={handleInlineForm} className="space-y-2.5">
+                  <div className="grid grid-cols-2 gap-2.5">
+                    <input type="text" required disabled={formStatus === "loading"} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={field} placeholder="Full Name *" />
+                    <input type="tel" disabled={formStatus === "loading"} value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={field} placeholder="WhatsApp / Phone" />
+                  </div>
                   <input type="email" required disabled={formStatus === "loading"} value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={field} placeholder="Work Email *" />
-                  <input type="tel" disabled={formStatus === "loading"} value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={field} placeholder="Phone / WhatsApp" />
-                  <textarea required rows={2} disabled={formStatus === "loading"} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={`${field} resize-none`} placeholder="Tell us about your project — what do you need built?" />
+
+                  <select required disabled={formStatus === "loading"} value={formData.projectType} onChange={(e) => setFormData({ ...formData, projectType: e.target.value })} className={field}>
+                    <option value="" className="bg-zinc-900">What do you need? *</option>
+                    {projectTypes.map((t) => <option key={t} value={t} className="bg-zinc-900">{t}</option>)}
+                  </select>
+
+                  <div className="grid grid-cols-2 gap-2.5">
+                    <select disabled={formStatus === "loading"} value={formData.industry} onChange={(e) => setFormData({ ...formData, industry: e.target.value })} className={field}>
+                      <option value="" className="bg-zinc-900">Your Industry</option>
+                      {industries.map((ind) => <option key={ind} value={ind} className="bg-zinc-900">{ind}</option>)}
+                    </select>
+                    <select disabled={formStatus === "loading"} value={formData.timeline} onChange={(e) => setFormData({ ...formData, timeline: e.target.value })} className={field}>
+                      <option value="" className="bg-zinc-900">Timeline</option>
+                      <option value="ASAP" className="bg-zinc-900">ASAP</option>
+                      <option value="This month" className="bg-zinc-900">This month</option>
+                      <option value="1-3 months" className="bg-zinc-900">1-3 months</option>
+                      <option value="Exploring" className="bg-zinc-900">Just exploring</option>
+                    </select>
+                  </div>
+
+                  <textarea rows={2} disabled={formStatus === "loading"} value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className={`${field} resize-none`} placeholder="What's your biggest challenge right now? (optional)" />
 
                   <button type="submit" disabled={formStatus === "loading"} className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:via-purple-500 hover:to-indigo-500 font-semibold text-sm transition-all hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed animate-gradient bg-[length:200%_200%]">
                     {formStatus === "loading" ? (<><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>) : (<>{data.hero.cta1} <ArrowRight className="w-4 h-4" /></>)}
