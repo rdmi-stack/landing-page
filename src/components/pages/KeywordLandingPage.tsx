@@ -17,14 +17,12 @@ import {
   Loader2,
   Star,
 } from "lucide-react";
-import { useModal } from "@/components/ModalProvider";
 import AIQuoteModal from "@/components/AIQuoteModal";
 import AICapabilities from "@/components/AICapabilities";
 import Footer from "@/components/Footer";
 import type { KeywordGroup } from "@/data/keyword-groups";
 
 export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
-  const { openModal } = useModal();
   const router = useRouter();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [aiModalOpen, setAiModalOpen] = useState(false);
@@ -33,10 +31,15 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
   const isAIPage = data.slug.includes("ai-") || data.slug.includes("-dubai") || data.slug.includes("-usa");
   const handleCTA = () => {
-    if (isAIPage) {
-      setAiModalOpen(true);
-    } else {
-      openModal(data.primaryKeyword);
+    // Scroll to the inline consultation form in hero
+    const form = document.getElementById("consultation-form");
+    if (form) {
+      form.scrollIntoView({ behavior: "smooth", block: "center" });
+      // Focus the first input after scroll
+      setTimeout(() => {
+        const firstInput = form.querySelector("input") as HTMLInputElement;
+        if (firstInput) firstInput.focus();
+      }, 500);
     }
   };
 
@@ -157,8 +160,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               </div>
             </div>
 
-            {/* Right: Dedicated Quote Form (2 cols) */}
-            <div className="lg:col-span-2">
+            {/* Right: Dedicated Consultation Form (2 cols) */}
+            <div className="lg:col-span-2" id="consultation-form">
               <div className="relative p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-[#111]/95 to-[#0d0d0d]/95 backdrop-blur-xl border border-indigo-500/20 shadow-2xl shadow-indigo-500/10">
                 {/* Gradient top border */}
                 <div className="absolute top-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500" />
