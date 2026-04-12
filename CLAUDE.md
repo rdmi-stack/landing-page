@@ -187,6 +187,38 @@ Custom software, mobile apps, SaaS, web apps, e-commerce, enterprise (ERP/CRM)
 
 **Strategy**: Keyword groups and landing pages should be easy to swap/add. When a service category gains traction (search volume up, CPC rising), spin up a new keyword group + landing page within hours using the existing system. The admin panel should surface trending keywords and suggest new page opportunities.
 
+### Missing Keyword Clusters (Priority Add — Apr 2026)
+
+#### AI Agents & Chatbots (BIGGEST GAP — add immediately)
+- ai agent development company, ai agent for business, custom ai agent development, ai voice agent development, ai customer service agent, build ai agent for business, ai agent consulting, agentic ai development
+- ai chatbot development company, ai chatbot development services, ai chatbot for website, ai chatbot for healthcare, ai chatbot for insurance, ai chatbot for hotels, ai chatbot for real estate, custom ai chatbot development, whatsapp ai chatbot development, ai chatbot integration services, hipaa compliant chatbot development
+
+#### AI Automation & Workflow
+- ai automation services, ai workflow automation, ai process automation company, ai automation for small business, business process automation ai, ai automation agency, ai powered automation services
+
+#### AI Integration & API
+- ai integration services, ai api integration company, openai integration services, chatgpt integration for business, ai integration consulting, llm integration services, gpt api development company
+
+#### AI SaaS / Product Development
+- ai saas development, ai product development company, ai mvp development, ai startup development, build ai saas product, ai platform development, white label ai solutions, ai white label chatbot
+
+#### Healthcare AI (Target Vertical — Zero Keywords Currently)
+- ai patient scheduling, ai appointment booking healthcare, ai receptionist for clinics, ai patient intake system, ai medical receptionist, virtual receptionist for doctors, ai for dental practice, dental ai software
+- ai medical documentation, ai clinical notes, ambient scribe for doctors, ai for medical billing, ai medical coding software, healthcare ai solutions
+- ai for patient no shows, ai patient communication, ai patient engagement platform, ai for dental clinics, healthcare chatbot development, hipaa compliant ai chatbot
+
+#### Insurance AI (High-Value Vertical — Zero Keywords Currently)
+- ai for insurance agencies, insurance chatbot development, ai insurance claims processing, insurance automation software, ai underwriting software, ai for independent insurance agents, insurance agency automation, ai voice agent for insurance, insurance lead qualification ai, ai receptionist for insurance agency, insurtech software development, claims processing automation, ai fraud detection insurance
+
+#### Travel & Hospitality AI
+- ai for hotels, hotel chatbot development, ai booking assistant, ai for tour operators, travel chatbot development, ai for travel agencies, hotel ai concierge, ai dynamic pricing hotel, ai revenue management hotel, travel booking automation, hospitality ai solutions, tour operator software development, dmc software development, travel crm development
+
+#### Problem-Based Keywords (High Purchase Intent)
+- how to reduce missed calls business, how to automate customer support, how to reduce no shows clinic, automate appointment booking, automate lead follow up, reduce manual data entry, automate invoice processing, how to use ai in my business, reduce customer service costs, 24/7 customer support solution, automate repetitive tasks business
+
+#### Location-Based Keywords
+- ai development company india, ai consulting company india, ai chatbot development india, healthcare software development india, ai automation services india, ai development company delhi, ai development company noida, ai development company dubai, ai solutions company middle east
+
 ### Keyword Groups (Data-Backed from Google Keyword Planner Feb 2026)
 
 **11 groups, 471 high-intent keywords with CPC data. Sorted by revenue potential.**
