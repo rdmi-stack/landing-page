@@ -47,7 +47,7 @@ const projects = [
     tech: ["Python", "LangChain", "Pinecone", "OpenAI", "Next.js"],
     timeline: "Delivered: 8 wks",
     gradient: "from-indigo-600 to-blue-600",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+    image: "/images/portfolio-ai-workflow.png",
   },
   {
     tag: "💰 FinTech",
@@ -101,7 +101,7 @@ const projects = [
     tech: ["OpenAI", "Gmail API", "n8n", "HubSpot", "Next.js"],
     timeline: "Delivered: 8 wks",
     gradient: "from-blue-600 to-cyan-600",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+    image: "/images/portfolio-ai-dashboard.png",
   },
   {
     tag: "⚙️ Workflow AI",
