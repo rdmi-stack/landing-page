@@ -67,46 +67,60 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
   return (
     <>
-      {/* ─── HERO: 2-Column — Copy Left + Form Right ─── */}
+      {/* ─── HERO: Gradient BG + 2-Column Layout ─── */}
       <section className="relative pt-12 pb-16 lg:pt-20 lg:pb-24 overflow-hidden">
+        {/* Multi-layer gradient background */}
         <div className="absolute inset-0">
-          <Image src={data.images.hero} alt={data.primaryKeyword} fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/85 to-[#0a0a0a]/70 lg:to-[#0a0a0a]/50" />
+          <Image src={data.images.hero} alt={data.primaryKeyword} fill className="object-cover opacity-20" priority />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0f0a1a] to-[#0a0a0a]" />
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-600/15 rounded-full blur-[128px]" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[128px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-600/5 rounded-full blur-[128px]" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
             {/* Left: Copy (3 cols) */}
             <div className="lg:col-span-3 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-sm font-medium backdrop-blur-sm">
-                <Shield className="w-4 h-4" />
+              {/* Animated badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/30 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-300 text-sm font-medium backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 {data.hero.badge}
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight">
-                {data.hero.h1}
+              {/* H1 with gradient text */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] tracking-tight">
+                <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent">{data.hero.h1}</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-zinc-300 leading-relaxed max-w-2xl">
+              <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl">
                 {data.hero.subtitle}
               </p>
 
-              {/* Trust points */}
-              <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-400">
+              {/* Trust points with gradient icons */}
+              <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm">
                 {data.hero.trustPoints.map((item) => (
-                  <span key={item} className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                  <span key={item} className="flex items-center gap-2 text-zinc-300">
+                    <span className="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="w-3 h-3 text-white" />
+                    </span>
                     {item}
                   </span>
                 ))}
               </div>
 
-              {/* Social proof */}
-              <div className="flex items-center gap-3 pt-2">
+              {/* Social proof bar */}
+              <div className="flex items-center gap-4 pt-3 pb-1">
                 <div className="flex -space-x-2">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 border-2 border-[#0a0a0a] flex items-center justify-center text-[10px] font-bold">
-                      {String.fromCharCode(64 + i)}
+                  {[
+                    "from-indigo-500 to-blue-600",
+                    "from-purple-500 to-pink-600",
+                    "from-emerald-500 to-green-600",
+                    "from-amber-500 to-orange-600",
+                    "from-rose-500 to-red-600",
+                  ].map((g, i) => (
+                    <div key={i} className={`w-9 h-9 rounded-full bg-gradient-to-br ${g} border-2 border-[#0a0a0a] flex items-center justify-center text-[10px] font-bold shadow-lg`}>
+                      {String.fromCharCode(65 + i)}
                     </div>
                   ))}
                 </div>
@@ -116,17 +130,38 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                       <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <p className="text-xs text-zinc-500">200+ projects delivered · 4.9/5 rating</p>
+                  <p className="text-xs text-zinc-500">200+ projects · 4.9/5 rating · Talk to developers directly</p>
                 </div>
+              </div>
+
+              {/* Urgency bar */}
+              <div className="flex items-center gap-2 pt-3">
+                <div className="h-1 flex-1 rounded-full bg-gradient-to-r from-emerald-500 via-indigo-500 to-purple-500 opacity-60" />
+                <span className="text-[11px] text-zinc-500 whitespace-nowrap">Avg. response: 47 min</span>
               </div>
             </div>
 
-            {/* Right: Inline Form (2 cols) */}
+            {/* Right: Dedicated Quote Form (2 cols) */}
             <div className="lg:col-span-2">
-              <div className="p-5 sm:p-6 rounded-2xl bg-[#111]/90 backdrop-blur-xl border border-white/10 shadow-2xl shadow-indigo-500/5">
-                <div className="mb-4">
-                  <h3 className="text-lg font-bold">Get Free Quote & Prototype</h3>
-                  <p className="text-xs text-zinc-500 mt-1">Senior developer responds in 2 hours. Not a sales rep.</p>
+              <div className="relative p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-[#111]/95 to-[#0d0d0d]/95 backdrop-blur-xl border border-indigo-500/20 shadow-2xl shadow-indigo-500/10">
+                {/* Gradient top border */}
+                <div className="absolute top-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500" />
+
+                <div className="mb-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                      <MessageCircle className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold">Talk to a Developer</h3>
+                      <p className="text-[11px] text-zinc-500">Not a sales rep — a senior engineer</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 text-[11px] text-zinc-500">
+                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500" /> Free consultation</span>
+                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500" /> NDA protected</span>
+                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500" /> 2hr response</span>
+                  </div>
                 </div>
 
                 {formStatus === "error" && (
@@ -139,15 +174,21 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                   <input type="text" required disabled={formStatus === "loading"} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={field} placeholder="Full Name *" />
                   <input type="email" required disabled={formStatus === "loading"} value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={field} placeholder="Work Email *" />
                   <input type="tel" disabled={formStatus === "loading"} value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={field} placeholder="Phone / WhatsApp" />
-                  <textarea required rows={2} disabled={formStatus === "loading"} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={`${field} resize-none`} placeholder="Briefly describe your project..." />
+                  <textarea required rows={2} disabled={formStatus === "loading"} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={`${field} resize-none`} placeholder="Tell us about your project — what do you need built?" />
 
-                  <button type="submit" disabled={formStatus === "loading"} className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-semibold text-sm transition-all hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed">
+                  <button type="submit" disabled={formStatus === "loading"} className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:via-purple-500 hover:to-indigo-500 font-semibold text-sm transition-all hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed animate-gradient bg-[length:200%_200%]">
                     {formStatus === "loading" ? (<><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>) : (<>{data.hero.cta1} <ArrowRight className="w-4 h-4" /></>)}
                   </button>
                 </form>
 
+                {/* Micro-testimonial inside form */}
+                <div className="mt-4 p-3 rounded-lg bg-white/[0.03] border border-white/5">
+                  <p className="text-[11px] text-zinc-400 italic leading-relaxed">&ldquo;They delivered our prototype in 48 hours. The developer who called us knew more about our industry than our previous agency did in 3 months.&rdquo;</p>
+                  <p className="text-[10px] text-zinc-600 mt-1">— Startup Founder, Bangalore</p>
+                </div>
+
                 <p className="text-[10px] text-zinc-600 text-center mt-3">
-                  ₹0 upfront · NDA before first call · Money-back deadline guarantee
+                  Free prototype · No upfront payment · Money-back guarantee
                 </p>
               </div>
             </div>
