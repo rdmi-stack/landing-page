@@ -77,55 +77,96 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   return (
     <div className="bg-white text-gray-900">
       {/* ═══════ HERO ═══════ */}
-      <section className="relative pt-14 pb-10 lg:pt-20 lg:pb-14 overflow-hidden text-white" style={{ background: t.heroGradient }}>
-        <div className="absolute inset-0 opacity-10">
+      <section className="relative pt-16 pb-12 lg:pt-24 lg:pb-16 overflow-hidden text-white" style={{ background: t.heroGradient }}>
+        {/* Background layers */}
+        <div className="absolute inset-0 opacity-[0.07]">
           <Image src={data.images.hero} alt="" fill className="object-cover" priority />
         </div>
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-300/10 rounded-full blur-[100px]" />
+        <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px)", backgroundSize: "60px 60px", maskImage: "radial-gradient(ellipse at center, black 40%, transparent 75%)" }} />
+        <div className="absolute -top-20 -right-20 w-[600px] h-[600px] bg-white/10 rounded-full blur-[140px] animate-pulse" />
+        <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px]" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/20 to-transparent" />
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-base font-semibold mb-6 border border-white/20">
-            <span className="text-lg">{t.icon}</span>
-            {data.hero.badge}
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Live status row */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 backdrop-blur-sm text-xs font-semibold text-emerald-200">
+              <span className="relative flex w-2 h-2"><span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75" /><span className="relative rounded-full w-2 h-2 bg-emerald-400" /></span>
+              47 developers building now
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-xs font-semibold text-white">
+              <Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" />
+              <span className="ml-1">4.9 · 200+ shipped</span>
+            </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] tracking-tight mb-5">
+          {/* Premium badge */}
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md text-sm font-semibold mb-6 border border-white/25 shadow-lg shadow-black/10">
+            <span className="text-base">{t.icon}</span>
+            <span className="tracking-wide">{data.hero.badge}</span>
+          </div>
+
+          <h1 className="text-[2rem] sm:text-5xl lg:text-6xl xl:text-[4.5rem] font-extrabold leading-[1.05] tracking-[-0.025em] mb-6 max-w-5xl mx-auto" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.2)" }}>
             {data.hero.h1}
           </h1>
 
-          <p className="text-lg sm:text-xl text-indigo-100 max-w-2xl mx-auto leading-relaxed mb-8">
+          <p className="text-lg sm:text-xl lg:text-[1.35rem] text-white/85 max-w-3xl mx-auto leading-relaxed mb-9 font-light">
             {data.hero.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-            <button onClick={openConsult} className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-5 rounded-xl bg-white text-indigo-700 font-bold text-lg hover:bg-indigo-50 transition-all hover:scale-105 shadow-lg shadow-black/10 cursor-pointer">
-              {data.hero.cta1} <ArrowRight className="w-4 h-4" />
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-7">
+            <button onClick={openConsult} className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-10 py-5 rounded-2xl bg-white font-bold text-lg transition-all hover:scale-[1.03] shadow-2xl shadow-black/30 cursor-pointer overflow-hidden" style={{ color: t.urgencyColor }}>
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <span className="relative">{data.hero.cta1}</span>
+              <ArrowRight className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-white/30 text-white font-bold text-base hover:bg-white/10 transition-all">
-              <Phone className="w-4 h-4" /> WhatsApp Us
+            <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-5 rounded-2xl border border-white/30 bg-white/5 backdrop-blur-sm text-white font-bold text-base hover:bg-white/15 hover:border-white/50 transition-all">
+              <Phone className="w-4 h-4" /> WhatsApp Now
             </a>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-indigo-100 mb-8">
-            {data.hero.trustPoints.map((t) => (
-              <span key={t} className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />{t}</span>
+          {/* Urgency line */}
+          <p className="text-sm text-white/70 mb-8">
+            <span className="inline-block w-2 h-2 rounded-full bg-amber-300 animate-pulse mr-2" />
+            Only <span className="font-bold text-amber-200">3 slots left</span> this week · Free prototype in 48 hours
+          </p>
+
+          {/* Trust pills */}
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {data.hero.trustPoints.map((tp) => (
+              <span key={tp} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 text-xs sm:text-sm font-medium text-white">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />{tp}
+              </span>
+            ))}
+          </div>
+
+          {/* Inline stats */}
+          <div className="grid grid-cols-3 max-w-2xl mx-auto gap-4 mb-10 pb-10 border-b border-white/10">
+            {data.stats.slice(0, 3).map((s) => (
+              <div key={s.label} className="text-center">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white">{s.value}</div>
+                <div className="text-[11px] sm:text-xs text-white/70 mt-1 leading-tight">{s.label}</div>
+              </div>
             ))}
           </div>
 
           {/* Image slider */}
           <div className="relative -mx-4 sm:mx-0">
-            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-10" style={{ background: `linear-gradient(to right, ${t.urgencyColor}cc, transparent)` }} />
-            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-10" style={{ background: `linear-gradient(to left, ${t.urgencyColor}cc, transparent)` }} />
+            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-10" style={{ background: `linear-gradient(to right, ${t.urgencyColor}ee, transparent)` }} />
+            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-10" style={{ background: `linear-gradient(to left, ${t.urgencyColor}ee, transparent)` }} />
             <div className="overflow-hidden">
               <div className="flex gap-4 animate-marquee">
                 {[...data.images.portfolio, ...data.images.services, ...data.images.portfolio, ...data.images.services].map((img, i) => (
-                  <div key={i} onClick={openConsult} className="flex-shrink-0 w-[260px] sm:w-[300px] relative rounded-xl overflow-hidden aspect-[16/10] cursor-pointer group shadow-xl shadow-black/20">
-                    <Image src={img} alt="" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
-                      <Shield className="w-3 h-3 text-indigo-300" />
-                      <span className="text-[10px] text-white/80">NDA Protected</span>
+                  <div key={i} onClick={openConsult} className="flex-shrink-0 w-[260px] sm:w-[300px] relative rounded-2xl overflow-hidden aspect-[16/10] cursor-pointer group shadow-2xl shadow-black/40 ring-1 ring-white/10">
+                    <Image src={img} alt="" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                      <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-black/40 backdrop-blur-sm">
+                        <Shield className="w-3 h-3 text-emerald-300" />
+                        <span className="text-[10px] font-semibold text-white">NDA Protected</span>
+                      </div>
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity px-2 py-1 rounded-md bg-white text-[10px] font-bold" style={{ color: t.urgencyColor }}>View →</div>
                     </div>
                   </div>
                 ))}
