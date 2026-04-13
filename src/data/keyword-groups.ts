@@ -23,6 +23,8 @@ export interface KeywordGroup {
   services: { title: string; description: string; tags: string[] }[];
   uspHeadlines: { direct: string; cost: string; ai: string };
   process: { step: string; title: string; description: string }[];
+  caseStudies?: { tag: string; headline: string; result: string; tech: string[]; weeks: number }[];
+  testimonials?: { quote: string; author: string; role: string; rating: number }[];
   faq: { q: string; a: string }[];
   ctaSection: { headline: string; subtitle: string; buttonText: string };
   targetKeywords: string[];

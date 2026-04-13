@@ -247,6 +247,25 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
+      {/* ─── PAIN/PROBLEM STRIP ─── */}
+      <section className="py-12 lg:py-16 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              { pain: "Other agencies assigned you juniors", solve: "Every RDMI project: 5+ year seniors only. No exceptions.", painColor: "border-red-500/20 bg-red-500/[0.03]", solveColor: "text-emerald-400" },
+              { pain: "Your last quote had hourly billing surprises", solve: "Fixed price in 2 hours. The quote IS the invoice. Money-back guarantee.", painColor: "border-amber-500/20 bg-amber-500/[0.03]", solveColor: "text-emerald-400" },
+              { pain: "You can't reach the person writing your code", solve: "Direct WhatsApp/Slack with your developer. <30 min avg response.", painColor: "border-orange-500/20 bg-orange-500/[0.03]", solveColor: "text-emerald-400" },
+            ].map((item) => (
+              <div key={item.pain} className={`p-4 rounded-xl border ${item.painColor}`}>
+                <p className="text-sm font-medium text-zinc-300 mb-2">{item.pain}</p>
+                <div className="h-px bg-gradient-to-r from-zinc-700 to-transparent my-2" />
+                <p className={`text-xs ${item.solveColor} font-medium leading-relaxed`}>{item.solve}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── SERVICES (Clean grid, no images — fast) ─── */}
       <section id="services" className="py-16 lg:py-24 relative bg-[#111]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -275,7 +294,38 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ─── PROCESS + USPs (Combined, lean) ─── */}
+      {/* ─── CASE STUDIES (3 cards) ─── */}
+      <section className="py-14 lg:py-20 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">
+            Results We&apos;ve <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Delivered</span>
+          </h2>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {(data.caseStudies || [
+              { tag: "SaaS", headline: "AI-Powered Dashboard — 3x user engagement", result: "₹2Cr+/month processed", tech: ["Next.js", "OpenAI", "AWS"], weeks: 10 },
+              { tag: "E-Commerce", headline: "Marketplace — 4x conversion rate increase", result: "35% higher AOV", tech: ["React", "Node.js", "Razorpay"], weeks: 12 },
+              { tag: "AI Agent", headline: "RAG System — 50K docs searchable in 3 seconds", result: "Replaced 3 FTE in research", tech: ["LangChain", "Pinecone", "Python"], weeks: 8 },
+            ]).map((cs) => (
+              <div key={cs.headline} onClick={handleCTA} className="group p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/20 transition-all cursor-pointer">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="px-2.5 py-0.5 text-[10px] font-bold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white">{cs.tag}</span>
+                  <span className="text-[10px] text-zinc-600">{cs.weeks} weeks</span>
+                </div>
+                <h3 className="text-sm font-semibold mb-2 group-hover:text-indigo-300 transition-colors">{cs.headline}</h3>
+                <p className="text-lg font-bold text-emerald-400 mb-3">{cs.result}</p>
+                <div className="flex flex-wrap gap-1">
+                  {cs.tech.map((t) => <span key={t} className="px-1.5 py-0.5 text-[10px] rounded bg-white/5 text-zinc-600">{t}</span>)}
+                </div>
+                <div className="flex items-center gap-1 mt-3 text-[10px] text-zinc-600">
+                  <CheckCircle2 className="w-3 h-3 text-indigo-400" /> NDA Protected
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── PROCESS + USPs ─── */}
       <section className="py-16 lg:py-24 relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Process - horizontal steps */}
@@ -295,48 +345,139 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             </div>
           </div>
 
-          {/* USPs - 3 columns, no images */}
+          {/* USPs - 3 columns with bullets */}
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { icon: MessageCircle, title: "Talk to Developers", text: data.uspHeadlines.direct, color: "text-blue-400", border: "border-blue-500/20" },
-              { icon: IndianRupee, title: "Save 50% Guaranteed", text: data.uspHeadlines.cost, color: "text-emerald-400", border: "border-emerald-500/20" },
-              { icon: Bot, title: "AI = 3x Faster", text: data.uspHeadlines.ai, color: "text-purple-400", border: "border-purple-500/20" },
+              { icon: MessageCircle, title: "Talk to Developers", text: data.uspHeadlines.direct, color: "text-blue-400", border: "border-l-2 border-blue-500", bullets: ["Direct WhatsApp/Slack with your dev", "Daily standups, not weekly status emails", "Senior engineer calls you in 2 hours"] },
+              { icon: IndianRupee, title: "Save 50% Guaranteed", text: data.uspHeadlines.cost, color: "text-emerald-400", border: "border-l-2 border-emerald-500", bullets: ["Fixed price — the quote IS the invoice", "No hourly billing surprises", "Money-back if we miss your deadline"] },
+              { icon: Bot, title: "AI = 3x Faster", text: data.uspHeadlines.ai, color: "text-purple-400", border: "border-l-2 border-purple-500", bullets: ["AI writes 40% of code, humans review 100%", "12-week projects done in 4 weeks", "Built-in AI features at no extra cost"] },
             ].map((usp) => (
-              <div key={usp.title} className={`p-5 rounded-xl bg-white/[0.02] border ${usp.border}`}>
-                <usp.icon className={`w-6 h-6 ${usp.color} mb-3`} />
-                <h3 className="text-sm font-bold mb-2">{usp.title}</h3>
-                <p className="text-xs text-zinc-500 leading-relaxed">{usp.text}</p>
+              <div key={usp.title} className={`p-5 rounded-xl bg-white/[0.02] ${usp.border}`}>
+                <usp.icon className={`w-5 h-5 ${usp.color} mb-2`} />
+                <h3 className="text-sm font-bold mb-1">{usp.title}</h3>
+                <p className="text-xs text-zinc-500 leading-relaxed mb-3">{usp.text}</p>
+                <ul className="space-y-1.5">
+                  {usp.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-1.5 text-[11px] text-zinc-400">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-500 mt-0.5 flex-shrink-0" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── SOCIAL PROOF STRIP ─── */}
-      <section className="py-12 relative bg-[#111]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-3 gap-6 text-center">
-            <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-              <div className="flex justify-center gap-0.5 mb-2">
-                {[1,2,3,4,5].map((s) => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+      {/* ─── TECH STACK ─── */}
+      <section className="py-14 lg:py-20 relative bg-[#0d0d0d]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">
+            Built With <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Modern Stack</span>
+          </h2>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {(isAIPage ? [
+              { cat: "AI & LLM", items: ["OpenAI GPT-4o", "Claude", "Gemini", "LangChain", "CrewAI", "LlamaIndex"] },
+              { cat: "Backend & Data", items: ["Python", "Node.js", "FastAPI", "Pinecone", "pgvector", "MongoDB"] },
+              { cat: "Cloud & DevOps", items: ["AWS", "GCP", "Docker", "Railway", "Vercel", "n8n"] },
+            ] : [
+              { cat: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Flutter", "React Native"] },
+              { cat: "Backend & Database", items: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis", "GraphQL"] },
+              { cat: "Cloud & Tools", items: ["AWS", "Vercel", "Docker", "GitHub Actions", "Stripe", "Razorpay"] },
+            ]).map((stack) => (
+              <div key={stack.cat} className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                <p className="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-3">{stack.cat}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {stack.items.map((item) => (
+                    <span key={item} className="px-2 py-1 text-[11px] rounded-md bg-white/5 text-zinc-400 border border-white/5">{item}</span>
+                  ))}
+                </div>
               </div>
-              <p className="text-xs text-zinc-400 italic leading-relaxed">&ldquo;Delivered our prototype in 48 hours. The developer knew our industry better than our previous agency.&rdquo;</p>
-              <p className="text-[10px] text-zinc-600 mt-2">— Startup Founder, Bangalore</p>
-            </div>
-            <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-              <div className="flex justify-center gap-0.5 mb-2">
-                {[1,2,3,4,5].map((s) => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── TESTIMONIALS (6 cards) ─── */}
+      <section className="py-14 lg:py-20 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">
+            What Clients <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Say</span>
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {(data.testimonials || [
+              { quote: "Delivered our prototype in 48 hours. The developer knew our industry better than our previous agency did in 3 months.", author: "A.K.", role: "Startup Founder, Bangalore", rating: 5 },
+              { quote: "AI-first approach cut our timeline in half. We launched in 6 weeks instead of the 12 our previous vendor quoted.", author: "S.R.", role: "CTO, FinTech Company, Mumbai", rating: 5 },
+              { quote: "We talked to the actual developer, not a salesperson. That changed everything about the project outcome.", author: "P.M.", role: "Founder, Healthcare SaaS, Delhi", rating: 5 },
+              { quote: "Fixed price, no surprises. They delivered exactly what they promised, on time. First agency that kept their word.", author: "R.V.", role: "COO, Logistics Company, Pune", rating: 5 },
+              { quote: "The AI chatbot they built handles 80% of our support tickets now. ROI was positive in month 2. Unbelievable.", author: "D.S.", role: "VP Ops, E-Commerce, Hyderabad", rating: 5 },
+              { quote: "We were skeptical about an India-based team. After the first sprint demo, we extended the contract to 6 months.", author: "M.T.", role: "Product Manager, SaaS, San Francisco", rating: 5 },
+            ]).map((t, i) => (
+              <div key={i} className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                <div className="flex gap-0.5 mb-2">
+                  {Array.from({ length: t.rating }).map((_, s) => <Star key={s} className="w-3 h-3 fill-amber-400 text-amber-400" />)}
+                </div>
+                <p className="text-xs text-zinc-400 italic leading-relaxed mb-3">&ldquo;{t.quote}&rdquo;</p>
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-[9px] font-bold">{t.author}</div>
+                  <p className="text-[10px] text-zinc-600">{t.role}</p>
+                </div>
               </div>
-              <p className="text-xs text-zinc-400 italic leading-relaxed">&ldquo;AI-first approach cut our timeline in half. We launched in 6 weeks instead of 12.&rdquo;</p>
-              <p className="text-[10px] text-zinc-600 mt-2">— CTO, FinTech Company, Mumbai</p>
-            </div>
-            <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-              <div className="flex justify-center gap-0.5 mb-2">
-                {[1,2,3,4,5].map((s) => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
-              </div>
-              <p className="text-xs text-zinc-400 italic leading-relaxed">&ldquo;We talked to the actual developer, not a salesperson. That changed everything.&rdquo;</p>
-              <p className="text-[10px] text-zinc-600 mt-2">— Founder, Healthcare SaaS, Delhi</p>
-            </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── URGENCY STRIP ─── */}
+      <section className="py-4 relative bg-gradient-to-r from-indigo-950/60 to-purple-950/40 border-y border-indigo-500/20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <p className="text-sm text-zinc-300 font-medium">Taking on <strong className="text-white">3 new projects</strong> this month — slots fill fast</p>
+          </div>
+          <button onClick={handleCTA} className="px-5 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-sm font-semibold transition-all hover:scale-105 cursor-pointer whitespace-nowrap">
+            Claim Your Slot <ArrowRight className="w-3 h-3 inline ml-1" />
+          </button>
+        </div>
+      </section>
+
+      {/* ─── COMPARISON TABLE (RDMI vs Agency vs Freelancer) ─── */}
+      <section className="py-14 lg:py-20 relative bg-[#0d0d0d]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">
+            Why RDMI <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">vs Others</span>
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-white/10">
+                  <th className="text-left py-3 px-4 text-zinc-500 font-medium text-xs">Criteria</th>
+                  <th className="text-center py-3 px-4 text-indigo-400 font-bold text-xs bg-indigo-500/5 border-x border-indigo-500/10 rounded-t-lg">RDMI AI</th>
+                  <th className="text-center py-3 px-4 text-zinc-500 font-medium text-xs">Large Agency</th>
+                  <th className="text-center py-3 px-4 text-zinc-500 font-medium text-xs">Freelancer</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5">
+                {[
+                  ["Developer Seniority", "5+ yr seniors only", "Mix of juniors", "Varies widely"],
+                  ["Response Time", "<2 hours", "2-5 days", "Unpredictable"],
+                  ["Pricing Model", "Fixed price", "Hourly billing", "Hourly/milestone"],
+                  ["Source Code", "100% yours Day 1", "Often restricted", "Usually yours"],
+                  ["NDA", "Before first call", "After contract", "Sometimes"],
+                  ["AI-Powered Delivery", "Built into every project", "Traditional only", "No"],
+                  ["Deadline Guarantee", "Money-back", "Best effort", "No guarantee"],
+                  ["Post-Launch Support", "30-60 days free", "Paid from Day 1", "Limited"],
+                ].map(([criteria, rdmi, agency, freelancer]) => (
+                  <tr key={criteria}>
+                    <td className="py-3 px-4 text-xs text-zinc-400">{criteria}</td>
+                    <td className="py-3 px-4 text-xs text-center font-medium text-emerald-400 bg-indigo-500/5 border-x border-indigo-500/10">{rdmi}</td>
+                    <td className="py-3 px-4 text-xs text-center text-amber-400/70">{agency}</td>
+                    <td className="py-3 px-4 text-xs text-center text-red-400/60">{freelancer}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
