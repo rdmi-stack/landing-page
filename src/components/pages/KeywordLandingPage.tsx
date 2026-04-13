@@ -419,7 +419,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      <Footer />
+      <Footer onCTA={openConsult} />
 
       {/* ═══════ STICKY BOTTOM BAR ═══════ */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] py-2.5 px-4">
