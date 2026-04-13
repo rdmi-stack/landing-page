@@ -73,7 +73,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-300/10 rounded-full blur-[100px]" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-sm font-medium mb-6 border border-white/20">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-base font-semibold mb-6 border border-white/20">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             {data.hero.badge}
           </div>
@@ -82,20 +82,20 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             {data.hero.h1}
           </h1>
 
-          <p className="text-base sm:text-lg text-indigo-100 max-w-2xl mx-auto leading-relaxed mb-8">
+          <p className="text-lg sm:text-xl text-indigo-100 max-w-2xl mx-auto leading-relaxed mb-8">
             {data.hero.subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-            <button onClick={openConsult} className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white text-indigo-700 font-semibold text-sm hover:bg-indigo-50 transition-all hover:scale-105 shadow-lg shadow-black/10 cursor-pointer">
+            <button onClick={openConsult} className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-5 rounded-xl bg-white text-indigo-700 font-bold text-lg hover:bg-indigo-50 transition-all hover:scale-105 shadow-lg shadow-black/10 cursor-pointer">
               {data.hero.cta1} <ArrowRight className="w-4 h-4" />
             </button>
-            <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl border border-white/30 text-white font-semibold text-sm hover:bg-white/10 transition-all">
+            <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-white/30 text-white font-bold text-base hover:bg-white/10 transition-all">
               <Phone className="w-4 h-4" /> WhatsApp Us
             </a>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-indigo-100 mb-8">
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-indigo-100 mb-8">
             {data.hero.trustPoints.map((t) => (
               <span key={t} className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />{t}</span>
             ))}
@@ -124,13 +124,13 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ STATS ═══════ */}
-      <section className="py-10 bg-white border-b border-gray-100">
+      <section className="py-12 bg-white border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {data.stats.map((s) => (
               <div key={s.label} className="text-center py-4">
-                <div className="text-2xl sm:text-3xl font-extrabold text-indigo-600">{s.value}</div>
-                <div className="text-xs text-gray-500 mt-1">{s.label}</div>
+                <div className="text-3xl sm:text-4xl font-extrabold text-indigo-600">{s.value}</div>
+                <div className="text-sm text-gray-500 mt-1">{s.label}</div>
               </div>
             ))}
           </div>
@@ -138,7 +138,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ PAIN STRIP ═══════ */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-14 lg:py-16 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-4">
             {[
@@ -147,8 +147,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { pain: "You can't reach the person writing code", solve: "Direct WhatsApp with your developer. <30 min.", icon: "📵", color: "border-l-orange-500" },
             ].map((item) => (
               <div key={item.pain} className={`bg-white rounded-xl p-5 border border-gray-100 border-l-4 ${item.color} shadow-sm`}>
-                <p className="text-sm font-semibold text-gray-800 mb-2">{item.icon} {item.pain}</p>
-                <p className="text-xs text-emerald-600 font-medium leading-relaxed">✓ {item.solve}</p>
+                <p className="text-base font-semibold text-gray-800 mb-2">{item.icon} {item.pain}</p>
+                <p className="text-sm text-emerald-600 font-medium leading-relaxed">✓ {item.solve}</p>
               </div>
             ))}
           </div>
@@ -156,9 +156,9 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ SERVICES ═══════ */}
-      <section id="services" className="py-14 bg-white">
+      <section id="services" className="py-16 lg:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
             What We <span className="text-indigo-600">Deliver</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -167,11 +167,11 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-xs font-bold mb-3`}>
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <h3 className="text-sm font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">{service.title}</h3>
-                <p className="text-xs text-gray-500 leading-relaxed mb-3">{service.description}</p>
+                <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">{service.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed mb-3">{service.description}</p>
                 <div className="flex flex-wrap gap-1">
                   {service.tags.slice(0, 4).map((tag) => (
-                    <span key={tag} className="px-2 py-0.5 text-[10px] rounded-full bg-gray-100 text-gray-500">{tag}</span>
+                    <span key={tag} className="px-2 py-0.5 text-xs rounded-full bg-gray-100 text-gray-500">{tag}</span>
                   ))}
                 </div>
               </div>
@@ -181,9 +181,9 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ CASE STUDIES ═══════ */}
-      <section className="py-14 bg-gray-50">
+      <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
             Results We&apos;ve <span className="text-indigo-600">Delivered</span>
           </h2>
           <div className="grid sm:grid-cols-3 gap-4">
@@ -197,10 +197,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                   <span className="px-2.5 py-0.5 text-[10px] font-bold rounded-full bg-indigo-100 text-indigo-700">{cs.tag}</span>
                   <span className="text-[10px] text-gray-400">{cs.weeks} weeks</span>
                 </div>
-                <h3 className="text-sm font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">{cs.headline}</h3>
-                <p className="text-lg font-extrabold text-emerald-600 mb-3">{cs.result}</p>
+                <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">{cs.headline}</h3>
+                <p className="text-xl font-extrabold text-emerald-600 mb-3">{cs.result}</p>
                 <div className="flex flex-wrap gap-1">
-                  {cs.tech.map((t) => <span key={t} className="px-2 py-0.5 text-[10px] rounded-full bg-gray-100 text-gray-500">{t}</span>)}
+                  {cs.tech.map((t) => <span key={t} className="px-2 py-0.5 text-xs rounded-full bg-gray-100 text-gray-500">{t}</span>)}
                 </div>
               </div>
             ))}
@@ -209,9 +209,9 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ PROCESS ═══════ */}
-      <section className="py-14 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
             From Idea to <span className="text-indigo-600">Revenue</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -219,8 +219,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               <div key={step.step} className="relative p-5 rounded-xl bg-gray-50 border border-gray-100">
                 {i < data.process.length - 1 && <div className="hidden lg:block absolute top-1/2 -right-3 w-6 text-gray-300 text-lg">→</div>}
                 <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-xs font-bold mb-3`}>{step.step}</div>
-                <h3 className="text-sm font-bold text-gray-900 mb-1">{step.title}</h3>
-                <p className="text-xs text-gray-500 leading-relaxed">{step.description}</p>
+                <h3 className="text-base font-bold text-gray-900 mb-1">{step.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>
@@ -228,7 +228,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ USPS ═══════ */}
-      <section className="py-14 bg-gray-50">
+      <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-4">
             {[
@@ -240,11 +240,11 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <div className={`w-10 h-10 rounded-xl ${usp.bg} flex items-center justify-center mb-3`}>
                   <usp.icon className={`w-5 h-5 ${usp.color}`} />
                 </div>
-                <h3 className="text-sm font-bold text-gray-900 mb-1">{usp.title}</h3>
-                <p className="text-xs text-gray-500 leading-relaxed mb-3">{usp.text}</p>
+                <h3 className="text-base font-bold text-gray-900 mb-1">{usp.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed mb-3">{usp.text}</p>
                 <ul className="space-y-1.5">
                   {usp.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-1.5 text-[11px] text-gray-600">
+                    <li key={b} className="flex items-start gap-1.5 text-xs text-gray-600">
                       <CheckCircle2 className="w-3 h-3 text-emerald-500 mt-0.5 flex-shrink-0" />{b}
                     </li>
                   ))}
@@ -256,9 +256,9 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ TECH STACK ═══════ */}
-      <section className="py-14 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
             Built With <span className="text-indigo-600">Modern Stack</span>
           </h2>
           <div className="grid sm:grid-cols-3 gap-4">
@@ -275,7 +275,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <p className="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-3">{stack.cat}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {stack.items.map((item) => (
-                    <span key={item} className="px-2.5 py-1 text-[11px] rounded-lg bg-white text-gray-600 border border-gray-200 shadow-sm">{item}</span>
+                    <span key={item} className="px-2.5 py-1 text-xs rounded-lg bg-white text-gray-600 border border-gray-200 shadow-sm">{item}</span>
                   ))}
                 </div>
               </div>
@@ -285,9 +285,9 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ TESTIMONIALS ═══════ */}
-      <section className="py-14 bg-gray-50">
+      <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
             What Clients <span className="text-indigo-600">Say</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -303,10 +303,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <div className="flex gap-0.5 mb-3">
                   {Array.from({ length: t.rating }).map((_, s) => <Star key={s} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}
                 </div>
-                <p className="text-sm text-gray-600 italic leading-relaxed mb-3">&ldquo;{t.quote}&rdquo;</p>
+                <p className="text-base text-gray-600 italic leading-relaxed mb-3">&ldquo;{t.quote}&rdquo;</p>
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-[10px] font-bold text-white">{t.author}</div>
-                  <p className="text-[11px] text-gray-400">{t.role}</p>
+                  <p className="text-xs text-gray-400">{t.role}</p>
                 </div>
               </div>
             ))}
@@ -319,7 +319,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
-            <p className="text-sm font-medium">Taking on <strong>3 new projects</strong> this month — slots fill fast</p>
+            <p className="text-base font-semibold">Taking on <strong>3 new projects</strong> this month — slots fill fast</p>
           </div>
           <button onClick={openConsult} className="px-5 py-2 rounded-lg bg-white text-indigo-700 text-sm font-bold hover:bg-indigo-50 transition-all hover:scale-105 cursor-pointer whitespace-nowrap shadow-sm">
             Claim Your Slot <ArrowRight className="w-3.5 h-3.5 inline ml-1" />
@@ -328,9 +328,9 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ COMPARISON TABLE ═══════ */}
-      <section className="py-14 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
             Why RDMI <span className="text-indigo-600">vs Others</span>
           </h2>
           <div className="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
@@ -354,10 +354,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                   ["Post-Launch", "30-60 days free", "Paid from Day 1", "Limited"],
                 ].map(([c, r, a, f]) => (
                   <tr key={c} className="hover:bg-gray-50 transition-colors">
-                    <td className="py-3 px-4 text-xs text-gray-600 font-medium">{c}</td>
-                    <td className="py-3 px-4 text-xs text-center font-semibold text-emerald-600 bg-indigo-50/50">{r}</td>
-                    <td className="py-3 px-4 text-xs text-center text-amber-600">{a}</td>
-                    <td className="py-3 px-4 text-xs text-center text-red-500">{f}</td>
+                    <td className="py-3 px-4 text-sm text-gray-700 font-medium">{c}</td>
+                    <td className="py-3 px-4 text-sm text-center font-semibold text-emerald-600 bg-indigo-50/50">{r}</td>
+                    <td className="py-3 px-4 text-sm text-center text-amber-600">{a}</td>
+                    <td className="py-3 px-4 text-sm text-center text-red-500">{f}</td>
                   </tr>
                 ))}
               </tbody>
@@ -367,20 +367,20 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ FAQ ═══════ */}
-      <section className="py-14 bg-gray-50">
+      <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
             Questions <span className="text-indigo-600">Answered</span>
           </h2>
           <div className="space-y-2">
             {data.faq.map((faq, i) => (
               <div key={i} className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
                 <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-4 sm:p-5 text-left hover:bg-gray-50 transition-colors">
-                  <span className="text-sm font-semibold text-gray-800 pr-4">{faq.q}</span>
+                  <span className="text-base font-semibold text-gray-800 pr-4">{faq.q}</span>
                   <ChevronDown className={`w-4 h-4 text-gray-400 flex-shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-180" : ""}`} />
                 </button>
                 {openFaq === i && (
-                  <div className="px-4 sm:px-5 pb-4 sm:pb-5 text-sm text-gray-600 leading-relaxed">{faq.a}</div>
+                  <div className="px-4 sm:px-5 pb-4 sm:pb-5 text-base text-gray-600 leading-relaxed">{faq.a}</div>
                 )}
               </div>
             ))}
@@ -391,12 +391,12 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       {/* ═══════ CTA ═══════ */}
       <section className="py-16 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-700 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">{data.ctaSection.headline}</h2>
-          <p className="text-indigo-100 text-base max-w-xl mx-auto">{data.ctaSection.subtitle}</p>
-          <button onClick={openConsult} className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-indigo-700 font-bold text-base hover:bg-indigo-50 transition-all hover:scale-105 shadow-lg shadow-black/10 cursor-pointer">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">{data.ctaSection.headline}</h2>
+          <p className="text-indigo-100 text-lg max-w-xl mx-auto">{data.ctaSection.subtitle}</p>
+          <button onClick={openConsult} className="inline-flex items-center gap-2 px-10 py-5 rounded-xl bg-white text-indigo-700 font-bold text-lg hover:bg-indigo-50 transition-all hover:scale-105 shadow-lg shadow-black/10 cursor-pointer">
             {data.ctaSection.buttonText} <ArrowRight className="w-4 h-4" />
           </button>
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-indigo-200">
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-indigo-200">
             {["Free consultation", "NDA protected", "Money-back guarantee", "You own 100% of code"].map((t) => (
               <span key={t} className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-300" />{t}</span>
             ))}
@@ -411,7 +411,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
           <div className="hidden sm:flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <p className="text-xs text-gray-600 font-medium">Senior developer responds in 2 hours</p>
+            <p className="text-sm text-gray-700 font-medium">Senior developer responds in 2 hours</p>
           </div>
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-all">
