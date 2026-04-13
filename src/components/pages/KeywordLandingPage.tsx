@@ -68,7 +68,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
   const industries = ["Healthcare", "Finance / Insurance", "E-Commerce / Retail", "SaaS / Technology", "Travel / Hospitality", "Education", "Real Estate", "Logistics", "Legal", "Manufacturing", "Other"];
 
-  const field = "w-full px-4 py-3 rounded-lg bg-zinc-100 border border-white/10 text-sm text-white placeholder-zinc-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-colors";
+  const field = "w-full px-4 py-3 rounded-lg bg-zinc-100 border border-zinc-200 text-sm text-zinc-800 placeholder-zinc-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-colors";
 
   return (
     <>
@@ -105,7 +105,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             <button onClick={handleCTA} className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:via-purple-500 hover:to-indigo-500 transition-all hover:shadow-xl hover:shadow-indigo-500/25 hover:scale-105 cursor-pointer animate-gradient bg-[length:200%_200%]">
               {data.hero.cta1} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <a href="https://wa.me/919818565561?text=Hi%20RDMI%2C%20I%20need%20help%20with%20a%20project" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl border border-white/10 hover:bg-zinc-100 transition-all">
+            <a href="https://wa.me/919818565561?text=Hi%20RDMI%2C%20I%20need%20help%20with%20a%20project" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl border border-zinc-200 hover:bg-zinc-100 transition-all">
               <Phone className="w-4 h-4" /> WhatsApp Us
             </a>
           </div>
@@ -127,8 +127,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           {/* ─── IMAGE SLIDER (Portfolio/Case Studies) ─── */}
           <div className="relative">
             {/* Edge fades */}
-            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-[#f8f8fc] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#f8f8fc] to-transparent z-10 pointer-events-none" />
 
             <div className="overflow-hidden">
               <div className="flex gap-4 animate-marquee">
@@ -195,7 +195,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {data.services.map((service, i) => (
-              <div key={service.title} onClick={handleCTA} className="group p-5 rounded-xl bg-white border border-zinc-200 shadow-sm hover:border-indigo-500/30 hover:bg-white transition-all cursor-pointer">
+              <div key={service.title} onClick={handleCTA} className="group p-5 rounded-xl bg-white border border-zinc-200 shadow-sm hover:border-indigo-300 hover:shadow-md transition-all cursor-pointer">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center text-sm font-bold text-indigo-400">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="text-sm font-semibold group-hover:text-indigo-300 transition-colors">{service.title}</h3>
@@ -224,7 +224,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { tag: "E-Commerce", headline: "Marketplace — 4x conversion rate increase", result: "35% higher AOV", tech: ["React", "Node.js", "Razorpay"], weeks: 12 },
               { tag: "AI Agent", headline: "RAG System — 50K docs searchable in 3 seconds", result: "Replaced 3 FTE in research", tech: ["LangChain", "Pinecone", "Python"], weeks: 8 },
             ]).map((cs) => (
-              <div key={cs.headline} onClick={handleCTA} className="group p-5 rounded-xl bg-white border border-zinc-200 shadow-sm hover:border-indigo-500/20 transition-all cursor-pointer">
+              <div key={cs.headline} onClick={handleCTA} className="group p-5 rounded-xl bg-white border border-zinc-200 shadow-sm hover:border-indigo-300 transition-all cursor-pointer">
                 <div className="flex items-center justify-between mb-3">
                   <span className="px-2.5 py-0.5 text-[10px] font-bold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white">{cs.tag}</span>
                   <span className="text-[10px] text-zinc-500">{cs.weeks} weeks</span>
@@ -348,7 +348,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ─── URGENCY STRIP ─── */}
-      <section className="py-4 relative bg-gradient-to-r from-indigo-950/60 to-purple-950/40 border-y border-indigo-500/20">
+      <section className="py-4 relative bg-gradient-to-r from-indigo-950/60 to-purple-950/40 border-y border-indigo-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -371,7 +371,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               <thead>
                 <tr className="border-b border-zinc-200">
                   <th className="text-left py-3 px-4 text-zinc-500 font-medium text-xs">Criteria</th>
-                  <th className="text-center py-3 px-4 text-indigo-400 font-bold text-xs bg-indigo-500/5 border-x border-indigo-500/10 rounded-t-lg">RDMI AI</th>
+                  <th className="text-center py-3 px-4 text-indigo-400 font-bold text-xs bg-indigo-50 border-x border-indigo-200 rounded-t-lg">RDMI AI</th>
                   <th className="text-center py-3 px-4 text-zinc-500 font-medium text-xs">Large Agency</th>
                   <th className="text-center py-3 px-4 text-zinc-500 font-medium text-xs">Freelancer</th>
                 </tr>
@@ -389,7 +389,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 ].map(([criteria, rdmi, agency, freelancer]) => (
                   <tr key={criteria}>
                     <td className="py-3 px-4 text-xs text-zinc-500">{criteria}</td>
-                    <td className="py-3 px-4 text-xs text-center font-medium text-emerald-400 bg-indigo-500/5 border-x border-indigo-500/10">{rdmi}</td>
+                    <td className="py-3 px-4 text-xs text-center font-medium text-emerald-400 bg-indigo-50 border-x border-indigo-200">{rdmi}</td>
                     <td className="py-3 px-4 text-xs text-center text-amber-400/70">{agency}</td>
                     <td className="py-3 px-4 text-xs text-center text-red-400/60">{freelancer}</td>
                   </tr>
@@ -412,9 +412,9 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               <div key={i} className="rounded-xl border border-zinc-200 bg-white overflow-hidden">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between p-5 text-left hover:bg-white transition-colors"
+                  className="w-full flex items-center justify-between p-5 text-left hover:bg-zinc-50 transition-colors"
                 >
-                  <span className="text-sm font-medium pr-4">{faq.q}</span>
+                  <span className="text-sm font-semibold text-zinc-800 pr-4">{faq.q}</span>
                   <ChevronDown className={`w-4 h-4 text-zinc-500 flex-shrink-0 transition-transform ${openFaq === i ? "rotate-180" : ""}`} />
                 </button>
                 {openFaq === i && (
@@ -467,21 +467,19 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
       <Footer />
 
-      {/* ─── STICKY BOTTOM BAR (Mobile + Desktop) ─── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-xl border-t border-zinc-200 py-2.5 px-4 sm:px-6">
+      {/* ─── STICKY BOTTOM BAR ─── */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-zinc-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] py-2.5 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
-          <div className="hidden sm:block">
-            <p className="text-xs text-zinc-400">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block mr-1.5" />
-              Senior developer responds in 2 hours
-            </p>
+          <div className="hidden sm:flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <p className="text-xs text-zinc-600 font-medium">Senior developer responds in 2 hours</p>
           </div>
           <div className="flex items-center gap-2.5 w-full sm:w-auto">
             <a
               href="https://wa.me/919818565561?text=Hi%20RDMI%2C%20I%20need%20help%20with%20a%20project"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-sm font-semibold transition-all hover:scale-105"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-all hover:scale-105"
             >
               <Phone className="w-4 h-4" />
               <span className="sm:hidden">WhatsApp</span>
@@ -489,7 +487,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             </a>
             <button
               onClick={handleCTA}
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg animate-shimmer text-sm font-semibold transition-all hover:scale-105 cursor-pointer"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg animate-shimmer text-white text-sm font-semibold transition-all hover:scale-105 cursor-pointer"
             >
               Get Free Consultation
               <ArrowRight className="w-3.5 h-3.5" />
@@ -499,7 +497,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </div>
 
       {/* Bottom spacer for sticky bar */}
-      <div className="h-16" />
+      <div className="h-14" />
 
       {/* ─── CONSULTATION MODAL ─── */}
       {showConsultModal && (
@@ -510,7 +508,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             <div className="h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500" />
 
             {formStatus !== "loading" && (
-              <button onClick={() => setShowConsultModal(false)} className="absolute top-4 right-4 p-2 rounded-full bg-zinc-100 hover:bg-white/10 transition-colors z-10">
+              <button onClick={() => setShowConsultModal(false)} className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10">
                 <span className="text-zinc-500 text-lg">×</span>
               </button>
             )}

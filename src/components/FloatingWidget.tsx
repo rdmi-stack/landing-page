@@ -1,13 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Phone, X, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
 import WhatsAppIcon from "./WhatsAppIcon";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function FloatingWidget() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  // Hide on keyword landing pages (they have their own sticky bar)
+  if (pathname?.startsWith("/kw/")) return null;
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
