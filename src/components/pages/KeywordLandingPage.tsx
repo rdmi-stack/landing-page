@@ -95,7 +95,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] tracking-tight">
               <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent">{data.hero.h1}</span>
             </h1>
-            <p className="mt-5 text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto">
+            <p className="mt-5 text-base sm:text-lg text-zinc-500 leading-relaxed max-w-2xl mx-auto">
               {data.hero.subtitle}
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           </div>
 
           {/* Trust points + social proof — single row */}
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-zinc-400 mb-8">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-zinc-500 mb-8">
             {data.hero.trustPoints.slice(0, 4).map((item) => (
               <span key={item} className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3 h-3 text-emerald-500 flex-shrink-0" />
@@ -139,7 +139,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                     <div className="absolute bottom-3 left-3 right-3">
                       <div className="flex items-center gap-1.5">
                         <CheckCircle2 className="w-3 h-3 text-indigo-400" />
-                        <span className="text-[10px] text-zinc-300">NDA Protected</span>
+                        <span className="text-[10px] text-zinc-700">NDA Protected</span>
                       </div>
                       <p className="text-xs font-semibold mt-1 group-hover:text-indigo-300 transition-colors">View Project →</p>
                     </div>
@@ -152,11 +152,11 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ─── STATS ─── */}
-      <section className="py-12 relative bg-[#0d0d0d]">
+      <section className="py-12 relative bg-[#f8f8fc]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {data.stats.map((stat) => (
-              <div key={stat.label} className="text-center p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
+              <div key={stat.label} className="text-center p-5 rounded-2xl bg-white border border-zinc-200 shadow-sm">
                 <div className="text-2xl sm:text-3xl font-bold gradient-text">{stat.value}</div>
                 <div className="text-xs sm:text-sm text-zinc-500 mt-1">{stat.label}</div>
               </div>
@@ -175,7 +175,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { pain: "You can't reach the person writing your code", solve: "Direct WhatsApp/Slack with your developer. <30 min avg response.", painColor: "border-orange-500/20 bg-orange-500/[0.03]", solveColor: "text-emerald-400" },
             ].map((item) => (
               <div key={item.pain} className={`p-4 rounded-xl border ${item.painColor}`}>
-                <p className="text-sm font-medium text-zinc-300 mb-2">{item.pain}</p>
+                <p className="text-sm font-medium text-zinc-700 mb-2">{item.pain}</p>
                 <div className="h-px bg-gradient-to-r from-zinc-700 to-transparent my-2" />
                 <p className={`text-xs ${item.solveColor} font-medium leading-relaxed`}>{item.solve}</p>
               </div>
@@ -185,7 +185,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ─── SERVICES (Clean grid, no images — fast) ─── */}
-      <section id="services" className="py-16 lg:py-24 relative bg-[#111]">
+      <section id="services" className="py-16 lg:py-24 relative bg-[#f0f0f7]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold">
@@ -195,7 +195,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {data.services.map((service, i) => (
-              <div key={service.title} onClick={handleCTA} className="group p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/30 hover:bg-white/[0.05] transition-all cursor-pointer">
+              <div key={service.title} onClick={handleCTA} className="group p-5 rounded-xl bg-white border border-zinc-200 shadow-sm hover:border-indigo-500/30 hover:bg-white transition-all cursor-pointer">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center text-sm font-bold text-indigo-400">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="text-sm font-semibold group-hover:text-indigo-300 transition-colors">{service.title}</h3>
@@ -203,7 +203,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <p className="text-xs text-zinc-500 leading-relaxed mb-3">{service.description}</p>
                 <div className="flex flex-wrap gap-1">
                   {service.tags.slice(0, 4).map((tag) => (
-                    <span key={tag} className="px-1.5 py-0.5 text-[10px] rounded bg-white/5 text-zinc-600">{tag}</span>
+                    <span key={tag} className="px-1.5 py-0.5 text-[10px] rounded bg-white/5 text-zinc-500">{tag}</span>
                   ))}
                 </div>
               </div>
@@ -224,17 +224,17 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { tag: "E-Commerce", headline: "Marketplace — 4x conversion rate increase", result: "35% higher AOV", tech: ["React", "Node.js", "Razorpay"], weeks: 12 },
               { tag: "AI Agent", headline: "RAG System — 50K docs searchable in 3 seconds", result: "Replaced 3 FTE in research", tech: ["LangChain", "Pinecone", "Python"], weeks: 8 },
             ]).map((cs) => (
-              <div key={cs.headline} onClick={handleCTA} className="group p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-indigo-500/20 transition-all cursor-pointer">
+              <div key={cs.headline} onClick={handleCTA} className="group p-5 rounded-xl bg-white border border-zinc-200 shadow-sm hover:border-indigo-500/20 transition-all cursor-pointer">
                 <div className="flex items-center justify-between mb-3">
                   <span className="px-2.5 py-0.5 text-[10px] font-bold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white">{cs.tag}</span>
-                  <span className="text-[10px] text-zinc-600">{cs.weeks} weeks</span>
+                  <span className="text-[10px] text-zinc-500">{cs.weeks} weeks</span>
                 </div>
                 <h3 className="text-sm font-semibold mb-2 group-hover:text-indigo-300 transition-colors">{cs.headline}</h3>
                 <p className="text-lg font-bold text-emerald-400 mb-3">{cs.result}</p>
                 <div className="flex flex-wrap gap-1">
-                  {cs.tech.map((t) => <span key={t} className="px-1.5 py-0.5 text-[10px] rounded bg-white/5 text-zinc-600">{t}</span>)}
+                  {cs.tech.map((t) => <span key={t} className="px-1.5 py-0.5 text-[10px] rounded bg-white/5 text-zinc-500">{t}</span>)}
                 </div>
-                <div className="flex items-center gap-1 mt-3 text-[10px] text-zinc-600">
+                <div className="flex items-center gap-1 mt-3 text-[10px] text-zinc-500">
                   <CheckCircle2 className="w-3 h-3 text-indigo-400" /> NDA Protected
                 </div>
               </div>
@@ -253,7 +253,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {data.process.map((step, i) => (
-                <div key={step.step} className="relative p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                <div key={step.step} className="relative p-4 rounded-xl bg-white border border-zinc-200 shadow-sm">
                   {i < data.process.length - 1 && <div className="hidden lg:block absolute top-1/2 -right-2 w-4 h-px bg-gradient-to-r from-indigo-500 to-transparent z-10" />}
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white text-xs font-bold mb-3">{step.step}</div>
                   <h3 className="text-sm font-semibold mb-1">{step.title}</h3>
@@ -270,13 +270,13 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { icon: IndianRupee, title: "Save 50% Guaranteed", text: data.uspHeadlines.cost, color: "text-emerald-400", border: "border-l-2 border-emerald-500", bullets: ["Fixed price — the quote IS the invoice", "No hourly billing surprises", "Money-back if we miss your deadline"] },
               { icon: Bot, title: "AI = 3x Faster", text: data.uspHeadlines.ai, color: "text-purple-400", border: "border-l-2 border-purple-500", bullets: ["AI writes 40% of code, humans review 100%", "12-week projects done in 4 weeks", "Built-in AI features at no extra cost"] },
             ].map((usp) => (
-              <div key={usp.title} className={`p-5 rounded-xl bg-white/[0.02] ${usp.border}`}>
+              <div key={usp.title} className={`p-5 rounded-xl bg-white ${usp.border}`}>
                 <usp.icon className={`w-5 h-5 ${usp.color} mb-2`} />
                 <h3 className="text-sm font-bold mb-1">{usp.title}</h3>
                 <p className="text-xs text-zinc-500 leading-relaxed mb-3">{usp.text}</p>
                 <ul className="space-y-1.5">
                   {usp.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-1.5 text-[11px] text-zinc-400">
+                    <li key={b} className="flex items-start gap-1.5 text-[11px] text-zinc-500">
                       <CheckCircle2 className="w-3 h-3 text-emerald-500 mt-0.5 flex-shrink-0" />
                       {b}
                     </li>
@@ -289,7 +289,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ─── TECH STACK ─── */}
-      <section className="py-14 lg:py-20 relative bg-[#0d0d0d]">
+      <section className="py-14 lg:py-20 relative bg-[#f8f8fc]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">
             Built With <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Modern Stack</span>
@@ -304,11 +304,11 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { cat: "Backend & Database", items: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis", "GraphQL"] },
               { cat: "Cloud & Tools", items: ["AWS", "Vercel", "Docker", "GitHub Actions", "Stripe", "Razorpay"] },
             ]).map((stack) => (
-              <div key={stack.cat} className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+              <div key={stack.cat} className="p-4 rounded-xl bg-white border border-zinc-200 shadow-sm">
                 <p className="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-3">{stack.cat}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {stack.items.map((item) => (
-                    <span key={item} className="px-2 py-1 text-[11px] rounded-md bg-white/5 text-zinc-400 border border-white/5">{item}</span>
+                    <span key={item} className="px-2 py-1 text-[11px] rounded-md bg-white/5 text-zinc-500 border border-white/5">{item}</span>
                   ))}
                 </div>
               </div>
@@ -332,14 +332,14 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { quote: "The AI chatbot they built handles 80% of our support tickets now. ROI was positive in month 2. Unbelievable.", author: "D.S.", role: "VP Ops, E-Commerce, Hyderabad", rating: 5 },
               { quote: "We were skeptical about an India-based team. After the first sprint demo, we extended the contract to 6 months.", author: "M.T.", role: "Product Manager, SaaS, San Francisco", rating: 5 },
             ]).map((t, i) => (
-              <div key={i} className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+              <div key={i} className="p-4 rounded-xl bg-white border border-zinc-200 shadow-sm">
                 <div className="flex gap-0.5 mb-2">
                   {Array.from({ length: t.rating }).map((_, s) => <Star key={s} className="w-3 h-3 fill-amber-400 text-amber-400" />)}
                 </div>
-                <p className="text-xs text-zinc-400 italic leading-relaxed mb-3">&ldquo;{t.quote}&rdquo;</p>
+                <p className="text-xs text-zinc-500 italic leading-relaxed mb-3">&ldquo;{t.quote}&rdquo;</p>
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-[9px] font-bold">{t.author}</div>
-                  <p className="text-[10px] text-zinc-600">{t.role}</p>
+                  <p className="text-[10px] text-zinc-500">{t.role}</p>
                 </div>
               </div>
             ))}
@@ -352,7 +352,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <p className="text-sm text-zinc-300 font-medium">Taking on <strong className="text-white">3 new projects</strong> this month — slots fill fast</p>
+            <p className="text-sm text-zinc-700 font-medium">Taking on <strong className="text-white">3 new projects</strong> this month — slots fill fast</p>
           </div>
           <button onClick={handleCTA} className="px-5 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-sm font-semibold transition-all hover:scale-105 cursor-pointer whitespace-nowrap">
             Claim Your Slot <ArrowRight className="w-3 h-3 inline ml-1" />
@@ -361,7 +361,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ─── COMPARISON TABLE (RDMI vs Agency vs Freelancer) ─── */}
-      <section className="py-14 lg:py-20 relative bg-[#0d0d0d]">
+      <section className="py-14 lg:py-20 relative bg-[#f8f8fc]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">
             Why RDMI <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">vs Others</span>
@@ -388,7 +388,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                   ["Post-Launch Support", "30-60 days free", "Paid from Day 1", "Limited"],
                 ].map(([criteria, rdmi, agency, freelancer]) => (
                   <tr key={criteria}>
-                    <td className="py-3 px-4 text-xs text-zinc-400">{criteria}</td>
+                    <td className="py-3 px-4 text-xs text-zinc-500">{criteria}</td>
                     <td className="py-3 px-4 text-xs text-center font-medium text-emerald-400 bg-indigo-500/5 border-x border-indigo-500/10">{rdmi}</td>
                     <td className="py-3 px-4 text-xs text-center text-amber-400/70">{agency}</td>
                     <td className="py-3 px-4 text-xs text-center text-red-400/60">{freelancer}</td>
@@ -409,16 +409,16 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
           <div className="space-y-3">
             {data.faq.map((faq, i) => (
-              <div key={i} className="rounded-xl border border-white/[0.06] bg-white/[0.02] overflow-hidden">
+              <div key={i} className="rounded-xl border border-zinc-200 bg-white overflow-hidden">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors"
+                  className="w-full flex items-center justify-between p-5 text-left hover:bg-white transition-colors"
                 >
                   <span className="text-sm font-medium pr-4">{faq.q}</span>
                   <ChevronDown className={`w-4 h-4 text-zinc-500 flex-shrink-0 transition-transform ${openFaq === i ? "rotate-180" : ""}`} />
                 </button>
                 {openFaq === i && (
-                  <div className="px-5 pb-5 text-sm text-zinc-400 leading-relaxed">
+                  <div className="px-5 pb-5 text-sm text-zinc-500 leading-relaxed">
                     {faq.a}
                   </div>
                 )}
@@ -437,7 +437,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
             {data.ctaSection.headline}
           </h2>
-          <p className="text-zinc-400 text-base max-w-xl mx-auto">
+          <p className="text-zinc-500 text-base max-w-xl mx-auto">
             {data.ctaSection.subtitle}
           </p>
 
@@ -467,6 +467,40 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
       <Footer />
 
+      {/* ─── STICKY BOTTOM BAR (Mobile + Desktop) ─── */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-xl border-t border-white/10 py-2.5 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
+          <div className="hidden sm:block">
+            <p className="text-xs text-zinc-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block mr-1.5" />
+              Senior developer responds in 2 hours
+            </p>
+          </div>
+          <div className="flex items-center gap-2.5 w-full sm:w-auto">
+            <a
+              href="https://wa.me/919818565561?text=Hi%20RDMI%2C%20I%20need%20help%20with%20a%20project"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-sm font-semibold transition-all hover:scale-105"
+            >
+              <Phone className="w-4 h-4" />
+              <span className="sm:hidden">WhatsApp</span>
+              <span className="hidden sm:inline">WhatsApp Us</span>
+            </a>
+            <button
+              onClick={handleCTA}
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg animate-shimmer text-sm font-semibold transition-all hover:scale-105 cursor-pointer"
+            >
+              Get Free Consultation
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom spacer for sticky bar */}
+      <div className="h-16" />
+
       {/* ─── CONSULTATION MODAL ─── */}
       {showConsultModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -477,7 +511,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
             {formStatus !== "loading" && (
               <button onClick={() => setShowConsultModal(false)} className="absolute top-4 right-4 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors z-10">
-                <span className="text-zinc-400 text-lg">×</span>
+                <span className="text-zinc-500 text-lg">×</span>
               </button>
             )}
 
@@ -561,12 +595,12 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               </form>
 
               {/* Micro-testimonial */}
-              <div className="mt-4 p-3 rounded-lg bg-white/[0.03] border border-white/5">
-                <p className="text-[11px] text-zinc-400 italic">&ldquo;They delivered our prototype in 48 hours. The developer knew our industry better than our previous agency.&rdquo;</p>
-                <p className="text-[10px] text-zinc-600 mt-1">— Startup Founder, Bangalore</p>
+              <div className="mt-4 p-3 rounded-lg bg-white border border-white/5">
+                <p className="text-[11px] text-zinc-500 italic">&ldquo;They delivered our prototype in 48 hours. The developer knew our industry better than our previous agency.&rdquo;</p>
+                <p className="text-[10px] text-zinc-500 mt-1">— Startup Founder, Bangalore</p>
               </div>
 
-              <p className="text-[10px] text-zinc-600 text-center mt-3">
+              <p className="text-[10px] text-zinc-500 text-center mt-3">
                 No spam · No obligation · NDA before first call
               </p>
             </div>
