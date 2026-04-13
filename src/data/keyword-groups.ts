@@ -1,7 +1,16 @@
+export interface PageTheme {
+  heroGradient: string;
+  accent: string;
+  ctaGradient: string;
+  urgencyBg: string;
+  icon: string;
+}
+
 export interface KeywordGroup {
   slug: string;
   primaryKeyword: string;
   adGroupMatch: string;
+  theme: PageTheme;
   meta: { title: string; description: string };
   hero: {
     badge: string;
@@ -35,6 +44,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "custom-software-development",
     primaryKeyword: "Custom Software Development",
     adGroupMatch: "Custom Software Dev India",
+    theme: { heroGradient: "from-indigo-600 via-purple-600 to-indigo-700", accent: "indigo", ctaGradient: "from-indigo-600 via-purple-600 to-indigo-700", urgencyBg: "bg-indigo-600", icon: "💻" },
     meta: {
       title: "Custom Software Development Company India | Save 50% | RDMI",
       description: "RDMI delivers custom software development that cuts costs 50% vs US/UK agencies. 200+ projects shipped, ₹47Cr+ revenue generated. Free quote in 2 hours.",
@@ -109,6 +119,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "mobile-app-development",
     primaryKeyword: "Mobile App Development Company",
     adGroupMatch: "Mobile App Development Co",
+    theme: { heroGradient: "from-blue-600 via-cyan-600 to-blue-700", accent: "blue", ctaGradient: "from-blue-600 via-cyan-600 to-blue-700", urgencyBg: "bg-blue-600", icon: "📱" },
     meta: {
       title: "Mobile App Development Company India | Android & iOS | RDMI",
       description: "RDMI builds Android & iOS apps — 120K+ downloads delivered, 4x user retention. Custom mobile app development from ₹1.5L. Free quote in 2 hours.",
@@ -183,6 +194,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "web-development-company",
     primaryKeyword: "Web Development Company",
     adGroupMatch: "Web Development Company",
+    theme: { heroGradient: "from-violet-600 via-purple-600 to-violet-700", accent: "violet", ctaGradient: "from-violet-600 via-purple-600 to-violet-700", urgencyBg: "bg-violet-600", icon: "🌐" },
     meta: {
       title: "AI-Powered Web Development Company India | Custom Websites from ₹50K | RDMI",
       description: "India's AI-powered web development company. Custom websites, web apps, SaaS & e-commerce — built with AI for 3x faster delivery. ₹50K–₹5L. 50K+ monthly searches. Free prototype in 48 hours.",
@@ -257,6 +269,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "ai-software-development",
     primaryKeyword: "AI Software Development",
     adGroupMatch: "AI Software Development",
+    theme: { heroGradient: "from-purple-600 via-pink-600 to-purple-700", accent: "purple", ctaGradient: "from-purple-600 via-pink-600 to-purple-700", urgencyBg: "bg-purple-600", icon: "🤖" },
     meta: {
       title: "AI Software Development Company India | AI Apps & Agents | RDMI",
       description: "Production-grade AI software — chatbots handling 80% of tickets, RAG systems, LangChain agents. OpenAI, CrewAI. ₹3L onwards. Free consultation.",
@@ -331,6 +344,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "ecommerce-development",
     primaryKeyword: "E-Commerce Development",
     adGroupMatch: "Ecommerce App Development",
+    theme: { heroGradient: "from-amber-600 via-orange-600 to-amber-700", accent: "amber", ctaGradient: "from-amber-600 via-orange-600 to-amber-700", urgencyBg: "bg-amber-600", icon: "🛒" },
     meta: {
       title: "E-Commerce Development Company India | Shopify & Custom | RDMI",
       description: "High-converting e-commerce stores & apps. Shopify, headless commerce, grocery delivery, B2B marketplaces. ₹1.5L onwards. 2-hour free quote.",
@@ -405,6 +419,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "ai-agent-workflow-consulting",
     primaryKeyword: "AI Automation & Business Process Automation",
     adGroupMatch: "AI Automation Services",
+    theme: { heroGradient: "from-purple-700 via-indigo-600 to-purple-700", accent: "purple", ctaGradient: "from-purple-700 via-indigo-600 to-purple-700", urgencyBg: "bg-purple-700", icon: "⚡" },
     meta: {
       title: "AI Automation Services | AI Agents, Chatbots & Workflow Automation | RDMI AI",
       description: "AI automation that replaces manual work 24/7. AI agents, chatbots, business process automation, workflow automation. 80% ticket deflection. Talk to an AI engineer, not a salesperson.",
@@ -527,6 +542,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "ai-software-development-dubai",
     primaryKeyword: "AI Software Development Dubai",
     adGroupMatch: "AI Development Company Dubai",
+    theme: { heroGradient: "from-emerald-600 via-teal-600 to-emerald-700", accent: "emerald", ctaGradient: "from-emerald-600 via-teal-600 to-emerald-700", urgencyBg: "bg-emerald-600", icon: "🇦🇪" },
     meta: {
       title: "AI Software Development Dubai — Agents, Chatbots & RAG | RDMI AI",
       description: "52% of DIFC firms already use AI. Build AI agents, Arabic chatbots, RAG systems & workflow automation in 8-12 weeks. IST+1.5hr overlap. DIFC-compliant. Free consultation.",
@@ -601,6 +617,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "ai-software-development-usa",
     primaryKeyword: "AI Software Development for US Companies",
     adGroupMatch: "AI Development Company USA",
+    theme: { heroGradient: "from-blue-700 via-indigo-600 to-blue-700", accent: "blue", ctaGradient: "from-blue-700 via-indigo-600 to-blue-700", urgencyBg: "bg-blue-700", icon: "🇺🇸" },
     meta: {
       title: "AI Software Development for US Companies — 60% Less Than Silicon Valley | RDMI AI",
       description: "Senior AI engineers. 4-8hr US timezone overlap. SOC2-ready, HIPAA-compliant. SF-quality AI agents, RAG systems & SaaS copilots at $15K–$20K vs $50K locally. Free consultation.",
@@ -677,6 +694,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "healthcare-ai-development",
     primaryKeyword: "Healthcare AI Solutions",
     adGroupMatch: "Healthcare AI Development",
+    theme: { heroGradient: "from-rose-600 via-pink-600 to-rose-700", accent: "rose", ctaGradient: "from-rose-600 via-pink-600 to-rose-700", urgencyBg: "bg-rose-600", icon: "🏥" },
     meta: { title: "Healthcare AI Development — HIPAA-Compliant AI for Hospitals & Clinics | RDMI", description: "Cut patient no-shows 40%, recover crores in denied claims, automate clinical documentation. HIPAA & DHA-compliant AI agents for hospitals, clinics, dental practices. Free consultation." },
     hero: { badge: "HIPAA & DHA Compliant · NDA Protected · 2-Hour Response", h1: "AI That Cuts Patient No-Shows 40% and Recovers ₹Crores in Denied Claims", subtitle: "Production-ready AI agents for hospitals, clinics, dental practices, and pharma — ambient scribes, intelligent scheduling, RCM automation, and clinical chatbots. Full compliance, source code ownership, money-back guarantee.", cta1: "Get Free Healthcare AI Consultation", cta2: "See How It Works", trustPoints: ["HIPAA & DHA compliant AI systems", "40% reduction in patient no-shows", "92%+ claim acceptance with RCM AI", "Money-back guarantee on prototype"] },
     images: { hero: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&q=80", process: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80", team: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=1200&q=80", services: ["https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80", "https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?w=800&q=80", "https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=800&q=80"], portfolio: ["https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80", "https://images.unsplash.com/photo-1585421514284-efb74c2b69ba?w=800&q=80", "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80"], cta: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1600&q=80" },
@@ -713,6 +731,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "insurance-ai-development",
     primaryKeyword: "AI for Insurance Agencies",
     adGroupMatch: "Insurance AI Development",
+    theme: { heroGradient: "from-sky-600 via-blue-600 to-sky-700", accent: "sky", ctaGradient: "from-sky-600 via-blue-600 to-sky-700", urgencyBg: "bg-sky-600", icon: "🛡️" },
     meta: { title: "AI for Insurance Agencies & Carriers — Claims, Underwriting & Voice Agents | RDMI", description: "Cut claims processing from 9 days to 90 seconds. AI agents for insurance — claims automation, AI underwriting, fraud detection, voice agents. ₹5L-₹50L / $10K-$100K." },
     hero: { badge: "InsurTech AI · IRDAI-Aware · Production-Ready", h1: "AI That Processes Claims in 90 Seconds — Not 9 Days", subtitle: "Insurance agencies, brokers, and carriers use RDMI's AI to automate claims intake, underwrite faster, qualify leads before your team picks up, and detect fraud before it costs you. No vendor lock-in. You own the code.", cta1: "Get Free Insurance AI Consultation", cta2: "See Insurance AI in Action", trustPoints: ["IRDAI & GDPR-aware architecture", "Integrates with Applied Epic, Hawksoft, AMS360", "68% faster claims processing", "NDA signed before we discuss your data"] },
     images: { hero: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80", process: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&q=80", team: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80", services: ["https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80", "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80", "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=800&q=80"], portfolio: ["https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80", "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80", "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"], cta: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80" },
@@ -749,6 +768,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "travel-hospitality-ai",
     primaryKeyword: "AI for Hotels & Travel",
     adGroupMatch: "Travel Hospitality AI",
+    theme: { heroGradient: "from-cyan-600 via-teal-600 to-cyan-700", accent: "cyan", ctaGradient: "from-cyan-600 via-teal-600 to-cyan-700", urgencyBg: "bg-cyan-600", icon: "✈️" },
     meta: { title: "AI for Hotels & Travel Agencies | Booking Engine, Chatbot & Revenue AI | RDMI", description: "AI booking engines, multilingual hotel chatbots, dynamic revenue management. 28% more bookings. 40% higher RevPAR. ₹3L-₹25L / $5K-$50K. Free consultation." },
     hero: { badge: "Travel & Hospitality AI · 12+ Languages · PMS Integrated", h1: "AI That Sells Trips While You Sleep — 24/7 Booking Engine", subtitle: "Multilingual AI agents that handle bookings, answer guest queries in 12+ languages, optimise room pricing in real time, and follow up with every lead — so your team focuses on experiences, not chasing enquiries.", cta1: "Get Free Travel AI Consultation", cta2: "See Live Demo", trustPoints: ["28% average revenue increase in 6 months", "24/7 automated booking across all channels", "Integrates with 30+ PMS, OTA & CRS", "₹3L-₹25L / $5K-$50K fixed pricing"] },
     images: { hero: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80", process: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80", team: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80", services: ["https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80", "https://images.unsplash.com/photo-1529290130-4ca3753253ae?w=800&q=80", "https://images.unsplash.com/photo-1615460549969-36fa19521a4f?w=800&q=80"], portfolio: ["https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80", "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80", "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=80"], cta: "https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=1600&q=80" },

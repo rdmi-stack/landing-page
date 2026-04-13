@@ -38,6 +38,21 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const isAIPage = data.slug.includes("ai-") || data.slug.includes("-dubai") || data.slug.includes("-usa") || data.slug.includes("healthcare") || data.slug.includes("insurance") || data.slug.includes("travel");
   const openConsult = () => setShowModal(true);
 
+  // Theme-driven colors
+  const t = data.theme;
+  const accentMap: Record<string, { text: string; bg: string; bg50: string; border: string; borderL: string; ring: string }> = {
+    indigo:  { text: "text-indigo-600",  bg: "bg-indigo-600",  bg50: "bg-indigo-50",  border: "border-indigo-200", borderL: "border-l-indigo-500", ring: "focus:ring-indigo-500/20 focus:border-indigo-500" },
+    blue:    { text: "text-blue-600",    bg: "bg-blue-600",    bg50: "bg-blue-50",    border: "border-blue-200",   borderL: "border-l-blue-500",   ring: "focus:ring-blue-500/20 focus:border-blue-500" },
+    violet:  { text: "text-violet-600",  bg: "bg-violet-600",  bg50: "bg-violet-50",  border: "border-violet-200", borderL: "border-l-violet-500", ring: "focus:ring-violet-500/20 focus:border-violet-500" },
+    purple:  { text: "text-purple-600",  bg: "bg-purple-600",  bg50: "bg-purple-50",  border: "border-purple-200", borderL: "border-l-purple-500", ring: "focus:ring-purple-500/20 focus:border-purple-500" },
+    amber:   { text: "text-amber-600",   bg: "bg-amber-600",   bg50: "bg-amber-50",   border: "border-amber-200",  borderL: "border-l-amber-500",  ring: "focus:ring-amber-500/20 focus:border-amber-500" },
+    emerald: { text: "text-emerald-600", bg: "bg-emerald-600", bg50: "bg-emerald-50", border: "border-emerald-200",borderL: "border-l-emerald-500",ring: "focus:ring-emerald-500/20 focus:border-emerald-500" },
+    rose:    { text: "text-rose-600",    bg: "bg-rose-600",    bg50: "bg-rose-50",    border: "border-rose-200",   borderL: "border-l-rose-500",   ring: "focus:ring-rose-500/20 focus:border-rose-500" },
+    sky:     { text: "text-sky-600",     bg: "bg-sky-600",     bg50: "bg-sky-50",     border: "border-sky-200",    borderL: "border-l-sky-500",    ring: "focus:ring-sky-500/20 focus:border-sky-500" },
+    cyan:    { text: "text-cyan-600",    bg: "bg-cyan-600",    bg50: "bg-cyan-50",    border: "border-cyan-200",   borderL: "border-l-cyan-500",   ring: "focus:ring-cyan-500/20 focus:border-cyan-500" },
+  };
+  const a = accentMap[t.accent] || accentMap.indigo;
+
   const projectTypes = isAIPage
     ? ["AI Chatbot / Voice Agent", "AI Agent / Workflow", "RAG / Knowledge Base", "AI Integration", "AI Consulting", "Other"]
     : ["Custom Website", "Web Application / SaaS", "E-Commerce", "Mobile App", "Landing Page", "Redesign", "Other"];
@@ -60,12 +75,12 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
     } catch { setFormStatus("error"); }
   };
 
-  const inp = "w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all";
+  const inp = `w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-sm text-gray-900 placeholder-gray-400 ${a.ring} outline-none transition-all`;
 
   return (
     <div className="bg-white text-gray-900">
       {/* ═══════ HERO ═══════ */}
-      <section className="relative pt-14 pb-10 lg:pt-20 lg:pb-14 overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-700 text-white">
+      <section className="relative pt-14 pb-10 lg:pt-20 lg:pb-14 overflow-hidden bg-gradient-to-br ${t.heroGradient} text-white">
         <div className="absolute inset-0 opacity-10">
           <Image src={data.images.hero} alt="" fill className="object-cover" priority />
         </div>
@@ -74,7 +89,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-base font-semibold mb-6 border border-white/20">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-lg">{t.icon}</span>
             {data.hero.badge}
           </div>
 
@@ -103,8 +118,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
           {/* Image slider */}
           <div className="relative -mx-4 sm:mx-0">
-            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-indigo-600 to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-indigo-700 to-transparent z-10" />
+            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-indigo-600/80 to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-indigo-700/80 to-transparent z-10" />
             <div className="overflow-hidden">
               <div className="flex gap-4 animate-marquee">
                 {[...data.images.portfolio, ...data.images.services, ...data.images.portfolio, ...data.images.services].map((img, i) => (
@@ -129,7 +144,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {data.stats.map((s) => (
               <div key={s.label} className="text-center py-4">
-                <div className="text-3xl sm:text-4xl font-extrabold text-indigo-600">{s.value}</div>
+                <div className="className={`text-3xl sm:text-4xl font-extrabold ${a.text}`}">{s.value}</div>
                 <div className="text-sm text-gray-500 mt-1">{s.label}</div>
               </div>
             ))}
@@ -159,11 +174,11 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       <section id="services" className="py-16 lg:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            What We <span className="text-indigo-600">Deliver</span>
+            What We <span className={a.text}>Deliver</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {data.services.map((service, i) => (
-              <div key={service.title} onClick={openConsult} className="group p-5 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:border-indigo-200 transition-all cursor-pointer">
+              <div key={service.title} onClick={openConsult} className="group p-5 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all cursor-pointer">
                 <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-xs font-bold mb-3`}>
                   {String(i + 1).padStart(2, "0")}
                 </div>
@@ -184,7 +199,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            Results We&apos;ve <span className="text-indigo-600">Delivered</span>
+            Results We&apos;ve <span className={a.text}>Delivered</span>
           </h2>
           <div className="grid sm:grid-cols-3 gap-4">
             {(data.caseStudies || [
@@ -192,7 +207,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { tag: "E-Commerce", headline: "Marketplace — 4x conversion increase", result: "35% higher AOV", tech: ["React", "Node.js", "Razorpay"], weeks: 12 },
               { tag: "AI Agent", headline: "RAG System — 50K docs in 3 seconds", result: "Replaced 3 FTE", tech: ["LangChain", "Pinecone"], weeks: 8 },
             ]).map((cs) => (
-              <div key={cs.headline} onClick={openConsult} className="group bg-white rounded-xl p-5 border border-gray-100 shadow-sm hover:shadow-lg hover:border-indigo-200 transition-all cursor-pointer">
+              <div key={cs.headline} onClick={openConsult} className="group bg-white rounded-xl p-5 border border-gray-100 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all cursor-pointer">
                 <div className="flex items-center justify-between mb-3">
                   <span className="px-2.5 py-0.5 text-[10px] font-bold rounded-full bg-indigo-100 text-indigo-700">{cs.tag}</span>
                   <span className="text-[10px] text-gray-400">{cs.weeks} weeks</span>
@@ -212,7 +227,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            From Idea to <span className="text-indigo-600">Revenue</span>
+            From Idea to <span className={a.text}>Revenue</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {data.process.map((step, i) => (
@@ -259,7 +274,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            Built With <span className="text-indigo-600">Modern Stack</span>
+            Built With <span className={a.text}>Modern Stack</span>
           </h2>
           <div className="grid sm:grid-cols-3 gap-4">
             {(isAIPage ? [
@@ -272,7 +287,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { cat: "Cloud", items: ["AWS", "Vercel", "Docker", "GitHub Actions", "Stripe", "Razorpay"] },
             ]).map((stack) => (
               <div key={stack.cat} className="p-5 rounded-xl bg-gray-50 border border-gray-100">
-                <p className="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-3">{stack.cat}</p>
+                <p className={`text-xs font-bold ${a.text} uppercase tracking-wider mb-3`}>{stack.cat}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {stack.items.map((item) => (
                     <span key={item} className="px-2.5 py-1 text-xs rounded-lg bg-white text-gray-600 border border-gray-200 shadow-sm">{item}</span>
@@ -288,7 +303,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            What Clients <span className="text-indigo-600">Say</span>
+            What Clients <span className={a.text}>Say</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {(data.testimonials || [
@@ -315,13 +330,13 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ URGENCY STRIP ═══════ */}
-      <section className="py-4 bg-indigo-600 text-white">
+      <section className={`py-4 ${t.urgencyBg} text-white`}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
             <p className="text-base font-semibold">Taking on <strong>3 new projects</strong> this month — slots fill fast</p>
           </div>
-          <button onClick={openConsult} className="px-5 py-2 rounded-lg bg-white text-indigo-700 text-sm font-bold hover:bg-indigo-50 transition-all hover:scale-105 cursor-pointer whitespace-nowrap shadow-sm">
+          <button onClick={openConsult} className={`px-5 py-2 rounded-lg bg-white ${a.text} text-sm font-bold hover:bg-gray-50 transition-all hover:scale-105 cursor-pointer whitespace-nowrap shadow-sm`}>
             Claim Your Slot <ArrowRight className="w-3.5 h-3.5 inline ml-1" />
           </button>
         </div>
@@ -331,14 +346,14 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            Why RDMI <span className="text-indigo-600">vs Others</span>
+            Why RDMI <span className={a.text}>vs Others</span>
           </h2>
           <div className="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-200">
                   <th className="text-left py-3 px-4 text-gray-500 font-medium text-xs">Criteria</th>
-                  <th className="text-center py-3 px-4 text-indigo-700 font-bold text-xs bg-indigo-50">RDMI AI</th>
+                  <th className={`text-center py-3 px-4 font-bold text-xs ${a.bg50} ${a.text}`}>RDMI AI</th>
                   <th className="text-center py-3 px-4 text-gray-500 font-medium text-xs">Large Agency</th>
                   <th className="text-center py-3 px-4 text-gray-500 font-medium text-xs">Freelancer</th>
                 </tr>
@@ -352,12 +367,12 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                   ["AI-Powered", "Every project", "Traditional", "No"],
                   ["Guarantee", "Money-back", "Best effort", "None"],
                   ["Post-Launch", "30-60 days free", "Paid from Day 1", "Limited"],
-                ].map(([c, r, a, f]) => (
-                  <tr key={c} className="hover:bg-gray-50 transition-colors">
-                    <td className="py-3 px-4 text-sm text-gray-700 font-medium">{c}</td>
-                    <td className="py-3 px-4 text-sm text-center font-semibold text-emerald-600 bg-indigo-50/50">{r}</td>
-                    <td className="py-3 px-4 text-sm text-center text-amber-600">{a}</td>
-                    <td className="py-3 px-4 text-sm text-center text-red-500">{f}</td>
+                ].map(([crit, rdmi, agency, free]) => (
+                  <tr key={crit} className="hover:bg-gray-50 transition-colors">
+                    <td className="py-3 px-4 text-sm text-gray-700 font-medium">{crit}</td>
+                    <td className="py-3 px-4 text-sm text-center font-semibold text-emerald-600 bg-gray-50">{rdmi}</td>
+                    <td className="py-3 px-4 text-sm text-center text-amber-600">{agency}</td>
+                    <td className="py-3 px-4 text-sm text-center text-red-500">{free}</td>
                   </tr>
                 ))}
               </tbody>
@@ -370,7 +385,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            Questions <span className="text-indigo-600">Answered</span>
+            Questions <span className={a.text}>Answered</span>
           </h2>
           <div className="space-y-2">
             {data.faq.map((faq, i) => (
@@ -389,7 +404,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ CTA ═══════ */}
-      <section className="py-16 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-700 text-white">
+      <section className="py-16 bg-gradient-to-br ${t.heroGradient} text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">{data.ctaSection.headline}</h2>
           <p className="text-indigo-100 text-lg max-w-xl mx-auto">{data.ctaSection.subtitle}</p>
