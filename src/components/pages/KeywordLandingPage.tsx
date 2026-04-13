@@ -32,7 +32,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const router = useRouter();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", industry: "", timeline: "", challenge: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", industry: "", budget: "", timeline: "", challenge: "" });
+  const budgets = ["Under ₹1L / <$2K", "₹1L – ₹5L / $2K – $10K", "₹5L – ₹15L / $10K – $25K", "₹15L – ₹50L / $25K – $75K", "₹50L+ / $75K+", "Not sure yet"];
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const isAIPage = data.slug.includes("ai-") || data.slug.includes("-dubai") || data.slug.includes("-usa") || data.slug.includes("healthcare") || data.slug.includes("insurance") || data.slug.includes("travel");
@@ -60,13 +61,13 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
     e.preventDefault();
     setFormStatus("loading");
     try {
-      const message = [`[formType:${f.formType}]`, `[${data.primaryKeyword} Consultation]`, formData.projectType ? `Project: ${formData.projectType}` : "", formData.industry ? `Industry: ${formData.industry}` : "", formData.timeline ? `Timeline: ${formData.timeline}` : "", formData.challenge || ""].filter(Boolean).join("\n");
+      const message = [`[formType:${f.formType}]`, `[${data.primaryKeyword} Consultation]`, formData.projectType ? `Project: ${formData.projectType}` : "", formData.industry ? `Industry: ${formData.industry}` : "", formData.budget ? `Budget: ${formData.budget}` : "", formData.timeline ? `Timeline: ${formData.timeline}` : "", formData.challenge || ""].filter(Boolean).join("\n");
       const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message }) });
       if (!res.ok) throw new Error();
       const params = new URLSearchParams();
       if (formData.name) params.set("name", formData.name);
       params.set("product", data.primaryKeyword);
-      setFormData({ name: "", email: "", phone: "", projectType: "", industry: "", timeline: "", challenge: "" });
+      setFormData({ name: "", email: "", phone: "", projectType: "", industry: "", budget: "", timeline: "", challenge: "" });
       setShowModal(false);
       router.push(`/thank-you?${params.toString()}`);
     } catch { setFormStatus("error"); }
@@ -589,6 +590,12 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                       <option value="Exploring">Just exploring</option>
                     </select>
                   </div>
+                </div>
+                <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">Budget Range</label>
+                  <select disabled={formStatus === "loading"} value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })} className={inp}>
+                    <option value="">Select budget range</option>
+                    {budgets.map((b) => <option key={b} value={b}>{b}</option>)}
+                  </select>
                 </div>
                 <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">Biggest challenge? (optional)</label>
                   <textarea rows={2} disabled={formStatus === "loading"} value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className={`${inp} resize-none`} placeholder={f.placeholder} />
