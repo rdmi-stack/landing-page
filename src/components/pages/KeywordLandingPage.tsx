@@ -68,7 +68,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
   const industries = ["Healthcare", "Finance / Insurance", "E-Commerce / Retail", "SaaS / Technology", "Travel / Hospitality", "Education", "Real Estate", "Logistics", "Legal", "Manufacturing", "Other"];
 
-  const field = "w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-zinc-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-colors";
+  const field = "w-full px-4 py-3 rounded-lg bg-zinc-100 border border-white/10 text-sm text-white placeholder-zinc-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-colors";
 
   return (
     <>
@@ -105,7 +105,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             <button onClick={handleCTA} className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:via-purple-500 hover:to-indigo-500 transition-all hover:shadow-xl hover:shadow-indigo-500/25 hover:scale-105 cursor-pointer animate-gradient bg-[length:200%_200%]">
               {data.hero.cta1} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <a href="https://wa.me/919818565561?text=Hi%20RDMI%2C%20I%20need%20help%20with%20a%20project" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl border border-white/10 hover:bg-white/5 transition-all">
+            <a href="https://wa.me/919818565561?text=Hi%20RDMI%2C%20I%20need%20help%20with%20a%20project" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl border border-white/10 hover:bg-zinc-100 transition-all">
               <Phone className="w-4 h-4" /> WhatsApp Us
             </a>
           </div>
@@ -166,17 +166,17 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ─── PAIN/PROBLEM STRIP ─── */}
-      <section className="py-12 lg:py-16 relative">
+      <section className="py-12 lg:py-16 relative bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { pain: "Other agencies assigned you juniors", solve: "Every RDMI project: 5+ year seniors only. No exceptions.", painColor: "border-red-500/20 bg-red-500/[0.03]", solveColor: "text-emerald-400" },
-              { pain: "Your last quote had hourly billing surprises", solve: "Fixed price in 2 hours. The quote IS the invoice. Money-back guarantee.", painColor: "border-amber-500/20 bg-amber-500/[0.03]", solveColor: "text-emerald-400" },
-              { pain: "You can't reach the person writing your code", solve: "Direct WhatsApp/Slack with your developer. <30 min avg response.", painColor: "border-orange-500/20 bg-orange-500/[0.03]", solveColor: "text-emerald-400" },
+              { pain: "Other agencies assigned you juniors", solve: "Every RDMI project: 5+ year seniors only. No exceptions.", painColor: "border-red-200 bg-red-50", solveColor: "text-emerald-400" },
+              { pain: "Your last quote had hourly billing surprises", solve: "Fixed price in 2 hours. The quote IS the invoice. Money-back guarantee.", painColor: "border-amber-200 bg-amber-50", solveColor: "text-emerald-400" },
+              { pain: "You can't reach the person writing your code", solve: "Direct WhatsApp/Slack with your developer. <30 min avg response.", painColor: "border-orange-200 bg-orange-50", solveColor: "text-emerald-400" },
             ].map((item) => (
               <div key={item.pain} className={`p-4 rounded-xl border ${item.painColor}`}>
                 <p className="text-sm font-medium text-zinc-700 mb-2">{item.pain}</p>
-                <div className="h-px bg-gradient-to-r from-zinc-700 to-transparent my-2" />
+                <div className="h-px bg-gradient-to-r from-zinc-300 to-transparent my-2" />
                 <p className={`text-xs ${item.solveColor} font-medium leading-relaxed`}>{item.solve}</p>
               </div>
             ))}
@@ -203,7 +203,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <p className="text-xs text-zinc-500 leading-relaxed mb-3">{service.description}</p>
                 <div className="flex flex-wrap gap-1">
                   {service.tags.slice(0, 4).map((tag) => (
-                    <span key={tag} className="px-1.5 py-0.5 text-[10px] rounded bg-white/5 text-zinc-500">{tag}</span>
+                    <span key={tag} className="px-1.5 py-0.5 text-[10px] rounded bg-zinc-100 text-zinc-500">{tag}</span>
                   ))}
                 </div>
               </div>
@@ -213,7 +213,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ─── CASE STUDIES (3 cards) ─── */}
-      <section className="py-14 lg:py-20 relative">
+      <section className="py-14 lg:py-20 relative bg-[#f8f8fc]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">
             Results We&apos;ve <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Delivered</span>
@@ -232,7 +232,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <h3 className="text-sm font-semibold mb-2 group-hover:text-indigo-300 transition-colors">{cs.headline}</h3>
                 <p className="text-lg font-bold text-emerald-400 mb-3">{cs.result}</p>
                 <div className="flex flex-wrap gap-1">
-                  {cs.tech.map((t) => <span key={t} className="px-1.5 py-0.5 text-[10px] rounded bg-white/5 text-zinc-500">{t}</span>)}
+                  {cs.tech.map((t) => <span key={t} className="px-1.5 py-0.5 text-[10px] rounded bg-zinc-100 text-zinc-500">{t}</span>)}
                 </div>
                 <div className="flex items-center gap-1 mt-3 text-[10px] text-zinc-500">
                   <CheckCircle2 className="w-3 h-3 text-indigo-400" /> NDA Protected
@@ -244,7 +244,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ─── PROCESS + USPs ─── */}
-      <section className="py-16 lg:py-24 relative">
+      <section className="py-16 lg:py-24 relative bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Process - horizontal steps */}
           <div className="mb-16">
@@ -308,7 +308,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <p className="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-3">{stack.cat}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {stack.items.map((item) => (
-                    <span key={item} className="px-2 py-1 text-[11px] rounded-md bg-white/5 text-zinc-500 border border-white/5">{item}</span>
+                    <span key={item} className="px-2 py-1 text-[11px] rounded-md bg-zinc-100 text-zinc-500 border border-zinc-200">{item}</span>
                   ))}
                 </div>
               </div>
@@ -318,7 +318,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ─── TESTIMONIALS (6 cards) ─── */}
-      <section className="py-14 lg:py-20 relative">
+      <section className="py-14 lg:py-20 relative bg-[#f8f8fc]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">
             What Clients <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Say</span>
@@ -369,14 +369,14 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-white/10">
+                <tr className="border-b border-zinc-200">
                   <th className="text-left py-3 px-4 text-zinc-500 font-medium text-xs">Criteria</th>
                   <th className="text-center py-3 px-4 text-indigo-400 font-bold text-xs bg-indigo-500/5 border-x border-indigo-500/10 rounded-t-lg">RDMI AI</th>
                   <th className="text-center py-3 px-4 text-zinc-500 font-medium text-xs">Large Agency</th>
                   <th className="text-center py-3 px-4 text-zinc-500 font-medium text-xs">Freelancer</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5">
+              <tbody className="divide-y divide-zinc-100">
                 {[
                   ["Developer Seniority", "5+ yr seniors only", "Mix of juniors", "Varies widely"],
                   ["Response Time", "<2 hours", "2-5 days", "Unpredictable"],
@@ -401,7 +401,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ─── FAQ ─── */}
-      <section className="py-16 lg:py-20 relative">
+      <section className="py-16 lg:py-20 relative bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">
             Questions <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Answered</span>
@@ -468,7 +468,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       <Footer />
 
       {/* ─── STICKY BOTTOM BAR (Mobile + Desktop) ─── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-xl border-t border-white/10 py-2.5 px-4 sm:px-6">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-xl border-t border-zinc-200 py-2.5 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
           <div className="hidden sm:block">
             <p className="text-xs text-zinc-400">
@@ -510,7 +510,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             <div className="h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500" />
 
             {formStatus !== "loading" && (
-              <button onClick={() => setShowConsultModal(false)} className="absolute top-4 right-4 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors z-10">
+              <button onClick={() => setShowConsultModal(false)} className="absolute top-4 right-4 p-2 rounded-full bg-zinc-100 hover:bg-white/10 transition-colors z-10">
                 <span className="text-zinc-500 text-lg">×</span>
               </button>
             )}
@@ -534,7 +534,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               </div>
 
               {formStatus === "error" && (
-                <div className="mb-4 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-400">
+                <div className="mb-4 px-3 py-2 rounded-lg bg-red-500/10 border border-red-200 text-xs text-red-400">
                   Failed to send. Try again or WhatsApp +91 98185 65561.
                 </div>
               )}
@@ -595,7 +595,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               </form>
 
               {/* Micro-testimonial */}
-              <div className="mt-4 p-3 rounded-lg bg-white border border-white/5">
+              <div className="mt-4 p-3 rounded-lg bg-white border border-zinc-200">
                 <p className="text-[11px] text-zinc-500 italic">&ldquo;They delivered our prototype in 48 hours. The developer knew our industry better than our previous agency.&rdquo;</p>
                 <p className="text-[10px] text-zinc-500 mt-1">— Startup Founder, Bangalore</p>
               </div>
