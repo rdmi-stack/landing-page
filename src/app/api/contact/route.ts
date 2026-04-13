@@ -33,9 +33,13 @@ async function sendEmail(params: Record<string, string>) {
 
 // ─── DETECT FORM TYPE ─────────────────────────────────
 
-type FormType = "software" | "ai-agent" | "seo" | "digital-marketing" | "callback" | "lead-magnet" | "seo-tool" | "quiz" | "seo-course" | "utm";
+type FormType = "software" | "mobile-app" | "web-dev" | "ai-software" | "ecommerce" | "ai-agent" | "ai-dubai" | "ai-usa" | "healthcare-ai" | "insurance-ai" | "travel-ai" | "seo" | "digital-marketing" | "callback" | "lead-magnet" | "seo-tool" | "quiz" | "seo-course" | "utm";
 
 function detectFormType(message: string): FormType {
+  // Explicit formType from landing page forms
+  const match = message.match(/\[formType:([\w-]+)\]/);
+  if (match) return match[1] as FormType;
+  // Legacy pattern matching
   if (message.startsWith("[AI Agent")) return "ai-agent";
   if (message.startsWith("[SEO Services")) return "seo";
   if (message.startsWith("[Digital Marketing")) return "digital-marketing";
@@ -146,6 +150,178 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
           "linear-gradient(135deg,#7c3aed,#4f46e5)", "RDMI AI", "AI Agent & GenAI Consulting"
         ),
         text: `Hi ${firstName},\n\nYour AI project inquiry is confirmed! A senior AI engineer will call within 2 hours.\n\n${message}\n\nNext steps:\n1. AI Strategy Call — within 2 hours\n2. Working Prototype — 2 weeks\n3. Production Build — 4-8 weeks\n4. Deploy & Scale\n\nAI Solutions:\n• AI Chatbots & Voice Agents\n• Autonomous AI Agents (LangChain/CrewAI)\n• RAG Knowledge Bases\n• Workflow Automation (n8n)\n• AI Copilots & SaaS Features\n• Computer Vision & Document AI\n\nGuarantee: Contracted accuracy benchmarks or we iterate free. 14-day money-back on discovery.\n\nWhatsApp: +91 98185 65561\nEmail: info@rdmi.in\n\n— RDMI Tech Ventures Pvt. Ltd.`,
+      };
+
+    case "mobile-app":
+      return {
+        subject: `${firstName}, your AI-powered app consultation is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, let's build your app!</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">senior mobile developer + AI engineer</strong> is reviewing your app requirements right now. You'll hear from us within <strong style="color:#93c5fd;">2 hours</strong>.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          <p style="margin:0 0 12px;font-size:14px;font-weight:600;color:#fff;">Your app development journey:</p>
+          ${stepsBlock([
+            ["01", "Strategy Call (2 Hours)", "Senior dev + AI engineer discuss your app, target platforms, and AI features that'll drive ROI"],
+            ["02", "AI-Designed Prototype (72 Hours)", "Clickable prototype on your phone — with AI features mocked up. Free, zero commitment"],
+            ["03", "Sprint Development", "AI writes 40% of code. TestFlight/Play Store builds every 2 weeks. You test on your phone"],
+            ["04", "Store Launch + AI Optimization", "App Store submission, ASO, AI features trained on real user data"],
+          ])}
+          ${ctaButton("WhatsApp Our Mobile Team", "https://wa.me/919818565561?text=Hi%2C%20I%20just%20submitted%20an%20app%20consultation", "linear-gradient(135deg,#2563eb,#0891b2)")}`,
+          "linear-gradient(135deg,#2563eb,#0891b2)", "RDMI AI", "AI-Powered Mobile App Development"
+        ),
+        text: `Hi ${firstName},\n\nYour app consultation is confirmed! A senior mobile developer will call within 2 hours.\n\n${message}\n\nNext: Strategy call → Prototype in 72hrs → Sprint development → Store launch\n\nWhatsApp: +91 98185 65561\n— RDMI AI`,
+      };
+
+    case "web-dev":
+      return {
+        subject: `${firstName}, your website consultation is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, let's build your website!</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">senior web developer</strong> is reviewing your requirements. Expect a call within <strong style="color:#c4b5fd;">2 hours</strong> — from a developer, not a salesperson.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "Developer Call (2 Hours)", "Discuss your goals, recommend tech stack, provide fixed-price quote"],
+            ["02", "Free Prototype (48 Hours)", "Clickable website preview with your branding. Don't love it? Walk away"],
+            ["03", "AI-Powered Build (2-4 Weeks)", "AI writes 40% of code. Live staging URL in week 1. Built-in SEO + chatbot"],
+            ["04", "Launch + 30-Day Support", "Production deployment, domain setup, Google Analytics, 30 days free support"],
+          ])}
+          ${ctaButton("WhatsApp Our Web Team", "https://wa.me/919818565561?text=Hi%2C%20I%20need%20a%20website", "linear-gradient(135deg,#7c3aed,#9333ea)")}`,
+          "linear-gradient(135deg,#7c3aed,#9333ea)", "RDMI AI", "AI-Powered Web Development"
+        ),
+        text: `Hi ${firstName},\n\nYour website consultation is confirmed! Developer calls within 2 hours.\n\n${message}\n\nNext: Developer call → Prototype in 48hrs → Build in 2-4 weeks → Launch\n\nWhatsApp: +91 98185 65561\n— RDMI AI`,
+      };
+
+    case "ai-software":
+      return {
+        subject: `${firstName}, your AI consultation is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, your AI project is in expert hands.</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">senior AI engineer</strong> is reviewing your use case. Expect a call within <strong style="color:#e879f9;">2 hours</strong> to discuss the right AI approach — LLM, RAG, agents, or ML.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "AI Strategy Call (2 Hours)", "Senior AI engineer assesses use case, data readiness, and recommends approach"],
+            ["02", "Working Prototype (2 Weeks)", "Real AI processing your data — not a slide deck. Test and validate ROI"],
+            ["03", "Production Build (4-8 Weeks)", "Enterprise-grade with monitoring, fallbacks, contracted accuracy benchmarks"],
+            ["04", "Deploy & Optimize", "Production launch with KPI dashboard. 30-day free AI optimization"],
+          ])}
+          ${ctaButton("WhatsApp Our AI Team", "https://wa.me/919818565561?text=Hi%2C%20AI%20project%20inquiry", "linear-gradient(135deg,#9333ea,#db2777)")}`,
+          "linear-gradient(135deg,#9333ea,#db2777)", "RDMI AI", "AI Software Development"
+        ),
+        text: `Hi ${firstName},\n\nYour AI consultation is confirmed! Senior AI engineer calls within 2 hours.\n\n${message}\n\n— RDMI AI`,
+      };
+
+    case "ecommerce":
+      return {
+        subject: `${firstName}, your e-commerce consultation is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, let's build your revenue machine!</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">An <strong style="color:#fff;">e-commerce specialist</strong> is reviewing your requirements. You'll hear from us within <strong style="color:#fbbf24;">2 hours</strong>.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "E-Commerce Strategy Call", "Discuss catalog, payments, delivery model. Shopify vs custom recommendation"],
+            ["02", "Store Prototype (48 Hours)", "Working store preview with your products. Payment integration demo included"],
+            ["03", "Build & Integrate (3-6 Weeks)", "AI recommendations, checkout optimization, inventory management"],
+            ["04", "Launch & Optimize", "Go live with SEO, analytics, and 60-day free support"],
+          ])}
+          ${ctaButton("WhatsApp Our E-Commerce Team", "https://wa.me/919818565561?text=Hi%2C%20e-commerce%20project", "linear-gradient(135deg,#d97706,#ea580c)")}`,
+          "linear-gradient(135deg,#d97706,#ea580c)", "RDMI AI", "E-Commerce Development"
+        ),
+        text: `Hi ${firstName},\n\nYour e-commerce consultation is confirmed! Specialist calls within 2 hours.\n\n${message}\n\n— RDMI AI`,
+      };
+
+    case "healthcare-ai":
+      return {
+        subject: `${firstName}, your HIPAA AI assessment is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, your healthcare AI project is in certified hands.</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">HIPAA-certified AI engineer</strong> is reviewing your clinical workflow requirements. BAA will be signed before our first call. Expect to hear within <strong style="color:#fb7185;">2 hours</strong>.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "HIPAA Assessment (2 Hours)", "Compliance audit, EHR integration mapping, ROI targets — BAA signed first"],
+            ["02", "Clinical Prototype (2-3 Weeks)", "Working AI validated with your clinical staff on real workflows"],
+            ["03", "HIPAA-Hardened Build", "PHI isolation, AES-256, audit trails, EHR integration tested in staging"],
+            ["04", "Deploy with Compliance Handover", "Full source code + HIPAA docs + BAA + staff training"],
+          ])}
+          ${ctaButton("WhatsApp Our Healthcare AI Team", "https://wa.me/919818565561?text=Hi%2C%20healthcare%20AI%20inquiry", "linear-gradient(135deg,#e11d48,#db2777)")}`,
+          "linear-gradient(135deg,#e11d48,#db2777)", "RDMI AI", "Healthcare AI Development"
+        ),
+        text: `Hi ${firstName},\n\nYour HIPAA AI assessment is confirmed! Certified engineer calls within 2 hours. BAA signed before first discussion.\n\n${message}\n\n— RDMI AI`,
+      };
+
+    case "insurance-ai":
+      return {
+        subject: `${firstName}, your insurance AI assessment is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, your insurance AI project is being reviewed.</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">senior AI engineer with insurance domain expertise</strong> is mapping your workflows. Expect a call within <strong style="color:#38bdf8;">2 hours</strong>.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "Discovery & Compliance Mapping", "Claims, underwriting, lead routing — mapped against IRDAI/GDPR requirements"],
+            ["02", "Data Audit & Integration Plan", "Policy systems, AMS platforms, loss runs — integration architecture designed"],
+            ["03", "AI Build with Compliance Review", "Explainable AI outputs for underwriting. Compliance in QA cycle"],
+            ["04", "Pilot, Validate & Go Live", "Controlled pilot on 10-20% volume, then full cutover. 90-day support"],
+          ])}
+          ${ctaButton("WhatsApp Our Insurance AI Team", "https://wa.me/919818565561?text=Hi%2C%20insurance%20AI%20inquiry", "linear-gradient(135deg,#0284c7,#2563eb)")}`,
+          "linear-gradient(135deg,#0284c7,#2563eb)", "RDMI AI", "Insurance AI Development"
+        ),
+        text: `Hi ${firstName},\n\nYour insurance AI assessment is confirmed! Domain specialist calls within 2 hours.\n\n${message}\n\n— RDMI AI`,
+      };
+
+    case "travel-ai":
+      return {
+        subject: `${firstName}, your travel AI consultation is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, let's build your 24/7 booking engine!</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">travel-tech AI specialist</strong> is reviewing your booking workflow. Expect a call within <strong style="color:#22d3ee;">2 hours</strong> — with PMS integration expertise ready.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "Discovery & Channel Audit", "Booking funnel, PMS/OTA stack, guest communication gaps — ROI report in 3 days"],
+            ["02", "Scope & Fixed Quote", "Exact deliverables, integrations, milestones — before any code"],
+            ["03", "Build, Integrate & Test", "2-week sprints with PMS/OTA integration. Live demo every sprint"],
+            ["04", "Launch, Train & Optimize", "Deployment, staff training, AI retrained on your booking data monthly"],
+          ])}
+          ${ctaButton("WhatsApp Our Travel AI Team", "https://wa.me/919818565561?text=Hi%2C%20travel%20AI%20inquiry", "linear-gradient(135deg,#0891b2,#0d9488)")}`,
+          "linear-gradient(135deg,#0891b2,#0d9488)", "RDMI AI", "Travel & Hospitality AI"
+        ),
+        text: `Hi ${firstName},\n\nYour travel AI consultation is confirmed! Travel-tech specialist calls within 2 hours.\n\n${message}\n\n— RDMI AI`,
+      };
+
+    case "ai-dubai":
+      return {
+        subject: `${firstName}, your Dubai AI consultation is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, your Dubai AI project is being reviewed.</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">An <strong style="color:#fff;">Arabic + English AI specialist</strong> is preparing your consultation. GST morning slot available — we're only 1.5 hours ahead.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "Discovery Call (GST Morning)", "Use case, DIFC/DHA compliance, Arabic NLP requirements — same day"],
+            ["02", "Architecture & NDA (48 Hours)", "Solution design, UAE cloud data residency, fixed-price SOW"],
+            ["03", "Sprint Delivery (2-Week Cycles)", "Daily updates, weekly demos at your GST morning time"],
+            ["04", "Launch & 90-Day Support", "UAE infrastructure, source code, documentation, SLA support"],
+          ])}
+          ${ctaButton("WhatsApp (Dubai Time)", "https://wa.me/919818565561?text=Hi%2C%20Dubai%20AI%20inquiry", "linear-gradient(135deg,#059669,#0d9488)")}`,
+          "linear-gradient(135deg,#059669,#0d9488)", "RDMI AI", "AI Development for Dubai & UAE"
+        ),
+        text: `Hi ${firstName},\n\nYour Dubai AI consultation is confirmed! Arabic + English specialist — GST morning slots available.\n\n${message}\n\n— RDMI AI`,
+      };
+
+    case "ai-usa":
+      return {
+        subject: `${firstName}, your AI roadmap call is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, your US AI consultation is confirmed.</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">senior AI engineer with US-timezone overlap</strong> is reviewing your requirements. 4-8 hour daily overlap with EST/PST.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "AI Roadmap Call (Your Timezone)", "60-min call during EST/PST hours. Top 3 AI opportunities identified"],
+            ["02", "NDA + Sprint Plan (48 Hours)", "Engineer profiles, milestones, dedicated Slack channel"],
+            ["03", "Daily Overlap Development", "4-8hr overlap. Loom updates, Notion docs, weekly standups"],
+            ["04", "Production Handoff + Full IP", "Source code, docs, CI/CD, 30-day hypercare. Zero lock-in"],
+          ])}
+          ${ctaButton("WhatsApp (US Hours Available)", "https://wa.me/919818565561?text=Hi%2C%20US%20AI%20inquiry", "linear-gradient(135deg,#1d4ed8,#4f46e5)")}`,
+          "linear-gradient(135deg,#1d4ed8,#4f46e5)", "RDMI AI", "AI Development for US Companies"
+        ),
+        text: `Hi ${firstName},\n\nYour AI roadmap call is confirmed! US-timezone engineer — EST/PST overlap.\n\n${message}\n\n— RDMI AI`,
       };
 
     case "seo":
@@ -368,8 +544,17 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
 // ─── LEAD NOTIFICATION LABELS ─────────────────────────
 
 const formTypeLabels: Record<FormType, string> = {
-  software: "Software Inquiry",
-  "ai-agent": "🤖 AI Agent / GenAI Inquiry",
+  software: "💻 Software Inquiry",
+  "mobile-app": "📱 Mobile App Inquiry",
+  "web-dev": "🌐 Website Inquiry",
+  "ai-software": "🤖 AI Software Inquiry",
+  ecommerce: "🛒 E-Commerce Inquiry",
+  "ai-agent": "⚡ AI Agent / Automation",
+  "ai-dubai": "🇦🇪 Dubai AI Inquiry",
+  "ai-usa": "🇺🇸 USA AI Inquiry",
+  "healthcare-ai": "🏥 Healthcare AI Inquiry",
+  "insurance-ai": "🛡️ Insurance AI Inquiry",
+  "travel-ai": "✈️ Travel AI Inquiry",
   seo: "SEO Services",
   "digital-marketing": "Digital Marketing",
   callback: "Callback Request",

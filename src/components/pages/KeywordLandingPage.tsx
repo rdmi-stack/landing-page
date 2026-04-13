@@ -53,17 +53,14 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   };
   const a = accentMap[t.accent] || accentMap.indigo;
 
-  const projectTypes = isAIPage
-    ? ["AI Chatbot / Voice Agent", "AI Agent / Workflow", "RAG / Knowledge Base", "AI Integration", "AI Consulting", "Other"]
-    : ["Custom Website", "Web Application / SaaS", "E-Commerce", "Mobile App", "Landing Page", "Redesign", "Other"];
-
+  const f = data.form;
   const industries = ["Healthcare", "Finance / Insurance", "E-Commerce / Retail", "SaaS / Technology", "Travel / Hospitality", "Education", "Real Estate", "Logistics", "Legal", "Manufacturing", "Other"];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("loading");
     try {
-      const message = [`[${data.primaryKeyword} Consultation]`, formData.projectType ? `Project: ${formData.projectType}` : "", formData.industry ? `Industry: ${formData.industry}` : "", formData.timeline ? `Timeline: ${formData.timeline}` : "", formData.challenge || ""].filter(Boolean).join("\n");
+      const message = [`[formType:${f.formType}]`, `[${data.primaryKeyword} Consultation]`, formData.projectType ? `Project: ${formData.projectType}` : "", formData.industry ? `Industry: ${formData.industry}` : "", formData.timeline ? `Timeline: ${formData.timeline}` : "", formData.challenge || ""].filter(Boolean).join("\n");
       const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message }) });
       if (!res.ok) throw new Error();
       const params = new URLSearchParams();
@@ -501,7 +498,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div onClick={() => formStatus !== "loading" && setShowModal(false)} className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
           <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl shadow-black/20 border border-gray-200">
-            <div className="h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500 rounded-t-2xl" />
+            <div className="h-1.5 rounded-t-2xl" style={{ background: t.heroGradient }} />
             {formStatus !== "loading" && (
               <button onClick={() => setShowModal(false)} className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors z-10">
                 <span className="text-gray-500 text-lg leading-none">×</span>
@@ -513,8 +510,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                   <MessageCircle className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Talk to a Developer</h3>
-                  <p className="text-xs text-gray-500">Senior engineer responds in 2 hours</p>
+                  <h3 className="text-lg font-bold text-gray-900">{f.title}</h3>
+                  <p className="text-xs text-gray-500">{f.subtitle}</p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-3 mb-5 text-[11px] text-gray-500">
@@ -532,7 +529,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">What do you need? *</label>
                   <select required disabled={formStatus === "loading"} value={formData.projectType} onChange={(e) => setFormData({ ...formData, projectType: e.target.value })} className={inp}>
                     <option value="">Select project type</option>
-                    {projectTypes.map((t) => <option key={t} value={t}>{t}</option>)}
+                    {f.projectTypes.map((pt) => <option key={pt} value={pt}>{pt}</option>)}
                   </select>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-3">
@@ -553,10 +550,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                   </div>
                 </div>
                 <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">Biggest challenge? (optional)</label>
-                  <textarea rows={2} disabled={formStatus === "loading"} value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className={`${inp} resize-none`} placeholder="Describe your project or pain point..." />
+                  <textarea rows={2} disabled={formStatus === "loading"} value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className={`${inp} resize-none`} placeholder={f.placeholder} />
                 </div>
                 <button type="submit" disabled={formStatus === "loading"} className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl text-white font-semibold text-sm transition-all hover:shadow-lg hover:brightness-110 disabled:opacity-70 disabled:cursor-not-allowed" style={{ background: t.heroGradient }}>
-                  {formStatus === "loading" ? (<><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>) : (<>{data.hero.cta1} <ArrowRight className="w-4 h-4" /></>)}
+                  {formStatus === "loading" ? (<><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>) : (<>{f.buttonText} <ArrowRight className="w-4 h-4" /></>)}
                 </button>
               </form>
               <div className="mt-4 p-3 rounded-lg bg-gray-50 border border-gray-100">
