@@ -80,7 +80,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   return (
     <div className="bg-white text-gray-900">
       {/* ═══════ HERO ═══════ */}
-      <section className="relative pt-14 pb-10 lg:pt-20 lg:pb-14 overflow-hidden bg-gradient-to-br ${t.heroGradient} text-white">
+      <section className="relative pt-14 pb-10 lg:pt-20 lg:pb-14 overflow-hidden text-white" style={{ background: t.heroGradient }}>
         <div className="absolute inset-0 opacity-10">
           <Image src={data.images.hero} alt="" fill className="object-cover" priority />
         </div>
@@ -118,8 +118,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
           {/* Image slider */}
           <div className="relative -mx-4 sm:mx-0">
-            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-indigo-600/80 to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-indigo-700/80 to-transparent z-10" />
+            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-10" style={{ background: `linear-gradient(to right, ${t.urgencyColor}cc, transparent)` }} />
+            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-10" style={{ background: `linear-gradient(to left, ${t.urgencyColor}cc, transparent)` }} />
             <div className="overflow-hidden">
               <div className="flex gap-4 animate-marquee">
                 {[...data.images.portfolio, ...data.images.services, ...data.images.portfolio, ...data.images.services].map((img, i) => (
@@ -330,7 +330,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ URGENCY STRIP ═══════ */}
-      <section className={`py-4 ${t.urgencyBg} text-white`}>
+      <section className="py-4 text-white" style={{ backgroundColor: t.urgencyColor }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
@@ -404,7 +404,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ CTA ═══════ */}
-      <section className="py-16 bg-gradient-to-br ${t.heroGradient} text-white">
+      <section className="py-16 text-white" style={{ background: t.ctaGradient }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">{data.ctaSection.headline}</h2>
           <p className="text-indigo-100 text-lg max-w-xl mx-auto">{data.ctaSection.subtitle}</p>
@@ -499,7 +499,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">Biggest challenge? (optional)</label>
                   <textarea rows={2} disabled={formStatus === "loading"} value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className={`${inp} resize-none`} placeholder="Describe your project or pain point..." />
                 </div>
-                <button type="submit" disabled={formStatus === "loading"} className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-sm transition-all hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed">
+                <button type="submit" disabled={formStatus === "loading"} className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl text-white font-semibold text-sm transition-all hover:shadow-lg hover:brightness-110 disabled:opacity-70 disabled:cursor-not-allowed" style={{ background: t.heroGradient }}>
                   {formStatus === "loading" ? (<><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>) : (<>{data.hero.cta1} <ArrowRight className="w-4 h-4" /></>)}
                 </button>
               </form>
