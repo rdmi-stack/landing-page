@@ -22,22 +22,12 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const router = useRouter();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [aiModalOpen, setAiModalOpen] = useState(false);
+  const [showConsultModal, setShowConsultModal] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", industry: "", timeline: "", challenge: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const isAIPage = data.slug.includes("ai-") || data.slug.includes("-dubai") || data.slug.includes("-usa");
-  const handleCTA = () => {
-    // Scroll to the inline consultation form in hero
-    const form = document.getElementById("consultation-form");
-    if (form) {
-      form.scrollIntoView({ behavior: "smooth", block: "center" });
-      // Focus the first input after scroll
-      setTimeout(() => {
-        const firstInput = form.querySelector("input") as HTMLInputElement;
-        if (firstInput) firstInput.focus();
-      }, 500);
-    }
-  };
+  const handleCTA = () => setShowConsultModal(true);
 
   const handleInlineForm = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -82,151 +72,79 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
   return (
     <>
-      {/* ─── HERO: Gradient BG + 2-Column Layout ─── */}
-      <section className="relative pt-12 pb-16 lg:pt-20 lg:pb-24 overflow-hidden">
+      {/* ─── HERO: Gradient + Copy + CTA + Image Slider ─── */}
+      <section className="relative pt-12 pb-8 lg:pt-20 lg:pb-12 overflow-hidden">
         {/* Multi-layer gradient background */}
         <div className="absolute inset-0">
-          <Image src={data.images.hero} alt={data.primaryKeyword} fill className="object-cover opacity-20" priority />
           <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0f0a1a] to-[#0a0a0a]" />
           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-600/15 rounded-full blur-[128px]" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[128px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-600/5 rounded-full blur-[128px]" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
-            {/* Left: Copy (3 cols) */}
-            <div className="lg:col-span-3 space-y-6">
-              {/* Animated badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/30 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-300 text-sm font-medium backdrop-blur-sm">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                {data.hero.badge}
-              </div>
-
-              {/* H1 with gradient text */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] tracking-tight">
-                <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent">{data.hero.h1}</span>
-              </h1>
-
-              <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl">
-                {data.hero.subtitle}
-              </p>
-
-              {/* Trust points with gradient icons */}
-              <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm">
-                {data.hero.trustPoints.map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-zinc-300">
-                    <span className="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center flex-shrink-0">
-                      <CheckCircle2 className="w-3 h-3 text-white" />
-                    </span>
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              {/* Social proof bar */}
-              <div className="flex items-center gap-4 pt-3 pb-1">
-                <div className="flex -space-x-2">
-                  {[
-                    "from-indigo-500 to-blue-600",
-                    "from-purple-500 to-pink-600",
-                    "from-emerald-500 to-green-600",
-                    "from-amber-500 to-orange-600",
-                    "from-rose-500 to-red-600",
-                  ].map((g, i) => (
-                    <div key={i} className={`w-9 h-9 rounded-full bg-gradient-to-br ${g} border-2 border-[#0a0a0a] flex items-center justify-center text-[10px] font-bold shadow-lg`}>
-                      {String.fromCharCode(65 + i)}
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <div className="flex gap-0.5">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                  <p className="text-xs text-zinc-500">200+ projects · 4.9/5 rating · Talk to developers directly</p>
-                </div>
-              </div>
-
-              {/* Urgency bar */}
-              <div className="flex items-center gap-2 pt-3">
-                <div className="h-1 flex-1 rounded-full bg-gradient-to-r from-emerald-500 via-indigo-500 to-purple-500 opacity-60" />
-                <span className="text-[11px] text-zinc-500 whitespace-nowrap">Avg. response: 47 min</span>
-              </div>
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Badge */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/30 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-300 text-sm font-medium">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              {data.hero.badge}
             </div>
+          </div>
 
-            {/* Right: Dedicated Consultation Form (2 cols) */}
-            <div className="lg:col-span-2" id="consultation-form">
-              <div className="relative p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-[#111]/95 to-[#0d0d0d]/95 backdrop-blur-xl border border-indigo-500/20 shadow-2xl shadow-indigo-500/10">
-                {/* Gradient top border */}
-                <div className="absolute top-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500" />
+          {/* H1 centered */}
+          <div className="text-center max-w-4xl mx-auto mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] tracking-tight">
+              <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent">{data.hero.h1}</span>
+            </h1>
+            <p className="mt-5 text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto">
+              {data.hero.subtitle}
+            </p>
+          </div>
 
-                <div className="mb-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                      <MessageCircle className="w-4 h-4 text-white" />
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+            <button onClick={handleCTA} className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:via-purple-500 hover:to-indigo-500 transition-all hover:shadow-xl hover:shadow-indigo-500/25 hover:scale-105 cursor-pointer animate-gradient bg-[length:200%_200%]">
+              {data.hero.cta1} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <a href="https://wa.me/919818565561?text=Hi%20RDMI%2C%20I%20need%20help%20with%20a%20project" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl border border-white/10 hover:bg-white/5 transition-all">
+              <Phone className="w-4 h-4" /> WhatsApp Us
+            </a>
+          </div>
+
+          {/* Trust points + social proof — single row */}
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-zinc-400 mb-8">
+            {data.hero.trustPoints.slice(0, 4).map((item) => (
+              <span key={item} className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3 h-3 text-emerald-500 flex-shrink-0" />
+                {item}
+              </span>
+            ))}
+            <span className="flex items-center gap-1">
+              {[1,2,3,4,5].map((s) => <Star key={s} className="w-3 h-3 fill-amber-400 text-amber-400" />)}
+              <span className="ml-1">4.9/5</span>
+            </span>
+          </div>
+
+          {/* ─── IMAGE SLIDER (Portfolio/Case Studies) ─── */}
+          <div className="relative">
+            {/* Edge fades */}
+            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+
+            <div className="overflow-hidden">
+              <div className="flex gap-4 animate-marquee">
+                {[...data.images.portfolio, ...data.images.services, ...data.images.portfolio, ...data.images.services].map((img, i) => (
+                  <div key={i} onClick={handleCTA} className="flex-shrink-0 w-[280px] sm:w-[320px] relative rounded-xl overflow-hidden aspect-[16/10] cursor-pointer group">
+                    <Image src={img} alt={`${data.primaryKeyword} project ${i + 1}`} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <div className="flex items-center gap-1.5">
+                        <CheckCircle2 className="w-3 h-3 text-indigo-400" />
+                        <span className="text-[10px] text-zinc-300">NDA Protected</span>
+                      </div>
+                      <p className="text-xs font-semibold mt-1 group-hover:text-indigo-300 transition-colors">View Project →</p>
                     </div>
-                    <div>
-                      <h3 className="text-base font-bold">Talk to a Developer</h3>
-                      <p className="text-[11px] text-zinc-500">Not a sales rep — a senior engineer</p>
-                    </div>
                   </div>
-                  <div className="flex items-center gap-3 text-[11px] text-zinc-500">
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500" /> Free consultation</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500" /> NDA protected</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500" /> 2hr response</span>
-                  </div>
-                </div>
-
-                {formStatus === "error" && (
-                  <div className="mb-3 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-400">
-                    Failed to send. Try again or WhatsApp us.
-                  </div>
-                )}
-
-                <form onSubmit={handleInlineForm} className="space-y-2.5">
-                  <div className="grid grid-cols-2 gap-2.5">
-                    <input type="text" required disabled={formStatus === "loading"} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={field} placeholder="Full Name *" />
-                    <input type="tel" disabled={formStatus === "loading"} value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={field} placeholder="WhatsApp / Phone" />
-                  </div>
-                  <input type="email" required disabled={formStatus === "loading"} value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={field} placeholder="Work Email *" />
-
-                  <select required disabled={formStatus === "loading"} value={formData.projectType} onChange={(e) => setFormData({ ...formData, projectType: e.target.value })} className={field}>
-                    <option value="" className="bg-zinc-900">What do you need? *</option>
-                    {projectTypes.map((t) => <option key={t} value={t} className="bg-zinc-900">{t}</option>)}
-                  </select>
-
-                  <div className="grid grid-cols-2 gap-2.5">
-                    <select disabled={formStatus === "loading"} value={formData.industry} onChange={(e) => setFormData({ ...formData, industry: e.target.value })} className={field}>
-                      <option value="" className="bg-zinc-900">Your Industry</option>
-                      {industries.map((ind) => <option key={ind} value={ind} className="bg-zinc-900">{ind}</option>)}
-                    </select>
-                    <select disabled={formStatus === "loading"} value={formData.timeline} onChange={(e) => setFormData({ ...formData, timeline: e.target.value })} className={field}>
-                      <option value="" className="bg-zinc-900">Timeline</option>
-                      <option value="ASAP" className="bg-zinc-900">ASAP</option>
-                      <option value="This month" className="bg-zinc-900">This month</option>
-                      <option value="1-3 months" className="bg-zinc-900">1-3 months</option>
-                      <option value="Exploring" className="bg-zinc-900">Just exploring</option>
-                    </select>
-                  </div>
-
-                  <textarea rows={2} disabled={formStatus === "loading"} value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className={`${field} resize-none`} placeholder="What's your biggest challenge right now? (optional)" />
-
-                  <button type="submit" disabled={formStatus === "loading"} className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:via-purple-500 hover:to-indigo-500 font-semibold text-sm transition-all hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed animate-gradient bg-[length:200%_200%]">
-                    {formStatus === "loading" ? (<><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>) : (<>{data.hero.cta1} <ArrowRight className="w-4 h-4" /></>)}
-                  </button>
-                </form>
-
-                {/* Micro-testimonial inside form */}
-                <div className="mt-4 p-3 rounded-lg bg-white/[0.03] border border-white/5">
-                  <p className="text-[11px] text-zinc-400 italic leading-relaxed">&ldquo;They delivered our prototype in 48 hours. The developer who called us knew more about our industry than our previous agency did in 3 months.&rdquo;</p>
-                  <p className="text-[10px] text-zinc-600 mt-1">— Startup Founder, Bangalore</p>
-                </div>
-
-                <p className="text-[10px] text-zinc-600 text-center mt-3">
-                  Free prototype · No upfront payment · Money-back guarantee
-                </p>
+                ))}
               </div>
             </div>
           </div>
@@ -549,14 +467,111 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
       <Footer />
 
-      {/* AI Quote Modal — only rendered on AI/geo pages */}
-      {isAIPage && (
-        <AIQuoteModal
-          isOpen={aiModalOpen}
-          onClose={() => setAiModalOpen(false)}
-          productName={data.primaryKeyword}
-          region={data.slug.includes("-dubai") ? "dubai" : data.slug.includes("-usa") ? "usa" : "india"}
-        />
+      {/* ─── CONSULTATION MODAL ─── */}
+      {showConsultModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div onClick={() => formStatus !== "loading" && setShowConsultModal(false)} className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-[#111] border border-indigo-500/20 shadow-2xl shadow-indigo-500/10">
+            {/* Gradient top */}
+            <div className="h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500" />
+
+            {formStatus !== "loading" && (
+              <button onClick={() => setShowConsultModal(false)} className="absolute top-4 right-4 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors z-10">
+                <span className="text-zinc-400 text-lg">×</span>
+              </button>
+            )}
+
+            <div className="p-6 sm:p-8">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold">Talk to a Developer</h3>
+                  <p className="text-xs text-zinc-500">Senior engineer responds in 2 hours — not a sales rep</p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-3 mb-5 text-[11px] text-zinc-500">
+                <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500" /> Free consultation</span>
+                <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500" /> NDA protected</span>
+                <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500" /> Free prototype in 48hrs</span>
+                <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500" /> Money-back guarantee</span>
+              </div>
+
+              {formStatus === "error" && (
+                <div className="mb-4 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-400">
+                  Failed to send. Try again or WhatsApp +91 98185 65561.
+                </div>
+              )}
+
+              <form onSubmit={handleInlineForm} className="space-y-3">
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[11px] text-zinc-500 mb-1">Full Name *</label>
+                    <input type="text" required disabled={formStatus === "loading"} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={field} placeholder="John Doe" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] text-zinc-500 mb-1">WhatsApp / Phone</label>
+                    <input type="tel" disabled={formStatus === "loading"} value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={field} placeholder="+91 98185 65561" />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] text-zinc-500 mb-1">Work Email *</label>
+                  <input type="email" required disabled={formStatus === "loading"} value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={field} placeholder="john@company.com" />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] text-zinc-500 mb-1">What do you need? *</label>
+                  <select required disabled={formStatus === "loading"} value={formData.projectType} onChange={(e) => setFormData({ ...formData, projectType: e.target.value })} className={field}>
+                    <option value="" className="bg-zinc-900">Select project type</option>
+                    {projectTypes.map((t) => <option key={t} value={t} className="bg-zinc-900">{t}</option>)}
+                  </select>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[11px] text-zinc-500 mb-1">Your Industry</label>
+                    <select disabled={formStatus === "loading"} value={formData.industry} onChange={(e) => setFormData({ ...formData, industry: e.target.value })} className={field}>
+                      <option value="" className="bg-zinc-900">Select industry</option>
+                      {industries.map((ind) => <option key={ind} value={ind} className="bg-zinc-900">{ind}</option>)}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[11px] text-zinc-500 mb-1">Timeline</label>
+                    <select disabled={formStatus === "loading"} value={formData.timeline} onChange={(e) => setFormData({ ...formData, timeline: e.target.value })} className={field}>
+                      <option value="" className="bg-zinc-900">Select timeline</option>
+                      <option value="ASAP" className="bg-zinc-900">ASAP</option>
+                      <option value="This month" className="bg-zinc-900">This month</option>
+                      <option value="1-3 months" className="bg-zinc-900">1-3 months</option>
+                      <option value="Exploring" className="bg-zinc-900">Just exploring</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] text-zinc-500 mb-1">What&apos;s your biggest challenge? (optional)</label>
+                  <textarea rows={2} disabled={formStatus === "loading"} value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className={`${field} resize-none`} placeholder="Describe your project or pain point..." />
+                </div>
+
+                <button type="submit" disabled={formStatus === "loading"} className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:via-purple-500 hover:to-indigo-500 font-semibold text-sm transition-all hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed animate-gradient bg-[length:200%_200%]">
+                  {formStatus === "loading" ? (<><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>) : (<>{data.hero.cta1} <ArrowRight className="w-4 h-4" /></>)}
+                </button>
+              </form>
+
+              {/* Micro-testimonial */}
+              <div className="mt-4 p-3 rounded-lg bg-white/[0.03] border border-white/5">
+                <p className="text-[11px] text-zinc-400 italic">&ldquo;They delivered our prototype in 48 hours. The developer knew our industry better than our previous agency.&rdquo;</p>
+                <p className="text-[10px] text-zinc-600 mt-1">— Startup Founder, Bangalore</p>
+              </div>
+
+              <p className="text-[10px] text-zinc-600 text-center mt-3">
+                No spam · No obligation · NDA before first call
+              </p>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );

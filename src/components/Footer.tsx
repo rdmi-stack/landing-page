@@ -42,15 +42,7 @@ export default function Footer() {
               Ready to build intelligent software that runs your business?
             </p>
             <button
-              onClick={() => {
-                const form = document.getElementById("consultation-form");
-                if (form) {
-                  form.scrollIntoView({ behavior: "smooth", block: "center" });
-                  setTimeout(() => { const inp = form.querySelector("input") as HTMLInputElement; if (inp) inp.focus(); }, 500);
-                } else {
-                  openModal();
-                }
-              }}
+              onClick={() => openModal()}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-sm font-semibold transition-all hover:scale-105 cursor-pointer"
             >
               Get Free Prototype in 48 Hours
