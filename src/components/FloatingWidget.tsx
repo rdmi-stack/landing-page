@@ -10,11 +10,11 @@ type Status = "idle" | "loading" | "success" | "error";
 export default function FloatingWidget() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
 
   // Hide on keyword landing pages (they have their own sticky bar)
   if (pathname?.startsWith("/kw/")) return null;
-  const [phone, setPhone] = useState("");
-  const [status, setStatus] = useState<Status>("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
