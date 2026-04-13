@@ -419,6 +419,33 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
+      {/* ═══════ CROSS SERVICES ═══════ */}
+      <section className="py-14 bg-white border-t border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-3 text-gray-900">
+            Other Services We <span className={a.text}>Offer</span>
+          </h2>
+          <p className="text-sm text-gray-500 text-center mb-8 max-w-xl mx-auto">AI-powered development across every category — all with the same quality, speed, and guarantees.</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {[
+              { name: "Custom Software", href: "/kw/custom-software-development", icon: "💻" },
+              { name: "Mobile Apps", href: "/kw/mobile-app-development", icon: "📱" },
+              { name: "Web Development", href: "/kw/web-development-company", icon: "🌐" },
+              { name: "AI Software", href: "/kw/ai-software-development", icon: "🤖" },
+              { name: "E-Commerce", href: "/kw/ecommerce-development", icon: "🛒" },
+              { name: "AI Agents & Automation", href: "/kw/ai-agent-workflow-consulting", icon: "⚡" },
+              { name: "Healthcare AI", href: "/kw/healthcare-ai-development", icon: "🏥" },
+              { name: "Insurance AI", href: "/kw/insurance-ai-development", icon: "🛡️" },
+            ].filter((s) => s.href !== `/kw/${data.slug}`).slice(0, 6).map((s) => (
+              <a key={s.href} href={s.href} className="group flex items-center gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-100 hover:border-gray-300 hover:shadow-md transition-all">
+                <span className="text-lg">{s.icon}</span>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors">{s.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Footer onCTA={openConsult} />
 
       {/* ═══════ STICKY BOTTOM BAR ═══════ */}
