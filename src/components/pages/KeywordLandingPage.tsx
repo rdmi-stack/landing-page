@@ -467,23 +467,34 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       <Footer onCTA={openConsult} />
 
       {/* ═══════ STICKY BOTTOM BAR ═══════ */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] py-2.5 px-4">
-        <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
-          <div className="hidden sm:flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <p className="text-sm text-gray-700 font-medium">Senior developer responds in 2 hours</p>
-          </div>
-          <div className="flex items-center gap-2 w-full sm:w-auto">
-            <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-all">
-              <Phone className="w-4 h-4" /> WhatsApp
-            </a>
-            <button onClick={openConsult} className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg animate-shimmer text-white text-sm font-semibold transition-all cursor-pointer">
-              Get Free Consultation <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </div>
+      <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 z-50 flex items-center gap-2 sm:gap-3">
+        {/* WhatsApp — pill with icon */}
+        <a
+          href="https://wa.me/919818565561"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 px-4 sm:px-5 py-3 rounded-full bg-[#25D366] text-white text-sm font-bold shadow-xl shadow-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-105 transition-all"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.386 0-4.593-.807-6.35-2.165l-.444-.341-3.082 1.033 1.033-3.082-.341-.444A9.962 9.962 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          <span className="hidden sm:inline">WhatsApp</span>
+        </a>
+
+        {/* CTA — animated gradient pill */}
+        <button
+          onClick={openConsult}
+          className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 sm:px-7 py-3 rounded-full text-white text-sm font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer relative overflow-hidden"
+          style={{ background: t.heroGradient }}
+        >
+          {/* Shimmer overlay */}
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer pointer-events-none" style={{ backgroundSize: "200% 100%" }} />
+          <span className="relative flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-white/80 animate-pulse" />
+            Get Free Consultation
+            <ArrowRight className="w-4 h-4" />
+          </span>
+        </button>
       </div>
-      <div className="h-14" />
+      <div className="h-20" />
 
       {/* ═══════ CONSULTATION MODAL ═══════ */}
       {showModal && (
