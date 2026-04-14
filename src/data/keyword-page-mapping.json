@@ -103,6 +103,108 @@
         "ecommerce development company",
         "grocery delivery app development company"
       ]
+    },
+    {
+      "campaign": "Custom Software Development",
+      "adGroup": "Custom Software Core",
+      "landingPagePath": "/kw/custom-software-development",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/custom-software-development",
+      "keywordTheme": "custom-software-core",
+      "keywords": [
+        "custom software development",
+        "custom software development company",
+        "custom software development companies",
+        "custom software development services",
+        "custom software development agency",
+        "bespoke software development",
+        "bespoke software development services",
+        "custom software engineering"
+      ]
+    },
+    {
+      "campaign": "Custom Software Development",
+      "adGroup": "Enterprise SaaS",
+      "landingPagePath": "/kw/enterprise-saas-development",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/enterprise-saas-development",
+      "keywordTheme": "enterprise-saas",
+      "keywords": [
+        "enterprise software development",
+        "enterprise saas development",
+        "saas development company",
+        "saas product development",
+        "erp development company",
+        "crm development company",
+        "custom erp software",
+        "enterprise software solutions"
+      ]
+    },
+    {
+      "campaign": "Custom Software Development",
+      "adGroup": "Hire Developers",
+      "landingPagePath": "/kw/hire-software-developers-india",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/hire-software-developers-india",
+      "keywordTheme": "hire-developers",
+      "keywords": [
+        "hire software developers india",
+        "hire dedicated developers",
+        "hire remote developers india",
+        "offshore software development",
+        "offshore software development company",
+        "outsourcing software development",
+        "software development outsourcing",
+        "staff augmentation india"
+      ]
+    },
+    {
+      "campaign": "AI Agent & Automation",
+      "adGroup": "AI Agent Development",
+      "landingPagePath": "/kw/ai-agent-development",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/ai-agent-development",
+      "keywordTheme": "ai-agent",
+      "keywords": [
+        "ai agent development",
+        "ai agent development company",
+        "custom ai agent development",
+        "ai agent for business",
+        "build ai agent",
+        "agentic ai development",
+        "autonomous ai agent",
+        "ai agent consulting"
+      ]
+    },
+    {
+      "campaign": "AI Agent & Automation",
+      "adGroup": "AI Chatbot Development",
+      "landingPagePath": "/kw/ai-chatbot-development",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/ai-chatbot-development",
+      "keywordTheme": "ai-chatbot",
+      "keywords": [
+        "ai chatbot development",
+        "ai chatbot development company",
+        "custom ai chatbot development",
+        "chatbot development services",
+        "whatsapp ai chatbot",
+        "ai chatbot for business",
+        "ai chatbot integration",
+        "rag chatbot development"
+      ]
+    },
+    {
+      "campaign": "AI Agent & Automation",
+      "adGroup": "AI Automation & Workflow",
+      "landingPagePath": "/kw/ai-automation-workflow",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/ai-automation-workflow",
+      "keywordTheme": "ai-automation",
+      "keywords": [
+        "ai automation services",
+        "workflow automation services",
+        "business process automation",
+        "ai workflow automation",
+        "ai process automation",
+        "intelligent process automation",
+        "workflow automation india",
+        "document automation ai"
+      ]
     }
   ]
 }

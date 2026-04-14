@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
@@ -35,9 +35,36 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", industry: "", budget: "", timeline: "", challenge: "" });
   const budgets = ["Under ₹1L / <$2K", "₹1L – ₹5L / $2K – $10K", "₹5L – ₹15L / $10K – $25K", "₹15L – ₹50L / $25K – $75K", "₹50L+ / $75K+", "Not sure yet"];
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [exitIntentSubtitle, setExitIntentSubtitle] = useState<string | null>(null);
 
   const isAIPage = data.slug.includes("ai-") || data.slug.includes("-dubai") || data.slug.includes("-usa") || data.slug.includes("healthcare") || data.slug.includes("insurance") || data.slug.includes("travel");
   const openConsult = () => setShowModal(true);
+  const closeConsult = () => { setShowModal(false); setExitIntentSubtitle(null); };
+
+  // Exit-intent recovery: trigger modal once per session when cursor races toward top edge
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (sessionStorage.getItem("rdmi_exit_intent_fired") === "1") return;
+
+    let lastY = 0;
+    let lastT = performance.now();
+
+    const onMove = (e: MouseEvent) => {
+      const now = performance.now();
+      const velocity = (e.clientY - lastY) / (now - lastT || 1);
+      if (e.clientY < 50 && velocity < -0.35) {
+        sessionStorage.setItem("rdmi_exit_intent_fired", "1");
+        setExitIntentSubtitle("Wait — grab your free consultation before you go. No spam, no calls unless you ask.");
+        setShowModal(true);
+        window.removeEventListener("mousemove", onMove);
+      }
+      lastY = e.clientY;
+      lastT = now;
+    };
+
+    const t = setTimeout(() => window.addEventListener("mousemove", onMove), 8000);
+    return () => { clearTimeout(t); window.removeEventListener("mousemove", onMove); };
+  }, []);
 
   // Theme-driven colors
   const t = data.theme;
@@ -538,11 +565,11 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       {/* ═══════ CONSULTATION MODAL ═══════ */}
       {showModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div onClick={() => formStatus !== "loading" && setShowModal(false)} className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+          <div onClick={() => formStatus !== "loading" && closeConsult()} className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
           <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl shadow-black/20 border border-gray-200">
             <div className="h-1.5 rounded-t-2xl" style={{ background: t.heroGradient }} />
             {formStatus !== "loading" && (
-              <button onClick={() => setShowModal(false)} className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors z-10">
+              <button onClick={closeConsult} className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors z-10">
                 <span className="text-gray-500 text-lg leading-none">×</span>
               </button>
             )}
@@ -552,8 +579,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                   <MessageCircle className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">{f.title}</h3>
-                  <p className="text-xs text-gray-500">{f.subtitle}</p>
+                  <h3 className="text-lg font-bold text-gray-900">{exitIntentSubtitle ? "Don't leave empty-handed" : f.title}</h3>
+                  <p className="text-xs text-gray-500">{exitIntentSubtitle ?? f.subtitle}</p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-3 mb-5 text-[11px] text-gray-500">
