@@ -1,53 +1,53 @@
 "use client";
 
 import Image from "next/image";
-import { MessageCircle, IndianRupee, Bot, ArrowRight } from "lucide-react";
+import { MessageCircle, Play, Bot, ArrowRight } from "lucide-react";
 
 const usps = [
   {
     icon: MessageCircle,
-    title: "Talk to Developers Directly",
-    headline: "Your CTO on Speed Dial. For Free.",
+    title: "Talk Direct to AI Developer",
+    headline: "Your AI Engineer on Speed Dial. From Day One.",
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
     description:
-      "Other agencies charge you ₹2L/month for a 'project manager' who forwards your emails. At RDMI, you get a direct line to the 5+ year senior developers writing your code. Result? 73% fewer revisions, 40% faster approvals, and software that actually matches what you asked for.",
+      "Most agencies hide their engineers behind account managers and project managers. At RDMI, you get a direct line to the senior AI developer building your system — same person, every standup, every message. They write the code, they answer your questions, they own the outcome.",
     features: [
-      "Direct Slack/WhatsApp with your dev team — respond in <30 min",
-      "Daily 15-min standups (not weekly status emails)",
-      "Zero PM markup = ₹3-5L saved per project",
-      "Technical co-founders who challenge bad ideas (and improve good ones)",
+      "Direct Slack/WhatsApp with the AI engineer writing your code",
+      "Daily 15-min standups with the actual builder — not a PM proxy",
+      "Senior-only team — minimum 5 years experience, AI-native",
+      "Technical conversations that improve your product, not pad invoices",
     ],
     gradient: "from-blue-500 to-indigo-600",
     bgGlow: "bg-blue-600/20",
   },
   {
-    icon: IndianRupee,
-    title: "Guaranteed 50% Cost Savings",
-    headline: "₹15L Here = ₹30L in the US. Same Code. Same Quality.",
+    icon: Play,
+    title: "Show Before You Commit",
+    headline: "Free Working Prototype in 48 Hours. Pay Only If You Love It.",
     image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80",
     description:
-      "We don't compete on cheap labor. We compete on AI-accelerated delivery. Our team writes production code 3x faster using AI tools — so your ₹15L budget buys what ₹30L buys elsewhere. Fixed price. No surprises. Money-back guarantee if we miss your deadline.",
+      "Every other agency demands a deposit before they show you anything. We flip the model: you brief us on Monday, you have a working prototype on your phone by Wednesday. Not a slide deck. Not a Figma. Real software running on real data. If it isn't what you wanted, walk away — zero cost, zero pressure.",
     features: [
-      "Fixed-price contracts — the quote IS the final bill",
-      "Money-back guarantee if we miss the agreed deadline",
-      "No hidden costs: hosting setup, deployment, documentation included",
-      "ROI calculator: see exactly what your investment returns",
+      "Working prototype in 48 hours — not slide decks or wireframes",
+      "Built on your real data so you can validate the AI quality immediately",
+      "Walk away anytime in the first 7 days at zero cost",
+      "NDA signed before you share a single document",
     ],
     gradient: "from-emerald-500 to-green-600",
     bgGlow: "bg-emerald-600/20",
   },
   {
     icon: Bot,
-    title: "AI-First = 3x Faster Delivery",
-    headline: "12-Week Projects Done in 4. That's Not a Typo.",
+    title: "AI-Integrated by Default",
+    headline: "AI Is the Architecture — Not a Plugin Bolted On Later.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
     description:
-      "Every RDMI developer uses AI code generation, AI testing, and AI debugging — daily. This isn't a buzzword. Our last 20 projects shipped 2.8x faster than client estimates. Your competitors are still hiring. You're already launching.",
+      "Most software gets retrofitted with AI after launch and the seams show. We build AI into the core from sprint one — chatbots, agents, recommendations, automation, observability. Your product ships intelligent on day one, with evals and guardrails baked in. Your competitors will spend 12 months catching up.",
     features: [
-      "AI generates 40% of boilerplate code — humans review 100%",
-      "AI-powered QA catches bugs 5x faster than manual testing",
-      "Built-in AI features: chatbots, recommendations, automation at no extra cost",
-      "Your product launches with AI built-in — not bolted-on later",
+      "Every product ships with embedded chatbot, recommendations, and analytics",
+      "Autonomous AI agents built on LangGraph, CrewAI, GPT-4o, and Claude",
+      "Eval suites and observability (LangSmith / Langfuse) from day one",
+      "Full source code, model weights, and training data — yours forever",
     ],
     gradient: "from-purple-500 to-violet-600",
     bgGlow: "bg-purple-600/20",
@@ -65,11 +65,11 @@ export default function USPSection() {
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            Why Choose Our Software Development Company
+            Why Choose RDMI for AI-Integrated Software
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
             Why 200+ Clients Choose RDMI for{" "}
-            <span className="gradient-text">Custom Software Development</span>
+            <span className="gradient-text">AI-Integrated Software & AI Agents</span>
           </h2>
         </div>
 

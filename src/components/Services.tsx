@@ -4,56 +4,56 @@ import {
   Globe,
   Smartphone,
   Cloud,
-  ShoppingCart,
   Cpu,
   Layers,
   Database,
   Code2,
+  Bot,
   ArrowRight,
 } from "lucide-react";
 
 const services = [
   {
-    icon: Globe,
-    title: "Web Application Development",
+    icon: Cpu,
+    title: "AI Agent Development",
     description:
-      "SaaS platforms processing ₹2Cr+/month. Dashboards that cut decision time 60%. Our React/Next.js web apps don't just work — they generate revenue from day one.",
-    tags: ["React", "Next.js", "Node.js", "TypeScript"],
+      "Autonomous agents that reason, plan, and execute end-to-end workflows. LangGraph + CrewAI + GPT-4o. Multi-agent systems with evals, observability, and human approval gates baked in.",
+    tags: ["LangGraph", "CrewAI", "OpenAI", "Claude"],
+  },
+  {
+    icon: Bot,
+    title: "AI Chatbot & Voice AI",
+    description:
+      "RAG chatbots that deflect 60% of tickets at launch. WhatsApp, web, voice IVR replacements. Trained on your data, integrated with your CRM, with citations and human handoff.",
+    tags: ["RAG", "WhatsApp", "OpenAI Realtime", "Twilio"],
+  },
+  {
+    icon: Globe,
+    title: "AI-Integrated Web Apps",
+    description:
+      "React/Next.js web apps with AI woven into the architecture — embedded copilots, smart search, intelligent recommendations, anomaly detection. Not retrofitted later.",
+    tags: ["Next.js", "Vercel AI SDK", "React", "TypeScript"],
   },
   {
     icon: Smartphone,
-    title: "Mobile App Development",
+    title: "AI-Powered Mobile Apps",
     description:
-      "120K+ downloads for our last client's app. Cross-platform Flutter & React Native apps that convert. Android & iOS — one codebase, half the cost, 2x the reach.",
-    tags: ["React Native", "Flutter", "iOS", "Android"],
+      "Flutter and React Native apps with on-device ML, voice AI, AI recommendations, and personalized push. 120K+ downloads delivered. Native performance, AI-first UX.",
+    tags: ["Flutter", "React Native", "Core ML", "TensorFlow Lite"],
   },
   {
     icon: Cloud,
-    title: "SaaS & MVP Development",
+    title: "AI-Native SaaS & MVPs",
     description:
-      "MVP in 4 weeks. Product-market fit in 8. We've helped 30+ startups launch, 12 raised funding after. Multi-tenant, subscription billing, analytics — all included.",
-    tags: ["SaaS", "Multi-tenant", "Stripe", "API"],
-  },
-  {
-    icon: ShoppingCart,
-    title: "E-Commerce Development",
-    description:
-      "4x conversion rate for our last e-commerce client. Shopify apps, custom marketplaces, headless commerce. Payment integration that never drops a transaction.",
-    tags: ["Shopify", "Razorpay", "Marketplace", "Headless"],
-  },
-  {
-    icon: Cpu,
-    title: "AI Software Development",
-    description:
-      "AI chatbots that handle 80% of support tickets. Recommendation engines that boost AOV 35%. RAG systems, AI agents, automation — AI that pays for itself in month one.",
-    tags: ["OpenAI", "LangChain", "Python", "CrewAI"],
+      "AI-first SaaS platforms with embedded copilots, smart workflows, and observability from sprint one. Multi-tenant, subscription billing, analytics — built to scale on day one.",
+    tags: ["SaaS", "Multi-tenant", "Stripe", "Embedded AI"],
   },
   {
     icon: Layers,
-    title: "Enterprise Software",
+    title: "AI Workflow Automation",
     description:
-      "Custom ERP that saved a manufacturer ₹1.2Cr/year. CRM that increased sales team output 40%. Enterprise-grade security. Compliance-ready. Built to run your business.",
-    tags: ["ERP", "CRM", "Microservices", "Security"],
+      "Document OCR, email triage, sales pipelines, finance reconciliation, HR onboarding — automated end-to-end with AI in the loop. n8n + custom orchestration with human approval gates.",
+    tags: ["n8n", "Document AI", "RPA", "OpenAI"],
   },
   {
     icon: Database,
@@ -85,16 +85,15 @@ export default function Services() {
           className="text-center mb-16"
         >
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            Custom Software Development Services
+            AI-Integrated Software Development Services
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-            Mobile App Development,{" "}
-            <span className="gradient-text">Web Application Development</span>{" "}
-            & AI Software
+            AI Agents, AI Chatbots &{" "}
+            <span className="gradient-text">AI-Integrated Software</span>
           </h2>
           <p className="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
-            Full-stack app development company building custom software, Android & iOS apps,
-            SaaS platforms, and AI-powered enterprise solutions — powered by senior developers in India.
+            Custom software with AI built into the architecture from sprint one — autonomous agents,
+            chatbots, workflow automation, and AI-native web and mobile apps. Talk direct to a senior AI engineer.
           </p>
         </div>
 

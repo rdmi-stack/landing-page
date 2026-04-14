@@ -3,7 +3,6 @@
 import {
   ArrowRight,
   MessageCircle,
-  IndianRupee,
   Bot,
   Play,
   CheckCircle2,
@@ -25,10 +24,10 @@ import Image from "next/image";
 import { useModal } from "./ModalProvider";
 
 const stats = [
-  { value: "200+", label: "Products Shipped" },
-  { value: "₹47Cr+", label: "Client Revenue Generated" },
-  { value: "3x", label: "Faster Than Traditional Teams" },
-  { value: "50%", label: "Less Than US/UK Agencies" },
+  { value: "200+", label: "AI-Integrated Products Shipped" },
+  { value: "30+", label: "Production AI Agents Live" },
+  { value: "48 hrs", label: "Free Prototype — Before You Pay" },
+  { value: "92%", label: "Agent Task Success Rate" },
 ];
 
 interface ShowcaseCard {
@@ -236,30 +235,30 @@ export default function Hero() {
         <div className="flex justify-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-sm font-medium backdrop-blur-sm">
             <Shield className="w-4 h-4" />
-            <span>Guaranteed Delivery · AI-Native · Money-Back Promise</span>
+            <span>AI-Integrated · Show Before Commit · Talk Direct to AI Developer</span>
           </div>
         </div>
 
         {/* Headline */}
         <div className="text-center max-w-5xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-            We Build <span className="gradient-text">Intelligent Software</span> That{" "}
-            <span className="gradient-text-orange">Works 24/7</span>
+            <span className="gradient-text">AI-Integrated Software</span> &{" "}
+            <span className="gradient-text-orange">Autonomous AI Agents</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed">
-            AI Agents. AI Chatbots. Smart Workflows. Powered by{" "}
-            <strong className="text-white">OpenAI, Claude, Gemini & LangChain</strong>.{" "}
-            Not traditional apps — <strong className="text-white">AI-native platforms</strong> that sell, support, and scale while you sleep.{" "}
-            <span className="text-emerald-400 font-semibold">₹47Cr+ revenue generated. 200+ products shipped. Deadline guaranteed.</span>
+            Not retrofitted. Not bolted on. <strong className="text-white">AI is the architecture</strong>.
+            Custom software, autonomous agents, and chatbots built on{" "}
+            <strong className="text-white">GPT-4o, Claude, LangGraph & CrewAI</strong> — by senior AI engineers you talk to directly.{" "}
+            <span className="text-emerald-400 font-semibold">See a working prototype in 48 hours, before you pay anything.</span>
           </p>
         </div>
 
         {/* USP pills */}
         <div className="flex flex-wrap justify-center gap-3 mt-8">
           {[
-            { icon: MessageCircle, text: "Talk to Developers, Not Salespeople" },
-            { icon: IndianRupee, text: "50% Less — AI-Powered Delivery" },
-            { icon: Bot, text: "Every App Ships AI-Ready" },
+            { icon: MessageCircle, text: "Talk Direct to AI Developer — Not Sales" },
+            { icon: Play, text: "Show Before You Commit — Free 48hr Prototype" },
+            { icon: Bot, text: "AI-Integrated by Default — Not Bolted On" },
           ].map((usp) => (
             <div key={usp.text} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-zinc-300 backdrop-blur-sm">
               <usp.icon className="w-4 h-4 text-indigo-400" />
@@ -274,18 +273,18 @@ export default function Hero() {
             onClick={() => openModal()}
             className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all hover:shadow-xl hover:shadow-indigo-500/25 hover:scale-105 cursor-pointer"
           >
-            Get Free Prototype in 48 Hours
+            Get Free AI Prototype in 48 Hours
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
           <a href="#case-studies" className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-full border border-white/10 hover:bg-white/5 transition-all">
             <Play className="w-4 h-4" />
-            See Results We&apos;ve Delivered
+            See AI Agents We&apos;ve Built
           </a>
         </div>
 
         {/* Trust line — guarantee focused */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 text-sm text-zinc-500">
-          {["Money-back deadline guarantee", "Free prototype before you pay", "NDA from day one", "You own 100% of the code"].map((item) => (
+          {["Working prototype before any payment", "Direct Slack with your AI developer", "NDA from day one", "Full source code & model weights yours"].map((item) => (
             <span key={item} className="flex items-center gap-1.5">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
               {item}
