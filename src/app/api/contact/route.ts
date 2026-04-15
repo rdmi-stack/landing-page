@@ -33,12 +33,28 @@ async function sendEmail(params: Record<string, string>) {
 
 // ─── DETECT FORM TYPE ─────────────────────────────────
 
-type FormType = "software" | "mobile-app" | "web-dev" | "ai-software" | "ecommerce" | "ai-agent" | "ai-dubai" | "ai-usa" | "healthcare-ai" | "insurance-ai" | "travel-ai" | "seo" | "digital-marketing" | "callback" | "lead-magnet" | "seo-tool" | "quiz" | "seo-course" | "utm";
+type FormType = "software" | "mobile-app" | "web-dev" | "ai-software" | "ecommerce" | "ai-agent" | "ai-chatbot" | "ai-automation" | "enterprise-saas" | "hire-developers" | "seo-geo" | "digital-marketing-performance" | "ai-dubai" | "ai-usa" | "healthcare-ai" | "insurance-ai" | "travel-ai" | "seo" | "digital-marketing" | "callback" | "lead-magnet" | "seo-tool" | "quiz" | "seo-course" | "utm";
+
+const KNOWN_FORM_TYPES: readonly FormType[] = [
+  "software", "mobile-app", "web-dev", "ai-software", "ecommerce", "ai-agent",
+  "ai-chatbot", "ai-automation", "enterprise-saas", "hire-developers",
+  "seo-geo", "digital-marketing-performance",
+  "ai-dubai", "ai-usa", "healthcare-ai", "insurance-ai", "travel-ai",
+  "seo", "digital-marketing", "callback", "lead-magnet", "seo-tool",
+  "quiz", "seo-course", "utm",
+] as const;
 
 function detectFormType(message: string): FormType {
   // Explicit formType from landing page forms
   const match = message.match(/\[formType:([\w-]+)\]/);
-  if (match) return match[1] as FormType;
+  if (match) {
+    // Strip "-sticky" suffix from WhatsApp bar submissions so they route
+    // to the same welcome email template as the full modal form.
+    const raw = match[1].replace(/-sticky$/, "");
+    if ((KNOWN_FORM_TYPES as readonly string[]).includes(raw)) {
+      return raw as FormType;
+    }
+  }
   // Legacy pattern matching
   if (message.startsWith("[AI Agent")) return "ai-agent";
   if (message.startsWith("[SEO Services")) return "seo";
@@ -50,6 +66,10 @@ function detectFormType(message: string): FormType {
   if (message.startsWith("[SEO Course]")) return "seo-course";
   if (message.startsWith("[UTM:")) return "utm";
   return "software";
+}
+
+function isStickyBarSubmission(message: string): boolean {
+  return /\[formType:[\w-]+-sticky\]/.test(message) || /sticky whatsapp bar/i.test(message);
 }
 
 // ─── EMAIL TEMPLATES ──────────────────────────────────
@@ -324,6 +344,120 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
         text: `Hi ${firstName},\n\nYour AI roadmap call is confirmed! US-timezone engineer — EST/PST overlap.\n\n${message}\n\n— RDMI AI`,
       };
 
+    case "ai-chatbot":
+      return {
+        subject: `${firstName}, your AI chatbot consultation is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, your chatbot is 14 days from going live.</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">senior chatbot engineer</strong> is reviewing your requirements right now. Expect a call within <strong style="color:#38bdf8;">2 hours</strong> — not a salesperson, the person who actually tunes retrieval and prompts.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "Discovery Call (2 Hours)", "We map intents, data sources (docs, FAQs, tickets), and target channels — web, WhatsApp, voice"],
+            ["02", "RAG Prototype (3 Days)", "Working chatbot answering real questions from your data. You test it live"],
+            ["03", "Channel Integration (2 Weeks)", "Deploy to website, WhatsApp Business, Slack or voice. Full CRM / helpdesk integration"],
+            ["04", "Launch & Tune", "Production go-live with dashboards. 60% ticket deflection benchmark or we keep tuning free"],
+          ])}
+          ${ctaButton("WhatsApp Our Chatbot Team", "https://wa.me/919818565561?text=Hi%2C%20chatbot%20inquiry", "linear-gradient(135deg,#0284c7,#0ea5e9)")}`,
+          "linear-gradient(135deg,#0284c7,#0ea5e9)", "RDMI AI", "AI Chatbot Development"
+        ),
+        text: `Hi ${firstName},\n\nYour chatbot consultation is confirmed! Senior chatbot engineer calls within 2 hours.\n\n${message}\n\n— RDMI AI`,
+      };
+
+    case "ai-automation":
+      return {
+        subject: `${firstName}, your workflow audit is confirmed — RDMI AI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, we'll find the top 3 workflows worth automating.</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">senior automation engineer</strong> is reviewing your request. Expect a call within <strong style="color:#fbbf24;">2 hours</strong> — they'll identify the top 3 ROI opportunities on the call, no sales pitch.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "Workflow Audit (2 Hours)", "Senior automation engineer maps your repetitive processes and top 3 ROI opportunities — on the call"],
+            ["02", "Prototype in 1 Week", "Working automation running on your real data in a sandbox — human approval gates installed"],
+            ["03", "Production Rollout", "Deploy with monitoring, error recovery, audit logs. Parallel-run against manual process to validate"],
+            ["04", "Measure & Optimize", "KPI dashboard showing hours saved, error rate, override rate. Weekly tuning for 30 days"],
+          ])}
+          ${ctaButton("WhatsApp Our Automation Team", "https://wa.me/919818565561?text=Hi%2C%20workflow%20automation%20inquiry", "linear-gradient(135deg,#b45309,#d97706)")}`,
+          "linear-gradient(135deg,#b45309,#d97706)", "RDMI AI", "AI Workflow Automation"
+        ),
+        text: `Hi ${firstName},\n\nYour workflow audit is confirmed! Senior automation engineer calls within 2 hours.\n\n${message}\n\n— RDMI AI`,
+      };
+
+    case "enterprise-saas":
+      return {
+        subject: `${firstName}, your SaaS architecture call is confirmed — RDMI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, your SaaS architect is on the way.</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">senior SaaS architect</strong> is reviewing your requirements. Expect a call within <strong style="color:#60a5fa;">2 hours</strong> — the person who owns the architecture, not a sales rep.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Project", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "Architecture Discovery (2 Hours)", "Senior architect maps scale requirements, compliance posture, and integration surface"],
+            ["02", "Multi-Tenant Foundation", "Tenant isolation, SSO/SCIM, audit logging, role model — built first, not retrofitted"],
+            ["03", "Sprint Delivery With Demos", "Two-week sprints with working software every demo. UAT signed before prod"],
+            ["04", "Launch, Monitor, Scale", "Blue-green deployment, observability stack, runbooks, on-call handoff. 30 days hypercare"],
+          ])}
+          ${ctaButton("WhatsApp Our SaaS Team", "https://wa.me/919818565561?text=Hi%2C%20enterprise%20SaaS%20inquiry", "linear-gradient(135deg,#1e3a8a,#2563eb)")}`,
+          "linear-gradient(135deg,#1e3a8a,#2563eb)", "RDMI", "Enterprise SaaS & ERP Development"
+        ),
+        text: `Hi ${firstName},\n\nYour SaaS architecture call is confirmed! Senior architect calls within 2 hours.\n\n${message}\n\n— RDMI`,
+      };
+
+    case "hire-developers":
+      return {
+        subject: `${firstName}, your 3 vetted CVs land within 48 hours — RDMI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, your 3 shortlisted CVs are on the way.</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">senior engineer from our team</strong> is reviewing your role requirements — not a recruiter. Expect a fit call within <strong style="color:#34d399;">2 hours</strong> and 3 vetted CVs within 48 hours.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Role Brief", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "Fit Call (2 Hours)", "Senior engineer scopes the role, stack, seniority, and timezone. No recruiters, no HR layer"],
+            ["02", "3 Shortlisted CVs (48 Hours)", "Pre-vetted engineers with matching stack, references, and take-home results included"],
+            ["03", "You Interview Directly", "No gatekeeping. We coordinate across timezones. Decide within 48 hours of the interview"],
+            ["04", "Kickoff in 7 Days", "NDA and contract signed day zero. Engineer joins your Slack, Jira, GitHub. Daily standups in your timezone"],
+          ])}
+          ${ctaButton("WhatsApp Our Hiring Team", "https://wa.me/919818565561?text=Hi%2C%20hire%20developers%20inquiry", "linear-gradient(135deg,#047857,#059669)")}`,
+          "linear-gradient(135deg,#047857,#059669)", "RDMI", "Hire Vetted Senior Developers"
+        ),
+        text: `Hi ${firstName},\n\nFit call within 2 hours. 3 vetted CVs within 48 hours. Kickoff in 7 days.\n\n${message}\n\n— RDMI`,
+      };
+
+    case "seo-geo":
+      return {
+        subject: `${firstName}, your SEO expert call is confirmed — RDMI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, your SEO expert is picking up the phone.</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">senior SEO strategist</strong> is reviewing your domain. Expect a call within <strong style="color:#fb7185;">2 hours</strong> — we'll walk you through exactly where you rank on Google AND on ChatGPT, Perplexity, Claude, and Gemini on the call.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Focus", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "Expert Call (2 Hours)", "Senior SEO strategist scans your Google rankings and visibility in ChatGPT & Perplexity live on the call"],
+            ["02", "Strategy & KPI Lock", "Agree on target keywords, target AI models, traffic KPIs, and attribution model before any work starts"],
+            ["03", "Monthly Execution Sprints", "Technical SEO, content, GEO optimization, and authority link building — shipped monthly with weekly standups"],
+            ["04", "Measure & Scale", "Transparent monthly report with traffic, rankings, AI citations, and ROI. Walk away any month"],
+          ])}
+          ${ctaButton("WhatsApp Our SEO Team", "https://wa.me/919818565561?text=Hi%2C%20SEO%20inquiry", "linear-gradient(135deg,#e11d48,#c026d3)")}`,
+          "linear-gradient(135deg,#e11d48,#c026d3)", "RDMI", "SEO + GEO Services"
+        ),
+        text: `Hi ${firstName},\n\nYour SEO expert call is confirmed! Senior strategist calls within 2 hours. Month-to-month, walk away anytime.\n\n${message}\n\n— RDMI`,
+      };
+
+    case "digital-marketing-performance":
+      return {
+        subject: `${firstName}, your marketing expert call is confirmed — RDMI`,
+        html: emailWrapper(
+          `<h2 style="margin:0 0 16px;font-size:20px;color:#fff;">Hi ${firstName}, your marketing expert is picking up the phone.</h2>
+          <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">A <strong style="color:#fff;">senior performance marketer</strong> is reviewing your accounts. Expect a call within <strong style="color:#22d3ee;">2 hours</strong> — we'll walk through your current ad spend, tell you exactly what's wasting money, and forecast realistic CPA / ROAS for the next 90 days.</p>
+          ${summaryTable([["Name", name], ["Email", email], ["Phone", phone], ["Focus", message.replace(/\[.*?\]\n?/g, "")]])}
+          ${stepsBlock([
+            ["01", "Expert Call (2 Hours)", "Senior marketer reviews your Google Ads, Meta, and LinkedIn accounts live on the call. No sales pitch"],
+            ["02", "Strategy & KPI Lock", "Agree on target CPA, ROAS, channels, and attribution model before any ad spend is touched"],
+            ["03", "Launch & Optimization", "Smart bidding, creative testing, negative keywords, daily optimization for the first 30 days"],
+            ["04", "Scale or Walk", "Monthly ROI review. Scale winners, kill losers, walk away if KPIs aren't met. Month-to-month"],
+          ])}
+          ${ctaButton("WhatsApp Our Marketing Team", "https://wa.me/919818565561?text=Hi%2C%20marketing%20inquiry", "linear-gradient(135deg,#0891b2,#0d9488)")}`,
+          "linear-gradient(135deg,#0891b2,#0d9488)", "RDMI", "Performance Digital Marketing"
+        ),
+        text: `Hi ${firstName},\n\nYour marketing expert call is confirmed! Senior marketer calls within 2 hours. Month-to-month, walk away anytime.\n\n${message}\n\n— RDMI`,
+      };
+
     case "seo":
       return {
         subject: "Your SEO & GEO Audit Request — RDMI Tech Ventures",
@@ -549,7 +683,13 @@ const formTypeLabels: Record<FormType, string> = {
   "web-dev": "🌐 Website Inquiry",
   "ai-software": "🤖 AI Software Inquiry",
   ecommerce: "🛒 E-Commerce Inquiry",
-  "ai-agent": "⚡ AI Agent / Automation",
+  "ai-agent": "⚡ AI Agent Inquiry",
+  "ai-chatbot": "💬 AI Chatbot Inquiry",
+  "ai-automation": "⚙️ AI Workflow Automation",
+  "enterprise-saas": "🏢 Enterprise SaaS Inquiry",
+  "hire-developers": "👨‍💻 Hire Developers Inquiry",
+  "seo-geo": "🔍 SEO & GEO Inquiry",
+  "digital-marketing-performance": "📈 Performance Marketing",
   "ai-dubai": "🇦🇪 Dubai AI Inquiry",
   "ai-usa": "🇺🇸 USA AI Inquiry",
   "healthcare-ai": "🏥 Healthcare AI Inquiry",
@@ -584,6 +724,7 @@ export async function POST(req: NextRequest) {
     }
 
     const formType = detectFormType(message);
+    const fromSticky = isStickyBarSubmission(message);
     const customerEmail = getCustomerEmail(formType, name, email, phone || "", company || "", budget || "", message);
 
     // Store lead locally for admin panel
@@ -617,11 +758,12 @@ export async function POST(req: NextRequest) {
 
     // 2. Send lead notification to team
     const label = formTypeLabels[formType];
+    const stickyTag = fromSticky ? "⚡ WhatsApp Bar · " : "";
     await sendEmail({
       from: `RDMI Lead Alert <${MAILGUN_FROM_EMAIL}>`,
       to: LEAD_TO,
       cc: LEAD_CC,
-      subject: `[${label}] ${name}${company ? ` (${company})` : ""} — ${budget || "Budget TBD"}`,
+      subject: `${stickyTag}[${label}] ${name}${company ? ` (${company})` : ""} — ${budget || "Budget TBD"}`,
       html: emailWrapper(
         `<div style="background:#1a1a1a;border-radius:12px;border:1px solid #2a2a2a;padding:20px;margin-bottom:20px;">
           <p style="margin:0 0 12px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#10b981;">Lead Details</p>
