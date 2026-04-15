@@ -36,6 +36,26 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const budgets = ["Under ₹1L / <$2K", "₹1L – ₹5L / $2K – $10K", "₹5L – ₹15L / $10K – $25K", "₹15L – ₹50L / $25K – $75K", "₹50L+ / $75K+", "Not sure yet"];
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [exitIntentSubtitle, setExitIntentSubtitle] = useState<string | null>(null);
+  const [stickyForm, setStickyForm] = useState({ name: "", phone: "", email: "" });
+  const [stickyStatus, setStickyStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleStickySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!stickyForm.phone.trim()) return;
+    setStickyStatus("loading");
+    try {
+      const message = [`[formType:${data.form.formType}-sticky]`, `[${data.primaryKeyword} — WhatsApp Bar]`, `Source: sticky whatsapp bar on /kw/${data.slug}`].join("\n");
+      await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: stickyForm.name || "WhatsApp Bar Lead", email: stickyForm.email || "whatsapp@rdmi.in", phone: stickyForm.phone, message }) });
+      const waMsg = encodeURIComponent(`Hi RDMI, I'm ${stickyForm.name || "interested"} and I'd like to discuss ${data.primaryKeyword}.`);
+      window.open(`https://wa.me/919818565561?text=${waMsg}`, "_blank");
+      setStickyStatus("success");
+      setStickyForm({ name: "", phone: "", email: "" });
+      setTimeout(() => setStickyStatus("idle"), 3000);
+    } catch {
+      setStickyStatus("error");
+      setTimeout(() => setStickyStatus("idle"), 3000);
+    }
+  };
 
   const isAIPage = data.slug.includes("ai-") || data.slug.includes("-dubai") || data.slug.includes("-usa") || data.slug.includes("healthcare") || data.slug.includes("insurance") || data.slug.includes("travel");
   const openConsult = () => setShowModal(true);
@@ -532,35 +552,67 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
       <Footer onCTA={openConsult} />
 
-      {/* ═══════ STICKY BOTTOM BAR ═══════ */}
-      <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 z-50 flex items-center gap-2 sm:gap-3">
-        {/* WhatsApp — pill with icon */}
-        <a
-          href="https://wa.me/919818565561"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 px-4 sm:px-5 py-3 rounded-full bg-[#25D366] text-white text-sm font-bold shadow-xl shadow-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-105 transition-all"
-        >
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.386 0-4.593-.807-6.35-2.165l-.444-.341-3.082 1.033 1.033-3.082-.341-.444A9.962 9.962 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          <span className="hidden sm:inline">WhatsApp</span>
-        </a>
+      {/* ═══════ STICKY WHATSAPP BAR (myhq-style) ═══════ */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-4px_24px_rgba(0,0,0,0.08)]">
+        <form onSubmit={handleStickySubmit} className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-col lg:flex-row items-stretch lg:items-center gap-3">
+          {/* Label — desktop only */}
+          <div className="hidden lg:flex flex-col flex-shrink-0 pr-4 border-r border-gray-200">
+            <span className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
+              <svg className="w-4 h-4 text-[#25D366]" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.386 0-4.593-.807-6.35-2.165l-.444-.341-3.082 1.033 1.033-3.082-.341-.444A9.962 9.962 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp Us
+            </span>
+            <span className="text-xs text-gray-500 mt-0.5">Get instant response</span>
+          </div>
 
-        {/* CTA — animated gradient pill */}
-        <button
-          onClick={openConsult}
-          className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 sm:px-7 py-3 rounded-full text-white text-sm font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer relative overflow-hidden"
-          style={{ background: t.heroGradient }}
-        >
-          {/* Shimmer overlay */}
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer pointer-events-none" style={{ backgroundSize: "200% 100%" }} />
-          <span className="relative flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-white/80 animate-pulse" />
-            Get Free Consultation
-            <ArrowRight className="w-4 h-4" />
-          </span>
-        </button>
+          {/* Inputs — horizontal on desktop, stacked on mobile */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <input
+              type="text"
+              placeholder="Name*"
+              value={stickyForm.name}
+              onChange={(e) => setStickyForm({ ...stickyForm, name: e.target.value })}
+              disabled={stickyStatus === "loading"}
+              className="px-3 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 focus:border-gray-400 focus:bg-white outline-none transition-colors"
+            />
+            <input
+              type="tel"
+              required
+              placeholder="Mobile number*"
+              value={stickyForm.phone}
+              onChange={(e) => setStickyForm({ ...stickyForm, phone: e.target.value })}
+              disabled={stickyStatus === "loading"}
+              className="px-3 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 focus:border-gray-400 focus:bg-white outline-none transition-colors"
+            />
+            <input
+              type="email"
+              placeholder="Email*"
+              value={stickyForm.email}
+              onChange={(e) => setStickyForm({ ...stickyForm, email: e.target.value })}
+              disabled={stickyStatus === "loading"}
+              className="px-3 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 focus:border-gray-400 focus:bg-white outline-none transition-colors"
+            />
+          </div>
+
+          {/* Submit button */}
+          <button
+            type="submit"
+            disabled={stickyStatus === "loading" || !stickyForm.phone.trim()}
+            className="flex-shrink-0 flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#25D366] hover:bg-[#1fba56] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {stickyStatus === "loading" ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : stickyStatus === "success" ? (
+              <><CheckCircle2 className="w-4 h-4" /> Opening WhatsApp…</>
+            ) : (
+              <>
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.386 0-4.593-.807-6.35-2.165l-.444-.341-3.082 1.033 1.033-3.082-.341-.444A9.962 9.962 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                WhatsApp Us
+              </>
+            )}
+          </button>
+        </form>
       </div>
-      <div className="h-20" />
+      <div className="h-36 sm:h-32 lg:h-24" />
 
       {/* ═══════ CONSULTATION MODAL ═══════ */}
       {showModal && (
