@@ -38,6 +38,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const [exitIntentSubtitle, setExitIntentSubtitle] = useState<string | null>(null);
   const [stickyForm, setStickyForm] = useState({ name: "", phone: "", email: "" });
   const [stickyStatus, setStickyStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [stickySheetOpen, setStickySheetOpen] = useState(false);
 
   const handleStickySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,6 +51,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       window.open(`https://wa.me/919818565561?text=${waMsg}`, "_blank");
       setStickyStatus("success");
       setStickyForm({ name: "", phone: "", email: "" });
+      setStickySheetOpen(false);
       setTimeout(() => setStickyStatus("idle"), 3000);
     } catch {
       setStickyStatus("error");
@@ -552,67 +554,71 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
       <Footer onCTA={openConsult} />
 
-      {/* ═══════ STICKY WHATSAPP BAR (myhq-style) ═══════ */}
+      {/* ═══════ STICKY WHATSAPP BAR ═══════ */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-4px_24px_rgba(0,0,0,0.08)]">
-        <form onSubmit={handleStickySubmit} className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-col lg:flex-row items-stretch lg:items-center gap-3">
-          {/* Label — desktop only */}
-          <div className="hidden lg:flex flex-col flex-shrink-0 pr-4 border-r border-gray-200">
+        {/* Mobile: full-width button that opens sheet modal */}
+        <div className="lg:hidden px-4 py-3">
+          <button
+            onClick={() => setStickySheetOpen(true)}
+            className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-[#25D366] hover:bg-[#1fba56] text-white font-bold text-base shadow-lg transition-all"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.386 0-4.593-.807-6.35-2.165l-.444-.341-3.082 1.033 1.033-3.082-.341-.444A9.962 9.962 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp Us
+          </button>
+        </div>
+
+        {/* Desktop: inline horizontal form */}
+        <form onSubmit={handleStickySubmit} className="hidden lg:flex max-w-6xl mx-auto px-6 py-3 items-center gap-3">
+          <div className="flex flex-col flex-shrink-0 pr-4 border-r border-gray-200">
             <span className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
               <svg className="w-4 h-4 text-[#25D366]" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.386 0-4.593-.807-6.35-2.165l-.444-.341-3.082 1.033 1.033-3.082-.341-.444A9.962 9.962 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
               WhatsApp Us
             </span>
             <span className="text-xs text-gray-500 mt-0.5">Get instant response</span>
           </div>
-
-          {/* Inputs — horizontal on desktop, stacked on mobile */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <input
-              type="text"
-              placeholder="Name*"
-              value={stickyForm.name}
-              onChange={(e) => setStickyForm({ ...stickyForm, name: e.target.value })}
-              disabled={stickyStatus === "loading"}
-              className="px-3 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 focus:border-gray-400 focus:bg-white outline-none transition-colors"
-            />
-            <input
-              type="tel"
-              required
-              placeholder="Mobile number*"
-              value={stickyForm.phone}
-              onChange={(e) => setStickyForm({ ...stickyForm, phone: e.target.value })}
-              disabled={stickyStatus === "loading"}
-              className="px-3 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 focus:border-gray-400 focus:bg-white outline-none transition-colors"
-            />
-            <input
-              type="email"
-              placeholder="Email*"
-              value={stickyForm.email}
-              onChange={(e) => setStickyForm({ ...stickyForm, email: e.target.value })}
-              disabled={stickyStatus === "loading"}
-              className="px-3 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 focus:border-gray-400 focus:bg-white outline-none transition-colors"
-            />
+          <div className="flex-1 grid grid-cols-3 gap-2">
+            <input type="text" placeholder="Name*" value={stickyForm.name} onChange={(e) => setStickyForm({ ...stickyForm, name: e.target.value })} disabled={stickyStatus === "loading"} className="px-3 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 focus:border-gray-400 focus:bg-white outline-none transition-colors" />
+            <input type="tel" required placeholder="Mobile number*" value={stickyForm.phone} onChange={(e) => setStickyForm({ ...stickyForm, phone: e.target.value })} disabled={stickyStatus === "loading"} className="px-3 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 focus:border-gray-400 focus:bg-white outline-none transition-colors" />
+            <input type="email" placeholder="Email*" value={stickyForm.email} onChange={(e) => setStickyForm({ ...stickyForm, email: e.target.value })} disabled={stickyStatus === "loading"} className="px-3 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 focus:border-gray-400 focus:bg-white outline-none transition-colors" />
           </div>
-
-          {/* Submit button */}
-          <button
-            type="submit"
-            disabled={stickyStatus === "loading" || !stickyForm.phone.trim()}
-            className="flex-shrink-0 flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#25D366] hover:bg-[#1fba56] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all disabled:opacity-60 disabled:cursor-not-allowed"
-          >
-            {stickyStatus === "loading" ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
-            ) : stickyStatus === "success" ? (
-              <><CheckCircle2 className="w-4 h-4" /> Opening WhatsApp…</>
-            ) : (
-              <>
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.386 0-4.593-.807-6.35-2.165l-.444-.341-3.082 1.033 1.033-3.082-.341-.444A9.962 9.962 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-                WhatsApp Us
-              </>
-            )}
+          <button type="submit" disabled={stickyStatus === "loading" || !stickyForm.phone.trim()} className="flex-shrink-0 flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#25D366] hover:bg-[#1fba56] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all disabled:opacity-60 disabled:cursor-not-allowed">
+            {stickyStatus === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : stickyStatus === "success" ? <><CheckCircle2 className="w-4 h-4" /> Opening WhatsApp…</> : <><svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.386 0-4.593-.807-6.35-2.165l-.444-.341-3.082 1.033 1.033-3.082-.341-.444A9.962 9.962 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>WhatsApp Us</>}
           </button>
         </form>
       </div>
-      <div className="h-36 sm:h-32 lg:h-24" />
+      <div className="h-20 lg:h-20" />
+
+      {/* ═══════ MOBILE WHATSAPP SHEET MODAL ═══════ */}
+      {stickySheetOpen && (
+        <div className="lg:hidden fixed inset-0 z-[90] flex items-end sm:items-center justify-center">
+          <div onClick={() => stickyStatus !== "loading" && setStickySheetOpen(false)} className="absolute inset-0 bg-black/40" />
+          <form onSubmit={handleStickySubmit} className="relative w-full sm:max-w-md bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl max-h-[92vh] overflow-y-auto">
+            {stickyStatus !== "loading" && (
+              <button type="button" onClick={() => setStickySheetOpen(false)} className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition-colors z-10" aria-label="Close">
+                <span className="text-gray-700 text-2xl leading-none">×</span>
+              </button>
+            )}
+            <div className="p-6 pt-8">
+              <h3 className="text-xl font-bold text-gray-900 pr-8 leading-tight">Talk to a Senior {data.primaryKeyword.includes("AI") ? "AI " : ""}Developer</h3>
+              <p className="text-sm text-gray-500 mt-2 leading-relaxed">Please enter your details to get an instant response over WhatsApp.</p>
+
+              <div className="mt-6 space-y-3">
+                <input type="text" placeholder="Full Name*" value={stickyForm.name} onChange={(e) => setStickyForm({ ...stickyForm, name: e.target.value })} disabled={stickyStatus === "loading"} className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-base text-gray-900 placeholder-gray-400 focus:border-gray-400 outline-none transition-colors" />
+                <input type="tel" required placeholder="Mobile Number*" value={stickyForm.phone} onChange={(e) => setStickyForm({ ...stickyForm, phone: e.target.value })} disabled={stickyStatus === "loading"} className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-base text-gray-900 placeholder-gray-400 focus:border-gray-400 outline-none transition-colors" />
+                <input type="email" placeholder="Work Email*" value={stickyForm.email} onChange={(e) => setStickyForm({ ...stickyForm, email: e.target.value })} disabled={stickyStatus === "loading"} className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-base text-gray-900 placeholder-gray-400 focus:border-gray-400 outline-none transition-colors" />
+              </div>
+
+              {stickyStatus === "error" && <p className="mt-3 text-xs text-red-600">Failed to submit. Please try again or WhatsApp +91 98185 65561 directly.</p>}
+            </div>
+
+            <div className="sticky bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-100">
+              <button type="submit" disabled={stickyStatus === "loading" || !stickyForm.phone.trim()} className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-[#25D366] hover:bg-[#1fba56] text-white font-bold text-base shadow-md transition-all disabled:opacity-60 disabled:cursor-not-allowed">
+                {stickyStatus === "loading" ? <Loader2 className="w-5 h-5 animate-spin" /> : <><svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.386 0-4.593-.807-6.35-2.165l-.444-.341-3.082 1.033 1.033-3.082-.341-.444A9.962 9.962 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>WhatsApp Us</>}
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
 
       {/* ═══════ CONSULTATION MODAL ═══════ */}
       {showModal && (

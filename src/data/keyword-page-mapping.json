@@ -205,6 +205,49 @@
         "workflow automation india",
         "document automation ai"
       ]
+    },
+    {
+      "campaign": "SEO & GEO Services",
+      "adGroup": "SEO + AI Search",
+      "landingPagePath": "/kw/seo-services-ai-geo",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/seo-services-ai-geo",
+      "keywordTheme": "seo-ai-geo",
+      "keywords": [
+        "seo services",
+        "seo agency",
+        "seo company",
+        "ai seo services",
+        "generative engine optimization",
+        "geo optimization services",
+        "ai search optimization",
+        "chatgpt seo",
+        "perplexity seo",
+        "roi seo agency",
+        "performance seo services",
+        "technical seo services"
+      ]
+    },
+    {
+      "campaign": "Performance Digital Marketing",
+      "adGroup": "Performance Marketing",
+      "landingPagePath": "/kw/digital-marketing-performance",
+      "landingPageUrl": "https://rdmi-landing-page.netlify.app/kw/digital-marketing-performance",
+      "keywordTheme": "performance-marketing",
+      "keywords": [
+        "digital marketing services",
+        "digital marketing agency",
+        "digital marketing company",
+        "performance marketing agency",
+        "performance marketing services",
+        "google ads agency",
+        "meta ads agency",
+        "linkedin ads agency",
+        "roi digital marketing",
+        "ppc management services",
+        "ppc agency",
+        "growth marketing agency",
+        "b2b digital marketing"
+      ]
     }
   ]
 }
