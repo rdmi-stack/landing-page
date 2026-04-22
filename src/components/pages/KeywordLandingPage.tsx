@@ -32,7 +32,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const router = useRouter();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", industry: "", budget: "", timeline: "", challenge: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", budget: "", challenge: "" });
   const budgets = ["Under ₹1L / <$2K", "₹1L – ₹5L / $2K – $10K", "₹5L – ₹15L / $10K – $25K", "₹15L – ₹50L / $25K – $75K", "₹50L+ / $75K+", "Not sure yet"];
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [exitIntentSubtitle, setExitIntentSubtitle] = useState<string | null>(null);
@@ -104,19 +104,18 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const a = accentMap[t.accent] || accentMap.indigo;
 
   const f = data.form;
-  const industries = ["Healthcare", "Finance / Insurance", "E-Commerce / Retail", "SaaS / Technology", "Travel / Hospitality", "Education", "Real Estate", "Logistics", "Legal", "Manufacturing", "Other"];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("loading");
     try {
-      const message = [`[formType:${f.formType}]`, `[${data.primaryKeyword} Consultation]`, formData.projectType ? `Project: ${formData.projectType}` : "", formData.industry ? `Industry: ${formData.industry}` : "", formData.budget ? `Budget: ${formData.budget}` : "", formData.timeline ? `Timeline: ${formData.timeline}` : "", formData.challenge || ""].filter(Boolean).join("\n");
+      const message = [`[formType:${f.formType}]`, `[${data.primaryKeyword} Consultation]`, formData.projectType ? `Project: ${formData.projectType}` : "", formData.budget ? `Budget: ${formData.budget}` : "", formData.challenge || ""].filter(Boolean).join("\n");
       const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message }) });
       if (!res.ok) throw new Error();
       const params = new URLSearchParams();
       if (formData.name) params.set("name", formData.name);
       params.set("product", data.primaryKeyword);
-      setFormData({ name: "", email: "", phone: "", projectType: "", industry: "", budget: "", timeline: "", challenge: "" });
+      setFormData({ name: "", email: "", phone: "", projectType: "", budget: "", challenge: "" });
       setShowModal(false);
       router.push(`/thank-you?${params.toString()}`);
     } catch { setFormStatus("error"); }
@@ -719,23 +718,6 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                     <option value="">Select project type</option>
                     {f.projectTypes.map((pt) => <option key={pt} value={pt}>{pt}</option>)}
                   </select>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">Industry</label>
-                    <select disabled={formStatus === "loading"} value={formData.industry} onChange={(e) => setFormData({ ...formData, industry: e.target.value })} className={inp}>
-                      <option value="">Select industry</option>
-                      {industries.map((ind) => <option key={ind} value={ind}>{ind}</option>)}
-                    </select>
-                  </div>
-                  <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">Timeline</label>
-                    <select disabled={formStatus === "loading"} value={formData.timeline} onChange={(e) => setFormData({ ...formData, timeline: e.target.value })} className={inp}>
-                      <option value="">Select timeline</option>
-                      <option value="ASAP">ASAP</option>
-                      <option value="This month">This month</option>
-                      <option value="1-3 months">1-3 months</option>
-                      <option value="Exploring">Just exploring</option>
-                    </select>
-                  </div>
                 </div>
                 <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">Budget Range</label>
                   <select disabled={formStatus === "loading"} value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })} className={inp}>
