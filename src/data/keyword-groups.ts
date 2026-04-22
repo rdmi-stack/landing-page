@@ -138,15 +138,15 @@ export const keywordGroups: KeywordGroup[] = [
     form: { title: "Talk to a Senior App Developer", subtitle: "Senior app developer calls you in 2 hours — not a salesperson", projectTypes: ["AI-Powered Flutter App", "Android App (Kotlin)", "iOS App (Swift)", "E-Commerce / Marketplace App", "Healthcare / FinTech App", "On-Demand / Delivery App", "Other"], placeholder: "What should your app do that competitors' apps don't?", buttonText: "Talk to App Developer", formType: "mobile-app" },
     meta: {
       title: "Mobile App Development Company | AI in the Core, Not a Menu | RDMI",
-      description: "Every new app shipping in 2026 has AI in the core — voice, vision, recommendations, agents. Yours still doesn't. 120K+ downloads. Flutter, Swift, Kotlin with on-device ML.",
+      description: "AI-powered mobile apps built with Flutter, Swift, and Kotlin. Voice AI, visual search, and on-device ML built in from sprint one. 60+ apps shipped. 98% first-submission store approval. Senior engineers only.",
     },
     hero: {
-      badge: "📱 AI-Powered Mobile Apps — 120K+ Downloads Delivered",
-      h1: "AI-Powered Mobile Apps — 120K+ Downloads Delivered",
-      subtitle: "Flutter, Swift, and Kotlin apps with voice AI, visual search, smart recommendations, and on-device ML — built in from sprint one. 120K+ downloads across projects. Senior mobile engineers only. Store-ready in 12-16 weeks.",
+      badge: "📱 AI-Powered Mobile Apps — Store-Ready in 12-16 Weeks",
+      h1: "AI-Powered Mobile Apps — Built in Weeks, Store-Ready on Day One",
+      subtitle: "Flutter, Swift, and Kotlin apps with voice AI, visual search, smart recommendations, and on-device ML — built in from sprint one. 60+ apps shipped, 98% first-submission store approval. Senior mobile engineers only. Store-ready in 12-16 weeks.",
       cta1: "Talk to App Developer",
       cta2: "See Our App Portfolio",
-      trustPoints: ["AI voice, vision, and agents in every build", "120K+ downloads across shipped apps", "On-device ML — works offline, protects privacy", "Senior engineer on Slack from day one"],
+      trustPoints: ["AI voice, vision, and agents in every build", "98% first-submission store approval rate", "On-device ML — works offline, protects privacy", "Senior engineer on Slack from day one"],
     },
     images: {
       hero: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600&q=80",
@@ -171,10 +171,10 @@ export const keywordGroups: KeywordGroup[] = [
       { step: "04", title: "Store Launch + AI Tuning", description: "App Store and Play Store submission with ASO, crash reporting, and eval dashboards. Post-launch AI models tune on real usage for 30 days — free. Retainer available for ongoing model updates." },
     ],
     stats: [
-      { value: "120K+", label: "App Downloads Shipped to Stores" },
-      { value: "60+", label: "Mobile Apps Live in Production" },
-      { value: "4x", label: "User Retention vs Static Apps" },
+      { value: "60+", label: "Mobile Apps Shipped to Production" },
       { value: "98%", label: "First-Submission Store Approval" },
+      { value: "4.6★", label: "Average App Store Rating" },
+      { value: "12 wks", label: "Concept to Launch — On Average" },
     ],
     services: [
       { title: "Flutter Apps With AI Copilots in the Core", description: "Single codebase for iOS and Android with OpenAI models, voice commands, and smart recommendations baked in from sprint one. Not a hamburger menu over a REST API — an app that learns, predicts, and converts on every session.", tags: ["Flutter", "OpenAI", "Firebase", "LangChain"] },
