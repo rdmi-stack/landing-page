@@ -59,12 +59,12 @@ export const keywordGroups: KeywordGroup[] = [
     form: { title: "Talk to a Senior Software Developer", subtitle: "Senior developer calls you in 2 hours — not a salesperson", projectTypes: ["Custom Web App", "SaaS Platform", "ERP / CRM System", "Legacy Modernization", "API & Integration", "AI-Powered Software", "Other"], placeholder: "What business problem do you need software to solve?", buttonText: "Talk to Senior Developer", formType: "software" },
     meta: {
       title: "Custom Software Development | AI-Native Engineering in Weeks | RDMI",
-      description: "Your competitors shipped last quarter with Cursor, Claude Code, and AI copilots. You're still writing the RFP. 200+ products live. Senior engineers only. Talk to a developer in 2 hours.",
+      description: "Ship custom software in 6 weeks with senior engineers and AI-accelerated delivery. 200+ products live. Talk to a developer in 2 hours — not a salesperson.",
     },
     hero: {
       badge: "💻 AI-Native Custom Software — Senior Engineers Only",
       h1: "Custom Software Shipped in 6 Weeks — AI-Native Stack, Senior Engineers",
-      subtitle: "200+ custom software products delivered. Our senior engineers use Cursor, Claude Code, and the latest LLMs daily — so we ship 3x faster than legacy agencies. No juniors. No handoff tax. Full source code yours.",
+      subtitle: "200+ custom software products delivered. Senior engineers, AI-accelerated delivery, and 3x faster shipping than legacy agencies. No juniors. No handoff tax. Full source code yours.",
       cta1: "Talk to Senior Developer",
       cta2: "See 50+ Live Products",
       trustPoints: ["AI copilots in every build — not bolted on later", "Working software in 6 weeks, not 6 months", "Full source code, prompts, and model weights yours", "Senior engineer on every standup — no account manager"],
@@ -88,7 +88,7 @@ export const keywordGroups: KeywordGroup[] = [
     process: [
       { step: "01", title: "Senior Engineer Scopes You — Within 2 Hours", description: "Not a sales deck, not a discovery workshop. A senior engineer reads your problem, names the stack, writes the risks on the call, and sends scope plus timeline the same day." },
       { step: "02", title: "Clickable Prototype in 48 Hours", description: "Real Figma flows on your real problem — not reused templates. You test user journeys before a single line of code is committed. Don't love it? You walk at zero cost." },
-      { step: "03", title: "Working Software in 14 Days", description: "Two-week sprints on a live staging URL. AI writes boilerplate with Cursor and Claude Code, seniors review every PR. Demo every 14 days — not monthly status emails." },
+      { step: "03", title: "Working Software in 14 Days", description: "Two-week sprints on a live staging URL. Working software every two weeks on a staging URL. Senior engineers using AI to ship faster, with every feature reviewed before demo. Not monthly status emails." },
       { step: "04", title: "Production + 60-Day Hypercare", description: "CI/CD, observability, runbooks, and on-call handoff. 60 days of free bug fixes and tuning after go-live. Full source code, prompts, and schemas in your repo on day one." },
     ],
     stats: [
@@ -107,11 +107,11 @@ export const keywordGroups: KeywordGroup[] = [
     ],
     uspHeadlines: {
       direct: "You talk to the senior engineer building your software — not an account manager with a pitch deck. Same engineer answers your Slack on day one and day one-hundred.",
-      ai: "Cursor, Claude Code, and the latest LLMs inside every repo from sprint one. AI writes boilerplate, seniors own architecture and review every PR. That's how output per engineer is 3x a legacy shop.",
+      ai: "Senior engineers accelerated by the latest AI tooling. Humans own architecture and review every shipped feature. That's how output per engineer is 3x a legacy shop.",
       cost: "Full source code, prompts, eval sets, and model weights yours on day one. No per-seat markup. No vendor lock-in. Run on OpenAI today, swap to Llama in your VPC tomorrow — same code.",
     },
     faq: [
-      { q: "How is AI-native development different from a traditional agency?", a: "Traditional agencies bill by the hour and type every line by hand. We pair senior engineers with Cursor, Claude Code, and the latest LLMs inside the repo. AI writes the boilerplate, humans own architecture and review every PR. You ship working software in weeks instead of quarters, and the engineer who scoped it is the engineer who built it." },
+      { q: "How is AI-native development different from a traditional agency?", a: "Traditional agencies bill by the hour and type every line by hand. Our senior engineers use the latest AI tools to move 3x faster — humans own architecture and review every feature before it ships. You get working software in weeks instead of quarters, and the engineer who scoped it is the engineer who built it." },
       { q: "Will AI-generated code hallucinate bugs into production?", a: "Not on our workflow. Every AI-generated PR is reviewed by the senior engineer who owns that module. Typed schemas, contract tests, and end-to-end tests run on every commit. Measured defect rate in production is lower than a fully-manual team because review catches what a junior would miss." },
       { q: "Who owns the code, AI prompts, and model weights?", a: "You do, one hundred percent, from day one. Full source code in your private GitHub. Custom prompts, fine-tuned weights, eval sets, and design files handed over on payment. No retained rights, no background licensing, no exit friction." },
       { q: "What happens when the next GPT or Claude model ships and breaks my integration?", a: "We build model-agnostic from the start with provider abstractions and eval suites. When a new model ships we re-run evals — swap if it scores better, roll back if it regresses. You're not coupled to one vendor's release cycle." },
@@ -119,9 +119,9 @@ export const keywordGroups: KeywordGroup[] = [
       { q: "Can you deploy on-prem or in our VPC for regulated data?", a: "Yes. AWS, GCP, Azure, and on-prem Kubernetes. Private LLMs with Llama or Mistral in your VPC when healthcare, BFSI, or legal compliance demands it. Same LangChain code runs on OpenAI or vLLM — no rewrite on migration." },
     ],
     testimonials: [
-      { quote: "They shipped a production SaaS in 11 weeks — our previous vendor quoted 9 months for less. Cursor and Claude Code in every repo, senior engineers reviewing every PR. We stopped getting junior output at senior rates.", author: "A.K.", role: "CTO, B2B SaaS (Mumbai)", rating: 5 },
+      { quote: "They shipped a production SaaS in 11 weeks — our previous vendor quoted 9 months for less. Senior engineers throughout, AI-accelerated delivery. We stopped getting junior output at senior rates.", author: "A.K.", role: "CTO, B2B SaaS (Mumbai)", rating: 5 },
       { quote: "Legacy ERP replaced with zero downtime using their parallel-run pattern. The architecture call alone saved us from a six-figure mistake. Two years later, the platform still runs without a single escalation.", author: "R.M.", role: "Head of Engineering, FinTech (Delhi NCR)", rating: 5 },
-      { quote: "AI-generated boilerplate, senior review on every PR, working staging URL in week two. Our in-house team doubled output after watching them work. The prompts, the eval sets, the weights — all handed over clean.", author: "S.P.", role: "Founder, D2C Brand (Bangalore)", rating: 5 },
+      { quote: "Working staging URL in week two and working software every sprint. Our in-house team doubled output after watching them work. Prompts, eval sets, model weights — all handed over clean.", author: "S.P.", role: "Founder, D2C Brand (Bangalore)", rating: 5 },
     ],
     ctaSection: {
       headline: "Stop Writing the RFP. Start Shipping the Software.",
@@ -167,7 +167,7 @@ export const keywordGroups: KeywordGroup[] = [
     process: [
       { step: "01", title: "Senior Dev Scopes the App — Within 2 Hours", description: "A senior mobile engineer reads your brief, names the stack (Flutter vs native vs hybrid), and marks which AI features move your metric. Scope and timeline delivered same day." },
       { step: "02", title: "Clickable Prototype in 48 Hours", description: "Real user flows on your phone — not a Figma board. AI features mocked with live LLM responses so you test the experience before committing to a build. Walk away at zero cost if it misses." },
-      { step: "03", title: "TestFlight Builds Every 14 Days", description: "AI writes boilerplate with Cursor and Claude Code. Seniors review every PR. You test real builds on your real device every sprint — not a monthly status email from a project manager." },
+      { step: "03", title: "TestFlight Builds Every 14 Days", description: "Working builds on TestFlight or Play Store internal track every two weeks. Senior mobile engineers accelerated by AI tooling — you test real builds on your real device every sprint, not a monthly status email." },
       { step: "04", title: "Store Launch + AI Tuning", description: "App Store and Play Store submission with ASO, crash reporting, and eval dashboards. Post-launch AI models tune on real usage for 30 days — free. Retainer available for ongoing model updates." },
     ],
     stats: [
@@ -246,7 +246,7 @@ export const keywordGroups: KeywordGroup[] = [
     process: [
       { step: "01", title: "Senior Developer Scopes the Site — Within 2 Hours", description: "A senior web engineer reads your brief, names the stack, and marks which AI features will move your metric. Scope, timeline, and GEO-readiness audit delivered the same day." },
       { step: "02", title: "Clickable Prototype in 48 Hours", description: "Real flows on your real brand — not a generic Figma template. AI copilot and lead-capture mocked with live LLM responses. Walk away at zero cost if it misses." },
-      { step: "03", title: "Live Staging URL in 14 Days", description: "Cursor and Claude Code inside every repo. AI writes boilerplate, seniors review every PR. Sub-1s TTFB, Lighthouse 90+, GEO schema, and chatbot hooked up on the staging URL you test weekly." },
+      { step: "03", title: "Live Staging URL in 14 Days", description: "Senior web engineers accelerated by AI tooling. Sub-1s TTFB, Lighthouse 90+, GEO schema, and AI chatbot hooked up on the staging URL you test weekly." },
       { step: "04", title: "Launch + 30-Day Hypercare", description: "Vercel Edge or AWS deploy with observability, analytics, and llms.txt for AI search. 30 days free bug fixes and copy tweaks. Full source code and prompts in your repo on day one." },
     ],
     stats: [
@@ -256,7 +256,7 @@ export const keywordGroups: KeywordGroup[] = [
       { value: "30%+", label: "Buyers Researching in ChatGPT (2026)" },
     ],
     services: [
-      { title: "AI Website With the latest LLMs Copilot and GEO Schema", description: "A site that answers product questions, books demos, and qualifies leads 24/7 — grounded in your real content with forced citations. Ranks in Google AND gets cited by ChatGPT, Perplexity, and Gemini.", tags: ["Next.js", "OpenAI", "llms.txt", "Schema.org"] },
+      { title: "AI-Powered Website With GEO Schema & Copilot", description: "A site that answers product questions, books demos, and qualifies leads 24/7 — grounded in your real content with forced citations. Ranks in Google AND gets cited by ChatGPT, Perplexity, and Gemini.", tags: ["Next.js", "OpenAI", "llms.txt", "Schema.org"] },
       { title: "Custom Web Apps That Scale to 10K Concurrent Users", description: "Dashboards, portals, booking engines, and CRMs with smart search, auto-summaries, and AI agents baked in. React, Next.js, Node.js on AWS or Vercel Edge. 99.9% uptime, sub-1s TTFB.", tags: ["React", "Next.js", "Node.js", "Vercel Edge"] },
       { title: "Headless E-Commerce With AI Search and Recommendations", description: "Next.js on top of Shopify Storefront API or Medusa.js. Semantic product search, personalised recommendations, AI checkout copilot, edge-cached product pages. Shipped in 8-10 weeks.", tags: ["Next.js", "Shopify", "Medusa.js", "AI Search"] },
       { title: "High-Converting Landing Pages With AI A/B Tests", description: "Campaign-ready pages for Google Ads, product launches, and lead gen. GA4, A/B test rig, conversion-optimised copy. AI-written variants tested against each other — winner promoted automatically.", tags: ["Next.js", "GA4", "A/B Testing", "Vercel"] },
@@ -907,7 +907,7 @@ export const keywordGroups: KeywordGroup[] = [
     hero: {
       badge: "👨‍💻 Hire Senior AI-Native Developers in 7 Days",
       h1: "Hire Senior AI-Native Developers From India in 7 Days — Top 3% Vetted",
-      subtitle: "Top 3% senior engineers who use Cursor, Claude Code, and Copilot daily — not trainees learning on your project. 7-day SLA from brief to kickoff. 48-hour replacement. Direct Slack, direct standups, no recruiter markup.",
+      subtitle: "Top 3% senior engineers — not trainees learning on your project. Fluent with modern AI tooling for 2-3x higher output. 7-day SLA from brief to kickoff. 48-hour replacement. Direct Slack, direct standups, no recruiter markup.",
       cta1: "Get 3 Vetted CVs Free",
       cta2: "See How Vetting Works",
       trustPoints: [
@@ -956,10 +956,10 @@ export const keywordGroups: KeywordGroup[] = [
     uspHeadlines: {
       direct: "You interview the engineer yourself — no gatekeeping, no account manager filtering the signal. Once the match is made, we step out of the way.",
       cost: "No recruiter markup, no agency middleware, no junior swap after month one. What you interview is who ships — for as long as the engagement runs.",
-      ai: "Every engineer on our roster runs Cursor, Claude Code, and Copilot daily. That's how output per engineer is 2–3x a legacy outsourcing shop. Senior rates, AI-era velocity.",
+      ai: "Every engineer on our roster is fluent with modern AI tooling — that's how output per engineer is 2-3x a legacy outsourcing shop. Senior rates, AI-era velocity.",
     },
     faq: [
-      { q: "Do your engineers actually use AI every day or just list it on a resume?", a: "Cursor, Claude Code, and Copilot are issued on day one. We measure PR velocity with and without AI. Engineers who don't ship fluently with AI tools aren't in the top 3%. You can ask for anonymized metrics before signing." },
+      { q: "Do your engineers actually use AI every day or just list it on a resume?", a: "Yes — AI tooling is mandatory and audited. We measure delivery velocity with and without it. Engineers who don't ship fluently with modern AI tools aren't in the top 3%. You can ask for anonymized metrics before signing." },
       { q: "How is this different from the outsourcing shop that sent us juniors last time?", a: "No recruiter layer, no keyword-matching HR, no junior swap after the kickoff. You interview the engineer directly. 1 in 33 applicants passes vetting. The engineer you meet is the engineer who ships." },
       { q: "Will the engineer still be relevant when the next GPT model ships?", a: "Our engineers work on model-agnostic patterns (LangGraph, provider abstractions, eval harnesses). Model upgrades are a planned release in the engineer's calendar, not a panic. Their skill is shipping production AI — not wrapping one specific API." },
       { q: "Who owns the IP, source code, and AI prompts?", a: "You, 100%, from day one. IP assignment clause is in every contract. The engineer commits directly to your private repos. Prompts, fine-tuned weights, design assets — all yours. No retained rights, no background licensing, no exit friction." },
@@ -967,7 +967,7 @@ export const keywordGroups: KeywordGroup[] = [
       { q: "Can we convert to a direct hire if it works out?", a: "Yes. After 12 months you can convert with a flat one-time fee. No markup games, no non-competes preventing the hire. Done dozens of times. We want successful outcomes, not locked-in rentals." },
     ],
     testimonials: [
-      { quote: "Three outsourcing shops before RDMI, three rounds of juniors sold to us as seniors. The engineer they placed ships features end-to-end, runs Cursor and Claude Code daily, and debates architecture instead of waiting for tickets. Two years in, still shipping.", author: "L.S.", role: "Founder, YC-backed SaaS", rating: 5 },
+      { quote: "Three outsourcing shops before RDMI, three rounds of juniors sold to us as seniors. The engineer they placed ships features end-to-end, uses modern AI tooling fluently, and debates architecture instead of waiting for tickets. Two years in, still shipping.", author: "L.S.", role: "Founder, YC-backed SaaS", rating: 5 },
       { quote: "Senior React + Node with 4-hour EST overlap. First CV day 2, interview day 3, kickoff day 6. That velocity rewrote how we think about hiring entirely — our recruiter search had been running 90 days.", author: "T.B.", role: "Head of Product, MarTech", rating: 5 },
       { quote: "The replacement guarantee is real. First engineer was a strong technical fit but wrong culture fit — replaced inside 48 hours, no friction. The second has been with us 18 months and now mentors two of our own hires.", author: "K.O.", role: "CTO, HealthTech", rating: 5 },
     ],
