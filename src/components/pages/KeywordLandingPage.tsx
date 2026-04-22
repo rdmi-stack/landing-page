@@ -227,13 +227,13 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ STATS ═══════ */}
-      <section className="py-12 bg-white border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <section className="py-16 lg:py-20 bg-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {data.stats.map((s) => (
               <div key={s.label} className="text-center py-4">
-                <div className="className={`text-3xl sm:text-4xl font-extrabold ${a.text}`}">{s.value}</div>
-                <div className="text-sm text-gray-500 mt-1">{s.label}</div>
+                <div className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold ${a.text} leading-none tracking-tight`}>{s.value}</div>
+                <div className="text-sm lg:text-base text-gray-600 mt-3 font-medium leading-snug">{s.label}</div>
               </div>
             ))}
           </div>
@@ -241,17 +241,17 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ PAIN STRIP ═══════ */}
-      <section className="py-14 lg:py-16 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-3 gap-4">
+      <section className="py-16 lg:py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid sm:grid-cols-3 gap-5">
             {[
               { pain: "Other agencies assigned you juniors", solve: "Every RDMI project: 5+ year seniors only.", icon: "😤", color: "border-l-red-500" },
-              { pain: "Your last quote had billing surprises", solve: "Fixed price in 2 hours. The quote IS the invoice.", icon: "💸", color: "border-l-amber-500" },
-              { pain: "You can't reach the person writing code", solve: "Direct WhatsApp with your developer. <30 min.", icon: "📵", color: "border-l-orange-500" },
+              { pain: "You waited days for a quote and revisions", solve: "Senior engineer calls you in 2 hours — same day scope.", icon: "⏳", color: "border-l-amber-500" },
+              { pain: "You can't reach the person writing code", solve: "Direct WhatsApp with your developer. Replies in 30 min.", icon: "📵", color: "border-l-orange-500" },
             ].map((item) => (
-              <div key={item.pain} className={`bg-white rounded-xl p-5 border border-gray-100 border-l-4 ${item.color} shadow-sm`}>
-                <p className="text-base font-semibold text-gray-800 mb-2">{item.icon} {item.pain}</p>
-                <p className="text-sm text-emerald-600 font-medium leading-relaxed">✓ {item.solve}</p>
+              <div key={item.pain} className={`bg-white rounded-2xl p-6 lg:p-7 border border-gray-100 border-l-4 ${item.color} shadow-sm hover:shadow-md transition-shadow`}>
+                <p className="text-lg font-semibold text-gray-900 mb-3 leading-snug">{item.icon} {item.pain}</p>
+                <p className="text-[15px] text-emerald-700 font-medium leading-relaxed">✓ {item.solve}</p>
               </div>
             ))}
           </div>
@@ -259,22 +259,25 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ SERVICES ═══════ */}
-      <section id="services" className="py-16 lg:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            What We <span className={a.text}>Deliver</span>
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <section id="services" className="py-20 lg:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 lg:mb-16">
+            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>What We Deliver</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              Everything You Need, <span className={a.text}>Built AI-First</span>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             {data.services.map((service, i) => (
-              <div key={service.title} onClick={openConsult} className="group p-5 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all cursor-pointer">
-                <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-xs font-bold mb-3`}>
+              <div key={service.title} onClick={openConsult} className="group p-7 lg:p-8 rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-gray-300 hover:-translate-y-1 transition-all cursor-pointer">
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-sm font-bold mb-5 shadow-sm`}>
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">{service.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-3">{service.description}</p>
-                <div className="flex flex-wrap gap-1">
+                <h3 className={`text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:${a.text} transition-colors`}>{service.title}</h3>
+                <p className="text-[15px] text-gray-600 leading-relaxed mb-5">{service.description}</p>
+                <div className="flex flex-wrap gap-1.5">
                   {service.tags.slice(0, 4).map((tag) => (
-                    <span key={tag} className="px-2 py-0.5 text-xs rounded-full bg-gray-100 text-gray-500">{tag}</span>
+                    <span key={tag} className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700 border border-gray-200">{tag}</span>
                   ))}
                 </div>
               </div>
@@ -284,26 +287,29 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ CASE STUDIES ═══════ */}
-      <section className="py-16 lg:py-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            Results We&apos;ve <span className={a.text}>Delivered</span>
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-4">
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 lg:mb-16">
+            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Proven Results</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              Outcomes We&apos;ve <span className={a.text}>Delivered</span>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-5 lg:gap-6">
             {(data.caseStudies || [
-              { tag: "SaaS", headline: "AI Dashboard — 3x user engagement", result: "₹2Cr+/mo processed", tech: ["Next.js", "OpenAI", "AWS"], weeks: 10 },
+              { tag: "SaaS", headline: "AI Dashboard — 3x user engagement", result: "4x faster decisions", tech: ["Next.js", "OpenAI", "AWS"], weeks: 10 },
               { tag: "E-Commerce", headline: "Marketplace — 4x conversion increase", result: "35% higher AOV", tech: ["React", "Node.js", "Razorpay"], weeks: 12 },
-              { tag: "AI Agent", headline: "RAG System — 50K docs in 3 seconds", result: "Replaced 3 FTE", tech: ["LangChain", "Pinecone"], weeks: 8 },
+              { tag: "AI Agent", headline: "RAG System — 50K docs in 3 seconds", result: "Replaced 3 FTE roles", tech: ["LangChain", "Pinecone"], weeks: 8 },
             ]).map((cs) => (
-              <div key={cs.headline} onClick={openConsult} className="group bg-white rounded-xl p-5 border border-gray-100 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all cursor-pointer">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="px-2.5 py-0.5 text-[10px] font-bold rounded-full bg-indigo-100 text-indigo-700">{cs.tag}</span>
-                  <span className="text-[10px] text-gray-400">{cs.weeks} weeks</span>
+              <div key={cs.headline} onClick={openConsult} className="group bg-white rounded-2xl p-7 lg:p-8 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer">
+                <div className="flex items-center justify-between mb-4">
+                  <span className={`px-3 py-1 text-xs font-bold rounded-full ${a.bg50} ${a.text}`}>{cs.tag}</span>
+                  <span className="text-xs font-medium text-gray-500">{cs.weeks} weeks</span>
                 </div>
-                <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">{cs.headline}</h3>
-                <p className="text-xl font-extrabold text-emerald-600 mb-3">{cs.result}</p>
-                <div className="flex flex-wrap gap-1">
-                  {cs.tech.map((t) => <span key={t} className="px-2 py-0.5 text-xs rounded-full bg-gray-100 text-gray-500">{t}</span>)}
+                <h3 className={`text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:${a.text} transition-colors`}>{cs.headline}</h3>
+                <p className="text-2xl lg:text-3xl font-extrabold text-emerald-600 mb-5 tracking-tight">{cs.result}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {cs.tech.map((t) => <span key={t} className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700 border border-gray-200">{t}</span>)}
                 </div>
               </div>
             ))}
@@ -312,18 +318,21 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ PROCESS ═══════ */}
-      <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            From Idea to <span className={a.text}>Revenue</span>
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 lg:mb-16">
+            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>How It Works</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              From Idea to <span className={a.text}>Launch</span>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {data.process.map((step, i) => (
-              <div key={step.step} className="relative p-5 rounded-xl bg-gray-50 border border-gray-100">
-                {i < data.process.length - 1 && <div className="hidden lg:block absolute top-1/2 -right-3 w-6 text-gray-300 text-lg">→</div>}
-                <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-xs font-bold mb-3`}>{step.step}</div>
-                <h3 className="text-base font-bold text-gray-900 mb-1">{step.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{step.description}</p>
+              <div key={step.step} className="relative p-7 lg:p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-white hover:border-gray-200 hover:shadow-md transition-all">
+                {i < data.process.length - 1 && <div className="hidden lg:block absolute top-1/2 -right-4 w-8 text-gray-300 text-2xl leading-none -translate-y-1/2">→</div>}
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-sm font-bold mb-5 shadow-sm`}>{step.step}</div>
+                <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug">{step.title}</h3>
+                <p className="text-[15px] text-gray-600 leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>
@@ -331,24 +340,30 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ USPS ═══════ */}
-      <section className="py-16 lg:py-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-3 gap-4">
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 lg:mb-16">
+            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Why RDMI</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              Three Reasons <span className={a.text}>Clients Stay</span>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-5 lg:gap-6">
             {[
-              { icon: MessageCircle, title: "Talk to Developers", text: data.uspHeadlines.direct, color: "text-blue-600", bg: "bg-blue-50", border: "border-l-blue-500", bullets: ["Direct WhatsApp/Slack", "Daily standups", "Senior engineer calls in 2hrs"] },
-              { icon: IndianRupee, title: "Save 50% Guaranteed", text: data.uspHeadlines.cost, color: "text-emerald-600", bg: "bg-emerald-50", border: "border-l-emerald-500", bullets: ["Fixed price — no hourly", "The quote IS the invoice", "Money-back deadline guarantee"] },
-              { icon: Bot, title: "AI = 3x Faster", text: data.uspHeadlines.ai, color: "text-purple-600", bg: "bg-purple-50", border: "border-l-purple-500", bullets: ["AI writes 40% of code", "12-week projects in 4 weeks", "Built-in AI features free"] },
+              { icon: MessageCircle, title: "Talk to Developers Directly", text: data.uspHeadlines.direct, color: "text-blue-600", bg: "bg-blue-50", border: "border-l-blue-500", bullets: ["Direct WhatsApp with your developer", "Daily standups, not weekly reports", "Senior engineer calls within 2 hours"] },
+              { icon: IndianRupee, title: "Senior Engineers, No Surprises", text: data.uspHeadlines.cost, color: "text-emerald-600", bg: "bg-emerald-50", border: "border-l-emerald-500", bullets: ["5+ year senior engineers only", "Full source code ownership", "Month-to-month, walk away anytime"] },
+              { icon: Bot, title: "AI-Native Delivery", text: data.uspHeadlines.ai, color: "text-purple-600", bg: "bg-purple-50", border: "border-l-purple-500", bullets: ["Cursor, Claude Code, Copilot daily", "3x faster than legacy agencies", "AI features built into every product"] },
             ].map((usp) => (
-              <div key={usp.title} className={`bg-white rounded-xl p-5 border border-gray-100 border-l-4 ${usp.border} shadow-sm`}>
-                <div className={`w-10 h-10 rounded-xl ${usp.bg} flex items-center justify-center mb-3`}>
-                  <usp.icon className={`w-5 h-5 ${usp.color}`} />
+              <div key={usp.title} className={`bg-white rounded-2xl p-7 lg:p-8 border border-gray-100 border-l-4 ${usp.border} shadow-sm hover:shadow-lg transition-shadow`}>
+                <div className={`w-14 h-14 rounded-2xl ${usp.bg} flex items-center justify-center mb-5`}>
+                  <usp.icon className={`w-7 h-7 ${usp.color}`} />
                 </div>
-                <h3 className="text-base font-bold text-gray-900 mb-1">{usp.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-3">{usp.text}</p>
-                <ul className="space-y-1.5">
+                <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug">{usp.title}</h3>
+                <p className="text-[15px] text-gray-600 leading-relaxed mb-5">{usp.text}</p>
+                <ul className="space-y-2.5">
                   {usp.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-1.5 text-xs text-gray-600">
-                      <CheckCircle2 className="w-3 h-3 text-emerald-500 mt-0.5 flex-shrink-0" />{b}
+                    <li key={b} className="flex items-start gap-2 text-sm text-gray-700">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />{b}
                     </li>
                   ))}
                 </ul>
@@ -359,26 +374,29 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ TECH STACK ═══════ */}
-      <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            Built With <span className={a.text}>Modern Stack</span>
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-4">
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 lg:mb-16">
+            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Technology</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              Built With the <span className={a.text}>Latest Stack</span>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-5 lg:gap-6">
             {(isAIPage ? [
-              { cat: "AI & LLM", items: ["OpenAI GPT-4o", "Claude", "Gemini", "LangChain", "CrewAI", "LlamaIndex"] },
-              { cat: "Backend", items: ["Python", "Node.js", "FastAPI", "Pinecone", "pgvector", "MongoDB"] },
-              { cat: "Cloud", items: ["AWS", "GCP", "Docker", "Railway", "Vercel", "n8n"] },
+              { cat: "AI & LLM", items: ["OpenAI", "Anthropic Claude", "Google Gemini", "LangChain", "LangGraph", "CrewAI", "LlamaIndex", "LangSmith"] },
+              { cat: "Backend & Data", items: ["Python", "Node.js", "FastAPI", "Pinecone", "pgvector", "MongoDB", "PostgreSQL", "Redis"] },
+              { cat: "Cloud & Ops", items: ["AWS", "GCP", "Vercel", "Docker", "Kubernetes", "n8n", "Temporal", "GitHub Actions"] },
             ] : [
-              { cat: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind", "Flutter", "React Native"] },
-              { cat: "Backend", items: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis", "GraphQL"] },
-              { cat: "Cloud", items: ["AWS", "Vercel", "Docker", "GitHub Actions", "Stripe", "Razorpay"] },
+              { cat: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind", "Flutter", "React Native", "Swift", "Kotlin"] },
+              { cat: "Backend & Data", items: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis", "GraphQL", "FastAPI", "Prisma"] },
+              { cat: "Cloud & Payments", items: ["AWS", "Vercel", "Docker", "GitHub Actions", "Stripe", "Razorpay", "Cloudflare", "Sentry"] },
             ]).map((stack) => (
-              <div key={stack.cat} className="p-5 rounded-xl bg-gray-50 border border-gray-100">
-                <p className={`text-xs font-bold ${a.text} uppercase tracking-wider mb-3`}>{stack.cat}</p>
-                <div className="flex flex-wrap gap-1.5">
+              <div key={stack.cat} className="p-7 lg:p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-white hover:border-gray-200 hover:shadow-md transition-all">
+                <p className={`text-xs font-bold ${a.text} uppercase tracking-widest mb-5`}>{stack.cat}</p>
+                <div className="flex flex-wrap gap-2">
                   {stack.items.map((item) => (
-                    <span key={item} className="px-2.5 py-1 text-xs rounded-lg bg-white text-gray-600 border border-gray-200 shadow-sm">{item}</span>
+                    <span key={item} className="px-3 py-1.5 text-sm font-medium rounded-lg bg-white text-gray-700 border border-gray-200 shadow-sm">{item}</span>
                   ))}
                 </div>
               </div>
@@ -388,28 +406,31 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ TESTIMONIALS ═══════ */}
-      <section className="py-16 lg:py-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            What Clients <span className={a.text}>Say</span>
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 lg:mb-16">
+            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Client Feedback</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              What Founders <span className={a.text}>Say</span>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             {(data.testimonials || [
               { quote: "Delivered our prototype in 48 hours. The developer knew our industry better than our previous agency.", author: "AK", role: "Startup Founder, Bangalore", rating: 5 },
               { quote: "AI-first approach cut our timeline in half. We launched in 6 weeks instead of 12.", author: "SR", role: "CTO, FinTech, Mumbai", rating: 5 },
               { quote: "We talked to the actual developer, not a salesperson. That changed everything.", author: "PM", role: "Founder, Healthcare SaaS", rating: 5 },
-              { quote: "Fixed price, no surprises. First agency that kept their word on deadline.", author: "RV", role: "COO, Logistics, Pune", rating: 5 },
+              { quote: "First agency that kept their word on deadline. Fixed scope, no scope creep.", author: "RV", role: "COO, Logistics, Pune", rating: 5 },
               { quote: "The AI chatbot handles 80% of tickets. ROI positive in month 2.", author: "DS", role: "VP Ops, E-Commerce", rating: 5 },
               { quote: "After the first sprint demo, we extended the contract to 6 months.", author: "MT", role: "PM, SaaS, San Francisco", rating: 5 },
             ]).map((t, i) => (
-              <div key={i} className="bg-white rounded-xl p-5 border border-gray-100 shadow-sm">
-                <div className="flex gap-0.5 mb-3">
-                  {Array.from({ length: t.rating }).map((_, s) => <Star key={s} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}
+              <div key={i} className="bg-white rounded-2xl p-7 lg:p-8 border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
+                <div className="flex gap-0.5 mb-4">
+                  {Array.from({ length: t.rating }).map((_, s) => <Star key={s} className="w-5 h-5 fill-amber-400 text-amber-400" />)}
                 </div>
-                <p className="text-base text-gray-600 italic leading-relaxed mb-3">&ldquo;{t.quote}&rdquo;</p>
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-[10px] font-bold text-white">{t.author}</div>
-                  <p className="text-xs text-gray-400">{t.role}</p>
+                <p className="text-[15px] lg:text-base text-gray-700 italic leading-relaxed mb-5">&ldquo;{t.quote}&rdquo;</p>
+                <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-xs font-bold text-white shadow-sm">{t.author}</div>
+                  <p className="text-sm text-gray-600 font-medium">{t.role}</p>
                 </div>
               </div>
             ))}
@@ -418,49 +439,52 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ URGENCY STRIP ═══════ */}
-      <section className="py-4 text-white" style={{ backgroundColor: t.urgencyColor }}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
-            <p className="text-base font-semibold">Taking on <strong>3 new projects</strong> this month — slots fill fast</p>
+      <section className="py-5 lg:py-6 text-white" style={{ backgroundColor: t.urgencyColor }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2.5">
+            <span className="relative flex w-2.5 h-2.5"><span className="absolute inset-0 rounded-full bg-emerald-300 animate-ping opacity-75" /><span className="relative rounded-full w-2.5 h-2.5 bg-emerald-300" /></span>
+            <p className="text-[15px] lg:text-base font-semibold">Taking on <strong>3 new projects</strong> this month — slots fill fast</p>
           </div>
-          <button onClick={openConsult} className={`px-5 py-2 rounded-lg bg-white ${a.text} text-sm font-bold hover:bg-gray-50 transition-all hover:scale-105 cursor-pointer whitespace-nowrap shadow-sm`}>
-            Claim Your Slot <ArrowRight className="w-3.5 h-3.5 inline ml-1" />
+          <button onClick={openConsult} className={`px-6 py-3 rounded-xl bg-white ${a.text} text-sm font-bold hover:bg-gray-50 transition-all hover:scale-105 cursor-pointer whitespace-nowrap shadow-md`}>
+            Claim Your Slot <ArrowRight className="w-4 h-4 inline ml-1" />
           </button>
         </div>
       </section>
 
       {/* ═══════ COMPARISON TABLE ═══════ */}
-      <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            Why RDMI <span className={a.text}>vs Others</span>
-          </h2>
-          <div className="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
-            <table className="w-full text-sm">
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 lg:mb-16">
+            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Compare</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              RDMI vs <span className={a.text}>The Alternatives</span>
+            </h2>
+          </div>
+          <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
+            <table className="w-full">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-200">
-                  <th className="text-left py-3 px-4 text-gray-500 font-medium text-xs">Criteria</th>
-                  <th className={`text-center py-3 px-4 font-bold text-xs ${a.bg50} ${a.text}`}>RDMI AI</th>
-                  <th className="text-center py-3 px-4 text-gray-500 font-medium text-xs">Large Agency</th>
-                  <th className="text-center py-3 px-4 text-gray-500 font-medium text-xs">Freelancer</th>
+                  <th className="text-left py-4 px-5 lg:px-6 text-gray-600 font-semibold text-sm">Criteria</th>
+                  <th className={`text-center py-4 px-5 lg:px-6 font-bold text-sm ${a.bg50} ${a.text}`}>RDMI</th>
+                  <th className="text-center py-4 px-5 lg:px-6 text-gray-600 font-semibold text-sm">Large Agency</th>
+                  <th className="text-center py-4 px-5 lg:px-6 text-gray-600 font-semibold text-sm">Freelancer</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {[
                   ["Developer Seniority", "5+ yr seniors only", "Mix of juniors", "Varies"],
-                  ["Response Time", "<2 hours", "2-5 days", "Unpredictable"],
-                  ["Pricing", "Fixed price", "Hourly billing", "Hourly"],
+                  ["Response Time", "< 2 hours", "2–5 days", "Unpredictable"],
+                  ["Engagement", "Month-to-month", "12-month lock-in", "Project-based"],
                   ["Source Code", "100% yours", "Often restricted", "Usually yours"],
-                  ["AI-Powered", "Every project", "Traditional", "No"],
-                  ["Guarantee", "Money-back", "Best effort", "None"],
-                  ["Post-Launch", "30-60 days free", "Paid from Day 1", "Limited"],
+                  ["AI-Native Delivery", "Every project", "Traditional coding", "No"],
+                  ["Guarantee", "Walk-away month 1", "Best-effort only", "None"],
+                  ["Post-Launch Support", "30–60 days free", "Paid from day 1", "Limited"],
                 ].map(([crit, rdmi, agency, free]) => (
                   <tr key={crit} className="hover:bg-gray-50 transition-colors">
-                    <td className="py-3 px-4 text-sm text-gray-700 font-medium">{crit}</td>
-                    <td className="py-3 px-4 text-sm text-center font-semibold text-emerald-600 bg-gray-50">{rdmi}</td>
-                    <td className="py-3 px-4 text-sm text-center text-amber-600">{agency}</td>
-                    <td className="py-3 px-4 text-sm text-center text-red-500">{free}</td>
+                    <td className="py-4 px-5 lg:px-6 text-[15px] text-gray-800 font-semibold">{crit}</td>
+                    <td className="py-4 px-5 lg:px-6 text-[15px] text-center font-bold text-emerald-600 bg-gray-50">{rdmi}</td>
+                    <td className="py-4 px-5 lg:px-6 text-[15px] text-center text-amber-600 font-medium">{agency}</td>
+                    <td className="py-4 px-5 lg:px-6 text-[15px] text-center text-red-500 font-medium">{free}</td>
                   </tr>
                 ))}
               </tbody>
@@ -470,20 +494,23 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ FAQ ═══════ */}
-      <section className="py-16 lg:py-20 bg-gray-50">
+      <section className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">
-            Questions <span className={a.text}>Answered</span>
-          </h2>
-          <div className="space-y-2">
+          <div className="text-center mb-14 lg:mb-16">
+            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>FAQ</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              Questions, <span className={a.text}>Answered</span>
+            </h2>
+          </div>
+          <div className="space-y-3">
             {data.faq.map((faq, i) => (
-              <div key={i} className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-4 sm:p-5 text-left hover:bg-gray-50 transition-colors">
-                  <span className="text-base font-semibold text-gray-800 pr-4">{faq.q}</span>
-                  <ChevronDown className={`w-4 h-4 text-gray-400 flex-shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-180" : ""}`} />
+              <div key={i} className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden hover:border-gray-300 transition-colors">
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition-colors">
+                  <span className="text-base lg:text-lg font-semibold text-gray-900 pr-4 leading-snug">{faq.q}</span>
+                  <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-180" : ""}`} />
                 </button>
                 {openFaq === i && (
-                  <div className="px-4 sm:px-5 pb-4 sm:pb-5 text-base text-gray-600 leading-relaxed">{faq.a}</div>
+                  <div className="px-5 pb-5 lg:px-6 lg:pb-6 text-[15px] lg:text-base text-gray-700 leading-relaxed">{faq.a}</div>
                 )}
               </div>
             ))}
@@ -492,16 +519,18 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ CTA ═══════ */}
-      <section className="py-16 text-white" style={{ background: t.ctaGradient }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">{data.ctaSection.headline}</h2>
-          <p className="text-indigo-100 text-lg max-w-xl mx-auto">{data.ctaSection.subtitle}</p>
-          <button onClick={openConsult} className="inline-flex items-center gap-2 px-10 py-5 rounded-xl bg-white text-indigo-700 font-bold text-lg hover:bg-indigo-50 transition-all hover:scale-105 shadow-lg shadow-black/10 cursor-pointer">
-            {data.ctaSection.buttonText} <ArrowRight className="w-4 h-4" />
+      <section className="py-20 lg:py-28 text-white relative overflow-hidden" style={{ background: t.ctaGradient }}>
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px]" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.2)" }}>{data.ctaSection.headline}</h2>
+          <p className="text-white/90 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">{data.ctaSection.subtitle}</p>
+          <button onClick={openConsult} className="inline-flex items-center gap-2.5 px-10 py-5 rounded-2xl bg-white font-bold text-lg hover:scale-[1.03] transition-all shadow-2xl shadow-black/30 cursor-pointer" style={{ color: t.urgencyColor }}>
+            {data.ctaSection.buttonText} <ArrowRight className="w-5 h-5" />
           </button>
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-indigo-200">
-            {["Free consultation", "NDA protected", "Money-back guarantee", "You own 100% of code"].map((t) => (
-              <span key={t} className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-300" />{t}</span>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-white/80 pt-4">
+            {["Free consultation", "NDA protected", "Senior engineers only", "Month-to-month, walk away anytime"].map((t) => (
+              <span key={t} className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-emerald-300" />{t}</span>
             ))}
           </div>
         </div>
