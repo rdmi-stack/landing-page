@@ -127,22 +127,32 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   return (
     <div className="bg-white text-gray-900">
       {/* ═══════ HERO ═══════ */}
-      <section className="relative pt-20 pb-16 lg:pt-28 lg:pb-20 overflow-hidden text-white" style={{ background: `radial-gradient(1200px 800px at 20% 0%, ${t.urgencyColor}66, transparent 60%), radial-gradient(1000px 700px at 100% 30%, #7c3aed55, transparent 60%), radial-gradient(900px 600px at 50% 100%, #0ea5e944, transparent 60%), ${t.heroGradient}` }}>
-        {/* Ambient orbs — theme + complementary colors */}
-        <div className="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full blur-[160px] opacity-50 animate-pulse-slow" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="absolute top-1/3 -left-40 w-[600px] h-[600px] rounded-full blur-[150px] opacity-30" style={{ backgroundColor: "#a855f7" }} />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-25" style={{ backgroundColor: "#06b6d4" }} />
-        <div className="absolute top-1/2 left-1/3 w-[400px] h-[400px] rounded-full blur-[130px] opacity-20" style={{ backgroundColor: "#ec4899" }} />
+      <section className="relative pt-20 pb-16 lg:pt-28 lg:pb-20 overflow-hidden text-white" style={{ background: t.heroGradient }}>
+        {/* Layer 1 — hero image as visible base (glassmorphism foundation) */}
+        <div className="absolute inset-0 opacity-35">
+          <Image src={data.images.hero} alt="" fill className="object-cover" priority />
+        </div>
 
-        {/* Dotted pattern overlay — elegant */}
-        <div className="absolute inset-0 opacity-[0.12]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)", backgroundSize: "32px 32px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
+        {/* Layer 2 — theme color wash (multiply blend so image still shows through) */}
+        <div className="absolute inset-0 opacity-60 mix-blend-multiply" style={{ background: t.heroGradient }} />
 
-        {/* Radial spotlight behind headline */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full opacity-30 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(255,255,255,0.4), transparent 70%)" }} />
+        {/* Layer 3 — vertical depth vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/55" />
 
-        {/* Bottom vignette + noise */}
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
-        <div className="absolute inset-0 pointer-events-none opacity-[0.025] mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")" }} />
+        {/* Layer 4 — ambient colored orbs blending over the image */}
+        <div className="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full blur-[160px] opacity-45 animate-pulse-slow mix-blend-screen" style={{ backgroundColor: t.urgencyColor }} />
+        <div className="absolute top-1/3 -left-40 w-[600px] h-[600px] rounded-full blur-[150px] opacity-30 mix-blend-screen" style={{ backgroundColor: "#a855f7" }} />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-25 mix-blend-screen" style={{ backgroundColor: "#06b6d4" }} />
+        <div className="absolute top-1/2 left-1/3 w-[400px] h-[400px] rounded-full blur-[130px] opacity-20 mix-blend-screen" style={{ backgroundColor: "#ec4899" }} />
+
+        {/* Layer 5 — elegant dot pattern */}
+        <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "32px 32px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
+
+        {/* Layer 6 — radial spotlight behind headline */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full opacity-25 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(255,255,255,0.5), transparent 70%)" }} />
+
+        {/* Layer 7 — SVG noise grain for premium texture */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")" }} />
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Live status row */}

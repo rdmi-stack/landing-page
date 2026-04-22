@@ -149,7 +149,7 @@ export const keywordGroups: KeywordGroup[] = [
       trustPoints: ["AI voice, vision, and agents in every build", "98% first-submission store approval rate", "On-device ML — works offline, protects privacy", "Senior engineer on Slack from day one"],
     },
     images: {
-      hero: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600&q=80",
+      hero: "https://images.unsplash.com/photo-1616469829941-c7200edec809?w=1600&q=80",
       process: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80",
       team: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80",
       services: [
@@ -228,7 +228,7 @@ export const keywordGroups: KeywordGroup[] = [
       trustPoints: ["the latest LLMs copilot in every site — not a chat widget", "GEO schema so ChatGPT and Perplexity cite you", "Sub-1s TTFB on Vercel Edge — not a WordPress host", "Senior engineer on standups — no account manager"],
     },
     images: {
-      hero: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600&q=80",
+      hero: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1600&q=80",
       process: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=1200&q=80",
       team: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1200&q=80",
       services: [
