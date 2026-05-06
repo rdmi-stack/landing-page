@@ -51,6 +51,13 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const [stickyForm, setStickyForm] = useState({ name: "", phone: "", email: "" });
   const [stickyStatus, setStickyStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [stickySheetOpen, setStickySheetOpen] = useState(false);
+  const [mockupSlide, setMockupSlide] = useState(0);
+
+  // Auto-rotate mockup slides every 4.5s
+  useEffect(() => {
+    const id = setInterval(() => setMockupSlide((s) => (s + 1) % 4), 4500);
+    return () => clearInterval(id);
+  }, []);
 
   const handleStickySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -229,65 +236,125 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                           <svg viewBox="0 0 24 12" className="w-5 h-2.5"><rect x="0.5" y="1" width="20" height="10" rx="2" fill="none" stroke="white" strokeWidth="1"/><rect x="2" y="3" width="14" height="6" rx="1" fill="white"/><rect x="21" y="4" width="2" height="4" rx="0.5" fill="white"/></svg>
                         </div>
                       </div>
-                      {/* Header */}
-                      <div className="px-5 pt-3 pb-2 flex items-center justify-between">
-                        <div>
-                          <p className="text-[9px] text-zinc-400 font-medium">Good morning</p>
-                          <p className="text-base font-bold text-white tracking-tight">Hi, Ranjit ✨</p>
-                        </div>
-                        <div className="relative">
-                          <Bell className="w-5 h-5 text-zinc-300" />
-                          <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full" style={{ backgroundColor: t.urgencyColor }} />
-                        </div>
-                      </div>
-                      {/* Hero card */}
-                      <div className="mx-4 mb-3 rounded-2xl p-4 relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}dd)` }}>
-                        <div className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-white/20 blur-xl" />
-                        <div className="relative">
-                          <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-white/25 mb-2">
-                            <Sparkles className="w-2.5 h-2.5 text-white" />
-                            <span className="text-[8px] font-bold text-white uppercase tracking-wider">AI Active</span>
-                          </div>
-                          <p className="text-[13px] font-bold text-white leading-snug">Today&apos;s insights are ready</p>
-                          <p className="text-[10px] text-white/80 mt-0.5">Tap to view 3 new opportunities</p>
-                        </div>
-                      </div>
-                      {/* Quick actions */}
-                      <div className="grid grid-cols-4 gap-2 px-4 mb-3">
-                        {[
-                          { icon: BarChart3, label: "Stats" },
-                          { icon: Bot, label: "AI Chat" },
-                          { icon: TrendingUp, label: "Trends" },
-                          { icon: Wallet, label: "Pay" },
-                        ].map((q, i) => (
-                          <div key={i} className="flex flex-col items-center gap-1 p-2 rounded-xl bg-zinc-900 border border-zinc-800">
-                            <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${t.urgencyColor}25` }}>
-                              <q.icon className="w-3.5 h-3.5" style={{ color: t.urgencyColor }} />
+                      {/* Sliding screen content */}
+                      <div className="flex-1 flex flex-col relative overflow-hidden">
+                        {/* SLIDE 0 — Home */}
+                        <div className={`absolute inset-0 flex flex-col transition-opacity duration-700 ${mockupSlide === 0 ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                          <div className="px-5 pt-3 pb-2 flex items-center justify-between">
+                            <div>
+                              <p className="text-[9px] text-zinc-400 font-medium">Good morning</p>
+                              <p className="text-base font-bold text-white tracking-tight">Hi, Ranjit ✨</p>
                             </div>
-                            <span className="text-[8px] text-zinc-300 font-medium">{q.label}</span>
+                            <div className="relative"><Bell className="w-5 h-5 text-zinc-300" /><span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full" style={{ backgroundColor: t.urgencyColor }} /></div>
                           </div>
-                        ))}
-                      </div>
-                      {/* Recent list */}
-                      <div className="flex-1 px-4">
-                        <div className="flex items-center justify-between mb-2">
-                          <p className="text-[10px] font-bold text-white">Recent Activity</p>
-                          <p className="text-[8px] text-zinc-400">View all</p>
-                        </div>
-                        <div className="space-y-2">
-                          {[
-                            { icon: "✓", title: "Order #4821 shipped", time: "2m ago", color: "bg-emerald-500/20 text-emerald-400" },
-                            { icon: "★", title: "5★ review received", time: "8m ago", color: "bg-amber-500/20 text-amber-400" },
-                            { icon: "↗", title: "+18% sales today", time: "1h ago", color: `text-white` },
-                          ].map((item, i) => (
-                            <div key={i} className="flex items-center gap-2 p-2 rounded-xl bg-zinc-900/60 border border-zinc-800">
-                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-bold ${item.color}`} style={i === 2 ? { backgroundColor: `${t.urgencyColor}30`, color: t.urgencyColor } : {}}>{item.icon}</div>
-                              <div className="flex-1 min-w-0">
-                                <p className="text-[10px] font-semibold text-white truncate">{item.title}</p>
-                                <p className="text-[8px] text-zinc-500">{item.time}</p>
+                          <div className="mx-4 mb-3 rounded-2xl p-4 relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}dd)` }}>
+                            <div className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-white/20 blur-xl" />
+                            <div className="relative">
+                              <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-white/25 mb-2"><Sparkles className="w-2.5 h-2.5 text-white" /><span className="text-[8px] font-bold text-white uppercase tracking-wider">AI Active</span></div>
+                              <p className="text-[13px] font-bold text-white leading-snug">Today&apos;s insights are ready</p>
+                              <p className="text-[10px] text-white/80 mt-0.5">Tap to view 3 new opportunities</p>
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-4 gap-2 px-4 mb-3">
+                            {[{ icon: BarChart3, label: "Stats" }, { icon: Bot, label: "AI Chat" }, { icon: TrendingUp, label: "Trends" }, { icon: Wallet, label: "Pay" }].map((q, i) => (
+                              <div key={i} className="flex flex-col items-center gap-1 p-2 rounded-xl bg-zinc-900 border border-zinc-800">
+                                <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${t.urgencyColor}25` }}><q.icon className="w-3.5 h-3.5" style={{ color: t.urgencyColor }} /></div>
+                                <span className="text-[8px] text-zinc-300 font-medium">{q.label}</span>
                               </div>
+                            ))}
+                          </div>
+                          <div className="flex-1 px-4">
+                            <p className="text-[10px] font-bold text-white mb-2">Recent Activity</p>
+                            <div className="space-y-2">
+                              {[{ icon: "✓", title: "Order #4821 shipped", time: "2m", color: "bg-emerald-500/20 text-emerald-400" }, { icon: "★", title: "5★ review received", time: "8m", color: "bg-amber-500/20 text-amber-400" }, { icon: "↗", title: "+18% sales today", time: "1h", color: "text-white" }].map((item, i) => (
+                                <div key={i} className="flex items-center gap-2 p-2 rounded-xl bg-zinc-900/60 border border-zinc-800">
+                                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-bold ${item.color}`} style={i === 2 ? { backgroundColor: `${t.urgencyColor}30`, color: t.urgencyColor } : {}}>{item.icon}</div>
+                                  <div className="flex-1 min-w-0"><p className="text-[10px] font-semibold text-white truncate">{item.title}</p><p className="text-[8px] text-zinc-500">{item.time} ago</p></div>
+                                </div>
+                              ))}
                             </div>
-                          ))}
+                          </div>
+                        </div>
+                        {/* SLIDE 1 — AI Chat */}
+                        <div className={`absolute inset-0 flex flex-col transition-opacity duration-700 ${mockupSlide === 1 ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                          <div className="px-4 pt-3 pb-2 flex items-center justify-between border-b border-zinc-800">
+                            <div className="flex items-center gap-2">
+                              <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ backgroundColor: `${t.urgencyColor}30` }}><Bot className="w-3.5 h-3.5" style={{ color: t.urgencyColor }} /></div>
+                              <div><p className="text-[11px] font-bold text-white leading-tight">AI Assistant</p><p className="text-[8px] text-emerald-400 leading-tight">● Online · responds in 2s</p></div>
+                            </div>
+                            <Search className="w-4 h-4 text-zinc-500" />
+                          </div>
+                          <div className="flex-1 px-3 pt-3 space-y-2 overflow-hidden">
+                            <div className="flex justify-end"><div className="max-w-[80%] px-3 py-1.5 rounded-2xl rounded-br-sm text-[10px] font-medium text-white" style={{ backgroundColor: t.urgencyColor }}>What&apos;s my best-selling SKU this week?</div></div>
+                            <div className="flex justify-start gap-1.5">
+                              <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${t.urgencyColor}30` }}><Bot className="w-2.5 h-2.5" style={{ color: t.urgencyColor }} /></div>
+                              <div className="max-w-[80%] px-3 py-1.5 rounded-2xl rounded-bl-sm text-[10px] text-zinc-100 bg-zinc-800/80">SKU #2147 — 412 units sold, ₹8.4L revenue. Up 24% week-on-week. <strong className="text-white">Want me to reorder?</strong></div>
+                            </div>
+                            <div className="flex justify-end"><div className="max-w-[80%] px-3 py-1.5 rounded-2xl rounded-br-sm text-[10px] font-medium text-white" style={{ backgroundColor: t.urgencyColor }}>Yes, 500 units express</div></div>
+                            <div className="flex justify-start gap-1.5">
+                              <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${t.urgencyColor}30` }}><Bot className="w-2.5 h-2.5" style={{ color: t.urgencyColor }} /></div>
+                              <div className="max-w-[85%] px-3 py-1.5 rounded-2xl rounded-bl-sm text-[10px] text-zinc-100 bg-zinc-800/80"><div className="flex items-center gap-1.5 mb-1"><CheckCircle2 className="w-3 h-3 text-emerald-400" /><span className="text-[9px] font-bold text-emerald-400">Reorder confirmed</span></div>500 units · 2-day shipping · ETA Fri 6pm</div>
+                            </div>
+                          </div>
+                          <div className="px-3 py-2 border-t border-zinc-800 flex items-center gap-2">
+                            <div className="flex-1 h-7 rounded-full bg-zinc-800/80 px-3 flex items-center"><span className="text-[9px] text-zinc-500">Ask anything…</span></div>
+                            <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ backgroundColor: t.urgencyColor }}><Sparkles className="w-3.5 h-3.5 text-white" /></div>
+                          </div>
+                        </div>
+                        {/* SLIDE 2 — Insights */}
+                        <div className={`absolute inset-0 flex flex-col transition-opacity duration-700 ${mockupSlide === 2 ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                          <div className="px-5 pt-3 pb-2 flex items-center justify-between">
+                            <div><p className="text-[9px] text-zinc-400 font-medium">This Week</p><p className="text-base font-bold text-white tracking-tight">Insights</p></div>
+                            <div className="px-2 py-0.5 rounded-md text-[9px] font-bold text-white" style={{ backgroundColor: `${t.urgencyColor}40` }}>↑ 24%</div>
+                          </div>
+                          <div className="mx-4 mb-3 rounded-2xl p-3 bg-zinc-900 border border-zinc-800">
+                            <p className="text-[9px] text-zinc-400 font-medium">Total Revenue</p>
+                            <p className="text-2xl font-extrabold text-white tracking-tight">₹47.2L</p>
+                            <p className="text-[9px] text-emerald-400 font-bold mt-0.5">▲ +24.8% vs last week</p>
+                            <svg viewBox="0 0 240 60" className="w-full h-12 mt-2" preserveAspectRatio="none">
+                              <defs><linearGradient id="phone-chart" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stopColor={t.urgencyColor} stopOpacity="0.5" /><stop offset="100%" stopColor={t.urgencyColor} stopOpacity="0" /></linearGradient></defs>
+                              <path d="M0,45 Q30,40 60,30 T120,28 T180,18 T240,8 L240,60 L0,60 Z" fill="url(#phone-chart)" />
+                              <path d="M0,45 Q30,40 60,30 T120,28 T180,18 T240,8" fill="none" stroke={t.urgencyColor} strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                          </div>
+                          <div className="grid grid-cols-2 gap-2 px-4">
+                            {[{ label: "Orders", value: "1,284", trend: "+12%" }, { label: "AOV", value: "₹3,672", trend: "+8.2%" }, { label: "Returns", value: "0.8%", trend: "−18%" }, { label: "5★ Reviews", value: "98%", trend: "+2.1%" }].map((m, i) => (
+                              <div key={i} className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800">
+                                <p className="text-[8px] text-zinc-400 font-medium">{m.label}</p>
+                                <p className="text-sm font-extrabold text-white">{m.value}</p>
+                                <p className="text-[8px] text-emerald-400 font-bold">{m.trend}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        {/* SLIDE 3 — Voice / Search */}
+                        <div className={`absolute inset-0 flex flex-col transition-opacity duration-700 ${mockupSlide === 3 ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                          <div className="px-4 pt-3 pb-2 flex items-center gap-2 border-b border-zinc-800">
+                            <Search className="w-4 h-4 text-zinc-400" />
+                            <span className="text-[10px] text-zinc-300 font-medium">red running shoes</span>
+                            <span className="ml-auto px-2 py-0.5 rounded-md text-[8px] font-bold text-white" style={{ backgroundColor: t.urgencyColor }}>📷 Visual</span>
+                          </div>
+                          <div className="px-4 pt-3 mb-2 flex items-center gap-2">
+                            <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ backgroundColor: `${t.urgencyColor}25` }}><Sparkles className="w-4 h-4" style={{ color: t.urgencyColor }} /></div>
+                            <div className="flex-1"><p className="text-[10px] font-bold text-white leading-tight">AI matched 24 results</p><p className="text-[9px] text-zinc-400 leading-tight">Personalised for you</p></div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-2 px-4">
+                            {[1, 2, 3, 4].map((i) => (
+                              <div key={i} className="rounded-xl overflow-hidden border border-zinc-800 bg-zinc-900">
+                                <div className="aspect-square relative" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}40, ${t.urgencyColor}90)` }}>
+                                  <div className="absolute inset-0 flex items-center justify-center text-3xl">👟</div>
+                                  {i === 1 && <span className="absolute top-1 left-1 px-1.5 py-0.5 text-[7px] font-bold text-white rounded" style={{ backgroundColor: t.urgencyColor }}>BEST MATCH</span>}
+                                </div>
+                                <div className="p-2">
+                                  <p className="text-[8px] text-zinc-300 font-medium leading-tight truncate">Runner Pro {i}</p>
+                                  <div className="flex items-center justify-between mt-0.5">
+                                    <p className="text-[9px] font-bold text-white">₹{2400 + i * 200}</p>
+                                    <div className="flex items-center gap-0.5"><Star className="w-2 h-2 fill-amber-400 text-amber-400" /><span className="text-[7px] text-zinc-400">4.{6 + i % 3}</span></div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                       {/* Bottom tab bar */}
@@ -327,6 +394,12 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                         <p className="text-sm font-extrabold text-gray-900">4.6★ on stores</p>
                       </div>
                     </div>
+                  </div>
+                  {/* Slide indicators */}
+                  <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                    {["Home", "AI Chat", "Insights", "Search"].map((label, i) => (
+                      <button key={label} onClick={() => setMockupSlide(i)} aria-label={`Show ${label} screen`} className={`transition-all rounded-full ${mockupSlide === i ? "w-8 h-2 bg-white" : "w-2 h-2 bg-white/40 hover:bg-white/70"}`} />
+                    ))}
                   </div>
                 </div>
               ) : (
@@ -383,54 +456,107 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                             <div className="w-7 h-7 rounded-full text-white text-[10px] font-bold flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` }}>RJ</div>
                           </div>
                         </div>
-                        {/* Body */}
-                        <div className="flex-1 p-4 lg:p-5 overflow-hidden">
-                          <div className="flex items-center justify-between mb-3">
-                            <div>
-                              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Overview</p>
-                              <h4 className="text-sm lg:text-base font-extrabold text-slate-900">Dashboard</h4>
+                        {/* Body — sliding screens */}
+                        <div className="flex-1 relative overflow-hidden">
+                          {/* SLIDE 0 — Dashboard */}
+                          <div className={`absolute inset-0 p-4 lg:p-5 transition-opacity duration-700 ${mockupSlide === 0 ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                            <div className="flex items-center justify-between mb-3">
+                              <div><p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Overview</p><h4 className="text-sm lg:text-base font-extrabold text-slate-900">Dashboard</h4></div>
+                              <div className="flex items-center gap-1.5 px-2 py-1 rounded-md text-white text-[10px] font-semibold" style={{ background: t.urgencyColor }}><Sparkles className="w-3 h-3" />AI Insights</div>
                             </div>
-                            <div className="flex items-center gap-1.5 px-2 py-1 rounded-md text-white text-[10px] font-semibold" style={{ background: t.urgencyColor }}>
-                              <Sparkles className="w-3 h-3" />AI Insights
+                            <div className="grid grid-cols-4 gap-2 mb-3">
+                              {[{ label: "Active Users", value: "12,845", trend: "+18.2%", up: true }, { label: "Conversion", value: "4.86%", trend: "+0.7%", up: true }, { label: "Avg. Session", value: "5m 12s", trend: "+22%", up: true }, { label: "Tickets", value: "184", trend: "−12.4%", up: false }].map((k) => (
+                                <div key={k.label} className="rounded-lg bg-white border border-slate-200 p-2 lg:p-2.5 shadow-sm">
+                                  <p className="text-[8px] lg:text-[9px] text-slate-500 font-medium truncate">{k.label}</p>
+                                  <p className="text-xs lg:text-sm font-extrabold text-slate-900 leading-tight mt-0.5">{k.value}</p>
+                                  <p className={`text-[8px] font-bold mt-0.5 ${k.up ? "text-emerald-600" : "text-rose-600"}`}>{k.up ? "▲" : "▼"} {k.trend}</p>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="rounded-lg bg-white border border-slate-200 p-3 lg:p-4 shadow-sm">
+                              <div className="flex items-center justify-between mb-2">
+                                <p className="text-[10px] lg:text-xs font-bold text-slate-900">Revenue Trend</p>
+                                <div className="flex gap-1.5">{["1D", "1W", "1M", "1Y"].map((p, i) => <span key={p} className={`text-[8px] px-1.5 py-0.5 rounded ${i === 2 ? "text-white font-bold" : "text-slate-400"}`} style={i === 2 ? { backgroundColor: t.urgencyColor } : {}}>{p}</span>)}</div>
+                              </div>
+                              <svg viewBox="0 0 400 110" className="w-full h-16 lg:h-20" preserveAspectRatio="none">
+                                <defs><linearGradient id={`chart-${data.slug}`} x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stopColor={t.urgencyColor} stopOpacity="0.4" /><stop offset="100%" stopColor={t.urgencyColor} stopOpacity="0" /></linearGradient></defs>
+                                <path d="M0,80 C40,75 70,55 110,50 C150,45 180,65 220,55 C260,45 290,25 330,30 C370,35 390,15 400,10 L400,110 L0,110 Z" fill={`url(#chart-${data.slug})`} />
+                                <path d="M0,80 C40,75 70,55 110,50 C150,45 180,65 220,55 C260,45 290,25 330,30 C370,35 390,15 400,10" fill="none" stroke={t.urgencyColor} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                <circle cx="400" cy="10" r="4" fill={t.urgencyColor} /><circle cx="400" cy="10" r="8" fill={t.urgencyColor} fillOpacity="0.25" />
+                              </svg>
                             </div>
                           </div>
-                          {/* KPI cards */}
-                          <div className="grid grid-cols-4 gap-2 mb-3">
-                            {[
-                              { label: "Active Users", value: "12,845", trend: "+18.2%", up: true },
-                              { label: "Conversion", value: "4.86%", trend: "+0.7%", up: true },
-                              { label: "Avg. Session", value: "5m 12s", trend: "+22%", up: true },
-                              { label: "Tickets", value: "184", trend: "−12.4%", up: false },
-                            ].map((k) => (
-                              <div key={k.label} className="rounded-lg bg-white border border-slate-200 p-2 lg:p-2.5 shadow-sm">
-                                <p className="text-[8px] lg:text-[9px] text-slate-500 font-medium truncate">{k.label}</p>
-                                <p className="text-xs lg:text-sm font-extrabold text-slate-900 leading-tight mt-0.5">{k.value}</p>
-                                <p className={`text-[8px] font-bold mt-0.5 ${k.up ? "text-emerald-600" : "text-rose-600"}`}>{k.up ? "▲" : "▼"} {k.trend}</p>
-                              </div>
-                            ))}
-                          </div>
-                          {/* Chart card */}
-                          <div className="rounded-lg bg-white border border-slate-200 p-3 lg:p-4 shadow-sm">
-                            <div className="flex items-center justify-between mb-2">
-                              <p className="text-[10px] lg:text-xs font-bold text-slate-900">Revenue Trend</p>
-                              <div className="flex gap-1.5">
-                                {["1D", "1W", "1M", "1Y"].map((p, i) => (
-                                  <span key={p} className={`text-[8px] px-1.5 py-0.5 rounded ${i === 2 ? "text-white font-bold" : "text-slate-400"}`} style={i === 2 ? { backgroundColor: t.urgencyColor } : {}}>{p}</span>
-                                ))}
+                          {/* SLIDE 1 — AI Copilot */}
+                          <div className={`absolute inset-0 p-4 lg:p-5 transition-opacity duration-700 ${mockupSlide === 1 ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                            <div className="flex items-center justify-between mb-3">
+                              <div><p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">AI Copilot</p><h4 className="text-sm lg:text-base font-extrabold text-slate-900">Smart Suggestions</h4></div>
+                              <div className="flex items-center gap-1.5 px-2 py-1 rounded-full text-[9px] font-bold bg-emerald-50 text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />3 actions ready</div>
+                            </div>
+                            <div className="rounded-xl p-3 lg:p-4 mb-3 relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}15, ${t.urgencyColor}05)`, border: `1px solid ${t.urgencyColor}30` }}>
+                              <div className="flex items-start gap-2.5">
+                                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: t.urgencyColor }}><Sparkles className="w-4 h-4 text-white" /></div>
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-[11px] font-bold text-slate-900 leading-snug">Inventory alert: SKU-2147 will stockout in 4 days at current sales velocity.</p>
+                                  <p className="text-[10px] text-slate-600 mt-1 leading-relaxed">Recommended: reorder 500 units · auto-applies your usual supplier · ETA Friday 6pm.</p>
+                                  <div className="flex gap-2 mt-2">
+                                    <button className="px-2.5 py-1 rounded-md text-white text-[9px] font-bold" style={{ backgroundColor: t.urgencyColor }}>Approve & Order</button>
+                                    <button className="px-2.5 py-1 rounded-md bg-white text-slate-600 text-[9px] font-bold border border-slate-200">Customise</button>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                            <svg viewBox="0 0 400 110" className="w-full h-16 lg:h-20" preserveAspectRatio="none">
-                              <defs>
-                                <linearGradient id={`chart-${data.slug}`} x1="0" x2="0" y1="0" y2="1">
-                                  <stop offset="0%" stopColor={t.urgencyColor} stopOpacity="0.4" />
-                                  <stop offset="100%" stopColor={t.urgencyColor} stopOpacity="0" />
-                                </linearGradient>
-                              </defs>
-                              <path d="M0,80 C40,75 70,55 110,50 C150,45 180,65 220,55 C260,45 290,25 330,30 C370,35 390,15 400,10 L400,110 L0,110 Z" fill={`url(#chart-${data.slug})`} />
-                              <path d="M0,80 C40,75 70,55 110,50 C150,45 180,65 220,55 C260,45 290,25 330,30 C370,35 390,15 400,10" fill="none" stroke={t.urgencyColor} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                              <circle cx="400" cy="10" r="4" fill={t.urgencyColor} />
-                              <circle cx="400" cy="10" r="8" fill={t.urgencyColor} fillOpacity="0.25" />
-                            </svg>
+                            <div className="space-y-2">
+                              {[{ icon: TrendingUp, title: "Move ad budget +₹25K → Meta", desc: "Meta ROAS 4.8x · Google 2.1x · save ~₹1.2L/mo", color: "text-emerald-700" }, { icon: Bot, title: "Auto-respond to 12 support tickets", desc: "All matched to known FAQs · 94% confidence · approve in batch", color: "text-blue-700" }].map((s, i) => (
+                                <div key={i} className="flex items-start gap-2.5 p-2.5 rounded-lg bg-white border border-slate-200 shadow-sm">
+                                  <div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${t.urgencyColor}15` }}><s.icon className="w-3.5 h-3.5" style={{ color: t.urgencyColor }} /></div>
+                                  <div className="flex-1 min-w-0"><p className="text-[10px] font-bold text-slate-900 leading-snug">{s.title}</p><p className="text-[9px] text-slate-500 mt-0.5 leading-snug">{s.desc}</p></div>
+                                  <ArrowRight className="w-3.5 h-3.5 text-slate-300 flex-shrink-0" />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          {/* SLIDE 2 — Analytics */}
+                          <div className={`absolute inset-0 p-4 lg:p-5 transition-opacity duration-700 ${mockupSlide === 2 ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                            <div className="flex items-center justify-between mb-3">
+                              <div><p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Analytics</p><h4 className="text-sm lg:text-base font-extrabold text-slate-900">Channel Breakdown</h4></div>
+                              <div className="flex gap-1">{["7d", "30d", "90d"].map((p, i) => <span key={p} className={`text-[9px] px-2 py-0.5 rounded font-semibold ${i === 1 ? "text-white" : "text-slate-500 bg-slate-100"}`} style={i === 1 ? { backgroundColor: t.urgencyColor } : {}}>{p}</span>)}</div>
+                            </div>
+                            <div className="space-y-2.5">
+                              {[{ label: "Direct", val: "42%", w: 84 }, { label: "Organic Search", val: "28%", w: 56 }, { label: "Paid Ads", val: "16%", w: 32 }, { label: "Social", val: "9%", w: 18 }, { label: "Referral", val: "5%", w: 10 }].map((row, i) => (
+                                <div key={row.label}>
+                                  <div className="flex items-center justify-between mb-1"><span className="text-[10px] font-semibold text-slate-700">{row.label}</span><span className="text-[10px] font-bold text-slate-900">{row.val}</span></div>
+                                  <div className="h-2 rounded-full bg-slate-100 overflow-hidden"><div className="h-full rounded-full" style={{ width: `${row.w}%`, background: i === 0 ? `linear-gradient(90deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` : i === 1 ? `${t.urgencyColor}90` : `${t.urgencyColor}50` }} /></div>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="grid grid-cols-3 gap-2 mt-3">
+                              {[{ l: "Sessions", v: "84.2K" }, { l: "Bounce", v: "32%" }, { l: "Pages/Session", v: "4.8" }].map((m) => (
+                                <div key={m.l} className="rounded-lg bg-white border border-slate-200 p-2 text-center"><p className="text-[8px] text-slate-500 font-medium">{m.l}</p><p className="text-xs font-extrabold text-slate-900">{m.v}</p></div>
+                              ))}
+                            </div>
+                          </div>
+                          {/* SLIDE 3 — Customers */}
+                          <div className={`absolute inset-0 p-4 lg:p-5 transition-opacity duration-700 ${mockupSlide === 3 ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                            <div className="flex items-center justify-between mb-3">
+                              <div><p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Customers</p><h4 className="text-sm lg:text-base font-extrabold text-slate-900">Top Accounts</h4></div>
+                              <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-slate-100 text-[10px] font-semibold text-slate-700"><Search className="w-3 h-3" />Filter</div>
+                            </div>
+                            <div className="rounded-xl bg-white border border-slate-200 overflow-hidden shadow-sm">
+                              <div className="grid grid-cols-[1.4fr,1fr,0.8fr,0.6fr] gap-2 px-3 py-2 bg-slate-50 border-b border-slate-200 text-[8px] font-bold uppercase tracking-wider text-slate-500">
+                                <span>Customer</span><span>Plan</span><span className="text-right">MRR</span><span className="text-right">Score</span>
+                              </div>
+                              {[{ name: "Acme Inc", initials: "AI", plan: "Enterprise", mrr: "₹4.8L", score: 94, color: "text-emerald-600" }, { name: "Polaris SaaS", initials: "PS", plan: "Growth", mrr: "₹1.2L", score: 87, color: "text-emerald-600" }, { name: "Nova Retail", initials: "NR", plan: "Growth", mrr: "₹84K", score: 76, color: "text-emerald-600" }, { name: "Helix Co", initials: "HC", plan: "Starter", mrr: "₹32K", score: 58, color: "text-amber-600" }, { name: "Atlas Health", initials: "AH", plan: "Enterprise", mrr: "₹3.4L", score: 91, color: "text-emerald-600" }].map((row) => (
+                                <div key={row.name} className="grid grid-cols-[1.4fr,1fr,0.8fr,0.6fr] gap-2 px-3 py-2 border-b border-slate-100 last:border-b-0 items-center">
+                                  <div className="flex items-center gap-2 min-w-0">
+                                    <div className="w-6 h-6 rounded-full text-white text-[9px] font-bold flex items-center justify-center flex-shrink-0" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` }}>{row.initials}</div>
+                                    <span className="text-[10px] font-semibold text-slate-900 truncate">{row.name}</span>
+                                  </div>
+                                  <span className="text-[10px] text-slate-600 font-medium">{row.plan}</span>
+                                  <span className="text-[10px] font-bold text-slate-900 text-right">{row.mrr}</span>
+                                  <span className={`text-[10px] font-bold text-right ${row.color}`}>{row.score}</span>
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -451,6 +577,12 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                         <p className="text-sm font-extrabold text-gray-900">Deadline Guarantee</p>
                       </div>
                     </div>
+                  </div>
+                  {/* Slide indicators */}
+                  <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                    {["Dashboard", "AI Copilot", "Analytics", "Customers"].map((label, i) => (
+                      <button key={label} onClick={() => setMockupSlide(i)} aria-label={`Show ${label} screen`} className={`transition-all rounded-full ${mockupSlide === i ? "w-8 h-2 bg-white" : "w-2 h-2 bg-white/40 hover:bg-white/70"}`} />
+                    ))}
                   </div>
                 </div>
               )}
