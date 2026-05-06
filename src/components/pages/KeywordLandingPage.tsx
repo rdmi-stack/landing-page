@@ -18,6 +18,14 @@ import {
   Mail,
   Briefcase,
   Clock,
+  BarChart3,
+  Bell,
+  Search,
+  Home,
+  Sparkles,
+  TrendingUp,
+  Settings,
+  Wallet,
 } from "lucide-react";
 import Footer from "@/components/Footer";
 import type { KeywordGroup } from "@/data/keyword-groups";
@@ -205,22 +213,109 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               <div className="absolute inset-0 rounded-[3rem] blur-3xl opacity-60 scale-105" style={{ background: `radial-gradient(circle, ${t.urgencyColor}, transparent 70%)` }} />
 
               {data.slug === "mobile-app-development" ? (
-                /* Phone frame mockup */
-                <div className="relative mx-auto max-w-[300px] lg:max-w-[340px]">
+                /* PHONE MOCKUP — real app UI */
+                <div className="relative mx-auto max-w-[290px] lg:max-w-[320px]">
                   <div className="absolute -inset-4 rounded-[3.5rem] bg-gradient-to-br from-white/20 via-white/5 to-transparent blur-2xl" />
-                  <div className="relative aspect-[9/19] rounded-[3rem] bg-gradient-to-br from-zinc-800 to-zinc-900 p-3 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10 hover:scale-[1.02] transition-transform duration-500">
-                    {/* Notch */}
-                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-32 h-7 rounded-b-2xl bg-zinc-900 z-20" />
-                    {/* Screen */}
-                    <div className="relative h-full w-full rounded-[2.4rem] overflow-hidden bg-zinc-950">
-                      <Image src={data.images.hero} alt="App mockup" fill sizes="(max-width: 1024px) 90vw, 340px" className="object-cover" priority />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                  <div className="relative aspect-[9/19] rounded-[3rem] bg-gradient-to-br from-zinc-800 to-zinc-900 p-2.5 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10 hover:scale-[1.02] transition-transform duration-500">
+                    <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-28 h-6 rounded-b-2xl bg-zinc-900 z-20" />
+                    {/* App screen */}
+                    <div className="relative h-full w-full rounded-[2.4rem] overflow-hidden bg-zinc-950 flex flex-col">
+                      {/* Status bar */}
+                      <div className="flex items-center justify-between px-6 pt-3 pb-1.5 text-white text-[10px] font-semibold">
+                        <span>9:41</span>
+                        <div className="flex items-center gap-1">
+                          <svg viewBox="0 0 18 12" className="w-3.5 h-2.5 fill-white"><rect x="0" y="6" width="3" height="6" rx="1"/><rect x="5" y="3" width="3" height="9" rx="1"/><rect x="10" y="0" width="3" height="12" rx="1"/></svg>
+                          <svg viewBox="0 0 18 12" className="w-3 h-2.5 fill-white"><path d="M9 12 L0 3 Q1 2 2 2 L16 2 Q17 2 18 3 Z"/></svg>
+                          <svg viewBox="0 0 24 12" className="w-5 h-2.5"><rect x="0.5" y="1" width="20" height="10" rx="2" fill="none" stroke="white" strokeWidth="1"/><rect x="2" y="3" width="14" height="6" rx="1" fill="white"/><rect x="21" y="4" width="2" height="4" rx="0.5" fill="white"/></svg>
+                        </div>
+                      </div>
+                      {/* Header */}
+                      <div className="px-5 pt-3 pb-2 flex items-center justify-between">
+                        <div>
+                          <p className="text-[9px] text-zinc-400 font-medium">Good morning</p>
+                          <p className="text-base font-bold text-white tracking-tight">Hi, Ranjit ✨</p>
+                        </div>
+                        <div className="relative">
+                          <Bell className="w-5 h-5 text-zinc-300" />
+                          <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full" style={{ backgroundColor: t.urgencyColor }} />
+                        </div>
+                      </div>
+                      {/* Hero card */}
+                      <div className="mx-4 mb-3 rounded-2xl p-4 relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}dd)` }}>
+                        <div className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-white/20 blur-xl" />
+                        <div className="relative">
+                          <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-white/25 mb-2">
+                            <Sparkles className="w-2.5 h-2.5 text-white" />
+                            <span className="text-[8px] font-bold text-white uppercase tracking-wider">AI Active</span>
+                          </div>
+                          <p className="text-[13px] font-bold text-white leading-snug">Today&apos;s insights are ready</p>
+                          <p className="text-[10px] text-white/80 mt-0.5">Tap to view 3 new opportunities</p>
+                        </div>
+                      </div>
+                      {/* Quick actions */}
+                      <div className="grid grid-cols-4 gap-2 px-4 mb-3">
+                        {[
+                          { icon: BarChart3, label: "Stats" },
+                          { icon: Bot, label: "AI Chat" },
+                          { icon: TrendingUp, label: "Trends" },
+                          { icon: Wallet, label: "Pay" },
+                        ].map((q, i) => (
+                          <div key={i} className="flex flex-col items-center gap-1 p-2 rounded-xl bg-zinc-900 border border-zinc-800">
+                            <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${t.urgencyColor}25` }}>
+                              <q.icon className="w-3.5 h-3.5" style={{ color: t.urgencyColor }} />
+                            </div>
+                            <span className="text-[8px] text-zinc-300 font-medium">{q.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                      {/* Recent list */}
+                      <div className="flex-1 px-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <p className="text-[10px] font-bold text-white">Recent Activity</p>
+                          <p className="text-[8px] text-zinc-400">View all</p>
+                        </div>
+                        <div className="space-y-2">
+                          {[
+                            { icon: "✓", title: "Order #4821 shipped", time: "2m ago", color: "bg-emerald-500/20 text-emerald-400" },
+                            { icon: "★", title: "5★ review received", time: "8m ago", color: "bg-amber-500/20 text-amber-400" },
+                            { icon: "↗", title: "+18% sales today", time: "1h ago", color: `text-white` },
+                          ].map((item, i) => (
+                            <div key={i} className="flex items-center gap-2 p-2 rounded-xl bg-zinc-900/60 border border-zinc-800">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-bold ${item.color}`} style={i === 2 ? { backgroundColor: `${t.urgencyColor}30`, color: t.urgencyColor } : {}}>{item.icon}</div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-[10px] font-semibold text-white truncate">{item.title}</p>
+                                <p className="text-[8px] text-zinc-500">{item.time}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      {/* Bottom tab bar */}
+                      <div className="border-t border-zinc-800 px-4 py-2.5 flex items-center justify-around bg-zinc-950/95 backdrop-blur">
+                        {[
+                          { icon: Home, active: true },
+                          { icon: Search, active: false },
+                          { icon: Bot, active: false, primary: true },
+                          { icon: Bell, active: false },
+                          { icon: User, active: false },
+                        ].map((tab, i) => (
+                          <button key={i} className="flex flex-col items-center">
+                            {tab.primary ? (
+                              <div className="w-9 h-9 rounded-xl flex items-center justify-center -mt-3 shadow-lg" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` }}>
+                                <tab.icon className="w-4 h-4 text-white" />
+                              </div>
+                            ) : (
+                              <tab.icon className={`w-4 h-4 ${tab.active ? "" : "text-zinc-500"}`} style={tab.active ? { color: t.urgencyColor } : {}} />
+                            )}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   {/* Floating accent badges */}
                   <div className="absolute -top-3 -left-6 px-3 py-2 rounded-xl bg-white shadow-xl shadow-black/20 backdrop-blur" style={{ color: t.urgencyColor }}>
-                    <p className="text-[10px] font-bold uppercase tracking-wider">Live Demo</p>
-                    <p className="text-sm font-extrabold">Phone-Ready</p>
+                    <p className="text-[10px] font-bold uppercase tracking-wider">AI Built In</p>
+                    <p className="text-sm font-extrabold">From Sprint One</p>
                   </div>
                   <div className="absolute -bottom-4 -right-4 px-4 py-3 rounded-2xl bg-white/95 backdrop-blur-xl shadow-xl shadow-black/20">
                     <div className="flex items-center gap-2">
@@ -235,7 +330,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                   </div>
                 </div>
               ) : (
-                /* Browser/dashboard mockup */
+                /* DASHBOARD MOCKUP — real SaaS UI */
                 <div className="relative">
                   <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-white/20 via-white/5 to-transparent blur-2xl" />
                   <div className="relative rounded-2xl bg-zinc-900 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10 overflow-hidden hover:scale-[1.01] transition-transform duration-500">
@@ -254,10 +349,91 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                         <span className="text-[10px] text-emerald-300 font-semibold">Live</span>
                       </div>
                     </div>
-                    {/* Screen */}
-                    <div className="relative aspect-[16/10]">
-                      <Image src={data.images.hero} alt="Software dashboard mockup" fill sizes="(max-width: 1024px) 90vw, 50vw" className="object-cover" priority />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+                    {/* Dashboard UI */}
+                    <div className="aspect-[16/10] flex bg-gradient-to-br from-slate-50 to-slate-100">
+                      {/* Sidebar */}
+                      <div className="w-12 lg:w-14 bg-white border-r border-slate-200 py-3 flex flex-col items-center gap-3">
+                        <div className="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-extrabold" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` }}>R</div>
+                        <div className="w-8 h-px bg-slate-200" />
+                        {[
+                          { icon: Home, active: true },
+                          { icon: BarChart3, active: false },
+                          { icon: User, active: false },
+                          { icon: Bell, active: false },
+                          { icon: Settings, active: false },
+                        ].map((nav, i) => (
+                          <div key={i} className={`w-8 h-8 rounded-lg flex items-center justify-center ${nav.active ? "" : "hover:bg-slate-100"}`} style={nav.active ? { backgroundColor: `${t.urgencyColor}15` } : {}}>
+                            <nav.icon className="w-4 h-4" style={nav.active ? { color: t.urgencyColor } : { color: "#64748b" }} />
+                          </div>
+                        ))}
+                      </div>
+                      {/* Main */}
+                      <div className="flex-1 min-w-0 flex flex-col">
+                        {/* Top bar */}
+                        <div className="flex items-center justify-between px-4 lg:px-5 py-3 border-b border-slate-200 bg-white">
+                          <div className="flex items-center gap-2 flex-1 max-w-xs">
+                            <Search className="w-3.5 h-3.5 text-slate-400" />
+                            <span className="text-[11px] text-slate-400">Search anything…</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center relative">
+                              <Bell className="w-3.5 h-3.5 text-slate-500" />
+                              <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: t.urgencyColor }} />
+                            </div>
+                            <div className="w-7 h-7 rounded-full text-white text-[10px] font-bold flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` }}>RJ</div>
+                          </div>
+                        </div>
+                        {/* Body */}
+                        <div className="flex-1 p-4 lg:p-5 overflow-hidden">
+                          <div className="flex items-center justify-between mb-3">
+                            <div>
+                              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Overview</p>
+                              <h4 className="text-sm lg:text-base font-extrabold text-slate-900">Dashboard</h4>
+                            </div>
+                            <div className="flex items-center gap-1.5 px-2 py-1 rounded-md text-white text-[10px] font-semibold" style={{ background: t.urgencyColor }}>
+                              <Sparkles className="w-3 h-3" />AI Insights
+                            </div>
+                          </div>
+                          {/* KPI cards */}
+                          <div className="grid grid-cols-4 gap-2 mb-3">
+                            {[
+                              { label: "Active Users", value: "12,845", trend: "+18.2%", up: true },
+                              { label: "Conversion", value: "4.86%", trend: "+0.7%", up: true },
+                              { label: "Avg. Session", value: "5m 12s", trend: "+22%", up: true },
+                              { label: "Tickets", value: "184", trend: "−12.4%", up: false },
+                            ].map((k) => (
+                              <div key={k.label} className="rounded-lg bg-white border border-slate-200 p-2 lg:p-2.5 shadow-sm">
+                                <p className="text-[8px] lg:text-[9px] text-slate-500 font-medium truncate">{k.label}</p>
+                                <p className="text-xs lg:text-sm font-extrabold text-slate-900 leading-tight mt-0.5">{k.value}</p>
+                                <p className={`text-[8px] font-bold mt-0.5 ${k.up ? "text-emerald-600" : "text-rose-600"}`}>{k.up ? "▲" : "▼"} {k.trend}</p>
+                              </div>
+                            ))}
+                          </div>
+                          {/* Chart card */}
+                          <div className="rounded-lg bg-white border border-slate-200 p-3 lg:p-4 shadow-sm">
+                            <div className="flex items-center justify-between mb-2">
+                              <p className="text-[10px] lg:text-xs font-bold text-slate-900">Revenue Trend</p>
+                              <div className="flex gap-1.5">
+                                {["1D", "1W", "1M", "1Y"].map((p, i) => (
+                                  <span key={p} className={`text-[8px] px-1.5 py-0.5 rounded ${i === 2 ? "text-white font-bold" : "text-slate-400"}`} style={i === 2 ? { backgroundColor: t.urgencyColor } : {}}>{p}</span>
+                                ))}
+                              </div>
+                            </div>
+                            <svg viewBox="0 0 400 110" className="w-full h-16 lg:h-20" preserveAspectRatio="none">
+                              <defs>
+                                <linearGradient id={`chart-${data.slug}`} x1="0" x2="0" y1="0" y2="1">
+                                  <stop offset="0%" stopColor={t.urgencyColor} stopOpacity="0.4" />
+                                  <stop offset="100%" stopColor={t.urgencyColor} stopOpacity="0" />
+                                </linearGradient>
+                              </defs>
+                              <path d="M0,80 C40,75 70,55 110,50 C150,45 180,65 220,55 C260,45 290,25 330,30 C370,35 390,15 400,10 L400,110 L0,110 Z" fill={`url(#chart-${data.slug})`} />
+                              <path d="M0,80 C40,75 70,55 110,50 C150,45 180,65 220,55 C260,45 290,25 330,30 C370,35 390,15 400,10" fill="none" stroke={t.urgencyColor} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                              <circle cx="400" cy="10" r="4" fill={t.urgencyColor} />
+                              <circle cx="400" cy="10" r="8" fill={t.urgencyColor} fillOpacity="0.25" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   {/* Floating accent badges */}
