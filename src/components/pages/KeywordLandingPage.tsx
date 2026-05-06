@@ -126,36 +126,23 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   return (
     <div className="bg-white text-gray-900">
       {/* ═══════ HERO ═══════ */}
-      <section className="relative pt-20 pb-16 lg:pt-28 lg:pb-20 overflow-hidden text-white" style={{ background: t.heroGradient }}>
-        {/* Layer 1 — hero image as visible base (glassmorphism foundation) */}
-        <div className="absolute inset-0 opacity-35">
-          <Image src={data.images.hero} alt="" fill className="object-cover" priority />
-        </div>
+      <section className="relative pt-16 pb-16 lg:pt-24 lg:pb-20 overflow-hidden text-white" style={{ background: t.heroGradient }}>
+        {/* Ambient theme + complementary orbs */}
+        <div className="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full blur-[160px] opacity-50 animate-pulse-slow mix-blend-screen" style={{ backgroundColor: t.urgencyColor }} />
+        <div className="absolute top-1/3 -left-40 w-[600px] h-[600px] rounded-full blur-[150px] opacity-35 mix-blend-screen" style={{ backgroundColor: "#a855f7" }} />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-30 mix-blend-screen" style={{ backgroundColor: "#06b6d4" }} />
+        <div className="absolute top-1/2 left-1/3 w-[400px] h-[400px] rounded-full blur-[130px] opacity-25 mix-blend-screen" style={{ backgroundColor: "#ec4899" }} />
 
-        {/* Layer 2 — theme color wash (multiply blend so image still shows through) */}
-        <div className="absolute inset-0 opacity-60 mix-blend-multiply" style={{ background: t.heroGradient }} />
-
-        {/* Layer 3 — vertical depth vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/55" />
-
-        {/* Layer 4 — ambient colored orbs blending over the image */}
-        <div className="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full blur-[160px] opacity-45 animate-pulse-slow mix-blend-screen" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="absolute top-1/3 -left-40 w-[600px] h-[600px] rounded-full blur-[150px] opacity-30 mix-blend-screen" style={{ backgroundColor: "#a855f7" }} />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-25 mix-blend-screen" style={{ backgroundColor: "#06b6d4" }} />
-        <div className="absolute top-1/2 left-1/3 w-[400px] h-[400px] rounded-full blur-[130px] opacity-20 mix-blend-screen" style={{ backgroundColor: "#ec4899" }} />
-
-        {/* Layer 5 — elegant dot pattern */}
+        {/* Subtle dot pattern */}
         <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "32px 32px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
 
-        {/* Layer 6 — radial spotlight behind headline */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full opacity-25 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(255,255,255,0.5), transparent 70%)" }} />
-
-        {/* Layer 7 — SVG noise grain for premium texture */}
+        {/* Vignette + grain */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/35 to-transparent pointer-events-none" />
         <div className="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")" }} />
 
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Live status row */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-7">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Top status pills */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-6">
             <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/40 backdrop-blur-md text-xs font-semibold text-emerald-200 shadow-lg shadow-emerald-500/10">
               <span className="relative flex w-2 h-2"><span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75" /><span className="relative rounded-full w-2 h-2 bg-emerald-400" /></span>
               47 developers building now
@@ -166,52 +153,135 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             </span>
           </div>
 
-          {/* Premium badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-xl text-sm font-semibold mb-8 border border-white/30 shadow-xl shadow-black/20">
-            <span className="text-base">{t.icon}</span>
-            <span className="tracking-wide">{data.hero.badge}</span>
+          {/* Two-column hero: text left, product mockup right */}
+          <div className="grid lg:grid-cols-[1.05fr,1fr] gap-10 lg:gap-14 items-center mb-12 lg:mb-16">
+            {/* LEFT — text content */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-xl text-xs sm:text-sm font-semibold mb-5 border border-white/30 shadow-lg shadow-black/20">
+                <span className="text-base">{t.icon}</span>
+                <span className="tracking-wide">{data.hero.badge}</span>
+              </div>
+
+              <h1 className="text-[2rem] sm:text-[2.5rem] lg:text-5xl xl:text-[3.6rem] font-extrabold leading-[1.05] tracking-[-0.025em] mb-5 bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(180deg, #ffffff 0%, #ffffff 55%, rgba(255,255,255,0.82) 100%)", filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.25))" }}>
+                {data.hero.h1}
+              </h1>
+
+              <p className="text-base sm:text-lg text-white/85 leading-relaxed mb-7 font-light max-w-2xl lg:max-w-none mx-auto lg:mx-0">
+                {data.hero.subtitle}
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center lg:items-stretch justify-center lg:justify-start gap-3 mb-5">
+                <button onClick={openConsult} className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white font-bold text-base lg:text-lg transition-all hover:scale-[1.03] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.45)] cursor-pointer overflow-hidden ring-1 ring-white/60" style={{ color: t.urgencyColor }}>
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                  <span className="relative">{data.hero.cta1}</span>
+                  <ArrowRight className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+                <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl border border-white/35 bg-white/10 backdrop-blur-md text-white font-bold text-sm lg:text-base hover:bg-white/20 hover:border-white/60 transition-all shadow-lg shadow-black/20">
+                  <Phone className="w-4 h-4" /> WhatsApp Now
+                </a>
+              </div>
+
+              <p className="text-xs sm:text-sm text-white/75 mb-6">
+                <span className="inline-block w-2 h-2 rounded-full bg-amber-300 animate-pulse mr-2 align-middle" />
+                Only <span className="font-bold text-amber-200">3 slots left</span> this week · Free prototype in 48 hours
+              </p>
+
+              <div className="flex flex-wrap justify-center lg:justify-start gap-2">
+                {data.hero.trustPoints.map((tp) => (
+                  <span key={tp} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[11px] sm:text-xs font-medium text-white shadow-md shadow-black/10">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300 flex-shrink-0" />{tp}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT — product mockup */}
+            <div className="relative">
+              {/* Glow behind */}
+              <div className="absolute inset-0 rounded-[3rem] blur-3xl opacity-60 scale-105" style={{ background: `radial-gradient(circle, ${t.urgencyColor}, transparent 70%)` }} />
+
+              {data.slug === "mobile-app-development" ? (
+                /* Phone frame mockup */
+                <div className="relative mx-auto max-w-[300px] lg:max-w-[340px]">
+                  <div className="absolute -inset-4 rounded-[3.5rem] bg-gradient-to-br from-white/20 via-white/5 to-transparent blur-2xl" />
+                  <div className="relative aspect-[9/19] rounded-[3rem] bg-gradient-to-br from-zinc-800 to-zinc-900 p-3 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10 hover:scale-[1.02] transition-transform duration-500">
+                    {/* Notch */}
+                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-32 h-7 rounded-b-2xl bg-zinc-900 z-20" />
+                    {/* Screen */}
+                    <div className="relative h-full w-full rounded-[2.4rem] overflow-hidden bg-zinc-950">
+                      <Image src={data.images.hero} alt="App mockup" fill className="object-cover" priority />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                    </div>
+                  </div>
+                  {/* Floating accent badges */}
+                  <div className="absolute -top-3 -left-6 px-3 py-2 rounded-xl bg-white shadow-xl shadow-black/20 backdrop-blur" style={{ color: t.urgencyColor }}>
+                    <p className="text-[10px] font-bold uppercase tracking-wider">Live Demo</p>
+                    <p className="text-sm font-extrabold">Phone-Ready</p>
+                  </div>
+                  <div className="absolute -bottom-4 -right-4 px-4 py-3 rounded-2xl bg-white/95 backdrop-blur-xl shadow-xl shadow-black/20">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${t.urgencyColor}15` }}>
+                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Avg Rating</p>
+                        <p className="text-sm font-extrabold text-gray-900">4.6★ on stores</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                /* Browser/dashboard mockup */
+                <div className="relative">
+                  <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-white/20 via-white/5 to-transparent blur-2xl" />
+                  <div className="relative rounded-2xl bg-zinc-900 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10 overflow-hidden hover:scale-[1.01] transition-transform duration-500">
+                    {/* Browser chrome */}
+                    <div className="flex items-center gap-2 px-4 py-3 bg-zinc-800 border-b border-zinc-700">
+                      <div className="flex gap-1.5">
+                        <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                        <span className="w-3 h-3 rounded-full bg-amber-500/80" />
+                        <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                      </div>
+                      <div className="flex-1 mx-3 px-3 py-1 rounded-md bg-zinc-700/60 text-[11px] text-zinc-400 font-mono truncate">
+                        https://app.yourbrand.in/dashboard
+                      </div>
+                      <div className="flex items-center gap-1 px-2 py-1 rounded-md bg-emerald-500/15 border border-emerald-500/30">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-[10px] text-emerald-300 font-semibold">Live</span>
+                      </div>
+                    </div>
+                    {/* Screen */}
+                    <div className="relative aspect-[16/10]">
+                      <Image src={data.images.hero} alt="Software dashboard mockup" fill className="object-cover" priority />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+                    </div>
+                  </div>
+                  {/* Floating accent badges */}
+                  <div className="absolute -top-4 -left-4 px-4 py-3 rounded-2xl bg-white shadow-xl shadow-black/20" style={{ color: t.urgencyColor }}>
+                    <p className="text-[10px] font-bold uppercase tracking-wider">Live Preview</p>
+                    <p className="text-sm font-extrabold">48-Hour Prototype</p>
+                  </div>
+                  <div className="absolute -bottom-5 -right-5 px-4 py-3 rounded-2xl bg-white/95 backdrop-blur-xl shadow-xl shadow-black/20">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-9 h-9 rounded-lg flex items-center justify-center text-white text-base font-bold" style={{ backgroundColor: t.urgencyColor }}>
+                        ✓
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Money-Back</p>
+                        <p className="text-sm font-extrabold text-gray-900">Deadline Guarantee</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
-          <h1 className="text-[2.15rem] sm:text-5xl lg:text-6xl xl:text-[4.75rem] font-extrabold leading-[1.02] tracking-[-0.03em] mb-7 max-w-5xl mx-auto bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(180deg, #ffffff 0%, #ffffff 55%, rgba(255,255,255,0.78) 100%)", filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.25))" }}>
-            {data.hero.h1}
-          </h1>
-
-          <p className="text-lg sm:text-xl lg:text-[1.35rem] text-white/85 max-w-3xl mx-auto leading-relaxed mb-10 font-light">
-            {data.hero.subtitle}
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-7">
-            <button onClick={openConsult} className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-10 py-5 rounded-2xl bg-white font-bold text-lg transition-all hover:scale-[1.03] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.45)] cursor-pointer overflow-hidden ring-1 ring-white/60" style={{ color: t.urgencyColor }}>
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              <span className="relative">{data.hero.cta1}</span>
-              <ArrowRight className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-5 rounded-2xl border border-white/35 bg-white/10 backdrop-blur-md text-white font-bold text-base hover:bg-white/20 hover:border-white/60 transition-all shadow-lg shadow-black/20">
-              <Phone className="w-4 h-4" /> WhatsApp Now
-            </a>
-          </div>
-
-          {/* Urgency line */}
-          <p className="text-sm text-white/75 mb-9">
-            <span className="inline-block w-2 h-2 rounded-full bg-amber-300 animate-pulse mr-2" />
-            Only <span className="font-bold text-amber-200">3 slots left</span> this week · Free prototype in 48 hours
-          </p>
-
-          {/* Trust pills */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {data.hero.trustPoints.map((tp) => (
-              <span key={tp} className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-medium text-white shadow-md shadow-black/10">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />{tp}
-              </span>
-            ))}
-          </div>
-
-          {/* Inline stats — premium glass panel */}
-          <div className="mb-12 pb-12 border-b border-white/15">
-            <div className="grid grid-cols-3 max-w-3xl mx-auto gap-3 sm:gap-4 p-5 sm:p-6 rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/15 shadow-2xl shadow-black/30">
-              {data.stats.slice(0, 3).map((s, i) => (
-                <div key={s.label} className={`text-center ${i < 2 ? "border-r border-white/10 pr-3 sm:pr-4" : ""}`}>
+          {/* Stats — full-width glass panel below the 2-col block */}
+          <div className="mb-10 pb-10 border-b border-white/15">
+            <div className="grid grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-3 sm:gap-4 p-5 sm:p-6 rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/15 shadow-2xl shadow-black/30">
+              {data.stats.slice(0, 4).map((s, i) => (
+                <div key={s.label} className={`text-center ${i < 3 ? "md:border-r border-white/10 md:pr-3" : ""}`}>
                   <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">{s.value}</div>
                   <div className="text-[11px] sm:text-xs text-white/70 mt-1.5 leading-tight font-medium">{s.label}</div>
                 </div>
