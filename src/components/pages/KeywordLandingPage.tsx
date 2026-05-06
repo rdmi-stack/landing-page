@@ -14,6 +14,10 @@ import {
   Loader2,
   Star,
   Shield,
+  User,
+  Mail,
+  Briefcase,
+  Clock,
 } from "lucide-react";
 import Footer from "@/components/Footer";
 import type { KeywordGroup } from "@/data/keyword-groups";
@@ -753,58 +757,121 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       {/* ═══════ CONSULTATION MODAL ═══════ */}
       {showModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div onClick={() => formStatus !== "loading" && closeConsult()} className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
-          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl shadow-black/20 border border-gray-200">
-            <div className="h-1.5 rounded-t-2xl" style={{ background: t.heroGradient }} />
-            {formStatus !== "loading" && (
-              <button onClick={closeConsult} className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors z-10">
-                <span className="text-gray-500 text-lg leading-none">×</span>
-              </button>
-            )}
-            <div className="p-6 sm:p-8">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5 text-white" />
+          <div onClick={() => formStatus !== "loading" && closeConsult()} className="absolute inset-0 bg-black/60 backdrop-blur-md" />
+          <div className="relative w-full max-w-md max-h-[94vh] overflow-y-auto rounded-3xl bg-white shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] border border-white/60">
+            {/* Premium gradient header */}
+            <div className="relative overflow-hidden p-6 sm:p-7 text-white" style={{ background: t.heroGradient }}>
+              <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full blur-3xl opacity-50 mix-blend-screen" style={{ backgroundColor: t.urgencyColor }} />
+              <div className="absolute -bottom-12 -left-8 w-32 h-32 rounded-full blur-3xl opacity-40 mix-blend-screen" style={{ backgroundColor: "#a855f7" }} />
+              {formStatus !== "loading" && (
+                <button onClick={closeConsult} className="absolute top-4 right-4 p-2 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/30 transition-colors z-10" aria-label="Close">
+                  <span className="text-white text-xl leading-none">×</span>
+                </button>
+              )}
+              <div className="relative">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[11px] font-semibold mb-4 shadow-md shadow-black/10">
+                  <span className="relative flex w-1.5 h-1.5"><span className="absolute inset-0 rounded-full bg-emerald-300 animate-ping opacity-75" /><span className="relative rounded-full w-1.5 h-1.5 bg-emerald-300" /></span>
+                  Senior engineer online · responds in 2 hrs
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900">{exitIntentSubtitle ? "Don't leave empty-handed" : f.title}</h3>
-                  <p className="text-xs text-gray-500">{exitIntentSubtitle ?? f.subtitle}</p>
-                </div>
+                <h3 className="text-xl sm:text-2xl font-extrabold leading-snug pr-8 tracking-tight">
+                  {exitIntentSubtitle ? "Don't leave empty-handed" : f.title}
+                </h3>
+                <p className="text-sm text-white/85 mt-2 leading-relaxed pr-6">
+                  {exitIntentSubtitle ?? f.subtitle}
+                </p>
               </div>
-              <div className="flex flex-wrap gap-3 mb-5 text-[11px] text-gray-500">
-                {["Free consultation", "NDA protected", "48hr prototype", "Money-back guarantee"].map((t) => (
-                  <span key={t} className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-500" />{t}</span>
+            </div>
+
+            {/* Body */}
+            <div className="p-6 sm:p-7">
+              {/* Trust pills row */}
+              <div className="grid grid-cols-2 gap-2 mb-5">
+                {[
+                  { icon: MessageCircle, text: "Free consultation" },
+                  { icon: Shield, text: "NDA day one" },
+                  { icon: Clock, text: "Prototype in 48 hrs" },
+                  { icon: CheckCircle2, text: "Money-back guarantee" },
+                ].map(({ icon: Icon, text }) => (
+                  <div key={text} className="flex items-center gap-2 px-2.5 py-2 rounded-lg bg-gray-50 border border-gray-100">
+                    <Icon className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                    <span className="text-[11px] font-medium text-gray-700 leading-tight">{text}</span>
+                  </div>
                 ))}
               </div>
-              {formStatus === "error" && <div className="mb-4 px-3 py-2 rounded-lg bg-red-50 border border-red-200 text-xs text-red-600">Failed. Try again or WhatsApp +91 98185 65561.</div>}
+
+              {formStatus === "error" && (
+                <div className="mb-4 px-3 py-2.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700">
+                  Submission failed. Try again or WhatsApp <strong>+91 98185 65561</strong> directly.
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-3">
+                {/* Name */}
+                <div className="relative">
+                  <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                  <input type="text" required disabled={formStatus === "loading"} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={`w-full pl-10 pr-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all`} placeholder="Your full name" />
+                </div>
+
+                {/* Phone + Email */}
                 <div className="grid sm:grid-cols-2 gap-3">
-                  <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">Full Name *</label><input type="text" required disabled={formStatus === "loading"} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={inp} placeholder="John Doe" /></div>
-                  <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">WhatsApp / Phone</label><input type="tel" disabled={formStatus === "loading"} value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={inp} placeholder="+91 98185 65561" /></div>
+                  <div className="relative">
+                    <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                    <input type="tel" required disabled={formStatus === "loading"} value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={`w-full pl-10 pr-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all`} placeholder="+91 98185 65561" />
+                  </div>
+                  <div className="relative">
+                    <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                    <input type="email" required disabled={formStatus === "loading"} value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={`w-full pl-10 pr-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all`} placeholder="you@company.com" />
+                  </div>
                 </div>
-                <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">Work Email *</label><input type="email" required disabled={formStatus === "loading"} value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={inp} placeholder="john@company.com" /></div>
-                <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">What do you need? *</label>
-                  <select required disabled={formStatus === "loading"} value={formData.projectType} onChange={(e) => setFormData({ ...formData, projectType: e.target.value })} className={inp}>
-                    <option value="">Select project type</option>
-                    {f.projectTypes.map((pt) => <option key={pt} value={pt}>{pt}</option>)}
+
+                {/* Project type */}
+                <div className="relative">
+                  <Briefcase className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none z-10" />
+                  <select required disabled={formStatus === "loading"} value={formData.projectType} onChange={(e) => setFormData({ ...formData, projectType: e.target.value })} className={`w-full pl-10 pr-10 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 ${a.ring} hover:border-gray-200 outline-none transition-all appearance-none cursor-pointer ${formData.projectType ? "" : "text-gray-400"}`}>
+                    <option value="" className="text-gray-400">What do you need to build?</option>
+                    {f.projectTypes.map((pt) => <option key={pt} value={pt} className="text-gray-900">{pt}</option>)}
                   </select>
+                  <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                 </div>
-                <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">Budget Range</label>
-                  <select disabled={formStatus === "loading"} value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })} className={inp}>
-                    <option value="">Select budget range</option>
-                    {budgets.map((b) => <option key={b} value={b}>{b}</option>)}
+
+                {/* Budget */}
+                <div className="relative">
+                  <IndianRupee className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none z-10" />
+                  <select disabled={formStatus === "loading"} value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })} className={`w-full pl-10 pr-10 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 ${a.ring} hover:border-gray-200 outline-none transition-all appearance-none cursor-pointer ${formData.budget ? "" : "text-gray-400"}`}>
+                    <option value="" className="text-gray-400">Estimated budget (optional)</option>
+                    {budgets.map((b) => <option key={b} value={b} className="text-gray-900">{b}</option>)}
                   </select>
+                  <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                 </div>
-                <div><label className="block text-[11px] text-gray-500 mb-1 font-medium">Biggest challenge? (optional)</label>
-                  <textarea rows={2} disabled={formStatus === "loading"} value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className={`${inp} resize-none`} placeholder={f.placeholder} />
-                </div>
-                <button type="submit" disabled={formStatus === "loading"} className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl text-white font-semibold text-sm transition-all hover:shadow-lg hover:brightness-110 disabled:opacity-70 disabled:cursor-not-allowed" style={{ background: t.heroGradient }}>
-                  {formStatus === "loading" ? (<><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>) : (<>{f.buttonText} <ArrowRight className="w-4 h-4" /></>)}
+
+                {/* Challenge */}
+                <textarea rows={2} disabled={formStatus === "loading"} value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className={`w-full px-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all resize-none`} placeholder={f.placeholder} />
+
+                {/* Submit */}
+                <button type="submit" disabled={formStatus === "loading"} className="group relative w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl text-white font-bold text-sm transition-all hover:shadow-2xl hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed shadow-lg overflow-hidden" style={{ background: t.heroGradient }}>
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                  {formStatus === "loading" ? (
+                    <><Loader2 className="relative w-4 h-4 animate-spin" /> <span className="relative">Sending…</span></>
+                  ) : (
+                    <><span className="relative">{f.buttonText}</span> <ArrowRight className="relative w-4 h-4 group-hover:translate-x-1 transition-transform" /></>
+                  )}
                 </button>
+
+                <p className="text-center text-[11px] text-gray-500 pt-1">
+                  By submitting, you agree to our NDA terms. We never share your info.
+                </p>
               </form>
-              <div className="mt-4 p-3 rounded-lg bg-gray-50 border border-gray-100">
-                <p className="text-[11px] text-gray-500 italic">&ldquo;They delivered our prototype in 48 hours. The developer knew our industry better than our previous agency.&rdquo;</p>
-                <p className="text-[10px] text-gray-400 mt-1">— Startup Founder, Bangalore</p>
+
+              {/* Testimonial */}
+              <div className="mt-5 p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="flex gap-0.5">
+                    {[1,2,3,4,5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}
+                  </div>
+                  <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Verified Client</span>
+                </div>
+                <p className="text-[12px] text-gray-700 italic leading-relaxed">&ldquo;Delivered our prototype in 48 hours. The developer knew our domain better than our previous agency.&rdquo;</p>
+                <p className="text-[10px] text-gray-500 font-medium mt-2">— Startup Founder, Bangalore</p>
               </div>
             </div>
           </div>
