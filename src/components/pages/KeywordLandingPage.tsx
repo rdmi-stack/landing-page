@@ -131,11 +131,11 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
     <div className="bg-white text-gray-900">
       {/* ═══════ HERO ═══════ */}
       <section className="relative pt-16 pb-16 lg:pt-24 lg:pb-20 overflow-hidden text-white" style={{ background: t.heroGradient }}>
-        {/* Ambient theme + complementary orbs */}
+        {/* Ambient theme + complementary orbs (heavier ones hidden on mobile for perf) */}
         <div className="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full blur-[160px] opacity-50 animate-pulse-slow mix-blend-screen" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="absolute top-1/3 -left-40 w-[600px] h-[600px] rounded-full blur-[150px] opacity-35 mix-blend-screen" style={{ backgroundColor: "#a855f7" }} />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-30 mix-blend-screen" style={{ backgroundColor: "#06b6d4" }} />
-        <div className="absolute top-1/2 left-1/3 w-[400px] h-[400px] rounded-full blur-[130px] opacity-25 mix-blend-screen" style={{ backgroundColor: "#ec4899" }} />
+        <div className="hidden md:block absolute top-1/3 -left-40 w-[600px] h-[600px] rounded-full blur-[150px] opacity-35 mix-blend-screen" style={{ backgroundColor: "#a855f7" }} />
+        <div className="hidden md:block absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-30 mix-blend-screen" style={{ backgroundColor: "#06b6d4" }} />
+        <div className="hidden lg:block absolute top-1/2 left-1/3 w-[400px] h-[400px] rounded-full blur-[130px] opacity-25 mix-blend-screen" style={{ backgroundColor: "#ec4899" }} />
 
         {/* Subtle dot pattern */}
         <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "32px 32px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
@@ -213,7 +213,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                     <div className="absolute top-3 left-1/2 -translate-x-1/2 w-32 h-7 rounded-b-2xl bg-zinc-900 z-20" />
                     {/* Screen */}
                     <div className="relative h-full w-full rounded-[2.4rem] overflow-hidden bg-zinc-950">
-                      <Image src={data.images.hero} alt="App mockup" fill className="object-cover" priority />
+                      <Image src={data.images.hero} alt="App mockup" fill sizes="(max-width: 1024px) 90vw, 340px" className="object-cover" priority />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
                     </div>
                   </div>
@@ -256,7 +256,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                     </div>
                     {/* Screen */}
                     <div className="relative aspect-[16/10]">
-                      <Image src={data.images.hero} alt="Software dashboard mockup" fill className="object-cover" priority />
+                      <Image src={data.images.hero} alt="Software dashboard mockup" fill sizes="(max-width: 1024px) 90vw, 50vw" className="object-cover" priority />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
                     </div>
                   </div>
@@ -301,7 +301,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               <div className="flex gap-4 animate-marquee">
                 {[...data.images.portfolio, ...data.images.services, ...data.images.portfolio, ...data.images.services].map((img, i) => (
                   <div key={i} onClick={openConsult} className="flex-shrink-0 w-[260px] sm:w-[300px] relative rounded-2xl overflow-hidden aspect-[16/10] cursor-pointer group shadow-2xl shadow-black/40 ring-1 ring-white/10">
-                    <Image src={img} alt="" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <Image src={img} alt="" fill sizes="300px" loading="lazy" className="object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                       <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-black/40 backdrop-blur-sm">
@@ -314,6 +314,37 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ TRUSTED BY ═══════ */}
+      <section className="relative py-10 lg:py-12 bg-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-[11px] lg:text-xs font-bold text-gray-500 uppercase tracking-[0.2em] mb-6">
+            Trusted by 200+ Startups, Scaleups & Enterprises
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 lg:gap-x-14 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+            {[
+              { name: "Next.js", svg: <svg viewBox="0 0 180 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">Next.js</text></svg> },
+              { name: "OpenAI", svg: <svg viewBox="0 0 180 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">OpenAI</text></svg> },
+              { name: "AWS", svg: <svg viewBox="0 0 90 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">AWS</text></svg> },
+              { name: "Stripe", svg: <svg viewBox="0 0 130 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">Stripe</text></svg> },
+              { name: "Vercel", svg: <svg viewBox="0 0 130 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">▲ Vercel</text></svg> },
+              { name: "LangChain", svg: <svg viewBox="0 0 200 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">🦜 LangChain</text></svg> },
+              { name: "Razorpay", svg: <svg viewBox="0 0 170 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">Razorpay</text></svg> },
+              { name: "Anthropic", svg: <svg viewBox="0 0 200 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">Anthropic</text></svg> },
+            ].map((logo) => (
+              <span key={logo.name} className="text-gray-700">
+                {logo.svg}
+              </span>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 text-xs text-gray-500">
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-500" /> NDA Protected</span>
+            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Money-Back Guarantee</span>
+            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" /> 4.9 / 5 from 200+ shipped</span>
+            <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-emerald-500" /> 2-Hour Response, 7 Days a Week</span>
           </div>
         </div>
       </section>
@@ -438,6 +469,51 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
+      {/* ═══════ DELIVERABLES TIMELINE ═══════ */}
+      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, #f8fafc, #eff6ff, #f5f3ff)" }}>
+        <div className="absolute top-1/4 left-0 w-[500px] h-[400px] rounded-full blur-[140px] opacity-12" style={{ backgroundColor: t.urgencyColor }} />
+        <div className="absolute bottom-1/4 right-0 w-[450px] h-[400px] rounded-full blur-[130px] opacity-10" style={{ backgroundColor: t.urgencyColor }} />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 lg:mb-16">
+            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Concrete Deliverables</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              Here&apos;s Exactly What You Get, <span className={a.text}>Week by Week</span>
+            </h2>
+            <p className="mt-5 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              No vague status emails. Every milestone has a deliverable you can see, click, or run.
+            </p>
+          </div>
+          <div className="relative">
+            {/* connector line */}
+            <div className="hidden lg:block absolute top-8 left-12 right-12 h-0.5" style={{ background: `linear-gradient(90deg, transparent, ${t.urgencyColor}40, ${t.urgencyColor}, ${t.urgencyColor}40, transparent)` }} />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+              {[
+                { day: "Day 1", title: "Senior Engineer Call", desc: "30-60 min discovery on a real call. Stack, scope, risks named live. Written summary + fixed-price quote in your inbox same day." },
+                { day: "Day 2-3", title: "Free Working Prototype", desc: "Clickable prototype on real flows — not a Figma board. AI features mocked with live LLM responses. Test it, share with your team, walk away free if it misses." },
+                { day: "Day 14", title: "First Working Build", desc: "Live staging URL with real data flowing. Features you can click, AI you can talk to, edge cases handled. Sprint demo every two weeks from here." },
+                { day: "Day 42-56", title: "Production Launch", desc: "Live on your domain. CI/CD, observability, runbooks, on-call handoff. 30-60 days of free hypercare. Full source, prompts, weights, schemas — yours." },
+              ].map((d, i) => (
+                <div key={d.day} className="relative">
+                  <div className="relative p-6 lg:p-7 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:bg-white/95 hover:-translate-y-1 transition-all">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white text-sm font-extrabold shadow-md" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` }}>
+                        {String(i + 1).padStart(2, "0")}
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Milestone</p>
+                        <p className={`text-sm font-extrabold ${a.text}`}>{d.day}</p>
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-3 leading-snug">{d.title}</h3>
+                    <p className="text-[14px] text-gray-600 leading-relaxed">{d.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════ USPS ═══════ */}
       <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, #f8fafc, #f0f9ff, #f5f3ff)" }}>
         <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-15" style={{ backgroundColor: t.urgencyColor }} />
@@ -470,6 +546,47 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 </ul>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ GUARANTEES ═══════ */}
+      <section className="relative py-20 lg:py-28 overflow-hidden text-white" style={{ background: t.heroGradient }}>
+        <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full blur-[140px] opacity-40 mix-blend-screen" style={{ backgroundColor: t.urgencyColor }} />
+        <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full blur-[130px] opacity-30 mix-blend-screen" style={{ backgroundColor: "#a855f7" }} />
+        <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)", backgroundSize: "32px 32px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 lg:mb-16">
+            <p className="text-xs lg:text-sm font-bold uppercase tracking-[0.2em] mb-3 text-white/80">Our 4 Guarantees</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.25)" }}>
+              Walk Away Anytime. <span className="text-white/80">No Questions Asked.</span>
+            </h2>
+            <p className="mt-5 text-lg text-white/85 max-w-2xl mx-auto leading-relaxed font-light">
+              We stake our reputation on every milestone. If we miss, you don&apos;t pay. Written into every contract — not marketing copy.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+            {[
+              { icon: Clock, title: "Money-Back Deadline", desc: "Miss the contracted milestone date? Pro-rated refund — written into the contract before sprint one. We've shipped 200+ products and refunded fewer than three deadlines in five years." },
+              { icon: Shield, title: "NDA Day Zero", desc: "Mutual NDA signed before the first technical call — before you share a single document, screenshot, or workflow diagram. Your idea is safe from minute one." },
+              { icon: CheckCircle2, title: "100% Source Ownership", desc: "Every line of code, every prompt, every model weight, every design file in your private GitHub on day one. No retained rights, no licensing fees, no exit friction. Take it anywhere." },
+              { icon: Star, title: "Show Before You Pay", desc: "Free working prototype in 48 hours (web/software) or 72 hours (mobile app). Don't love it? Walk away at zero cost — NDA still holds. We've never invoiced for a prototype." },
+            ].map((g) => (
+              <div key={g.title} className="relative p-7 lg:p-8 rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/20 hover:bg-white/[0.12] hover:-translate-y-1 transition-all">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shadow-lg" style={{ backgroundColor: `${t.urgencyColor}40`, border: `1px solid ${t.urgencyColor}80` }}>
+                  <g.icon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-bold mb-3 leading-snug">{g.title}</h3>
+                <p className="text-[14px] text-white/80 leading-relaxed">{g.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12 lg:mt-14">
+            <p className="text-sm text-white/70 mb-4">Every guarantee is contractual — not aspirational.</p>
+            <button onClick={openConsult} className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-white font-bold text-base transition-all hover:scale-[1.03] shadow-2xl shadow-black/30 ring-1 ring-white/60" style={{ color: t.urgencyColor }}>
+              See These Guarantees in Writing
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
         </div>
       </section>
