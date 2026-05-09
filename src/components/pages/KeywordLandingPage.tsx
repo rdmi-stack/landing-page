@@ -267,36 +267,30 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         <div className="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")" }} />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top status pills */}
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/40 backdrop-blur-md text-xs font-semibold text-emerald-200 shadow-lg shadow-emerald-500/10">
-              <span className="relative flex w-2 h-2"><span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75" /><span className="relative rounded-full w-2 h-2 bg-emerald-400" /></span>
-              47 developers building now
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/25 backdrop-blur-md text-xs font-semibold text-white shadow-lg shadow-black/10">
-              <Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" />
-              <span className="ml-1 text-amber-100">4.9 · 200+ shipped</span>
-            </span>
-          </div>
-
           {/* Two-column hero: text left, product mockup right */}
           <div className="grid lg:grid-cols-[1.05fr,1fr] gap-10 lg:gap-14 items-center mb-12 lg:mb-16">
-            {/* LEFT — text content */}
+            {/* LEFT — text content (kept clean, conversion-focused) */}
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-xl text-xs sm:text-sm font-semibold mb-5 border border-white/30 shadow-lg shadow-black/20">
-                <span className="text-base">{t.icon}</span>
-                <span className="tracking-wide">{data.hero.badge}</span>
+              {/* Single combined social proof pill */}
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/25 mb-7 shadow-lg shadow-black/10">
+                <span className="relative flex w-2 h-2"><span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75" /><span className="relative rounded-full w-2 h-2 bg-emerald-400" /></span>
+                <span className="text-xs font-semibold text-emerald-200">47 devs building now</span>
+                <span className="w-px h-3 bg-white/20" />
+                <span className="flex items-center gap-0.5">
+                  <Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" /><Star className="w-3 h-3 fill-amber-300 text-amber-300" />
+                </span>
+                <span className="text-xs font-semibold text-amber-100">4.9 · 200+ shipped</span>
               </div>
 
-              <h1 className="text-[2.1rem] sm:text-[2.6rem] lg:text-5xl xl:text-[3.75rem] font-extrabold leading-[1.05] tracking-[-0.025em] mb-5 bg-clip-text text-transparent animate-gradient-flow" style={{ backgroundImage: `linear-gradient(120deg, #ffffff 0%, ${t.urgencyColor}cc 22%, #ffffff 42%, #c4b5fd 62%, #ffffff 80%, ${t.urgencyColor}cc 100%)`, backgroundSize: "200% 100%", filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.3))" }}>
+              <h1 className="text-[2.25rem] sm:text-[2.75rem] lg:text-[3.25rem] xl:text-[4rem] font-extrabold leading-[1.04] tracking-[-0.025em] mb-6 bg-clip-text text-transparent animate-gradient-flow" style={{ backgroundImage: `linear-gradient(120deg, #ffffff 0%, ${t.urgencyColor}cc 22%, #ffffff 42%, #c4b5fd 62%, #ffffff 80%, ${t.urgencyColor}cc 100%)`, backgroundSize: "200% 100%", filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.3))" }}>
                 {data.hero.h1}
               </h1>
 
-              <p className="text-base sm:text-lg text-white/85 leading-relaxed mb-7 font-light max-w-2xl lg:max-w-none mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg text-white/85 leading-relaxed mb-9 font-light max-w-xl lg:max-w-2xl mx-auto lg:mx-0">
                 {data.hero.subtitle}
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center lg:items-stretch justify-center lg:justify-start gap-3 mb-4">
+              <div className="flex flex-col sm:flex-row items-center lg:items-stretch justify-center lg:justify-start gap-3">
                 <button onClick={openConsult} className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white font-bold text-base lg:text-lg transition-all hover:scale-[1.03] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.45)] cursor-pointer overflow-hidden ring-1 ring-white/60" style={{ color: t.urgencyColor }}>
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   <span className="relative">{data.hero.cta1}</span>
@@ -306,12 +300,6 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                   <Phone className="w-4 h-4" /> WhatsApp Now
                 </a>
               </div>
-
-              <p className="text-xs sm:text-sm text-white/70 flex flex-wrap items-center gap-x-4 gap-y-1 justify-center lg:justify-start">
-                <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />Free prototype</span>
-                <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />NDA day one</span>
-                <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />Money-back guarantee</span>
-              </p>
             </div>
 
             {/* RIGHT — product mockup */}
