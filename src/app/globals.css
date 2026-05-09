@@ -168,6 +168,17 @@ html {
   animation: pulse-slow 8s ease-in-out infinite;
 }
 
+/* Hero H1 gradient sweep — multi-color flow across the headline */
+@keyframes gradient-flow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-flow {
+  animation: gradient-flow 8s ease-in-out infinite;
+}
+
 /* Hide scrollbar utility */
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }

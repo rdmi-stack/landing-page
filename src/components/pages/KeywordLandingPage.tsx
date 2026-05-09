@@ -288,7 +288,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <span className="tracking-wide">{data.hero.badge}</span>
               </div>
 
-              <h1 className="text-[2rem] sm:text-[2.5rem] lg:text-5xl xl:text-[3.6rem] font-extrabold leading-[1.05] tracking-[-0.025em] mb-5 bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(180deg, #ffffff 0%, #ffffff 55%, rgba(255,255,255,0.82) 100%)", filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.25))" }}>
+              <h1 className="text-[2.1rem] sm:text-[2.6rem] lg:text-5xl xl:text-[3.75rem] font-extrabold leading-[1.05] tracking-[-0.025em] mb-5 bg-clip-text text-transparent animate-gradient-flow" style={{ backgroundImage: `linear-gradient(120deg, #ffffff 0%, ${t.urgencyColor}cc 22%, #ffffff 42%, #c4b5fd 62%, #ffffff 80%, ${t.urgencyColor}cc 100%)`, backgroundSize: "200% 100%", filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.3))" }}>
                 {data.hero.h1}
               </h1>
 
@@ -296,7 +296,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 {data.hero.subtitle}
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center lg:items-stretch justify-center lg:justify-start gap-3 mb-5">
+              <div className="flex flex-col sm:flex-row items-center lg:items-stretch justify-center lg:justify-start gap-3 mb-4">
                 <button onClick={openConsult} className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white font-bold text-base lg:text-lg transition-all hover:scale-[1.03] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.45)] cursor-pointer overflow-hidden ring-1 ring-white/60" style={{ color: t.urgencyColor }}>
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   <span className="relative">{data.hero.cta1}</span>
@@ -307,18 +307,11 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 </a>
               </div>
 
-              <p className="text-xs sm:text-sm text-white/75 mb-6">
-                <span className="inline-block w-2 h-2 rounded-full bg-amber-300 animate-pulse mr-2 align-middle" />
-                Only <span className="font-bold text-amber-200">3 slots left</span> this week · Free prototype in 48 hours
+              <p className="text-xs sm:text-sm text-white/70 flex flex-wrap items-center gap-x-4 gap-y-1 justify-center lg:justify-start">
+                <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />Free prototype</span>
+                <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />NDA day one</span>
+                <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />Money-back guarantee</span>
               </p>
-
-              <div className="flex flex-wrap justify-center lg:justify-start gap-2">
-                {data.hero.trustPoints.map((tp) => (
-                  <span key={tp} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[11px] sm:text-xs font-medium text-white shadow-md shadow-black/10">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300 flex-shrink-0" />{tp}
-                  </span>
-                ))}
-              </div>
             </div>
 
             {/* RIGHT — product mockup */}
