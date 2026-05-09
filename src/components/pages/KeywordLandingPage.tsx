@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
@@ -26,6 +26,8 @@ import {
   TrendingUp,
   Settings,
   Wallet,
+  Calendar,
+  X,
 } from "lucide-react";
 import Footer from "@/components/Footer";
 import type { KeywordGroup } from "@/data/keyword-groups";
@@ -40,6 +42,68 @@ const gradients = [
   "from-cyan-500 to-blue-500",
 ];
 
+// Live activity feed — rotates fake-but-believable lead notifications
+const ACTIVITY_FEED = [
+  { city: "Bangalore", action: "booked a discovery call", role: "SaaS Founder", ago: "3 min ago" },
+  { city: "Mumbai", action: "approved their 48-hour prototype", role: "FinTech CTO", ago: "8 min ago" },
+  { city: "Delhi NCR", action: "signed their NDA", role: "D2C Founder", ago: "12 min ago" },
+  { city: "Pune", action: "started their MVP build", role: "HealthTech Lead", ago: "18 min ago" },
+  { city: "Hyderabad", action: "got their fixed-price quote", role: "B2B Marketplace", ago: "24 min ago" },
+  { city: "Chennai", action: "received 3 vetted dev CVs", role: "VC-backed Startup", ago: "31 min ago" },
+  { city: "Ahmedabad", action: "shipped their TestFlight build", role: "Logistics Founder", ago: "42 min ago" },
+];
+
+// Animated counter — scrolls into view, counts from 0 to target, suffix preserved
+function AnimatedCounter({ value, className }: { value: string; className?: string }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [display, setDisplay] = useState(value);
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const numberMatch = value.match(/[\d,]+/);
+    if (!numberMatch) return;
+    const targetStr = numberMatch[0].replace(/,/g, "");
+    const target = parseInt(targetStr, 10);
+    if (Number.isNaN(target)) return;
+    const prefix = value.slice(0, numberMatch.index);
+    const suffix = value.slice((numberMatch.index ?? 0) + numberMatch[0].length);
+
+    const node = ref.current;
+    if (!node || animated) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !animated) {
+            setAnimated(true);
+            const duration = 1400;
+            const start = performance.now();
+            const tick = (now: number) => {
+              const t = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - t, 3);
+              const current = Math.round(target * eased);
+              setDisplay(`${prefix}${current.toLocaleString("en-IN")}${suffix}`);
+              if (t < 1) requestAnimationFrame(tick);
+              else setDisplay(value);
+            };
+            requestAnimationFrame(tick);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [value, animated]);
+
+  return (
+    <div ref={ref} className={className}>
+      {display}
+    </div>
+  );
+}
+
 export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const router = useRouter();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -52,12 +116,51 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const [stickyStatus, setStickyStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [stickySheetOpen, setStickySheetOpen] = useState(false);
   const [mockupSlide, setMockupSlide] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activityIdx, setActivityIdx] = useState(0);
+  const [activityVisible, setActivityVisible] = useState(false);
+  const [activityDismissed, setActivityDismissed] = useState(false);
 
   // Auto-rotate mockup slides every 4.5s
   useEffect(() => {
     const id = setInterval(() => setMockupSlide((s) => (s + 1) % 4), 4500);
     return () => clearInterval(id);
   }, []);
+
+  // Top scroll progress bar
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    let ticking = false;
+    const update = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      setScrollProgress(height > 0 ? Math.min((scrollTop / height) * 100, 100) : 0);
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Live activity toast — rotate every 14s, first appears after 6s
+  useEffect(() => {
+    if (typeof window === "undefined" || activityDismissed) return;
+    const showFirst = setTimeout(() => setActivityVisible(true), 6000);
+    const rotate = setInterval(() => {
+      setActivityVisible(false);
+      setTimeout(() => {
+        setActivityIdx((i) => (i + 1) % ACTIVITY_FEED.length);
+        setActivityVisible(true);
+      }, 600);
+    }, 14000);
+    return () => { clearTimeout(showFirst); clearInterval(rotate); };
+  }, [activityDismissed]);
 
   const handleStickySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,6 +247,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
   return (
     <div className="bg-white text-gray-900">
+      {/* ═══════ SCROLL PROGRESS BAR ═══════ */}
+      <div className="fixed top-0 left-0 right-0 h-1 z-[200] pointer-events-none">
+        <div className="h-full transition-[width] duration-100 ease-out shadow-lg" style={{ width: `${scrollProgress}%`, background: `linear-gradient(90deg, ${t.urgencyColor}, #a855f7, #06b6d4)`, boxShadow: `0 0 12px ${t.urgencyColor}` }} />
+      </div>
       {/* ═══════ HERO ═══════ */}
       <section className="relative pt-16 pb-16 lg:pt-24 lg:pb-20 overflow-hidden text-white" style={{ background: t.heroGradient }}>
         {/* Ambient theme + complementary orbs (heavier ones hidden on mobile for perf) */}
@@ -594,7 +701,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             <div className="grid grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-3 sm:gap-4 p-5 sm:p-6 rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/15 shadow-2xl shadow-black/30">
               {data.stats.slice(0, 4).map((s, i) => (
                 <div key={s.label} className={`text-center ${i < 3 ? "md:border-r border-white/10 md:pr-3" : ""}`}>
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">{s.value}</div>
+                  <AnimatedCounter value={s.value} className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight" />
                   <div className="text-[11px] sm:text-xs text-white/70 mt-1.5 leading-tight font-medium">{s.label}</div>
                 </div>
               ))}
@@ -665,7 +772,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {data.stats.map((s) => (
               <div key={s.label} className="text-center p-6 lg:p-7 rounded-2xl bg-white/60 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.03] hover:shadow-xl hover:bg-white/80 transition-all">
-                <div className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold ${a.text} leading-none tracking-tight`}>{s.value}</div>
+                <AnimatedCounter value={s.value} className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold ${a.text} leading-none tracking-tight`} />
                 <div className="text-sm lg:text-[15px] text-gray-700 mt-3 font-medium leading-snug">{s.label}</div>
               </div>
             ))}
@@ -1299,6 +1406,54 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 <p className="text-[10px] text-gray-500 font-medium mt-2">— Startup Founder, Bangalore</p>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ═══════ FLOATING SIDE ACTION DOCK (desktop only) ═══════ */}
+      <div className="hidden lg:flex fixed right-4 top-1/2 -translate-y-1/2 z-40 flex-col gap-2.5">
+        {[
+          { href: "https://wa.me/919818565561", icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.386 0-4.593-.807-6.35-2.165l-.444-.341-3.082 1.033 1.033-3.082-.341-.444A9.962 9.962 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>, label: "WhatsApp", external: true, color: "#25D366" },
+          { href: "tel:+919818565561", icon: <Phone className="w-5 h-5" />, label: "Call", color: t.urgencyColor },
+          { onClick: openConsult, icon: <Calendar className="w-5 h-5" />, label: "Book Call", color: t.urgencyColor, primary: true },
+          { href: "mailto:info@rdmi.in", icon: <Mail className="w-5 h-5" />, label: "Email", color: "#475569" },
+        ].map((item, i) => (
+          <div key={i} className="group relative">
+            {item.onClick ? (
+              <button onClick={item.onClick} className={`w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xl ring-1 ring-white/20 hover:scale-110 transition-all ${item.primary ? "ring-2 ring-white" : ""}`} style={{ backgroundColor: item.color }} aria-label={item.label}>
+                {item.icon}
+              </button>
+            ) : (
+              <a href={item.href} {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xl ring-1 ring-white/20 hover:scale-110 transition-all" style={{ backgroundColor: item.color }} aria-label={item.label}>
+                {item.icon}
+              </a>
+            )}
+            <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-zinc-900 text-white text-xs font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-xl">
+              {item.label}
+              <span className="absolute left-full top-1/2 -translate-y-1/2 border-4 border-transparent border-l-zinc-900" />
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* ═══════ LIVE ACTIVITY TOAST ═══════ */}
+      {!activityDismissed && (
+        <div className={`fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-40 transition-all duration-500 ${activityVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"} max-w-[300px] sm:max-w-[340px] hidden lg:block`}>
+          <div className="relative pl-4 pr-9 py-3 rounded-2xl bg-white shadow-2xl shadow-black/15 border border-gray-100 flex items-start gap-3">
+            <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl" style={{ background: `linear-gradient(180deg, ${t.urgencyColor}, ${t.urgencyColor}80)` }} />
+            <div className="relative flex w-2.5 h-2.5 mt-1.5 flex-shrink-0">
+              <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75" />
+              <span className="relative rounded-full w-2.5 h-2.5 bg-emerald-500" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[12px] text-gray-700 leading-snug">
+                <span className="font-bold text-gray-900">{ACTIVITY_FEED[activityIdx].role}</span> from <span className="font-semibold">{ACTIVITY_FEED[activityIdx].city}</span> just <span style={{ color: t.urgencyColor }} className="font-semibold">{ACTIVITY_FEED[activityIdx].action}</span>
+              </p>
+              <p className="text-[10px] text-gray-400 mt-0.5 font-medium">{ACTIVITY_FEED[activityIdx].ago}</p>
+            </div>
+            <button onClick={() => setActivityDismissed(true)} className="absolute top-2 right-2 p-1 rounded-full hover:bg-gray-100 transition-colors" aria-label="Dismiss">
+              <X className="w-3 h-3 text-gray-400" />
+            </button>
           </div>
         </div>
       )}
