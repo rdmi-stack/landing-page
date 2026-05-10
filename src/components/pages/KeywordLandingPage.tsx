@@ -1027,10 +1027,15 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ USPS ═══════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, #f8fafc, #f0f9ff, #f5f3ff)" }}>
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-15" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[120px] opacity-10" style={{ backgroundColor: t.urgencyColor }} />
+      {/* ═══════ USPS (glassmorphic) ═══════ */}
+      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(135deg, #eef2ff, #f5f3ff, #fdf4ff, #eff6ff)" }}>
+        {/* Vibrant blur orbs to give the glass something to refract through */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-50" style={{ backgroundColor: t.urgencyColor }} />
+        <div className="absolute bottom-0 left-1/4 w-[450px] h-[450px] rounded-full blur-[130px] opacity-40" style={{ backgroundColor: "#a855f7" }} />
+        <div className="absolute top-1/3 left-0 w-[350px] h-[350px] rounded-full blur-[110px] opacity-35" style={{ backgroundColor: "#ec4899" }} />
+        {/* Subtle dot pattern */}
+        <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle, #1e293b 1px, transparent 1px)", backgroundSize: "28px 28px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
+
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14 lg:mb-16">
             <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Why RDMI</p>
@@ -1040,24 +1045,35 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           </div>
           <div className="grid sm:grid-cols-3 gap-5 lg:gap-6">
             {[
-              { icon: MessageCircle, title: "Talk to Developers Directly", text: data.uspHeadlines.direct, color: "text-blue-600", bg: "bg-blue-50", border: "border-l-blue-500", bullets: ["Direct WhatsApp with your developer", "Daily standups, not weekly reports", "Senior engineer calls within 2 hours"] },
-              { icon: IndianRupee, title: "Senior Engineers, No Surprises", text: data.uspHeadlines.cost, color: "text-emerald-600", bg: "bg-emerald-50", border: "border-l-emerald-500", bullets: ["5+ year senior engineers only", "Full source code ownership", "Month-to-month, walk away anytime"] },
-              { icon: Bot, title: "AI-Native Delivery", text: data.uspHeadlines.ai, color: "text-purple-600", bg: "bg-purple-50", border: "border-l-purple-500", bullets: ["Cursor, Claude Code, Copilot daily", "3x faster than legacy agencies", "AI features built into every product"] },
+              { icon: MessageCircle, title: "Talk to Developers Directly", text: data.uspHeadlines.direct, accent: "#3b82f6", bullets: ["Direct WhatsApp with your developer", "Daily standups, not weekly reports", "Senior engineer calls within 2 hours"] },
+              { icon: IndianRupee, title: "Senior Engineers, No Surprises", text: data.uspHeadlines.cost, accent: "#10b981", bullets: ["5+ year senior engineers only", "Full source code ownership", "Month-to-month, walk away anytime"] },
+              { icon: Bot, title: "AI-Native Delivery", text: data.uspHeadlines.ai, accent: "#a855f7", bullets: ["Latest AI tools used daily", "3x faster than legacy agencies", "AI features built into every product"] },
             ].map((usp) => (
-              <div key={usp.title} className={`bg-white/70 backdrop-blur-xl rounded-2xl p-7 lg:p-8 border border-white/60 border-l-4 ${usp.border} shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:bg-white/90 hover:-translate-y-1 transition-all`}>
-                <div className={`w-14 h-14 rounded-2xl ${usp.bg} flex items-center justify-center mb-5`}>
-                  <usp.icon className={`w-7 h-7 ${usp.color}`} />
+              <TiltCard key={usp.title} max={5} scale={1.02}>
+                <div className="group relative bg-white/40 backdrop-blur-2xl rounded-2xl p-7 lg:p-8 border border-white/60 shadow-xl shadow-black/[0.06] hover:bg-white/65 hover:shadow-2xl transition-all overflow-hidden h-full">
+                  {/* Inner highlight at top — adds glass depth */}
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                  {/* Accent left edge */}
+                  <div className="absolute top-0 left-0 bottom-0 w-1" style={{ background: `linear-gradient(180deg, ${usp.accent}, ${usp.accent}80)` }} />
+                  {/* Accent inner glow blob behind icon */}
+                  <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full opacity-30 group-hover:opacity-50 blur-2xl transition-opacity" style={{ backgroundColor: usp.accent }} />
+
+                  <div className="relative">
+                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-lg ring-1 ring-white/60 backdrop-blur-md" style={{ backgroundColor: `${usp.accent}25` }}>
+                      <usp.icon className="w-7 h-7" style={{ color: usp.accent }} />
+                    </div>
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug">{usp.title}</h3>
+                    <p className="text-[15px] text-gray-700 leading-relaxed mb-5">{usp.text}</p>
+                    <ul className="space-y-2.5 pt-4 border-t border-white/40">
+                      {usp.bullets.map((b) => (
+                        <li key={b} className="flex items-start gap-2 text-sm text-gray-800 font-medium">
+                          <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: usp.accent }} />{b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug">{usp.title}</h3>
-                <p className="text-[15px] text-gray-600 leading-relaxed mb-5">{usp.text}</p>
-                <ul className="space-y-2.5">
-                  {usp.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-gray-700">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />{b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </TiltCard>
             ))}
           </div>
         </div>
