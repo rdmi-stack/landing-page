@@ -53,6 +53,43 @@ const ACTIVITY_FEED = [
   { city: "Ahmedabad", action: "shipped their TestFlight build", role: "Logistics Founder", ago: "42 min ago" },
 ];
 
+// 3D tilt-on-hover card — mouse position drives perspective transform
+function TiltCard({ children, className, max = 8, scale = 1.02, glare = true }: { children: React.ReactNode; className?: string; max?: number; scale?: number; glare?: boolean }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [transform, setTransform] = useState("");
+  const [glareStyle, setGlareStyle] = useState<React.CSSProperties>({ opacity: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const node = ref.current;
+    if (!node) return;
+    const rect = node.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    const rx = (py - 0.5) * -2 * max;
+    const ry = (px - 0.5) * 2 * max;
+    setTransform(`perspective(1100px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(${scale}, ${scale}, ${scale})`);
+    if (glare) {
+      setGlareStyle({
+        opacity: 1,
+        background: `radial-gradient(circle at ${px * 100}% ${py * 100}%, rgba(255,255,255,0.35), transparent 50%)`,
+      });
+    }
+  };
+  const handleMouseLeave = () => {
+    setTransform("");
+    setGlareStyle({ opacity: 0 });
+  };
+
+  return (
+    <div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={`relative transition-transform duration-300 ease-out will-change-transform ${className ?? ""}`} style={{ transform: transform || undefined, transformStyle: "preserve-3d" }}>
+      {children}
+      {glare && (
+        <div className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300" style={glareStyle} />
+      )}
+    </div>
+  );
+}
+
 // Animated counter — scrolls into view, counts from 0 to target, suffix preserved
 function AnimatedCounter({ value, className }: { value: string; className?: string }) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -120,6 +157,12 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const [activityIdx, setActivityIdx] = useState(0);
   const [activityVisible, setActivityVisible] = useState(false);
   const [activityDismissed, setActivityDismissed] = useState(false);
+  const [heroSpotlight, setHeroSpotlight] = useState<{ x: number; y: number } | null>(null);
+
+  const handleHeroMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    setHeroSpotlight({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
 
   // Auto-rotate mockup slides every 4.5s
   useEffect(() => {
@@ -252,7 +295,11 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         <div className="h-full transition-[width] duration-100 ease-out shadow-lg" style={{ width: `${scrollProgress}%`, background: `linear-gradient(90deg, ${t.urgencyColor}, #a855f7, #06b6d4)`, boxShadow: `0 0 12px ${t.urgencyColor}` }} />
       </div>
       {/* ═══════ HERO ═══════ */}
-      <section className="relative pt-16 pb-16 lg:pt-24 lg:pb-20 overflow-hidden text-white" style={{ background: t.heroGradient }}>
+      <section onMouseMove={handleHeroMouseMove} onMouseLeave={() => setHeroSpotlight(null)} className="relative pt-16 pb-16 lg:pt-24 lg:pb-20 overflow-hidden text-white" style={{ background: t.heroGradient }}>
+        {/* Mouse-following spotlight (desktop) — follows cursor across the hero */}
+        {heroSpotlight && (
+          <div className="hidden lg:block absolute pointer-events-none transition-opacity duration-150" style={{ left: heroSpotlight.x - 250, top: heroSpotlight.y - 250, width: 500, height: 500, background: `radial-gradient(circle, ${t.urgencyColor}30 0%, transparent 60%)`, filter: "blur(20px)", mixBlendMode: "screen" }} />
+        )}
         {/* Ambient theme + complementary orbs (heavier ones hidden on mobile for perf) */}
         <div className="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full blur-[160px] opacity-50 animate-pulse-slow mix-blend-screen" style={{ backgroundColor: t.urgencyColor }} />
         <div className="hidden md:block absolute top-1/3 -left-40 w-[600px] h-[600px] rounded-full blur-[150px] opacity-35 mix-blend-screen" style={{ backgroundColor: "#a855f7" }} />
@@ -714,29 +761,46 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ TRUSTED BY ═══════ */}
-      <section className="relative py-10 lg:py-12 bg-white border-b border-gray-100">
+      {/* ═══════ TRUSTED BY (auto-scroll marquee) ═══════ */}
+      <section className="relative py-10 lg:py-12 bg-white border-b border-gray-100 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-[11px] lg:text-xs font-bold text-gray-500 uppercase tracking-[0.2em] mb-6">
             Trusted by 200+ Startups, Scaleups & Enterprises
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 lg:gap-x-14 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-            {[
-              { name: "Next.js", svg: <svg viewBox="0 0 180 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">Next.js</text></svg> },
-              { name: "OpenAI", svg: <svg viewBox="0 0 180 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">OpenAI</text></svg> },
-              { name: "AWS", svg: <svg viewBox="0 0 90 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">AWS</text></svg> },
-              { name: "Stripe", svg: <svg viewBox="0 0 130 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">Stripe</text></svg> },
-              { name: "Vercel", svg: <svg viewBox="0 0 130 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">▲ Vercel</text></svg> },
-              { name: "LangChain", svg: <svg viewBox="0 0 200 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">🦜 LangChain</text></svg> },
-              { name: "Razorpay", svg: <svg viewBox="0 0 170 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">Razorpay</text></svg> },
-              { name: "Anthropic", svg: <svg viewBox="0 0 200 36" className="h-6 lg:h-7"><text x="0" y="26" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="28" fill="currentColor">Anthropic</text></svg> },
-            ].map((logo) => (
-              <span key={logo.name} className="text-gray-700">
-                {logo.svg}
-              </span>
-            ))}
+        </div>
+        {/* Marquee strip with edge fades */}
+        <div className="relative">
+          <div className="absolute left-0 top-0 bottom-0 w-20 lg:w-32 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 lg:w-32 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+          <div className="overflow-hidden">
+            <div className="flex items-center gap-12 lg:gap-16 animate-marquee whitespace-nowrap py-2">
+              {(() => {
+                const logos = [
+                  { name: "Next.js", txt: "Next.js" },
+                  { name: "OpenAI", txt: "OpenAI" },
+                  { name: "AWS", txt: "AWS" },
+                  { name: "Stripe", txt: "Stripe" },
+                  { name: "Vercel", txt: "▲ Vercel" },
+                  { name: "LangChain", txt: "🦜 LangChain" },
+                  { name: "Razorpay", txt: "Razorpay" },
+                  { name: "Anthropic", txt: "Anthropic" },
+                  { name: "Pinecone", txt: "Pinecone" },
+                  { name: "Flutter", txt: "Flutter" },
+                  { name: "PostgreSQL", txt: "PostgreSQL" },
+                  { name: "Tailwind", txt: "Tailwind" },
+                ];
+                const doubled = [...logos, ...logos];
+                return doubled.map((logo, i) => (
+                  <span key={`${logo.name}-${i}`} className="flex-shrink-0 text-gray-500 hover:text-gray-900 transition-colors text-2xl lg:text-3xl font-extrabold tracking-tight">
+                    {logo.txt}
+                  </span>
+                ));
+              })()}
+            </div>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 text-xs text-gray-500">
+        </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-500">
             <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-500" /> NDA Protected</span>
             <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Money-Back Guarantee</span>
             <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" /> 4.9 / 5 from 200+ shipped</span>
@@ -755,7 +819,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               const icons = [BarChart3, Sparkles, Shield, TrendingUp];
               const StatIcon = icons[i % icons.length];
               return (
-                <div key={s.label} className="group relative p-7 lg:p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-xl shadow-black/[0.04] hover:shadow-2xl hover:-translate-y-1 transition-all overflow-hidden">
+                <TiltCard key={s.label} max={6} scale={1.03} className="group relative p-7 lg:p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-xl shadow-black/[0.04] hover:shadow-2xl overflow-hidden">
                   {/* Corner accent gradient */}
                   <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-15 group-hover:opacity-30 transition-opacity" style={{ background: `radial-gradient(circle, ${t.urgencyColor}, transparent)` }} />
                   {/* Icon tile */}
@@ -769,7 +833,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                     <path d={i === 0 ? "M0,18 Q15,16 25,12 T50,8 T75,5 T100,2" : i === 1 ? "M0,12 Q15,18 25,10 T50,6 T75,9 T100,3" : i === 2 ? "M0,15 Q15,8 25,12 T50,4 T75,8 T100,2" : "M0,20 Q15,12 25,15 T50,7 T75,10 T100,3"} fill="none" stroke={t.urgencyColor} strokeWidth="2" strokeLinecap="round" />
                     <circle cx="100" cy={i === 0 ? 2 : i === 1 ? 3 : i === 2 ? 2 : 3} r="2.5" fill={t.urgencyColor} />
                   </svg>
-                </div>
+                </TiltCard>
               );
             })}
           </div>
@@ -834,18 +898,20 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 );
               }
               return (
-                <div key={service.title} onClick={openConsult} className="group p-7 lg:p-8 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:bg-white/90 hover:-translate-y-1 transition-all cursor-pointer">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-sm font-bold mb-5 shadow-sm`}>
-                    {String(i + 1).padStart(2, "0")}
+                <TiltCard key={service.title} max={6} scale={1.03}>
+                  <div onClick={openConsult} className="group p-7 lg:p-8 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:bg-white/90 transition-all cursor-pointer h-full">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-sm font-bold mb-5 shadow-sm`}>
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
+                    <h3 className={`text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:${a.text} transition-colors`}>{service.title}</h3>
+                    <p className="text-[15px] text-gray-600 leading-relaxed mb-5">{service.description}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {service.tags.slice(0, 4).map((tag) => (
+                        <span key={tag} className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700 border border-gray-200">{tag}</span>
+                      ))}
+                    </div>
                   </div>
-                  <h3 className={`text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:${a.text} transition-colors`}>{service.title}</h3>
-                  <p className="text-[15px] text-gray-600 leading-relaxed mb-5">{service.description}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {service.tags.slice(0, 4).map((tag) => (
-                      <span key={tag} className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700 border border-gray-200">{tag}</span>
-                    ))}
-                  </div>
-                </div>
+                </TiltCard>
               );
             })}
           </div>
@@ -1090,7 +1156,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { quote: "The AI chatbot handles 80% of tickets. ROI positive in month 2.", author: "DS", role: "VP Ops, E-Commerce", rating: 5 },
               { quote: "After the first sprint demo, we extended the contract to 6 months.", author: "MT", role: "PM, SaaS, San Francisco", rating: 5 },
             ]).map((tm, i) => (
-              <div key={i} className="group relative bg-white rounded-3xl p-7 lg:p-8 border border-gray-200 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:-translate-y-1 transition-all overflow-hidden">
+              <TiltCard key={i} max={5} scale={1.02} className="group relative bg-white rounded-3xl p-7 lg:p-8 border border-gray-200 shadow-lg shadow-black/[0.04] hover:shadow-2xl overflow-hidden">
                 {/* Decorative corner blob */}
                 <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-10 group-hover:opacity-20 transition-opacity" style={{ background: `radial-gradient(circle, ${t.urgencyColor}, transparent)` }} />
                 {/* Big opening quote */}
@@ -1114,7 +1180,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                     <p className="text-xs text-gray-500 font-medium leading-tight mt-0.5">{tm.role}</p>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             ))}
           </div>
         </div>
