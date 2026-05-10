@@ -1306,46 +1306,56 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ CROSS SERVICES ═══════ */}
-      <section className="py-16 lg:py-20 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #f8fafc, #eef2ff, #f5f3ff)" }}>
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-100/50 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-100/40 rounded-full blur-[80px]" />
+      {/* ═══════ CROSS SERVICES (glassmorphic) ═══════ */}
+      <section className="py-20 lg:py-24 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #eef2ff, #f5f3ff, #fdf4ff, #eff6ff)" }}>
+        {/* Vibrant blur orbs to give the glass something to refract */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-50" style={{ backgroundColor: t.urgencyColor }} />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[120px] opacity-40" style={{ backgroundColor: "#a855f7" }} />
+        <div className="absolute top-1/2 left-1/3 w-[350px] h-[350px] rounded-full blur-[110px] opacity-30" style={{ backgroundColor: "#ec4899" }} />
+        {/* Subtle dot pattern */}
+        <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle, #1e293b 1px, transparent 1px)", backgroundSize: "28px 28px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold uppercase tracking-widest text-indigo-500 mb-2">Explore More</p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 lg:mb-14">
+            <p className={`text-xs font-bold uppercase tracking-[0.2em] mb-3 ${a.text}`}>Explore More</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
               Full-Stack AI Development <span className={a.text}>Across Industries</span>
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
             {[
               { name: "Custom Software Development", desc: "Enterprise apps, SaaS, ERP & CRM", href: "/kw/custom-software-development", icon: "💻", gradient: "from-indigo-500 to-purple-500" },
               { name: "Mobile App Development", desc: "iOS, Android, Flutter & React Native", href: "/kw/mobile-app-development", icon: "📱", gradient: "from-blue-500 to-cyan-500" },
               { name: "Web Development", desc: "Websites, web apps, Shopify & WordPress", href: "/kw/web-development-company", icon: "🌐", gradient: "from-violet-500 to-purple-500" },
               { name: "AI Software & Agents", desc: "Chatbots, RAG, workflow automation", href: "/kw/ai-software-development", icon: "🤖", gradient: "from-purple-500 to-pink-500" },
               { name: "E-Commerce Development", desc: "Shopify, marketplace & headless commerce", href: "/kw/ecommerce-development", icon: "🛒", gradient: "from-amber-500 to-orange-500" },
-              { name: "AI Automation & Consulting", desc: "Business process automation & AI strategy", href: "/kw/ai-agent-workflow-consulting", icon: "⚡", gradient: "from-purple-600 to-indigo-600" },
+              { name: "AI Automation & Consulting", desc: "Business process automation & AI strategy", href: "/kw/ai-agent-development", icon: "⚡", gradient: "from-purple-600 to-indigo-600" },
               { name: "Healthcare AI", desc: "HIPAA-compliant patient & clinical AI", href: "/kw/healthcare-ai-development", icon: "🏥", gradient: "from-rose-500 to-pink-500" },
               { name: "Insurance AI", desc: "Claims, underwriting & fraud detection AI", href: "/kw/insurance-ai-development", icon: "🛡️", gradient: "from-sky-500 to-blue-500" },
               { name: "Travel & Hospitality AI", desc: "Booking engines, chatbots & revenue AI", href: "/kw/travel-hospitality-ai", icon: "✈️", gradient: "from-cyan-500 to-teal-500" },
             ].filter((s) => s.href !== `/kw/${data.slug}`).slice(0, 6).map((s) => (
-              <a key={s.href} href={s.href} className="group relative bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-                {/* Top accent bar */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${s.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
+              <TiltCard key={s.href} max={5} scale={1.02}>
+                <a href={s.href} className="group relative block bg-white/40 backdrop-blur-2xl rounded-2xl p-5 lg:p-6 border border-white/60 shadow-xl shadow-black/[0.06] hover:bg-white/65 hover:shadow-2xl transition-all duration-300 overflow-hidden h-full">
+                  {/* Inner highlight at top — adds glass depth */}
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                  {/* Top accent bar reveals on hover */}
+                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${s.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
+                  {/* Subtle inner glow toward icon */}
+                  <div className={`absolute -top-8 -left-8 w-32 h-32 rounded-full opacity-25 group-hover:opacity-50 transition-opacity blur-2xl bg-gradient-to-br ${s.gradient}`} />
 
-                <div className="flex items-start gap-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center text-xl shadow-lg shadow-gray-200 group-hover:scale-110 transition-transform`}>
-                    {s.icon}
+                  <div className="relative flex items-start gap-4">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center text-xl shadow-lg shadow-black/15 group-hover:scale-110 transition-transform ring-1 ring-white/40`}>
+                      {s.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className={`text-sm lg:text-[15px] font-bold text-gray-900 group-hover:${a.text} transition-colors mb-1 leading-snug`}>{s.name}</h3>
+                      <p className="text-xs lg:text-[13px] text-gray-600 leading-relaxed">{s.desc}</p>
+                    </div>
+                    <ArrowRight className={`w-4 h-4 text-gray-400 group-hover:${a.text} group-hover:translate-x-1 transition-all flex-shrink-0 mt-1`} />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-sm font-bold text-gray-900 group-hover:text-indigo-600 transition-colors mb-0.5">{s.name}</h3>
-                    <p className="text-xs text-gray-500 leading-relaxed">{s.desc}</p>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
-                </div>
-              </a>
+                </a>
+              </TiltCard>
             ))}
           </div>
         </div>
