@@ -1027,14 +1027,17 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ USPS (glassmorphic) ═══════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(135deg, #eef2ff, #f5f3ff, #fdf4ff, #eff6ff)" }}>
-        {/* Vibrant blur orbs to give the glass something to refract through */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-50" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="absolute bottom-0 left-1/4 w-[450px] h-[450px] rounded-full blur-[130px] opacity-40" style={{ backgroundColor: "#a855f7" }} />
-        <div className="absolute top-1/3 left-0 w-[350px] h-[350px] rounded-full blur-[110px] opacity-35" style={{ backgroundColor: "#ec4899" }} />
-        {/* Subtle dot pattern */}
-        <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle, #1e293b 1px, transparent 1px)", backgroundSize: "28px 28px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
+      {/* ═══════ USPS (glassmorphic — real image refraction) ═══════ */}
+      <section className="relative py-20 lg:py-28 overflow-hidden">
+        {/* Layer 1 — vibrant aurora / mesh-gradient image for glass to refract through */}
+        <div className="absolute inset-0">
+          <Image src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1920&q=80" alt="" fill sizes="100vw" loading="lazy" className="object-cover" />
+        </div>
+        {/* Layer 2 — soft white wash on top of image so text + cards stay legible */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/65 via-white/55 to-white/70" />
+        {/* Layer 3 — additional theme-colored orbs that bleed through */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-30 mix-blend-overlay" style={{ backgroundColor: t.urgencyColor }} />
+        <div className="absolute bottom-0 left-1/4 w-[450px] h-[450px] rounded-full blur-[130px] opacity-25 mix-blend-overlay" style={{ backgroundColor: "#a855f7" }} />
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14 lg:mb-16">
@@ -1322,14 +1325,17 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ CROSS SERVICES (glassmorphic) ═══════ */}
-      <section className="py-20 lg:py-24 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #eef2ff, #f5f3ff, #fdf4ff, #eff6ff)" }}>
-        {/* Vibrant blur orbs to give the glass something to refract */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-50" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[120px] opacity-40" style={{ backgroundColor: "#a855f7" }} />
-        <div className="absolute top-1/2 left-1/3 w-[350px] h-[350px] rounded-full blur-[110px] opacity-30" style={{ backgroundColor: "#ec4899" }} />
-        {/* Subtle dot pattern */}
-        <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle, #1e293b 1px, transparent 1px)", backgroundSize: "28px 28px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
+      {/* ═══════ CROSS SERVICES (glassmorphic — real image refraction) ═══════ */}
+      <section className="py-20 lg:py-24 relative overflow-hidden">
+        {/* Layer 1 — vibrant abstract image for glass to refract through */}
+        <div className="absolute inset-0">
+          <Image src="https://images.unsplash.com/photo-1635776062043-65a6e58c97e0?w=1920&q=80" alt="" fill sizes="100vw" loading="lazy" className="object-cover" />
+        </div>
+        {/* Layer 2 — soft white wash so cards + text stay legible */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/55 to-white/75" />
+        {/* Layer 3 — theme tints */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-30 mix-blend-overlay" style={{ backgroundColor: t.urgencyColor }} />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[120px] opacity-25 mix-blend-overlay" style={{ backgroundColor: "#a855f7" }} />
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-14">
