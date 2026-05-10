@@ -746,17 +746,32 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ STATS ═══════ */}
-      <section className="relative py-16 lg:py-20 overflow-hidden" style={{ background: "linear-gradient(135deg, #f8fafc, #eff6ff, #f5f3ff, #f8fafc)" }}>
+      <section className="relative py-20 lg:py-24 overflow-hidden" style={{ background: "linear-gradient(135deg, #f8fafc, #eff6ff, #f5f3ff, #f8fafc)" }}>
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-20" style={{ backgroundColor: t.urgencyColor }} />
         <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full blur-[120px] opacity-10" style={{ backgroundColor: t.urgencyColor }} />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-            {data.stats.map((s) => (
-              <div key={s.label} className="text-center p-6 lg:p-7 rounded-2xl bg-white/60 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.03] hover:shadow-xl hover:bg-white/80 transition-all">
-                <AnimatedCounter value={s.value} className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold ${a.text} leading-none tracking-tight`} />
-                <div className="text-sm lg:text-[15px] text-gray-700 mt-3 font-medium leading-snug">{s.label}</div>
-              </div>
-            ))}
+            {data.stats.map((s, i) => {
+              const icons = [BarChart3, Sparkles, Shield, TrendingUp];
+              const StatIcon = icons[i % icons.length];
+              return (
+                <div key={s.label} className="group relative p-7 lg:p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-xl shadow-black/[0.04] hover:shadow-2xl hover:-translate-y-1 transition-all overflow-hidden">
+                  {/* Corner accent gradient */}
+                  <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-15 group-hover:opacity-30 transition-opacity" style={{ background: `radial-gradient(circle, ${t.urgencyColor}, transparent)` }} />
+                  {/* Icon tile */}
+                  <div className="relative w-12 h-12 rounded-xl flex items-center justify-center mb-5 shadow-md" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` }}>
+                    <StatIcon className="w-5 h-5 text-white" />
+                  </div>
+                  <AnimatedCounter value={s.value} className={`relative text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold ${a.text} leading-none tracking-tight`} />
+                  <div className="relative text-sm lg:text-[15px] text-gray-700 mt-3 font-medium leading-snug">{s.label}</div>
+                  {/* Sparkline */}
+                  <svg viewBox="0 0 100 24" className="relative w-full h-6 mt-4 opacity-60" preserveAspectRatio="none">
+                    <path d={i === 0 ? "M0,18 Q15,16 25,12 T50,8 T75,5 T100,2" : i === 1 ? "M0,12 Q15,18 25,10 T50,6 T75,9 T100,3" : i === 2 ? "M0,15 Q15,8 25,12 T50,4 T75,8 T100,2" : "M0,20 Q15,12 25,15 T50,7 T75,10 T100,3"} fill="none" stroke={t.urgencyColor} strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="100" cy={i === 0 ? 2 : i === 1 ? 3 : i === 2 ? 2 : 3} r="2.5" fill={t.urgencyColor} />
+                  </svg>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -792,20 +807,47 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-            {data.services.map((service, i) => (
-              <div key={service.title} onClick={openConsult} className="group p-7 lg:p-8 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:bg-white/90 hover:-translate-y-1 transition-all cursor-pointer">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-sm font-bold mb-5 shadow-sm`}>
-                  {String(i + 1).padStart(2, "0")}
+            {data.services.map((service, i) => {
+              const isFeatured = i === 0;
+              if (isFeatured) {
+                return (
+                  <div key={service.title} onClick={openConsult} className="group relative sm:col-span-2 lg:col-span-2 lg:row-span-2 p-8 lg:p-10 rounded-3xl text-white shadow-2xl shadow-black/20 hover:shadow-[0_30px_80px_-15px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all cursor-pointer overflow-hidden" style={{ background: t.heroGradient }}>
+                    <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full blur-[100px] opacity-50 mix-blend-screen" style={{ backgroundColor: t.urgencyColor }} />
+                    <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full blur-[100px] opacity-40 mix-blend-screen" style={{ backgroundColor: "#a855f7" }} />
+                    <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+                    <div className="relative">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[10px] font-bold uppercase tracking-widest mb-6">
+                        <Sparkles className="w-3 h-3" />Featured Service
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight tracking-tight">{service.title}</h3>
+                      <p className="text-base lg:text-lg text-white/85 leading-relaxed mb-6 max-w-xl">{service.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-8">
+                        {service.tags.slice(0, 6).map((tag) => (
+                          <span key={tag} className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white/15 backdrop-blur-md text-white border border-white/25">{tag}</span>
+                        ))}
+                      </div>
+                      <div className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white font-bold text-sm shadow-xl group-hover:scale-105 transition-transform" style={{ color: t.urgencyColor }}>
+                        Get a free prototype <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <div key={service.title} onClick={openConsult} className="group p-7 lg:p-8 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:bg-white/90 hover:-translate-y-1 transition-all cursor-pointer">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-sm font-bold mb-5 shadow-sm`}>
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className={`text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:${a.text} transition-colors`}>{service.title}</h3>
+                  <p className="text-[15px] text-gray-600 leading-relaxed mb-5">{service.description}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {service.tags.slice(0, 4).map((tag) => (
+                      <span key={tag} className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700 border border-gray-200">{tag}</span>
+                    ))}
+                  </div>
                 </div>
-                <h3 className={`text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:${a.text} transition-colors`}>{service.title}</h3>
-                <p className="text-[15px] text-gray-600 leading-relaxed mb-5">{service.description}</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {service.tags.slice(0, 4).map((tag) => (
-                    <span key={tag} className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700 border border-gray-200">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -852,15 +894,24 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               From Idea to <span className={a.text}>Launch</span>
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-            {data.process.map((step, i) => (
-              <div key={step.step} className="relative p-7 lg:p-8 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-xl hover:bg-white/90 transition-all">
-                {i < data.process.length - 1 && <div className="hidden lg:block absolute top-1/2 -right-4 w-8 text-gray-300 text-2xl leading-none -translate-y-1/2">→</div>}
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-sm font-bold mb-5 shadow-sm`}>{step.step}</div>
-                <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug">{step.title}</h3>
-                <p className="text-[15px] text-gray-600 leading-relaxed">{step.description}</p>
-              </div>
-            ))}
+          <div className="relative">
+            {/* Horizontal connecting line — runs across all 4 step cards on desktop */}
+            <div className="hidden lg:block absolute top-14 left-12 right-12 h-0.5 -z-0" style={{ background: `linear-gradient(90deg, transparent, ${t.urgencyColor}40, ${t.urgencyColor}, ${t.urgencyColor}, ${t.urgencyColor}40, transparent)` }} />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 relative">
+              {data.process.map((step, i) => (
+                <div key={step.step} className="relative p-7 lg:p-8 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:-translate-y-1 transition-all">
+                  {/* Numbered tile with ring */}
+                  <div className="relative w-14 h-14 mb-5">
+                    <div className="absolute inset-0 rounded-2xl opacity-25 blur-md" style={{ backgroundColor: t.urgencyColor }} />
+                    <div className="relative w-14 h-14 rounded-2xl flex items-center justify-center text-white text-base font-extrabold shadow-xl ring-4 ring-white" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}dd)` }}>
+                      {step.step}
+                    </div>
+                  </div>
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug">{step.title}</h3>
+                  <p className="text-[15px] text-gray-600 leading-relaxed">{step.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1038,15 +1089,30 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { quote: "First agency that kept their word on deadline. Fixed scope, no scope creep.", author: "RV", role: "COO, Logistics, Pune", rating: 5 },
               { quote: "The AI chatbot handles 80% of tickets. ROI positive in month 2.", author: "DS", role: "VP Ops, E-Commerce", rating: 5 },
               { quote: "After the first sprint demo, we extended the contract to 6 months.", author: "MT", role: "PM, SaaS, San Francisco", rating: 5 },
-            ]).map((t, i) => (
-              <div key={i} className="bg-white/70 backdrop-blur-xl rounded-2xl p-7 lg:p-8 border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:bg-white/90 hover:-translate-y-1 transition-all">
-                <div className="flex gap-0.5 mb-4">
-                  {Array.from({ length: t.rating }).map((_, s) => <Star key={s} className="w-5 h-5 fill-amber-400 text-amber-400" />)}
+            ]).map((tm, i) => (
+              <div key={i} className="group relative bg-white rounded-3xl p-7 lg:p-8 border border-gray-200 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:-translate-y-1 transition-all overflow-hidden">
+                {/* Decorative corner blob */}
+                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-10 group-hover:opacity-20 transition-opacity" style={{ background: `radial-gradient(circle, ${t.urgencyColor}, transparent)` }} />
+                {/* Big opening quote */}
+                <div className="relative text-6xl leading-none font-serif mb-3" style={{ color: t.urgencyColor, opacity: 0.25 }}>&ldquo;</div>
+                <div className="relative flex items-center gap-1.5 mb-4">
+                  <div className="flex gap-0.5">
+                    {Array.from({ length: tm.rating }).map((_, s) => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+                  </div>
+                  <span className="ml-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-[10px] font-bold text-emerald-700 uppercase tracking-wider">
+                    <CheckCircle2 className="w-3 h-3" />Verified
+                  </span>
                 </div>
-                <p className="text-[15px] lg:text-base text-gray-700 italic leading-relaxed mb-5">&ldquo;{t.quote}&rdquo;</p>
-                <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-xs font-bold text-white shadow-sm">{t.author}</div>
-                  <p className="text-sm text-gray-600 font-medium">{t.role}</p>
+                <p className="relative text-[15px] lg:text-base text-gray-800 leading-relaxed mb-6 font-medium">{tm.quote}</p>
+                <div className="relative flex items-center gap-3 pt-5 border-t border-gray-100">
+                  <div className="relative">
+                    <div className="absolute inset-0 rounded-full opacity-40 blur-md" style={{ backgroundColor: t.urgencyColor }} />
+                    <div className="relative w-11 h-11 rounded-full flex items-center justify-center text-sm font-extrabold text-white shadow-lg ring-2 ring-white" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` }}>{tm.author}</div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 leading-tight">{tm.author}</p>
+                    <p className="text-xs text-gray-500 font-medium leading-tight mt-0.5">{tm.role}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -1077,35 +1143,55 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               RDMI vs <span className={a.text}>The Alternatives</span>
             </h2>
           </div>
-          <div className="overflow-x-auto rounded-2xl border border-white/60 shadow-xl shadow-black/[0.06] bg-white/70 backdrop-blur-xl">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-white/50 border-b border-gray-200">
-                  <th className="text-left py-4 px-5 lg:px-6 text-gray-600 font-semibold text-sm">Criteria</th>
-                  <th className={`text-center py-4 px-5 lg:px-6 font-bold text-sm ${a.bg50} ${a.text}`}>RDMI</th>
-                  <th className="text-center py-4 px-5 lg:px-6 text-gray-600 font-semibold text-sm">Large Agency</th>
-                  <th className="text-center py-4 px-5 lg:px-6 text-gray-600 font-semibold text-sm">Freelancer</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                {[
-                  ["Developer Seniority", "5+ yr seniors only", "Mix of juniors", "Varies"],
-                  ["Response Time", "< 2 hours", "2–5 days", "Unpredictable"],
-                  ["Engagement", "Month-to-month", "12-month lock-in", "Project-based"],
-                  ["Source Code", "100% yours", "Often restricted", "Usually yours"],
-                  ["AI-Native Delivery", "Every project", "Traditional coding", "No"],
-                  ["Guarantee", "Walk-away month 1", "Best-effort only", "None"],
-                  ["Post-Launch Support", "30–60 days free", "Paid from day 1", "Limited"],
-                ].map(([crit, rdmi, agency, free]) => (
-                  <tr key={crit} className="hover:bg-gray-50 transition-colors">
-                    <td className="py-4 px-5 lg:px-6 text-[15px] text-gray-800 font-semibold">{crit}</td>
-                    <td className="py-4 px-5 lg:px-6 text-[15px] text-center font-bold text-emerald-600 bg-gray-50">{rdmi}</td>
-                    <td className="py-4 px-5 lg:px-6 text-[15px] text-center text-amber-600 font-medium">{agency}</td>
-                    <td className="py-4 px-5 lg:px-6 text-[15px] text-center text-red-500 font-medium">{free}</td>
+          <div className="overflow-hidden rounded-3xl border border-white/60 shadow-2xl shadow-black/[0.08] bg-white/80 backdrop-blur-xl">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-gray-200">
+                    <th className="text-left py-5 px-5 lg:px-6 bg-gray-50 text-gray-700 font-bold text-sm uppercase tracking-wider">Criteria</th>
+                    <th className="text-center py-5 px-5 lg:px-6 text-white font-extrabold text-sm uppercase tracking-wider relative" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}dd)` }}>
+                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-amber-400 text-amber-900 text-[9px] font-extrabold shadow-md">★ BEST</span>
+                      RDMI
+                    </th>
+                    <th className="text-center py-5 px-5 lg:px-6 bg-gray-50 text-gray-600 font-bold text-sm uppercase tracking-wider">Large Agency</th>
+                    <th className="text-center py-5 px-5 lg:px-6 bg-gray-50 text-gray-600 font-bold text-sm uppercase tracking-wider">Freelancer</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {[
+                    { crit: "Developer Seniority", rdmi: { ok: true, txt: "5+ yr seniors only" }, agency: { ok: false, txt: "Mix of juniors" }, free: { ok: null, txt: "Varies" } },
+                    { crit: "Response Time", rdmi: { ok: true, txt: "< 2 hours" }, agency: { ok: false, txt: "2–5 days" }, free: { ok: null, txt: "Unpredictable" } },
+                    { crit: "Engagement", rdmi: { ok: true, txt: "Month-to-month" }, agency: { ok: false, txt: "12-month lock-in" }, free: { ok: null, txt: "Project-based" } },
+                    { crit: "Source Code", rdmi: { ok: true, txt: "100% yours" }, agency: { ok: false, txt: "Often restricted" }, free: { ok: null, txt: "Usually yours" } },
+                    { crit: "AI-Native Delivery", rdmi: { ok: true, txt: "Every project" }, agency: { ok: false, txt: "Traditional coding" }, free: { ok: false, txt: "No" } },
+                    { crit: "Money-Back Guarantee", rdmi: { ok: true, txt: "Every milestone" }, agency: { ok: false, txt: "Best-effort only" }, free: { ok: false, txt: "None" } },
+                    { crit: "Post-Launch Support", rdmi: { ok: true, txt: "30–60 days free" }, agency: { ok: false, txt: "Paid from day 1" }, free: { ok: null, txt: "Limited" } },
+                  ].map((row, idx) => (
+                    <tr key={row.crit} className={`group hover:bg-gray-50 transition-colors ${idx % 2 === 0 ? "" : "bg-gray-50/40"}`}>
+                      <td className="py-5 px-5 lg:px-6 text-[15px] text-gray-900 font-bold">{row.crit}</td>
+                      <td className="py-5 px-5 lg:px-6 text-center" style={{ backgroundColor: `${t.urgencyColor}0d` }}>
+                        <div className="inline-flex items-center gap-2">
+                          <CheckCircle2 className="w-5 h-5 flex-shrink-0" style={{ color: t.urgencyColor }} />
+                          <span className="text-[15px] font-bold text-gray-900">{row.rdmi.txt}</span>
+                        </div>
+                      </td>
+                      <td className="py-5 px-5 lg:px-6 text-center">
+                        <div className="inline-flex items-center gap-2 text-amber-600">
+                          <span className="w-5 h-5 rounded-full border-2 border-amber-500 flex items-center justify-center text-amber-600 font-bold text-[10px] flex-shrink-0">!</span>
+                          <span className="text-[14px] font-medium">{row.agency.txt}</span>
+                        </div>
+                      </td>
+                      <td className="py-5 px-5 lg:px-6 text-center">
+                        <div className="inline-flex items-center gap-2 text-red-500">
+                          <X className="w-5 h-5 flex-shrink-0" />
+                          <span className="text-[14px] font-medium">{row.free.txt}</span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
