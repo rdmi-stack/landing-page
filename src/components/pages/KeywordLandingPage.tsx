@@ -1201,8 +1201,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
       <Footer onCTA={openConsult} />
 
-      {/* ═══════ STICKY WHATSAPP BAR ═══════ */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-4px_24px_rgba(0,0,0,0.08)]">
+      {/* ═══════ STICKY WHATSAPP BAR (appears after scrolling past hero) ═══════ */}
+      <div className={`fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] transition-all duration-500 ${scrollProgress > 6 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full pointer-events-none"}`}>
         {/* Mobile: full-width button that opens sheet modal */}
         <div className="lg:hidden px-4 py-3">
           <button
@@ -1233,7 +1233,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           </button>
         </form>
       </div>
-      <div className="h-20 lg:h-20" />
+      <div className={`transition-all duration-500 ${scrollProgress > 6 ? "h-20 lg:h-20" : "h-0"}`} />
 
       {/* ═══════ MOBILE WHATSAPP SHEET MODAL ═══════ */}
       {stickySheetOpen && (
