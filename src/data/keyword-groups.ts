@@ -153,7 +153,7 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "mobile-app-development",
     primaryKeyword: "Mobile App Development Company",
     adGroupMatch: "Mobile App Development Co",
-    theme: { heroGradient: "linear-gradient(135deg, #1e40af, #0891b2, #1e3a8a)", ctaGradient: "linear-gradient(135deg, #1e40af, #0891b2, #1e3a8a)", urgencyColor: "#1e40af", accent: "blue", icon: "📱" },
+    theme: { heroGradient: "linear-gradient(135deg, #6366f1, #a855f7, #ec4899)", ctaGradient: "linear-gradient(135deg, #6366f1, #a855f7, #ec4899)", urgencyColor: "#a855f7", accent: "purple", icon: "📱" },
     form: { title: "Talk to a Senior App Developer", subtitle: "Senior app developer calls you in 2 hours — not a salesperson", projectTypes: ["AI-Powered Flutter App", "Android App (Kotlin)", "iOS App (Swift)", "E-Commerce / Marketplace App", "Healthcare / FinTech App", "On-Demand / Delivery App", "Other"], placeholder: "What should your app do that competitors' apps don't?", buttonText: "Talk to App Developer", formType: "mobile-app" },
     meta: {
       title: "Mobile App Development Company India | iOS, Android & Flutter App Development | RDMI",
