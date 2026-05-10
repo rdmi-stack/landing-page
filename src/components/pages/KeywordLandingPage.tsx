@@ -1027,49 +1027,42 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ USPS (glassmorphic — real image refraction) ═══════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden">
-        {/* Layer 1 — vibrant aurora / mesh-gradient image for glass to refract through */}
-        <div className="absolute inset-0">
-          <Image src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1920&q=80" alt="" fill sizes="100vw" loading="lazy" className="object-cover" />
-        </div>
-        {/* Layer 2 — soft white wash on top of image so text + cards stay legible */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/65 via-white/55 to-white/70" />
-        {/* Layer 3 — additional theme-colored orbs that bleed through */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-30 mix-blend-overlay" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="absolute bottom-0 left-1/4 w-[450px] h-[450px] rounded-full blur-[130px] opacity-25 mix-blend-overlay" style={{ backgroundColor: "#a855f7" }} />
+      {/* ═══════ USPS (true glassmorphism — dark aurora bg, see-through cards) ═══════ */}
+      <section className="relative py-20 lg:py-28 overflow-hidden text-white" style={{ background: "radial-gradient(at 20% 20%, #6366f1 0%, transparent 50%), radial-gradient(at 80% 30%, #a855f7 0%, transparent 50%), radial-gradient(at 70% 80%, #ec4899 0%, transparent 50%), radial-gradient(at 20% 90%, #06b6d4 0%, transparent 50%), #0f172a" }}>
+        {/* Animated mesh — multiple radial gradients on dark base creates a real "aurora" backdrop */}
+        <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "32px 32px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
+        {/* Subtle SVG noise grain for premium texture */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")" }} />
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14 lg:mb-16">
-            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Why RDMI</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-              Three Reasons <span className={a.text}>Clients Stay</span>
+            <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/70">Why RDMI</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.3)" }}>
+              Three Reasons <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(120deg, #fff, #c4b5fd, #fff)" }}>Clients Stay</span>
             </h2>
           </div>
           <div className="grid sm:grid-cols-3 gap-5 lg:gap-6">
             {[
-              { icon: MessageCircle, title: "Talk to Developers Directly", text: data.uspHeadlines.direct, accent: "#3b82f6", bullets: ["Direct WhatsApp with your developer", "Daily standups, not weekly reports", "Senior engineer calls within 2 hours"] },
-              { icon: IndianRupee, title: "Senior Engineers, No Surprises", text: data.uspHeadlines.cost, accent: "#10b981", bullets: ["5+ year senior engineers only", "Full source code ownership", "Month-to-month, walk away anytime"] },
-              { icon: Bot, title: "AI-Native Delivery", text: data.uspHeadlines.ai, accent: "#a855f7", bullets: ["Latest AI tools used daily", "3x faster than legacy agencies", "AI features built into every product"] },
+              { icon: MessageCircle, title: "Talk to Developers Directly", text: data.uspHeadlines.direct, accent: "#60a5fa", bullets: ["Direct WhatsApp with your developer", "Daily standups, not weekly reports", "Senior engineer calls within 2 hours"] },
+              { icon: IndianRupee, title: "Senior Engineers, No Surprises", text: data.uspHeadlines.cost, accent: "#34d399", bullets: ["5+ year senior engineers only", "Full source code ownership", "Month-to-month, walk away anytime"] },
+              { icon: Bot, title: "AI-Native Delivery", text: data.uspHeadlines.ai, accent: "#c084fc", bullets: ["Latest AI tools used daily", "3x faster than legacy agencies", "AI features built into every product"] },
             ].map((usp) => (
               <TiltCard key={usp.title} max={5} scale={1.02}>
-                <div className="group relative bg-white/40 backdrop-blur-2xl rounded-2xl p-7 lg:p-8 border border-white/60 shadow-xl shadow-black/[0.06] hover:bg-white/65 hover:shadow-2xl transition-all overflow-hidden h-full">
-                  {/* Inner highlight at top — adds glass depth */}
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
-                  {/* Accent left edge */}
-                  <div className="absolute top-0 left-0 bottom-0 w-1" style={{ background: `linear-gradient(180deg, ${usp.accent}, ${usp.accent}80)` }} />
-                  {/* Accent inner glow blob behind icon */}
-                  <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full opacity-30 group-hover:opacity-50 blur-2xl transition-opacity" style={{ backgroundColor: usp.accent }} />
+                <div className="group relative bg-white/[0.08] backdrop-blur-2xl rounded-3xl p-7 lg:p-8 border border-white/20 shadow-2xl shadow-black/30 hover:bg-white/[0.14] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transition-all overflow-hidden h-full">
+                  {/* Catch-light highlight on top edge */}
+                  <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
+                  {/* Inner glow blob behind icon — tinted to accent */}
+                  <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full opacity-50 group-hover:opacity-70 blur-3xl transition-opacity" style={{ backgroundColor: usp.accent }} />
 
                   <div className="relative">
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-lg ring-1 ring-white/60 backdrop-blur-md" style={{ backgroundColor: `${usp.accent}25` }}>
+                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-xl ring-1 ring-white/20 backdrop-blur-md border border-white/15" style={{ backgroundColor: `${usp.accent}30` }}>
                       <usp.icon className="w-7 h-7" style={{ color: usp.accent }} />
                     </div>
-                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug">{usp.title}</h3>
-                    <p className="text-[15px] text-gray-700 leading-relaxed mb-5">{usp.text}</p>
-                    <ul className="space-y-2.5 pt-4 border-t border-white/40">
+                    <h3 className="text-lg lg:text-xl font-bold mb-3 leading-snug">{usp.title}</h3>
+                    <p className="text-[15px] text-white/75 leading-relaxed mb-5">{usp.text}</p>
+                    <ul className="space-y-2.5 pt-4 border-t border-white/15">
                       {usp.bullets.map((b) => (
-                        <li key={b} className="flex items-start gap-2 text-sm text-gray-800 font-medium">
+                        <li key={b} className="flex items-start gap-2 text-sm text-white/90 font-medium">
                           <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: usp.accent }} />{b}
                         </li>
                       ))}
@@ -1325,23 +1318,16 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ CROSS SERVICES (glassmorphic — real image refraction) ═══════ */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
-        {/* Layer 1 — vibrant abstract image for glass to refract through */}
-        <div className="absolute inset-0">
-          <Image src="https://images.unsplash.com/photo-1635776062043-65a6e58c97e0?w=1920&q=80" alt="" fill sizes="100vw" loading="lazy" className="object-cover" />
-        </div>
-        {/* Layer 2 — soft white wash so cards + text stay legible */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/55 to-white/75" />
-        {/* Layer 3 — theme tints */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-30 mix-blend-overlay" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[120px] opacity-25 mix-blend-overlay" style={{ backgroundColor: "#a855f7" }} />
+      {/* ═══════ CROSS SERVICES (true glassmorphism — dark aurora) ═══════ */}
+      <section className="py-20 lg:py-24 relative overflow-hidden text-white" style={{ background: "radial-gradient(at 25% 25%, #4f46e5 0%, transparent 50%), radial-gradient(at 75% 25%, #ec4899 0%, transparent 50%), radial-gradient(at 75% 75%, #06b6d4 0%, transparent 50%), radial-gradient(at 25% 75%, #a855f7 0%, transparent 50%), #0c1023" }}>
+        <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "28px 28px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
+        <div className="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")" }} />
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-14">
-            <p className={`text-xs font-bold uppercase tracking-[0.2em] mb-3 ${a.text}`}>Explore More</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-              Full-Stack AI Development <span className={a.text}>Across Industries</span>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3 text-white/70">Explore More</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.3)" }}>
+              Full-Stack AI Development <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(120deg, #fff, #c4b5fd, #fff)" }}>Across Industries</span>
             </h2>
           </div>
 
@@ -1358,23 +1344,23 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { name: "Travel & Hospitality AI", desc: "Booking engines, chatbots & revenue AI", href: "/kw/travel-hospitality-ai", icon: "✈️", gradient: "from-cyan-500 to-teal-500" },
             ].filter((s) => s.href !== `/kw/${data.slug}`).slice(0, 6).map((s) => (
               <TiltCard key={s.href} max={5} scale={1.02}>
-                <a href={s.href} className="group relative block bg-white/40 backdrop-blur-2xl rounded-2xl p-5 lg:p-6 border border-white/60 shadow-xl shadow-black/[0.06] hover:bg-white/65 hover:shadow-2xl transition-all duration-300 overflow-hidden h-full">
-                  {/* Inner highlight at top — adds glass depth */}
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                <a href={s.href} className="group relative block bg-white/[0.08] backdrop-blur-2xl rounded-2xl p-5 lg:p-6 border border-white/20 shadow-2xl shadow-black/30 hover:bg-white/[0.14] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transition-all duration-300 overflow-hidden h-full">
+                  {/* Catch-light highlight on top edge */}
+                  <div className="absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
                   {/* Top accent bar reveals on hover */}
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${s.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
                   {/* Subtle inner glow toward icon */}
-                  <div className={`absolute -top-8 -left-8 w-32 h-32 rounded-full opacity-25 group-hover:opacity-50 transition-opacity blur-2xl bg-gradient-to-br ${s.gradient}`} />
+                  <div className={`absolute -top-8 -left-8 w-32 h-32 rounded-full opacity-50 group-hover:opacity-80 transition-opacity blur-3xl bg-gradient-to-br ${s.gradient}`} />
 
                   <div className="relative flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center text-xl shadow-lg shadow-black/15 group-hover:scale-110 transition-transform ring-1 ring-white/40`}>
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center text-xl shadow-xl shadow-black/30 group-hover:scale-110 transition-transform ring-1 ring-white/30`}>
                       {s.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className={`text-sm lg:text-[15px] font-bold text-gray-900 group-hover:${a.text} transition-colors mb-1 leading-snug`}>{s.name}</h3>
-                      <p className="text-xs lg:text-[13px] text-gray-600 leading-relaxed">{s.desc}</p>
+                      <h3 className="text-sm lg:text-[15px] font-bold text-white mb-1 leading-snug">{s.name}</h3>
+                      <p className="text-xs lg:text-[13px] text-white/65 leading-relaxed">{s.desc}</p>
                     </div>
-                    <ArrowRight className={`w-4 h-4 text-gray-400 group-hover:${a.text} group-hover:translate-x-1 transition-all flex-shrink-0 mt-1`} />
+                    <ArrowRight className="w-4 h-4 text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
                   </div>
                 </a>
               </TiltCard>
