@@ -1027,49 +1027,42 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ USPS (true glassmorphism — dark aurora bg, see-through cards) ═══════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden text-white" style={{ background: "radial-gradient(at 20% 20%, #6366f1 0%, transparent 50%), radial-gradient(at 80% 30%, #a855f7 0%, transparent 50%), radial-gradient(at 70% 80%, #ec4899 0%, transparent 50%), radial-gradient(at 20% 90%, #06b6d4 0%, transparent 50%), #0f172a" }}>
-        {/* Animated mesh — multiple radial gradients on dark base creates a real "aurora" backdrop */}
-        <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "32px 32px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
-        {/* Subtle SVG noise grain for premium texture */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")" }} />
-
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 lg:mb-16">
-            <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/70">Why RDMI</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.3)" }}>
-              Three Reasons <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(120deg, #fff, #c4b5fd, #fff)" }}>Clients Stay</span>
+      {/* ═══════ USPS (clean professional) ═══════ */}
+      <section className="bg-white py-24 lg:py-32 border-y border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-16 lg:mb-20">
+            <p className={`text-sm font-semibold mb-4 ${a.text}`}>Why RDMI</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 tracking-[-0.025em] leading-[1.05]">
+              Three reasons clients stay — and refer.
             </h2>
+            <p className="mt-6 text-lg text-gray-600 leading-relaxed max-w-2xl">
+              No tricks, no lock-in. Just senior engineering, written guarantees, and AI-native delivery from sprint one.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-3 gap-5 lg:gap-6">
+          <div className="grid sm:grid-cols-3 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
             {[
-              { icon: MessageCircle, title: "Talk to Developers Directly", text: data.uspHeadlines.direct, accent: "#60a5fa", bullets: ["Direct WhatsApp with your developer", "Daily standups, not weekly reports", "Senior engineer calls within 2 hours"] },
-              { icon: IndianRupee, title: "Senior Engineers, No Surprises", text: data.uspHeadlines.cost, accent: "#34d399", bullets: ["5+ year senior engineers only", "Full source code ownership", "Month-to-month, walk away anytime"] },
-              { icon: Bot, title: "AI-Native Delivery", text: data.uspHeadlines.ai, accent: "#c084fc", bullets: ["Latest AI tools used daily", "3x faster than legacy agencies", "AI features built into every product"] },
-            ].map((usp) => (
-              <TiltCard key={usp.title} max={5} scale={1.02}>
-                <div className="group relative bg-white/[0.08] backdrop-blur-2xl rounded-3xl p-7 lg:p-8 border border-white/20 shadow-2xl shadow-black/30 hover:bg-white/[0.14] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transition-all overflow-hidden h-full">
-                  {/* Catch-light highlight on top edge */}
-                  <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
-                  {/* Inner glow blob behind icon — tinted to accent */}
-                  <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full opacity-50 group-hover:opacity-70 blur-3xl transition-opacity" style={{ backgroundColor: usp.accent }} />
-
-                  <div className="relative">
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-xl ring-1 ring-white/20 backdrop-blur-md border border-white/15" style={{ backgroundColor: `${usp.accent}30` }}>
-                      <usp.icon className="w-7 h-7" style={{ color: usp.accent }} />
-                    </div>
-                    <h3 className="text-lg lg:text-xl font-bold mb-3 leading-snug">{usp.title}</h3>
-                    <p className="text-[15px] text-white/75 leading-relaxed mb-5">{usp.text}</p>
-                    <ul className="space-y-2.5 pt-4 border-t border-white/15">
-                      {usp.bullets.map((b) => (
-                        <li key={b} className="flex items-start gap-2 text-sm text-white/90 font-medium">
-                          <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: usp.accent }} />{b}
-                        </li>
-                      ))}
-                    </ul>
+              { icon: MessageCircle, title: "Talk to developers directly", text: data.uspHeadlines.direct, bullets: ["Direct WhatsApp with your developer", "Daily standups, not weekly reports", "Senior engineer calls within 2 hours"] },
+              { icon: IndianRupee, title: "Senior engineers, no surprises", text: data.uspHeadlines.cost, bullets: ["5+ year senior engineers only", "Full source code ownership", "Month-to-month, walk away anytime"] },
+              { icon: Bot, title: "AI-native delivery", text: data.uspHeadlines.ai, bullets: ["Latest AI tools used daily", "3x faster than legacy agencies", "AI features built into every product"] },
+            ].map((usp, i) => (
+              <div key={usp.title} className="bg-white p-8 lg:p-10 group hover:bg-gray-50/50 transition-colors">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className={`w-10 h-10 rounded-lg ${a.bg50} flex items-center justify-center`}>
+                    <usp.icon className={`w-5 h-5 ${a.text}`} />
                   </div>
+                  <span className="text-xs font-mono text-gray-400">0{i + 1}</span>
                 </div>
-              </TiltCard>
+                <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-3 tracking-tight leading-snug">{usp.title}</h3>
+                <p className="text-[15px] text-gray-600 leading-relaxed mb-6">{usp.text}</p>
+                <ul className="space-y-3 pt-6 border-t border-gray-100">
+                  {usp.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-3 text-sm text-gray-700">
+                      <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${a.text}`} />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>
@@ -1318,52 +1311,43 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ CROSS SERVICES (true glassmorphism — dark aurora) ═══════ */}
-      <section className="py-20 lg:py-24 relative overflow-hidden text-white" style={{ background: "radial-gradient(at 25% 25%, #4f46e5 0%, transparent 50%), radial-gradient(at 75% 25%, #ec4899 0%, transparent 50%), radial-gradient(at 75% 75%, #06b6d4 0%, transparent 50%), radial-gradient(at 25% 75%, #a855f7 0%, transparent 50%), #0c1023" }}>
-        <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "28px 28px", maskImage: "radial-gradient(ellipse 80% 60% at center, black 30%, transparent 80%)" }} />
-        <div className="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")" }} />
-
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-14">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3 text-white/70">Explore More</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.3)" }}>
-              Full-Stack AI Development <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(120deg, #fff, #c4b5fd, #fff)" }}>Across Industries</span>
-            </h2>
+      {/* ═══════ CROSS SERVICES (clean professional) ═══════ */}
+      <section className="bg-gray-50 py-24 lg:py-32 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 lg:mb-16">
+            <div className="max-w-2xl">
+              <p className={`text-sm font-semibold mb-4 ${a.text}`}>Explore</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-gray-900 tracking-[-0.025em] leading-[1.1]">
+                Full-stack AI development across industries.
+              </h2>
+            </div>
+            <p className="text-base text-gray-600 leading-relaxed lg:max-w-sm">
+              Same senior engineering. Same money-back guarantee. Pick the engagement that matches what you&apos;re shipping.
+            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 rounded-2xl overflow-hidden border border-gray-200">
             {[
-              { name: "Custom Software Development", desc: "Enterprise apps, SaaS, ERP & CRM", href: "/kw/custom-software-development", icon: "💻", gradient: "from-indigo-500 to-purple-500" },
-              { name: "Mobile App Development", desc: "iOS, Android, Flutter & React Native", href: "/kw/mobile-app-development", icon: "📱", gradient: "from-blue-500 to-cyan-500" },
-              { name: "Web Development", desc: "Websites, web apps, Shopify & WordPress", href: "/kw/web-development-company", icon: "🌐", gradient: "from-violet-500 to-purple-500" },
-              { name: "AI Software & Agents", desc: "Chatbots, RAG, workflow automation", href: "/kw/ai-software-development", icon: "🤖", gradient: "from-purple-500 to-pink-500" },
-              { name: "E-Commerce Development", desc: "Shopify, marketplace & headless commerce", href: "/kw/ecommerce-development", icon: "🛒", gradient: "from-amber-500 to-orange-500" },
-              { name: "AI Automation & Consulting", desc: "Business process automation & AI strategy", href: "/kw/ai-agent-development", icon: "⚡", gradient: "from-purple-600 to-indigo-600" },
-              { name: "Healthcare AI", desc: "HIPAA-compliant patient & clinical AI", href: "/kw/healthcare-ai-development", icon: "🏥", gradient: "from-rose-500 to-pink-500" },
-              { name: "Insurance AI", desc: "Claims, underwriting & fraud detection AI", href: "/kw/insurance-ai-development", icon: "🛡️", gradient: "from-sky-500 to-blue-500" },
-              { name: "Travel & Hospitality AI", desc: "Booking engines, chatbots & revenue AI", href: "/kw/travel-hospitality-ai", icon: "✈️", gradient: "from-cyan-500 to-teal-500" },
+              { name: "Custom Software Development", desc: "Enterprise apps, SaaS, ERP & CRM", href: "/kw/custom-software-development", icon: "💻" },
+              { name: "Mobile App Development", desc: "iOS, Android, Flutter & React Native", href: "/kw/mobile-app-development", icon: "📱" },
+              { name: "Web Development", desc: "Websites, web apps, Shopify & WordPress", href: "/kw/web-development-company", icon: "🌐" },
+              { name: "AI Software & Agents", desc: "Chatbots, RAG, workflow automation", href: "/kw/ai-software-development", icon: "🤖" },
+              { name: "E-Commerce Development", desc: "Shopify, marketplace & headless commerce", href: "/kw/ecommerce-development", icon: "🛒" },
+              { name: "AI Automation & Consulting", desc: "Business process automation & AI strategy", href: "/kw/ai-agent-development", icon: "⚡" },
+              { name: "Healthcare AI", desc: "HIPAA-compliant patient & clinical AI", href: "/kw/healthcare-ai-development", icon: "🏥" },
+              { name: "Insurance AI", desc: "Claims, underwriting & fraud detection AI", href: "/kw/insurance-ai-development", icon: "🛡️" },
+              { name: "Travel & Hospitality AI", desc: "Booking engines, chatbots & revenue AI", href: "/kw/travel-hospitality-ai", icon: "✈️" },
             ].filter((s) => s.href !== `/kw/${data.slug}`).slice(0, 6).map((s) => (
-              <TiltCard key={s.href} max={5} scale={1.02}>
-                <a href={s.href} className="group relative block bg-white/[0.08] backdrop-blur-2xl rounded-2xl p-5 lg:p-6 border border-white/20 shadow-2xl shadow-black/30 hover:bg-white/[0.14] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transition-all duration-300 overflow-hidden h-full">
-                  {/* Catch-light highlight on top edge */}
-                  <div className="absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
-                  {/* Top accent bar reveals on hover */}
-                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${s.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  {/* Subtle inner glow toward icon */}
-                  <div className={`absolute -top-8 -left-8 w-32 h-32 rounded-full opacity-50 group-hover:opacity-80 transition-opacity blur-3xl bg-gradient-to-br ${s.gradient}`} />
-
-                  <div className="relative flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center text-xl shadow-xl shadow-black/30 group-hover:scale-110 transition-transform ring-1 ring-white/30`}>
-                      {s.icon}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm lg:text-[15px] font-bold text-white mb-1 leading-snug">{s.name}</h3>
-                      <p className="text-xs lg:text-[13px] text-white/65 leading-relaxed">{s.desc}</p>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
-                  </div>
-                </a>
-              </TiltCard>
+              <a key={s.href} href={s.href} className="group bg-white p-7 lg:p-8 hover:bg-gray-50/50 transition-colors flex items-start gap-4">
+                <div className="w-11 h-11 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center text-xl flex-shrink-0">
+                  {s.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`text-base font-bold text-gray-900 group-hover:${a.text} transition-colors mb-1.5 leading-snug tracking-tight`}>{s.name}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>
+                </div>
+                <ArrowRight className={`w-4 h-4 text-gray-300 group-hover:${a.text} group-hover:translate-x-1 transition-all flex-shrink-0 mt-1.5`} />
+              </a>
             ))}
           </div>
         </div>
