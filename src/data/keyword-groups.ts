@@ -28,6 +28,10 @@ export interface KeywordGroup {
   // carousel of past project screenshots instead of the inline lead form.
   // The form moves to a horizontal strip directly below the hero.
   heroPortfolio?: { image: string; project: string; outcome: string; tech: string[] }[];
+  // When true, hides all secondary sections (stats, pain strip, services grid,
+  // case studies, deliverables, guarantees, tech stack, urgency, comparison,
+  // cross-services). Used for paid-ads LPs that need a single, focused funnel.
+  lean?: boolean;
   theme: PageTheme;
   form: FormConfig;
   meta: { title: string; description: string };
@@ -259,6 +263,7 @@ export const keywordGroups: KeywordGroup[] = [
     primaryKeyword: "Web Development Company",
     adGroupMatch: "Web Development Company",
     minimalForm: true,
+    lean: true,
     theme: { heroGradient: "linear-gradient(135deg, #7c3aed, #9333ea, #6d28d9)", ctaGradient: "linear-gradient(135deg, #7c3aed, #9333ea, #6d28d9)", urgencyColor: "#7c3aed", accent: "violet", icon: "🌐" },
     form: { title: "Talk to a Senior Web Developer", subtitle: "Senior web developer (not a sales rep) WhatsApps you in 2 hours", projectTypes: ["AI-Powered Business Website", "Web Application / SaaS", "E-Commerce Store", "WordPress / CMS", "Landing Pages", "Website Redesign & Speed", "Other"], placeholder: "What should your website achieve for your business?", buttonText: "Get The Call →", formType: "web-dev" },
     meta: {

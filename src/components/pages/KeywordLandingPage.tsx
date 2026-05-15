@@ -954,6 +954,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ STATS (clean) ═══════ */}
+      {!data.lean && (
       <section className="bg-white py-20 lg:py-24 border-y border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
@@ -968,7 +969,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
+      )}
+
       {/* ═══════ PAIN STRIP (clean) ═══════ */}
+      {!data.lean && (
       <section className="bg-gray-50 py-20 lg:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-px bg-gray-200 rounded-2xl overflow-hidden border border-gray-200">
@@ -990,7 +994,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
+      )}
+
       {/* ═══════ SERVICES (clean) ═══════ */}
+      {!data.lean && (
       <section id="services" className="bg-white py-24 lg:py-32 border-y border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14 lg:mb-16">
@@ -1016,7 +1023,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
+      )}
+
       {/* ═══════ CASE STUDIES (clean) ═══════ */}
+      {!data.lean && (
       <section className="bg-gray-50 py-24 lg:py-32">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14 lg:mb-16">
@@ -1047,6 +1057,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
+      )}
+
       {/* ═══════ PROCESS (clean) ═══════ */}
       <section className="bg-white py-24 lg:py-32 border-y border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1069,6 +1081,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ DELIVERABLES TIMELINE (clean) ═══════ */}
+      {!data.lean && (
       <section className="bg-gray-50 py-24 lg:py-32">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 lg:mb-16">
@@ -1098,6 +1111,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           </div>
         </div>
       </section>
+
+      )}
 
       {/* ═══════ USPS (clean professional) ═══════ */}
       <section className="bg-white py-24 lg:py-32 border-y border-gray-100">
@@ -1141,6 +1156,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ GUARANTEES ═══════ */}
+      {!data.lean && (
       <section className="relative py-20 lg:py-28 overflow-hidden text-white" style={{ background: t.heroGradient }}>
         <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full blur-[140px] opacity-40 mix-blend-screen" style={{ backgroundColor: t.urgencyColor }} />
         <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full blur-[130px] opacity-30 mix-blend-screen" style={{ backgroundColor: "#a855f7" }} />
@@ -1181,7 +1197,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
+      )}
+
       {/* ═══════ TECH STACK (clean) ═══════ */}
+      {!data.lean && (
       <section className="bg-white py-24 lg:py-32 border-y border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14 lg:mb-16">
@@ -1212,6 +1231,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           </div>
         </div>
       </section>
+
+      )}
 
       {/* ═══════ TESTIMONIALS (clean) ═══════ */}
       <section className="bg-gray-50 py-24 lg:py-32">
@@ -1253,6 +1274,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ URGENCY STRIP ═══════ */}
+      {!data.lean && (
       <section className="py-5 lg:py-6 text-white" style={{ backgroundColor: t.urgencyColor }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
@@ -1265,7 +1287,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
+      )}
+
       {/* ═══════ COMPARISON TABLE (clean) ═══════ */}
+      {!data.lean && (
       <section className="bg-white py-24 lg:py-32 border-y border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14 lg:mb-16">
@@ -1314,6 +1339,8 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
+      )}
+
       {/* ═══════ FAQ (clean) ═══════ */}
       <section className="bg-gray-50 py-24 lg:py-32">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1358,6 +1385,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
       </section>
 
       {/* ═══════ CROSS SERVICES (clean professional) ═══════ */}
+      {!data.lean && (
       <section className="bg-gray-50 py-24 lg:py-32 border-t border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 lg:mb-16">
@@ -1398,6 +1426,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
           </div>
         </div>
       </section>
+      )}
 
       <Footer onCTA={openConsult} />
 
