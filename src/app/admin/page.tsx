@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import AdminPage from "@/components/pages/AdminPage";
 
 export const metadata: Metadata = {
-  title: "Admin Panel — RDMI Web Services",
+  title: "Admin Panel — RDMI AI Services",
   robots: "noindex, nofollow",
 };
 

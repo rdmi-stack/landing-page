@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import AdminLogin from "@/components/pages/AdminLogin";
 
 export const metadata: Metadata = {
-  title: "Admin Login — RDMI Web Services",
+  title: "Admin Login — RDMI AI Services",
   robots: "noindex, nofollow",
 };
 

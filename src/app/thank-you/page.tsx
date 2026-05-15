@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ThankYouPage from "@/components/pages/ThankYouPage";
 
 export const metadata: Metadata = {
-  title: "Thank You — RDMI Web Services",
+  title: "Thank You — RDMI AI Services",
   description: "Your request has been received. A senior developer will contact you within 2 hours.",
   robots: { index: false, follow: false },
 };

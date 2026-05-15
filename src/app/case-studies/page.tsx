@@ -5,13 +5,13 @@ import Testimonials from "@/components/Testimonials";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
-  title: "Case Studies & Client Success Stories | RDMI Web Services",
+  title: "Case Studies & Client Success Stories | RDMI AI Services",
   description:
     "See how we've helped startups and enterprises build custom software. Real case studies with measurable results — 3x revenue, 60% cost reduction, 10x faster delivery. Read client testimonials.",
   keywords:
     "software development case studies, client testimonials India, custom software success stories, app development portfolio, SaaS case studies",
   openGraph: {
-    title: "Case Studies - RDMI Web Services",
+    title: "Case Studies - RDMI AI Services",
     description:
       "Real results: 3x revenue, 60% cost reduction. See our software development case studies.",
     type: "website",

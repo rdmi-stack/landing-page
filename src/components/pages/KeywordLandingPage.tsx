@@ -42,17 +42,6 @@ const gradients = [
   "from-cyan-500 to-blue-500",
 ];
 
-// Live activity feed — rotates fake-but-believable lead notifications
-const ACTIVITY_FEED = [
-  { city: "Bangalore", action: "booked a discovery call", role: "SaaS Founder", ago: "3 min ago" },
-  { city: "Mumbai", action: "approved their 48-hour prototype", role: "FinTech CTO", ago: "8 min ago" },
-  { city: "Delhi NCR", action: "signed their NDA", role: "D2C Founder", ago: "12 min ago" },
-  { city: "Pune", action: "started their MVP build", role: "HealthTech Lead", ago: "18 min ago" },
-  { city: "Hyderabad", action: "got their fixed-price quote", role: "B2B Marketplace", ago: "24 min ago" },
-  { city: "Chennai", action: "received 3 vetted dev CVs", role: "VC-backed Startup", ago: "31 min ago" },
-  { city: "Ahmedabad", action: "shipped their TestFlight build", role: "Logistics Founder", ago: "42 min ago" },
-];
-
 // 3D tilt-on-hover card — mouse position drives perspective transform
 function TiltCard({ children, className, max = 8, scale = 1.02, glare = true }: { children: React.ReactNode; className?: string; max?: number; scale?: number; glare?: boolean }) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -146,18 +135,18 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", budget: "", challenge: "" });
-  const budgets = ["Under ₹1L / <$2K", "₹1L – ₹5L / $2K – $10K", "₹5L – ₹15L / $10K – $25K", "₹15L – ₹50L / $25K – $75K", "₹50L+ / $75K+", "Not sure yet"];
+  const budgets = ["Under ₹1L", "₹1L – ₹5L", "₹5L – ₹15L", "₹15L – ₹50L", "₹50L+", "Not sure yet"];
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [exitIntentSubtitle, setExitIntentSubtitle] = useState<string | null>(null);
   const [stickyForm, setStickyForm] = useState({ name: "", phone: "", email: "" });
   const [stickyStatus, setStickyStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [stickySheetOpen, setStickySheetOpen] = useState(false);
   const [mockupSlide, setMockupSlide] = useState(0);
+  const [portfolioSlide, setPortfolioSlide] = useState(0);
+  const [portfolioPaused, setPortfolioPaused] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [activityIdx, setActivityIdx] = useState(0);
-  const [activityVisible, setActivityVisible] = useState(false);
-  const [activityDismissed, setActivityDismissed] = useState(false);
   const [heroSpotlight, setHeroSpotlight] = useState<{ x: number; y: number } | null>(null);
+  const portfolioCount = data.heroPortfolio?.length ?? 0;
 
   const handleHeroMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -169,6 +158,13 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
     const id = setInterval(() => setMockupSlide((s) => (s + 1) % 4), 4500);
     return () => clearInterval(id);
   }, []);
+
+  // Auto-advance hero portfolio carousel every 4.5s (pauses on hover)
+  useEffect(() => {
+    if (portfolioCount === 0 || portfolioPaused) return;
+    const id = setInterval(() => setPortfolioSlide((s) => (s + 1) % portfolioCount), 4500);
+    return () => clearInterval(id);
+  }, [portfolioCount, portfolioPaused]);
 
   // Top scroll progress bar
   useEffect(() => {
@@ -191,20 +187,6 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Live activity toast — rotate every 14s, first appears after 6s
-  useEffect(() => {
-    if (typeof window === "undefined" || activityDismissed) return;
-    const showFirst = setTimeout(() => setActivityVisible(true), 6000);
-    const rotate = setInterval(() => {
-      setActivityVisible(false);
-      setTimeout(() => {
-        setActivityIdx((i) => (i + 1) % ACTIVITY_FEED.length);
-        setActivityVisible(true);
-      }, 600);
-    }, 14000);
-    return () => { clearTimeout(showFirst); clearInterval(rotate); };
-  }, [activityDismissed]);
-
   const handleStickySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!stickyForm.phone.trim()) return;
@@ -225,12 +207,22 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
   };
 
   const isAIPage = data.slug.includes("ai-") || data.slug.includes("-dubai") || data.slug.includes("-usa") || data.slug.includes("healthcare") || data.slug.includes("insurance") || data.slug.includes("travel");
-  const openConsult = () => setShowModal(true);
+  const openConsult = () => {
+    if (data.minimalForm && typeof window !== "undefined") {
+      const el = document.getElementById("lead-form");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+    }
+    setShowModal(true);
+  };
   const closeConsult = () => { setShowModal(false); setExitIntentSubtitle(null); };
 
   // Exit-intent recovery: trigger modal once per session when cursor races toward top edge
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if (data.minimalForm) return; // Minimal-form pages already have form visible in hero — no exit-intent popup
     if (sessionStorage.getItem("rdmi_exit_intent_fired") === "1") return;
 
     let lastY = 0;
@@ -251,7 +243,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
     const t = setTimeout(() => window.addEventListener("mousemove", onMove), 8000);
     return () => { clearTimeout(t); window.removeEventListener("mousemove", onMove); };
-  }, []);
+  }, [data.minimalForm]);
 
   // Theme-driven colors
   const t = data.theme;
@@ -338,23 +330,128 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center lg:items-stretch justify-center lg:justify-start gap-3">
-                <button onClick={openConsult} className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white font-bold text-base lg:text-lg transition-all hover:scale-[1.03] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.45)] cursor-pointer overflow-hidden ring-1 ring-white/60" style={{ color: t.urgencyColor }}>
-                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  <span className="relative">{data.hero.cta1}</span>
-                  <ArrowRight className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl border border-white/35 bg-white/10 backdrop-blur-md text-white font-bold text-sm lg:text-base hover:bg-white/20 hover:border-white/60 transition-all shadow-lg shadow-black/20">
-                  <Phone className="w-4 h-4" /> WhatsApp Now
-                </a>
+                {data.minimalForm ? (
+                  <>
+                    <a
+                      href={`https://wa.me/919818565561?text=${encodeURIComponent(`Hi RDMI, I want to talk to an expert about ${data.primaryKeyword}.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-base lg:text-lg transition-all hover:scale-[1.03] shadow-[0_20px_60px_-15px_rgba(37,211,102,0.5)] cursor-pointer overflow-hidden ring-1 ring-white/30"
+                    >
+                      <svg className="relative w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+                      <span className="relative whitespace-nowrap">{data.hero.cta1}</span>
+                    </a>
+                    <a href="#lead-form" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl border border-white/35 bg-white/10 backdrop-blur-md text-white font-bold text-sm lg:text-base hover:bg-white/20 hover:border-white/60 transition-all shadow-lg shadow-black/20">
+                      Or leave your number <ArrowRight className="w-4 h-4" />
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <button onClick={openConsult} className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white font-bold text-base lg:text-lg transition-all hover:scale-[1.03] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.45)] cursor-pointer overflow-hidden ring-1 ring-white/60" style={{ color: t.urgencyColor }}>
+                      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                      <span className="relative">{data.hero.cta1}</span>
+                      <ArrowRight className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                    <a href="https://wa.me/919818565561" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl border border-white/35 bg-white/10 backdrop-blur-md text-white font-bold text-sm lg:text-base hover:bg-white/20 hover:border-white/60 transition-all shadow-lg shadow-black/20">
+                      <Phone className="w-4 h-4" /> WhatsApp Now
+                    </a>
+                  </>
+                )}
               </div>
             </div>
 
-            {/* RIGHT — product mockup */}
+            {/* RIGHT — minimal lead form OR product mockup */}
             <div className="relative">
               {/* Glow behind */}
               <div className="absolute inset-0 rounded-[3rem] blur-3xl opacity-60 scale-105" style={{ background: `radial-gradient(circle, ${t.urgencyColor}, transparent 70%)` }} />
 
-              {data.slug === "mobile-app-development" ? (
+              {data.heroPortfolio && data.heroPortfolio.length > 0 ? (
+                /* HERO PORTFOLIO CAROUSEL — auto-advancing, click → WhatsApp with project pre-filled */
+                <div
+                  className="relative mx-auto max-w-md lg:max-w-none select-none"
+                  onMouseEnter={() => setPortfolioPaused(true)}
+                  onMouseLeave={() => setPortfolioPaused(false)}
+                >
+                  {/* Slides stack — only active is visible, others fade out */}
+                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/15">
+                    {data.heroPortfolio.map((p, i) => {
+                      const active = portfolioSlide === i;
+                      const waHref = `https://wa.me/919818565561?text=${encodeURIComponent(`Hi RDMI, I saw your "${p.project}" project and want something similar for ${data.primaryKeyword}.`)}`;
+                      return (
+                        <a
+                          key={p.project}
+                          href={waHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-hidden={!active}
+                          tabIndex={active ? 0 : -1}
+                          className={`absolute inset-0 transition-opacity duration-700 ${active ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+                        >
+                          <Image src={p.image} alt={p.project} fill sizes="(min-width: 1024px) 640px, 100vw" priority={i === 0} className="object-cover" />
+                          {/* Bottom gradient for legibility */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                          {/* Top-left project pill */}
+                          <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/55 backdrop-blur-md ring-1 ring-white/20">
+                            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: t.urgencyColor }} />
+                            <span className="text-[11px] font-bold text-white tracking-wide uppercase">{p.project}</span>
+                          </div>
+                          {/* Bottom outcome + tech */}
+                          <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
+                            <p className="text-white font-extrabold text-base lg:text-lg leading-snug mb-2.5 drop-shadow-md">{p.outcome}</p>
+                            <div className="flex flex-wrap gap-1.5">
+                              {p.tech.slice(0, 4).map((tg) => (
+                                <span key={tg} className="text-[10px] font-semibold text-white/90 px-2 py-1 rounded-md bg-white/15 backdrop-blur-sm ring-1 ring-white/20">{tg}</span>
+                              ))}
+                            </div>
+                          </div>
+                        </a>
+                      );
+                    })}
+                  </div>
+                  {/* Prev / Next arrows */}
+                  {portfolioCount > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        aria-label="Previous project"
+                        onClick={() => setPortfolioSlide((s) => (s - 1 + portfolioCount) % portfolioCount)}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md ring-1 ring-white/20 flex items-center justify-center text-white transition-all hover:scale-110 cursor-pointer"
+                      >
+                        <ArrowRight className="w-4 h-4 rotate-180" />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label="Next project"
+                        onClick={() => setPortfolioSlide((s) => (s + 1) % portfolioCount)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md ring-1 ring-white/20 flex items-center justify-center text-white transition-all hover:scale-110 cursor-pointer"
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </>
+                  )}
+                  {/* Dots */}
+                  {portfolioCount > 1 && (
+                    <div className="flex items-center justify-center gap-2 mt-5">
+                      {data.heroPortfolio.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          aria-label={`Go to project ${i + 1}`}
+                          onClick={() => setPortfolioSlide(i)}
+                          className={`transition-all rounded-full ${portfolioSlide === i ? "w-8 h-2 bg-white" : "w-2 h-2 bg-white/35 hover:bg-white/60"}`}
+                        />
+                      ))}
+                    </div>
+                  )}
+                  {/* Floating trust badges */}
+                  <div className="hidden lg:flex absolute -left-3 top-6 items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500 text-white text-[11px] font-bold shadow-xl shadow-emerald-500/40 ring-2 ring-white/20 z-10">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> 47 devs building now
+                  </div>
+                  <div className="hidden lg:flex absolute -right-3 -bottom-3 items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-gray-900 text-[11px] font-bold shadow-xl ring-1 ring-black/5 z-10">
+                    <Star className="w-3 h-3 fill-amber-400 text-amber-400" /> 4.9 · 200+ shipped
+                  </div>
+                </div>
+              ) : data.slug === "mobile-app-development" ? (
                 /* PHONE MOCKUP — real app UI */
                 <div className="relative mx-auto max-w-[290px] lg:max-w-[320px]">
                   <div className="absolute -inset-4 rounded-[3.5rem] bg-gradient-to-br from-white/20 via-white/5 to-transparent blur-2xl" />
@@ -761,6 +858,53 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
+      {/* ═══════ HERO LEAD STRIP (minimal form pages with portfolio hero) ═══════ */}
+      {data.heroPortfolio && data.heroPortfolio.length > 0 && (
+        <section id="lead-form" className="relative bg-[#0a0a0a] border-y border-white/10 py-10 lg:py-14 overflow-hidden">
+          {/* Ambient theme accent */}
+          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[140px] opacity-25 pointer-events-none" style={{ backgroundColor: t.urgencyColor }} />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-[1fr,1.4fr] gap-8 lg:gap-12 items-center">
+              <div className="text-center lg:text-left">
+                <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] mb-3" style={{ color: t.urgencyColor }}>
+                  <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: t.urgencyColor }} />
+                  2-Hour Callback · WhatsApp First
+                </p>
+                <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-extrabold text-white tracking-[-0.02em] leading-[1.1] mb-3">
+                  Or drop your number — a senior {data.slug === "mobile-app-development" ? "mobile engineer" : data.slug === "web-development-company" ? "web engineer" : "software engineer"} calls you in 2 hours.
+                </h2>
+                <p className="text-sm sm:text-base text-white/65 leading-relaxed max-w-md mx-auto lg:mx-0">
+                  NDA signed before the call. No sales rep, no junior. Walk away anytime, full source code yours.
+                </p>
+              </div>
+              <form onSubmit={handleSubmit} className="rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md p-5 lg:p-6 shadow-2xl shadow-black/40">
+                <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                  <input required type="text" placeholder="Full name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder-white/40 outline-none transition-all focus:bg-white/[0.10] focus:border-white/30" />
+                  <input required type="tel" placeholder="Phone (WhatsApp)" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder-white/40 outline-none transition-all focus:bg-white/[0.10] focus:border-white/30" />
+                  <input required type="email" placeholder="Work email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder-white/40 outline-none transition-all focus:bg-white/[0.10] focus:border-white/30" />
+                  <select required value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })} className={`w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm outline-none transition-all focus:bg-white/[0.10] focus:border-white/30 ${formData.budget ? "text-white" : "text-white/40"}`}>
+                    <option value="" className="bg-zinc-900">Budget range</option>
+                    {budgets.map((b) => <option key={b} value={b} className="bg-zinc-900 text-white">{b}</option>)}
+                  </select>
+                </div>
+                <button type="submit" disabled={formStatus === "loading"} className="group w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-base text-white shadow-lg transition-all hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer bg-[#25D366] hover:bg-[#1ebe5d] shadow-emerald-500/30">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+                  {formStatus === "loading" ? "Sending…" : <>{f.buttonText} <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" /></>}
+                </button>
+                {formStatus === "error" && <p className="text-xs text-rose-400 text-center mt-3">Something went wrong. WhatsApp us directly: +91 98185 65561</p>}
+                <div className="mt-3 flex items-center justify-center gap-4 text-[11px] text-white/50">
+                  <span className="flex items-center gap-1.5"><Shield className="w-3 h-3 text-emerald-400" /> NDA before call</span>
+                  <span className="w-1 h-1 rounded-full bg-white/20" />
+                  <span>No sales rep</span>
+                  <span className="w-1 h-1 rounded-full bg-white/20" />
+                  <span>Walk away anytime</span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ═══════ TRUSTED BY (auto-scroll marquee) ═══════ */}
       <section className="relative py-10 lg:py-12 bg-white border-b border-gray-100 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -809,140 +953,93 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ STATS ═══════ */}
-      <section className="relative py-20 lg:py-24 overflow-hidden" style={{ background: "linear-gradient(135deg, #f8fafc, #eff6ff, #f5f3ff, #f8fafc)" }}>
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-20" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full blur-[120px] opacity-10" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-            {data.stats.map((s, i) => {
-              const icons = [BarChart3, Sparkles, Shield, TrendingUp];
-              const StatIcon = icons[i % icons.length];
-              return (
-                <TiltCard key={s.label} max={6} scale={1.03} className="group relative p-7 lg:p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-xl shadow-black/[0.04] hover:shadow-2xl overflow-hidden">
-                  {/* Corner accent gradient */}
-                  <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-15 group-hover:opacity-30 transition-opacity" style={{ background: `radial-gradient(circle, ${t.urgencyColor}, transparent)` }} />
-                  {/* Icon tile */}
-                  <div className="relative w-12 h-12 rounded-xl flex items-center justify-center mb-5 shadow-md" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` }}>
-                    <StatIcon className="w-5 h-5 text-white" />
-                  </div>
-                  <AnimatedCounter value={s.value} className={`relative text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold ${a.text} leading-none tracking-tight`} />
-                  <div className="relative text-sm lg:text-[15px] text-gray-700 mt-3 font-medium leading-snug">{s.label}</div>
-                  {/* Sparkline */}
-                  <svg viewBox="0 0 100 24" className="relative w-full h-6 mt-4 opacity-60" preserveAspectRatio="none">
-                    <path d={i === 0 ? "M0,18 Q15,16 25,12 T50,8 T75,5 T100,2" : i === 1 ? "M0,12 Q15,18 25,10 T50,6 T75,9 T100,3" : i === 2 ? "M0,15 Q15,8 25,12 T50,4 T75,8 T100,2" : "M0,20 Q15,12 25,15 T50,7 T75,10 T100,3"} fill="none" stroke={t.urgencyColor} strokeWidth="2" strokeLinecap="round" />
-                    <circle cx="100" cy={i === 0 ? 2 : i === 1 ? 3 : i === 2 ? 2 : 3} r="2.5" fill={t.urgencyColor} />
-                  </svg>
-                </TiltCard>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════ PAIN STRIP ═══════ */}
-      <section className="relative py-20 lg:py-24 overflow-hidden" style={{ background: "linear-gradient(180deg, #f8fafc, #eff6ff)" }}>
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full blur-[140px] opacity-15" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-3 gap-5">
-            {[
-              { pain: "Other agencies assigned you juniors", solve: "Every RDMI project: 5+ year seniors only.", icon: "😤", color: "border-l-red-500" },
-              { pain: "You waited days for a quote and revisions", solve: "Senior engineer calls you in 2 hours — same day scope.", icon: "⏳", color: "border-l-amber-500" },
-              { pain: "You can\'t reach the person writing code", solve: "Direct WhatsApp with your developer. Replies in 30 min.", icon: "📵", color: "border-l-orange-500" },
-            ].map((item) => (
-              <div key={item.pain} className={`bg-white/70 backdrop-blur-xl rounded-2xl p-6 lg:p-7 border border-white/60 border-l-4 ${item.color} shadow-lg shadow-black/[0.04] hover:shadow-xl hover:bg-white/90 transition-all`}>
-                <p className="text-lg font-semibold text-gray-900 mb-3 leading-snug">{item.icon} {item.pain}</p>
-                <p className="text-[15px] text-emerald-700 font-medium leading-relaxed">✓ {item.solve}</p>
+      {/* ═══════ STATS (clean) ═══════ */}
+      <section className="bg-white py-20 lg:py-24 border-y border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
+            {data.stats.map((s, i) => (
+              <div key={s.label} className="bg-white p-7 lg:p-9 hover:bg-gray-50/50 transition-colors">
+                <p className="text-xs font-mono text-gray-400 mb-3">0{i + 1}</p>
+                <AnimatedCounter value={s.value} className={`text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold ${a.text} leading-none tracking-[-0.025em]`} />
+                <div className="text-sm text-gray-600 mt-3 leading-snug">{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══════ SERVICES ═══════ */}
-      <section id="services" className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, #eff6ff, #f8fafc, #f5f3ff)" }}>
-        <div className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-20" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="absolute bottom-20 left-0 w-[400px] h-[400px] rounded-full blur-[120px] opacity-10" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 lg:mb-16">
-            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>What We Deliver</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-              Everything You Need, <span className={a.text}>Built AI-First</span>
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-            {data.services.map((service, i) => {
-              const isFeatured = i === 0;
-              if (isFeatured) {
-                return (
-                  <div key={service.title} onClick={openConsult} className="group relative sm:col-span-2 lg:col-span-2 lg:row-span-2 p-8 lg:p-10 rounded-3xl text-white shadow-2xl shadow-black/20 hover:shadow-[0_30px_80px_-15px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all cursor-pointer overflow-hidden" style={{ background: t.heroGradient }}>
-                    <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full blur-[100px] opacity-50 mix-blend-screen" style={{ backgroundColor: t.urgencyColor }} />
-                    <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full blur-[100px] opacity-40 mix-blend-screen" style={{ backgroundColor: "#a855f7" }} />
-                    <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
-                    <div className="relative">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[10px] font-bold uppercase tracking-widest mb-6">
-                        <Sparkles className="w-3 h-3" />Featured Service
-                      </div>
-                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight tracking-tight">{service.title}</h3>
-                      <p className="text-base lg:text-lg text-white/85 leading-relaxed mb-6 max-w-xl">{service.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-8">
-                        {service.tags.slice(0, 6).map((tag) => (
-                          <span key={tag} className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white/15 backdrop-blur-md text-white border border-white/25">{tag}</span>
-                        ))}
-                      </div>
-                      <div className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white font-bold text-sm shadow-xl group-hover:scale-105 transition-transform" style={{ color: t.urgencyColor }}>
-                        Get a free prototype <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </div>
-                );
-              }
-              return (
-                <TiltCard key={service.title} max={6} scale={1.03}>
-                  <div onClick={openConsult} className="group p-7 lg:p-8 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:bg-white/90 transition-all cursor-pointer h-full">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center text-white text-sm font-bold mb-5 shadow-sm`}>
-                      {String(i + 1).padStart(2, "0")}
-                    </div>
-                    <h3 className={`text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:${a.text} transition-colors`}>{service.title}</h3>
-                    <p className="text-[15px] text-gray-600 leading-relaxed mb-5">{service.description}</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {service.tags.slice(0, 4).map((tag) => (
-                        <span key={tag} className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700 border border-gray-200">{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                </TiltCard>
-              );
-            })}
+      {/* ═══════ PAIN STRIP (clean) ═══════ */}
+      <section className="bg-gray-50 py-20 lg:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid sm:grid-cols-3 gap-px bg-gray-200 rounded-2xl overflow-hidden border border-gray-200">
+            {[
+              { pain: "Junior developers assigned to your project", solve: "5+ year senior engineers only — no junior swap." },
+              { pain: "Days waiting for quote and revisions", solve: "Senior engineer calls in 2 hours — same-day scope." },
+              { pain: "No direct line to who writes the code", solve: "Direct WhatsApp with your developer. 30-min replies." },
+            ].map((item, i) => (
+              <div key={item.pain} className="bg-white p-7 lg:p-8 hover:bg-gray-50/50 transition-colors">
+                <p className="text-xs font-mono text-gray-400 mb-3">Pain 0{i + 1}</p>
+                <p className="text-base font-semibold text-gray-900 mb-3 leading-snug">{item.pain}</p>
+                <p className="text-sm text-gray-600 leading-relaxed flex items-start gap-2">
+                  <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${a.text}`} />
+                  <span>{item.solve}</span>
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ═══════ CASE STUDIES ═══════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, #f5f3ff, #f8fafc, #eff6ff)" }}>
-        <div className="absolute top-1/3 -left-20 w-[500px] h-[500px] rounded-full blur-[140px] opacity-15" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 lg:mb-16">
-            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Proven Results</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-              Outcomes We&apos;ve <span className={a.text}>Delivered</span>
+      {/* ═══════ SERVICES (clean) ═══════ */}
+      <section id="services" className="bg-white py-24 lg:py-32 border-y border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-14 lg:mb-16">
+            <p className={`text-sm font-semibold mb-4 ${a.text}`}>Services</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 tracking-[-0.025em] leading-[1.05]">
+              Everything you need to ship — built AI-native.
             </h2>
           </div>
-          <div className="grid sm:grid-cols-3 gap-5 lg:gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
+            {data.services.map((service, i) => (
+              <div key={service.title} onClick={openConsult} className="bg-white p-8 lg:p-9 hover:bg-gray-50/50 transition-colors cursor-pointer group">
+                <p className="text-xs font-mono text-gray-400 mb-4">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className={`text-lg lg:text-xl font-bold text-gray-900 mb-3 tracking-tight leading-snug group-hover:${a.text} transition-colors`}>{service.title}</h3>
+                <p className="text-[15px] text-gray-600 leading-relaxed mb-5">{service.description}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {service.tags.slice(0, 4).map((tag) => (
+                    <span key={tag} className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-50 text-gray-600 border border-gray-100">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ CASE STUDIES (clean) ═══════ */}
+      <section className="bg-gray-50 py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-14 lg:mb-16">
+            <p className={`text-sm font-semibold mb-4 ${a.text}`}>Results</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 tracking-[-0.025em] leading-[1.05]">
+              Outcomes shipped, not promises made.
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-px bg-gray-200 rounded-2xl overflow-hidden border border-gray-200">
             {(data.caseStudies || [
               { tag: "SaaS", headline: "AI Dashboard — 3x user engagement", result: "4x faster decisions", tech: ["Next.js", "OpenAI", "AWS"], weeks: 10 },
               { tag: "E-Commerce", headline: "Marketplace — 4x conversion increase", result: "35% higher AOV", tech: ["React", "Node.js", "Razorpay"], weeks: 12 },
               { tag: "AI Agent", headline: "RAG System — 50K docs in 3 seconds", result: "Replaced 3 FTE roles", tech: ["LangChain", "Pinecone"], weeks: 8 },
             ]).map((cs) => (
-              <div key={cs.headline} onClick={openConsult} className="group bg-white/70 backdrop-blur-xl rounded-2xl p-7 lg:p-8 border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:bg-white/90 hover:-translate-y-1 transition-all cursor-pointer">
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`px-3 py-1 text-xs font-bold rounded-full ${a.bg50} ${a.text}`}>{cs.tag}</span>
-                  <span className="text-xs font-medium text-gray-500">{cs.weeks} weeks</span>
+              <div key={cs.headline} onClick={openConsult} className="bg-white p-8 lg:p-9 hover:bg-gray-50/50 transition-colors cursor-pointer group">
+                <div className="flex items-center justify-between mb-5">
+                  <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">{cs.tag}</span>
+                  <span className="text-xs font-mono text-gray-400">{cs.weeks} weeks</span>
                 </div>
-                <h3 className={`text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:${a.text} transition-colors`}>{cs.headline}</h3>
-                <p className="text-2xl lg:text-3xl font-extrabold text-emerald-600 mb-5 tracking-tight">{cs.result}</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {cs.tech.map((t) => <span key={t} className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700 border border-gray-200">{t}</span>)}
+                <h3 className={`text-lg font-bold text-gray-900 mb-4 leading-snug tracking-tight group-hover:${a.text} transition-colors`}>{cs.headline}</h3>
+                <p className={`text-3xl font-extrabold mb-6 tracking-[-0.025em] ${a.text}`}>{cs.result}</p>
+                <div className="flex flex-wrap gap-1.5 pt-5 border-t border-gray-100">
+                  {cs.tech.map((t) => <span key={t} className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-50 text-gray-600 border border-gray-100">{t}</span>)}
                 </div>
               </div>
             ))}
@@ -950,79 +1047,54 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ PROCESS ═══════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, #eff6ff, #f8fafc)" }}>
-        <div className="absolute top-0 right-1/3 w-[500px] h-[450px] rounded-full blur-[140px] opacity-15" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 lg:mb-16">
-            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>How It Works</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-              From Idea to <span className={a.text}>Launch</span>
+      {/* ═══════ PROCESS (clean) ═══════ */}
+      <section className="bg-white py-24 lg:py-32 border-y border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-14 lg:mb-16">
+            <p className={`text-sm font-semibold mb-4 ${a.text}`}>Process</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 tracking-[-0.025em] leading-[1.05]">
+              From idea to launch.
             </h2>
           </div>
-          <div className="relative">
-            {/* Horizontal connecting line — runs across all 4 step cards on desktop */}
-            <div className="hidden lg:block absolute top-14 left-12 right-12 h-0.5 -z-0" style={{ background: `linear-gradient(90deg, transparent, ${t.urgencyColor}40, ${t.urgencyColor}, ${t.urgencyColor}, ${t.urgencyColor}40, transparent)` }} />
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 relative">
-              {data.process.map((step, i) => (
-                <div key={step.step} className="relative p-7 lg:p-8 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:-translate-y-1 transition-all">
-                  {/* Numbered tile with ring */}
-                  <div className="relative w-14 h-14 mb-5">
-                    <div className="absolute inset-0 rounded-2xl opacity-25 blur-md" style={{ backgroundColor: t.urgencyColor }} />
-                    <div className="relative w-14 h-14 rounded-2xl flex items-center justify-center text-white text-base font-extrabold shadow-xl ring-4 ring-white" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}dd)` }}>
-                      {step.step}
-                    </div>
-                  </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3 leading-snug">{step.title}</h3>
-                  <p className="text-[15px] text-gray-600 leading-relaxed">{step.description}</p>
-                </div>
-              ))}
-            </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
+            {data.process.map((step) => (
+              <div key={step.step} className="bg-white p-7 lg:p-8 hover:bg-gray-50/50 transition-colors">
+                <p className={`text-xs font-mono mb-4 ${a.text}`}>Step {step.step}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-3 tracking-tight leading-snug">{step.title}</h3>
+                <p className="text-[15px] text-gray-600 leading-relaxed">{step.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ═══════ DELIVERABLES TIMELINE ═══════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, #f8fafc, #eff6ff, #f5f3ff)" }}>
-        <div className="absolute top-1/4 left-0 w-[500px] h-[400px] rounded-full blur-[140px] opacity-12" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="absolute bottom-1/4 right-0 w-[450px] h-[400px] rounded-full blur-[130px] opacity-10" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 lg:mb-16">
-            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Concrete Deliverables</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-              Here&apos;s Exactly What You Get, <span className={a.text}>Week by Week</span>
-            </h2>
-            <p className="mt-5 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+      {/* ═══════ DELIVERABLES TIMELINE (clean) ═══════ */}
+      <section className="bg-gray-50 py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 lg:mb-16">
+            <div className="max-w-2xl">
+              <p className={`text-sm font-semibold mb-4 ${a.text}`}>Deliverables</p>
+              <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 tracking-[-0.025em] leading-[1.05]">
+                Here&apos;s exactly what you get, week by week.
+              </h2>
+            </div>
+            <p className="text-base text-gray-600 leading-relaxed lg:max-w-sm">
               No vague status emails. Every milestone has a deliverable you can see, click, or run.
             </p>
           </div>
-          <div className="relative">
-            {/* connector line */}
-            <div className="hidden lg:block absolute top-8 left-12 right-12 h-0.5" style={{ background: `linear-gradient(90deg, transparent, ${t.urgencyColor}40, ${t.urgencyColor}, ${t.urgencyColor}40, transparent)` }} />
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-              {[
-                { day: "Day 1", title: "Senior Engineer Call", desc: "30-60 min discovery on a real call. Stack, scope, risks named live. Written summary + fixed-price quote in your inbox same day." },
-                { day: "Day 2-3", title: "Free Working Prototype", desc: "Clickable prototype on real flows — not a Figma board. AI features mocked with live LLM responses. Test it, share with your team, walk away free if it misses." },
-                { day: "Day 14", title: "First Working Build", desc: "Live staging URL with real data flowing. Features you can click, AI you can talk to, edge cases handled. Sprint demo every two weeks from here." },
-                { day: "Day 42-56", title: "Production Launch", desc: "Live on your domain. CI/CD, observability, runbooks, on-call handoff. 30-60 days of free hypercare. Full source, prompts, weights, schemas — yours." },
-              ].map((d, i) => (
-                <div key={d.day} className="relative">
-                  <div className="relative p-6 lg:p-7 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-2xl hover:bg-white/95 hover:-translate-y-1 transition-all">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white text-sm font-extrabold shadow-md" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` }}>
-                        {String(i + 1).padStart(2, "0")}
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Milestone</p>
-                        <p className={`text-sm font-extrabold ${a.text}`}>{d.day}</p>
-                      </div>
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-3 leading-snug">{d.title}</h3>
-                    <p className="text-[14px] text-gray-600 leading-relaxed">{d.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 rounded-2xl overflow-hidden border border-gray-200">
+            {[
+              { day: "Day 1", title: "Senior Engineer Call", desc: "30-60 min discovery on a real call. Stack, scope, risks named live. Written summary plus fixed-price quote in your inbox same day." },
+              { day: "Day 2-3", title: "Free Working Prototype", desc: "Clickable prototype on real flows — not a Figma board. AI features mocked with live responses. Walk away free if it misses." },
+              { day: "Day 14", title: "First Working Build", desc: "Live staging URL with real data flowing. Features you can click, AI you can talk to, edge cases handled. Sprint demo every two weeks." },
+              { day: "Day 42-56", title: "Production Launch", desc: "Live on your domain. CI/CD, observability, runbooks, on-call handoff. 30-60 days of free hypercare. Full source yours." },
+            ].map((d) => (
+              <div key={d.day} className="bg-white p-7 lg:p-8 hover:bg-gray-50/50 transition-colors">
+                <p className={`text-xs font-mono mb-4 ${a.text}`}>{d.day}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-3 tracking-tight leading-snug">{d.title}</h3>
+                <p className="text-[14px] text-gray-600 leading-relaxed">{d.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1109,17 +1181,16 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ TECH STACK ═══════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, #f5f3ff, #f8fafc)" }}>
-        <div className="absolute top-0 left-1/4 w-[500px] h-[400px] rounded-full blur-[140px] opacity-12" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 lg:mb-16">
-            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Technology</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-              Built With the <span className={a.text}>Latest Stack</span>
+      {/* ═══════ TECH STACK (clean) ═══════ */}
+      <section className="bg-white py-24 lg:py-32 border-y border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-14 lg:mb-16">
+            <p className={`text-sm font-semibold mb-4 ${a.text}`}>Technology</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 tracking-[-0.025em] leading-[1.05]">
+              Built with the latest stack.
             </h2>
           </div>
-          <div className="grid sm:grid-cols-3 gap-5 lg:gap-6">
+          <div className="grid sm:grid-cols-3 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
             {(isAIPage ? [
               { cat: "AI & LLM", items: ["OpenAI", "Anthropic Claude", "Google Gemini", "LangChain", "LangGraph", "CrewAI", "LlamaIndex", "LangSmith"] },
               { cat: "Backend & Data", items: ["Python", "Node.js", "FastAPI", "Pinecone", "pgvector", "MongoDB", "PostgreSQL", "Redis"] },
@@ -1129,11 +1200,11 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { cat: "Backend & Data", items: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis", "GraphQL", "FastAPI", "Prisma"] },
               { cat: "Cloud & Payments", items: ["AWS", "Vercel", "Docker", "GitHub Actions", "Stripe", "Razorpay", "Cloudflare", "Sentry"] },
             ]).map((stack) => (
-              <div key={stack.cat} className="p-7 lg:p-8 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg shadow-black/[0.04] hover:shadow-xl hover:bg-white/90 transition-all">
-                <p className={`text-xs font-bold ${a.text} uppercase tracking-widest mb-5`}>{stack.cat}</p>
+              <div key={stack.cat} className="bg-white p-8 lg:p-9">
+                <p className={`text-xs font-mono ${a.text} uppercase tracking-widest mb-5`}>{stack.cat}</p>
                 <div className="flex flex-wrap gap-2">
                   {stack.items.map((item) => (
-                    <span key={item} className="px-3 py-1.5 text-sm font-medium rounded-lg bg-white text-gray-700 border border-gray-200 shadow-sm">{item}</span>
+                    <span key={item} className="px-3 py-1.5 text-sm font-medium rounded-md bg-gray-50 text-gray-700 border border-gray-100">{item}</span>
                   ))}
                 </div>
               </div>
@@ -1142,17 +1213,16 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ TESTIMONIALS ═══════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, #f8fafc, #eff6ff, #f5f3ff)" }}>
-        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-15" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 lg:mb-16">
-            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Client Feedback</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-              What Founders <span className={a.text}>Say</span>
+      {/* ═══════ TESTIMONIALS (clean) ═══════ */}
+      <section className="bg-gray-50 py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-14 lg:mb-16">
+            <p className={`text-sm font-semibold mb-4 ${a.text}`}>Clients</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 tracking-[-0.025em] leading-[1.05]">
+              What founders say.
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 rounded-2xl overflow-hidden border border-gray-200">
             {(data.testimonials || [
               { quote: "Delivered our prototype in 48 hours. The developer knew our industry better than our previous agency.", author: "AK", role: "Startup Founder, Bangalore", rating: 5 },
               { quote: "AI-first approach cut our timeline in half. We launched in 6 weeks instead of 12.", author: "SR", role: "CTO, FinTech, Mumbai", rating: 5 },
@@ -1161,31 +1231,22 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               { quote: "The AI chatbot handles 80% of tickets. ROI positive in month 2.", author: "DS", role: "VP Ops, E-Commerce", rating: 5 },
               { quote: "After the first sprint demo, we extended the contract to 6 months.", author: "MT", role: "PM, SaaS, San Francisco", rating: 5 },
             ]).map((tm, i) => (
-              <TiltCard key={i} max={5} scale={1.02} className="group relative bg-white rounded-3xl p-7 lg:p-8 border border-gray-200 shadow-lg shadow-black/[0.04] hover:shadow-2xl overflow-hidden">
-                {/* Decorative corner blob */}
-                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-10 group-hover:opacity-20 transition-opacity" style={{ background: `radial-gradient(circle, ${t.urgencyColor}, transparent)` }} />
-                {/* Big opening quote */}
-                <div className="relative text-6xl leading-none font-serif mb-3" style={{ color: t.urgencyColor, opacity: 0.25 }}>&ldquo;</div>
-                <div className="relative flex items-center gap-1.5 mb-4">
+              <div key={i} className="bg-white p-8 lg:p-9 hover:bg-gray-50/50 transition-colors flex flex-col">
+                <div className="flex items-center justify-between mb-5">
                   <div className="flex gap-0.5">
-                    {Array.from({ length: tm.rating }).map((_, s) => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+                    {Array.from({ length: tm.rating }).map((_, s) => <Star key={s} className="w-4 h-4 fill-gray-900 text-gray-900" />)}
                   </div>
-                  <span className="ml-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-[10px] font-bold text-emerald-700 uppercase tracking-wider">
-                    <CheckCircle2 className="w-3 h-3" />Verified
-                  </span>
+                  <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider">Verified</span>
                 </div>
-                <p className="relative text-[15px] lg:text-base text-gray-800 leading-relaxed mb-6 font-medium">{tm.quote}</p>
-                <div className="relative flex items-center gap-3 pt-5 border-t border-gray-100">
-                  <div className="relative">
-                    <div className="absolute inset-0 rounded-full opacity-40 blur-md" style={{ backgroundColor: t.urgencyColor }} />
-                    <div className="relative w-11 h-11 rounded-full flex items-center justify-center text-sm font-extrabold text-white shadow-lg ring-2 ring-white" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}cc)` }}>{tm.author}</div>
-                  </div>
+                <p className="text-[15px] text-gray-800 leading-relaxed mb-6 flex-1">&ldquo;{tm.quote}&rdquo;</p>
+                <div className="flex items-center gap-3 pt-5 border-t border-gray-100">
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold text-white ${a.bg}`}>{tm.author}</div>
                   <div>
                     <p className="text-sm font-bold text-gray-900 leading-tight">{tm.author}</p>
-                    <p className="text-xs text-gray-500 font-medium leading-tight mt-0.5">{tm.role}</p>
+                    <p className="text-xs text-gray-500 leading-tight mt-0.5">{tm.role}</p>
                   </div>
                 </div>
-              </TiltCard>
+              </div>
             ))}
           </div>
         </div>
@@ -1204,60 +1265,46 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ COMPARISON TABLE ═══════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, #f5f3ff, #f8fafc)" }}>
-        <div className="absolute top-1/4 left-0 w-[500px] h-[400px] rounded-full blur-[140px] opacity-12" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 lg:mb-16">
-            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>Compare</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-              RDMI vs <span className={a.text}>The Alternatives</span>
+      {/* ═══════ COMPARISON TABLE (clean) ═══════ */}
+      <section className="bg-white py-24 lg:py-32 border-y border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-14 lg:mb-16">
+            <p className={`text-sm font-semibold mb-4 ${a.text}`}>Compare</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 tracking-[-0.025em] leading-[1.05]">
+              RDMI vs the alternatives.
             </h2>
           </div>
-          <div className="overflow-hidden rounded-3xl border border-white/60 shadow-2xl shadow-black/[0.08] bg-white/80 backdrop-blur-xl">
+          <div className="overflow-hidden rounded-2xl border border-gray-100">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-5 px-5 lg:px-6 bg-gray-50 text-gray-700 font-bold text-sm uppercase tracking-wider">Criteria</th>
-                    <th className="text-center py-5 px-5 lg:px-6 text-white font-extrabold text-sm uppercase tracking-wider relative" style={{ background: `linear-gradient(135deg, ${t.urgencyColor}, ${t.urgencyColor}dd)` }}>
-                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-amber-400 text-amber-900 text-[9px] font-extrabold shadow-md">★ BEST</span>
-                      RDMI
-                    </th>
-                    <th className="text-center py-5 px-5 lg:px-6 bg-gray-50 text-gray-600 font-bold text-sm uppercase tracking-wider">Large Agency</th>
-                    <th className="text-center py-5 px-5 lg:px-6 bg-gray-50 text-gray-600 font-bold text-sm uppercase tracking-wider">Freelancer</th>
+                  <tr className="border-b border-gray-100">
+                    <th className="text-left py-5 px-6 text-xs font-semibold uppercase tracking-wider text-gray-500 bg-gray-50">Criteria</th>
+                    <th className={`text-left py-5 px-6 text-xs font-semibold uppercase tracking-wider ${a.bg50} ${a.text}`}>RDMI</th>
+                    <th className="text-left py-5 px-6 text-xs font-semibold uppercase tracking-wider text-gray-500 bg-gray-50">Large Agency</th>
+                    <th className="text-left py-5 px-6 text-xs font-semibold uppercase tracking-wider text-gray-500 bg-gray-50">Freelancer</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {[
-                    { crit: "Developer Seniority", rdmi: { ok: true, txt: "5+ yr seniors only" }, agency: { ok: false, txt: "Mix of juniors" }, free: { ok: null, txt: "Varies" } },
-                    { crit: "Response Time", rdmi: { ok: true, txt: "< 2 hours" }, agency: { ok: false, txt: "2–5 days" }, free: { ok: null, txt: "Unpredictable" } },
-                    { crit: "Engagement", rdmi: { ok: true, txt: "Month-to-month" }, agency: { ok: false, txt: "12-month lock-in" }, free: { ok: null, txt: "Project-based" } },
-                    { crit: "Source Code", rdmi: { ok: true, txt: "100% yours" }, agency: { ok: false, txt: "Often restricted" }, free: { ok: null, txt: "Usually yours" } },
-                    { crit: "AI-Native Delivery", rdmi: { ok: true, txt: "Every project" }, agency: { ok: false, txt: "Traditional coding" }, free: { ok: false, txt: "No" } },
-                    { crit: "Money-Back Guarantee", rdmi: { ok: true, txt: "Every milestone" }, agency: { ok: false, txt: "Best-effort only" }, free: { ok: false, txt: "None" } },
-                    { crit: "Post-Launch Support", rdmi: { ok: true, txt: "30–60 days free" }, agency: { ok: false, txt: "Paid from day 1" }, free: { ok: null, txt: "Limited" } },
-                  ].map((row, idx) => (
-                    <tr key={row.crit} className={`group hover:bg-gray-50 transition-colors ${idx % 2 === 0 ? "" : "bg-gray-50/40"}`}>
-                      <td className="py-5 px-5 lg:px-6 text-[15px] text-gray-900 font-bold">{row.crit}</td>
-                      <td className="py-5 px-5 lg:px-6 text-center" style={{ backgroundColor: `${t.urgencyColor}0d` }}>
-                        <div className="inline-flex items-center gap-2">
-                          <CheckCircle2 className="w-5 h-5 flex-shrink-0" style={{ color: t.urgencyColor }} />
-                          <span className="text-[15px] font-bold text-gray-900">{row.rdmi.txt}</span>
-                        </div>
+                    { crit: "Developer Seniority", rdmi: "5+ yr seniors only", agency: "Mix of juniors", free: "Varies" },
+                    { crit: "Response Time", rdmi: "< 2 hours", agency: "2–5 days", free: "Unpredictable" },
+                    { crit: "Engagement", rdmi: "Month-to-month", agency: "12-month lock-in", free: "Project-based" },
+                    { crit: "Source Code", rdmi: "100% yours", agency: "Often restricted", free: "Usually yours" },
+                    { crit: "AI-Native Delivery", rdmi: "Every project", agency: "Traditional coding", free: "No" },
+                    { crit: "Money-Back Guarantee", rdmi: "Every milestone", agency: "Best-effort only", free: "None" },
+                    { crit: "Post-Launch Support", rdmi: "30–60 days free", agency: "Paid from day 1", free: "Limited" },
+                  ].map((row) => (
+                    <tr key={row.crit} className="hover:bg-gray-50/50 transition-colors">
+                      <td className="py-5 px-6 text-sm font-semibold text-gray-900">{row.crit}</td>
+                      <td className={`py-5 px-6 text-sm font-bold ${a.text}`}>
+                        <span className="inline-flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4" />
+                          {row.rdmi}
+                        </span>
                       </td>
-                      <td className="py-5 px-5 lg:px-6 text-center">
-                        <div className="inline-flex items-center gap-2 text-amber-600">
-                          <span className="w-5 h-5 rounded-full border-2 border-amber-500 flex items-center justify-center text-amber-600 font-bold text-[10px] flex-shrink-0">!</span>
-                          <span className="text-[14px] font-medium">{row.agency.txt}</span>
-                        </div>
-                      </td>
-                      <td className="py-5 px-5 lg:px-6 text-center">
-                        <div className="inline-flex items-center gap-2 text-red-500">
-                          <X className="w-5 h-5 flex-shrink-0" />
-                          <span className="text-[14px] font-medium">{row.free.txt}</span>
-                        </div>
-                      </td>
+                      <td className="py-5 px-6 text-sm text-gray-500">{row.agency}</td>
+                      <td className="py-5 px-6 text-sm text-gray-500">{row.free}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1267,20 +1314,19 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         </div>
       </section>
 
-      {/* ═══════ FAQ ═══════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, #f8fafc, #eff6ff)" }}>
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[140px] opacity-12" style={{ backgroundColor: t.urgencyColor }} />
-        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 lg:mb-16">
-            <p className={`text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 ${a.text}`}>FAQ</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-              Questions, <span className={a.text}>Answered</span>
+      {/* ═══════ FAQ (clean) ═══════ */}
+      <section className="bg-gray-50 py-24 lg:py-32">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-14 lg:mb-16">
+            <p className={`text-sm font-semibold mb-4 ${a.text}`}>FAQ</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 tracking-[-0.025em] leading-[1.05]">
+              Questions, answered.
             </h2>
           </div>
-          <div className="space-y-3">
+          <div className="rounded-2xl border border-gray-100 bg-white overflow-hidden divide-y divide-gray-100">
             {data.faq.map((faq, i) => (
-              <div key={i} className="rounded-2xl border border-white/60 bg-white/70 backdrop-blur-xl shadow-lg shadow-black/[0.04] overflow-hidden hover:bg-white/90 hover:shadow-xl transition-all">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition-colors">
+              <div key={i}>
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-6 lg:p-7 text-left hover:bg-gray-50/50 transition-colors">
                   <span className="text-base lg:text-lg font-semibold text-gray-900 pr-4 leading-snug">{faq.q}</span>
                   <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-180" : ""}`} />
                 </button>
@@ -1571,27 +1617,6 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
         ))}
       </div>
 
-      {/* ═══════ LIVE ACTIVITY TOAST ═══════ */}
-      {!activityDismissed && (
-        <div className={`fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-40 transition-all duration-500 ${activityVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"} max-w-[300px] sm:max-w-[340px] hidden lg:block`}>
-          <div className="relative pl-4 pr-9 py-3 rounded-2xl bg-white shadow-2xl shadow-black/15 border border-gray-100 flex items-start gap-3">
-            <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl" style={{ background: `linear-gradient(180deg, ${t.urgencyColor}, ${t.urgencyColor}80)` }} />
-            <div className="relative flex w-2.5 h-2.5 mt-1.5 flex-shrink-0">
-              <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75" />
-              <span className="relative rounded-full w-2.5 h-2.5 bg-emerald-500" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-[12px] text-gray-700 leading-snug">
-                <span className="font-bold text-gray-900">{ACTIVITY_FEED[activityIdx].role}</span> from <span className="font-semibold">{ACTIVITY_FEED[activityIdx].city}</span> just <span style={{ color: t.urgencyColor }} className="font-semibold">{ACTIVITY_FEED[activityIdx].action}</span>
-              </p>
-              <p className="text-[10px] text-gray-400 mt-0.5 font-medium">{ACTIVITY_FEED[activityIdx].ago}</p>
-            </div>
-            <button onClick={() => setActivityDismissed(true)} className="absolute top-2 right-2 p-1 rounded-full hover:bg-gray-100 transition-colors" aria-label="Dismiss">
-              <X className="w-3 h-3 text-gray-400" />
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

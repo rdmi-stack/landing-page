@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
         destination: "/kw/ai-agent-development",
         permanent: true,
       },
+      // Campaign launch: web-dev moved off the /kw/ prefix to a clean URL
+      {
+        source: "/kw/web-development-company",
+        destination: "/web-development-company",
+        permanent: true,
+      },
     ];
   },
 };

@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import DashboardPage from "@/components/pages/DashboardPage";
 
 export const metadata: Metadata = {
-  title: "Live Marketing Dashboard | Transparent Results | RDMI Web Services",
+  title: "Live Marketing Dashboard | Transparent Results | RDMI AI Services",
   description: "See our real-time marketing results — backlinks built, articles published, keywords tracked, ad spend managed. Full transparency.",
 };
 

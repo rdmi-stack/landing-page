@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import LabPage from "@/components/pages/LabPage";
 
 export const metadata: Metadata = {
-  title: "SEO & Marketing Experiment Lab | Data-Driven Insights | RDMI Web Services",
+  title: "SEO & Marketing Experiment Lab | Data-Driven Insights | RDMI AI Services",
   description: "Original SEO, PPC & conversion experiments with real data. Title tag length, AI content ranking, internal linking impact, page speed vs conversions & more.",
   keywords: "SEO experiments, marketing data, A/B testing results, SEO case studies, Google Ads experiments, conversion optimization data",
 };

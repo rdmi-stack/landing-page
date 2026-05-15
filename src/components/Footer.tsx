@@ -21,10 +21,14 @@ export default function Footer({ onCTA }: FooterProps) {
           {/* Brand + contact */}
           <div className="space-y-4 max-w-sm">
             <Link href="/" className="flex items-center gap-2.5">
-              <span className={`text-xl font-extrabold tracking-tight ${isLandingPage ? "text-gray-900" : "text-white"}`}>RDMI</span>
-              <span className="relative px-2.5 py-0.5 text-xs font-bold tracking-wider uppercase rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
-                AI
-                <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className={`relative inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/40 ring-1 ${isLandingPage ? "ring-black/5" : "ring-white/15"}`}>
+                <span className="text-lg font-extrabold text-white leading-none">R</span>
+                <span className={`absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 animate-pulse ring-2 ${isLandingPage ? "ring-gray-50" : "ring-[#050505]"}`} />
+              </span>
+              <span className="flex items-baseline gap-1.5">
+                <span className={`text-lg font-extrabold tracking-tight ${isLandingPage ? "text-gray-900" : "text-white"}`}>RDMI</span>
+                <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">AI</span>
+                <span className={`text-sm font-semibold tracking-tight ${isLandingPage ? "text-gray-500" : "text-zinc-300"}`}>Services</span>
               </span>
             </Link>
             <p className={`text-sm leading-relaxed ${isLandingPage ? "text-gray-500" : "text-zinc-500"}`}>

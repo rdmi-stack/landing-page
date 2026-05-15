@@ -20,6 +20,14 @@ export interface KeywordGroup {
   slug: string;
   primaryKeyword: string;
   adGroupMatch: string;
+  // When true, the page renders a WhatsApp-first hero with a minimal lead form
+  // (Name, Phone, Email, Budget) instead of the full multi-field modal flow.
+  // Used for high-CPC ad-driven LPs where lower form friction beats qualification.
+  minimalForm?: boolean;
+  // When present, the hero RIGHT column renders an auto-advancing portfolio
+  // carousel of past project screenshots instead of the inline lead form.
+  // The form moves to a horizontal strip directly below the hero.
+  heroPortfolio?: { image: string; project: string; outcome: string; tech: string[] }[];
   theme: PageTheme;
   form: FormConfig;
   meta: { title: string; description: string };
@@ -56,18 +64,18 @@ export const keywordGroups: KeywordGroup[] = [
     primaryKeyword: "Custom Software Development",
     adGroupMatch: "Custom Software Dev India",
     theme: { heroGradient: "linear-gradient(135deg, #4f46e5, #7c3aed, #4338ca)", ctaGradient: "linear-gradient(135deg, #4f46e5, #7c3aed, #4338ca)", urgencyColor: "#4f46e5", accent: "indigo", icon: "💻" },
-    form: { title: "Talk to a Senior Software Developer", subtitle: "Senior developer calls you in 2 hours — not a salesperson", projectTypes: ["Custom Web App", "SaaS Platform", "ERP / CRM System", "Legacy Modernization", "API & Integration", "AI-Powered Software", "Other"], placeholder: "What business problem do you need software to solve?", buttonText: "Talk to Senior Developer", formType: "software" },
+    form: { title: "Talk to a Senior Software Developer", subtitle: "Senior software engineer (not a sales rep) calls you on WhatsApp in 2 hours", projectTypes: ["Custom Web App", "SaaS Platform", "ERP / CRM System", "Legacy Modernization", "API & Integration", "AI-Powered Software", "Other"], placeholder: "What business problem do you need software to solve?", buttonText: "Get The Call →", formType: "software" },
     meta: {
-      title: "Custom Software Development Company India | AI-First Engineering | RDMI",
-      description: "Custom software development services that ship results — AI-first engineering, free prototype in 48 hours, money-back deadline guarantee. Senior engineers, no juniors. Bespoke software development for SaaS, ERP, CRM, and enterprise.",
+      title: "Custom Software Development — Talk to a Senior Developer on WhatsApp in 2 Hours | RDMI",
+      description: "Skip the sales rep. A senior software engineer WhatsApps you in 2 hours. Free 48-hour working prototype before you pay. Money-back deadline guarantee. 200+ custom software products shipped. AI-first SaaS, ERP, CRM, and enterprise software.",
     },
     hero: {
-      badge: "💻 Custom Software Development Company · AI-First · See It Before You Pay",
-      h1: "Custom Software Development That Ships Results — See It Working Before You Pay",
-      subtitle: "Bespoke software development with AI built into the architecture. Free working prototype in 48 hours from a senior software developer — pay only after you approve. Money-back deadline guarantee on every milestone. 200+ custom software products shipped to production.",
-      cta1: "Talk to Senior Developer",
-      cta2: "See 50+ Live Products",
-      trustPoints: ["AI-first custom software architecture — copilots, RAG, agents in every build", "Free working prototype in 48 hours — bespoke design, no templates", "Money-back deadline guarantee — written into the contract", "Senior software engineers only — no juniors, no handoff tax"],
+      badge: "💬 Talk to a Senior Software Developer on WhatsApp — 2-Hour Callback",
+      h1: "Talk to a Senior Software Developer in 2 Hours — Not a Sales Rep, Not a Junior",
+      subtitle: "Stop briefing account managers who can't answer architecture questions. The senior engineer who scopes your software is the engineer who ships it — direct on WhatsApp, NDA on day zero. Free 48-hour working prototype before you pay a rupee. Money-back if we miss a deadline. Full source code in your GitHub from day one.",
+      cta1: "Talk to Senior Developer on WhatsApp",
+      cta2: "↓ See Live Projects",
+      trustPoints: ["Senior software engineer on WhatsApp in 2 hours — not a sales rep, not a junior", "Free 48-hour working prototype on your real problem — walk away at zero cost", "Money-back deadline guarantee written into the contract on every milestone", "Full source code, AI prompts, and weights in your GitHub on day one"],
     },
     images: {
       hero: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1600&q=80",
@@ -127,9 +135,9 @@ export const keywordGroups: KeywordGroup[] = [
       { quote: "Working staging URL in week two and working software every sprint. Our in-house team doubled output after watching them work. Prompts, eval sets, model weights — all handed over clean.", author: "S.P.", role: "Founder, D2C Brand (Bangalore)", rating: 5 },
     ],
     ctaSection: {
-      headline: "Talk to a Senior Custom Software Developer Today.",
-      subtitle: "Free custom software development consultation in 2 hours. Working prototype in 48 hours. Money-back deadline guarantee on every milestone. Walk away anytime, full source code yours.",
-      buttonText: "Talk to Senior Developer",
+      headline: "Stop Briefing Sales Reps. Talk to the Developer Who'll Build It.",
+      subtitle: "WhatsApp a senior software engineer in 2 hours — not a sales rep with a slide deck. Free 48-hour working prototype on your real problem. Money-back if we miss a deadline. Walk away anytime, full source code yours.",
+      buttonText: "Talk to Senior Developer on WhatsApp",
     },
     targetKeywords: [
       "custom software development",
@@ -154,18 +162,18 @@ export const keywordGroups: KeywordGroup[] = [
     primaryKeyword: "Mobile App Development Company",
     adGroupMatch: "Mobile App Development Co",
     theme: { heroGradient: "linear-gradient(135deg, #6366f1, #a855f7, #ec4899)", ctaGradient: "linear-gradient(135deg, #6366f1, #a855f7, #ec4899)", urgencyColor: "#a855f7", accent: "purple", icon: "📱" },
-    form: { title: "Talk to a Senior App Developer", subtitle: "Senior app developer calls you in 2 hours — not a salesperson", projectTypes: ["AI-Powered Flutter App", "Android App (Kotlin)", "iOS App (Swift)", "E-Commerce / Marketplace App", "Healthcare / FinTech App", "On-Demand / Delivery App", "Other"], placeholder: "What should your app do that competitors' apps don't?", buttonText: "Talk to App Developer", formType: "mobile-app" },
+    form: { title: "Talk to a Senior App Developer", subtitle: "Senior app developer (not a sales rep) WhatsApps you in 2 hours", projectTypes: ["AI-Powered Flutter App", "Android App (Kotlin)", "iOS App (Swift)", "E-Commerce / Marketplace App", "Healthcare / FinTech App", "On-Demand / Delivery App", "Other"], placeholder: "What should your app do that competitors' apps don't?", buttonText: "Get The Call →", formType: "mobile-app" },
     meta: {
-      title: "Mobile App Development Company India | iOS, Android & Flutter App Development | RDMI",
-      description: "Mobile app development services from senior mobile app developers — iOS, Android, Flutter, React Native. Free working app prototype in 72 hours, money-back deadline guarantee. 60+ apps shipped. AI-first mobile app development.",
+      title: "Mobile App Development — Talk to a Senior App Developer on WhatsApp in 2 Hours | RDMI",
+      description: "Skip the sales rep. A senior app developer WhatsApps you in 2 hours. Free 72-hour working app build on your phone before you pay. Money-back deadline guarantee. iOS, Android, Flutter. 60+ apps shipped. AI-first mobile app development.",
     },
     hero: {
-      badge: "📱 Mobile App Development Company · AI-First · See Before You Pay",
-      h1: "Mobile App Development That Ships Results — See Your App Working in 72 Hours",
-      subtitle: "Senior mobile app developers building iOS, Android, and Flutter apps with AI built into every screen — voice search, visual search, smart recommendations, on-device ML. Free working app prototype on your phone in 72 hours. Pay only after you approve. Money-back deadline guarantee.",
-      cta1: "Talk to App Developer",
-      cta2: "See Our App Portfolio",
-      trustPoints: ["AI-first mobile app development — voice, vision, copilots", "Free working app prototype on your phone in 72 hours", "Money-back deadline guarantee — written into the contract", "Senior mobile app developers only — iOS, Android, Flutter"],
+      badge: "💬 Talk to a Senior App Developer on WhatsApp — 2-Hour Callback",
+      h1: "Talk to a Senior App Developer in 2 Hours — Not a Sales Rep, Not a Junior",
+      subtitle: "Stop pitching to account managers who can't tell Flutter from React Native. The senior mobile engineer who scopes your app is the engineer who ships it — direct on WhatsApp. Free 72-hour working app on your phone before you pay a rupee. Money-back if we miss a deadline. Full source code in your GitHub from day one.",
+      cta1: "Talk to App Developer on WhatsApp",
+      cta2: "↓ See Live Apps",
+      trustPoints: ["Senior mobile engineer on WhatsApp in 2 hours — iOS, Android, Flutter, React Native", "Free 72-hour working app on your phone — walk away at zero cost", "Money-back deadline guarantee written into every milestone", "AI baked in: voice search, vision, copilots, on-device ML"],
     },
     images: {
       hero: "https://images.unsplash.com/photo-1616469829941-c7200edec809?w=1600&q=80",
@@ -224,9 +232,9 @@ export const keywordGroups: KeywordGroup[] = [
       { quote: "TestFlight build in week two, store submission cleared first time, AI triage flow caught a compliance issue our legal team had missed. The senior engineer was on our Slack the entire project — no project manager filter.", author: "D.S.", role: "Founder, HealthTech (Hyderabad)", rating: 5 },
     ],
     ctaSection: {
-      headline: "Talk to a Senior Mobile App Developer Today.",
-      subtitle: "Free mobile app development consultation. Working prototype on your phone in 72 hours. Money-back deadline guarantee on every milestone. iOS, Android, Flutter, React Native — senior mobile app developers only.",
-      buttonText: "Talk to App Developer",
+      headline: "Stop Pitching to Sales Reps. Talk to the Engineer Who'll Ship Your App.",
+      subtitle: "WhatsApp a senior mobile engineer in 2 hours — iOS, Android, Flutter, React Native. Free 72-hour working app on your phone before you pay. Money-back if we miss a deadline. Walk away anytime, source code yours.",
+      buttonText: "Talk to App Developer on WhatsApp",
     },
     targetKeywords: [
       "mobile app developer",
@@ -250,20 +258,29 @@ export const keywordGroups: KeywordGroup[] = [
     slug: "web-development-company",
     primaryKeyword: "Web Development Company",
     adGroupMatch: "Web Development Company",
+    minimalForm: true,
     theme: { heroGradient: "linear-gradient(135deg, #7c3aed, #9333ea, #6d28d9)", ctaGradient: "linear-gradient(135deg, #7c3aed, #9333ea, #6d28d9)", urgencyColor: "#7c3aed", accent: "violet", icon: "🌐" },
-    form: { title: "Talk to a Senior Web Developer", subtitle: "Senior web developer calls you in 2 hours — not a salesperson", projectTypes: ["AI-Powered Business Website", "Web Application / SaaS", "E-Commerce Store", "WordPress / CMS", "Landing Pages", "Website Redesign & Speed", "Other"], placeholder: "What should your website achieve for your business?", buttonText: "Talk to Web Developer", formType: "web-dev" },
+    form: { title: "Talk to a Senior Web Developer", subtitle: "Senior web developer (not a sales rep) WhatsApps you in 2 hours", projectTypes: ["AI-Powered Business Website", "Web Application / SaaS", "E-Commerce Store", "WordPress / CMS", "Landing Pages", "Website Redesign & Speed", "Other"], placeholder: "What should your website achieve for your business?", buttonText: "Get The Call →", formType: "web-dev" },
     meta: {
-      title: "Web Development Company | AI Copilots, GEO, Sub-1s Load | RDMI",
-      description: "Your static brochure is losing to your competitor's AI-powered salesperson. Next.js sites with AI copilots, GEO schema for ChatGPT citation, sub-1s TTFB. 200+ sites live.",
+      title: "Web Development Company — Talk to a Senior Web Developer on WhatsApp in 2 Hours | RDMI",
+      description: "Skip the sales rep. A senior web developer WhatsApps you in 2 hours. Next.js sites that rank on Google AND ChatGPT, sub-1s TTFB, 90+ Lighthouse. Free 48-hour clickable prototype. Money-back deadline guarantee. 200+ sites live.",
     },
     hero: {
-      badge: "🌐 Rank on Google + ChatGPT + Perplexity",
-      h1: "AI-Powered Websites That Rank on Google + ChatGPT + Perplexity",
-      subtitle: "Next.js websites with AI copilots that answer questions, book demos, and qualify leads 24/7. GEO schema so ChatGPT, Perplexity, and Gemini cite your brand. Sub-1s load times. Senior web engineers only.",
-      cta1: "Talk to Web Developer",
-      cta2: "See Websites We've Built",
-      trustPoints: ["the latest LLMs copilot in every site — not a chat widget", "GEO schema so ChatGPT and Perplexity cite you", "Sub-1s TTFB on Vercel Edge — not a WordPress host", "Senior engineer on standups — no account manager"],
+      badge: "💬 Talk to a Senior Web Developer on WhatsApp — 2-Hour Callback",
+      h1: "Talk to a Senior Web Developer in 2 Hours — Not a Sales Rep, Not a Junior",
+      subtitle: "Stop briefing account managers with Figma decks. The senior web engineer who scopes your site is the one who ships it — direct on WhatsApp, NDA on day zero. Next.js sites with AI copilots that book demos at 3 AM, sub-1s TTFB, and GEO schema so ChatGPT, Perplexity, and Gemini cite your brand. Free 48-hour clickable prototype. Money-back if we miss a deadline.",
+      cta1: "Talk to Web Developer on WhatsApp",
+      cta2: "↓ See Live Websites",
+      trustPoints: ["Senior web engineer on WhatsApp in 2 hours — not a sales rep, not a junior", "Free 48-hour clickable prototype on your brand — walk away at zero cost", "Money-back deadline guarantee written into every milestone", "Ranks on Google AND ChatGPT, Perplexity, Gemini — GEO schema in every build"],
     },
+    heroPortfolio: [
+      { image: "/images/portfolio-ai-dashboard.png", project: "AI SaaS · Series-A SaaS", outcome: "Booked 23 demos/month via in-site AI copilot. Sub-1s TTFB on Vercel Edge.", tech: ["Next.js", "OpenAI", "Vercel Edge", "Schema.org"] },
+      { image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&q=80", project: "D2C E-Commerce · Ahmedabad", outcome: "TTFB 3.1s → 400ms. Add-to-cart lifted 34% in first month. Shopify headless.", tech: ["Next.js", "Shopify", "Algolia", "Stripe"] },
+      { image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80", project: "Healthcare Network · Pan-India", outcome: "11K monthly organic visits within 90 days. Cited weekly in Perplexity answers.", tech: ["Next.js", "Sanity", "llms.txt", "FHIR"] },
+      { image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&q=80", project: "FinTech Platform · Series-B", outcome: "Lighthouse 96+, 600+ daily product searches via AI semantic search.", tech: ["Next.js", "Pinecone", "OpenAI", "AWS"] },
+      { image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1200&q=80", project: "Booking SaaS · MarTech Startup", outcome: "Site rebuilt in 6 weeks. AI copilot qualifies + routes leads to Slack in real time.", tech: ["Next.js", "Anthropic", "Slack API", "Vercel"] },
+      { image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80", project: "B2B Marketplace · Bangalore", outcome: "Marketplace + dashboards in 9 weeks. Razorpay live, 99.9% uptime since launch.", tech: ["Next.js", "Razorpay", "Postgres", "tRPC"] },
+    ],
     images: {
       hero: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1600&q=80",
       process: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=1200&q=80",
@@ -319,9 +336,9 @@ export const keywordGroups: KeywordGroup[] = [
       { quote: "Senior engineer on our Slack from day one — no project manager filter, no account manager rewrite. Staging URL in week two, launch in week six. The site isn't a brochure anymore — it actively qualifies and routes leads.", author: "J.V.", role: "CTO, MarTech Startup (Bangalore)", rating: 5 },
     ],
     ctaSection: {
-      headline: "Static Brochures Don't Sell. AI Salespeople Do.",
-      subtitle: "Senior web engineer calls you in 2 hours. Clickable prototype in 48. Live staging URL in 14 days. the latest LLMs copilot and GEO schema in every build.",
-      buttonText: "Talk to Web Developer",
+      headline: "Stop Briefing Sales Reps. Talk to the Developer Who'll Build It.",
+      subtitle: "WhatsApp a senior web developer in 2 hours — not a sales rep with a Figma deck. Free 48-hour clickable prototype, money-back deadline guarantee, full source code on day one. The dev who scopes your site is the dev who ships it.",
+      buttonText: "Talk to Web Developer on WhatsApp",
     },
     targetKeywords: ["web development company", "website development company", "web development services", "web development agency", "web application development", "website developer", "custom website development", "web app development services", "website design and development services", "best web development companies", "web designing company", "website development service", "ecommerce website development company", "shopify website development", "building website for business"],
   },
@@ -1327,6 +1344,11 @@ export function getKeywordGroup(slug: string): KeywordGroup | undefined {
   return keywordGroups.find((g) => g.slug === slug);
 }
 
+// Slugs that have been promoted out of the /kw/ namespace to dedicated top-level routes.
+// Skipped by /kw/[slug] static params so we don't double-render — the dedicated route + the
+// 301 redirect in next.config.ts handle the canonical URL.
+const PROMOTED_SLUGS = new Set<string>(["web-development-company"]);
+
 export function getAllSlugs(): string[] {
-  return keywordGroups.map((g) => g.slug);
+  return keywordGroups.map((g) => g.slug).filter((s) => !PROMOTED_SLUGS.has(s));
 }

@@ -43,7 +43,7 @@ export default function AboutPageContent() {
               Software &amp; Web Application Development Company
             </h1>
             <p className="mt-6 text-lg text-zinc-400 max-w-2xl mx-auto">
-              RDMI Web Services, a division of RDMI Tech Ventures Pvt. Ltd., builds custom software for startups and enterprises worldwide. We combine senior engineering talent with AI-powered workflows to deliver faster, better, and at half the cost.
+              RDMI AI Services, a division of RDMI Tech Ventures Pvt. Ltd., builds custom software for startups and enterprises worldwide. We combine senior engineering talent with AI-powered workflows to deliver faster, better, and at half the cost.
             </p>
           </div>
         </div>

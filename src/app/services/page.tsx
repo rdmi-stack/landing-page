@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   keywords:
     "custom software development services India, web application development, mobile app development, SaaS development company, AI ML development, e-commerce development, cloud DevOps services, API development",
   openGraph: {
-    title: "Software Development Services - RDMI Web Services",
+    title: "Software Development Services - RDMI AI Services",
     description:
       "Web apps, mobile apps, SaaS, AI/ML, e-commerce — full-stack development services. Save 50%.",
     type: "website",

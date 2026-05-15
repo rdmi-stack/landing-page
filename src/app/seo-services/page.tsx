@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import SEOServicesPage from "@/components/pages/SEOServicesPage";
 
 export const metadata: Metadata = {
-  title: "SEO & GEO Services India | Rank in Google + AI | RDMI Web Services",
+  title: "SEO & GEO Services India | Rank in Google + AI | RDMI AI Services",
   description:
     "India's first SEO + GEO agency. Traditional SEO, Generative Engine Optimization, AI Overview optimization & entity authority. Rank in Google, ChatGPT, Perplexity & Gemini. Free audit.",
   keywords:

@@ -13,12 +13,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <span className="text-xl font-extrabold tracking-tight">
-              RDMI
+            <span className="relative inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/40 ring-1 ring-white/15">
+              <span className="text-lg font-extrabold text-white leading-none">R</span>
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 animate-pulse ring-2 ring-[#0a0a0a]" />
             </span>
-            <span className="relative px-2.5 py-0.5 text-xs font-bold tracking-wider uppercase rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
-              AI
-              <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="flex items-baseline gap-1.5">
+              <span className="text-lg font-extrabold tracking-tight text-white">RDMI</span>
+              <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">AI</span>
+              <span className="hidden sm:inline text-sm font-semibold tracking-tight text-zinc-300">Services</span>
             </span>
           </Link>
 

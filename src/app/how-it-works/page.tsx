@@ -5,13 +5,13 @@ import HowItWorks from "@/components/HowItWorks";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
-  title: "How It Works | Our Development Process | RDMI Web Services",
+  title: "How It Works | Our Development Process | RDMI AI Services",
   description:
     "Simple 4-step software development process — Discovery Call, Proposal & Prototype, Agile Development, Launch & Support. Talk to developers directly. No middlemen. AI-powered delivery.",
   keywords:
     "software development process, how software development works, agile development India, custom software workflow, project development steps",
   openGraph: {
-    title: "How It Works - RDMI Web Services",
+    title: "How It Works - RDMI AI Services",
     description:
       "4-step process: Discovery → Prototype → Development → Launch. Talk to developers directly.",
     type: "website",
