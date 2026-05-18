@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const data = getKeywordGroup(SLUG);
   if (!data) return {};
 
-  const url = `https://rdmi-landing-page.netlify.app/${SLUG}`;
+  const url = `https://ai.rdmi.in/${SLUG}`;
 
   return {
     title: data.meta.title,
@@ -38,7 +38,7 @@ export default function WebDevelopmentCompanyPage() {
   const data = getKeywordGroup(SLUG);
   if (!data) notFound();
 
-  const url = `https://rdmi-landing-page.netlify.app/${SLUG}`;
+  const url = `https://ai.rdmi.in/${SLUG}`;
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -58,8 +58,8 @@ export default function WebDevelopmentCompanyPage() {
     provider: {
       "@type": "Organization",
       name: "RDMI Tech Ventures Pvt. Ltd.",
-      url: "https://rdmi-landing-page.netlify.app",
-      logo: "https://rdmi-landing-page.netlify.app/icon.svg",
+      url: "https://ai.rdmi.in",
+      logo: "https://ai.rdmi.in/icon.svg",
       email: "info@rdmi.in",
       telephone: "+91-9818565561",
       address: { "@type": "PostalAddress", addressCountry: "IN" },

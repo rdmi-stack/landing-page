@@ -1,7 +1,7 @@
 # Google Ads — Web Development Company Campaign (Launch Guide)
 
-**Landing page:** https://rdmi-landing-page.netlify.app/web-development-company
-*(swap to your production domain — e.g. `https://rdmi.in/web-development-company` — before posting if the custom domain is live; update Final URL in the CSV with find-replace)*
+**Landing page:** https://ai.rdmi.in/web-development-company
+*(production domain — confirm it resolves and the lean LP renders before posting)*
 
 **Campaign:** RDMI | Web Development | Search | India
 **Budget:** ₹3,500/day
