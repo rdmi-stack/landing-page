@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "ads:sync": "node scripts/ads/sync.mts"
   },
   "dependencies": {
     "jose": "^6.2.1",
