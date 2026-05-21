@@ -28,12 +28,22 @@ export function trackEvent(eventName: string, params: GtagParams = {}): void {
   window.gtag("event", eventName, params);
 }
 
-/** Lead form submitted (the primary conversion). */
-export function trackLead(params: GtagParams = {}): void {
-  trackEvent("generate_lead", { currency: "INR", value: 1500, ...params });
+/**
+ * Read the GA4 client_id from the `_ga` cookie so the server can attribute its
+ * Measurement Protocol events to the same visitor/session (and thus the gclid).
+ * Cookie format: `_ga=GA1.1.<clientId>` where clientId is `1234567890.1234567890`.
+ * Returns "" if gtag never ran (e.g. blocked) — server falls back to random id.
+ */
+export function getGAClientId(): string {
+  if (typeof document === "undefined") return "";
+  const m = document.cookie.match(/_ga=GA\d\.\d\.(\d+\.\d+)/);
+  return m ? m[1] : "";
 }
 
-/** WhatsApp CTA clicked (secondary conversion / contact intent). */
+/**
+ * WhatsApp CTA clicked (secondary conversion / contact intent).
+ * Lead-form conversions are fired server-side from /api/contact (see lib/ga4-server.ts).
+ */
 export function trackWhatsAppClick(params: GtagParams = {}): void {
   trackEvent("whatsapp_click", params);
 }

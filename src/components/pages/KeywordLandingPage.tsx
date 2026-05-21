@@ -31,7 +31,7 @@ import {
   X,
 } from "lucide-react";
 import Footer from "@/components/Footer";
-import { trackLead, trackWhatsAppClick } from "@/lib/gtag";
+import { trackWhatsAppClick, getGAClientId } from "@/lib/gtag";
 import type { KeywordGroup } from "@/data/keyword-groups";
 
 /* ─── helpers ─── */
@@ -379,7 +379,7 @@ function WebDevelopmentLandingPage({ data }: { data: KeywordGroup }) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message }),
+        body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message, clientId: getGAClientId() }),
       });
       if (!res.ok) throw new Error("contact failed");
       const params = new URLSearchParams();
@@ -795,8 +795,7 @@ function KeywordLandingPageLegacy({ data }: { data: KeywordGroup }) {
     setStickyStatus("loading");
     try {
       const message = [`[formType:${data.form.formType}-sticky]`, `[${data.primaryKeyword} — WhatsApp Bar]`, `Source: sticky whatsapp bar on ${data.slug}`].join("\n");
-      await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: stickyForm.name || "WhatsApp Bar Lead", email: stickyForm.email || "whatsapp@rdmi.in", phone: stickyForm.phone, message }) });
-      trackLead({ event_label: `${data.slug}-sticky-bar` });
+      await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: stickyForm.name || "WhatsApp Bar Lead", email: stickyForm.email || "whatsapp@rdmi.in", phone: stickyForm.phone, message, clientId: getGAClientId() }) });
       trackWhatsAppClick({ source: `${data.slug}-sticky-bar` });
       const waMsg = encodeURIComponent(`Hi RDMI, I'm ${stickyForm.name || "interested"} and I'd like to discuss ${data.primaryKeyword}.`);
       window.open(`https://wa.me/919818565561?text=${waMsg}`, "_blank");
@@ -871,7 +870,7 @@ function KeywordLandingPageLegacy({ data }: { data: KeywordGroup }) {
     setFormStatus("loading");
     try {
       const message = [`[formType:${f.formType}]`, `[${data.primaryKeyword} Consultation]`, formData.projectType ? `Project: ${formData.projectType}` : "", formData.budget ? `Budget: ${formData.budget}` : "", formData.challenge || ""].filter(Boolean).join("\n");
-      const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message }) });
+      const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message, clientId: getGAClientId() }) });
       if (!res.ok) throw new Error();
       const params = new URLSearchParams();
       if (formData.name) params.set("name", formData.name);

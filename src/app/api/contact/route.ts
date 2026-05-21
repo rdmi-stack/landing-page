@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { saveLead } from "@/data/leads";
+import { sendServerEvent } from "@/lib/ga4-server";
 
 const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY!;
 const MAILGUN_DOMAIN = process.env.MAILGUN_DOMAIN!;
@@ -8,6 +9,17 @@ const MAILGUN_REGION = process.env.MAILGUN_REGION || "US";
 
 const LEAD_TO = "info@rdmi.in";
 const LEAD_CC = "rdmitechventurespvtltd@gmail.com";
+
+const PREMIUM_FORM_TYPE_MAP: Record<string, FormType> = {
+  "web-dev-premium": "web-dev",
+  "custom-software-premium": "software",
+  "mobile-app-premium": "mobile-app",
+  "ecommerce-premium": "ecommerce",
+  "ai-software-premium": "ai-software",
+  "ai-agent-premium": "ai-agent",
+  "enterprise-software": "enterprise-saas",
+  "enterprise-software-premium": "enterprise-saas",
+};
 
 function mailgunUrl() {
   const base = MAILGUN_REGION === "EU" ? "https://api.eu.mailgun.net" : "https://api.mailgun.net";
@@ -51,6 +63,9 @@ function detectFormType(message: string): FormType {
     // Strip "-sticky" suffix from WhatsApp bar submissions so they route
     // to the same welcome email template as the full modal form.
     const raw = match[1].replace(/-sticky$/, "");
+    if (PREMIUM_FORM_TYPE_MAP[raw]) {
+      return PREMIUM_FORM_TYPE_MAP[raw];
+    }
     if ((KNOWN_FORM_TYPES as readonly string[]).includes(raw)) {
       return raw as FormType;
     }
@@ -473,7 +488,7 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
             ["04", "Custom SEO + GEO Roadmap", "6-month strategy with KPIs, timelines & expected ROI"],
           ])}
           ${ctaButton("WhatsApp Us for Faster Response", "https://wa.me/919818565561?text=Hi, I just requested an SEO audit", "linear-gradient(135deg,#059669,#10b981)")}
-          <p style="margin:0;font-size:12px;color:#555;text-align:center;">Meanwhile, check out our <a href="https://rdmi-landing-page.netlify.app/seo-course" style="color:#10b981;">Free 7-Day SEO Masterclass</a></p>`,
+          <p style="margin:0;font-size:12px;color:#555;text-align:center;">Meanwhile, you can <a href="https://rdmi-landing-page.netlify.app/get-quote" style="color:#10b981;">request a software consultation</a></p>`,
           "linear-gradient(135deg,#059669,#10b981)", "RDMI Tech Ventures", "SEO & GEO Services"
         ),
         text: `Hi ${firstName},\n\nThank you for your SEO audit request! Our strategist will deliver a 300+ point audit within 48 hours.\n\nWhat's included:\n1. Technical SEO analysis\n2. GEO & AI visibility check\n3. Competitor gap analysis\n4. Custom SEO + GEO roadmap\n\n— RDMI Tech Ventures Pvt. Ltd.\ninfo@rdmi.in`,
@@ -520,7 +535,7 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
           <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:#aaa;">Thank you for downloading our resource. Here's your link — it never expires.</p>
           ${ctaButton("Download Now", "https://rdmi-landing-page.netlify.app/downloads/seo-checklist-2025.pdf", "linear-gradient(135deg,#059669,#10b981)")}
           <p style="margin:16px 0;font-size:14px;color:#aaa;">Want us to implement these optimizations for you? We offer a <strong style="color:#10b981;">free 300+ point SEO audit</strong> — just reply to this email.</p>
-          <p style="margin:0;font-size:12px;color:#555;text-align:center;">Also check out our <a href="https://rdmi-landing-page.netlify.app/seo-course" style="color:#10b981;">Free 7-Day SEO Masterclass</a></p>`,
+          <p style="margin:0;font-size:12px;color:#555;text-align:center;">Also see our <a href="https://rdmi-landing-page.netlify.app/services" style="color:#10b981;">core software and AI services</a></p>`,
           "linear-gradient(135deg,#059669,#10b981)", "RDMI Tech Ventures", "Your Free Resource"
         ),
         text: `Your download is ready!\n\nDownload: https://rdmi-landing-page.netlify.app/downloads/seo-checklist-2025.pdf\n\nWant us to implement these? Reply for a free SEO audit.\n\n— RDMI Tech Ventures`,
@@ -584,7 +599,7 @@ function getCustomerEmail(type: FormType, name: string, email: string, phone: st
             <p style="margin:16px 0 0;font-size:13px;color:#aaa;">The key ranking factors in 2025: <strong style="color:#fff;">content relevance, backlinks, user experience (Core Web Vitals), E-E-A-T signals,</strong> and increasingly, <strong style="color:#10b981;">entity authority</strong> (how well Google understands your brand).</p>
           </div>
           <p style="margin:0 0 16px;font-size:14px;color:#aaa;"><strong style="color:#fff;">Tomorrow's lesson:</strong> Keyword Research Masterclass — how to find keywords that actually drive revenue.</p>
-          <p style="margin:0;font-size:12px;color:#555;text-align:center;">Want us to handle your SEO? <a href="https://rdmi-landing-page.netlify.app/seo-services" style="color:#10b981;">Get a free audit</a></p>`,
+          <p style="margin:0;font-size:12px;color:#555;text-align:center;">Want help with software or AI? <a href="https://rdmi-landing-page.netlify.app/get-quote" style="color:#10b981;">Get a free consultation</a></p>`,
           "linear-gradient(135deg,#059669,#10b981)", "RDMI SEO Masterclass", "Day 1 of 7"
         ),
         text: `Welcome to the 7-Day SEO Masterclass!\n\nDay 1: How Google Really Works\n\n1. Crawling — Google bots discover pages by following links\n2. Indexing — Google stores and categorizes content\n3. Ranking — Algorithm decides best answers\n\nKey factors: content relevance, backlinks, UX, E-E-A-T, entity authority.\n\nTomorrow: Keyword Research Masterclass\n\n— RDMI Tech Ventures`,
@@ -708,16 +723,8 @@ const formTypeLabels: Record<FormType, string> = {
 // ─── MAIN HANDLER ─────────────────────────────────────
 
 export async function POST(req: NextRequest) {
-  if (!MAILGUN_API_KEY || !MAILGUN_DOMAIN || !MAILGUN_FROM_EMAIL) {
-    console.error("Missing Mailgun env vars");
-    return NextResponse.json(
-      { error: "Server misconfiguration. Please contact us directly at info@rdmi.in" },
-      { status: 500 }
-    );
-  }
-
   try {
-    const { name, email, phone, company, budget, message } = await req.json();
+    const { name, email, phone, company, budget, message, clientId } = await req.json();
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: "Name, email, and message are required." }, { status: 400 });
@@ -730,6 +737,16 @@ export async function POST(req: NextRequest) {
     // Store lead locally for admin panel
     const referer = req.headers.get("referer") || "";
     const sourcePage = referer ? new URL(referer).pathname : "unknown";
+
+    // Server-side GA4 conversion — reliable even when client gtag is ad-blocked.
+    // Fired here so every lead (main form, sticky bar, global modal) is captured once.
+    await sendServerEvent(clientId || "", "generate_lead", {
+      currency: "INR",
+      value: 1500,
+      form_type: formType,
+      source_page: sourcePage,
+      sticky: fromSticky,
+    });
     try {
       await saveLead({
         id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
@@ -745,6 +762,11 @@ export async function POST(req: NextRequest) {
       });
     } catch (e) {
       console.error("[contact] Failed to save lead locally:", e);
+    }
+
+    if (!MAILGUN_API_KEY || !MAILGUN_DOMAIN || !MAILGUN_FROM_EMAIL) {
+      console.warn("[contact] Missing Mailgun env vars; lead saved without email delivery.");
+      return NextResponse.json({ success: true, emailSkipped: true });
     }
 
     // 1. Send context-aware customer email

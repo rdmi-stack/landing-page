@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, Suspense } from "react";
+import { Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -14,7 +14,6 @@ import {
   FileText,
 } from "lucide-react";
 import Footer from "@/components/Footer";
-import { trackLead } from "@/lib/gtag";
 
 const nextSteps = [
   {
@@ -51,10 +50,8 @@ function ThankYouContent() {
   const name = searchParams.get("name") || "there";
   const product = searchParams.get("product") || "";
 
-  // Fire GA4 lead conversion on the thank-you page load (form redirects here on success).
-  useEffect(() => {
-    trackLead({ event_label: product || "quote_form" });
-  }, [product]);
+  // Lead conversion is fired server-side from /api/contact (reliable even when
+  // client gtag is ad-blocked), so no client-side conversion event is needed here.
 
   return (
     <>
