@@ -22,13 +22,21 @@ export async function sendServerEvent(
   if (!MEASUREMENT_ID || !API_SECRET) return;
   // Fall back to a random client_id so the event still lands (unattributed).
   const cid = clientId || `${Date.now()}.${Math.floor(Math.random() * 1e9)}`;
+  // engagement_time_msec + session_id are required for MP events to register a
+  // session and surface in Realtime / standard reports — without them GA4
+  // silently drops the event from most views.
+  const enrichedParams = {
+    engagement_time_msec: 100,
+    session_id: `${Date.now()}`,
+    ...params,
+  };
   try {
     await fetch(
       `https://www.google-analytics.com/mp/collect?measurement_id=${MEASUREMENT_ID}&api_secret=${API_SECRET}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ client_id: cid, events: [{ name, params }] }),
+        body: JSON.stringify({ client_id: cid, events: [{ name, params: enrichedParams }] }),
       },
     );
   } catch (e) {
