@@ -14,13 +14,7 @@ import {
   FileText,
 } from "lucide-react";
 import Footer from "@/components/Footer";
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-    dataLayer?: unknown[];
-  }
-}
+import { trackLead } from "@/lib/gtag";
 
 const nextSteps = [
   {
@@ -57,23 +51,9 @@ function ThankYouContent() {
   const name = searchParams.get("name") || "there";
   const product = searchParams.get("product") || "";
 
-  // Fire GA4 conversion event on page load
+  // Fire GA4 lead conversion on the thank-you page load (form redirects here on success).
   useEffect(() => {
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "conversion", {
-        send_to: "G-MNG2DGKSZV",
-        event_category: "lead",
-        event_label: product || "quote_form",
-        value: 1,
-      });
-
-      // Also fire as generate_lead for Google Ads conversion tracking
-      window.gtag("event", "generate_lead", {
-        currency: "INR",
-        value: 150000, // min project value
-        event_label: product || "quote_form",
-      });
-    }
+    trackLead({ event_label: product || "quote_form" });
   }, [product]);
 
   return (

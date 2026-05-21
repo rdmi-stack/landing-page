@@ -4,6 +4,7 @@ import "./globals.css";
 import ModalProvider from "@/components/ModalProvider";
 import FloatingWidget from "@/components/FloatingWidget";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
+import { GA_MEASUREMENT_ID } from "@/lib/gtag";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -32,10 +33,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNG2DGKSZV" />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MNG2DGKSZV');`,
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}');`,
           }}
         />
       </head>

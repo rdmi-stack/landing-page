@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   ArrowRight,
@@ -30,6 +31,7 @@ import {
   X,
 } from "lucide-react";
 import Footer from "@/components/Footer";
+import { trackLead, trackWhatsAppClick } from "@/lib/gtag";
 import type { KeywordGroup } from "@/data/keyword-groups";
 
 /* ─── helpers ─── */
@@ -130,7 +132,607 @@ function AnimatedCounter({ value, className }: { value: string; className?: stri
   );
 }
 
+function WebDevelopmentLandingPage({ data }: { data: KeywordGroup }) {
+  const router = useRouter();
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", budget: "", challenge: "" });
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const budgets = ["Under ₹1L", "₹1L - ₹5L", "₹5L - ₹15L", "₹15L - ₹50L", "₹50L+", "Not sure yet"];
+  const isEnterprise = data.slug === "enterprise-saas-development";
+  const isAI = data.slug === "ai-software-development";
+  const isAgent = data.slug === "ai-agent-development";
+  const isCustomSoftware = data.slug === "custom-software-development";
+  const isMobile = data.slug === "mobile-app-development";
+  const isEcommerce = data.slug === "ecommerce-development";
+  const projectTypes = isEnterprise
+    ? ["Custom ERP System", "Sales & Service CRM", "Workflow & Approvals Engine", "AI Agent Automation", "Reporting & BI Dashboards", "Legacy ERP Migration"]
+    : isAgent
+    ? ["Sales Agent", "Support Agent", "Operations Agent", "Voice AI Agent", "Multi-Agent System", "Private LLM Agent"]
+    : isCustomSoftware
+    ? ["Custom Business Software", "SaaS Product", "Internal Workflow Platform", "ERP / CRM System", "AI-Powered Software", "Legacy Modernization"]
+    : isMobile
+    ? ["Flutter App", "iOS App", "Android App", "AI Mobile App", "Marketplace / Delivery App", "Healthcare / FinTech App"]
+    : isEcommerce
+    ? ["Shopify / Shopify Plus", "Headless Commerce", "Marketplace Platform", "Grocery / Delivery App", "B2B Commerce Portal", "AI Search / Checkout"]
+    : isAI
+    ? ["AI Agent / Automation", "RAG Knowledge Base", "AI Chatbot / Voice Agent", "AI SaaS Copilot", "Document AI / OCR", "Private LLM Deployment"]
+    : ["AI-First Software Strategy", "Custom Software / SaaS", "AI Agent or Automation", "Growth Website + Lead Engine", "E-Commerce / Marketplace", "Legacy System Modernization"];
+  const portfolio = data.heroPortfolio ?? [];
+  const leadFormId = isEnterprise ? "enterprise-lead-form" : isAgent ? "ai-agent-lead-form" : isCustomSoftware ? "custom-software-lead-form" : isMobile ? "mobile-app-lead-form" : isEcommerce ? "ecommerce-lead-form" : isAI ? "ai-software-lead-form" : "web-lead-form";
+  const primaryCta = isEnterprise ? "Get Architecture Audit" : isAgent ? "Get Agent Build Plan" : isCustomSoftware ? "Get Software Build Plan" : isMobile ? "Get App Build Plan" : isEcommerce ? "Get Commerce Growth Plan" : isAI ? "Get AI Build Plan" : "Get AI Strategy Audit";
+  const secondaryCta = isEnterprise ? "Talk to Enterprise Architect" : isAgent ? "Talk to AI Agent Architect" : isCustomSoftware ? "Talk to Software Architect" : isMobile ? "Talk to App Architect" : isEcommerce ? "Talk to Commerce Architect" : isAI ? "Talk to AI Engineer" : "Talk to AI Consultant";
+  const formEyebrow = isEnterprise ? "Free enterprise architecture audit" : isAgent ? "Free AI agent workflow audit" : isCustomSoftware ? "Free custom software scope audit" : isMobile ? "Free mobile app product audit" : isEcommerce ? "Free ecommerce growth audit" : isAI ? "Free AI build audit" : "Free AI strategy audit";
+  const formTitle = isEnterprise ? "Get a 48-hour ERP/CRM modernization plan" : isAgent ? "Get a 48-hour AI agent build plan" : isCustomSoftware ? "Get a 48-hour custom software build plan" : isMobile ? "Get a 48-hour mobile app build plan" : isEcommerce ? "Get a 48-hour ecommerce growth plan" : isAI ? "Get a 48-hour production AI build plan" : "Get a 48-hour software growth plan";
+  const formPlaceholder = isEnterprise ? "Which enterprise workflow, department, or legacy system needs modernization?" : isAgent ? "Which workflow should an AI agent own end-to-end?" : isCustomSoftware ? "What business process, product, or internal system should this software improve?" : isMobile ? "What should the app do, who will use it, and what should happen after launch?" : isEcommerce ? "What are you selling, current GMV, platform, and biggest growth bottleneck?" : isAI ? "What workflow, product feature, or knowledge process should AI handle?" : "What business bottleneck should software or AI solve?";
+  const submitLabel = isEnterprise ? "Send My Architecture Request" : isAgent ? "Send My Agent Build Request" : isCustomSoftware ? "Send My Software Build Request" : isMobile ? "Send My App Build Request" : isEcommerce ? "Send My Commerce Build Request" : isAI ? "Send My AI Build Request" : "Send My Strategy Request";
+  const heroBadge = isEnterprise ? "Senior enterprise architect callback in 2 hours" : isAgent ? "Senior AI agent architect callback in 2 hours" : isCustomSoftware ? "Senior software architect callback in 2 hours" : isMobile ? "Senior mobile app architect callback in 2 hours" : isEcommerce ? "Senior commerce architect callback in 2 hours" : isAI ? "Senior AI engineer callback in 2 hours" : "Senior AI consultant callback in 2 hours";
+  const supportLine = isEnterprise ? "Get a senior enterprise architect callback in 2 hours." : isAgent ? "Get a senior AI agent architect callback in 2 hours." : isCustomSoftware ? "Get a senior software architect callback in 2 hours." : isMobile ? "Get a senior mobile app architect callback in 2 hours." : isEcommerce ? "Get a senior commerce architect callback in 2 hours." : isAI ? "Get a senior AI engineer callback in 2 hours." : "Get a senior consultant callback in 2 hours.";
+  const stickyHeadline = isEnterprise ? "Need enterprise software that removes manual work?" : isAgent ? "Need an AI agent that actually finishes work?" : isCustomSoftware ? "Need custom software that becomes an operating advantage?" : isMobile ? "Need a mobile app that users keep using?" : isEcommerce ? "Need ecommerce that lifts conversion and AOV?" : isAI ? "Need production AI that works beyond the demo?" : "Need AI-first software that creates leverage?";
+  const waText = encodeURIComponent(
+    isEnterprise
+      ? "Hi RDMI, I want to discuss an enterprise software, ERP, CRM, or workflow automation project."
+      : isAgent
+      ? "Hi RDMI, I want to discuss AI agent development for a business workflow."
+      : isCustomSoftware
+      ? "Hi RDMI, I want to discuss custom software development for my business."
+      : isMobile
+      ? "Hi RDMI, I want to discuss mobile app development for my business."
+      : isEcommerce
+      ? "Hi RDMI, I want to discuss ecommerce development for my business."
+      : isAI
+      ? "Hi RDMI, I want to discuss AI software development, agents, RAG, or automation."
+      : "Hi RDMI, I want to discuss an AI-first web, software, or automation project."
+  );
+  const chips = isEnterprise
+    ? ["ERP", "CRM", "Workflow Automation", "AI Agents", "Dashboards", "SSO / SCIM", "SOC 2 Ready", "Legacy Migration"]
+    : isAgent
+    ? ["LangGraph", "CrewAI", "Voice Agents", "Tool Use", "Human Approval", "LangSmith Evals", "MCP", "Private LLM"]
+    : isCustomSoftware
+    ? ["Custom Software", "SaaS", "ERP / CRM", "Workflow Automation", "AI Features", "APIs", "Cloud Native", "Source Ownership"]
+    : isMobile
+    ? ["Flutter", "React Native", "iOS", "Android", "AI Apps", "App Store Launch", "Push Automation", "Analytics"]
+    : isEcommerce
+    ? ["Shopify Plus", "Headless Commerce", "Marketplace", "Grocery Delivery", "AI Search", "Recommendations", "Checkout CRO", "Payments"]
+    : isAI
+    ? ["AI Agents", "RAG", "LangGraph", "OpenAI", "Private LLM", "LangSmith Evals", "Automation", "AI SaaS"]
+    : ["AI Agents", "Software Consulting", "SaaS", "Automation", "Web Systems", "Growth Analytics", "Next.js", "OpenAI"];
+  const systemSection = isEnterprise
+    ? {
+      eyebrow: "AI-first enterprise systems",
+      title: "Enterprise software is no longer just screens and databases. The advantage is automated work.",
+      text: "We map departments, approvals, integrations, data permissions, legacy constraints, and AI-agent opportunities before writing the first module.",
+      cards: [
+        { icon: Search, title: "Architecture before modules", text: "ERP, CRM, workflow, permissions, data, reporting, and integrations are scoped as one operating system." },
+        { icon: TrendingUp, title: "Operational ROI model", text: "We identify where software removes manual effort, reduces leakage, speeds decisions, or improves sales/service throughput." },
+        { icon: Bot, title: "AI agents inside workflows", text: "Invoice reconciliation, lead qualification, ticket triage, document search, approvals, and anomaly detection with human gates." },
+        { icon: Settings, title: "Enterprise-grade delivery", text: "SSO, SCIM, audit logs, RBAC, observability, runbooks, source ownership, and migration planning from day one." },
+      ],
+    }
+    : isAgent
+    ? {
+      eyebrow: "Production AI agents",
+      title: "An agent is not a chatbot. It needs tools, memory, state, approvals, retries, and observability.",
+      text: "We build agents that complete real business workflows: qualify leads, update CRMs, triage tickets, reconcile documents, call APIs, and escalate when confidence drops.",
+      cards: [
+        { icon: Search, title: "Workflow and tool map", text: "We identify the goal, tools, APIs, databases, permissions, failures, and human approval gates before building." },
+        { icon: TrendingUp, title: "Task-success benchmarks", text: "Every agent is measured by completed outcomes, not conversations: success rate, overrides, latency, cost, and errors." },
+        { icon: Bot, title: "Stateful agent runtime", text: "LangGraph and CrewAI patterns with typed tool schemas, memory, retries, audit logs, and deterministic boundaries." },
+        { icon: Settings, title: "Governance from day one", text: "LangSmith traces, eval suites, regression tests, secrets, rate limits, role access, and private deployment options." },
+      ],
+    }
+    : isCustomSoftware
+    ? {
+      eyebrow: "AI-first custom software",
+      title: "Custom software should not just digitize the old process. It should redesign how work moves.",
+      text: "We map the business workflow, data model, integrations, approvals, reporting, and AI opportunities before choosing screens or writing modules.",
+      cards: [
+        { icon: Search, title: "Business workflow map", text: "We define users, handoffs, edge cases, permissions, and success metrics before architecture decisions." },
+        { icon: TrendingUp, title: "ROI-backed scope", text: "Every module connects to faster operations, fewer manual errors, better sales/service throughput, or lower SaaS spend." },
+        { icon: Bot, title: "AI features where useful", text: "Search, summarization, document extraction, forecasting, workflow agents, and copilots are scoped only where they create measurable value." },
+        { icon: Settings, title: "Production-ready foundation", text: "Clean APIs, RBAC, audit logs, CI/CD, observability, docs, and your source code in your GitHub from day one." },
+      ],
+    }
+    : isMobile
+    ? {
+      eyebrow: "AI-first mobile products",
+      title: "A mobile app is not a smaller website. It needs retention, speed, store readiness, and a reason to come back.",
+      text: "We plan the mobile product around user journeys, offline states, push loops, app store conversion, analytics, and AI features that reduce taps or create a better experience.",
+      cards: [
+        { icon: Search, title: "Product and platform strategy", text: "Flutter, React Native, iOS, Android, or PWA decisions based on the product, team, budget, roadmap, and performance needs." },
+        { icon: TrendingUp, title: "Retention architecture", text: "Onboarding, notifications, deep links, referrals, subscriptions, analytics, and app-store positioning are scoped before build." },
+        { icon: Bot, title: "AI inside the experience", text: "Voice, visual search, recommendations, copilots, document scanning, smart support, and workflow agents where they improve real usage." },
+        { icon: Settings, title: "Launch-ready engineering", text: "CI/CD, crash reporting, release tracks, App Store and Play Store submission, privacy policy, QA, and post-launch iteration." },
+      ],
+    }
+    : isEcommerce
+    ? {
+      eyebrow: "AI-first commerce systems",
+      title: "Ecommerce is not just a storefront. It is search, inventory, payments, logistics, trust, and repeat purchase loops.",
+      text: "We plan the commerce stack around catalog quality, discovery, conversion, checkout, fulfillment, analytics, and AI features that improve real buying behavior.",
+      cards: [
+        { icon: Search, title: "Catalog and search architecture", text: "Semantic search, filters, product data, schema, collections, merchandising, and AI discovery built around buyer intent." },
+        { icon: TrendingUp, title: "Conversion and AOV systems", text: "Checkout flow, bundles, recommendations, abandoned cart recovery, upsells, loyalty, and analytics tied to revenue metrics." },
+        { icon: Bot, title: "AI commerce features", text: "AI search, visual search, product advisors, personalized recommendations, support agents, and review/FAQ automation." },
+        { icon: Settings, title: "Operations-ready build", text: "Shopify, headless, marketplace, inventory, payments, shipping, vendor dashboards, GST, Tally, and deployment handover." },
+      ],
+    }
+    : isAI
+    ? {
+      eyebrow: "Production AI systems",
+      title: "The model is only one part. Production AI needs evals, tools, data, guardrails, and workflows.",
+      text: "We turn AI ideas into software your team can trust: grounded retrieval, agent workflows, observability, human approval gates, and measurable task-success benchmarks.",
+      cards: [
+        { icon: Search, title: "Use-case and data audit", text: "We decide if your problem needs RAG, agents, fine-tuning, classical ML, workflow automation, or no AI at all." },
+        { icon: TrendingUp, title: "ROI and task metrics", text: "Every build gets task-success, latency, cost-per-run, hallucination, and human-override metrics from day one." },
+        { icon: Bot, title: "Agents with control", text: "LangGraph and CrewAI workflows with typed tools, approval gates, retries, logs, and deterministic fallbacks." },
+        { icon: Settings, title: "Production deployment", text: "LangSmith/Langfuse traces, provider abstraction, private deployment options, monitoring, runbooks, and source ownership." },
+      ],
+    }
+    : {
+      eyebrow: "AI-first business systems",
+      title: "The website is only the surface. The advantage is the intelligent system behind it.",
+      text: "We help you choose what to automate, what to build, what to measure, and where AI can create a defensible operating advantage.",
+      cards: [
+        { icon: Search, title: "Strategy before screens", text: "We map your buyer journey, operations, data, and automation opportunities before choosing the interface." },
+        { icon: TrendingUp, title: "Growth architecture", text: "Funnels, landing pages, SEO, analytics, CRM handoff, and paid traffic readiness built into the system." },
+        { icon: Bot, title: "AI agents and copilots", text: "Lead qualification, support, internal search, document workflows, and workflow automation with human control." },
+        { icon: Settings, title: "Production engineering", text: "Custom software, integrations, dashboards, deployment, observability, documentation, and source ownership." },
+      ],
+    };
+  const workHeadline = isEnterprise ? "Built for finance, operations, sales, service, and leadership teams." : isAgent ? "Built for sales, support, operations, finance, compliance, and internal teams." : isCustomSoftware ? "Built for founders, operators, product teams, and enterprises that need software to run the business." : isMobile ? "Built for consumer, marketplace, healthcare, fintech, delivery, and AI-first mobile products." : isEcommerce ? "Built for D2C brands, Shopify stores, B2B commerce, marketplaces, grocery, food, and delivery businesses." : isAI ? "Built for support, sales, operations, product, knowledge, and regulated teams." : "Built for SaaS, D2C, healthcare, fintech, and booking businesses.";
+  const serviceHeadline = isEnterprise ? "One senior team for ERP, CRM, workflow automation, dashboards, AI agents, and legacy modernization." : isAgent ? "One senior team for sales agents, support agents, ops agents, voice agents, tool integration, evals, and governance." : isCustomSoftware ? "One senior team for SaaS platforms, internal tools, workflow systems, APIs, AI features, and legacy modernization." : isMobile ? "One senior team for Flutter, React Native, iOS, Android, AI features, app-store launch, and post-launch growth." : isEcommerce ? "One senior team for Shopify, headless commerce, marketplaces, delivery apps, AI search, payments, and checkout growth." : isAI ? "One senior team for AI agents, RAG systems, copilots, chatbots, document AI, and private LLM deployments." : "One senior team for AI consulting, software, automation, and the web systems that sell them.";
+  const processHeadline = isEnterprise ? "From architecture to production without enterprise delivery fog." : isAgent ? "From agent workflow map to production without demo theatre." : isCustomSoftware ? "From software scope to production without vendor fog." : isMobile ? "From app idea to store launch without agency theatre." : isEcommerce ? "From commerce strategy to launch without template-store theatre." : isAI ? "From AI strategy to production without POC theatre." : "From strategy to production without vendor fog.";
+  const comparisonHeadline = isEnterprise ? "Compared with a traditional ERP vendor or generic software agency." : isAgent ? "Compared with chatbot widgets, agent demos, and automation templates." : isCustomSoftware ? "Compared with offshore vendors, SaaS templates, and generic dev shops." : isMobile ? "Compared with template app shops, freelancers, and UI-only studios." : isEcommerce ? "Compared with theme installers, generic Shopify agencies, and marketplace freelancers." : isAI ? "Compared with prompt demos, AI tool vendors, and generic dev shops." : "Compared with a typical website agency or freelancer.";
+  const comparisonRows = isEnterprise
+    ? [
+      ["Who you talk to", "Senior enterprise architect", "Sales or account team", "Varies"],
+      ["First useful output", "Architecture + AI-gap plan in 48 hours", "Proposal deck", "Estimate"],
+      ["AI workflow thinking", "Built into scope", "Often bolted on later", "Usually limited"],
+      ["Enterprise controls", "SSO, RBAC, audit logs by default", "Often paid add-ons", "Varies"],
+      ["Source ownership", "Your GitHub from day one", "Often restricted", "Usually yours"],
+    ]
+    : isAgent
+    ? [
+      ["Who you talk to", "Senior AI agent architect", "Sales or solutions team", "Varies"],
+      ["First useful output", "Workflow map + eval plan in 48 hours", "Demo bot", "Estimate"],
+      ["Tool integration", "Typed tools with audit logs", "Basic webhook", "Varies"],
+      ["Reliability layer", "Evals, retries, traces, approvals", "Usually absent", "Limited"],
+      ["Ownership", "Code, prompts, evals yours", "Platform-owned", "Usually code only"],
+    ]
+    : isCustomSoftware
+    ? [
+      ["Who you talk to", "Senior software architect", "Sales or project coordinator", "Varies"],
+      ["First useful output", "Scope + architecture plan in 48 hours", "Proposal deck", "Estimate"],
+      ["AI and automation thinking", "Built into the product roadmap", "Usually bolted on later", "Limited"],
+      ["Delivery model", "Working software every sprint", "Status calls and handoffs", "Depends on one person"],
+      ["Ownership", "Source code and docs yours", "Often restricted", "Usually code only"],
+    ]
+    : isMobile
+    ? [
+      ["Who you talk to", "Senior mobile app architect", "Sales or delivery manager", "Varies"],
+      ["First useful output", "App build plan + launch risks in 48 hours", "Proposal deck", "Estimate"],
+      ["Product thinking", "Retention, analytics, store launch included", "Often UI-first only", "Varies"],
+      ["AI feature strategy", "Scoped around real usage", "Usually a chatbot add-on", "Limited"],
+      ["Ownership", "Source code and release docs yours", "Often restricted", "Usually code only"],
+    ]
+    : isEcommerce
+    ? [
+      ["Who you talk to", "Senior commerce architect", "Sales or theme consultant", "Varies"],
+      ["First useful output", "Commerce growth plan in 48 hours", "Theme proposal", "Estimate"],
+      ["Revenue thinking", "Conversion, AOV, retention, ops included", "Mostly design and setup", "Varies"],
+      ["AI commerce layer", "Search, recommendations, advisors, agents", "Usually app/plugin based", "Limited"],
+      ["Ownership", "Source, data model, docs yours", "Often platform-bound", "Usually code only"],
+    ]
+    : isAI
+    ? [
+      ["Who you talk to", "Senior AI engineer", "Sales or solutions team", "Varies"],
+      ["First useful output", "Build plan + eval strategy in 48 hours", "Demo or pitch deck", "Estimate"],
+      ["Reliability layer", "Evals, traces, guardrails", "Often absent", "Usually limited"],
+      ["Deployment choice", "OpenAI, Anthropic, or private LLM", "Vendor lock-in", "Varies"],
+      ["Ownership", "Code, prompts, evals yours", "Often platform-owned", "Usually code only"],
+    ]
+    : [
+      ["Who you talk to", "Senior AI/software consultant", "Sales or account team", "Varies"],
+      ["First useful output", "AI strategy + prototype plan in 48 hours", "Proposal deck", "Estimate"],
+      ["Business system thinking", "Included", "Often absent", "Usually limited"],
+      ["Source ownership", "Your GitHub from day one", "Sometimes restricted", "Usually yours"],
+      ["Post-launch support", "30 days included", "Paid retainer", "Limited"],
+    ];
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    let ticking = false;
+    const update = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      setScrollProgress(height > 0 ? Math.min((scrollTop / height) * 100, 100) : 0);
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const scrollToForm = () => {
+    const el = document.getElementById(leadFormId);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus("loading");
+    try {
+      const message = [
+        `[formType:${isEnterprise ? "enterprise-software-premium" : isAgent ? "ai-agent-premium" : isCustomSoftware ? "custom-software-premium" : isMobile ? "mobile-app-premium" : isEcommerce ? "ecommerce-premium" : isAI ? "ai-software-premium" : "web-dev-premium"}]`,
+        `[${data.primaryKeyword} Consultation]`,
+        formData.projectType ? `Project: ${formData.projectType}` : "",
+        formData.budget ? `Budget: ${formData.budget}` : "",
+        formData.challenge || "",
+      ].filter(Boolean).join("\n");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message }),
+      });
+      if (!res.ok) throw new Error("contact failed");
+      const params = new URLSearchParams();
+      if (formData.name) params.set("name", formData.name);
+      params.set("product", data.primaryKeyword);
+      setFormData({ name: "", email: "", phone: "", projectType: "", budget: "", challenge: "" });
+      router.push(`/thank-you?${params.toString()}`);
+    } catch {
+      setFormStatus("error");
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
+      <div className="fixed top-0 left-0 right-0 h-1 z-[200] pointer-events-none">
+        <div className="h-full bg-gradient-to-r from-cyan-400 via-violet-500 to-emerald-400 transition-[width] duration-100 ease-out" style={{ width: `${scrollProgress}%` }} />
+      </div>
+
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0a0a0a]/85 backdrop-blur-xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-3" aria-label="RDMI home">
+            <span className="w-9 h-9 rounded-xl bg-white text-[#0a0a0a] flex items-center justify-center font-black">R</span>
+            <span className="font-bold tracking-tight">RDMI AI Services</span>
+          </Link>
+          <div className="hidden md:flex items-center gap-6 text-sm text-white/65">
+            <a href="#work" className="hover:text-white transition-colors">Work</a>
+            <a href="#services" className="hover:text-white transition-colors">Services</a>
+            <a href="#process" className="hover:text-white transition-colors">Process</a>
+            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+          </div>
+          <button onClick={scrollToForm} className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-[#0a0a0a] hover:bg-cyan-100 transition-colors">
+            {primaryCta} <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      </header>
+
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(14,165,233,0.14),transparent_34%,rgba(124,58,237,0.18)_66%,rgba(16,185,129,0.12))]" />
+        <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.7) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>
+              <div className="inline-flex flex-wrap items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1.5 text-xs font-bold text-cyan-100">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                {heroBadge}
+              </div>
+              <h1 className="mt-6 text-[2.4rem] sm:text-5xl lg:text-6xl font-black leading-[1.02] tracking-tight">
+                {data.hero.h1}
+              </h1>
+              <p className="mt-6 max-w-2xl text-base sm:text-lg text-white/72 leading-relaxed">
+                {data.hero.subtitle}
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-7 py-4 font-bold text-white shadow-[0_18px_45px_rgba(37,211,102,0.22)] hover:bg-[#1fba56] transition-colors">
+                  {primaryCta} <ArrowRight className="w-5 h-5" />
+                </button>
+                <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/18 bg-white/8 px-7 py-4 font-bold text-white hover:bg-white/14 transition-colors">
+                  <MessageCircle className="w-5 h-5" /> {secondaryCta}
+                </a>
+              </div>
+              <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
+                {data.stats.slice(0, 4).map((stat) => (
+                  <div key={stat.label} className="border-l border-white/14 pl-4">
+                    <AnimatedCounter value={stat.value} className="text-2xl font-black text-white" />
+                    <p className="mt-1 text-xs leading-snug text-white/55">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div id={leadFormId} className="rounded-3xl border border-white/14 bg-white/[0.06] p-4 sm:p-5 shadow-2xl shadow-black/35 backdrop-blur-xl">
+              <div className="rounded-2xl border border-white/10 bg-[#111111] overflow-hidden">
+                <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">{formEyebrow}</p>
+                    <h2 className="mt-1 text-xl font-black">{formTitle}</h2>
+                  </div>
+                  <Shield className="w-5 h-5 text-emerald-300" />
+                </div>
+                <form onSubmit={handleSubmit} className="p-4 sm:p-5 space-y-3">
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    <input required type="text" placeholder="Full name" value={formData.name} onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))} className="w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition-colors focus:border-cyan-300/60" />
+                    <input required type="tel" placeholder="WhatsApp number" value={formData.phone} onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))} className="w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition-colors focus:border-cyan-300/60" />
+                  </div>
+                  <input required type="email" placeholder="Work email" value={formData.email} onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))} className="w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition-colors focus:border-cyan-300/60" />
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    <select required value={formData.projectType} onChange={(e) => setFormData((prev) => ({ ...prev, projectType: e.target.value }))} className={`w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm outline-none transition-colors focus:border-cyan-300/60 ${formData.projectType ? "text-white" : "text-white/40"}`}>
+                      <option value="" className="bg-zinc-950">What do you want to build?</option>
+                      {projectTypes.map((item) => <option key={item} value={item} className="bg-zinc-950 text-white">{item}</option>)}
+                    </select>
+                    <select value={formData.budget} onChange={(e) => setFormData((prev) => ({ ...prev, budget: e.target.value }))} className={`w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm outline-none transition-colors focus:border-cyan-300/60 ${formData.budget ? "text-white" : "text-white/40"}`}>
+                      <option value="" className="bg-zinc-950">Budget range</option>
+                      {budgets.map((item) => <option key={item} value={item} className="bg-zinc-950 text-white">{item}</option>)}
+                    </select>
+                  </div>
+                  <textarea rows={3} placeholder={formPlaceholder} value={formData.challenge} onChange={(e) => setFormData((prev) => ({ ...prev, challenge: e.target.value }))} className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition-colors focus:border-cyan-300/60" />
+                  {formStatus === "error" && <p className="rounded-lg border border-rose-400/25 bg-rose-500/10 px-3 py-2 text-xs text-rose-100">Submission failed. WhatsApp us directly at +91 98185 65561.</p>}
+                  <button type="submit" disabled={formStatus === "loading"} className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-black text-[#0a0a0a] hover:bg-cyan-100 transition-colors disabled:opacity-70">
+                    {formStatus === "loading" ? <><Loader2 className="w-5 h-5 animate-spin" /> Sending...</> : <>{submitLabel} <ArrowRight className="w-5 h-5" /></>}
+                  </button>
+                  <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[11px] text-white/50">
+                    <span>NDA before strategy call</span>
+                    <span>Fixed scope quote</span>
+                    <span>No sales rep</span>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-white/10 bg-[#0f0f0f] py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-white/58">
+          {chips.map((item) => (
+            <span key={item} className="font-bold">{item}</span>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-20 lg:py-28 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-[0.9fr,1.1fr] gap-10 lg:gap-14 items-start">
+            <div className="lg:sticky lg:top-24">
+              <p className="text-sm font-bold text-cyan-300">{systemSection.eyebrow}</p>
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight">{systemSection.title}</h2>
+              <p className="mt-5 text-white/64 leading-relaxed">{systemSection.text}</p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {systemSection.cards.map(({ icon: Icon, title, text }) => (
+                <div key={title} className="rounded-2xl border border-white/10 bg-white/[0.045] p-6 hover:border-cyan-300/30 transition-colors">
+                  <Icon className="w-6 h-6 text-cyan-300" />
+                  <h3 className="mt-5 text-xl font-black">{title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/60">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" className="py-20 lg:py-28 bg-[#101010] border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+            <div>
+              <p className="text-sm font-bold text-emerald-300">NDA-safe work snapshots</p>
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">{workHeadline}</h2>
+            </div>
+            <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/14 px-5 py-3 font-bold text-white hover:bg-white/10 transition-colors">
+              Get similar result <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {portfolio.slice(0, 6).map((item, index) => (
+              <article key={item.project} className="group overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0a]">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image src={item.image} alt={item.project} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                  <span className="absolute left-4 top-4 rounded-full bg-black/55 px-3 py-1 text-xs font-bold text-white backdrop-blur">{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-black">{item.project}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/62">{item.outcome}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {item.tech.slice(0, 4).map((tech) => <span key={tech} className="rounded-lg bg-white/[0.07] px-2.5 py-1 text-xs text-white/64">{tech}</span>)}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="py-20 lg:py-28 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-bold text-violet-300">What we build</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">{serviceHeadline}</h2>
+          </div>
+          <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {data.services.map((service) => (
+              <button key={service.title} onClick={scrollToForm} className="group text-left rounded-2xl border border-white/10 bg-white/[0.04] p-6 hover:border-violet-300/35 hover:bg-white/[0.065] transition-colors">
+                <h3 className="text-xl font-black leading-snug">{service.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-white/60">{service.description}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {service.tags.slice(0, 4).map((tag) => <span key={tag} className="rounded-lg border border-white/10 px-2.5 py-1 text-xs text-white/55">{tag}</span>)}
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="process" className="py-20 lg:py-28 bg-[#101010] border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-[0.85fr,1.15fr] gap-10 lg:gap-14">
+            <div>
+              <p className="text-sm font-bold text-cyan-300">Clear delivery path</p>
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">{processHeadline}</h2>
+              <p className="mt-5 text-white/62 leading-relaxed">You get senior thinking first, working prototypes early, and source code ownership from day one.</p>
+            </div>
+            <div className="space-y-4">
+              {data.process.map((step) => (
+                <div key={step.step} className="grid sm:grid-cols-[5rem,1fr] gap-4 rounded-2xl border border-white/10 bg-[#0a0a0a] p-5">
+                  <div className="text-3xl font-black text-cyan-300">{step.step}</div>
+                  <div>
+                    <h3 className="text-xl font-black">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-white/60">{step.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 lg:py-28 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-3 gap-5">
+            {[
+              { title: "Direct senior developer", text: data.uspHeadlines.direct, icon: MessageCircle },
+              { title: "No lock-in ownership", text: data.uspHeadlines.cost, icon: Shield },
+              { title: "AI-native lead capture", text: data.uspHeadlines.ai, icon: Bot },
+            ].map(({ title, text, icon: Icon }) => (
+              <div key={title} className="rounded-2xl border border-white/10 bg-white/[0.045] p-7">
+                <Icon className="w-7 h-7 text-emerald-300" />
+                <h3 className="mt-5 text-2xl font-black">{title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-white/62">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 lg:py-28 bg-[#101010] border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <p className="text-sm font-bold text-amber-300">Why buyers choose RDMI</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">{comparisonHeadline}</h2>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-white/10">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[720px] text-left">
+                <thead className="bg-white/[0.06] text-xs uppercase tracking-[0.18em] text-white/48">
+                  <tr>
+                    <th className="px-5 py-4">Decision factor</th>
+                    <th className="px-5 py-4 text-emerald-300">RDMI</th>
+                    <th className="px-5 py-4">Commodity agency</th>
+                    <th className="px-5 py-4">Freelancer</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/10 text-sm">
+                  {comparisonRows.map((row) => (
+                    <tr key={row[0]} className="hover:bg-white/[0.035] transition-colors">
+                      <td className="px-5 py-4 font-bold text-white">{row[0]}</td>
+                      <td className="px-5 py-4 font-bold text-emerald-300"><CheckCircle2 className="mr-2 inline w-4 h-4" />{row[1]}</td>
+                      <td className="px-5 py-4 text-white/58">{row[2]}</td>
+                      <td className="px-5 py-4 text-white/58">{row[3]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 lg:py-28 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <p className="text-sm font-bold text-cyan-300">Client notes</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">Proof from teams that needed more than a pretty interface.</h2>
+          </div>
+          <div className="grid lg:grid-cols-3 gap-5">
+            {data.testimonials?.slice(0, 3).map((item) => (
+              <figure key={item.quote} className="rounded-2xl border border-white/10 bg-white/[0.045] p-6">
+                <div className="flex gap-1">
+                  {Array.from({ length: item.rating }).map((_, i) => <Star key={i} className="w-4 h-4 fill-amber-300 text-amber-300" />)}
+                </div>
+                <blockquote className="mt-5 text-base leading-relaxed text-white/78">&ldquo;{item.quote}&rdquo;</blockquote>
+                <figcaption className="mt-6 border-t border-white/10 pt-4">
+                  <p className="font-black">{item.author}</p>
+                  <p className="mt-1 text-sm text-white/50">{item.role}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="py-20 lg:py-28 bg-[#101010] border-y border-white/10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-sm font-bold text-violet-300">FAQ</p>
+          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">Questions before we build your AI-first software layer.</h2>
+          <div className="mt-10 divide-y divide-white/10 rounded-2xl border border-white/10 bg-[#0a0a0a]">
+            {data.faq.map((faq, index) => (
+              <div key={faq.q}>
+                <button onClick={() => setOpenFaq(openFaq === index ? null : index)} className="w-full flex items-center justify-between gap-4 px-5 py-5 text-left hover:bg-white/[0.035] transition-colors">
+                  <span className="font-bold text-white">{faq.q}</span>
+                  <ChevronDown className={`w-5 h-5 text-white/45 transition-transform ${openFaq === index ? "rotate-180" : ""}`} />
+                </button>
+                {openFaq === index && <div className="px-5 pb-5 text-sm leading-relaxed text-white/62">{faq.a}</div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden py-20 lg:py-28 bg-[#0a0a0a]">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,211,238,0.12),rgba(124,58,237,0.16),rgba(16,185,129,0.10))]" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight leading-tight">{data.ctaSection.headline}</h2>
+          <p className="mt-6 text-lg text-white/70 leading-relaxed">{data.ctaSection.subtitle}</p>
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+            <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 font-black text-[#0a0a0a] hover:bg-cyan-100 transition-colors">
+              Start With {primaryCta} <ArrowRight className="w-5 h-5" />
+            </button>
+            <a href="tel:+919818565561" className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-8 py-4 font-black text-white hover:bg-white/10 transition-colors">
+              <Phone className="w-5 h-5" /> Call +91 98185 65561
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <Footer onCTA={scrollToForm} />
+
+      <div className={`fixed bottom-0 left-0 right-0 z-[100] border-t border-white/10 bg-[#0a0a0a]/92 backdrop-blur-xl transition-all duration-300 ${scrollProgress > 5 ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="text-center sm:text-left">
+            <p className="text-sm font-black">{stickyHeadline}</p>
+            <p className="text-xs text-white/50">{supportLine}</p>
+          </div>
+          <div className="flex w-full sm:w-auto gap-2">
+            <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-black text-white">
+              <MessageCircle className="w-4 h-4" /> WhatsApp
+            </a>
+            <button onClick={scrollToForm} className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-black text-[#0a0a0a]">
+              {primaryCta}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className={`transition-all duration-300 ${scrollProgress > 5 ? "h-24 sm:h-20" : "h-0"}`} />
+    </div>
+  );
+}
+
 export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
+  const promotedSlugs = new Set(["web-development-company", "enterprise-saas-development", "ai-software-development", "ai-agent-development", "custom-software-development", "mobile-app-development", "ecommerce-development"]);
+  return promotedSlugs.has(data.slug) ? <WebDevelopmentLandingPage data={data} /> : <KeywordLandingPageLegacy data={data} />;
+}
+
+function KeywordLandingPageLegacy({ data }: { data: KeywordGroup }) {
   const router = useRouter();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [showModal, setShowModal] = useState(false);
@@ -192,8 +794,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
     if (!stickyForm.phone.trim()) return;
     setStickyStatus("loading");
     try {
-      const message = [`[formType:${data.form.formType}-sticky]`, `[${data.primaryKeyword} — WhatsApp Bar]`, `Source: sticky whatsapp bar on /kw/${data.slug}`].join("\n");
+      const message = [`[formType:${data.form.formType}-sticky]`, `[${data.primaryKeyword} — WhatsApp Bar]`, `Source: sticky whatsapp bar on ${data.slug}`].join("\n");
       await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: stickyForm.name || "WhatsApp Bar Lead", email: stickyForm.email || "whatsapp@rdmi.in", phone: stickyForm.phone, message }) });
+      trackLead({ event_label: `${data.slug}-sticky-bar` });
+      trackWhatsAppClick({ source: `${data.slug}-sticky-bar` });
       const waMsg = encodeURIComponent(`Hi RDMI, I'm ${stickyForm.name || "interested"} and I'd like to discuss ${data.primaryKeyword}.`);
       window.open(`https://wa.me/919818565561?text=${waMsg}`, "_blank");
       setStickyStatus("success");
@@ -280,8 +884,17 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
   const inp = `w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-sm text-gray-900 placeholder-gray-400 ${a.ring} outline-none transition-all`;
 
+  // Delegated WhatsApp-click tracking — one handler captures every wa.me link
+  // on the page (hero CTA, sticky bar, portfolio cards, floating dock).
+  const handleRootClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const anchor = (e.target as HTMLElement).closest("a");
+    if (anchor && anchor.href.includes("wa.me")) {
+      trackWhatsAppClick({ source: data.slug });
+    }
+  };
+
   return (
-    <div className="bg-white text-gray-900">
+    <div className="bg-white text-gray-900" onClick={handleRootClick}>
       {/* ═══════ SCROLL PROGRESS BAR ═══════ */}
       <div className="fixed top-0 left-0 right-0 h-1 z-[200] pointer-events-none">
         <div className="h-full transition-[width] duration-100 ease-out shadow-lg" style={{ width: `${scrollProgress}%`, background: `linear-gradient(90deg, ${t.urgencyColor}, #a855f7, #06b6d4)`, boxShadow: `0 0 12px ${t.urgencyColor}` }} />
@@ -879,10 +1492,10 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
               </div>
               <form onSubmit={handleSubmit} className="rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md p-5 lg:p-6 shadow-2xl shadow-black/40">
                 <div className="grid sm:grid-cols-2 gap-3 mb-3">
-                  <input required type="text" placeholder="Full name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder-white/40 outline-none transition-all focus:bg-white/[0.10] focus:border-white/30" />
-                  <input required type="tel" placeholder="Phone (WhatsApp)" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder-white/40 outline-none transition-all focus:bg-white/[0.10] focus:border-white/30" />
-                  <input required type="email" placeholder="Work email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder-white/40 outline-none transition-all focus:bg-white/[0.10] focus:border-white/30" />
-                  <select required value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })} className={`w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm outline-none transition-all focus:bg-white/[0.10] focus:border-white/30 ${formData.budget ? "text-white" : "text-white/40"}`}>
+                  <input required type="text" placeholder="Full name" value={formData.name} onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))} className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder-white/40 outline-none transition-all focus:bg-white/[0.10] focus:border-white/30" />
+                  <input required type="tel" placeholder="Phone (WhatsApp)" value={formData.phone} onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))} className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder-white/40 outline-none transition-all focus:bg-white/[0.10] focus:border-white/30" />
+                  <input required type="email" placeholder="Work email" value={formData.email} onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))} className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder-white/40 outline-none transition-all focus:bg-white/[0.10] focus:border-white/30" />
+                  <select required value={formData.budget} onChange={(e) => setFormData((prev) => ({ ...prev, budget: e.target.value }))} className={`w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm outline-none transition-all focus:bg-white/[0.10] focus:border-white/30 ${formData.budget ? "text-white" : "text-white/40"}`}>
                     <option value="" className="bg-zinc-900">Budget range</option>
                     {budgets.map((b) => <option key={b} value={b} className="bg-zinc-900 text-white">{b}</option>)}
                   </select>
@@ -1402,16 +2015,14 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 rounded-2xl overflow-hidden border border-gray-200">
             {[
-              { name: "Custom Software Development", desc: "Enterprise apps, SaaS, ERP & CRM", href: "/kw/custom-software-development", icon: "💻" },
-              { name: "Mobile App Development", desc: "iOS, Android, Flutter & React Native", href: "/kw/mobile-app-development", icon: "📱" },
-              { name: "Web Development", desc: "Websites, web apps, Shopify & WordPress", href: "/kw/web-development-company", icon: "🌐" },
-              { name: "AI Software & Agents", desc: "Chatbots, RAG, workflow automation", href: "/kw/ai-software-development", icon: "🤖" },
-              { name: "E-Commerce Development", desc: "Shopify, marketplace & headless commerce", href: "/kw/ecommerce-development", icon: "🛒" },
-              { name: "AI Automation & Consulting", desc: "Business process automation & AI strategy", href: "/kw/ai-agent-development", icon: "⚡" },
-              { name: "Healthcare AI", desc: "HIPAA-compliant patient & clinical AI", href: "/kw/healthcare-ai-development", icon: "🏥" },
-              { name: "Insurance AI", desc: "Claims, underwriting & fraud detection AI", href: "/kw/insurance-ai-development", icon: "🛡️" },
-              { name: "Travel & Hospitality AI", desc: "Booking engines, chatbots & revenue AI", href: "/kw/travel-hospitality-ai", icon: "✈️" },
-            ].filter((s) => s.href !== `/kw/${data.slug}`).slice(0, 6).map((s) => (
+              { name: "Custom Software Development", desc: "Enterprise apps, SaaS, ERP & CRM", href: "/custom-software-development-company", slug: "custom-software-development", icon: "💻" },
+              { name: "Mobile App Development", desc: "iOS, Android, Flutter & React Native", href: "/mobile-app-development-company", slug: "mobile-app-development", icon: "📱" },
+              { name: "Web Development", desc: "Websites, web apps, Shopify & WordPress", href: "/web-development-company", slug: "web-development-company", icon: "🌐" },
+              { name: "AI Software Development", desc: "Agents, RAG, copilots and automation", href: "/ai-software-development-company", slug: "ai-software-development", icon: "🤖" },
+              { name: "Ecommerce Development", desc: "Shopify, marketplace & headless commerce", href: "/ecommerce-development-company", slug: "ecommerce-development", icon: "🛒" },
+              { name: "AI Agent Development", desc: "Business process automation & AI agents", href: "/ai-agent-development-company", slug: "ai-agent-development", icon: "⚡" },
+              { name: "Enterprise Software", desc: "ERP, CRM, workflow and dashboards", href: "/enterprise-software-development-company", slug: "enterprise-saas-development", icon: "🏢" },
+            ].filter((s) => s.slug !== data.slug).slice(0, 6).map((s) => (
               <a key={s.href} href={s.href} className="group bg-white p-7 lg:p-8 hover:bg-gray-50/50 transition-colors flex items-start gap-4">
                 <div className="w-11 h-11 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center text-xl flex-shrink-0">
                   {s.icon}
@@ -1551,25 +2162,25 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 {/* Name */}
                 <div className="relative">
                   <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-                  <input type="text" required disabled={formStatus === "loading"} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={`w-full pl-10 pr-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all`} placeholder="Your full name" />
+                  <input type="text" required disabled={formStatus === "loading"} value={formData.name} onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))} className={`w-full pl-10 pr-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all`} placeholder="Your full name" />
                 </div>
 
                 {/* Phone + Email */}
                 <div className="grid sm:grid-cols-2 gap-3">
                   <div className="relative">
                     <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-                    <input type="tel" required disabled={formStatus === "loading"} value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={`w-full pl-10 pr-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all`} placeholder="+91 98185 65561" />
+                    <input type="tel" required disabled={formStatus === "loading"} value={formData.phone} onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))} className={`w-full pl-10 pr-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all`} placeholder="+91 98185 65561" />
                   </div>
                   <div className="relative">
                     <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-                    <input type="email" required disabled={formStatus === "loading"} value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={`w-full pl-10 pr-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all`} placeholder="you@company.com" />
+                    <input type="email" required disabled={formStatus === "loading"} value={formData.email} onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))} className={`w-full pl-10 pr-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all`} placeholder="you@company.com" />
                   </div>
                 </div>
 
                 {/* Project type */}
                 <div className="relative">
                   <Briefcase className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none z-10" />
-                  <select required disabled={formStatus === "loading"} value={formData.projectType} onChange={(e) => setFormData({ ...formData, projectType: e.target.value })} className={`w-full pl-10 pr-10 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 ${a.ring} hover:border-gray-200 outline-none transition-all appearance-none cursor-pointer ${formData.projectType ? "" : "text-gray-400"}`}>
+                  <select required disabled={formStatus === "loading"} value={formData.projectType} onChange={(e) => setFormData((prev) => ({ ...prev, projectType: e.target.value }))} className={`w-full pl-10 pr-10 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 ${a.ring} hover:border-gray-200 outline-none transition-all appearance-none cursor-pointer ${formData.projectType ? "" : "text-gray-400"}`}>
                     <option value="" className="text-gray-400">What do you need to build?</option>
                     {f.projectTypes.map((pt) => <option key={pt} value={pt} className="text-gray-900">{pt}</option>)}
                   </select>
@@ -1579,7 +2190,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 {/* Budget */}
                 <div className="relative">
                   <IndianRupee className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none z-10" />
-                  <select disabled={formStatus === "loading"} value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })} className={`w-full pl-10 pr-10 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 ${a.ring} hover:border-gray-200 outline-none transition-all appearance-none cursor-pointer ${formData.budget ? "" : "text-gray-400"}`}>
+                  <select disabled={formStatus === "loading"} value={formData.budget} onChange={(e) => setFormData((prev) => ({ ...prev, budget: e.target.value }))} className={`w-full pl-10 pr-10 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 ${a.ring} hover:border-gray-200 outline-none transition-all appearance-none cursor-pointer ${formData.budget ? "" : "text-gray-400"}`}>
                     <option value="" className="text-gray-400">Estimated budget (optional)</option>
                     {budgets.map((b) => <option key={b} value={b} className="text-gray-900">{b}</option>)}
                   </select>
@@ -1587,7 +2198,7 @@ export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
                 </div>
 
                 {/* Challenge */}
-                <textarea rows={2} disabled={formStatus === "loading"} value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className={`w-full px-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all resize-none`} placeholder={f.placeholder} />
+                <textarea rows={2} disabled={formStatus === "loading"} value={formData.challenge} onChange={(e) => setFormData((prev) => ({ ...prev, challenge: e.target.value }))} className={`w-full px-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm text-gray-900 placeholder-gray-400 ${a.ring} hover:border-gray-200 outline-none transition-all resize-none`} placeholder={f.placeholder} />
 
                 {/* Submit */}
                 <button type="submit" disabled={formStatus === "loading"} className="group relative w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl text-white font-bold text-sm transition-all hover:shadow-2xl hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed shadow-lg overflow-hidden" style={{ background: t.heroGradient }}>
