@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useModal } from "./ModalProvider";
 
@@ -11,8 +10,7 @@ interface FooterProps {
 
 export default function Footer({ onCTA }: FooterProps) {
   const { openModal } = useModal();
-  const pathname = usePathname();
-  const isLandingPage = pathname?.startsWith("/kw/");
+  const isLandingPage = false;
 
   return (
     <footer className={isLandingPage ? "border-t border-gray-200 bg-gray-50" : "border-t border-white/5 bg-[#050505]"}>

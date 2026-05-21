@@ -65,21 +65,47 @@ export interface KeywordGroup {
 export const keywordGroups: KeywordGroup[] = [
   {
     slug: "custom-software-development",
-    primaryKeyword: "Custom Software Development",
-    adGroupMatch: "Custom Software Dev India",
-    theme: { heroGradient: "linear-gradient(135deg, #4f46e5, #7c3aed, #4338ca)", ctaGradient: "linear-gradient(135deg, #4f46e5, #7c3aed, #4338ca)", urgencyColor: "#4f46e5", accent: "indigo", icon: "💻" },
-    form: { title: "Talk to a Senior Software Developer", subtitle: "Senior software engineer (not a sales rep) calls you on WhatsApp in 2 hours", projectTypes: ["Custom Web App", "SaaS Platform", "ERP / CRM System", "Legacy Modernization", "API & Integration", "AI-Powered Software", "Other"], placeholder: "What business problem do you need software to solve?", buttonText: "Get The Call →", formType: "software" },
+    primaryKeyword: "Custom Software Development Company",
+    adGroupMatch: "Custom Software Development Company",
+    theme: {
+      heroGradient: "linear-gradient(135deg, #4f46e5, #7c3aed, #4338ca)",
+      ctaGradient: "linear-gradient(135deg, #4f46e5, #7c3aed, #4338ca)",
+      urgencyColor: "#4f46e5",
+      accent: "indigo",
+      icon: "💻"
+    },
+    form: {
+      title: "Talk to a Senior Software Developer",
+      subtitle: "Senior software engineer (not a sales rep) calls you on WhatsApp in 2 hours",
+      projectTypes: [
+        "Custom Web App",
+        "SaaS Platform",
+        "ERP / CRM System",
+        "Legacy Modernization",
+        "API & Integration",
+        "AI-Powered Software",
+        "Other"
+      ],
+      placeholder: "What business problem do you need software to solve?",
+      buttonText: "Get The Call →",
+      formType: "software"
+    },
     meta: {
-      title: "Custom Software Development — Talk to a Senior Developer on WhatsApp in 2 Hours | RDMI",
-      description: "Skip the sales rep. A senior software engineer WhatsApps you in 2 hours. Free 48-hour working prototype before you pay. Money-back deadline guarantee. 200+ custom software products shipped. AI-first SaaS, ERP, CRM, and enterprise software.",
+      title: "Custom Software Development Company India | AI-First SaaS, ERP, CRM & Automation | RDMI",
+      description: "Custom software development company for SaaS platforms, business workflow software, ERP, CRM, APIs, AI-powered products, and legacy modernization. Senior architects, source ownership, and 48-hour build plan."
     },
     hero: {
-      badge: "💬 Talk to a Senior Software Developer on WhatsApp — 2-Hour Callback",
-      h1: "Talk to a Senior Software Developer in 2 Hours — Not a Sales Rep, Not a Junior",
-      subtitle: "Stop briefing account managers who can't answer architecture questions. The senior engineer who scopes your software is the engineer who ships it — direct on WhatsApp, NDA on day zero. Free 48-hour working prototype before you pay a rupee. Money-back if we miss a deadline. Full source code in your GitHub from day one.",
-      cta1: "Talk to Senior Developer on WhatsApp",
-      cta2: "↓ See Live Projects",
-      trustPoints: ["Senior software engineer on WhatsApp in 2 hours — not a sales rep, not a junior", "Free 48-hour working prototype on your real problem — walk away at zero cost", "Money-back deadline guarantee written into the contract on every milestone", "Full source code, AI prompts, and weights in your GitHub on day one"],
+      badge: "Senior software architect callback in 2 hours",
+      h1: "Custom Software Development Company for AI-First Products, Platforms, and Automation",
+      subtitle: "Searching for a custom software development company? RDMI builds the systems behind modern businesses: SaaS products, ERP, CRM, workflow automation, APIs, dashboards, and AI-powered software with senior architecture from day one.",
+      cta1: "Get Software Build Plan",
+      cta2: "Talk to Software Architect",
+      trustPoints: [
+        "Senior software architect on WhatsApp in 2 hours",
+        "48-hour scope, architecture, and delivery plan",
+        "Source code and documentation owned by you",
+        "AI, automation, integrations, and analytics planned from day one"
+      ]
     },
     images: {
       hero: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1600&q=80",
@@ -88,60 +114,184 @@ export const keywordGroups: KeywordGroup[] = [
       services: [
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80"
       ],
       portfolio: [
         "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
         "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
-        "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+        "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80"
       ],
-      cta: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80",
+      cta: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80"
     },
     process: [
-      { step: "01", title: "Senior Engineer Scopes You — Within 2 Hours", description: "Not a sales deck, not a discovery workshop. A senior engineer reads your problem, names the stack, writes the risks on the call, and sends scope plus timeline the same day." },
-      { step: "02", title: "Clickable Prototype in 48 Hours", description: "Real Figma flows on your real problem — not reused templates. You test user journeys before a single line of code is committed. Don't love it? You walk at zero cost." },
-      { step: "03", title: "Working Software in 14 Days", description: "Two-week sprints on a live staging URL. Working software every two weeks on a staging URL. Senior engineers using AI to ship faster, with every feature reviewed before demo. Not monthly status emails." },
-      { step: "04", title: "Production + 60-Day Hypercare", description: "CI/CD, observability, runbooks, and on-call handoff. 60 days of free bug fixes and tuning after go-live. Full source code, prompts, and schemas in your repo on day one." },
+      {
+        step: "01",
+        title: "Scope the Business System",
+        description: "A senior architect maps users, workflows, roles, data, integrations, risks, and the exact business outcome the software needs to create."
+      },
+      {
+        step: "02",
+        title: "Design the Product Architecture",
+        description: "You get a practical build plan covering stack, modules, AI opportunities, permissions, delivery timeline, and launch path before implementation starts."
+      },
+      {
+        step: "03",
+        title: "Ship Working Software in Sprints",
+        description: "Two-week delivery cycles with a live staging URL, tested features, demos, and clear decisions instead of vague status updates."
+      },
+      {
+        step: "04",
+        title: "Launch, Handover, and Improve",
+        description: "Production deployment, CI/CD, monitoring, documentation, source-code handover, and post-launch support so your team can operate with confidence."
+      }
     ],
     stats: [
-      { value: "200+", label: "Custom Products Shipped to Production" },
-      { value: "48 hrs", label: "Free Working Prototype — Before You Pay" },
-      { value: "100%", label: "Money-Back Deadline Guarantee" },
-      { value: "98%", label: "On-Time Delivery Across All Projects" },
+      {
+        value: "200+",
+        label: "Custom Products Shipped to Production"
+      },
+      {
+        value: "48 hrs",
+        label: "Free Working Prototype — Before You Pay"
+      },
+      {
+        value: "100%",
+        label: "Money-Back Deadline Guarantee"
+      },
+      {
+        value: "98%",
+        label: "On-Time Delivery Across All Projects"
+      }
     ],
     services: [
-      { title: "Custom Web Application Development", description: "React, Next.js, Node.js on AWS with AI copilots inside the product from sprint one — smart search, auto-summaries, anomaly alerts. Custom web app development that scales to 10K concurrent users without a rewrite.", tags: ["Next.js", "Node.js", "PostgreSQL", "OpenAI"] },
-      { title: "Bespoke SaaS Development & Multi-Tenant Platforms", description: "SaaS development with tenant isolation, Stripe billing, usage metering, feature flags, and AI features in the core. Bespoke SaaS platforms built for day-one revenue — scales from first customer to ten thousand.", tags: ["Multi-Tenant", "Stripe", "Feature Flags", "Vercel AI SDK"] },
-      { title: "Custom ERP & CRM Software Development", description: "Custom ERP and CRM development that replaces SaaS subscriptions forever. Workflow automation, AI agents that draft follow-ups and reconcile data, GST-ready invoicing, Tally integration. Own the system, full source code, zero lock-in.", tags: ["Custom ERP", "CRM", "n8n", "LangGraph"] },
-      { title: "AI-Powered Custom Software Development", description: "Custom software engineering with OpenAI, Anthropic, Google models orchestrated by LangChain and LangGraph. RAG on your docs, autonomous agents on your workflows, LangSmith evals on every deployment. Production AI — not another POC.", tags: ["LangChain", "LangGraph", "Pinecone", "LangSmith"] },
-      { title: "Custom Application Development & Legacy Modernisation", description: "Custom application development services with parallel-run migration pattern. New system runs beside your legacy stack with data reconciliation for 30-90 days, then cutover. SAP, Tally, on-prem, mainframe — zero downtime where it matters.", tags: ["Migration", "SAP", "Tally", "Kafka"] },
-      { title: "Enterprise Software Development & API Engineering", description: "Enterprise software development with REST, GraphQL, webhooks, event buses, and message queues that glue your stack together. AI-generated typed clients, contract tests, and anti-corruption layers that keep new code clean.", tags: ["GraphQL", "Kafka", "Webhooks", "OpenAPI"] },
+      {
+        title: "Custom Web Application Development",
+        description: "React, Next.js, Node.js on AWS with AI copilots inside the product from sprint one — smart search, auto-summaries, anomaly alerts. Custom web app development that scales to 10K concurrent users without a rewrite.",
+        tags: [
+          "Next.js",
+          "Node.js",
+          "PostgreSQL",
+          "OpenAI"
+        ]
+      },
+      {
+        title: "Bespoke SaaS Development & Multi-Tenant Platforms",
+        description: "SaaS development with tenant isolation, Stripe billing, usage metering, feature flags, and AI features in the core. Bespoke SaaS platforms built for day-one revenue — scales from first customer to ten thousand.",
+        tags: [
+          "Multi-Tenant",
+          "Stripe",
+          "Feature Flags",
+          "Vercel AI SDK"
+        ]
+      },
+      {
+        title: "Custom ERP & CRM Software Development",
+        description: "Custom ERP and CRM development that replaces SaaS subscriptions forever. Workflow automation, AI agents that draft follow-ups and reconcile data, GST-ready invoicing, Tally integration. Own the system, full source code, zero lock-in.",
+        tags: [
+          "Custom ERP",
+          "CRM",
+          "n8n",
+          "LangGraph"
+        ]
+      },
+      {
+        title: "AI-Powered Custom Software Development",
+        description: "Custom software engineering with OpenAI, Anthropic, Google models orchestrated by LangChain and LangGraph. RAG on your docs, autonomous agents on your workflows, LangSmith evals on every deployment. Production AI — not another POC.",
+        tags: [
+          "LangChain",
+          "LangGraph",
+          "Pinecone",
+          "LangSmith"
+        ]
+      },
+      {
+        title: "Custom Application Development & Legacy Modernisation",
+        description: "Custom application development services with parallel-run migration pattern. New system runs beside your legacy stack with data reconciliation for 30-90 days, then cutover. SAP, Tally, on-prem, mainframe — zero downtime where it matters.",
+        tags: [
+          "Migration",
+          "SAP",
+          "Tally",
+          "Kafka"
+        ]
+      },
+      {
+        title: "Enterprise Software Development & API Engineering",
+        description: "Enterprise software development with REST, GraphQL, webhooks, event buses, and message queues that glue your stack together. AI-generated typed clients, contract tests, and anti-corruption layers that keep new code clean.",
+        tags: [
+          "GraphQL",
+          "Kafka",
+          "Webhooks",
+          "OpenAPI"
+        ]
+      }
     ],
     uspHeadlines: {
-      direct: "Show-first-then-commit custom software development. We build a free working prototype in 48 hours — you pay only after you approve. Don't love it? Walk away at zero cost. NDA signed before any data is shared.",
-      ai: "AI-first custom software architecture in every build — RAG, agents, copilots, smart search woven into the core from sprint one. Not a feature you bolt on after launch.",
-      cost: "Money-back deadline guarantee on every milestone — written into the contract. Plus full source code, prompts, eval sets, and model weights yours on day one. Bespoke software development with no vendor lock-in.",
+      direct: "You speak to senior software architects early, so the first conversation covers tradeoffs, integrations, risks, and the build path instead of generic sales qualification.",
+      ai: "AI-first custom software architecture where it belongs: agents, RAG, copilots, document workflows, analytics, and automation planned into the product instead of bolted on after launch.",
+      cost: "Full source-code ownership, documentation, deployment handover, and clean architecture so the software becomes your asset, not another vendor dependency."
     },
     faq: [
-      { q: "How does custom software development work with the show-first-then-commit model?", a: "Brief us today. Within 48 hours you have a free clickable prototype with real flows on your real problem — not reused templates. You test it, your team tests it, your investors test it. Love it? We start the build. Don't love it? Walk away with the prototype, zero cost, NDA still in force. We've never sent an invoice for a prototype." },
-      { q: "What does the money-back deadline guarantee on custom software actually cover?", a: "Every milestone has a contracted delivery date. If we miss it without an approved scope change, you get a pro-rated refund of that milestone — written into the contract before sprint one. We've shipped 200+ custom software products and refunded fewer than three deadlines in five years. The guarantee isn't marketing copy, it's a clause." },
-      { q: "Why pick a custom software development company over off-the-shelf SaaS?", a: "Off-the-shelf SaaS forces you into someone else's workflow, charges per seat forever, and limits how AI plugs in. Custom software development gives you a system built around your actual operations — with AI agents, custom workflows, and full source code ownership. Beyond a certain scale, custom always wins on cost-of-ownership and AI integration depth." },
-      { q: "How is AI-native development different from a traditional agency?", a: "Traditional agencies bill by the hour and type every line by hand. Our senior engineers use the latest AI tools to move 3x faster — humans own architecture and review every feature before it ships. You get working software in weeks instead of quarters, and the engineer who scoped it is the engineer who built it." },
-      { q: "Will AI-generated code hallucinate bugs into production?", a: "Not on our workflow. Every AI-generated PR is reviewed by the senior engineer who owns that module. Typed schemas, contract tests, and end-to-end tests run on every commit. Measured defect rate in production is lower than a fully-manual team because review catches what a junior would miss." },
-      { q: "Who owns the code, AI prompts, and model weights?", a: "You do, one hundred percent, from day one. Full source code in your private GitHub. Custom prompts, fine-tuned weights, eval sets, and design files handed over on payment. No retained rights, no background licensing, no exit friction." },
-      { q: "What happens when the next GPT or Claude model ships and breaks my integration?", a: "We build model-agnostic from the start with provider abstractions and eval suites. When a new model ships we re-run evals — swap if it scores better, roll back if it regresses. You're not coupled to one vendor's release cycle." },
-      { q: "How do you measure success — working software or a demo that rots in staging?", a: "Benchmarks written into the contract. Task-success rate, latency, defect rate, and business KPIs tracked from sprint one. If we miss the benchmarks we iterate free. If the first milestone disappoints, you walk — nothing owed." },
-      { q: "Can you deploy on-prem or in our VPC for regulated data?", a: "Yes. AWS, GCP, Azure, and on-prem Kubernetes. Private LLMs with Llama or Mistral in your VPC when healthcare, BFSI, or legal compliance demands it. Same LangChain code runs on OpenAI or vLLM — no rewrite on migration." },
+      {
+        q: "How does custom software development work with the show-first-then-commit model?",
+        a: "Brief us today. Within 48 hours you have a free clickable prototype with real flows on your real problem — not reused templates. You test it, your team tests it, your investors test it. Love it? We start the build. Don't love it? Walk away with the prototype, zero cost, NDA still in force. We've never sent an invoice for a prototype."
+      },
+      {
+        q: "What does the money-back deadline guarantee on custom software actually cover?",
+        a: "Every milestone has a contracted delivery date. If we miss it without an approved scope change, you get a pro-rated refund of that milestone — written into the contract before sprint one. We've shipped 200+ custom software products and refunded fewer than three deadlines in five years. The guarantee isn't marketing copy, it's a clause."
+      },
+      {
+        q: "Why pick a custom software development company over off-the-shelf SaaS?",
+        a: "Off-the-shelf SaaS forces you into someone else's workflow, charges per seat forever, and limits how AI plugs in. Custom software development gives you a system built around your actual operations — with AI agents, custom workflows, and full source code ownership. Beyond a certain scale, custom always wins on cost-of-ownership and AI integration depth."
+      },
+      {
+        q: "How is AI-native development different from a traditional agency?",
+        a: "Traditional agencies bill by the hour and type every line by hand. Our senior engineers use the latest AI tools to move 3x faster — humans own architecture and review every feature before it ships. You get working software in weeks instead of quarters, and the engineer who scoped it is the engineer who built it."
+      },
+      {
+        q: "Will AI-generated code hallucinate bugs into production?",
+        a: "Not on our workflow. Every AI-generated PR is reviewed by the senior engineer who owns that module. Typed schemas, contract tests, and end-to-end tests run on every commit. Measured defect rate in production is lower than a fully-manual team because review catches what a junior would miss."
+      },
+      {
+        q: "Who owns the code, AI prompts, and model weights?",
+        a: "You do, one hundred percent, from day one. Full source code in your private GitHub. Custom prompts, fine-tuned weights, eval sets, and design files handed over on payment. No retained rights, no background licensing, no exit friction."
+      },
+      {
+        q: "What happens when the next GPT or Claude model ships and breaks my integration?",
+        a: "We build model-agnostic from the start with provider abstractions and eval suites. When a new model ships we re-run evals — swap if it scores better, roll back if it regresses. You're not coupled to one vendor's release cycle."
+      },
+      {
+        q: "How do you measure success — working software or a demo that rots in staging?",
+        a: "Benchmarks written into the contract. Task-success rate, latency, defect rate, and business KPIs tracked from sprint one. If we miss the benchmarks we iterate free. If the first milestone disappoints, you walk — nothing owed."
+      },
+      {
+        q: "Can you deploy on-prem or in our VPC for regulated data?",
+        a: "Yes. AWS, GCP, Azure, and on-prem Kubernetes. Private LLMs with Llama or Mistral in your VPC when healthcare, BFSI, or legal compliance demands it. Same LangChain code runs on OpenAI or vLLM — no rewrite on migration."
+      }
     ],
     testimonials: [
-      { quote: "They shipped a production SaaS in 11 weeks — our previous vendor quoted 9 months for less. Senior engineers throughout, AI-accelerated delivery. We stopped getting junior output at senior rates.", author: "A.K.", role: "CTO, B2B SaaS (Mumbai)", rating: 5 },
-      { quote: "Legacy ERP replaced with zero downtime using their parallel-run pattern. The architecture call alone saved us from a six-figure mistake. Two years later, the platform still runs without a single escalation.", author: "R.M.", role: "Head of Engineering, FinTech (Delhi NCR)", rating: 5 },
-      { quote: "Working staging URL in week two and working software every sprint. Our in-house team doubled output after watching them work. Prompts, eval sets, model weights — all handed over clean.", author: "S.P.", role: "Founder, D2C Brand (Bangalore)", rating: 5 },
+      {
+        quote: "They shipped a production SaaS in 11 weeks — our previous vendor quoted 9 months for less. Senior engineers throughout, AI-accelerated delivery. We stopped getting junior output at senior rates.",
+        author: "A.K.",
+        role: "CTO, B2B SaaS (Mumbai)",
+        rating: 5
+      },
+      {
+        quote: "Legacy ERP replaced with zero downtime using their parallel-run pattern. The architecture call alone saved us from a six-figure mistake. Two years later, the platform still runs without a single escalation.",
+        author: "R.M.",
+        role: "Head of Engineering, FinTech (Delhi NCR)",
+        rating: 5
+      },
+      {
+        quote: "Working staging URL in week two and working software every sprint. Our in-house team doubled output after watching them work. Prompts, eval sets, model weights — all handed over clean.",
+        author: "S.P.",
+        role: "Founder, D2C Brand (Bangalore)",
+        rating: 5
+      }
     ],
     ctaSection: {
-      headline: "Stop Briefing Sales Reps. Talk to the Developer Who'll Build It.",
-      subtitle: "WhatsApp a senior software engineer in 2 hours — not a sales rep with a slide deck. Free 48-hour working prototype on your real problem. Money-back if we miss a deadline. Walk away anytime, full source code yours.",
-      buttonText: "Talk to Senior Developer on WhatsApp",
+      headline: "Build Software That Becomes the Operating System of Your Business.",
+      subtitle: "Get a senior architecture review, practical build plan, and clear path for SaaS, ERP, CRM, automation, or AI-powered product development.",
+      buttonText: "Get Software Build Plan"
     },
     targetKeywords: [
       "custom software development",
@@ -158,26 +308,52 @@ export const keywordGroups: KeywordGroup[] = [
       "enterprise software development",
       "saas development company",
       "software development company",
-      "software development services",
-    ],
+      "software development services"
+    ]
   },
   {
     slug: "mobile-app-development",
     primaryKeyword: "Mobile App Development Company",
-    adGroupMatch: "Mobile App Development Co",
-    theme: { heroGradient: "linear-gradient(135deg, #6366f1, #a855f7, #ec4899)", ctaGradient: "linear-gradient(135deg, #6366f1, #a855f7, #ec4899)", urgencyColor: "#a855f7", accent: "purple", icon: "📱" },
-    form: { title: "Talk to a Senior App Developer", subtitle: "Senior app developer (not a sales rep) WhatsApps you in 2 hours", projectTypes: ["AI-Powered Flutter App", "Android App (Kotlin)", "iOS App (Swift)", "E-Commerce / Marketplace App", "Healthcare / FinTech App", "On-Demand / Delivery App", "Other"], placeholder: "What should your app do that competitors' apps don't?", buttonText: "Get The Call →", formType: "mobile-app" },
+    adGroupMatch: "Mobile App Development Company",
+    theme: {
+      heroGradient: "linear-gradient(135deg, #6366f1, #a855f7, #ec4899)",
+      ctaGradient: "linear-gradient(135deg, #6366f1, #a855f7, #ec4899)",
+      urgencyColor: "#a855f7",
+      accent: "purple",
+      icon: "📱"
+    },
+    form: {
+      title: "Talk to a Senior App Developer",
+      subtitle: "Senior app developer (not a sales rep) WhatsApps you in 2 hours",
+      projectTypes: [
+        "AI-Powered Flutter App",
+        "Android App (Kotlin)",
+        "iOS App (Swift)",
+        "E-Commerce / Marketplace App",
+        "Healthcare / FinTech App",
+        "On-Demand / Delivery App",
+        "Other"
+      ],
+      placeholder: "What should your app do that competitors' apps don't?",
+      buttonText: "Get The Call →",
+      formType: "mobile-app"
+    },
     meta: {
-      title: "Mobile App Development — Talk to a Senior App Developer on WhatsApp in 2 Hours | RDMI",
-      description: "Skip the sales rep. A senior app developer WhatsApps you in 2 hours. Free 72-hour working app build on your phone before you pay. Money-back deadline guarantee. iOS, Android, Flutter. 60+ apps shipped. AI-first mobile app development.",
+      title: "Mobile App Development Company India | AI-First iOS, Android, Flutter & React Native | RDMI",
+      description: "Mobile app development company for AI-first iOS, Android, Flutter, React Native, healthcare, fintech, ecommerce, marketplace, grocery, delivery, and SaaS mobile apps. Senior app architects and 48-hour build plan."
     },
     hero: {
-      badge: "💬 Talk to a Senior App Developer on WhatsApp — 2-Hour Callback",
-      h1: "Talk to a Senior App Developer in 2 Hours — Not a Sales Rep, Not a Junior",
-      subtitle: "Stop pitching to account managers who can't tell Flutter from React Native. The senior mobile engineer who scopes your app is the engineer who ships it — direct on WhatsApp. Free 72-hour working app on your phone before you pay a rupee. Money-back if we miss a deadline. Full source code in your GitHub from day one.",
-      cta1: "Talk to App Developer on WhatsApp",
-      cta2: "↓ See Live Apps",
-      trustPoints: ["Senior mobile engineer on WhatsApp in 2 hours — iOS, Android, Flutter, React Native", "Free 72-hour working app on your phone — walk away at zero cost", "Money-back deadline guarantee written into every milestone", "AI baked in: voice search, vision, copilots, on-device ML"],
+      badge: "Senior mobile app architect callback in 2 hours",
+      h1: "Mobile App Development Company for AI-First iOS, Android, Flutter, and React Native Apps",
+      subtitle: "Searching for a mobile app development company? RDMI builds mobile products that users keep using: iOS, Android, Flutter, React Native, marketplace apps, healthcare apps, fintech apps, delivery apps, and AI-powered mobile experiences with launch strategy built in.",
+      cta1: "Get App Build Plan",
+      cta2: "Talk to App Architect",
+      trustPoints: [
+        "Senior mobile app architect on WhatsApp in 2 hours",
+        "48-hour app product, stack, and launch plan",
+        "iOS, Android, Flutter, React Native, and AI app delivery",
+        "Source code, release docs, and analytics ownership"
+      ]
     },
     images: {
       hero: "https://images.unsplash.com/photo-1616469829941-c7200edec809?w=1600&q=80",
@@ -186,59 +362,180 @@ export const keywordGroups: KeywordGroup[] = [
       services: [
         "https://images.unsplash.com/photo-1601972599720-36938d4ecd31?w=800&q=80",
         "https://images.unsplash.com/photo-1526498460520-4c246339dccb?w=800&q=80",
-        "https://images.unsplash.com/photo-1605170439002-90845e8c0137?w=800&q=80",
+        "https://images.unsplash.com/photo-1605170439002-90845e8c0137?w=800&q=80"
       ],
       portfolio: [
         "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=80",
         "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80",
-        "https://images.unsplash.com/photo-1596558450268-9c27524ba856?w=800&q=80",
+        "https://images.unsplash.com/photo-1596558450268-9c27524ba856?w=800&q=80"
       ],
-      cta: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80",
+      cta: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80"
     },
     process: [
-      { step: "01", title: "Senior Dev Scopes the App — Within 2 Hours", description: "A senior mobile engineer reads your brief, names the stack (Flutter vs native vs hybrid), and marks which AI features move your metric. Scope and timeline delivered same day." },
-      { step: "02", title: "Clickable Prototype in 48 Hours", description: "Real user flows on your phone — not a Figma board. AI features mocked with live LLM responses so you test the experience before committing to a build. Walk away at zero cost if it misses." },
-      { step: "03", title: "TestFlight Builds Every 14 Days", description: "Working builds on TestFlight or Play Store internal track every two weeks. Senior mobile engineers accelerated by AI tooling — you test real builds on your real device every sprint, not a monthly status email." },
-      { step: "04", title: "Store Launch + AI Tuning", description: "App Store and Play Store submission with ASO, crash reporting, and eval dashboards. Post-launch AI models tune on real usage for 30 days — free. Retainer available for ongoing model updates." },
+      {
+        step: "01",
+        title: "Map the Mobile Product",
+        description: "A senior app architect reviews your users, workflow, business model, platform needs, AI opportunities, integrations, and store-launch risks."
+      },
+      {
+        step: "02",
+        title: "Choose the Right Stack",
+        description: "Flutter, React Native, native iOS, native Android, or PWA is chosen from product needs, team skill, performance, roadmap, and budget, not agency preference."
+      },
+      {
+        step: "03",
+        title: "Ship Test Builds Every Sprint",
+        description: "You test real app builds through TestFlight, Play Console internal testing, or device builds with analytics, crash reporting, and QA from early sprints."
+      },
+      {
+        step: "04",
+        title: "Launch and Improve Retention",
+        description: "App Store and Play Store submission, privacy assets, release notes, analytics, onboarding, push loops, and post-launch iteration are handled as part of delivery."
+      }
     ],
     stats: [
-      { value: "60+", label: "Mobile Apps Shipped to Production" },
-      { value: "72 hrs", label: "Free Working Prototype on Your Phone" },
-      { value: "100%", label: "Money-Back Deadline Guarantee" },
-      { value: "98%", label: "First-Submission Store Approval Rate" },
+      {
+        value: "60+",
+        label: "Mobile Apps Shipped to Production"
+      },
+      {
+        value: "72 hrs",
+        label: "Free Working Prototype on Your Phone"
+      },
+      {
+        value: "100%",
+        label: "Money-Back Deadline Guarantee"
+      },
+      {
+        value: "98%",
+        label: "First-Submission Store Approval Rate"
+      }
     ],
     services: [
-      { title: "Flutter App Development With AI Copilots", description: "Flutter app development for iOS and Android from a single codebase, with OpenAI models, voice commands, and smart recommendations baked in from sprint one. An app that learns, predicts, and converts on every session — not a hamburger menu over a REST API.", tags: ["Flutter", "OpenAI", "Firebase", "LangChain"] },
-      { title: "Android App Development With On-Device ML", description: "Native Android app development with Kotlin, Jetpack Compose, and TensorFlow Lite inference running on the device — real-time image recognition, voice search, predictive text. Works offline, protects user data, runs 60fps on mid-range hardware.", tags: ["Kotlin", "TensorFlow Lite", "Jetpack Compose", "On-Device ML"] },
-      { title: "iOS App Development With Core ML & Apple Intelligence", description: "Native iOS app development with Swift, SwiftUI, Core ML inference, Siri shortcuts, and Apple Intelligence hooks. Vision framework for face and object detection. Passes App Review on first submission — 4.5+ star rating average.", tags: ["Swift", "Core ML", "Vision", "Apple Intelligence"] },
-      { title: "AI App Development — Voice & Conversational Mobile Apps", description: "AI app development that lets users talk to your app instead of tapping through five screens. Whisper on-device for transcription, the latest LLMs for reasoning, ElevenLabs TTS for natural responses. WhatsApp and Twilio integrations for hybrid UX.", tags: ["Whisper", "OpenAI", "WhatsApp API", "Twilio"] },
-      { title: "Ecommerce App Development & Marketplace Apps", description: "Ecommerce app development with visual search — upload a photo, find the product. AI-written checkout assistance, personalised recommendations trained on your catalogue, fraud detection on payment flows. Razorpay, Stripe, UPI Intent ready.", tags: ["Visual Search", "Recommendations", "Razorpay", "Stripe"] },
-      { title: "Custom Mobile App Development for Healthcare & FinTech", description: "Custom mobile app development with compliance baked in — HIPAA-aligned health apps with AI triage and telemedicine, FinTech apps with AI KYC, credit signals, and fraud detection. Compliance designed from sprint one — not bolted on during security review.", tags: ["HIPAA", "DPDP Act", "KYC", "Telemedicine"] },
+      {
+        title: "Flutter App Development With AI Copilots",
+        description: "Flutter app development for iOS and Android from a single codebase, with OpenAI models, voice commands, and smart recommendations baked in from sprint one. An app that learns, predicts, and converts on every session — not a hamburger menu over a REST API.",
+        tags: [
+          "Flutter",
+          "OpenAI",
+          "Firebase",
+          "LangChain"
+        ]
+      },
+      {
+        title: "Android App Development With On-Device ML",
+        description: "Native Android app development with Kotlin, Jetpack Compose, and TensorFlow Lite inference running on the device — real-time image recognition, voice search, predictive text. Works offline, protects user data, runs 60fps on mid-range hardware.",
+        tags: [
+          "Kotlin",
+          "TensorFlow Lite",
+          "Jetpack Compose",
+          "On-Device ML"
+        ]
+      },
+      {
+        title: "iOS App Development With Core ML & Apple Intelligence",
+        description: "Native iOS app development with Swift, SwiftUI, Core ML inference, Siri shortcuts, and Apple Intelligence hooks. Vision framework for face and object detection. Passes App Review on first submission — 4.5+ star rating average.",
+        tags: [
+          "Swift",
+          "Core ML",
+          "Vision",
+          "Apple Intelligence"
+        ]
+      },
+      {
+        title: "AI App Development — Voice & Conversational Mobile Apps",
+        description: "AI app development that lets users talk to your app instead of tapping through five screens. Whisper on-device for transcription, the latest LLMs for reasoning, ElevenLabs TTS for natural responses. WhatsApp and Twilio integrations for hybrid UX.",
+        tags: [
+          "Whisper",
+          "OpenAI",
+          "WhatsApp API",
+          "Twilio"
+        ]
+      },
+      {
+        title: "Ecommerce App Development & Marketplace Apps",
+        description: "Ecommerce app development with visual search — upload a photo, find the product. AI-written checkout assistance, personalised recommendations trained on your catalogue, fraud detection on payment flows. Razorpay, Stripe, UPI Intent ready.",
+        tags: [
+          "Visual Search",
+          "Recommendations",
+          "Razorpay",
+          "Stripe"
+        ]
+      },
+      {
+        title: "Custom Mobile App Development for Healthcare & FinTech",
+        description: "Custom mobile app development with compliance baked in — HIPAA-aligned health apps with AI triage and telemedicine, FinTech apps with AI KYC, credit signals, and fraud detection. Compliance designed from sprint one — not bolted on during security review.",
+        tags: [
+          "HIPAA",
+          "DPDP Act",
+          "KYC",
+          "Telemedicine"
+        ]
+      }
     ],
     uspHeadlines: {
-      direct: "Show-first-then-commit mobile app development. Free working app prototype on your phone in 72 hours — built by senior mobile app developers, not template factories. Pay only after you approve.",
-      ai: "AI-first mobile app development in every build — voice search, visual search, smart recommendations, on-device ML in the primary user flow. Not a chatbot widget in the settings screen.",
-      cost: "Money-back deadline guarantee on every mobile app development milestone — written into the contract. Plus full source code and AI model weights yours from day one. No SDK lock-in.",
+      direct: "You speak to senior app architects early, so platform choice, launch risk, performance, compliance, and roadmap tradeoffs are handled before design and code begin.",
+      ai: "AI-first mobile app development where it improves real usage: voice search, visual search, smart recommendations, document scanning, copilots, and on-device intelligence.",
+      cost: "You own the mobile source code, release documentation, analytics setup, and deployment handover. No template lock-in, no hidden platform dependency."
     },
     faq: [
-      { q: "How does mobile app development work with the show-first-then-commit model?", a: "Brief us today. Within 72 hours you have a free working prototype installable on your phone — real screens, real AI flows, real navigation. You test it, your team tests it, your users test it. Love it? We start the build. Don't love it? Walk away with the prototype, zero cost, NDA still in force. We've never invoiced for a prototype." },
-      { q: "What does the money-back deadline guarantee on mobile app development cover?", a: "Every milestone has a contracted delivery date — discovery, prototype, MVP, store submission. If we miss it without an approved scope change, you get a pro-rated refund of that milestone — written into the contract before sprint one. We've shipped 60+ mobile apps and refunded fewer than two deadlines in three years." },
-      { q: "Why does every new app need AI in the core in 2026?", a: "Users now expect voice, visual search, and intelligent recommendations by default. Apps that force users through static menus lose to apps that understand intent. Session length doubles on voice-enabled flows, add-to-cart rises on visual search, retention goes 4x on personalised push. AI in the core is the new table-stakes UX — not a feature flag." },
-      { q: "Flutter, React Native, or Native — which ships AI best?", a: "Flutter for most AI-integrated apps — single codebase, strong TensorFlow Lite bindings, fast iteration. Native Swift or Kotlin when you need heavy on-device ML, Apple Intelligence, or AR. React Native when you already have a React team. A senior engineer recommends the right path on your first call — not a template answer." },
-      { q: "Will the AI features still work when GPT-5 or Claude 4 ships?", a: "We build model-agnostic with provider abstractions and eval suites. New model ships, we re-run evals — swap if it scores better, roll back if it regresses. Same app code runs on OpenAI, Anthropic, Google models, or on-device Phi-3. You're not coupled to a vendor release cycle." },
-      { q: "What about hallucinations in a consumer app?", a: "Grounded retrieval, forced citations on factual responses, typed tool outputs, and output schemas that fail closed. Voice and chat flows have a confidence threshold — below it, the app falls back to a human-handoff or a deterministic UI. Eval harness catches regressions before release." },
-      { q: "Who owns the code, AI prompts, and trained models?", a: "You do, from day one. Source code in your private GitHub. Custom prompts, fine-tuned weights, training data references, design files — all handed over on payment. NDA signed before first call. No retained rights, no SDK lock-in." },
-      { q: "How fast from first call to App Store?", a: "Prototype in 48 hours. MVP with core AI features in 6-10 weeks. Full app with voice, vision, and agent features in 12-16 weeks. TestFlight and Play Console builds every 14 days. Most apps clear first-submission review — 98% approval rate last year." },
+      {
+        q: "How does mobile app development work with the show-first-then-commit model?",
+        a: "Brief us today. Within 72 hours you have a free working prototype installable on your phone — real screens, real AI flows, real navigation. You test it, your team tests it, your users test it. Love it? We start the build. Don't love it? Walk away with the prototype, zero cost, NDA still in force. We've never invoiced for a prototype."
+      },
+      {
+        q: "What does the money-back deadline guarantee on mobile app development cover?",
+        a: "Every milestone has a contracted delivery date — discovery, prototype, MVP, store submission. If we miss it without an approved scope change, you get a pro-rated refund of that milestone — written into the contract before sprint one. We've shipped 60+ mobile apps and refunded fewer than two deadlines in three years."
+      },
+      {
+        q: "Why does every new app need AI in the core in 2026?",
+        a: "Users now expect voice, visual search, and intelligent recommendations by default. Apps that force users through static menus lose to apps that understand intent. Session length doubles on voice-enabled flows, add-to-cart rises on visual search, retention goes 4x on personalised push. AI in the core is the new table-stakes UX — not a feature flag."
+      },
+      {
+        q: "Flutter, React Native, or Native — which ships AI best?",
+        a: "Flutter for most AI-integrated apps — single codebase, strong TensorFlow Lite bindings, fast iteration. Native Swift or Kotlin when you need heavy on-device ML, Apple Intelligence, or AR. React Native when you already have a React team. A senior engineer recommends the right path on your first call — not a template answer."
+      },
+      {
+        q: "Will the AI features still work when GPT-5 or Claude 4 ships?",
+        a: "We build model-agnostic with provider abstractions and eval suites. New model ships, we re-run evals — swap if it scores better, roll back if it regresses. Same app code runs on OpenAI, Anthropic, Google models, or on-device Phi-3. You're not coupled to a vendor release cycle."
+      },
+      {
+        q: "What about hallucinations in a consumer app?",
+        a: "Grounded retrieval, forced citations on factual responses, typed tool outputs, and output schemas that fail closed. Voice and chat flows have a confidence threshold — below it, the app falls back to a human-handoff or a deterministic UI. Eval harness catches regressions before release."
+      },
+      {
+        q: "Who owns the code, AI prompts, and trained models?",
+        a: "You do, from day one. Source code in your private GitHub. Custom prompts, fine-tuned weights, training data references, design files — all handed over on payment. NDA signed before first call. No retained rights, no SDK lock-in."
+      },
+      {
+        q: "How fast from first call to App Store?",
+        a: "Prototype in 48 hours. MVP with core AI features in 6-10 weeks. Full app with voice, vision, and agent features in 12-16 weeks. TestFlight and Play Console builds every 14 days. Most apps clear first-submission review — 98% approval rate last year."
+      }
     ],
     testimonials: [
-      { quote: "Our previous agency shipped a hamburger menu over a REST API. RDMI shipped voice search, visual product lookup, and an AI copilot inside the same build. Session length doubled in week one of launch — we stopped losing to apps that actually felt modern.", author: "N.R.", role: "Product Head, D2C Retail (Bangalore)", rating: 5 },
-      { quote: "On-device Core ML running face detection and document scanning without a backend call. Our KYC flow dropped from 90 seconds to 12. Full source code, model weights, prompts — all in our repo from sprint two.", author: "V.K.", role: "CTO, FinTech (Mumbai)", rating: 5 },
-      { quote: "TestFlight build in week two, store submission cleared first time, AI triage flow caught a compliance issue our legal team had missed. The senior engineer was on our Slack the entire project — no project manager filter.", author: "D.S.", role: "Founder, HealthTech (Hyderabad)", rating: 5 },
+      {
+        quote: "Our previous agency shipped a hamburger menu over a REST API. RDMI shipped voice search, visual product lookup, and an AI copilot inside the same build. Session length doubled in week one of launch — we stopped losing to apps that actually felt modern.",
+        author: "N.R.",
+        role: "Product Head, D2C Retail (Bangalore)",
+        rating: 5
+      },
+      {
+        quote: "On-device Core ML running face detection and document scanning without a backend call. Our KYC flow dropped from 90 seconds to 12. Full source code, model weights, prompts — all in our repo from sprint two.",
+        author: "V.K.",
+        role: "CTO, FinTech (Mumbai)",
+        rating: 5
+      },
+      {
+        quote: "TestFlight build in week two, store submission cleared first time, AI triage flow caught a compliance issue our legal team had missed. The senior engineer was on our Slack the entire project — no project manager filter.",
+        author: "D.S.",
+        role: "Founder, HealthTech (Hyderabad)",
+        rating: 5
+      }
     ],
     ctaSection: {
-      headline: "Stop Pitching to Sales Reps. Talk to the Engineer Who'll Ship Your App.",
-      subtitle: "WhatsApp a senior mobile engineer in 2 hours — iOS, Android, Flutter, React Native. Free 72-hour working app on your phone before you pay. Money-back if we miss a deadline. Walk away anytime, source code yours.",
-      buttonText: "Talk to App Developer on WhatsApp",
+      headline: "Build a Mobile App People Actually Keep Using.",
+      subtitle: "Get a senior app architecture review, platform recommendation, launch plan, and roadmap for iOS, Android, Flutter, React Native, or AI-powered mobile products.",
+      buttonText: "Get App Build Plan"
     },
     targetKeywords: [
       "mobile app developer",
@@ -255,36 +552,122 @@ export const keywordGroups: KeywordGroup[] = [
       "mobile app development agency",
       "custom mobile app development company",
       "android app developer",
-      "mobile development company",
-    ],
+      "mobile development company"
+    ]
   },
   {
     slug: "web-development-company",
-    primaryKeyword: "Web Development Company",
+    primaryKeyword: "AI-First Web Design & Software Agency",
     adGroupMatch: "Web Development Company",
     minimalForm: true,
     lean: true,
-    theme: { heroGradient: "linear-gradient(135deg, #7c3aed, #9333ea, #6d28d9)", ctaGradient: "linear-gradient(135deg, #7c3aed, #9333ea, #6d28d9)", urgencyColor: "#7c3aed", accent: "violet", icon: "🌐" },
-    form: { title: "Talk to a Senior Web Developer", subtitle: "Senior Indian developer (not a sales rep) WhatsApps you in 2 hours", projectTypes: ["Business Website", "Lead-Generation Website", "E-Commerce Store", "Web App / SaaS", "Landing Pages for Ads", "Website Redesign & Speed", "Other"], placeholder: "What should your website do for your business?", buttonText: "Get The Call →", formType: "web-dev" },
+    theme: {
+      heroGradient: "linear-gradient(135deg, #7c3aed, #9333ea, #6d28d9)",
+      ctaGradient: "linear-gradient(135deg, #7c3aed, #9333ea, #6d28d9)",
+      urgencyColor: "#7c3aed",
+      accent: "violet",
+      icon: "🌐"
+    },
+    form: {
+      title: "Talk to a Senior AI Software Consultant",
+      subtitle: "Senior Indian consultant-engineer (not a sales rep) WhatsApps you in 2 hours",
+      projectTypes: [
+        "AI-First Software Strategy",
+        "Custom Software / SaaS",
+        "AI Agent or Automation",
+        "Growth Website + Lead Engine",
+        "E-Commerce / Marketplace",
+        "Legacy System Modernization",
+        "Other"
+      ],
+      placeholder: "What business bottleneck should software or AI solve?",
+      buttonText: "Get The Call →",
+      formType: "web-dev"
+    },
     meta: {
-      title: "Web Development Company India — Get a Website That Brings Leads, Not a Brochure | RDMI",
-      description: "Get a website that brings 50–200 qualified leads every month — not just a static brochure. Senior Indian developer (not a sales rep) WhatsApps you in 2 hours. Free 48-hour prototype before you pay. Money-back if we miss the deadline. 200+ websites live.",
+      title: "Web Design Company India | AI-First Web Development Agency & Software Consulting | RDMI",
+      description: "Looking for a web design company or web development agency in India? RDMI builds AI-first websites, custom software, automation, SaaS, and growth systems with senior consultant-engineers."
     },
     hero: {
-      badge: "💬 Talk to a Senior Indian Web Developer on WhatsApp · 2-Hour Callback",
-      h1: "Get a Website That Brings You Leads — Not a Brochure That Sits There.",
-      subtitle: "Most websites are expensive brochures. We build sites that bring 50–200 qualified leads every month — through Google rankings, a 24/7 AI chat agent that books demos, and pages that load in under 1 second. Built by senior Indian developers who have shipped 200+ websites. Talk direct on WhatsApp in 2 hours. Free 48-hour prototype. Money-back if we miss the deadline.",
-      cta1: "Talk to Web Developer on WhatsApp",
-      cta2: "↓ See Live Websites",
-      trustPoints: ["Brings 50–200 qualified leads every month — without extra ad spend", "Senior Indian developer WhatsApps you in 2 hours — not a sales rep", "Free 48-hour clickable prototype before you pay a rupee", "Money-back if we miss the deadline — written into the contract"],
+      badge: "💬 Talk to a Senior AI Software Consultant on WhatsApp · 2-Hour Callback",
+      h1: "AI-First Web Design Agency for Software, Automation, and Growth Systems.",
+      subtitle: "Looking for a web design company or web development agency? RDMI gives you the senior AI-first team behind the page too: custom software, AI agents, automation, analytics, SaaS, growth websites, and consulting that turns operations into leverage. Talk direct to a senior consultant-engineer in 2 hours. Free 48-hour strategy plan. Money-back if we miss the deadline.",
+      cta1: "Talk to AI Software Consultant",
+      cta2: "↓ See Systems We Built",
+      trustPoints: [
+        "AI-first strategy before screens or code",
+        "Senior Indian consultant-engineer WhatsApps you in 2 hours",
+        "Free 48-hour software growth plan before you pay",
+        "Money-back if we miss the deadline — written into the contract"
+      ]
     },
     heroPortfolio: [
-      { image: "/images/portfolio-ai-dashboard.png", project: "B2B SaaS · Bangalore", outcome: "Site books 23+ qualified demos every month — on autopilot, zero extra ad spend.", tech: ["Next.js", "AI Chat Agent", "WhatsApp API", "Vercel"] },
-      { image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&q=80", project: "D2C Brand · Ahmedabad", outcome: "Sales lifted 34% in 30 days. ₹1.2Cr extra revenue last quarter after site rebuild.", tech: ["Next.js", "Shopify", "Razorpay", "Search"] },
-      { image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80", project: "Healthcare Network · Pan-India", outcome: "11,000 patients found us via Google in 90 days — zero rupees spent on paid ads.", tech: ["Next.js", "Sanity CMS", "ABDM", "Schema"] },
-      { image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&q=80", project: "FinTech · Mumbai", outcome: "AI search cut support tickets by 45%. Site loads in 0.8s on any device, any city.", tech: ["Next.js", "AI Search", "Razorpay", "AWS"] },
-      { image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1200&q=80", project: "Booking SaaS · Pune", outcome: "AI agent qualifies leads 24/7 and pings sales on WhatsApp — no more cold contact forms.", tech: ["Next.js", "AI Agent", "WhatsApp API", "Slack"] },
-      { image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80", project: "B2B Marketplace · Bangalore", outcome: "Marketplace + dashboards live in 9 weeks. Now processes ₹40L+ GMV every month.", tech: ["Next.js", "Razorpay", "PostgreSQL", "tRPC"] },
+      {
+        image: "/images/portfolio-ai-dashboard.png",
+        project: "B2B SaaS · Bangalore",
+        outcome: "Site books 23+ qualified demos every month — on autopilot, zero extra ad spend.",
+        tech: [
+          "Next.js",
+          "AI Chat Agent",
+          "WhatsApp API",
+          "Vercel"
+        ]
+      },
+      {
+        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&q=80",
+        project: "D2C Brand · Ahmedabad",
+        outcome: "Sales lifted 34% in 30 days. ₹1.2Cr extra revenue last quarter after site rebuild.",
+        tech: [
+          "Next.js",
+          "Shopify",
+          "Razorpay",
+          "Search"
+        ]
+      },
+      {
+        image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80",
+        project: "Healthcare Network · Pan-India",
+        outcome: "11,000 patients found us via Google in 90 days — zero rupees spent on paid ads.",
+        tech: [
+          "Next.js",
+          "Sanity CMS",
+          "ABDM",
+          "Schema"
+        ]
+      },
+      {
+        image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&q=80",
+        project: "FinTech · Mumbai",
+        outcome: "AI search cut support tickets by 45%. Site loads in 0.8s on any device, any city.",
+        tech: [
+          "Next.js",
+          "AI Search",
+          "Razorpay",
+          "AWS"
+        ]
+      },
+      {
+        image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1200&q=80",
+        project: "Booking SaaS · Pune",
+        outcome: "AI agent qualifies leads 24/7 and pings sales on WhatsApp — no more cold contact forms.",
+        tech: [
+          "Next.js",
+          "AI Agent",
+          "WhatsApp API",
+          "Slack"
+        ]
+      },
+      {
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+        project: "B2B Marketplace · Bangalore",
+        outcome: "Marketplace + dashboards live in 9 weeks. Now processes ₹40L+ GMV every month.",
+        tech: [
+          "Next.js",
+          "Razorpay",
+          "PostgreSQL",
+          "tRPC"
+        ]
+      }
     ],
     images: {
       hero: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1600&q=80",
@@ -293,77 +676,234 @@ export const keywordGroups: KeywordGroup[] = [
       services: [
         "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
         "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
-        "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80",
+        "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80"
       ],
       portfolio: [
         "/images/portfolio-ai-dashboard.png",
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80"
       ],
-      cta: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80",
+      cta: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80"
     },
     process: [
-      { step: "01", title: "WhatsApp Call in 2 Hours", description: "A senior Indian developer (not a sales rep) WhatsApps you within 2 hours of your form submission. We listen to your business, suggest what will actually drive leads, and send you a fixed scope + timeline the same day." },
-      { step: "02", title: "Free Clickable Prototype in 48 Hours", description: "You get a real working preview of your website — built on your brand, your content, your goals. Test it with your team. Show it to your investors. Walk away at zero cost if it misses. No prototype invoice. Ever." },
-      { step: "03", title: "Live Staging Site in 14 Days", description: "Your full website goes live on a staging URL you can share. Loads in under 1 second on any phone, any city. AI chat agent already answering visitor questions. You approve every screen before launch." },
-      { step: "04", title: "Launch + 30 Days of Free Support", description: "Site goes live with Google Analytics, search-engine optimization, and the AI agent already booking demos. 30 days of free bug fixes and content tweaks after launch. Full source code in your GitHub from day one — yours to keep forever." },
+      {
+        step: "01",
+        title: "AI Strategy Call in 2 Hours",
+        description: "A senior Indian consultant-engineer (not a sales rep) WhatsApps you within 2 hours. We map your business goal, software bottlenecks, AI opportunities, data sources, and fastest route to measurable ROI."
+      },
+      {
+        step: "02",
+        title: "Free 48-Hour System Plan",
+        description: "You get a concrete software growth plan: recommended architecture, AI/automation opportunities, buyer journey, MVP scope, timeline, risks, and what to build first. Walk away at zero cost if it misses."
+      },
+      {
+        step: "03",
+        title: "Prototype or Staging Build",
+        description: "We turn the plan into a clickable prototype or staging build with the core workflow visible early: AI agent, dashboard, lead engine, content system, marketplace, or custom app flow."
+      },
+      {
+        step: "04",
+        title: "Production Launch + Hypercare",
+        description: "Launch with analytics, deployment, observability, documentation, and 30 days of free support. Full source code in your GitHub from day one — yours to keep forever."
+      }
     ],
     stats: [
-      { value: "200+", label: "Sites and Web Apps Shipped" },
-      { value: "Sub-1s", label: "Time-to-First-Byte on Vercel Edge" },
-      { value: "90+", label: "Lighthouse Score Guaranteed" },
-      { value: "30%+", label: "Buyers Researching in ChatGPT (2026)" },
+      {
+        value: "200+",
+        label: "Software, AI and Web Systems Shipped"
+      },
+      {
+        value: "Sub-1s",
+        label: "Time-to-First-Byte on Vercel Edge"
+      },
+      {
+        value: "90+",
+        label: "Lighthouse Score Guaranteed"
+      },
+      {
+        value: "30%+",
+        label: "Buyers Researching in ChatGPT (2026)"
+      }
     ],
     services: [
-      { title: "AI-Powered Website With GEO Schema & Copilot", description: "A site that answers product questions, books demos, and qualifies leads 24/7 — grounded in your real content with forced citations. Ranks in Google AND gets cited by ChatGPT, Perplexity, and Gemini.", tags: ["Next.js", "OpenAI", "llms.txt", "Schema.org"] },
-      { title: "Custom Web Apps That Scale to 10K Concurrent Users", description: "Dashboards, portals, booking engines, and CRMs with smart search, auto-summaries, and AI agents baked in. React, Next.js, Node.js on AWS or Vercel Edge. 99.9% uptime, sub-1s TTFB.", tags: ["React", "Next.js", "Node.js", "Vercel Edge"] },
-      { title: "Headless E-Commerce With AI Search and Recommendations", description: "Next.js on top of Shopify Storefront API or Medusa.js. Semantic product search, personalised recommendations, AI checkout copilot, edge-cached product pages. Shipped in 8-10 weeks.", tags: ["Next.js", "Shopify", "Medusa.js", "AI Search"] },
-      { title: "High-Converting Landing Pages With AI A/B Tests", description: "Campaign-ready pages for Google Ads, product launches, and lead gen. GA4, A/B test rig, conversion-optimised copy. AI-written variants tested against each other — winner promoted automatically.", tags: ["Next.js", "GA4", "A/B Testing", "Vercel"] },
-      { title: "WordPress and Headless CMS for Content Teams", description: "Custom WordPress theme, Gutenberg blocks, WPGraphQL headless, or Sanity-powered Next.js. 90+ Core Web Vitals, SEO baked in, AI-generated alt text and meta descriptions. Content team ships without a developer.", tags: ["WordPress", "WPGraphQL", "Sanity", "Next.js"] },
-      { title: "Redesign and Speed Optimisation With Zero Downtime", description: "Slow, ugly, not converting? Rebuild on Next.js and Vercel Edge with AI copilot, GEO schema, and sub-1s TTFB. Parallel-run migration — old site stays up until the new one clears your benchmarks.", tags: ["Migration", "Lighthouse 90+", "Edge Cache", "GEO"] },
+      {
+        title: "AI Consulting and Software Roadmapping",
+        description: "We identify where AI, automation, custom software, and web systems will actually create leverage — then turn that into a buildable roadmap, not a strategy PDF that dies in a folder.",
+        tags: [
+          "AI Strategy",
+          "Automation",
+          "Architecture",
+          "Roadmap"
+        ]
+      },
+      {
+        title: "Custom Software and SaaS Platforms",
+        description: "Dashboards, portals, booking engines, CRMs, marketplaces, and internal tools with smart search, auto-summaries, AI agents, permissions, payments, and operational workflows baked in.",
+        tags: [
+          "React",
+          "Next.js",
+          "Node.js",
+          "Vercel Edge"
+        ]
+      },
+      {
+        title: "Headless E-Commerce With AI Search and Recommendations",
+        description: "Next.js on top of Shopify Storefront API or Medusa.js. Semantic product search, personalised recommendations, AI checkout copilot, edge-cached product pages. Shipped in 8-10 weeks.",
+        tags: [
+          "Next.js",
+          "Shopify",
+          "Medusa.js",
+          "AI Search"
+        ]
+      },
+      {
+        title: "High-Converting Landing Pages With AI A/B Tests",
+        description: "Campaign-ready pages for Google Ads, product launches, and lead gen. GA4, A/B test rig, conversion-optimised copy. AI-written variants tested against each other — winner promoted automatically.",
+        tags: [
+          "Next.js",
+          "GA4",
+          "A/B Testing",
+          "Vercel"
+        ]
+      },
+      {
+        title: "WordPress and Headless CMS for Content Teams",
+        description: "Custom WordPress theme, Gutenberg blocks, WPGraphQL headless, or Sanity-powered Next.js. 90+ Core Web Vitals, SEO baked in, AI-generated alt text and meta descriptions. Content team ships without a developer.",
+        tags: [
+          "WordPress",
+          "WPGraphQL",
+          "Sanity",
+          "Next.js"
+        ]
+      },
+      {
+        title: "Redesign and Speed Optimisation With Zero Downtime",
+        description: "Slow, ugly, not converting? Rebuild on Next.js and Vercel Edge with AI copilot, GEO schema, and sub-1s TTFB. Parallel-run migration — old site stays up until the new one clears your benchmarks.",
+        tags: [
+          "Migration",
+          "Lighthouse 90+",
+          "Edge Cache",
+          "GEO"
+        ]
+      }
     ],
     uspHeadlines: {
       direct: "A senior Indian developer with 8+ years building SaaS, e-commerce, and SMB sites WhatsApps you in 2 hours. No sales rep filtering your questions. The same engineer who scopes your site codes it and supports it for 100 days after launch.",
       ai: "Built-in AI chat agent that answers visitor questions, books demos, and qualifies leads at 3 AM. Most clients see 30–50% more inbound demos in the first 60 days — without spending one extra rupee on ads.",
-      cost: "Full source code in your GitHub from day one. No hosting tax, no CMS licensing, no per-seat fees, no exit penalty. If we ever disappoint you, take the repo to any other team — zero friction, zero lock-in.",
+      cost: "Full source code in your GitHub from day one. No hosting tax, no CMS licensing, no per-seat fees, no exit penalty. If we ever disappoint you, take the repo to any other team — zero friction, zero lock-in."
     },
     faq: [
-      { q: "How is RDMI different from other Indian web development agencies?", a: "Three things. One — you talk directly to a senior developer on WhatsApp within 2 hours, not a sales rep with a slide deck. Two — we ship a free working prototype in 48 hours; you pay only after you approve. Three — every contract has a money-back clause if we miss the deadline. Most Indian agencies promise these things in proposals but won't put them in the contract. We do." },
-      { q: "What if my website doesn't bring leads after launch?", a: "We don't just hand over a website and disappear. The first 30 days after launch are free — we tune copy, fix bugs, and watch the analytics with you. After that, if the site isn't bringing meaningful traffic, we'll diagnose the problem (most often it's SEO, copy, or AI chat setup) and fix it at no charge. Our average client sees their first qualified lead within 14 days of launch." },
-      { q: "How much does a website cost?", a: "Depends on scope. A simple business website with AI chat starts around ₹1.5L. Lead-generation sites with Google Ads landing pages run ₹2.5L–₹5L. E-commerce stores ₹4L–₹10L. Custom SaaS or web apps ₹8L–₹25L+. We share a fixed-price quote on the first WhatsApp call — no hourly billing, no surprise change orders. Pick a budget range in the form and we tell you what's realistic before you commit." },
-      { q: "Can you also handle SEO and Google Ads after the site launches?", a: "Yes. SEO is included in every build — schema, sitemap, page speed, content structure. After launch we offer SEO retainers (₹40K–₹1.5L/month) and Google Ads management. Most clients run organic + paid together because the website alone isn't enough — you also need traffic flowing into it." },
-      { q: "Who owns the code? Can I move it to another team later?", a: "You own everything, 100%, from day one. Source code in your private GitHub. Designs in your Figma. Content in your CMS. AI prompts in your repo. No proprietary CMS, no recurring license fees, no hosting lock-in. If you ever want to move to another team, you can — no penalty, no friction. We earn your business by performing, not by trapping you." },
-      { q: "How fast can my website actually launch?", a: "Free clickable prototype within 48 hours of the first call. Simple business website live in 2–3 weeks. Lead-gen site live in 3–4 weeks. E-commerce live in 6–10 weeks. Custom web app live in 8–16 weeks. Every project has weekly staging updates so you can see progress and request changes in real time — not just status emails." },
+      {
+        q: "Is RDMI only about websites?",
+        a: "No. Web is one surface we build, but the core offer is AI-first software and business systems: custom platforms, automation, AI agents, growth websites, analytics, and consulting. If all you need is a basic brochure site, we are probably overkill."
+      },
+      {
+        q: "What if the system doesn't create business value after launch?",
+        a: "We don't just hand over screens and disappear. The first 30 days after launch are free — we tune copy, workflows, AI behavior, analytics, and bugs with you. If the bottleneck is traffic, positioning, automation, or CRM handoff, we diagnose it and propose the next fix."
+      },
+      {
+        q: "How much does an AI-first software or growth system cost?",
+        a: "Depends on scope. A strategy-led growth website with AI chat starts around ₹1.5L. Lead-generation systems run ₹2.5L–₹5L. E-commerce and marketplaces run ₹4L–₹10L. Custom SaaS, automation, or AI systems run ₹8L–₹25L+. We share a fixed-price quote on the first WhatsApp call."
+      },
+      {
+        q: "Can you also handle SEO, Google Ads, and AI search visibility?",
+        a: "Yes. Search structure, analytics, schema, page speed, and conversion tracking are included in every growth build. We can also run SEO, GEO/AEO, Google Ads, landing-page testing, and marketing automation after launch."
+      },
+      {
+        q: "Who owns the code? Can I move it to another team later?",
+        a: "You own everything, 100%, from day one. Source code in your private GitHub. Designs in your Figma. Content in your CMS. AI prompts in your repo. No proprietary CMS, no recurring license fees, no hosting lock-in. If you ever want to move to another team, you can — no penalty, no friction. We earn your business by performing, not by trapping you."
+      },
+      {
+        q: "How fast can my website actually launch?",
+        a: "Free clickable prototype within 48 hours of the first call. Simple business website live in 2–3 weeks. Lead-gen site live in 3–4 weeks. E-commerce live in 6–10 weeks. Custom web app live in 8–16 weeks. Every project has weekly staging updates so you can see progress and request changes in real time — not just status emails."
+      }
     ],
     testimonials: [
-      { quote: "Our old WordPress site brought 2–3 leads a month. After RDMI rebuilt it, we now book 23+ qualified demos every month — the AI chat agent on the homepage does most of the work. We made our money back in 10 weeks.", author: "P.M.", role: "Head of Marketing, B2B SaaS (Pune)", rating: 5 },
-      { quote: "They rebuilt our store in 9 weeks. Add-to-cart up 34%, ₹1.2Cr extra revenue last quarter, site loads instantly on any phone. Full source code in our GitHub on day one — no agency lock-in. Best Indian agency we've worked with.", author: "A.S.", role: "Founder, D2C Brand (Ahmedabad)", rating: 5 },
-      { quote: "Senior engineer on our WhatsApp from day one — no account manager filter, no junior copy-paste. Live in 6 weeks. Our website now qualifies and routes leads straight to my sales team — not just sits there.", author: "J.V.", role: "CTO, MarTech Startup (Bangalore)", rating: 5 },
+      {
+        quote: "Our old WordPress site brought 2–3 leads a month. After RDMI rebuilt it, we now book 23+ qualified demos every month — the AI chat agent on the homepage does most of the work. We made our money back in 10 weeks.",
+        author: "P.M.",
+        role: "Head of Marketing, B2B SaaS (Pune)",
+        rating: 5
+      },
+      {
+        quote: "They rebuilt our store in 9 weeks. Add-to-cart up 34%, ₹1.2Cr extra revenue last quarter, site loads instantly on any phone. Full source code in our GitHub on day one — no agency lock-in. Best Indian agency we've worked with.",
+        author: "A.S.",
+        role: "Founder, D2C Brand (Ahmedabad)",
+        rating: 5
+      },
+      {
+        quote: "Senior engineer on our WhatsApp from day one — no account manager filter, no junior copy-paste. Live in 6 weeks. Our website now qualifies and routes leads straight to my sales team — not just sits there.",
+        author: "J.V.",
+        role: "CTO, MarTech Startup (Bangalore)",
+        rating: 5
+      }
     ],
     ctaSection: {
-      headline: "Stop Paying for Websites That Just Sit There.",
-      subtitle: "Get a website that pays for itself in 90 days. WhatsApp a senior Indian developer in 2 hours — not a sales rep with a slide deck. Free 48-hour prototype before you pay. Money-back if we miss the deadline. Source code yours from day one.",
-      buttonText: "Talk to Web Developer on WhatsApp",
+      headline: "Stop Buying Commodity Websites. Build the System That Runs Growth.",
+      subtitle: "WhatsApp a senior AI software consultant in 2 hours — not a sales rep with a slide deck. Get a free 48-hour software growth plan before you pay. Money-back if we miss the deadline. Source code yours from day one.",
+      buttonText: "Talk to AI Software Consultant"
     },
-    targetKeywords: ["web development company", "website development company", "web development services", "web development agency", "web application development", "website developer", "custom website development", "web app development services", "website design and development services", "best web development companies", "web designing company", "website development service", "ecommerce website development company", "shopify website development", "building website for business"],
+    targetKeywords: [
+      "web development company",
+      "website development company",
+      "web development services",
+      "web development agency",
+      "web application development",
+      "website developer",
+      "custom website development",
+      "web app development services",
+      "website design and development services",
+      "best web development companies",
+      "web designing company",
+      "website development service",
+      "ecommerce website development company",
+      "shopify website development",
+      "building website for business"
+    ]
   },
   {
     slug: "ai-software-development",
-    primaryKeyword: "AI Software Development",
-    adGroupMatch: "AI Software Development",
-    theme: { heroGradient: "linear-gradient(135deg, #9333ea, #db2777, #7e22ce)", ctaGradient: "linear-gradient(135deg, #9333ea, #db2777, #7e22ce)", urgencyColor: "#9333ea", accent: "purple", icon: "🤖" },
-    form: { title: "Talk to a Senior AI Developer", subtitle: "Senior AI developer calls you in 2 hours — not a salesperson", projectTypes: ["AI Chatbot / Voice Agent", "Autonomous AI Agent", "RAG / Knowledge Base", "ML Model / Predictive Analytics", "Computer Vision / Document AI", "AI Integration into Existing Software", "Other"], placeholder: "What manual process do you want AI to automate?", buttonText: "Talk to AI Developer", formType: "ai-software" },
+    primaryKeyword: "AI Software Development Company",
+    adGroupMatch: "AI Software Development Company",
+    theme: {
+      heroGradient: "linear-gradient(135deg, #9333ea, #db2777, #7e22ce)",
+      ctaGradient: "linear-gradient(135deg, #9333ea, #db2777, #7e22ce)",
+      urgencyColor: "#9333ea",
+      accent: "purple",
+      icon: "🤖"
+    },
+    form: {
+      title: "Talk to a Senior AI Developer",
+      subtitle: "Senior AI developer calls you in 2 hours — not a salesperson",
+      projectTypes: [
+        "AI Chatbot / Voice Agent",
+        "Autonomous AI Agent",
+        "RAG / Knowledge Base",
+        "ML Model / Predictive Analytics",
+        "Computer Vision / Document AI",
+        "AI Integration into Existing Software",
+        "Other"
+      ],
+      placeholder: "What manual process do you want AI to automate?",
+      buttonText: "Talk to AI Developer",
+      formType: "ai-software"
+    },
     meta: {
-      title: "AI Software Development | OpenAI models, Claude, LangChain — Shipped in 8 Weeks | RDMI",
-      description: "76% of enterprises buy AI, they don't build it (Menlo 2025). Production AI in 8 weeks. OpenAI + Anthropic models, LangChain, Pinecone, LangSmith. Evals and observability from day one.",
+      title: "AI Software Development Company India | AI Agents, RAG, Chatbots & Automation | RDMI",
+      description: "AI software development company for production AI agents, RAG systems, AI chatbots, copilots, workflow automation, document AI, and private LLM deployments. Prototype in 2 weeks."
     },
     hero: {
       badge: "🤖 Production AI in 8 Weeks — Not Another Failed POC",
-      h1: "Production AI Software in 8 Weeks — Working Prototype in 2",
-      subtitle: "Production AI built on OpenAI, Anthropic, Google, and open-source LLMs — with LangChain, Pinecone, and LangSmith for evals, observability, and guardrails from day one. Prototype in 2 weeks. Production in 8. Senior AI engineers only.",
-      cta1: "Talk to AI Developer",
+      h1: "AI Software Development Company for Agents, RAG, Chatbots, and Automation",
+      subtitle: "Searching for an AI software development company? RDMI builds production AI systems on OpenAI, Anthropic, Google, and open-source LLMs — with LangGraph agents, RAG, evals, observability, guardrails, and private deployment options from day one.",
+      cta1: "Talk to AI Engineer",
       cta2: "See AI Products We Built",
-      trustPoints: ["50+ AI systems shipped to production", "92% task-success rate at launch", "8-week prototype-to-production average", "LangSmith evals on every deployment"],
+      trustPoints: [
+        "50+ AI systems shipped to production",
+        "92% task-success rate at launch",
+        "8-week prototype-to-production average",
+        "LangSmith evals on every deployment"
+      ]
     },
     images: {
       hero: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=80",
@@ -372,72 +912,210 @@ export const keywordGroups: KeywordGroup[] = [
       services: [
         "https://images.unsplash.com/photo-1655720828018-edd71a68420e?w=800&q=80",
         "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&q=80",
-        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80"
       ],
       portfolio: [
         "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=80",
         "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=80",
-        "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=800&q=80",
+        "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=800&q=80"
       ],
-      cta: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80",
+      cta: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80"
     },
     process: [
-      { step: "01", title: "AI Strategy Call — Within 2 Hours", description: "Senior AI engineer audits your use case, data readiness, and the right stack (LLM vs RAG vs agent vs fine-tune). You leave with an honest build-vs-buy answer — not a pitch deck." },
-      { step: "02", title: "Working Prototype in 2 Weeks", description: "Real AI running on your real data — not a Figma mockup. You test it hands-on. Eval dataset locked and target accuracy written into the contract before full build." },
-      { step: "03", title: "Production Build in 6–8 Weeks", description: "LangSmith tracing, typed tool schemas, guardrails, fallback models, rate limiting, and human-in-the-loop gates. Shipped against contracted eval benchmarks — or we iterate free." },
-      { step: "04", title: "Deploy, Measure, Keep Improving", description: "KPI dashboard live from day one. Task success, latency p95, hallucination rate, cost per run. 30-day free tuning period. Retainer for eval-driven improvement." },
+      {
+        step: "01",
+        title: "AI Strategy Call — Within 2 Hours",
+        description: "Senior AI engineer audits your use case, data readiness, and the right stack (LLM vs RAG vs agent vs fine-tune). You leave with an honest build-vs-buy answer — not a pitch deck."
+      },
+      {
+        step: "02",
+        title: "Working Prototype in 2 Weeks",
+        description: "Real AI running on your real data — not a Figma mockup. You test it hands-on. Eval dataset locked and target accuracy written into the contract before full build."
+      },
+      {
+        step: "03",
+        title: "Production Build in 6–8 Weeks",
+        description: "LangSmith tracing, typed tool schemas, guardrails, fallback models, rate limiting, and human-in-the-loop gates. Shipped against contracted eval benchmarks — or we iterate free."
+      },
+      {
+        step: "04",
+        title: "Deploy, Measure, Keep Improving",
+        description: "KPI dashboard live from day one. Task success, latency p95, hallucination rate, cost per run. 30-day free tuning period. Retainer for eval-driven improvement."
+      }
     ],
     stats: [
-      { value: "50+", label: "AI Systems Live in Production" },
-      { value: "92%", label: "Task-Success Rate at Launch" },
-      { value: "8 wks", label: "Prototype to Production" },
-      { value: "76%", label: "Enterprises Buy AI, Don't Build (Menlo)" },
+      {
+        value: "50+",
+        label: "AI Systems Live in Production"
+      },
+      {
+        value: "92%",
+        label: "Task-Success Rate at Launch"
+      },
+      {
+        value: "8 wks",
+        label: "Prototype to Production"
+      },
+      {
+        value: "76%",
+        label: "Enterprises Buy AI, Don't Build (Menlo)"
+      }
     ],
     services: [
-      { title: "AI Chatbots That Deflect 60% of Tickets From Day One", description: "Grounded RAG on your help centre and tickets — not template bots that hallucinate. WhatsApp, web, Slack. Live in 14 days with citations, CRM integration, and a deflection benchmark in the contract.", tags: ["OpenAI", "LangChain", "WhatsApp API", "Pinecone"] },
-      { title: "Autonomous Agents That Actually Finish Work", description: "LangGraph state machines and CrewAI crews that own a workflow end-to-end — read, enrich, decide, act, log. Built with evals and human approval gates so they don't go rogue.", tags: ["LangGraph", "CrewAI", "AutoGen", "n8n"] },
-      { title: "RAG Systems Your Team Will Actually Use", description: "Hybrid retrieval, re-ranking, forced citations, and hallucination guardrails. Plugs into Slack, Teams, your CRM. Every answer traces back to the source document — no making things up.", tags: ["LlamaIndex", "Pinecone", "pgvector", "Citations"] },
-      { title: "AI-Powered SaaS + Copilots", description: "Embed smart search, auto-summarisation, anomaly detection, and conversational workflows into your product. Vercel AI SDK, streaming UI, multi-model routing between OpenAI models, Claude, and Gemini.", tags: ["Vercel AI SDK", "OpenAI", "Claude", "Gemini"] },
-      { title: "Computer Vision & Document AI With 95%+ Accuracy", description: "LLM-powered OCR that handles messy scans, invoices, KYC docs, contracts, and medical records. Pushes clean structured data to your ERP — not another dashboard screenshot.", tags: ["Textract", "YOLOv8", "PyTorch", "OpenCV"] },
-      { title: "Private / On-Prem LLM Deployments", description: "Llama, Mistral, or your fine-tuned model in your VPC. Same orchestration code runs on OpenAI or vLLM — no rewrite. Required for healthcare, BFSI, legal, and regulated data.", tags: ["Llama", "Mistral", "vLLM", "VPC Deploy"] },
+      {
+        title: "AI Chatbots That Deflect 60% of Tickets From Day One",
+        description: "Grounded RAG on your help centre and tickets — not template bots that hallucinate. WhatsApp, web, Slack. Live in 14 days with citations, CRM integration, and a deflection benchmark in the contract.",
+        tags: [
+          "OpenAI",
+          "LangChain",
+          "WhatsApp API",
+          "Pinecone"
+        ]
+      },
+      {
+        title: "Autonomous Agents That Actually Finish Work",
+        description: "LangGraph state machines and CrewAI crews that own a workflow end-to-end — read, enrich, decide, act, log. Built with evals and human approval gates so they don't go rogue.",
+        tags: [
+          "LangGraph",
+          "CrewAI",
+          "AutoGen",
+          "n8n"
+        ]
+      },
+      {
+        title: "RAG Systems Your Team Will Actually Use",
+        description: "Hybrid retrieval, re-ranking, forced citations, and hallucination guardrails. Plugs into Slack, Teams, your CRM. Every answer traces back to the source document — no making things up.",
+        tags: [
+          "LlamaIndex",
+          "Pinecone",
+          "pgvector",
+          "Citations"
+        ]
+      },
+      {
+        title: "AI-Powered SaaS + Copilots",
+        description: "Embed smart search, auto-summarisation, anomaly detection, and conversational workflows into your product. Vercel AI SDK, streaming UI, multi-model routing between OpenAI models, Claude, and Gemini.",
+        tags: [
+          "Vercel AI SDK",
+          "OpenAI",
+          "Claude",
+          "Gemini"
+        ]
+      },
+      {
+        title: "Computer Vision & Document AI With 95%+ Accuracy",
+        description: "LLM-powered OCR that handles messy scans, invoices, KYC docs, contracts, and medical records. Pushes clean structured data to your ERP — not another dashboard screenshot.",
+        tags: [
+          "Textract",
+          "YOLOv8",
+          "PyTorch",
+          "OpenCV"
+        ]
+      },
+      {
+        title: "Private / On-Prem LLM Deployments",
+        description: "Llama, Mistral, or your fine-tuned model in your VPC. Same orchestration code runs on OpenAI or vLLM — no rewrite. Required for healthcare, BFSI, legal, and regulated data.",
+        tags: [
+          "Llama",
+          "Mistral",
+          "vLLM",
+          "VPC Deploy"
+        ]
+      }
     ],
     uspHeadlines: {
       direct: "Your senior AI engineer gets on a call in 2 hours — not a sales rep with a deck. The person architecting your system is the one you talk to every sprint.",
       cost: "You own the code, the prompts, the eval sets, and the model weights. No per-token markup. No vendor lock-in. Run on OpenAI today, swap to Llama in your VPC tomorrow — same codebase.",
-      ai: "We ship with LangSmith evals and observability from day one. An AI system you can't measure is one that silently fails. Every deployment has task-success benchmarks in the contract.",
+      ai: "We ship with LangSmith evals and observability from day one. An AI system you can't measure is one that silently fails. Every deployment has task-success benchmarks in the contract."
     },
     faq: [
-      { q: "How is this different from building on ChatGPT or Claude directly?", a: "A raw LLM is a component. Production AI software is evals, retrieval, guardrails, tool schemas, observability, fallback logic, rate limiting, audit logs, and the UI around it. That's the 90% of work that decides whether your AI ships or rots in a demo. Anyone can prompt GPT — we build the infrastructure that makes it reliable." },
-      { q: "What happens when the underlying LLM (GPT-5, Claude 4) ships and breaks my system?", a: "We design model-agnostic. Every deployment has an eval suite — when a new model ships we re-run evals, swap if it scores better, roll back if it regresses. You're not coupled to one vendor's release cycle. Same code runs across OpenAI, Anthropic, Google models, and Llama." },
-      { q: "Can AI actually be trusted in production without hallucinations?", a: "Yes, with the right architecture. Grounded retrieval with forced citations, typed tool outputs, output validation schemas, and human-in-the-loop on high-stakes decisions. Hallucinations drop to near-zero when the model is forced to cite sources or call deterministic tools. We write eval suites that fail the build if hallucination rate exceeds 2%." },
-      { q: "How do you measure AI success — not impressions, real outcomes?", a: "Task-success rate (did the AI complete the goal?), latency p95, tool error rate, human-override rate, cost per run, and hallucination rate. Dashboards in LangSmith or Langfuse. You see every trace. Benchmarks written into the contract — if we miss them, we iterate free." },
-      { q: "Who owns the model weights, prompts, and training data?", a: "You do. Full source code, prompts, eval sets, and any fine-tuned weights handed over on payment. Your training data never leaves your environment under private deploy. NDA signed before the first call. No clause letting us reuse your data for other clients." },
-      { q: "Do you offer on-prem or private LLM for regulated data?", a: "Yes. Llama, Mistral, or your own fine-tuned model hosted in your VPC on AWS, GCP, Azure, or bare metal. Routine for healthcare, BFSI, legal, and defence. Same LangChain / LangGraph code runs on OpenAI or vLLM — no rewrite, no vendor switch." },
+      {
+        q: "How is this different from building on ChatGPT or Claude directly?",
+        a: "A raw LLM is a component. Production AI software is evals, retrieval, guardrails, tool schemas, observability, fallback logic, rate limiting, audit logs, and the UI around it. That's the 90% of work that decides whether your AI ships or rots in a demo. Anyone can prompt GPT — we build the infrastructure that makes it reliable."
+      },
+      {
+        q: "What happens when the underlying LLM (GPT-5, Claude 4) ships and breaks my system?",
+        a: "We design model-agnostic. Every deployment has an eval suite — when a new model ships we re-run evals, swap if it scores better, roll back if it regresses. You're not coupled to one vendor's release cycle. Same code runs across OpenAI, Anthropic, Google models, and Llama."
+      },
+      {
+        q: "Can AI actually be trusted in production without hallucinations?",
+        a: "Yes, with the right architecture. Grounded retrieval with forced citations, typed tool outputs, output validation schemas, and human-in-the-loop on high-stakes decisions. Hallucinations drop to near-zero when the model is forced to cite sources or call deterministic tools. We write eval suites that fail the build if hallucination rate exceeds 2%."
+      },
+      {
+        q: "How do you measure AI success — not impressions, real outcomes?",
+        a: "Task-success rate (did the AI complete the goal?), latency p95, tool error rate, human-override rate, cost per run, and hallucination rate. Dashboards in LangSmith or Langfuse. You see every trace. Benchmarks written into the contract — if we miss them, we iterate free."
+      },
+      {
+        q: "Who owns the model weights, prompts, and training data?",
+        a: "You do. Full source code, prompts, eval sets, and any fine-tuned weights handed over on payment. Your training data never leaves your environment under private deploy. NDA signed before the first call. No clause letting us reuse your data for other clients."
+      },
+      {
+        q: "Do you offer on-prem or private LLM for regulated data?",
+        a: "Yes. Llama, Mistral, or your own fine-tuned model hosted in your VPC on AWS, GCP, Azure, or bare metal. Routine for healthcare, BFSI, legal, and defence. Same LangChain / LangGraph code runs on OpenAI or vLLM — no rewrite, no vendor switch."
+      }
     ],
     ctaSection: {
-      headline: "Stop Writing the AI Strategy Deck. Ship the AI.",
-      subtitle: "Senior AI engineer on the call in 2 hours — not a salesperson. Working prototype in 2 weeks. Production in 8. Evals and observability included.",
-      buttonText: "Talk to AI Developer",
+      headline: "Stop Writing the AI Strategy Deck. Ship Production AI.",
+      subtitle: "Senior AI engineer on the call in 2 hours — not a salesperson. Working prototype in 2 weeks. Production in 8. Evals, observability, guardrails, and source ownership included.",
+      buttonText: "Talk to AI Engineer"
     },
-    targetKeywords: ["ai development company", "ai software development", "ai app development company", "ai solutions for business", "ai tools for business", "ai app development services", "custom ai solutions", "ai software development companies", "ai consulting services", "enterprise ai solutions"],
+    targetKeywords: [
+      "ai software development company",
+      "ai software development",
+      "ai development company",
+      "ai app development company",
+      "ai agent development company",
+      "custom ai software development",
+      "ai chatbot development company",
+      "rag development company",
+      "ai automation company",
+      "ai consulting services",
+      "enterprise ai solutions"
+    ]
   },
   {
     slug: "ecommerce-development",
-    primaryKeyword: "E-Commerce Development",
-    adGroupMatch: "Ecommerce App Development",
-    theme: { heroGradient: "linear-gradient(135deg, #d97706, #ea580c, #b45309)", ctaGradient: "linear-gradient(135deg, #d97706, #ea580c, #b45309)", urgencyColor: "#d97706", accent: "amber", icon: "🛒" },
-    form: { title: "Talk to an E-Commerce Expert", subtitle: "Senior e-commerce developer calls you in 2 hours — not a salesperson", projectTypes: ["Shopify / Shopify Plus Store", "Custom Marketplace Platform", "B2B Wholesale Portal", "Grocery / Food Delivery App", "Headless Commerce", "Payment & Checkout Optimization", "Other"], placeholder: "What's your current monthly GMV and growth target?", buttonText: "Talk to E-Commerce Expert", formType: "ecommerce" },
+    primaryKeyword: "Ecommerce Development Company",
+    adGroupMatch: "Ecommerce Development Company",
+    theme: {
+      heroGradient: "linear-gradient(135deg, #d97706, #ea580c, #b45309)",
+      ctaGradient: "linear-gradient(135deg, #d97706, #ea580c, #b45309)",
+      urgencyColor: "#d97706",
+      accent: "amber",
+      icon: "🛒"
+    },
+    form: {
+      title: "Talk to an E-Commerce Expert",
+      subtitle: "Senior e-commerce developer calls you in 2 hours — not a salesperson",
+      projectTypes: [
+        "Shopify / Shopify Plus Store",
+        "Custom Marketplace Platform",
+        "B2B Wholesale Portal",
+        "Grocery / Food Delivery App",
+        "Headless Commerce",
+        "Payment & Checkout Optimization",
+        "Other"
+      ],
+      placeholder: "What's your current monthly GMV and growth target?",
+      buttonText: "Talk to E-Commerce Expert",
+      formType: "ecommerce"
+    },
     meta: {
-      title: "E-Commerce Development Company | Shopify, Headless & AI Search — Built for 2026 | RDMI",
-      description: "30%+ of buyers now start shopping in ChatGPT and Perplexity — not Google. Build a store with AI search, AI recommendations, and AI checkout from day one. Shopify, headless, grocery apps, B2B.",
+      title: "Ecommerce Development Company India | Shopify, Marketplace, Grocery App & AI Commerce | RDMI",
+      description: "Ecommerce development company for Shopify, Shopify Plus, headless commerce, marketplaces, grocery delivery apps, restaurant apps, B2B portals, AI search, recommendations, payments, and checkout optimization."
     },
     hero: {
-      badge: "🛒 AI-Native E-Commerce — 35% Higher AOV with Smart Recommendations",
-      h1: "E-Commerce Stores with AI Search, Recommendations & Checkout Built In",
-      subtitle: "Shopify Plus, headless Next.js, grocery delivery apps, and B2B marketplaces — all with AI recommendations (35% higher AOV), visual search, and AI checkout assistants from sprint one. Senior e-commerce engineers only.",
-      cta1: "Talk to E-Commerce Expert",
-      cta2: "See Our E-Commerce Work",
-      trustPoints: ["50+ e-commerce stores live in production", "4x average conversion rate lift post-launch", "AI search + recommendations built in", "Razorpay, Stripe, PayU, UPI ready"],
+      badge: "Senior commerce architect callback in 2 hours",
+      h1: "Ecommerce Development Company for Shopify, Marketplaces, Grocery Apps, and AI Commerce",
+      subtitle: "Searching for an ecommerce development company? RDMI builds Shopify stores, headless commerce, marketplaces, B2B portals, grocery delivery apps, restaurant apps, and AI-powered commerce systems with search, recommendations, checkout, payments, and analytics built in.",
+      cta1: "Get Commerce Growth Plan",
+      cta2: "Talk to Commerce Architect",
+      trustPoints: [
+        "Shopify, headless, marketplace, and delivery platforms",
+        "AI search, recommendations, product advisors, and support agents",
+        "Razorpay, Stripe, PayU, UPI, inventory, and shipping integrations",
+        "Source code, store setup, analytics, and handover documentation"
+      ]
     },
     images: {
       hero: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=80",
@@ -446,72 +1124,207 @@ export const keywordGroups: KeywordGroup[] = [
       services: [
         "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
         "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80",
-        "https://images.unsplash.com/photo-1607082349566-187342175e2f?w=800&q=80",
+        "https://images.unsplash.com/photo-1607082349566-187342175e2f?w=800&q=80"
       ],
       portfolio: [
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
         "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
-        "https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&q=80",
+        "https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&q=80"
       ],
-      cta: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80",
+      cta: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80"
     },
     process: [
-      { step: "01", title: "E-Commerce Strategy Call — Within 2 Hours", description: "Senior e-commerce engineer maps your catalogue, payment needs, delivery model, and the AI features that lift conversion. You leave with a Shopify-vs-custom recommendation and a written scope — not a pitch." },
-      { step: "02", title: "Figma Prototype in 1 Week", description: "Mobile-first UX with AI search, product recommendations, and checkout flow mapped. You approve product pages, cart, checkout, and admin panel before a line of code is written." },
-      { step: "03", title: "Build & Integrate in 4–6 Weeks", description: "2-week sprints with live staging store. Payment gateways, inventory, shipping, AI search, Perplexity-ready schema — all integrated and tested. You see working commerce every sprint." },
-      { step: "04", title: "Launch + Optimise", description: "Go-live with SEO + GEO setup (llms.txt, schema, entity markup), analytics, AI personalisation, and 60 days free support. Conversion rate optimisation included until benchmarks clear." },
+      {
+        step: "01",
+        title: "Map the Commerce Model",
+        description: "A senior commerce architect reviews catalog, buyer journeys, channels, payments, inventory, shipping, operations, and where AI can improve discovery or conversion."
+      },
+      {
+        step: "02",
+        title: "Choose Shopify, Headless, or Custom",
+        description: "We recommend the right architecture for your stage: Shopify, Shopify Plus, Hydrogen, headless Next.js, marketplace, B2B portal, or delivery app."
+      },
+      {
+        step: "03",
+        title: "Build Revenue-Critical Flows",
+        description: "Product discovery, PDP, cart, checkout, payments, inventory, vendor dashboards, AI search, recommendations, analytics, and recovery flows ship in focused sprints."
+      },
+      {
+        step: "04",
+        title: "Launch, Measure, and Improve",
+        description: "Go live with tracking, SEO schema, conversion baselines, abandoned cart flows, product data QA, release docs, and post-launch optimization."
+      }
     ],
     stats: [
-      { value: "50+", label: "E-Commerce Stores Live in Production" },
-      { value: "4x", label: "Average Conversion Rate Lift" },
-      { value: "72 hrs", label: "MVP Storefront Live" },
-      { value: "30%+", label: "Buyers Starting in AI Search" },
+      {
+        value: "50+",
+        label: "E-Commerce Stores Live in Production"
+      },
+      {
+        value: "4x",
+        label: "Average Conversion Rate Lift"
+      },
+      {
+        value: "72 hrs",
+        label: "MVP Storefront Live"
+      },
+      {
+        value: "30%+",
+        label: "Buyers Starting in AI Search"
+      }
     ],
     services: [
-      { title: "Shopify & Shopify Plus With AI Search Built In", description: "Custom storefronts, apps, enterprise setups — with AI semantic search, product recommendations, and checkout copilot from day one. 3–5x better page speed than off-the-shelf themes.", tags: ["Shopify Plus", "Hydrogen", "Liquid", "AI Search"] },
-      { title: "Headless Commerce That Loads Sub-1s", description: "Next.js + Shopify Storefront API or Medusa.js. AI-powered search with Perplexity-ready schema, edge-cached product pages, streaming checkout. For high-volume brands scaling past theme limits.", tags: ["Next.js", "Medusa.js", "GraphQL", "Vercel Edge"] },
-      { title: "Multi-Vendor Marketplaces in 8–10 Weeks", description: "Seller onboarding, split payments, commission engines, AI-powered matching between buyers and sellers. Elasticsearch for discovery, Stripe Connect for payouts.", tags: ["React", "Node.js", "Stripe Connect", "Elasticsearch"] },
-      { title: "Grocery & Food Delivery Apps With Live Tracking", description: "Customer app, driver app, vendor dashboard, admin — real-time tracking, slot-based delivery, AI-driven demand forecasting. Full solution in 10–14 weeks, MVP in 6.", tags: ["Flutter", "Google Maps API", "Firebase", "Razorpay"] },
-      { title: "B2B Commerce & Wholesale With GST + Tally", description: "Tiered pricing, MOQ, credit limits, GST invoicing, Tally integration, AI-powered reorder suggestions. Built for high-volume wholesale operations that outgrew spreadsheets.", tags: ["React", "Node.js", "PostgreSQL", "Tally API"] },
-      { title: "AI Checkout Optimisation That Cuts Drop-off 40%", description: "One-click checkout, UPI, EMI, abandoned cart recovery with AI-written sequences, dynamic pricing, smart upsells. 20–30% higher AOV, 40% less drop-off at the cart.", tags: ["Razorpay", "Stripe", "PayU", "UPI Intent"] },
+      {
+        title: "Shopify & Shopify Plus With AI Search Built In",
+        description: "Custom storefronts, apps, enterprise setups — with AI semantic search, product recommendations, and checkout copilot from day one. 3–5x better page speed than off-the-shelf themes.",
+        tags: [
+          "Shopify Plus",
+          "Hydrogen",
+          "Liquid",
+          "AI Search"
+        ]
+      },
+      {
+        title: "Headless Commerce That Loads Sub-1s",
+        description: "Next.js + Shopify Storefront API or Medusa.js. AI-powered search with Perplexity-ready schema, edge-cached product pages, streaming checkout. For high-volume brands scaling past theme limits.",
+        tags: [
+          "Next.js",
+          "Medusa.js",
+          "GraphQL",
+          "Vercel Edge"
+        ]
+      },
+      {
+        title: "Multi-Vendor Marketplaces in 8–10 Weeks",
+        description: "Seller onboarding, split payments, commission engines, AI-powered matching between buyers and sellers. Elasticsearch for discovery, Stripe Connect for payouts.",
+        tags: [
+          "React",
+          "Node.js",
+          "Stripe Connect",
+          "Elasticsearch"
+        ]
+      },
+      {
+        title: "Grocery & Food Delivery Apps With Live Tracking",
+        description: "Customer app, driver app, vendor dashboard, admin — real-time tracking, slot-based delivery, AI-driven demand forecasting. Full solution in 10–14 weeks, MVP in 6.",
+        tags: [
+          "Flutter",
+          "Google Maps API",
+          "Firebase",
+          "Razorpay"
+        ]
+      },
+      {
+        title: "B2B Commerce & Wholesale With GST + Tally",
+        description: "Tiered pricing, MOQ, credit limits, GST invoicing, Tally integration, AI-powered reorder suggestions. Built for high-volume wholesale operations that outgrew spreadsheets.",
+        tags: [
+          "React",
+          "Node.js",
+          "PostgreSQL",
+          "Tally API"
+        ]
+      },
+      {
+        title: "AI Checkout Optimisation That Cuts Drop-off 40%",
+        description: "One-click checkout, UPI, EMI, abandoned cart recovery with AI-written sequences, dynamic pricing, smart upsells. 20–30% higher AOV, 40% less drop-off at the cart.",
+        tags: [
+          "Razorpay",
+          "Stripe",
+          "PayU",
+          "UPI Intent"
+        ]
+      }
     ],
     uspHeadlines: {
-      direct: "Your senior e-commerce engineer is on the call in 2 hours — not an account manager with a Shopify pitch deck. The engineer building your store is the one you work with every sprint.",
-      cost: "Full source code ownership from day one. Shopify Plus expertise without outsourcing chains. No per-transaction agency markup. No vendor lock-in to a closed platform.",
-      ai: "AI semantic search, personalised recommendations, checkout copilot, and GEO schema (llms.txt + entity markup) built in from sprint one. Your store ranks in Google AND gets cited by ChatGPT and Perplexity.",
+      direct: "You speak to senior commerce architects early, so catalog structure, conversion flow, payments, inventory, logistics, and launch constraints are handled before design begins.",
+      cost: "Full source-code ownership where custom code is used, clean platform handover, analytics access, release documentation, and no agency markup hiding inside transaction flows.",
+      ai: "AI commerce features are scoped around revenue: semantic search, recommendations, product advisors, checkout assistance, support agents, abandoned-cart recovery, and review/FAQ automation."
     },
     faq: [
-      { q: "How is building with you different from hiring a Shopify Plus partner?", a: "Most Shopify Plus partners install themes and apps. We write custom Liquid, Hydrogen components, and AI integrations. We also build headless, marketplaces, and grocery apps — not just stores. One team, any architecture, AI-first from sprint one." },
-      { q: "What happens when ChatGPT, Perplexity, and Gemini eat more of Google's search share?", a: "Your store needs to be citable by LLMs — not just crawlable by Google. We build GEO schema (llms.txt, entity markup, FAQ schema, review schema) from day one so ChatGPT and Perplexity surface your products as answers, not ads." },
-      { q: "Can AI search and recommendations actually lift conversion?", a: "Yes, when grounded in your catalogue. Semantic search finds products even when the customer misspells or describes loosely. Personalised recommendations use browse and purchase signals. Typical lift: 20–40% higher add-to-cart, 15–25% higher AOV within 60 days." },
-      { q: "Shopify or custom — how do you decide?", a: "Shopify for early-stage and mid-volume stores. Custom Next.js for marketplaces, subscription models, B2B with complex pricing, or anyone outgrowing theme limits. We tell you honestly on the first call — no bias toward the bigger build." },
-      { q: "Who owns the code, AI prompts, and customer data?", a: "You do. Full source code, custom theme code, AI prompts, and any fine-tuned models handed over on payment. Your customer data stays in your environment. NDA signed before first call." },
-      { q: "How fast can we go live?", a: "Shopify storefront MVP: 3–5 weeks. Full Shopify Plus build: 8–10 weeks. Headless Next.js: 8–12 weeks. Grocery app (4 apps + admin): 10–14 weeks. Marketplace MVP: 8–10 weeks. Fixed milestones, not open-ended retainers." },
+      {
+        q: "How is building with you different from hiring a Shopify Plus partner?",
+        a: "Most Shopify Plus partners install themes and apps. We write custom Liquid, Hydrogen components, and AI integrations. We also build headless, marketplaces, and grocery apps — not just stores. One team, any architecture, AI-first from sprint one."
+      },
+      {
+        q: "What happens when ChatGPT, Perplexity, and Gemini eat more of Google's search share?",
+        a: "Your store needs to be citable by LLMs — not just crawlable by Google. We build GEO schema (llms.txt, entity markup, FAQ schema, review schema) from day one so ChatGPT and Perplexity surface your products as answers, not ads."
+      },
+      {
+        q: "Can AI search and recommendations actually lift conversion?",
+        a: "Yes, when grounded in your catalogue. Semantic search finds products even when the customer misspells or describes loosely. Personalised recommendations use browse and purchase signals. Typical lift: 20–40% higher add-to-cart, 15–25% higher AOV within 60 days."
+      },
+      {
+        q: "Shopify or custom — how do you decide?",
+        a: "Shopify for early-stage and mid-volume stores. Custom Next.js for marketplaces, subscription models, B2B with complex pricing, or anyone outgrowing theme limits. We tell you honestly on the first call — no bias toward the bigger build."
+      },
+      {
+        q: "Who owns the code, AI prompts, and customer data?",
+        a: "You do. Full source code, custom theme code, AI prompts, and any fine-tuned models handed over on payment. Your customer data stays in your environment. NDA signed before first call."
+      },
+      {
+        q: "How fast can we go live?",
+        a: "Shopify storefront MVP: 3–5 weeks. Full Shopify Plus build: 8–10 weeks. Headless Next.js: 8–12 weeks. Grocery app (4 apps + admin): 10–14 weeks. Marketplace MVP: 8–10 weeks. Fixed milestones, not open-ended retainers."
+      }
     ],
     ctaSection: {
-      headline: "Your Competitor's Store Already Has AI Search. Yours?",
-      subtitle: "Senior e-commerce engineer on the call in 2 hours. Scope and timeline delivered same day. Shopify, headless, marketplace, or grocery app — AI features built in from sprint one.",
-      buttonText: "Talk to E-Commerce Expert",
+      headline: "Build Commerce That Sells, Recommends, Recovers, and Scales.",
+      subtitle: "Get a senior commerce architecture review for Shopify, headless commerce, marketplace, grocery delivery, restaurant, B2B, or AI-powered ecommerce builds.",
+      buttonText: "Get Commerce Growth Plan"
     },
-    targetKeywords: ["ecommerce app development company", "ecommerce website development company", "ecommerce web development company", "shopify app development", "ecommerce website design companies", "shopify web development company", "ecommerce development company", "grocery delivery app development company"],
+    targetKeywords: [
+      "ecommerce app development company",
+      "ecommerce website development company",
+      "ecommerce web development company",
+      "shopify app development",
+      "ecommerce website design companies",
+      "shopify web development company",
+      "ecommerce development company",
+      "grocery delivery app development company"
+    ]
   },
   {
     slug: "ai-agent-development",
-    primaryKeyword: "AI Agent Development",
-    adGroupMatch: "AI Agent Development",
-    theme: { heroGradient: "linear-gradient(135deg, #7e22ce, #4f46e5, #7e22ce)", ctaGradient: "linear-gradient(135deg, #7e22ce, #4f46e5, #7e22ce)", urgencyColor: "#7e22ce", accent: "purple", icon: "🤖" },
-    form: { title: "Talk to an AI Agent Expert", subtitle: "Senior AI architect calls you in 2 hours — not a salesperson", projectTypes: ["Custom AI Agent (Single Workflow)", "Multi-Agent System", "RAG & Knowledge Agent", "Voice AI Agent", "AI Agent + Tool Integration", "On-Prem / Private LLM Agent", "Other"], placeholder: "What operational workflow should an autonomous agent run end-to-end?", buttonText: "Talk to AI Agent Expert", formType: "ai-agent" },
+    primaryKeyword: "AI Agent Development Company",
+    adGroupMatch: "AI Agent Development Company",
+    theme: {
+      heroGradient: "linear-gradient(135deg, #7e22ce, #4f46e5, #7e22ce)",
+      ctaGradient: "linear-gradient(135deg, #7e22ce, #4f46e5, #7e22ce)",
+      urgencyColor: "#7e22ce",
+      accent: "purple",
+      icon: "🤖"
+    },
+    form: {
+      title: "Talk to an AI Agent Expert",
+      subtitle: "Senior AI architect calls you in 2 hours — not a salesperson",
+      projectTypes: [
+        "Custom AI Agent (Single Workflow)",
+        "Multi-Agent System",
+        "RAG & Knowledge Agent",
+        "Voice AI Agent",
+        "AI Agent + Tool Integration",
+        "On-Prem / Private LLM Agent",
+        "Other"
+      ],
+      placeholder: "What operational workflow should an autonomous agent run end-to-end?",
+      buttonText: "Talk to AI Agent Expert",
+      formType: "ai-agent"
+    },
     meta: {
-      title: "AI Agent Development Company | LangGraph, CrewAI, the latest LLMs — Shipped in 8 Weeks | RDMI",
-      description: "88% of enterprises are piloting AI agents. Only 21% have governance (Deloitte 2025). Ship production agents in 8 weeks with LangGraph, CrewAI, LangSmith evals. 92% task-success rate at launch.",
+      title: "AI Agent Development Company India | LangGraph, CrewAI, Voice Agents & Automation | RDMI",
+      description: "AI agent development company for production sales agents, support agents, voice agents, operations agents, LangGraph workflows, CrewAI systems, tool integration, evals, and governance."
     },
     hero: {
       badge: "🤖 Autonomous AI Agents — Production-Ready in 8 Weeks",
-      h1: "Autonomous AI Agents Shipped in 8 Weeks — 92% Task Success Rate",
-      subtitle: "Multi-step reasoning, tool use, memory, and human-in-the-loop — built on OpenAI, Anthropic, and open-source LLMs with LangGraph, CrewAI, and LangSmith evals. 30+ production agents live. Prototype in 2 weeks, production in 8.",
+      h1: "AI Agent Development Company for Sales, Support, Operations, and Voice Automation",
+      subtitle: "Searching for an AI agent development company? RDMI builds production agents that use tools, memory, state, approvals, and observability — on OpenAI, Anthropic, and open-source LLMs with LangGraph, CrewAI, and LangSmith evals.",
       cta1: "Talk to AI Agent Expert",
       cta2: "See Agents We've Built",
-      trustPoints: ["30+ production agents shipped to live ops", "92% task-success rate on launch day", "8-week prototype-to-production average", "LangGraph + CrewAI + LangSmith native"],
+      trustPoints: [
+        "30+ production agents shipped to live ops",
+        "92% task-success rate on launch day",
+        "8-week prototype-to-production average",
+        "LangGraph + CrewAI + LangSmith native"
+      ]
     },
     images: {
       hero: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=80",
@@ -520,57 +1333,173 @@ export const keywordGroups: KeywordGroup[] = [
       services: [
         "https://images.unsplash.com/photo-1655720828018-edd71a68420e?w=800&q=80",
         "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&q=80",
-        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80"
       ],
       portfolio: [
         "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=80",
         "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=80",
-        "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=800&q=80",
+        "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=800&q=80"
       ],
-      cta: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80",
+      cta: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80"
     },
     process: [
-      { step: "01", title: "Agent Scope & Tool Mapping — Within 2 Hours", description: "Senior AI architect identifies the workflow, the tools (APIs, DBs, CRMs), decision boundaries, and where humans approve. You leave the call with an agent spec, eval plan, and honest risk register — not a pitch." },
-      { step: "02", title: "Working Agent Prototype in 2 Weeks", description: "Real agent running on your data, calling your tools, producing measurable outputs. You break it end-to-end before we go to production. Eval benchmarks locked into the contract." },
-      { step: "03", title: "Production Build in 6–8 Weeks", description: "LangGraph state machines, CrewAI orchestration, LangSmith traces, guardrails, rate limiting, human-in-the-loop escalation, audit logs. Shipped against contracted task-success benchmarks — or we iterate free." },
-      { step: "04", title: "Deploy, Measure, Keep Improving", description: "Production launch with agent trace dashboard, KPI tracking, and drift alerts. 30 days free optimisation. Retainer for eval-driven improvement as your tools and data evolve." },
+      {
+        step: "01",
+        title: "Agent Scope & Tool Mapping — Within 2 Hours",
+        description: "Senior AI architect identifies the workflow, the tools (APIs, DBs, CRMs), decision boundaries, and where humans approve. You leave the call with an agent spec, eval plan, and honest risk register — not a pitch."
+      },
+      {
+        step: "02",
+        title: "Working Agent Prototype in 2 Weeks",
+        description: "Real agent running on your data, calling your tools, producing measurable outputs. You break it end-to-end before we go to production. Eval benchmarks locked into the contract."
+      },
+      {
+        step: "03",
+        title: "Production Build in 6–8 Weeks",
+        description: "LangGraph state machines, CrewAI orchestration, LangSmith traces, guardrails, rate limiting, human-in-the-loop escalation, audit logs. Shipped against contracted task-success benchmarks — or we iterate free."
+      },
+      {
+        step: "04",
+        title: "Deploy, Measure, Keep Improving",
+        description: "Production launch with agent trace dashboard, KPI tracking, and drift alerts. 30 days free optimisation. Retainer for eval-driven improvement as your tools and data evolve."
+      }
     ],
     stats: [
-      { value: "30+", label: "Production Agents Shipped" },
-      { value: "92%", label: "Task-Success Rate at Launch" },
-      { value: "8 wks", label: "Prototype → Production" },
-      { value: "21%", label: "Enterprises With Agent Governance (Deloitte)" },
+      {
+        value: "30+",
+        label: "Production Agents Shipped"
+      },
+      {
+        value: "92%",
+        label: "Task-Success Rate at Launch"
+      },
+      {
+        value: "8 wks",
+        label: "Prototype → Production"
+      },
+      {
+        value: "21%",
+        label: "Enterprises With Agent Governance (Deloitte)"
+      }
     ],
     services: [
-      { title: "Custom AI Agents That Own One Workflow End-to-End", description: "Single-purpose agents that read, decide, act, and log — email triage, CRM updates, compliance reviews, collections outreach. LangGraph state machines you can reason about. Deterministic where it matters, flexible where it helps.", tags: ["LangGraph", "the latest LLMs Function Calling", "Claude Tool Use", "State Machines"] },
-      { title: "Multi-Agent Crews That Handle Complex Work", description: "Supervisor + specialist architectures for tasks one model can't handle — researcher, writer, reviewer, executor. CrewAI and AutoGen with shared memory, role boundaries, and human approval gates. Built for auditability.", tags: ["CrewAI", "AutoGen", "Supervisor Patterns", "Shared Memory"] },
-      { title: "Voice Agents That Sound Human at Sub-Second Latency", description: "Phone agents on OpenAI Realtime, Deepgram, and ElevenLabs that book appointments, qualify leads, recover carts, and handle tier-1 support. Integrated with your CRM and calendar. Warm handoff when confidence drops.", tags: ["OpenAI Realtime", "Deepgram", "ElevenLabs", "Twilio", "Calendly"] },
-      { title: "Tool & API Integration Layer", description: "The plumbing that makes agents useful: secure credential vaulting, typed tool schemas, retry logic, error recovery, rate limiting, permission boundaries. Any internal API becomes an agent-callable tool with full observability.", tags: ["MCP", "Tool Schemas", "Secret Management", "Rate Limiting"] },
-      { title: "Agent Observability & Eval Suites", description: "You can't improve what you can't measure. LangSmith or Langfuse tracing, custom eval suites, regression tests, production dashboards. Task success, latency, cost, hallucination rate — tracked per deployment.", tags: ["LangSmith", "Langfuse", "Eval Suites", "Regression Tests"] },
-      { title: "On-Prem / Private LLM Agents", description: "Agents running on Llama, Mistral, or your fine-tuned model in your VPC. Required for healthcare, BFSI, legal, defence. Same LangGraph orchestration code runs on OpenAI or vLLM — no rewrite.", tags: ["Llama", "Mistral", "vLLM", "VPC Deploy"] },
+      {
+        title: "Custom AI Agents That Own One Workflow End-to-End",
+        description: "Single-purpose agents that read, decide, act, and log — email triage, CRM updates, compliance reviews, collections outreach. LangGraph state machines you can reason about. Deterministic where it matters, flexible where it helps.",
+        tags: [
+          "LangGraph",
+          "the latest LLMs Function Calling",
+          "Claude Tool Use",
+          "State Machines"
+        ]
+      },
+      {
+        title: "Multi-Agent Crews That Handle Complex Work",
+        description: "Supervisor + specialist architectures for tasks one model can't handle — researcher, writer, reviewer, executor. CrewAI and AutoGen with shared memory, role boundaries, and human approval gates. Built for auditability.",
+        tags: [
+          "CrewAI",
+          "AutoGen",
+          "Supervisor Patterns",
+          "Shared Memory"
+        ]
+      },
+      {
+        title: "Voice Agents That Sound Human at Sub-Second Latency",
+        description: "Phone agents on OpenAI Realtime, Deepgram, and ElevenLabs that book appointments, qualify leads, recover carts, and handle tier-1 support. Integrated with your CRM and calendar. Warm handoff when confidence drops.",
+        tags: [
+          "OpenAI Realtime",
+          "Deepgram",
+          "ElevenLabs",
+          "Twilio",
+          "Calendly"
+        ]
+      },
+      {
+        title: "Tool & API Integration Layer",
+        description: "The plumbing that makes agents useful: secure credential vaulting, typed tool schemas, retry logic, error recovery, rate limiting, permission boundaries. Any internal API becomes an agent-callable tool with full observability.",
+        tags: [
+          "MCP",
+          "Tool Schemas",
+          "Secret Management",
+          "Rate Limiting"
+        ]
+      },
+      {
+        title: "Agent Observability & Eval Suites",
+        description: "You can't improve what you can't measure. LangSmith or Langfuse tracing, custom eval suites, regression tests, production dashboards. Task success, latency, cost, hallucination rate — tracked per deployment.",
+        tags: [
+          "LangSmith",
+          "Langfuse",
+          "Eval Suites",
+          "Regression Tests"
+        ]
+      },
+      {
+        title: "On-Prem / Private LLM Agents",
+        description: "Agents running on Llama, Mistral, or your fine-tuned model in your VPC. Required for healthcare, BFSI, legal, defence. Same LangGraph orchestration code runs on OpenAI or vLLM — no rewrite.",
+        tags: [
+          "Llama",
+          "Mistral",
+          "vLLM",
+          "VPC Deploy"
+        ]
+      }
     ],
     uspHeadlines: {
       direct: "Your AI architect gets on a call in 2 hours — not a consultant with slides. 30+ production agents built. We tell you which patterns actually work and which are 2024 hype.",
       cost: "Senior engineers only. No sub-contracting, no per-conversation markup, no vendor lock-in. Full source code, prompts, eval sets, and any fine-tuned weights are yours on payment.",
-      ai: "Agents without evals silently fail in production. Every agent we ship has LangSmith traces, a regression test suite, and task-success benchmarks in the contract from day one.",
+      ai: "Agents without evals silently fail in production. Every agent we ship has LangSmith traces, a regression test suite, and task-success benchmarks in the contract from day one."
     },
     faq: [
-      { q: "What's the difference between an AI agent and a chatbot?", a: "A chatbot answers questions. An agent ACTS — it reasons about a goal, picks tools, calls APIs, handles failures, and produces an outcome. Agents have memory, planning, and tool use. Chatbots don't. If you need conversations, build a chatbot. If you need work done, build an agent." },
-      { q: "How is this different from building on ChatGPT or Claude directly?", a: "Raw GPT is a reasoning component. Production agents need state machines, tool schemas, retries, guardrails, memory, observability, and human-in-the-loop escalation. That's the 90% of work that decides whether an agent ships or rots in a demo. We build that layer — you own it." },
-      { q: "What happens if the underlying LLM (GPT-5, Claude 4) ships and breaks my agent?", a: "Model-agnostic by design. Every agent has an eval suite — when a new model ships we re-run evals, swap if better, roll back if worse. Same LangGraph code runs across OpenAI, Anthropic, Google models, Llama. No rewrites, no vendor lock-in." },
-      { q: "Can agents actually be trusted in production without hallucinations?", a: "Yes, when architected right. Grounded retrieval with forced citations, typed tool outputs, output validation schemas, human-in-the-loop on high-stakes decisions, and eval suites that fail the build if hallucination rate exceeds your contracted threshold." },
-      { q: "How do you measure agent success — not impressions, real outcomes?", a: "Contracted task-success rate (did the agent complete the goal?). Plus latency p95, cost per run, tool error rate, human-override rate, hallucination rate. Dashboards in LangSmith or Langfuse. You see every trace. If we miss the benchmarks we iterate free." },
-      { q: "On-prem or private LLM for regulated data?", a: "Yes. Llama, Mistral, or your fine-tuned model hosted in your VPC on AWS, GCP, Azure, or bare metal. Routine for healthcare, BFSI, legal, defence. Same LangGraph / CrewAI code runs on OpenAI or vLLM — no rewrite, no vendor switch." },
+      {
+        q: "What's the difference between an AI agent and a chatbot?",
+        a: "A chatbot answers questions. An agent ACTS — it reasons about a goal, picks tools, calls APIs, handles failures, and produces an outcome. Agents have memory, planning, and tool use. Chatbots don't. If you need conversations, build a chatbot. If you need work done, build an agent."
+      },
+      {
+        q: "How is this different from building on ChatGPT or Claude directly?",
+        a: "Raw GPT is a reasoning component. Production agents need state machines, tool schemas, retries, guardrails, memory, observability, and human-in-the-loop escalation. That's the 90% of work that decides whether an agent ships or rots in a demo. We build that layer — you own it."
+      },
+      {
+        q: "What happens if the underlying LLM (GPT-5, Claude 4) ships and breaks my agent?",
+        a: "Model-agnostic by design. Every agent has an eval suite — when a new model ships we re-run evals, swap if better, roll back if worse. Same LangGraph code runs across OpenAI, Anthropic, Google models, Llama. No rewrites, no vendor lock-in."
+      },
+      {
+        q: "Can agents actually be trusted in production without hallucinations?",
+        a: "Yes, when architected right. Grounded retrieval with forced citations, typed tool outputs, output validation schemas, human-in-the-loop on high-stakes decisions, and eval suites that fail the build if hallucination rate exceeds your contracted threshold."
+      },
+      {
+        q: "How do you measure agent success — not impressions, real outcomes?",
+        a: "Contracted task-success rate (did the agent complete the goal?). Plus latency p95, cost per run, tool error rate, human-override rate, hallucination rate. Dashboards in LangSmith or Langfuse. You see every trace. If we miss the benchmarks we iterate free."
+      },
+      {
+        q: "On-prem or private LLM for regulated data?",
+        a: "Yes. Llama, Mistral, or your fine-tuned model hosted in your VPC on AWS, GCP, Azure, or bare metal. Routine for healthcare, BFSI, legal, defence. Same LangGraph / CrewAI code runs on OpenAI or vLLM — no rewrite, no vendor switch."
+      }
     ],
     testimonials: [
-      { quote: "Their agent runs our entire lead-qualification pipeline — research, enrich, score, draft the first reply. What took a sales ops person 3 days now takes 7 minutes. The LangSmith traces sold our board on scaling the next three workflows.", author: "V.N.", role: "VP Growth, B2B SaaS", rating: 5 },
-      { quote: "Three failed GenAI pilots before RDMI. They started with evals and observability — not a demo — and shipped a production agent in 8 weeks. The difference was process, not prompts.", author: "D.M.", role: "Head of AI, FinTech", rating: 5 },
-      { quote: "Voice agent handles 62% of inbound calls end-to-end. Sub-second latency. Callers don't know it's AI. Step-change in our unit economics — we redeployed two humans to revenue ops.", author: "P.R.", role: "Founder, Real Estate Tech", rating: 5 },
+      {
+        quote: "Their agent runs our entire lead-qualification pipeline — research, enrich, score, draft the first reply. What took a sales ops person 3 days now takes 7 minutes. The LangSmith traces sold our board on scaling the next three workflows.",
+        author: "V.N.",
+        role: "VP Growth, B2B SaaS",
+        rating: 5
+      },
+      {
+        quote: "Three failed GenAI pilots before RDMI. They started with evals and observability — not a demo — and shipped a production agent in 8 weeks. The difference was process, not prompts.",
+        author: "D.M.",
+        role: "Head of AI, FinTech",
+        rating: 5
+      },
+      {
+        quote: "Voice agent handles 62% of inbound calls end-to-end. Sub-second latency. Callers don't know it's AI. Step-change in our unit economics — we redeployed two humans to revenue ops.",
+        author: "P.R.",
+        role: "Founder, Real Estate Tech",
+        rating: 5
+      }
     ],
     ctaSection: {
-      headline: "Stop Talking About AI Agents. Ship One.",
-      subtitle: "Senior AI architect on the call in 2 hours — not a salesperson. Working prototype in 2 weeks. Production agent in 8. LangSmith evals and observability in every deployment.",
-      buttonText: "Talk to AI Agent Expert",
+      headline: "Stop Talking About AI Agents. Ship One That Finishes Work.",
+      subtitle: "Senior AI agent architect on the call in 2 hours — not a salesperson. Working prototype in 2 weeks. Production agent in 8. Tool integration, LangSmith evals, approval gates, and observability in every deployment.",
+      buttonText: "Talk to AI Agent Expert"
     },
     targetKeywords: [
       "ai agent development",
@@ -584,313 +1513,52 @@ export const keywordGroups: KeywordGroup[] = [
       "multi agent system development",
       "langgraph development",
       "crewai development",
-      "voice ai agent development",
-    ],
-  },
-  {
-    slug: "ai-software-development-dubai",
-    primaryKeyword: "AI Software Development Dubai",
-    adGroupMatch: "AI Development Company Dubai",
-    theme: { heroGradient: "linear-gradient(135deg, #059669, #0d9488, #047857)", ctaGradient: "linear-gradient(135deg, #059669, #0d9488, #047857)", urgencyColor: "#059669", accent: "emerald", icon: "🇦🇪" },
-    form: { title: "Talk to an AI Expert in Dubai Hours", subtitle: "Arabic + English senior AI engineer — same-day slots in GST", projectTypes: ["Arabic AI Chatbot", "DIFC Compliance AI", "Healthcare AI (DHA)", "Logistics / Supply Chain AI", "PropTech AI", "FinTech AI (DFSA)", "Other"], placeholder: "What's your biggest operational challenge in the UAE market?", buttonText: "Talk to AI Expert", formType: "ai-dubai" },
-    meta: {
-      title: "AI Software Development Dubai — Arabic Agents, RAG & DIFC-Compliant AI | RDMI",
-      description: "DFSA 2025: 52% of DIFC firms are live with AI. Ship Arabic-first agents, RAG and workflow AI in 8-10 weeks. DIFC-compliant, UAE data residency, 1.5hr IST↔GST overlap.",
-    },
-    hero: {
-      badge: "🇦🇪 AI for Dubai Businesses — Arabic + English, Same-Day GST Slots",
-      h1: "AI Software for Dubai Businesses — Arabic + English, Built in 8 Weeks",
-      subtitle: "Production Arabic + English AI agents, chatbots, and RAG systems for UAE businesses — DIFC-compliant, hosted inside the UAE, 8-10 week delivery. Same-day scoping call in GST hours. Senior AI engineers only.",
-      cta1: "Talk to AI Expert",
-      cta2: "See UAE Case Studies",
-      trustPoints: ["DFSA-aware + DIFC / ADGM / DHA compliant by design", "Arabic (MSA + Gulf Khaleeji) + English NLP natively", "Data residency on AWS ME-South-1 and Azure UAE North", "1.5hr IST↔GST overlap — smallest offshore gap anywhere"],
-    },
-    images: {
-      hero: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=80",
-      process: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80",
-      team: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
-      services: [
-        "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
-        "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
-      ],
-      portfolio: [
-        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
-        "https://images.unsplash.com/photo-1559526324-593bc073d938?w=800&q=80",
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
-      ],
-      cta: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
-    },
-    process: [
-      { step: "01", title: "Morning GST Discovery — Arabic + English", description: "Book a 9am GST slot — our senior AI architect is already online. 60-minute session in Arabic or English maps the use case, DFSA / DIFC / DHA posture, and ROI baseline. Written brief before your next meeting." },
-      { step: "02", title: "NDA + DIFC Compliance Gap Audit — 48 Hours", description: "Mutual NDA signed before architecture work. Senior engineer maps LLM selection, Arabic NLP pipeline, data residency on AWS ME-South-1 / Azure UAE North, and DIFC / ADGM / DFSA gaps. Fixed-scope SOW delivered inside 48 hours." },
-      { step: "03", title: "Sprint Delivery on UAE Cloud — 2-Week Cycles", description: "Staging URL inside UAE region after Sprint 1. Daily async updates on WhatsApp. Weekly demos at your chosen GST morning slot. Feedback actioned inside the same working day — no overnight black holes." },
-      { step: "04", title: "Go-Live + 90-Day Hypercare", description: "Launch on UAE cloud. Source code, architecture docs, audit logs, and Arabic+English runbooks handed over. 90 days hypercare with a 4-hour critical SLA during GST hours. 100% IP under UAE / DIFC courts." },
-    ],
-    stats: [
-      { value: "52%", label: "DIFC Firms Actively Using AI — DFSA 2025" },
-      { value: "1.5 hrs", label: "IST↔GST Overlap — Smallest Offshore Gap" },
-      { value: "22", label: "Chief AI Officers Inside Dubai Government" },
-      { value: "500+", label: "Firms at Dubai AI Campus by 2028" },
-    ],
-    services: [
-      { title: "Arabic-First AI Chatbots That Convert", description: "Conversational AI that switches mid-sentence between MSA, Gulf Khaleeji and English — fine-tuned on your domain, live on WhatsApp Business. Deployed for UAE retail, banking portals, and government service lines. Handles 70%+ of inbound queries without a human.", tags: ["Arabic NLP", "Gulf Dialect", "WhatsApp API", "RAG", "Fine-tuning"] },
-      { title: "Autonomous Ops Agents That Close the Loop", description: "Agents that own procurement approvals, KYC onboarding, compliance reviews, and customer escalation end-to-end. LangChain + CrewAI orchestration with human-in-the-loop checkpoints — the difference between a demo and a production workflow.", tags: ["LangChain", "CrewAI", "AutoGen", "OpenAI", "n8n"] },
-      { title: "DIFC-Compliant RAG on UAE Cloud", description: "10,000+ pages of contracts, policies and regulatory filings queryable in seconds with source-cited answers. Deployed on Azure UAE North with RBAC and full audit trail — regulators see exactly what the model saw.", tags: ["Pinecone", "LlamaIndex", "Azure OpenAI", "AWS Bedrock"] },
-      { title: "DFSA-Grade FinTech AI", description: "KYC/AML screening, transaction risk scoring, and regulatory reporting built to DFSA and ADGM standards. Explainable risk scores your MLRO can defend — faster review cycles, fewer false positives, zero black-box models.", tags: ["KYC/AML", "DFSA", "ADGM", "Risk Scoring", "Python"] },
-      { title: "DHA-Ready Healthcare AI", description: "Arabic patient intake bots, clinical decision support, and predictive triage engines aligned with Dubai Health Authority standards. HL7 / FHIR integrated, PHI isolated, and audit-ready from sprint one.", tags: ["DHA Compliant", "HL7 / FHIR", "Clinical AI", "Arabic NLP"] },
-      { title: "Logistics AI for UAE Freight & 3PL", description: "Demand forecasting, multi-stop route optimization, and predictive maintenance tuned for DP World, JAFZA and GCC cross-border flows. ML models retrained monthly on your operational data — not generic benchmarks.", tags: ["Forecasting", "Route Optimization", "SAP Integration", "TensorFlow"] },
-    ],
-    uspHeadlines: {
-      direct: "Your 9am GST is our 10:30am IST. Your kickoff happens with the senior engineer writing the code — not a sales rep reading a deck. Average Slack response during overlap hours: under 15 minutes.",
-      cost: "Senior engineers only. No juniors, no sub-contracting, no agency markup. The same DFSA-grade AI work London and SF agencies bill at triple the rate — delivered transparently, scoped in writing.",
-      ai: "We architect AI-first — agents that act, RAG that cites, and chatbots that code-switch Arabic and English fluently. Deployed inside UAE data centres so PHI, policy documents and customer data never leave the region.",
-    },
-    faq: [
-      { q: "Does our data leave the UAE?", a: "No. We deploy on AWS ME-South-1 (Bahrain) or Azure UAE North (Dubai). Data never transits outside the GCC. On-premise and DIFC data-centre deployments are available for regulated entities." },
-      { q: "Can your AI handle Gulf Arabic — not just MSA?", a: "Yes, natively. MSA, Gulf Khaleeji and Arabic↔English code-switching. Fine-tuned on your domain vocabulary (banking, Takaful, real estate, retail) with accuracy benchmarks shared before go-live." },
-      { q: "How big is the timezone gap?", a: "1.5 hours. Your 9am GST is our 10:30am IST — the smallest offshore gap anywhere. Full availability during Dubai business hours, with an Arabic-speaking point of contact online in your morning." },
-      { q: "Are you DIFC, ADGM and DFSA compliant?", a: "Architecture is built to DIFC, ADGM and DFSA standards from day one — data classification, RBAC, audit logging, encryption-at-rest, and model explainability. Compliance docs delivered alongside the code." },
-      { q: "How fast can we go live?", a: "Arabic-first chatbot: 6-8 weeks. Multi-agent workflow: 8-10 weeks. Full AI SaaS on UAE cloud: 12-16 weeks. Fixed milestones, not open-ended retainers." },
-      { q: "What about NDA and IP under UAE law?", a: "Mutual NDA signed before the first technical call. 100% IP transfer on final milestone. Work-for-hire under UAE contract law, DIFC courts or ADGM courts — your choice. No open-source encumbrance." },
-    ],
-    testimonials: [
-      { quote: "Two other vendors quoted six months and a London rate card. RDMI had our Arabic WhatsApp agent live in DIFC in nine weeks with full DFSA documentation. Our audit team had nothing to flag.", author: "Head of Customer Operations", role: "DIFC Financial Services Firm, Dubai", rating: 5 },
-      { quote: "The Arabic code-switching actually works. Our Khaleeji-speaking customers don't realise they're talking to an agent until the second message. Handling about 70% of inbound without a handoff.", author: "CX Director", role: "UAE Retail Group", rating: 5 },
-      { quote: "Hosted entirely on Azure UAE North, full audit logs, explainability on every risk score. Our MLRO signed off in one review cycle — that alone paid for the engagement.", author: "MLRO", role: "ADGM-Licensed Broker", rating: 5 },
-    ],
-    ctaSection: {
-      headline: "Dubai Is Sprinting. Lead It or Watch It.",
-      subtitle: "Dubai AI Week 2026 opens April. DIFC adoption jumped 19 points in one year. Every quarter of diligence is a quarter your competitor is shipping. Book a 45-minute Arabic or English scoping call — walk away with scope, timeline and a DIFC compliance map.",
-      buttonText: "Talk to AI Expert",
-    },
-    targetKeywords: ["AI software development Dubai", "AI development company Dubai", "AI app development UAE", "AI chatbot development Dubai", "AI automation company Dubai", "Arabic AI chatbot development", "DIFC AI compliance software", "software development company Dubai", "machine learning development UAE", "offshore AI development UAE"],
-  },
-  {
-    slug: "ai-software-development-usa",
-    primaryKeyword: "AI Software Development for US Companies",
-    adGroupMatch: "AI Development Company USA",
-    theme: { heroGradient: "linear-gradient(135deg, #1d4ed8, #4f46e5, #1d4ed8)", ctaGradient: "linear-gradient(135deg, #1d4ed8, #4f46e5, #1d4ed8)", urgencyColor: "#1d4ed8", accent: "blue", icon: "🇺🇸" },
-    form: { title: "Talk to an AI Expert in US Hours", subtitle: "US-timezone senior AI engineer — EST/PST overlap, same-day slots", projectTypes: ["AI Chatbot / Agent", "HIPAA-Compliant AI", "SaaS Copilot / AI Features", "AI Staff Augmentation", "AI MVP Development", "RAG / Knowledge Base", "Other"], placeholder: "What AI capability would transform your business this quarter?", buttonText: "Talk to AI Expert", formType: "ai-usa" },
-    meta: {
-      title: "AI Software Development for US Companies — SF Quality, 8-Week Ship | RDMI AI",
-      description: "SF agencies quote $80K and 20 weeks. We ship the same agent in 8 weeks. Senior US-timezone engineers, SOC 2 + HIPAA-ready, 100% IP transfer. Free roadmap call.",
-    },
-    hero: {
-      badge: "🇺🇸 AI Software for US Companies — EST/PST Overlap, 8-Week Build",
-      h1: "AI Software for US Companies — Senior Engineers, EST/PST Overlap",
-      subtitle: "Production AI agents, chatbots, and SaaS copilots for US startups and enterprises. 4-8 hour EST/PST overlap, SOC 2-ready architecture, HIPAA-grade controls, 100% IP transfer before first commit. Senior AI engineers only — the person writing your code is on the kickoff call.",
-      cta1: "Talk to AI Expert",
-      cta2: "See US Client Work",
-      trustPoints: ["4-8hr daily overlap with EST + PST — no async black holes", "NDA signed before first technical call — full IP transfer", "SOC 2 Type II-ready + HIPAA BAA-eligible architecture", "Senior engineers only — 5-10 year veterans, no juniors"],
-    },
-    images: {
-      hero: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1600&q=80",
-      process: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1200&q=80",
-      team: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
-      services: [
-        "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
-        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-      ],
-      portfolio: [
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
-        "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
-      ],
-      cta: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80",
-    },
-    process: [
-      { step: "01", title: "Discovery in Your Timezone — EST or PST", description: "Booked inside your EST or PST window — confirmed before kickoff. 60 minutes with a senior AI engineer (not a BDR) maps the use case, constraints, and success metric. Written scope in your inbox before your next standup." },
-      { step: "02", title: "NDA Day One — Sprint Plan in 48 Hours", description: "Mutual NDA signed before any technical detail crosses the wire. Inside 48 hours: sprint plan, named engineer profiles, architecture diagram, and a dedicated Slack channel. You know exactly who ships what." },
-      { step: "03", title: "4-8hr Daily Overlap — Shipping, Not Async Drift", description: "Your senior engineer is online 4-8 hours inside EST/PST. Daily Loom walkthroughs, PRs in your GitHub, standups in your Zoom. Average Slack response during overlap: under 15 minutes. Staging URL inside 14 days." },
-      { step: "04", title: "Production Handoff — 100% IP Transfer + 30-Day Hypercare", description: "Source code, Terraform / CDK, CI/CD pipelines, runbooks, security posture docs. Full IP assignment in writing. 30 days of hypercare. Your in-house team or any US agency can take over — zero lock-in." },
-    ],
-    stats: [
-      { value: "88%", label: "US Tech Orgs Using GenAI — McKinsey 2025" },
-      { value: "4-8 hrs", label: "Daily Overlap With EST + PST Teams" },
-      { value: "100%", label: "IP Transfer — Assigned in Contract" },
-      { value: "$4B", label: "US Coding AI Market — Menlo 2025" },
-    ],
-    services: [
-      { title: "Production AI Agents That Replace Workflows", description: "LangChain + CrewAI agents that act, decide, and escalate 24/7 — lead qualification, document review, support triage, collections outreach. US clients report 800-1,200 manual hours saved per agent per year, with deterministic guardrails and human-in-the-loop checkpoints.", tags: ["LangChain", "CrewAI", "AutoGen", "OpenAI", "Claude API"] },
-      { title: "SaaS Copilots That Lift Retention 2x", description: "Embed GPT-4-class copilots into your CRM, analytics platform, or vertical SaaS without a rewrite. Streaming UI, tool calling, domain-tuned prompts. AI-native SaaS consistently reports 2-3x higher net revenue retention versus non-AI peers.", tags: ["Next.js", "OpenAI API", "Streaming UI", "RAG", "React"] },
-      { title: "RAG + Enterprise Search That Cuts Tickets 40-60%", description: "Turn Notion, Confluence, Salesforce, Zendesk, and 10M-page contract repos into a single source-cited AI brain. RBAC, audit logging, and hallucination guardrails built in. Support ticket volume typically drops 40-60% within 90 days.", tags: ["Pinecone", "Weaviate", "pgvector", "LlamaIndex", "AWS"] },
-      { title: "AI-First MVPs — Idea to Investor Demo in 8 Weeks", description: "Founders ship pre-seed-ready AI products in 8-12 weeks. LLM orchestration, Stripe billing, auth, real-time pipelines, Vercel-deployed — production-grade from sprint one. RDMI-built MVPs have closed pre-seed and seed rounds on first pitch.", tags: ["Next.js", "Supabase", "OpenAI", "Stripe", "Vercel"] },
-      { title: "Senior AI Pod Staff Augmentation", description: "Embed one senior engineer or a 3-5 person pod into your team on monthly retainer. Join your GitHub, Linear, Slack, and standups. No juniors, no bench-warming, no bait-and-switch. Average tenure: 5-10 years shipping production AI.", tags: ["Dedicated Team", "Slack Integration", "GitHub", "Python", "React"] },
-      { title: "HIPAA + SOC 2 Healthcare AI — BAA-Ready", description: "Ambient scribes, prior-auth automation, patient triage agents built HIPAA-compliant from sprint one. AWS GovCloud / us-east-1 HIPAA-eligible services, AES-256 encryption, BAA signed before any PHI touches our environment.", tags: ["HIPAA", "SOC 2", "AWS GovCloud", "HL7 FHIR", "Python"] },
-    ],
-    uspHeadlines: {
-      direct: "You talk to the senior engineer writing the code — not a PM reading a Notion doc. Average Slack response during EST/PST overlap: under 15 minutes. No handoffs, no translation layer.",
-      cost: "Same stack, same NDA, same IP transfer as a San Francisco agency — built by 5-10 year senior engineers, not juniors on a bench. CFO-friendly scope, scoped in writing, with zero agency markup.",
-      ai: "We don't bolt AI onto your product in sprint six. Every system is architected AI-first from sprint one — agents that act, RAG that cites, copilots that ship with streaming UX and guardrails on day one.",
-    },
-    faq: [
-      { q: "Who owns the IP and source code?", a: "You do — 100%, from the first commit. Explicit IP assignment in the MSA. Zero retained rights, zero usage license back to RDMI. Non-negotiable." },
-      { q: "What timezone overlap do you guarantee?", a: "4-8 hours daily with EST and PST — in writing. Senior engineer online before your morning standup. A dedicated US-hours point of contact handles async escalation overnight." },
-      { q: "How is this different from a $25/hr offshore shop?", a: "Senior engineers with 5-10 years shipping production AI. Same tools as your in-house team — GitHub, Linear, Notion, Loom, Zoom. Code review, tests, docs, observability standard. 30-day hypercare included." },
-      { q: "Do you sign NDAs before the first call?", a: "Yes. Mutual NDA signed before any technical detail is shared. Your template or ours, countersigned within 24 hours." },
-      { q: "HIPAA-compliant builds with BAA?", a: "Yes. AWS GovCloud or us-east-1 HIPAA-eligible services, AES-256 encryption, IAM least-privilege, PHI isolation, audit logging. We sign your BAA before PHI touches our environment." },
-      { q: "SOC 2 Type II readiness?", a: "Architecture ships with SOC 2 controls baked in — encrypted storage, secrets management, access logs, least-privilege IAM, documented change management, vendor register. Auditors find fewer gaps." },
-      { q: "Can you slot into our existing US engineering team?", a: "Most common model. We join your GitHub, follow your PR process, attend your standups. Your US tech lead stays in control — we augment bandwidth and bring AI specialisation." },
-    ],
-    testimonials: [
-      { quote: "Got a $110K quote from an SF shop with a 22-week timeline. RDMI shipped a production LangChain agent in nine weeks — under half the budget, fully IP-transferred, with EST overlap that actually felt like an in-house team.", author: "Head of Engineering", role: "Series B SaaS Platform, NYC", rating: 5 },
-      { quote: "Our RAG copilot replaced an 8-person tier-1 support rotation. Ticket deflection hit 47% in the first 60 days. Their senior engineer was in our Slack answering PR reviews faster than our internal folks.", author: "CTO", role: "Vertical SaaS, Seattle", rating: 5 },
-      { quote: "HIPAA BAA signed before we sent a single PHI schema. AWS GovCloud, full audit logs, our security team's questionnaire answered in 36 hours. First HIPAA-grade vendor we haven't had to babysit.", author: "VP Compliance", role: "Digital Health Startup, Boston", rating: 5 },
-    ],
-    ctaSection: {
-      headline: "Your SF Competitor Signs Their Vendor Monday. Beat Them to the Call.",
-      subtitle: "Free 60-minute AI Roadmap call — with a senior engineer, not a sales rep. Leave the call with your top three AI opportunities scoped, a build plan, and an 8-week delivery milestone. EST or PST slot, same week.",
-      buttonText: "Talk to AI Expert",
-    },
-    targetKeywords: ["AI software development company USA", "hire AI developers from India", "AI development agency USA", "offshore AI development company", "AI app development company US", "HIPAA compliant AI development", "AI software development outsourcing USA", "LangChain development company USA", "AI SaaS development US timezone", "custom AI development for US startups"],
-  },
-  {
-    slug: "healthcare-ai-development",
-    primaryKeyword: "Healthcare AI Solutions",
-    adGroupMatch: "Healthcare AI Development",
-    theme: { heroGradient: "linear-gradient(135deg, #e11d48, #db2777, #be123c)", ctaGradient: "linear-gradient(135deg, #e11d48, #db2777, #be123c)", urgencyColor: "#e11d48", accent: "rose", icon: "🏥" },
-    form: { title: "Talk to a Healthcare AI Expert", subtitle: "HIPAA-certified senior AI engineer — BAA signed before first call", projectTypes: ["AI Patient Scheduling / No-Show Reduction", "Ambient Scribe / Clinical Documentation", "RCM & Medical Billing AI", "Clinical Chatbot / AI Receptionist", "EHR Integration & Interoperability", "HIPAA-Compliant AI Agent", "Other"], placeholder: "What's the biggest clinical workflow bottleneck in your practice?", buttonText: "Talk to Healthcare AI Expert", formType: "healthcare-ai" },
-    meta: { title: "Healthcare AI Development — HIPAA + BAA, Ambient Scribes & Clinical Agents | RDMI", description: "Menlo 2025: $1.5B US healthcare AI spend. Ambient scribes alone = $600M. Ship HIPAA-compliant scheduling, RCM, and scribe agents in 8-12 weeks. BAA before first call." },
-    hero: { badge: "🏥 HIPAA-Compliant AI — BAA Signed Before First Call", h1: "HIPAA-Compliant AI for Hospitals, Clinics & Dental Practices", subtitle: "Ambient scribes, AI patient scheduling, RCM / billing agents, and clinical chatbots — all HIPAA-compliant with BAA signed before the first call. 40% fewer no-shows. 92%+ first-pass claim acceptance. 3-6 hours saved per clinician per day.", cta1: "Talk to Healthcare AI Expert", cta2: "See How It Works", trustPoints: ["BAA signed before PHI — not after", "40% no-show reduction typical within 60 days", "92%+ first-pass claim acceptance with RCM AI", "3-6 hours reclaimed per clinician per day"] },
-    images: { hero: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&q=80", process: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80", team: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=1200&q=80", services: ["https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80", "https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?w=800&q=80", "https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=800&q=80"], portfolio: ["https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80", "https://images.unsplash.com/photo-1585421514284-efb74c2b69ba?w=800&q=80", "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80"], cta: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1600&q=80" },
-    process: [
-      { step: "01", title: "NDA + BAA Signed Before First Call", description: "Mutual NDA and HIPAA BAA countersigned before any PHI, workflow diagram, or EHR screenshot crosses the wire. Non-negotiable — it's how a real healthcare AI vendor operates." },
-      { step: "02", title: "Clinical Workflow + Compliance Gap Audit", description: "Senior clinical AI engineer maps your EHR stack (Epic, Cerner, Meditech, athenahealth, Practo), data flows, PHI touchpoints, and HIPAA / HITECH / state-level obligations. Written risk + ROI report before any code." },
-      { step: "03", title: "Prototype on Synthetic PHI — Clinician-Validated", description: "Working prototype in 2-3 weeks on fully synthetic PHI. Validated with your clinicians on real workflows before touching production data. Money-back if the milestone slips." },
-      { step: "04", title: "HIPAA-Hardened Launch + Clinical Handover", description: "AES-256 at rest + in transit, PHI isolation, RBAC, audit logging, HIPAA-eligible cloud (AWS us-east-1 / GovCloud, Azure Healthcare). 30-day clinical monitoring. Full source, model weights, BAA package, staff training. You own it all." },
-    ],
-    stats: [{ value: "$1.5B", label: "US Healthcare AI Spend — Menlo 2025" }, { value: "$600M", label: "Ambient Scribe Category — Menlo 2025" }, { value: "40%", label: "Patient No-Show Reduction Inside 60 Days" }, { value: "3-6 hrs", label: "Reclaimed Per Clinician Per Day" }],
-    services: [
-      { title: "Ambient Scribes That Save Doctors 3-6 Hours a Day", description: "Real-time ambient AI listens in the exam room, generates SOAP notes, and writes back to Epic / Cerner / athenahealth in the clinician's voice. Specialty-tuned (primary care, cardiology, ortho, behavioral health). Clinicians reclaim entire afternoons — zero pajama-time charting.", tags: ["Ambient AI", "SOAP Notes", "EHR Write-Back", "Medical NLP"] },
-      { title: "AI Schedulers That Cut No-Shows 40%", description: "Predictive no-show model scores every booking, triggers WhatsApp + SMS + voice reminders on the right channel at the right hour, and auto-reallocates cancelled slots to the waitlist. Measurable lift inside 60 days — every empty chair filled before the next opens.", tags: ["No-Show Prediction", "WhatsApp", "Voice AI", "Waitlist AI"] },
-      { title: "RCM Agents That Recover Denied Claims", description: "AI runs pre-auth checks, ICD-10 / CPT validation, claim scrubbing, and denial-prediction scoring before submission. 92%+ first-pass acceptance, denied claims auto-resubmitted inside hours, not weeks — directly booked revenue, no staff burnout.", tags: ["RCM Automation", "Claims AI", "ICD-10", "Denial Management"] },
-      { title: "AI Receptionists That Deflect 80% of Calls", description: "24/7 multilingual voice + chat agent handles appointment booking, prescription refills, symptom triage, and insurance verification across phone, WhatsApp and web. Warm-transfers high-acuity cases to staff with full context — no more front-desk burnout.", tags: ["Voice AI", "Triage", "WhatsApp", "Phone Integration"] },
-      { title: "HIPAA-Compliant Clinical Agents with BAA", description: "Full-stack agent development with PHI isolation, AES-256, RBAC, audit trails, and a signed BAA before sprint one. Aligned with HIPAA, HITECH, DHA, and ABDM. Compliance binder delivered with the code — your legal team sleeps.", tags: ["HIPAA", "BAA", "PHI Isolation", "HITECH"] },
-      { title: "EHR Interop That Ships, Not Stalls", description: "HL7 v2 + FHIR R4 bridges to Epic App Orchard, Cerner (Oracle Health), Meditech, athenahealth, eClinicalWorks, Practo. Bi-directional real-time sync tested against your staging EHR before go-live — zero clinical workflow disruption.", tags: ["HL7 FHIR", "Epic App Orchard", "Cerner", "athenahealth"] },
-    ],
-    uspHeadlines: { direct: "Every first call is with a senior clinical AI engineer — BAA already countersigned. No sales funnel, no discovery deck, no PHI risk. Just scope, timeline, and a working prototype on synthetic data inside three weeks.", cost: "HIPAA-grade work without the HIPAA-vendor markup. Senior engineers only, fixed-scope milestones, 100% source code and model weights transferred. No per-seat licence, no SaaS lock-in, no vendor rent.", ai: "Medical-LLM fine-tuning, clinical RAG with citation, real-time voice AI with sub-500ms latency — architected from sprint one for exam-room conditions, not pitch decks." },
-    faq: [
-      { q: "Is it HIPAA compliant? Do you sign a BAA before PHI?", a: "Yes. Mutual BAA + NDA countersigned before any PHI, workflow diagram, or EHR screenshot is shared. PHI isolation, AES-256 at rest + in transit, RBAC, audit logging, and HIPAA-eligible cloud standard. DHA + ABDM aligned for international clients." },
-      { q: "Which EHRs do you integrate with?", a: "Epic (via App Orchard), Cerner / Oracle Health, Meditech, athenahealth, eClinicalWorks, Practo, and custom EHRs. HL7 v2 + FHIR R4 compliant. Integration tested against your staging EHR before production cutover." },
-      { q: "How do you prevent LLM hallucination in clinical settings?", a: "Medical-LLM fine-tuning + clinical RAG with source citation on every generated note. Clinician approval gate before any EHR write-back. Hallucination rate measured and reported every sprint — no note ships without a human sign-off in the loop." },
-      { q: "How fast is ROI?", a: "60-90 days. AI schedulers show 25-40% no-show reduction inside month one. RCM agents recover denied claims inside weeks. Ambient scribes save 3-6 hours per clinician per day from day one of rollout." },
-      { q: "Do you work with dental and multi-site practices?", a: "Yes. Dental-specific no-show and recall workflows pre-built. Multi-site and DSO-ready with per-location RBAC, aggregated reporting, and staggered rollout by site — clinician change management included." },
-      { q: "What's the money-back guarantee?", a: "Miss a prototype milestone on your timeline and we refund it. Each production milestone is clinician-gated — you approve the demo before we invoice. No silent burn." },
-    ],
-    testimonials: [
-      { quote: "BAA signed before we sent a single chart. Ambient scribe was live on two pods inside 10 weeks. Our docs got their evenings back — no-show rate dropped 38% in the first 60 days without us lifting a finger.", author: "Dr. A.K.", role: "Medical Director, Multi-Specialty Clinic Group", rating: 5 },
-      { quote: "RCM agent hit 94% first-pass acceptance on month one. The denied-claims backlog we'd been carrying for two quarters — cleared in six weeks of auto-resubmissions. Straight-line revenue lift.", author: "Head of Revenue Cycle", role: "US Primary Care Network", rating: 5 },
-      { quote: "We vetted four vendors. Only RDMI would sign the BAA before we shared Epic screenshots. Their clinicians-in-the-loop approval gate is what our compliance officer finally approved.", author: "CIO", role: "Regional Dental Services Organization", rating: 5 },
-    ],
-    ctaSection: { headline: "Every Quarter You Wait, a Competitor Writes Back to Epic Without You.", subtitle: "Ambient scribes are a $600M category and growing. AI schedulers are cutting no-shows by double digits this quarter. Tell us your bottleneck — no-shows, denials, clinician burnout — and a senior clinical AI engineer calls you in 2 hours. BAA ready. No sales pitch.", buttonText: "Talk to Healthcare AI Expert" },
-    targetKeywords: ["ai patient scheduling", "healthcare chatbot development", "hipaa compliant ai chatbot", "ai for dental practice", "ai medical documentation", "healthcare ai solutions", "ai for patient no shows", "ai receptionist for clinics", "ai for medical billing", "ambient scribe for doctors"],
-  },
-  {
-    slug: "insurance-ai-development",
-    primaryKeyword: "AI for Insurance Agencies",
-    adGroupMatch: "Insurance AI Development",
-    theme: { heroGradient: "linear-gradient(135deg, #0284c7, #2563eb, #0369a1)", ctaGradient: "linear-gradient(135deg, #0284c7, #2563eb, #0369a1)", urgencyColor: "#0284c7", accent: "sky", icon: "🛡️" },
-    form: { title: "Talk to an Insurance AI Expert", subtitle: "Insurance-domain senior AI engineer — IRDAI-aware architecture", projectTypes: ["Claims Processing Automation", "AI Underwriting Assistant", "Voice AI for Agencies", "Fraud Detection AI", "Lead Qualification AI", "Policy Comparison Bot", "Other"], placeholder: "What's your biggest claims or operations bottleneck?", buttonText: "Talk to Insurance AI Expert", formType: "insurance-ai" },
-    meta: { title: "AI for Insurance Agencies — Claims, Underwriting & Voice Agents | RDMI", description: "Claims take 9 days on average. AI-assisted intake takes 90 seconds. Ship IRDAI + NAIC-aware claims, underwriting, fraud, and voice AI integrated with Applied Epic, AMS360, Hawksoft, Guidewire." },
-    hero: { badge: "🛡️ AI That Processes Claims in 90 Seconds — IRDAI + NAIC Aware", h1: "AI That Processes Insurance Claims in 90 Seconds — Not 9 Days", subtitle: "Claims intake, AI underwriting, fraud detection, and voice agents for carriers, MGAs, and independent agencies. IRDAI + NAIC-aware architecture. Integrates with Applied Epic, AMS360, Hawksoft, and Guidewire. 68% faster claims. You own the code.", cta1: "Talk to Insurance AI Expert", cta2: "See Insurance AI in Action", trustPoints: ["IRDAI + NAIC + GDPR + DPDP-aware architecture", "Integrates with Applied Epic, AMS360, Hawksoft, Guidewire", "Explainable risk scores — every decision auditable", "NDA signed before any loss-run data is shared"] },
-    images: { hero: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80", process: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&q=80", team: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80", services: ["https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80", "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80", "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=800&q=80"], portfolio: ["https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80", "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80", "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"], cta: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80" },
-    process: [
-      { step: "01", title: "NDA + IRDAI / NAIC Gap Audit — Hour One", description: "Mutual NDA signed before loss runs, policy data, or AMS exports are shared. Hour-one compliance audit maps IRDAI (India), NAIC 2024 AI model bulletin (US), GDPR and DPDP obligations against your claims, underwriting and fraud workflows." },
-      { step: "02", title: "AMS + Policy Data Integration Blueprint", description: "Senior insurance-domain engineer audits Applied Epic, AMS360, Vertafore, Hawksoft, EZLynx, Guidewire and your carrier feeds. Written integration plan with named endpoints, middleware scope, and 2-4 week integration timelines." },
-      { step: "03", title: "Explainable AI Build — Compliance in the QA Cycle", description: "3-5 senior engineers ship in 6-10 week sprints. Every risk score carries a human-readable rationale log. Compliance review runs inside QA, not bolted on at go-live — your MLRO or CCO sees the model's reasoning before the regulator does." },
-      { step: "04", title: "Pilot on 10-20% Volume, Then Full Cutover", description: "Controlled pilot on 10-20% of live volume. Measured against adjuster baseline KPIs — accuracy, cycle time, CSAT, loss ratio. Cutover only after validation. 90 days post-launch support with a 4-hour critical SLA." },
-    ],
-    stats: [{ value: "9d → 90s", label: "Claims Intake, Adjuster vs AI" }, { value: "68%", label: "Faster Claims Cycle Time" }, { value: "40%", label: "Fewer Fraud False Positives" }, { value: "55%", label: "Less Underwriter Review Time" }],
-    services: [
-      { title: "Claims Automation — Intake in 90 Seconds, Cycle 68% Faster", description: "AI triages FNOL, extracts data from photos, PDFs, dashcam footage and voice, routes to the right adjuster, pre-fills claim forms, and flags SLA breaches before they happen. Auto, property, health, commercial and specialty lines — all scored explainably.", tags: ["FNOL Automation", "Document AI", "Adjuster Routing", "SLA Alerts"] },
-      { title: "AI Underwriting — 55% Less Review Time, Fully Auditable", description: "AI ingests loss runs, credit signals, MVRs, telematics, and applicant history — generates explainable risk scores your underwriters act on and your regulator can audit. Aligned with NAIC's 2024 AI model bulletin and IRDAI AI governance guidance.", tags: ["Risk Scoring", "Explainable AI", "Loss Run Analysis", "NAIC Aligned"] },
-      { title: "Voice AI for Agencies — 3x More Calls Handled", description: "Multilingual voice agents answer policy questions, take FNOL end-to-end, qualify renewal intent, and book producer callbacks — 24/7 across English, Hindi, regional Indian languages, and Gulf Arabic. AMS-integrated so every call updates the record automatically.", tags: ["Voice AI", "FNOL Intake", "Renewal Outreach", "AMS Integration"] },
-      { title: "Fraud Detection — 40% Fewer False Positives", description: "ML analyses claim patterns, social signals, network relationships, and prior-loss graphs to surface high-risk claims for SIU investigators without blocking legitimate payouts. Real-time scoring at FNOL, not three weeks after payment.", tags: ["Anomaly Detection", "Network Analysis", "Real-Time Scoring", "SIU Tools"] },
-      { title: "Lead Qualification — 3.2x More Bound Policies", description: "AI scores inbound web, WhatsApp, and phone leads by intent, coverage fit, and projected LTV before a producer ever picks up. Auto-enriches CRM records, routes hot leads to the right producer in under 60 seconds — the bound-rate multiplier.", tags: ["Intent Scoring", "CRM Integration", "Auto-Enrichment", "Producer Routing"] },
-      { title: "Policy Comparison Bots — 45% Less Quote Abandonment", description: "Conversational AI walks prospects through coverage, surfaces best-fit policies across your appointed carriers, explains deductibles and exclusions in plain English or regional language, then warm-transfers to a licensed producer at the decision moment.", tags: ["Quoting Integration", "Coverage Advisor", "WhatsApp Bot", "Producer Handoff"] },
-    ],
-    uspHeadlines: { direct: "Every call is with a senior engineer who has shipped against Guidewire, Applied Epic and AMS360 — not a generalist agency learning Takaful or P&C on your budget. Integration scope confirmed in hour one, not sprint six.", cost: "Senior insurance-domain engineers only. Fixed-scope milestones, 100% source code and model weights transferred. No per-policy SaaS fee, no usage billing, no vendor rent — it's your model running on your cloud after day one.", ai: "Every underwriting score, every fraud flag, every claim routing decision comes with a human-readable rationale log and a full audit trail. NAIC, IRDAI and DPDP-aware by design — your regulator sees the reasoning, not a black box." },
-    faq: [
-      { q: "How do you handle NAIC + IRDAI compliance for AI underwriting?", a: "Explainability first. Every risk score ships with a human-readable rationale log, training-data lineage, and decision-threshold audit trail. Aligned with the NAIC 2024 AI model bulletin (US carriers) and IRDAI's AI governance guidance (Indian insurers). Your regulator sees the reasoning, not a black box." },
-      { q: "Can you integrate with Applied Epic, AMS360, Hawksoft, Guidewire?", a: "Yes. Applied API, Vertafore API, Hawksoft, EZLynx, Guidewire Cloud APIs are all first-class integrations. For systems without public APIs (legacy mainframe, custom AS400), we build secure middleware. Integration scope is typically 2-4 weeks, named in the blueprint before any code." },
-      { q: "What ROI from claims automation?", a: "Claims cycle time down 40-70%, adjuster capacity up 30-50%, CSAT lift from faster resolution. KPIs baselined during discovery and measured against the pilot — no vague promises." },
-      { q: "How do you protect policyholder data before go-live?", a: "NDA signed before any loss run, policy, or PII is shared. Development runs on synthetic / anonymised data. Production access is role-restricted, logged, time-limited. DPDP Act, GDPR, and state-level PII regimes enforced by design." },
-      { q: "How long to go live?", a: "Single module (FNOL, lead qual, voice AI): 8-12 weeks. Multi-module with deep AMS integration: 16-24 weeks. Working software demoed every two-week sprint — no 12-month waterfall." },
-      { q: "Do we own the AI model and code?", a: "Everything. Source code, fine-tuned model weights, data pipelines, Terraform / CDK, documentation. No per-seat fee, no per-policy billing, no vendor lock-in. Your model runs on your cloud after day one." },
-    ],
-    testimonials: [
-      { quote: "Our first-pass FNOL-to-adjuster touch dropped from eight days to under three. The explainability log is what got us past the compliance committee — they could see exactly why each claim was routed where it was.", author: "Head of Claims", role: "Mid-Market P&C Carrier, India", rating: 5 },
-      { quote: "Applied Epic integration was scoped in the first call and live inside three weeks. The voice agent books renewals overnight — producers wake up to warm callbacks, not cold leads.", author: "COO", role: "Independent Insurance Agency, Texas", rating: 5 },
-      { quote: "We shaved 55% off underwriter review time without loosening a single risk standard. The audit trail alone would have taken our in-house team a year to build.", author: "Chief Underwriting Officer", role: "Specialty Commercial MGA", rating: 5 },
-    ],
-    ctaSection: { headline: "9 Days or 90 Seconds. Your Next Adjuster Hire Decides It.", subtitle: "Every claim still processed manually is a competitor winning a renewal you should have kept. Tell us your bottleneck — claims backlog, fraud leakage, underwriter capacity, renewal drop-off — and a senior insurance-domain engineer calls you in 2 hours with a concrete plan. NDA ready. No sales pitch.", buttonText: "Talk to Insurance AI Expert" },
-    targetKeywords: ["ai for insurance agencies", "insurance chatbot development", "ai insurance claims processing", "insurance automation software", "ai underwriting software", "insurance agency automation", "ai voice agent for insurance", "insurance lead qualification ai", "insurtech software development", "claims processing automation"],
-  },
-  {
-    slug: "travel-hospitality-ai",
-    primaryKeyword: "AI for Hotels & Travel",
-    adGroupMatch: "Travel Hospitality AI",
-    theme: { heroGradient: "linear-gradient(135deg, #0891b2, #0d9488, #0e7490)", ctaGradient: "linear-gradient(135deg, #0891b2, #0d9488, #0e7490)", urgencyColor: "#0891b2", accent: "cyan", icon: "✈️" },
-    form: { title: "Talk to a Travel AI Expert", subtitle: "Senior travel-tech engineer — PMS & OTA integrations, same-day slots", projectTypes: ["AI Booking Engine", "Multilingual Hotel Chatbot", "Revenue Management AI", "Tour Operator Automation", "Travel CRM with AI", "AI Guest Concierge", "Other"], placeholder: "What's your biggest booking or guest experience challenge?", buttonText: "Talk to Travel AI Expert", formType: "travel-ai" },
-    meta: { title: "AI for Hotels, Tour Operators & Travel Agencies | Concierge, RMS & PMS AI | RDMI", description: "Hotels lose 28% of direct bookings to OTAs. AI concierges win them back. Multilingual booking AI, dynamic RMS, and tour-operator automation live on Opera, Cloudbeds, Mews, Booking.com in 4-8 weeks." },
-    hero: { badge: "✈️ AI Booking Engines & Concierges — 28% More Direct Bookings", h1: "AI Booking Engines & Concierges — 28% More Direct Bookings", subtitle: "AI booking engines, 12+ language concierges, and dynamic revenue engines for hotels, tour operators, and travel agencies. Integrated with Opera, Cloudbeds, Mews, Booking.com, Expedia. Live in 4-8 weeks. 28% more direct bookings, 40% higher RevPAR.", cta1: "Talk to Travel AI Expert", cta2: "See Live Demo", trustPoints: ["Opera, Cloudbeds, Mews, Booking.com, Expedia integrated", "12+ languages with mid-conversation switching", "Dynamic RMS re-prices every 15 minutes across OTAs", "Fixed-scope, milestone-based delivery — zero scope creep"] },
-    images: { hero: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80", process: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80", team: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80", services: ["https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80", "https://images.unsplash.com/photo-1529290130-4ca3753253ae?w=800&q=80", "https://images.unsplash.com/photo-1615460549969-36fa19521a4f?w=800&q=80"], portfolio: ["https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80", "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80", "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=80"], cta: "https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=1600&q=80" },
-    process: [
-      { step: "01", title: "NDA + Channel Audit — 3 Days", description: "Mutual NDA before any rate data, guest PII, or PMS credentials are shared. Senior travel-tech engineer audits booking funnel, PMS / OTA / CRS stack, guest communication gaps, and rate-parity posture. Prioritised AI opportunity report with projected RevPAR and direct-booking ROI." },
-      { step: "02", title: "PMS + OTA Integration Blueprint — Fixed Quote", description: "Exact endpoints for Opera, Cloudbeds, Mews, Booking.com, Expedia, Agoda. Middleware scope for legacy PMS. Fixed-scope quote with named deliverables and milestones — before any code, zero scope creep." },
-      { step: "03", title: "Build, Integrate, Sign Off — 2-Week Sprints", description: "2-week sprints integrating PMS, OTA rate feeds, WhatsApp Business, CRM, and payment gateways. Live staging demo and GM sign-off every sprint. Staff shadowing on key workflows before cutover." },
-      { step: "04", title: "Launch, Train, Retrain Monthly", description: "Deployment, front-desk + sales training, 30-day guest-facing monitoring. AI retrained monthly on your own booking, cancellation, and ADR data — conversion gets better every month, not worse." },
-    ],
-    stats: [{ value: "28%", label: "Direct Booking Lift vs OTA Baseline" }, { value: "40%", label: "RevPAR Uplift via Dynamic RMS" }, { value: "12+", label: "Languages with Mid-Chat Switching" }, { value: "70%", label: "Less Tour Operator Ops Time" }],
-    services: [
-      { title: "AI Booking Agents That Win Back 28% Direct", description: "Conversational booking on your website, WhatsApp Business, and Instagram DMs. Qualifies guest intent, checks PMS availability live, applies dynamic pricing, closes and collects 24/7. 28% direct-booking lift — every booking captured direct is 15-25% of OTA commission kept.", tags: ["LangChain", "WhatsApp API", "PMS API", "Stripe / Razorpay"] },
-      { title: "Multilingual AI Concierges in 12+ Languages", description: "Handles pre-arrival queries, check-in, room upgrades, restaurant and spa bookings in 12+ languages including Arabic, Mandarin, Russian, French, German, Spanish. Mid-conversation language switching, 60% fewer front-desk calls, measurable per-guest upsell lift.", tags: ["Multilingual NLP", "WhatsApp", "Booking.com Sync", "PMS API"] },
-      { title: "Dynamic RMS That Lifts RevPAR 40%", description: "ML revenue engine monitors competitor rates, local events, occupancy curves, and demand signals — auto-adjusts pricing every 15 minutes across Booking.com, Expedia, Agoda, and your direct channel. Rate parity enforced, RevPAR up, leakage down.", tags: ["ML Forecasting", "OTA Rate APIs", "Parity Monitoring", "Auto-Sync"] },
-      { title: "AI Guest Concierge — 3x More Upsells", description: "Post-booking AI sends personalised pre-arrival sequences — spa, transfers, activities, birthday upgrades, late check-out. Cross-references RAG-indexed property knowledge and guest profile. 3x upsell revenue and measurable TripAdvisor / Google review score lift in 60 days.", tags: ["RAG", "Guest Profiles", "Email + WhatsApp", "Personalisation"] },
-      { title: "Tour Operator Automation — 70% Less Ops Time", description: "Auto-generates bespoke itineraries, despatches supplier bookings, tracks confirmations, assembles travel docs, and raises exceptions only where a human is needed. Multi-day, multi-destination, group tours up to 500 PAX. n8n + CrewAI orchestration.", tags: ["n8n", "CrewAI", "PDF Generation", "Supplier APIs"] },
-      { title: "Travel CRM with AI Lead Scoring — 2x Faster Deals", description: "Purpose-built travel CRM with AI lead scoring, auto-follow-ups on WhatsApp and email, quote generation with live supplier pricing, and pipeline forecasting. Cuts deal closure time in half — sales agents work 20 qualified leads, not 200 cold ones.", tags: ["AI Scoring", "Email Automation", "WhatsApp Follow-Up", "Supplier APIs"] },
-    ],
-    uspHeadlines: { direct: "First call is with a senior engineer who's shipped against Opera, Cloudbeds and Mews — not a sales rep reading a property-management glossary. You leave the call with an integration map, not a generic deck.", cost: "Fixed-scope, milestone-based delivery with senior hospitality-domain engineers. No hourly surprises, no scope creep. 100% source code, AI models, and training data ownership transferred on final milestone.", ai: "Production-grade LLMs, RAG over your property content, autonomous agents with PMS write-back — not a templated chatbot or an OTA plugin dressed up as AI. Retrained monthly on your own booking data." },
-    faq: [
-      { q: "Which languages does the AI concierge support?", a: "12+ natively: English, Hindi, Arabic (MSA + Gulf Khaleeji), French, German, Spanish, Mandarin, Japanese, Russian, Portuguese, Italian, Dutch. More added in 5-7 days. Auto-detects language from the first message and switches mid-conversation when a guest does." },
-      { q: "Which PMS, OTA and CRS do you integrate with?", a: "Opera, Cloudbeds, Mews, Hotelogix, RMS Cloud, Stayntouch, SiteMinder, Booking.com, Expedia, Airbnb, Agoda, MakeMyTrip. Custom middleware for systems without public APIs (legacy Opera, proprietary CRS). Integration scope confirmed in discovery." },
-      { q: "How do you handle OTA rate parity and sync conflicts?", a: "Rate parity monitored continuously against OTA feeds. Conflicts surface in your dashboard before they hit the channel manager. AI-suggested direct-rate discount via logged-in WhatsApp — capturing direct without breaking OTA parity agreements." },
-      { q: "Can it handle group bookings, corporate MICE, and multi-destination tours?", a: "Yes. Multi-day, multi-destination, up to 500 PAX. Custom proposal generation, supplier coordination, confirmation tracking, final travel docs — with human approval gates at commercial decision points. Used by DMCs and outbound tour operators." },
-      { q: "NDA and code ownership?", a: "Mutual NDA signed before any rate, guest, or PMS data is shared. 100% source code, AI models, and training data ownership transferred on final milestone. No resale, no reuse, no white-label sublicensing to your competitors." },
-      { q: "How long to go live?", a: "AI booking agent or concierge: 4-8 weeks. Full suite (booking + concierge + dynamic RMS): 10-16 weeks. Tour operator automation platform: 8-12 weeks. Working software inside the first 14 days — no quarter-long dark builds." },
-    ],
-    testimonials: [
-      { quote: "Direct bookings up 31% in five months. The AI handles Arabic, French, and English without a handoff — our front desk finally has time to deliver the guest experience we were selling.", author: "General Manager", role: "5-Star Resort, UAE", rating: 5 },
-      { quote: "Our tour-operator ops team was drowning in supplier confirmations and itinerary PDFs. The CrewAI workflow took 70% of that out overnight. We doubled group bookings without adding headcount.", author: "Director of Operations", role: "Outbound Tour Operator, India", rating: 5 },
-      { quote: "Dynamic RMS retrained on our own ADR data is doing what our channel manager never could — 40% RevPAR lift across the portfolio in one low season.", author: "Revenue Director", role: "Boutique Hotel Group, Southeast Asia", rating: 5 },
-    ],
-    ctaSection: { headline: "OTAs Already Own Your Margin. AI Is How You Take It Back.", subtitle: "Every direct booking an AI concierge wins is 15-25% commission you keep. Every RevPAR point a dynamic RMS adds is pure margin. Talk to a senior travel-tech engineer in 2 hours — walk away with a PMS integration map, language-rollout plan, and 4-8 week delivery milestone. No commitment, no sales pitch.", buttonText: "Talk to Travel AI Expert" },
-    targetKeywords: ["ai for hotels", "hotel chatbot development", "ai booking assistant", "ai for tour operators", "travel chatbot development", "ai for travel agencies", "hotel ai concierge", "ai dynamic pricing hotel", "ai revenue management hotel", "hospitality ai solutions"],
+      "voice ai agent development"
+    ]
   },
   {
     slug: "enterprise-saas-development",
-    primaryKeyword: "Enterprise SaaS Development",
-    adGroupMatch: "Enterprise SaaS",
-    theme: { heroGradient: "linear-gradient(135deg, #1e3a8a, #2563eb, #1e40af)", ctaGradient: "linear-gradient(135deg, #1e3a8a, #2563eb, #1e40af)", urgencyColor: "#1e40af", accent: "blue", icon: "🏢" },
-    form: { title: "Talk to a Senior SaaS Architect", subtitle: "Senior SaaS architect calls you in 2 hours — not a salesperson", projectTypes: ["Multi-Tenant SaaS Platform", "Custom ERP System", "Sales & Service CRM", "Workflow & Approvals Engine", "Reporting & BI Dashboards", "Legacy ERP Migration", "Other"], placeholder: "What enterprise problem are you trying to solve at scale?", buttonText: "Talk to SaaS Architect", formType: "enterprise-saas" },
+    primaryKeyword: "Enterprise Software Development Company",
+    adGroupMatch: "Enterprise Software Development",
+    theme: {
+      heroGradient: "linear-gradient(135deg, #1e3a8a, #2563eb, #1e40af)",
+      ctaGradient: "linear-gradient(135deg, #1e3a8a, #2563eb, #1e40af)",
+      urgencyColor: "#1e40af",
+      accent: "blue",
+      icon: "🏢"
+    },
+    form: {
+      title: "Talk to a Senior Enterprise Software Architect",
+      subtitle: "Senior enterprise architect calls you in 2 hours — not a salesperson",
+      projectTypes: [
+        "Custom ERP System",
+        "Sales & Service CRM",
+        "Workflow & Approvals Engine",
+        "Multi-Tenant SaaS Platform",
+        "Reporting & BI Dashboards",
+        "Legacy ERP Migration",
+        "Other"
+      ],
+      placeholder: "What enterprise workflow, department, or legacy system needs to be modernized?",
+      buttonText: "Talk to Enterprise Architect",
+      formType: "enterprise-software"
+    },
     meta: {
-      title: "Enterprise SaaS Development | AI-Native, SOC 2, SSO | RDMI",
-      description: "Every new enterprise SaaS ships with AI agents in the core. Your 2020 multi-tenant stack is getting replaced. SOC 2, SSO/SCIM, multi-tenant, LangGraph agents, 40+ builds live.",
+      title: "Enterprise Software Development Company India | AI-First ERP, CRM & Automation | RDMI",
+      description: "Enterprise software development company for AI-first ERP, CRM, workflow automation, dashboards, SaaS, and legacy modernization. Senior architects, SOC 2-ready, SSO/SCIM, source code ownership."
     },
     hero: {
-      badge: "🏢 Enterprise SaaS & ERP — Multi-Tenant, SOC 2 Ready",
-      h1: "Enterprise SaaS & ERP Platforms Built for Scale and Compliance",
-      subtitle: "Multi-tenant SaaS, custom ERP, and CRM platforms with SSO/SCIM, audit logs, and AI copilots built in from sprint one. 40+ enterprise builds delivered. SOC 2-ready architecture. Senior SaaS architects only.",
-      cta1: "Talk to SaaS Architect",
-      cta2: "See Enterprise Platforms Built",
+      badge: "🏢 Enterprise Software, ERP & CRM — AI-First, SOC 2 Ready",
+      h1: "Enterprise Software Development Company for AI-First ERP, CRM, and Workflow Automation",
+      subtitle: "Searching for an enterprise software development company or ERP/CRM development partner? RDMI builds AI-first enterprise systems: custom ERP, CRM, dashboards, workflow automation, internal tools, integrations, and AI agents that remove manual work across operations, finance, sales, and support.",
+      cta1: "Talk to Enterprise Architect",
+      cta2: "See Enterprise Systems Built",
       trustPoints: [
-        "LangGraph agents in the product — not a chatbot widget",
+        "AI agents inside real workflows — not a chatbot widget",
         "SOC 2 Type II-ready, SSO and SCIM standard",
         "40+ enterprise platforms shipped to production",
-        "Multi-region, row-level tenant isolation by default",
-      ],
+        "Multi-region, row-level tenant isolation by default"
+      ]
     },
     images: {
       hero: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1600&q=80",
@@ -899,460 +1567,203 @@ export const keywordGroups: KeywordGroup[] = [
       services: [
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80"
       ],
       portfolio: [
         "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
         "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
-        "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+        "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80"
       ],
-      cta: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80",
+      cta: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80"
     },
     process: [
-      { step: "01", title: "Senior Architect on the Call — Within 2 Hours", description: "A senior SaaS architect maps your scale, compliance posture, integration surface, and AI-feature gaps. Architecture decision record and risk register delivered the same day — before a line of code." },
-      { step: "02", title: "Multi-Tenant + AI Foundation in 14 Days", description: "Row-level tenant isolation, SSO, SCIM, audit log pipeline, and the LangGraph agent runtime — stood up first. The boring stuff that kills enterprise projects when retrofitted later. AI copilot wired to real data on day ten." },
-      { step: "03", title: "Sprint Delivery With Working Demos", description: "Two-week sprints on staging. Enterprise stakeholders review real software every 14 days — not a Gantt chart. UAT signed before anything ships to production. LangSmith evals catch AI regressions before release." },
-      { step: "04", title: "Launch, Observability, 30-Day Hypercare", description: "Blue-green deploy, OpenTelemetry observability, runbooks, on-call handoff, and eval dashboards. 30 days hypercare with sev-1 response under one hour. Retainer available for ongoing ops and AI tuning." },
+      {
+        step: "01",
+        title: "Senior Architect on the Call — Within 2 Hours",
+        description: "A senior SaaS architect maps your scale, compliance posture, integration surface, and AI-feature gaps. Architecture decision record and risk register delivered the same day — before a line of code."
+      },
+      {
+        step: "02",
+        title: "Multi-Tenant + AI Foundation in 14 Days",
+        description: "Row-level tenant isolation, SSO, SCIM, audit log pipeline, and the LangGraph agent runtime — stood up first. The boring stuff that kills enterprise projects when retrofitted later. AI copilot wired to real data on day ten."
+      },
+      {
+        step: "03",
+        title: "Sprint Delivery With Working Demos",
+        description: "Two-week sprints on staging. Enterprise stakeholders review real software every 14 days — not a Gantt chart. UAT signed before anything ships to production. LangSmith evals catch AI regressions before release."
+      },
+      {
+        step: "04",
+        title: "Launch, Observability, 30-Day Hypercare",
+        description: "Blue-green deploy, OpenTelemetry observability, runbooks, on-call handoff, and eval dashboards. 30 days hypercare with sev-1 response under one hour. Retainer available for ongoing ops and AI tuning."
+      }
     ],
     stats: [
-      { value: "40+", label: "Enterprise Platforms Shipped to Production" },
-      { value: "99.9%", label: "Uptime SLA — Battle-Tested" },
-      { value: "14 wks", label: "Average MVP With AI Features Live" },
-      { value: "88%", label: "Enterprises Piloting AI Agents (Deloitte)" },
+      {
+        value: "40+",
+        label: "Enterprise Software Platforms Shipped"
+      },
+      {
+        value: "99.9%",
+        label: "Uptime SLA — Battle-Tested"
+      },
+      {
+        value: "14 wks",
+        label: "Average MVP With AI Features Live"
+      },
+      {
+        value: "88%",
+        label: "Enterprises Piloting AI Agents (Deloitte)"
+      }
     ],
     services: [
-      { title: "Multi-Tenant SaaS With AI Copilot in the Product", description: "Row-level tenant isolation, Stripe billing, feature flags, usage metering — and an AI copilot inside the product that draft-writes, summarises, and automates workflows for every tenant. Scales from first customer to ten thousand without rewrite.", tags: ["PostgreSQL RLS", "Stripe", "OpenAI", "Vercel AI SDK"] },
-      { title: "Agentic Workflow Platforms on LangGraph and CrewAI", description: "LangGraph state machines and CrewAI crews that own a workflow end-to-end — read, enrich, decide, act, log. Human-in-the-loop gates on high-stakes steps. Eval harness with LangSmith. Not another chatbot widget — autonomous operations.", tags: ["LangGraph", "CrewAI", "LangSmith", "n8n"] },
-      { title: "Custom ERP Modernised With AI Agents", description: "Inventory, procurement, finance, production unified on one platform with AI agents that draft purchase orders, reconcile invoices, and flag anomalies. Module-by-module parallel-run against your legacy SAP or Tally until signed cutover.", tags: ["Custom ERP", "SAP Integration", "Tally", "LangGraph"] },
-      { title: "Sales and Service CRM With AI Copilots", description: "Pipeline, contacts, ticketing, forecasting with AI copilots that summarise calls, draft follow-ups, qualify leads, and deflect tier-one tickets. Native WhatsApp, email, and voice integrations. No Salesforce tax, full source code ownership.", tags: ["Pipeline", "OpenAI", "WhatsApp API", "Twilio"] },
-      { title: "RAG Knowledge Bases and Reporting AI", description: "Enterprise search with hybrid retrieval, re-ranking, forced citations, and row-level security. Self-serve BI where users ask questions in English and get governed answers from production data. Metabase and Superset embedded where needed.", tags: ["LlamaIndex", "Pinecone", "pgvector", "Metabase"] },
-      { title: "Legacy Migration and API Integration", description: "Migrate off Salesforce, NetSuite, legacy ERP, or mainframe with parallel-run and data reconciliation. REST, GraphQL, Kafka, webhooks. Anti-corruption layer keeps new AI-native code clean while legacy integrations keep shipping value.", tags: ["Migration", "GraphQL", "Kafka", "SAP"] },
+      {
+        title: "Custom Enterprise Software With AI Copilots",
+        description: "ERP, CRM, dashboards, approval engines, internal portals, and reporting systems with AI copilots that draft, summarise, reconcile, classify, and automate work across departments. Built for permissions, auditability, and scale.",
+        tags: [
+          "ERP",
+          "CRM",
+          "OpenAI",
+          "Audit Logs"
+        ]
+      },
+      {
+        title: "Agentic Workflow Platforms on LangGraph and CrewAI",
+        description: "LangGraph state machines and CrewAI crews that own a workflow end-to-end — read, enrich, decide, act, log. Human-in-the-loop gates on high-stakes steps. Eval harness with LangSmith. Not another chatbot widget — autonomous operations.",
+        tags: [
+          "LangGraph",
+          "CrewAI",
+          "LangSmith",
+          "n8n"
+        ]
+      },
+      {
+        title: "Custom ERP Modernized With AI Agents",
+        description: "Inventory, procurement, finance, production, and approvals unified on one platform with AI agents that draft purchase orders, reconcile invoices, and flag anomalies. Module-by-module parallel-run against your legacy SAP or Tally until signed cutover.",
+        tags: [
+          "Custom ERP",
+          "SAP Integration",
+          "Tally",
+          "LangGraph"
+        ]
+      },
+      {
+        title: "Sales and Service CRM With AI Copilots",
+        description: "Pipeline, contacts, ticketing, forecasting with AI copilots that summarise calls, draft follow-ups, qualify leads, and deflect tier-one tickets. Native WhatsApp, email, and voice integrations. No Salesforce tax, full source code ownership.",
+        tags: [
+          "Pipeline",
+          "OpenAI",
+          "WhatsApp API",
+          "Twilio"
+        ]
+      },
+      {
+        title: "RAG Knowledge Bases and Reporting AI",
+        description: "Enterprise search with hybrid retrieval, re-ranking, forced citations, and row-level security. Self-serve BI where users ask questions in English and get governed answers from production data. Metabase and Superset embedded where needed.",
+        tags: [
+          "LlamaIndex",
+          "Pinecone",
+          "pgvector",
+          "Metabase"
+        ]
+      },
+      {
+        title: "Legacy Migration and API Integration",
+        description: "Migrate off Salesforce, NetSuite, legacy ERP, or mainframe with parallel-run and data reconciliation. REST, GraphQL, Kafka, webhooks. Anti-corruption layer keeps new AI-native code clean while legacy integrations keep shipping value.",
+        tags: [
+          "Migration",
+          "GraphQL",
+          "Kafka",
+          "SAP"
+        ]
+      }
     ],
     uspHeadlines: {
       direct: "Senior enterprise architect on the first call — not an account manager with a capability deck. Scope, risks, and AI-feature gaps named before any contract is discussed.",
       ai: "LangGraph agents, LangSmith evals, and the latest LLMs copilots inside the product from sprint one. Human-in-the-loop gates, forced citations, and eval thresholds in the contract. Production AI — not a POC that rots in QA.",
-      cost: "Full source code, AI prompts, eval sets, and model weights yours on day one. No per-seat SaaS markup forever. No vendor lock-in. Run on OpenAI today, swap to private Llama in your VPC tomorrow — same codebase.",
+      cost: "Full source code, AI prompts, eval sets, and model weights yours on day one. No per-seat SaaS markup forever. No vendor lock-in. Run on OpenAI today, swap to private Llama in your VPC tomorrow — same codebase."
     },
     faq: [
-      { q: "Why is my 2020 multi-tenant SaaS stack getting replaced?", a: "Enterprise buyers in 2026 expect AI copilots inside the product, agent-driven automation on core workflows, and RAG search on their data — by default. A multi-tenant stack without these features now looks like a 2015 product to your buyer committee. 88% of enterprises are piloting AI agents (Deloitte), and the ones that don't have them lose renewals." },
-      { q: "Can AI agents be trusted inside an enterprise SaaS for real customers?", a: "Yes, with the right architecture. LangGraph state machines with typed tool schemas, forced citations on factual answers, human-in-the-loop gates on high-stakes actions, output validation schemas that fail closed, and LangSmith eval suites that block release if hallucination rate or task-success drops below contracted thresholds." },
-      { q: "Do you support SOC 2, SSO, SCIM, GDPR, and DPDP?", a: "Yes — standard on every enterprise build. Okta, Azure AD, Google Workspace, OneLogin, custom SAML IdPs. SCIM user provisioning. SOC 2 Type II-ready architecture with audit logs, encryption at rest and in transit, and multi-region residency. DPAs and BAAs signed before first call." },
-      { q: "Will our prompts, embeddings, and customer data train someone else's model?", a: "No. Your content, embeddings, prompts, fine-tuned weights, and chat logs stay in your infrastructure. No clause letting us reuse your data for other clients. Private deploy available on OpenAI Enterprise, Azure OpenAI, or Llama in your VPC for regulated industries." },
-      { q: "What happens when GPT-5 or Claude 4 ships and changes our agent behaviour?", a: "We build model-agnostic with provider abstractions and LangSmith eval suites. New model ships, we re-run evals — swap if it scores better, roll back if it regresses. Same code runs across OpenAI, Anthropic, Google models, and on-prem Llama. Model upgrades are a planned release, not a fire drill." },
-      { q: "Can you migrate us off Salesforce, NetSuite, or a legacy ERP?", a: "Yes. Parallel-run pattern: new AI-native platform runs alongside the legacy system for 30-90 days with data reconciliation before cutover. We've migrated SAP, Tally, NetSuite, and custom legacy ERPs. Zero downtime where it matters, phased cutover where the org needs it." },
+      {
+        q: "Why is my 2020 multi-tenant SaaS stack getting replaced?",
+        a: "Enterprise buyers in 2026 expect AI copilots inside the product, agent-driven automation on core workflows, and RAG search on their data — by default. A multi-tenant stack without these features now looks like a 2015 product to your buyer committee. 88% of enterprises are piloting AI agents (Deloitte), and the ones that don't have them lose renewals."
+      },
+      {
+        q: "Can AI agents be trusted inside an enterprise SaaS for real customers?",
+        a: "Yes, with the right architecture. LangGraph state machines with typed tool schemas, forced citations on factual answers, human-in-the-loop gates on high-stakes actions, output validation schemas that fail closed, and LangSmith eval suites that block release if hallucination rate or task-success drops below contracted thresholds."
+      },
+      {
+        q: "Do you support SOC 2, SSO, SCIM, GDPR, and DPDP?",
+        a: "Yes — standard on every enterprise build. Okta, Azure AD, Google Workspace, OneLogin, custom SAML IdPs. SCIM user provisioning. SOC 2 Type II-ready architecture with audit logs, encryption at rest and in transit, and multi-region residency. DPAs and BAAs signed before first call."
+      },
+      {
+        q: "Will our prompts, embeddings, and customer data train someone else's model?",
+        a: "No. Your content, embeddings, prompts, fine-tuned weights, and chat logs stay in your infrastructure. No clause letting us reuse your data for other clients. Private deploy available on OpenAI Enterprise, Azure OpenAI, or Llama in your VPC for regulated industries."
+      },
+      {
+        q: "What happens when GPT-5 or Claude 4 ships and changes our agent behaviour?",
+        a: "We build model-agnostic with provider abstractions and LangSmith eval suites. New model ships, we re-run evals — swap if it scores better, roll back if it regresses. Same code runs across OpenAI, Anthropic, Google models, and on-prem Llama. Model upgrades are a planned release, not a fire drill."
+      },
+      {
+        q: "Can you migrate us off Salesforce, NetSuite, or a legacy ERP?",
+        a: "Yes. Parallel-run pattern: new AI-native platform runs alongside the legacy system for 30-90 days with data reconciliation before cutover. We've migrated SAP, Tally, NetSuite, and custom legacy ERPs. Zero downtime where it matters, phased cutover where the org needs it."
+      }
     ],
     testimonials: [
-      { quote: "14 weeks to multi-tenant SaaS with SSO, SCIM, audit logs, and a the latest LLMs copilot inside the product. Previous vendor quoted 40 weeks for a stack without any AI. Enterprise customers signed without a security escalation — the AI copilot closed the last two deals on its own.", author: "J.K.", role: "CTO, B2B SaaS (USA)", rating: 5 },
-      { quote: "Migrated our 12-year-old ERP to an AI-native platform with zero downtime. LangGraph agents now reconcile invoices and flag anomalies overnight — ops team stopped chasing spreadsheets. Parallel-run cutover was the smoothest six weeks of my career.", author: "M.V.", role: "COO, Manufacturing (Pune)", rating: 5 },
-      { quote: "Their architecture call named a multi-region design flaw we were about to ship. Added LangSmith evals on every agent deploy — task-success holds above 94% across three model upgrades. Worth the engagement before we wrote a single line of code.", author: "R.C.", role: "VP Engineering, FinTech (Bangalore)", rating: 5 },
+      {
+        quote: "14 weeks to multi-tenant SaaS with SSO, SCIM, audit logs, and a the latest LLMs copilot inside the product. Previous vendor quoted 40 weeks for a stack without any AI. Enterprise customers signed without a security escalation — the AI copilot closed the last two deals on its own.",
+        author: "J.K.",
+        role: "CTO, B2B SaaS (USA)",
+        rating: 5
+      },
+      {
+        quote: "Migrated our 12-year-old ERP to an AI-native platform with zero downtime. LangGraph agents now reconcile invoices and flag anomalies overnight — ops team stopped chasing spreadsheets. Parallel-run cutover was the smoothest six weeks of my career.",
+        author: "M.V.",
+        role: "COO, Manufacturing (Pune)",
+        rating: 5
+      },
+      {
+        quote: "Their architecture call named a multi-region design flaw we were about to ship. Added LangSmith evals on every agent deploy — task-success holds above 94% across three model upgrades. Worth the engagement before we wrote a single line of code.",
+        author: "R.C.",
+        role: "VP Engineering, FinTech (Bangalore)",
+        rating: 5
+      }
     ],
     ctaSection: {
-      headline: "Your 2020 SaaS Stack Is a Renewal Risk. AI-Native Is the Replacement.",
-      subtitle: "Senior SaaS architect calls you in 2 hours. Architecture and AI-gap review the same day. LangGraph agents in the product from sprint one. SOC 2, SSO, SCIM by default.",
-      buttonText: "Talk to SaaS Architect",
+      headline: "Your Legacy Enterprise Software Is Leaking Time. AI-First Systems Replace the Manual Work.",
+      subtitle: "Senior enterprise architect calls you in 2 hours. Architecture and AI-gap review the same day. ERP, CRM, workflow automation, dashboards, SSO, audit logs, and source ownership by default.",
+      buttonText: "Talk to Enterprise Architect"
     },
-    targetKeywords: ["enterprise software development", "enterprise saas development", "saas development company", "saas product development", "erp development company", "crm development company", "custom erp software", "enterprise software solutions", "multi tenant saas development", "enterprise application development"],
-  },
-  {
-    slug: "hire-software-developers-india",
-    primaryKeyword: "Hire Software Developers India",
-    adGroupMatch: "Hire Developers India",
-    theme: { heroGradient: "linear-gradient(135deg, #047857, #059669, #065f46)", ctaGradient: "linear-gradient(135deg, #047857, #059669, #065f46)", urgencyColor: "#059669", accent: "emerald", icon: "👨‍💻" },
-    form: { title: "Hire Senior Developers in 7 Days", subtitle: "Top 3% vetted engineers. 3 CVs within 48 hours. NDA on day zero.", projectTypes: ["Dedicated Developer (Full-Time)", "Squad-as-a-Service (3-8 Engineers)", "Staff Augmentation", "CTO-as-a-Service", "QA & DevOps Pod", "AI/ML Specialist", "Other"], placeholder: "What role do you need, tech stack, and timezone overlap?", buttonText: "Get 3 Vetted CVs Free", formType: "hire-developers" },
-    meta: {
-      title: "Hire Software Developers India | AI-Native, 7-Day SLA | RDMI",
-      description: "Legacy outsourcing shops still ship juniors. We place AI-native senior engineers in 7 days — top 3% vetted, 48-hour replacement, NDA day zero. No recruiter layer.",
-    },
-    hero: {
-      badge: "👨‍💻 Hire Senior AI-Native Developers in 7 Days",
-      h1: "Hire Senior AI-Native Developers From India in 7 Days — Top 3% Vetted",
-      subtitle: "Top 3% senior engineers — not trainees learning on your project. Fluent with modern AI tooling for 2-3x higher output. 7-day SLA from brief to kickoff. 48-hour replacement. Direct Slack, direct standups, no recruiter markup.",
-      cta1: "Get 3 Vetted CVs Free",
-      cta2: "See How Vetting Works",
-      trustPoints: [
-        "3 vetted CVs in 48 hours — you interview the engineer directly",
-        "Top 3% pass rate — 1 in 33 applicants",
-        "48-hour replacement if the fit is off",
-        "4-hour timezone overlap with US, EU, or UAE",
-      ],
-    },
-    images: {
-      hero: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80",
-      process: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
-      team: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80",
-      services: [
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80",
-        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80",
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
-      ],
-      portfolio: [
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
-        "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
-      ],
-      cta: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80",
-    },
-    process: [
-      { step: "01", title: "Senior Engineer Scopes the Role — Within 24 Hours", description: "You send the role, stack, seniority, and timezone. A senior engineer (not a recruiter, not HR) reads the brief and scopes the fit the same day." },
-      { step: "02", title: "Three Pre-Vetted CVs in 48 Hours", description: "Matching stack, recent production work, references already checked. Interview transcripts and take-home results attached so you skip the filtering round." },
-      { step: "03", title: "You Interview Directly — Inside 48 Hours", description: "No gatekeeping, no account manager paraphrasing. We coordinate the call across timezones, you decide within 48 hours of the interview." },
-      { step: "04", title: "Kickoff on Day 7 — Engineer Inside Your Slack", description: "NDA and contract signed day zero. Engineer joins your Slack, Jira, GitHub. Daily standups in your timezone from the first morning." },
-    ],
-    stats: [
-      { value: "7 days", label: "Brief to Kickoff SLA" },
-      { value: "Top 3%", label: "Engineer Pass Rate" },
-      { value: "48 hrs", label: "Replacement if Fit Is Off" },
-      { value: "200+", label: "Senior Engineers Placed" },
-    ],
-    services: [
-      { title: "Dedicated Senior Engineer — Full-Time on Your Product", description: "One senior engineer embedded in your Slack, standups, git flow, and deploy pipeline. Reports to your PM, not ours. Full IP and code ownership from day one.", tags: ["Full-Time", "Embedded", "Your Stack", "Your Pipeline"] },
-      { title: "Squad-as-a-Service — 3 to 8 Engineers That Self-Manage", description: "Tech lead, frontend, backend, DevOps in a single pod. Ships features, not tickets. Right when you need output, not another hiring project to manage.", tags: ["Pod", "Tech Lead", "Full Stack", "Self-Managing"] },
-      { title: "Staff Augmentation Inside Your Team", description: "Engineers plug into your existing rituals, structure, and decision-making. Flex up or down monthly. No parallel hierarchy, no handoff tax.", tags: ["Embedded", "Flexible", "Monthly Flex", "Your Team"] },
-      { title: "Fractional CTO for Pre-Series-A Founders", description: "Architecture calls, hiring plan, vendor reviews, technical diligence. 10–20 hours a week until your full-time CTO lands. No strategy decks — real engineering leadership.", tags: ["Fractional", "Architecture", "Hiring", "Diligence"] },
-      { title: "QA and DevOps Pods That Harden the Stack", description: "E2E testing, CI/CD pipelines, cloud infra, observability, incident response. Plug in, harden, hand back. The work your product engineers shouldn't be doing anyway.", tags: ["QA Automation", "CI/CD", "Cloud Infra", "Observability"] },
-      { title: "AI and ML Specialist Engineers — The Scarce Kind", description: "LLM engineers, MLOps, RAG architects, voice AI specialists, fine-tuning experts. Pre-vetted on real production work — not YouTube tutorials or a weekend hackathon.", tags: ["LLM", "MLOps", "RAG", "Voice AI", "Fine-Tuning"] },
-    ],
-    uspHeadlines: {
-      direct: "You interview the engineer yourself — no gatekeeping, no account manager filtering the signal. Once the match is made, we step out of the way.",
-      cost: "No recruiter markup, no agency middleware, no junior swap after month one. What you interview is who ships — for as long as the engagement runs.",
-      ai: "Every engineer on our roster is fluent with modern AI tooling — that's how output per engineer is 2-3x a legacy outsourcing shop. Senior rates, AI-era velocity.",
-    },
-    faq: [
-      { q: "Do your engineers actually use AI every day or just list it on a resume?", a: "Yes — AI tooling is mandatory and audited. We measure delivery velocity with and without it. Engineers who don't ship fluently with modern AI tools aren't in the top 3%. You can ask for anonymized metrics before signing." },
-      { q: "How is this different from the outsourcing shop that sent us juniors last time?", a: "No recruiter layer, no keyword-matching HR, no junior swap after the kickoff. You interview the engineer directly. 1 in 33 applicants passes vetting. The engineer you meet is the engineer who ships." },
-      { q: "Will the engineer still be relevant when the next GPT model ships?", a: "Our engineers work on model-agnostic patterns (LangGraph, provider abstractions, eval harnesses). Model upgrades are a planned release in the engineer's calendar, not a panic. Their skill is shipping production AI — not wrapping one specific API." },
-      { q: "Who owns the IP, source code, and AI prompts?", a: "You, 100%, from day one. IP assignment clause is in every contract. The engineer commits directly to your private repos. Prompts, fine-tuned weights, design assets — all yours. No retained rights, no background licensing, no exit friction." },
-      { q: "How do you prevent a junior bait-and-switch in month two?", a: "Named engineer in the contract. Photo, GitHub handle, transcript. If that engineer leaves for any reason, replacement inside 48 hours with your approval — not ours. We also offer monthly engineer-performance reviews so problems surface early." },
-      { q: "Can we convert to a direct hire if it works out?", a: "Yes. After 12 months you can convert with a flat one-time fee. No markup games, no non-competes preventing the hire. Done dozens of times. We want successful outcomes, not locked-in rentals." },
-    ],
-    testimonials: [
-      { quote: "Three outsourcing shops before RDMI, three rounds of juniors sold to us as seniors. The engineer they placed ships features end-to-end, uses modern AI tooling fluently, and debates architecture instead of waiting for tickets. Two years in, still shipping.", author: "L.S.", role: "Founder, YC-backed SaaS", rating: 5 },
-      { quote: "Senior React + Node with 4-hour EST overlap. First CV day 2, interview day 3, kickoff day 6. That velocity rewrote how we think about hiring entirely — our recruiter search had been running 90 days.", author: "T.B.", role: "Head of Product, MarTech", rating: 5 },
-      { quote: "The replacement guarantee is real. First engineer was a strong technical fit but wrong culture fit — replaced inside 48 hours, no friction. The second has been with us 18 months and now mentors two of our own hires.", author: "K.O.", role: "CTO, HealthTech", rating: 5 },
-    ],
-    ctaSection: { headline: "Stop Hiring Pre-AI Engineers at 2026 Prices.", subtitle: "Send us the role, stack, and timezone. 3 vetted AI-native CVs in 48 hours. Kickoff in 7 days. Replacement in 48 hours if the fit is off.", buttonText: "Get 3 Vetted CVs Free" },
-    targetKeywords: ["hire software developers india", "hire dedicated developers", "hire remote developers india", "offshore software development", "offshore software development company", "outsourcing software development", "software development outsourcing", "hire react developers india", "hire node developers india", "hire full stack developers india", "staff augmentation india"],
-  },
-  {
-    slug: "ai-chatbot-development",
-    primaryKeyword: "AI Chatbot Development",
-    adGroupMatch: "AI Chatbot Development",
-    theme: { heroGradient: "linear-gradient(135deg, #0284c7, #0ea5e9, #0369a1)", ctaGradient: "linear-gradient(135deg, #0284c7, #0ea5e9, #0369a1)", urgencyColor: "#0284c7", accent: "sky", icon: "💬" },
-    form: { title: "Launch Your AI Chatbot in 14 Days", subtitle: "Senior chatbot engineer scopes your deployment in 45 minutes", projectTypes: ["Website Chatbot (RAG)", "WhatsApp Business Bot", "Lead-Qualification Bot", "Customer Support Bot", "Voice IVR Replacement", "Multi-Channel Bot", "Other"], placeholder: "Which channel should your chatbot live on and what should it do?", buttonText: "Talk to Chatbot Expert", formType: "ai-chatbot" },
-    meta: {
-      title: "AI Chatbot Development Company | RAG, WhatsApp & Voice — Live in 14 Days | RDMI",
-      description: "30%+ of high-intent buyers start their search in ChatGPT now — not Google. Ship a grounded RAG chatbot that deflects 60% of tickets in 14 days. WhatsApp, web, voice. Citations, not hallucinations.",
-    },
-    hero: {
-      badge: "💬 AI Chatbots Live in 14 Days — 60% Ticket Deflection",
-      h1: "AI Chatbots Live in 14 Days — Deflect 60% of Support Tickets",
-      subtitle: "Grounded RAG chatbots that answer with citations, escalate to humans when confidence drops, and speak 30+ languages. Live on your site, WhatsApp, or voice in 14 days. 60% ticket deflection benchmark — or we keep tuning free.",
-      cta1: "Talk to Chatbot Expert",
-      cta2: "See Chatbots We've Built",
-      trustPoints: ["60% ticket deflection benchmark at launch", "14-day production deployment average", "WhatsApp + Web + Slack + Voice channels", "30+ languages with auto-detection"],
-    },
-    images: {
-      hero: "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?w=1600&q=80",
-      process: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=1200&q=80",
-      team: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80",
-      services: [
-        "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80",
-        "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80",
-        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80",
-      ],
-      portfolio: [
-        "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=80",
-        "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=80",
-        "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=800&q=80",
-      ],
-      cta: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=1200&q=80",
-    },
-    process: [
-      { step: "01", title: "Content Audit + Intent Mapping — Within 2 Hours", description: "Senior chatbot engineer ingests your knowledge base, tickets, FAQs, product docs. Maps the 20 intents that cover 80% of queries. You leave with an intent model and eval dataset before a single prompt is written." },
-      { step: "02", title: "RAG Prototype in 3 Days", description: "Working chatbot answering real questions from your real data. You test it live. We tune retrieval, re-ranking, and prompts against your eval set until the deflection number clears your bar." },
-      { step: "03", title: "Channel Integration in 7–10 Days", description: "Deploy to website widget, WhatsApp Business, Slack, or voice. CRM / helpdesk integration (HubSpot, Zendesk, Intercom, Freshdesk) with full conversation context on escalation. Human handoff without missing a beat." },
-      { step: "04", title: "Launch + Keep Improving", description: "Production go-live with dashboards showing deflection rate, handoff triggers, and unanswered queries. Weekly tuning for 30 days. Retainer for ongoing intent additions and eval-driven improvement." },
-    ],
-    stats: [
-      { value: "60%", label: "Ticket Deflection Benchmark at Launch" },
-      { value: "14 days", label: "Production Launch Average" },
-      { value: "30+", label: "Languages Auto-Detected" },
-      { value: "30%+", label: "Buyers Starting in AI Search" },
-    ],
-    services: [
-      { title: "Website Chatbots Grounded in Your Content", description: "Trained on your site, product docs, and help centre. Answers with citations, routes complex queries to humans, captures leads, pushes to CRM. Embeddable widget or full-page interface. No template bots, no hallucinations.", tags: ["RAG", "Citations", "Lead Capture", "Widget SDK"] },
-      { title: "WhatsApp Business AI Chatbots That Convert", description: "Conversational AI on WhatsApp Business API — the preferred channel for India, Middle East, LATAM, SEA. Orders, bookings, support, payments. Integrates with your OMS/CRM via Twilio, Gupshup, or Meta Cloud.", tags: ["WhatsApp Business API", "Twilio", "Gupshup", "Meta Cloud"] },
-      { title: "Lead-Qualification Bots That 3x Form Completions", description: "Replaces inbound forms with a conversational qualifier. Asks smart questions, scores the lead, books a calendar slot, pushes enriched records to HubSpot or Salesforce. Typical result: 3x higher completion versus static forms.", tags: ["Conversational Forms", "Lead Scoring", "Calendar Booking", "CRM Push"] },
-      { title: "Customer Support Bots That Deflect 60% on Day One", description: "Tier-1 autonomous, tier-2 escalated with full context. Zendesk, Intercom, Freshdesk integrated. Sentiment detection for urgent escalation. Deflection and handle-time benchmarks written into the contract.", tags: ["Zendesk", "Intercom", "Freshdesk", "Sentiment Analysis"] },
-      { title: "Voice IVR Replacement With Natural Conversation", description: "Swap touch-tone IVR for a voice agent on OpenAI Realtime or Deepgram + ElevenLabs. Sub-second latency, interruption handling, warm human handoff. Callers stop pressing 1 for English.", tags: ["OpenAI Realtime", "Deepgram", "ElevenLabs", "Twilio Voice"] },
-      { title: "Deep CRM, Helpdesk & OMS Integration", description: "Not just a webhook. Agent reads and writes to your systems. Conversations create tickets, update contacts, book calendars, trigger workflows. HubSpot, Salesforce, Zendesk, Calendly — custom APIs in days.", tags: ["HubSpot", "Salesforce", "Zendesk", "Calendly", "Custom APIs"] },
-    ],
-    uspHeadlines: {
-      direct: "Your senior chatbot engineer is on the call in 2 hours — the person who tunes retrieval and prompts, not a sales rep reading a feature list. The same engineer ships your production deployment.",
-      cost: "You own the source code, the prompts, the eval sets, and the training data. No per-conversation markup, no vendor lock-in, no pricing surprises as volume scales.",
-      ai: "Grounded RAG with forced citations and eval suites — not template bots that hallucinate. We ship deflection benchmarks in the contract and keep tuning until the numbers clear.",
-    },
-    faq: [
-      { q: "How is this different from ChatGPT or building on OpenAI directly?", a: "Raw GPT hallucinates on your specific business. Production chatbots need retrieval, citations, intent routing, eval suites, and CRM integration. That's the 90% of work that decides whether a bot deflects 60% of tickets or frustrates your customers. We build that layer — you own it." },
-      { q: "What happens if the underlying LLM (GPT-5, Claude 4) ships and breaks my bot?", a: "Model-agnostic by design. Every chatbot has an eval suite — when a new model ships we re-run it, swap if it scores better, roll back if it regresses. Same code runs across OpenAI, Anthropic, Google models, Llama. No rewrite, no vendor lock-in." },
-      { q: "Can chatbots actually be trusted in production without hallucinations?", a: "Yes, with grounded RAG. Forced citations, typed outputs, confidence scoring, and human handoff on low confidence. Hallucinations drop to near-zero when the bot is forced to cite sources from your knowledge base. Eval suites fail the build above a contracted threshold." },
-      { q: "How do you measure chatbot success — not impressions, real outcomes?", a: "Deflection rate (tickets the bot resolved without human), CSAT on bot-handled conversations, handoff trigger accuracy, unanswered query rate, and latency p95. Dashboards in LangSmith or your analytics. Benchmarks written into the contract." },
-      { q: "Who owns the prompts, training data, and model weights?", a: "You do. Full source code, prompts, intent model, eval sets, and any fine-tuned weights handed over on payment. Your conversation data never trains a shared model. NDA signed before the first call." },
-      { q: "On-prem or private LLM for regulated data (HIPAA, DPDP, GDPR)?", a: "Yes. Llama or Mistral in your VPC, PII redaction before any LLM call, configurable retention, audit logs. GDPR, HIPAA, and DPDP Act-aligned deployments available. Same orchestration code — no rewrite." },
-    ],
-    testimonials: [
-      { quote: "Deflection hit 63% in month one. Our support team stopped drowning in password resets and started handling real escalations. The RAG with citations was the difference — customers trusted the answers.", author: "H.P.", role: "Head of CX, D2C Brand", rating: 5 },
-      { quote: "Shipped a WhatsApp bot for Middle East customers in 11 days. Arabic + English code-switching, booking handoff, full CRM integration. Conversion on WhatsApp is now 4x our website.", author: "F.A.", role: "CMO, Travel Agency (Dubai)", rating: 5 },
-      { quote: "Our internal bot hallucinated constantly. RDMI rebuilt it with proper RAG and an eval suite. Hallucination dropped to near zero. The eval-first approach was the whole game.", author: "N.S.", role: "VP Engineering, LegalTech", rating: 5 },
-    ],
-    ctaSection: { headline: "Ship a Chatbot That Actually Deflects Tickets", subtitle: "Talk direct to a senior chatbot engineer in 2 hours. RAG prototype in 3 days. Production in 14 days. 60% deflection benchmark or we keep tuning free.", buttonText: "Talk to Chatbot Expert" },
-    targetKeywords: ["ai chatbot development", "ai chatbot development company", "custom ai chatbot development", "chatbot development services", "whatsapp ai chatbot", "ai chatbot for business", "ai chatbot integration", "rag chatbot development", "website chatbot development", "customer support chatbot"],
-  },
-  {
-    slug: "ai-automation-workflow",
-    primaryKeyword: "AI Workflow Automation",
-    adGroupMatch: "AI Workflow Automation",
-    theme: { heroGradient: "linear-gradient(135deg, #b45309, #d97706, #92400e)", ctaGradient: "linear-gradient(135deg, #b45309, #d97706, #92400e)", urgencyColor: "#d97706", accent: "amber", icon: "⚙️" },
-    form: { title: "Automate 40+ Hours of Manual Work Per Week", subtitle: "Automation engineer audits your workflows and finds the top 3 opportunities", projectTypes: ["Document & Invoice OCR", "Email & Inbox Triage", "Sales Pipeline Automation", "Finance & Reconciliation", "HR Onboarding Workflows", "Custom AI Pipeline", "Other"], placeholder: "Which repetitive workflow wastes the most time in your business?", buttonText: "Talk to Automation Expert", formType: "ai-automation" },
-    meta: {
-      title: "AI Workflow Automation Services | n8n, Temporal, LangChain — ROI in 6 Weeks | RDMI",
-      description: "74% of enterprises plan agentic AI within 2 years. Only 21% have governance (Deloitte). Ship production workflow automation in 6 weeks. n8n, Temporal, LangChain. Human-in-the-loop where it matters.",
-    },
-    hero: {
-      badge: "⚙️ AI Workflow Automation — Save 40+ Hours of Manual Work/Week",
-      h1: "AI Workflow Automation That Saves 40+ Hours of Manual Work Per Week",
-      subtitle: "Document processing, email triage, reconciliation, HR onboarding — automated end-to-end with AI in the loop and human approval gates where they matter. n8n, Temporal, custom orchestration. 100+ workflows live. 6-week ROI on most deployments.",
-      cta1: "Talk to Automation Expert",
-      cta2: "See Workflows We've Built",
-      trustPoints: ["100+ production workflows shipped", "40+ hours saved per workflow per week", "6-week average ROI payback", "n8n + Temporal + LangChain native"],
-    },
-    images: {
-      hero: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1600&q=80",
-      process: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80",
-      team: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80",
-      services: [
-        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80",
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      ],
-      portfolio: [
-        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
-        "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80",
-        "https://images.unsplash.com/photo-1507208773393-40d9fc670acf?w=800&q=80",
-      ],
-      cta: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80",
-    },
-    process: [
-      { step: "01", title: "Workflow Audit — Within 2 Hours", description: "Senior automation engineer maps your repetitive processes, identifies the top 3 ROI opportunities, and delivers a prioritised roadmap. You leave with a workflow map and an ROI model — not a pitch deck." },
-      { step: "02", title: "Working Prototype in 1 Week", description: "Real automation running on your real data in a sandbox. You validate outputs against manual work before touching production. Human approval gates installed at every high-stakes step." },
-      { step: "03", title: "Production Rollout in 4–6 Weeks", description: "Deploy with monitoring, error recovery, audit logs, escalation rules. Integrated with your CRM, ERP, email, file drops. Parallel-run against manual process until accuracy benchmarks clear." },
-      { step: "04", title: "Measure + Keep Improving", description: "KPI dashboard showing hours saved, error rate, human-override rate. Weekly tuning for 30 days. Retainer for ongoing workflow additions — most clients add 2–3 per quarter once they see the ROI." },
-    ],
-    stats: [
-      { value: "40+", label: "Hours Saved Per Workflow Per Week" },
-      { value: "90%", label: "Faster End-to-End Processing" },
-      { value: "100+", label: "Production Workflows Shipped" },
-      { value: "6 wks", label: "Average ROI Payback" },
-    ],
-    services: [
-      { title: "Document & Invoice OCR Automation With 98% Accuracy", description: "LLM-powered OCR ingests invoices, POs, contracts, KYC docs, medical records. Handles messy scans, multi-page forms, handwritten notes. Clean structured data pushed to your ERP — not a dashboard screenshot.", tags: ["LLM OCR", "Textract", "DocumentAI", "ERP Integration"] },
-      { title: "Email & Inbox Triage That Replaces an SDR", description: "AI classifier reads inbound email, categorises by intent, drafts responses, routes to the right team, flags urgent items. Works on support@, sales@, and ops inboxes across Gmail, Outlook, custom servers.", tags: ["Gmail API", "Outlook Graph", "Intent Classification", "Auto-Draft"] },
-      { title: "Sales Pipeline Automation End-to-End", description: "Enrich leads, score them, draft personalised outreach, follow up on non-responses, log every touch to CRM. Replaces SDR grunt work so your sales team only talks to warm, qualified leads.", tags: ["Clearbit", "Apollo", "HubSpot", "Lead Scoring"] },
-      { title: "Finance & Reconciliation Bots Cutting Close From 10 Days to 2", description: "Match payments to invoices, reconcile bank statements, flag exceptions, auto-generate journal entries. Integrated with Tally, QuickBooks, Xero, SAP. Month-end close drops 8 days on average.", tags: ["Tally", "QuickBooks", "Xero", "Reconciliation"] },
-      { title: "HR Onboarding Workflows From Offer to Day One", description: "Background check trigger, contract generation, tool provisioning (Slack/GitHub/Jira), welcome email series, first-week scheduling. HR manual effort drops 70%, candidate experience goes up.", tags: ["Contract Gen", "Provisioning", "Email Automation", "Calendar"] },
-      { title: "Custom AI Pipelines That Zapier Can't Handle", description: "Multi-step workflows with AI classification, enrichment, human review, downstream action, audit notification. Built with n8n, Temporal, or custom orchestration for reliability at enterprise scale.", tags: ["n8n", "Temporal", "Custom Orchestration", "Reliability"] },
-    ],
-    uspHeadlines: {
-      direct: "Your senior automation engineer audits your workflows on the first call — not a salesperson with a deck. You walk away with a prioritised automation roadmap whether you hire us or not.",
-      cost: "Full source code and workflow definitions are yours. Runs on your infrastructure. No per-execution markup, no vendor lock-in to n8n, Zapier, or Make. You own the automation, forever.",
-      ai: "We use AI where it adds value (classification, extraction, drafting) and deterministic code where it matters (reconciliation, routing, approvals). Not everything needs an LLM — we pick per step.",
-    },
-    faq: [
-      { q: "How is this different from Zapier, Make, or building on ChatGPT directly?", a: "Zapier and Make are great for simple linear workflows. Custom wins when you need AI decisions mid-workflow, human approval gates, complex error handling, high-volume processing, regulatory auditability, or integration with systems those platforms don't support. We use Zapier/Make where it fits — and build custom where it doesn't." },
-      { q: "What happens if the underlying LLM (GPT-5, Claude 4) ships and breaks my workflow?", a: "Model-agnostic by design. Every workflow has an eval suite — when a new model ships we re-run it, swap if better, roll back if worse. Same LangChain code runs across OpenAI, Anthropic, Google models, Llama. No rewrite, no vendor lock-in." },
-      { q: "Can AI workflows actually be trusted in production without hallucinations?", a: "Yes, with the right architecture. Typed outputs, output validation schemas, human-in-the-loop on high-stakes decisions, eval suites that fail the build on regressions. For critical steps (reconciliation, approvals), we use deterministic code — not LLMs." },
-      { q: "How do you measure automation success — not impressions, real outcomes?", a: "Hours saved per week, error rate versus manual baseline, human-override rate, cost per run, latency p95. Dashboards in LangSmith or your BI tool. ROI modelled before build, tracked after — benchmarks written into the contract." },
-      { q: "Who owns the code, workflow definitions, and training data?", a: "You do. Full source code, workflow definitions, prompts, eval sets, and any fine-tuned weights handed over on payment. Your data never leaves your environment under private deploy. NDA signed before first call." },
-      { q: "Can humans still approve critical steps?", a: "Yes — and they should. We install human approval gates at every step with financial, legal, or customer-facing impact. The AI drafts, the human approves with one click. AI speed plus human judgement where it matters." },
-    ],
-    testimonials: [
-      { quote: "Finance team spent 10 days on month-end close. RDMI built a reconciliation pipeline that does it in 2. Saved 8 days per month and errors dropped to near-zero. Paid for itself in 40 days.", author: "A.M.", role: "CFO, Mid-Market SaaS", rating: 5 },
-      { quote: "Invoice OCR processes 1,200 invoices a day at 98% accuracy. AP team went from 4 FTEs to 1, and the three moved to higher-value work instead of being let go. That was the whole point.", author: "P.G.", role: "Head of Operations, Logistics", rating: 5 },
-      { quote: "They audited our workflows and found 7 automation opportunities I hadn't considered. Shipped the top 3 in 8 weeks, 140+ hours/week saved across ops and finance. ROI model was accurate to within 12%.", author: "S.J.", role: "COO, InsurTech", rating: 5 },
-    ],
-    ctaSection: { headline: "Stop Paying Humans to Do Robot Work", subtitle: "Talk direct to a senior automation engineer in 2 hours. They'll find the top 3 workflows in your business worth automating — no sales pitch.", buttonText: "Talk to Automation Expert" },
-    targetKeywords: ["ai automation services", "workflow automation services", "business process automation", "ai workflow automation", "ai process automation", "intelligent process automation", "workflow automation india", "robotic process automation", "document automation ai", "invoice automation ai", "finance automation ai"],
-  },
-  {
-    slug: "seo-services-ai-geo",
-    primaryKeyword: "SEO Services with AI & GEO",
-    adGroupMatch: "SEO Services AI GEO",
-    theme: { heroGradient: "linear-gradient(135deg, #e11d48, #c026d3, #be123c)", ctaGradient: "linear-gradient(135deg, #e11d48, #c026d3, #be123c)", urgencyColor: "#e11d48", accent: "rose", icon: "🔍" },
-    form: { title: "Talk to a Senior SEO Expert", subtitle: "Senior SEO strategist calls you in 2 hours — not a salesperson", projectTypes: ["Rank on Google", "Rank on ChatGPT / Perplexity / Gemini", "Technical SEO Audit", "Content & Keyword Strategy", "Link Building & Digital PR", "Local / GMB Ranking", "Other"], placeholder: "Which keywords do you want to rank for on Google or AI search?", buttonText: "Talk to SEO Expert", formType: "seo-geo" },
-    meta: {
-      title: "SEO Services India — Rank on Google + ChatGPT + Perplexity | RDMI",
-      description: "Rank on Google AND ChatGPT, Perplexity, Claude, and Gemini. Senior SEO expert calls you in 2 hours — not a salesperson. Month-to-month engagement, transparent reports, walk away anytime.",
-    },
-    hero: {
-      badge: "🔍 Rank on Google AND ChatGPT, Perplexity, Gemini",
-      h1: "SEO Services That Rank You on Google AND ChatGPT, Perplexity & Gemini",
-      subtitle: "Traditional SEO alone isn't enough anymore — AI search now sends 30%+ of high-intent buyers. We rank you on Google AND make sure ChatGPT, Perplexity, and Gemini cite your brand in their answers. Talk direct to a senior SEO expert, not a salesperson.",
-      cta1: "Talk to SEO Expert",
-      cta2: "See How We Rank on ChatGPT",
-      trustPoints: [
-        "Ranks on Google + ChatGPT + Perplexity + Gemini",
-        "Senior SEO expert calls in 2 hours — not a sales rep",
-        "Month-to-month engagement, walk away anytime",
-        "Transparent monthly report — real rankings, real traffic",
-      ],
-    },
-    images: {
-      hero: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80",
-      process: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
-      team: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
-      services: [
-        "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80",
-        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-      ],
-      portfolio: [
-        "https://images.unsplash.com/photo-1553830591-fddf9c6e5f1f?w=800&q=80",
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
-      ],
-      cta: "https://images.unsplash.com/photo-1553830591-fddf9c6e5f1f?w=1200&q=80",
-    },
-    process: [
-      { step: "01", title: "Free Expert Call — Real Strategy, Not a Sales Pitch", description: "Senior SEO expert calls you in 2 hours. We check your current Google rankings, scan your visibility on ChatGPT and Perplexity, and tell you exactly what's working and what isn't — on the call." },
-      { step: "02", title: "Strategy & KPI Lock", description: "Agree on target keywords, target AI models, traffic KPIs, and attribution model before any work starts. Clear ROI targets written into the engagement." },
-      { step: "03", title: "Monthly Execution Sprints", description: "Technical SEO, content production, GEO optimization, and authority link building shipped in monthly sprints with weekly standups and real-time dashboards." },
-      { step: "04", title: "Measure, Iterate, Scale", description: "Transparent monthly report with traffic, rankings, AI citations, and ROI calculation. Walk away at the end of any month — no lock-ins." },
-    ],
-    stats: [
-      { value: "30%+", label: "Search Traffic Now From AI Models" },
-      { value: "45+", label: "Brands Ranking in ChatGPT / Perplexity" },
-      { value: "4.2x", label: "Avg ROI on SEO Investments" },
-      { value: "90 days", label: "To Measurable Traffic Lift" },
-    ],
-    services: [
-      { title: "Generative Engine Optimization (GEO)", description: "Rank in ChatGPT, Perplexity, Claude, and Gemini answers. Entity graphs, FAQ schema, llms.txt, citation-worthy content, structured data, and authority building specifically for LLM training and retrieval.", tags: ["GEO", "llms.txt", "Entity Optimization", "Citation Building"] },
-      { title: "AI-Search Ready Content", description: "Content architecture built for how AI models extract and cite information. First-principles answers, semantic clustering, intent mapping, topical authority clusters. Your content becomes the source LLMs pull from.", tags: ["AI Content Strategy", "Topical Authority", "Semantic Clustering"] },
-      { title: "Technical SEO + Core Web Vitals", description: "Crawlability audits, schema markup, site speed, Core Web Vitals, mobile UX, indexation fixes, canonicalization, hreflang. The technical foundation Google and AI crawlers both depend on.", tags: ["Schema", "Core Web Vitals", "Indexation", "Schema.org"] },
-      { title: "Authority & Entity Link Building", description: "Wikipedia, Wikidata, Crunchbase, industry directories, digital PR, and editorial placements. Citations from sources that AI models actually trust — not PBN spam or link farms.", tags: ["Digital PR", "Wikipedia", "Entity Building", "Authority Links"] },
-      { title: "Programmatic & Local SEO", description: "City, service, and industry pages at scale with unique content per variant. Local pack optimization, Google Business Profile ranking, location-based schema, and review velocity strategy.", tags: ["Programmatic SEO", "Local Pack", "GMB", "City Pages"] },
-      { title: "ROI Tracking & Attribution", description: "GA4, GSC, Bing Webmaster, Perplexity Analytics, custom AI-search tracking, multi-touch attribution, and monthly KPI dashboards. Every rupee of SEO investment tied back to traffic, leads, and revenue.", tags: ["GA4", "GSC", "Attribution", "Dashboards"] },
-    ],
-    uspHeadlines: {
-      direct: "Senior SEO strategist (not a sales rep) runs your audit — the person who actually builds and executes the strategy. Direct Slack access throughout the engagement.",
-      cost: "ROI-based engagement. Clear KPIs, monthly transparency reports, walk away any month if we miss targets. No 12-month lock-ins, no hidden retainer games.",
-      ai: "We're one of the few India SEO agencies optimizing for AI search (ChatGPT, Perplexity, Claude, Gemini) — not just Google. Your competitors will notice the traffic gap in 12 months.",
-    },
-    faq: [
-      { q: "What is GEO (Generative Engine Optimization) and how is it different from SEO?", a: "SEO ranks you on Google, Bing, and DuckDuckGo. GEO gets you cited and recommended inside ChatGPT, Perplexity, Claude, and Gemini answers. Different algorithms, different signals, different content requirements. Both matter now — AI search sends 30%+ of high-intent queries and growing fast." },
-      { q: "Can you actually get my brand cited by ChatGPT and Perplexity?", a: "Yes. We've done it for 45+ brands. The levers: Wikipedia/Wikidata entities, authoritative editorial placements, schema-rich content that answers intent directly, llms.txt configuration, and source-of-truth content clusters. It's replicable — not luck." },
-      { q: "How do you measure ROI on SEO investments?", a: "Before any work starts we lock KPIs: target keywords, target AI models, traffic goals, lead targets, and attribution model (GA4 + GSC + custom AI-search tracking). Monthly reports show traffic, rankings, AI citations, lead volume, and ROI calculation. No vanity metrics." },
-      { q: "How long until I see traffic and ranking improvements?", a: "Technical fixes and AI-search citations: 30-45 days. Organic Google rankings: 60-90 days for long-tail, 3-6 months for competitive terms. We set expectations upfront and show progress weekly — no 'trust the process' stalling." },
-      { q: "What happens if we don't hit the KPIs?", a: "We iterate at no cost until we do, or you walk away at the end of the month with no penalty. The contract explicitly permits month-to-month exit. We stake our reputation on hitting the numbers we forecast." },
-      { q: "Do you build links or just do on-page work?", a: "Both. Link building focuses on authority, digital PR, and entity citations — Wikipedia, Crunchbase, G2, Capterra, industry publications. No PBNs, no paid directory spam, no link exchanges. The links have to be ones AI models and Google respect." },
-    ],
-    testimonials: [
-      { quote: "RDMI rebuilt our SEO strategy around AI search 8 months before our competitors knew what GEO was. We now show up in ChatGPT answers for our category — 3 qualified demos per week from there alone.", author: "K.R.", role: "Head of Growth, B2B SaaS", rating: 5 },
-      { quote: "They treat SEO like performance marketing — clear KPIs, weekly dashboards, walk-away clause. After 6 months, organic traffic is up 4.2x and leads are up 3.8x. Worth every rupee.", author: "N.T.", role: "Marketing Director, D2C", rating: 5 },
-      { quote: "The GEO audit alone was worth the engagement. Found 12 quick wins to get cited in Perplexity and Claude. Started seeing AI-search traffic within 6 weeks.", author: "V.S.", role: "Founder, B2B Services", rating: 5 },
-    ],
-    ctaSection: { headline: "AI Search Is Quietly Stealing Your Traffic. Win It Back.", subtitle: "Talk direct to a senior SEO expert. They'll tell you exactly where you're losing traffic to ChatGPT and Perplexity — and how to win it back. Month-to-month, walk away anytime.", buttonText: "Talk to SEO Expert" },
-    targetKeywords: ["seo services", "seo agency", "seo company", "seo services india", "ai seo services", "generative engine optimization", "geo optimization services", "ai search optimization", "chatgpt seo", "perplexity seo", "llm seo services", "roi seo agency", "performance seo services", "enterprise seo services", "technical seo services", "seo services for startups"],
-  },
-  {
-    slug: "digital-marketing-performance",
-    primaryKeyword: "Performance Digital Marketing Services",
-    adGroupMatch: "Digital Marketing Performance",
-    theme: { heroGradient: "linear-gradient(135deg, #0891b2, #0d9488, #0e7490)", ctaGradient: "linear-gradient(135deg, #0891b2, #0d9488, #0e7490)", urgencyColor: "#0891b2", accent: "cyan", icon: "📈" },
-    form: { title: "Talk to a Senior Marketing Expert", subtitle: "Senior performance marketer calls you in 2 hours — not a salesperson", projectTypes: ["Google Ads", "Meta & Instagram Ads", "LinkedIn Ads (B2B)", "Full Marketing (Ads + SEO + Email)", "SEO & AI Search", "Landing Page / Conversion Help", "Other"], placeholder: "Which channels are you running and what results are you looking for?", buttonText: "Talk to Marketing Expert", formType: "digital-marketing-performance" },
-    meta: {
-      title: "Digital Marketing Agency India — Google, Meta & LinkedIn Ads That Drive Revenue | RDMI",
-      description: "Digital marketing measured in revenue, not impressions. Google Ads, Meta, LinkedIn, SEO & email. Talk direct to a senior marketing expert in 2 hours — not a salesperson. Month-to-month, walk away anytime.",
-    },
-    hero: {
-      badge: "📈 Marketing Measured in Revenue, Not Impressions",
-      h1: "Digital Marketing That Actually Drives Revenue — Not Just Clicks & Impressions",
-      subtitle: "Google Ads, Meta Ads, LinkedIn, SEO, and email — unified around one metric: every rupee you spend should come back as revenue. Talk direct to a senior performance marketer (not a sales rep) and find out exactly how much your current marketing is wasting.",
-      cta1: "Talk to Marketing Expert",
-      cta2: "See Campaigns We've Built",
-      trustPoints: [
-        "Senior marketing expert calls in 2 hours — not a sales rep",
-        "Clear CPA and ROAS targets — no vanity metrics",
-        "Month-to-month engagement, walk away anytime",
-        "Transparent monthly report — you see every rupee's path to revenue",
-      ],
-    },
-    images: {
-      hero: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80",
-      process: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
-      team: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
-      services: [
-        "https://images.unsplash.com/photo-1557838923-2985c318be48?w=800&q=80",
-        "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      ],
-      portfolio: [
-        "https://images.unsplash.com/photo-1553830591-fddf9c6e5f1f?w=800&q=80",
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-      ],
-      cta: "https://images.unsplash.com/photo-1557838923-2985c318be48?w=1200&q=80",
-    },
-    process: [
-      { step: "01", title: "Free Expert Call — Real Strategy, Not a Sales Pitch", description: "Senior performance marketer calls you in 2 hours. Reviews your current Google Ads, Meta, and LinkedIn accounts live on the call and tells you exactly what's working, what's wasting money, and what you can realistically hit in 90 days." },
-      { step: "02", title: "Strategy & KPI Lock", description: "Agree on target CPA, ROAS, channels, budget, and attribution model before any ad spend is touched. Written into the engagement so there's no ambiguity." },
-      { step: "03", title: "Launch + AI Optimization", description: "Smart bidding, Performance Max, creative testing, negative keyword automation, and daily optimization for the first 30 days — the critical learning period where most agencies lose money." },
-      { step: "04", title: "Scale or Walk", description: "Monthly ROI review with full attribution. Scale winners, kill losers, walk away if KPIs aren't met. No 12-month lock-ins, no minimum commitments beyond the month." },
-    ],
-    stats: [
-      { value: "4.8x", label: "Avg ROAS Across Managed Accounts" },
-      { value: "45+", label: "Performance Accounts Managed" },
-      { value: "60%", label: "Avg CPA Reduction in First 90 Days" },
-      { value: "6 weeks", label: "Avg Time to Break-Even" },
-    ],
-    services: [
-      { title: "Google Ads (Search + PMax + Display)", description: "AI-powered bid strategies, Performance Max creative testing, negative keyword automation, conversion tracking setup, RSA optimization, and audience layering. Managed daily, reported weekly.", tags: ["Search", "Performance Max", "Smart Bidding", "RSA"] },
-      { title: "Meta & Instagram Ads", description: "Advantage+ campaigns, creative automation, lookalike scaling, retargeting funnels, iOS-14 ready attribution, and dynamic product ads. Built for D2C, SaaS, and B2C brands that need volume at efficient CPA.", tags: ["Advantage+", "Lookalikes", "DPA", "Retargeting"] },
-      { title: "LinkedIn Ads (B2B)", description: "ICP-based targeting, sequenced ad funnels, InMail automation, cost-per-demo optimization, and account-based retargeting. Built for mid-market and enterprise SaaS with long sales cycles.", tags: ["ABM", "Sequenced Ads", "InMail", "Lead Gen Forms"] },
-      { title: "SEO + GEO (Organic Growth)", description: "AI search optimization, content at scale, technical SEO, and authority building — paired with paid for full-funnel coverage. Your organic traffic compounds while your paid drives immediate revenue.", tags: ["SEO", "GEO", "Content", "Technical SEO"] },
-      { title: "CRO & Landing Page Optimization", description: "Free landing page audit, A/B testing, heatmap analysis, form optimization, and page-speed fixes. Your ads only work when your landing pages convert — and most agencies ignore this.", tags: ["A/B Testing", "Heatmaps", "Form CRO", "Page Speed"] },
-      { title: "Attribution, Analytics & Reporting", description: "GA4 setup, multi-touch attribution, custom dashboards, weekly performance reports, and monthly ROI reviews. Every rupee of ad spend attributed to revenue — no black-box vendor dashboards.", tags: ["GA4", "Attribution", "Looker Studio", "Dashboards"] },
-    ],
-    uspHeadlines: {
-      direct: "Senior performance marketer (ex-in-house at SaaS brands) runs your accounts — not a junior copy-pasting templates. Direct Slack access to the strategist daily.",
-      cost: "ROI-first engagement. Clear CPA and ROAS targets, monthly transparency reports, walk away any month if we miss KPIs. No long lock-ins, no minimum commitment games.",
-      ai: "AI-powered bid strategies, automated creative rotation, and AI-search-aware SEO — we use the tools your competitors don't know exist yet. That's the edge.",
-    },
-    faq: [
-      { q: "What makes this 'performance-based'?", a: "We agree on CPA and ROAS targets before any ad spend is touched. Monthly reviews measure actual performance against those targets. If we miss two months in a row, you walk away — no penalty. We stake our engagement on hitting the numbers we forecast." },
-      { q: "Which platforms do you manage?", a: "Google Ads (Search, Performance Max, Display, YouTube), Meta (Facebook + Instagram), LinkedIn, TikTok, and X. Plus SEO/GEO organic, email automation, and CRO. Full-funnel under one roof — or individual channels if that's what you need." },
-      { q: "How is ROI actually measured and attributed?", a: "GA4 + GSC + platform conversion tracking + custom multi-touch attribution model. We track revenue per channel, per campaign, per keyword, per creative. Dashboards in Looker Studio or custom. No black-box vendor dashboards that hide the math." },
-      { q: "Can you also run our SEO and GEO alongside paid?", a: "Yes — we recommend it. Paid drives immediate revenue, organic compounds over 6-12 months. Together they create defensible pipeline. We unify the strategy under one team with one attribution model so there's no channel fighting for credit." },
-      { q: "What if CPA or ROAS goals aren't met?", a: "Month 1: learning phase, we don't judge. Month 2: we optimize aggressively. Month 3 onwards: if we consistently miss, you walk away with no penalty. We don't pretend to perform — the data speaks for itself." },
-      { q: "What's the minimum engagement commitment?", a: "Month-to-month. We don't believe in 12-month lock-ins because they protect bad agencies, not clients. Our average client stays 14+ months because the numbers work, not because a contract forces them to." },
-    ],
-    testimonials: [
-      { quote: "They cut our Google Ads CPA by 63% in the first 90 days just by fixing negative keywords and rebuilding the conversion model. Weekly dashboards so I can see exactly where every rupee goes.", author: "R.B.", role: "Founder, D2C Brand", rating: 5 },
-      { quote: "Our previous agency locked us into a 12-month contract and hid attribution behind a vendor dashboard. RDMI runs month-to-month, shares every number, and our pipeline is 3x in 6 months.", author: "J.M.", role: "Head of Demand Gen, B2B SaaS", rating: 5 },
-      { quote: "The CRO audit alone made our landing pages convert 2.4x better — and they did it free as part of the ad audit. That's before we even started paid. No-brainer engagement.", author: "S.K.", role: "CMO, FinTech", rating: 5 },
-    ],
-    ctaSection: { headline: "Stop Paying for Impressions. Pay for Revenue.", subtitle: "Talk direct to a senior marketing expert. They'll tell you exactly where your marketing is wasting money — and how to turn it around. Month-to-month, walk away anytime.", buttonText: "Talk to Marketing Expert" },
-    targetKeywords: ["digital marketing services", "digital marketing agency", "digital marketing company", "performance marketing agency", "performance marketing services", "google ads agency", "meta ads agency", "facebook ads management", "linkedin ads agency", "roi digital marketing", "roi focused marketing agency", "ppc management services", "ppc agency", "growth marketing agency", "b2b digital marketing", "saas digital marketing"],
-  },
+    targetKeywords: [
+      "enterprise software development company",
+      "enterprise software development",
+      "custom enterprise software development",
+      "enterprise app development",
+      "enterprise software solutions",
+      "erp software development company",
+      "custom erp software development",
+      "crm development company",
+      "crm software development company",
+      "business process automation software",
+      "enterprise application development",
+      "multi tenant saas development"
+    ]
+  }
 ];
 
 export function getKeywordGroup(slug: string): KeywordGroup | undefined {
   return keywordGroups.find((g) => g.slug === slug);
 }
 
-// Slugs that have been promoted out of the /kw/ namespace to dedicated top-level routes.
-// Skipped by /kw/[slug] static params so we don't double-render — the dedicated route + the
-// 301 redirect in next.config.ts handle the canonical URL.
-const PROMOTED_SLUGS = new Set<string>(["web-development-company"]);
+const PROMOTED_SLUGS = new Set<string>([
+  "ai-agent-development",
+  "ai-software-development",
+  "custom-software-development",
+  "ecommerce-development",
+  "enterprise-saas-development",
+  "mobile-app-development",
+  "web-development-company"
+]);
 
 export function getAllSlugs(): string[] {
   return keywordGroups.map((g) => g.slug).filter((s) => !PROMOTED_SLUGS.has(s));

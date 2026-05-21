@@ -14,8 +14,6 @@ export default function ExitIntentPopup() {
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const isSEO = pathname?.includes("seo") || pathname?.includes("digital-marketing");
-
   const handleCallback = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!phone.trim()) return;
@@ -127,10 +125,10 @@ export default function ExitIntentPopup() {
                     </div>
                     <p className="text-xs text-indigo-400 font-medium mb-2">Wait — before you go!</p>
                     <h3 className="text-xl font-bold leading-tight">
-                      Get a Free {isSEO ? "Marketing" : "Development"} Consultation
+                      Get a Free Development Consultation
                     </h3>
                     <p className="text-sm text-zinc-400 mt-2">
-                      Talk to a senior {isSEO ? "marketing strategist" : "developer"} — not a salesperson.
+                      Talk to a senior developer — not a salesperson.
                       Get expert advice on your project, free of charge.
                     </p>
                   </div>

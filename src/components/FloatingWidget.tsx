@@ -13,8 +13,8 @@ export default function FloatingWidget() {
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
-  // Hide on keyword landing pages (they have their own sticky bar)
-  if (pathname?.startsWith("/kw/")) return null;
+  // Hide on focused landing pages (they have their own sticky bar)
+  if (pathname === "/web-development-company" || pathname === "/enterprise-software-development-company" || pathname === "/ai-software-development-company" || pathname === "/ai-agent-development-company" || pathname === "/custom-software-development-company" || pathname === "/mobile-app-development-company" || pathname === "/ecommerce-development-company") return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

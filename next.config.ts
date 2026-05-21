@@ -11,13 +11,42 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/kw/ai-agent-workflow-consulting",
-        destination: "/kw/ai-agent-development",
+        destination: "/ai-agent-development-company",
         permanent: true,
       },
-      // Campaign launch: web-dev moved off the /kw/ prefix to a clean URL
       {
         source: "/kw/web-development-company",
         destination: "/web-development-company",
+        permanent: true,
+      },
+      {
+        source: "/kw/custom-software-development",
+        destination: "/custom-software-development-company",
+        permanent: true,
+      },
+      {
+        source: "/kw/mobile-app-development",
+        destination: "/mobile-app-development-company",
+        permanent: true,
+      },
+      {
+        source: "/kw/ai-software-development",
+        destination: "/ai-software-development-company",
+        permanent: true,
+      },
+      {
+        source: "/kw/ai-agent-development",
+        destination: "/ai-agent-development-company",
+        permanent: true,
+      },
+      {
+        source: "/kw/ecommerce-development",
+        destination: "/ecommerce-development-company",
+        permanent: true,
+      },
+      {
+        source: "/kw/enterprise-saas-development",
+        destination: "/enterprise-software-development-company",
         permanent: true,
       },
     ];

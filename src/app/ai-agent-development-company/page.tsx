@@ -1,22 +1,16 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getKeywordGroup, getAllSlugs } from "@/data/keyword-groups";
+import { getKeywordGroup } from "@/data/keyword-groups";
 import KeywordLandingPage from "@/components/pages/KeywordLandingPage";
 
-interface Props {
-  params: Promise<{ slug: string }>;
-}
+const SLUG = "ai-agent-development";
+const ROUTE = "ai-agent-development-company";
 
-export async function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const data = getKeywordGroup(slug);
+export async function generateMetadata(): Promise<Metadata> {
+  const data = getKeywordGroup(SLUG);
   if (!data) return {};
 
-  const url = `https://rdmi-landing-page.netlify.app/kw/${slug}`;
+  const url = `https://rdmi-landing-page.netlify.app/${ROUTE}`;
 
   return {
     title: data.meta.title,
@@ -41,14 +35,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function KWPage({ params }: Props) {
-  const { slug } = await params;
-  const data = getKeywordGroup(slug);
+export default function AIAgentDevelopmentCompanyPage() {
+  const data = getKeywordGroup(SLUG);
   if (!data) notFound();
 
-  const url = `https://rdmi-landing-page.netlify.app/kw/${slug}`;
+  const url = `https://rdmi-landing-page.netlify.app/${ROUTE}`;
 
-  // FAQ JSON-LD for rich SERP results
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -59,7 +51,6 @@ export default async function KWPage({ params }: Props) {
     })),
   };
 
-  // Service / Organization JSON-LD
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
