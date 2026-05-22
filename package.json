@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "ads:sync": "node scripts/ads/sync.mts"
+    "ads:sync": "node scripts/ads/sync.mts",
+    "ads:oauth": "node scripts/ads/oauth-setup.mts"
   },
   "dependencies": {
     "jose": "^6.2.1",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.15.9",
+    "google-ads-api": "^23.0.0",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

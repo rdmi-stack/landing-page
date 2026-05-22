@@ -25,6 +25,15 @@ import {
   STRUCTURED_SNIPPET, PHONE,
 } from "./config.mts";
 
+// Load .env.local so --push has the Google Ads creds (standalone node doesn't auto-load it).
+const ENV_PATH = path.resolve(process.cwd(), ".env.local");
+if (fs.existsSync(ENV_PATH)) {
+  for (const line of fs.readFileSync(ENV_PATH, "utf8").split("\n")) {
+    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+  }
+}
+
 const OUT = path.resolve(process.cwd(), "docs/ads");
 fs.mkdirSync(OUT, { recursive: true });
 
