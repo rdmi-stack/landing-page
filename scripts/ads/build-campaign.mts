@@ -22,12 +22,21 @@ export interface Campaign {
   descriptions: string[]; // ≤4, each ≤90 chars, unique
 }
 
-/** Strip emoji/control chars, collapse whitespace, trim stray edge punctuation. */
+/**
+ * Strip emoji/control chars, normalise non-ASCII typography to ASCII, collapse
+ * whitespace, trim stray edge punctuation. Non-standard Unicode (en/em dashes,
+ * smart quotes, ellipsis) in ad text trips Google's "evasive ad content"
+ * detector, so ad assets must be ASCII-clean.
+ */
 function clean(s: string): string {
   return s
     .replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}]/gu, "")
+    .replace(/[‒-―]/g, "-") // figure/en/em/horizontal dashes → hyphen
+    .replace(/[‘’‚‛]/g, "'") // smart single quotes → '
+    .replace(/[“”„‟]/g, '"') // smart double quotes → "
+    .replace(/…/g, "...") // ellipsis → ...
     .replace(/\s+/g, " ")
-    .replace(/^[\s\-–—•·|]+|[\s\-–—•·|]+$/g, "")
+    .replace(/^[\s\-•·|]+|[\s\-•·|]+$/g, "")
     .trim();
 }
 
