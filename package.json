@@ -10,7 +10,8 @@
     "ads:sync": "node scripts/ads/sync.mts",
     "ads:oauth": "node scripts/ads/oauth-setup.mts",
     "ga4:oauth": "node scripts/ga4/oauth-setup.mts",
-    "ga4:key-events": "node scripts/ga4/create-key-events.mts"
+    "ga4:key-events": "node scripts/ga4/create-key-events.mts",
+    "ga4:report": "node scripts/ga4/report.mts"
   },
   "dependencies": {
     "jose": "^6.2.1",
