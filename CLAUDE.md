@@ -125,7 +125,7 @@ GOOGLE_ADS_CUSTOMER_ID=<target account, digits only>
 
 ## Marketing Automation System — Build Spec & Owner Expectations
 
-This is the agreed target system for RDMI's paid-acquisition stack. Build these when asked; everything is designed so credentials drop into `.env.local` and the code runs headless from the repo. **Goal: run Google Ads + conversion tracking end-to-end via API/code with zero manual UI work, plus rules-based auto-optimization on a schedule.**
+RDMI's paid-acquisition stack. **Goal: run Google Ads + conversion tracking end-to-end via API/code with zero manual UI work, plus rules-based auto-optimization on a schedule.** Status: campaign generation + **live API push** + GA4 tracking are **built and working** (web-dev campaign pushed live PAUSED 2026-05-22); reporting/optimizer/cron are the remaining build. Everything runs headless from the repo with creds in `.env.local`.
 
 ### Owner expectations (what "done" looks like)
 1. **No-UI campaign management** — create/update/pause campaigns, ad groups, keywords, RSAs, negatives, extensions, geo/budget/bid — all via the Google Ads API from scripts, never the Ads UI.
@@ -135,29 +135,52 @@ This is the agreed target system for RDMI's paid-acquisition stack. Build these 
 5. **Autonomous scheduling** — the rules engine runs unattended (NOT dependent on Claude being invoked). Preferred: a **GitHub Actions cron** workflow that runs the optimizer daily, applies rules, and posts a summary (Slack/email). Creds as GitHub Secrets.
 6. **Discover → score → generate → launch loop** — keyword research (volume × growth × low-competition) → opportunity table → feed winners into the campaign generator → push live.
 
-### Current state (what's already built)
-- **Campaign generator** (`scripts/ads/`): `npm run ads:sync [slug]` reads `src/data/keyword-groups.ts` → emits `docs/ads/<slug>.csv` (Editor import) + companion `.md`. One campaign / one ad group per page, created PAUSED, ai.rdmi.in URLs, RSAs auto-built within 30/90 char limits. Self-correcting slug→route map.
-- **Phase-2 API push stub**: `scripts/ads/to-ads-api.mts` — same `Campaign` objects, ready to wire when creds land.
-- **GA4 tracking live**: client gtag in `layout.tsx` (`src/lib/gtag.ts`) + **server-side Measurement Protocol** from `/api/contact` (`src/lib/ga4-server.ts`) — reliable under ad blockers; passes `_ga` client_id for attribution; MP events include `engagement_time_msec` + `session_id`. Events: `generate_lead` (server, all forms) + `whatsapp_click` (client). Confirmed in Realtime.
-- **GA4 Admin API script**: `scripts/ga4/create-key-events.mts` (pure-Node JWT auth) — creates key events; works via OAuth (service-account path blocked by a GA4 UI bug that rejects SA emails).
-- **md→pdf util**: `scripts/md-to-pdf.py` (reportlab).
+### Accounts & IDs (non-secret reference)
+- **Google Ads MCC** (manager): `227-653-2362` → `GOOGLE_ADS_LOGIN_CUSTOMER_ID=2276532362`
+- **Target ad account**: `956-136-5956` ("RDMI", INR) → `GOOGLE_ADS_CUSTOMER_ID=9561365956`
+- **Google Ads API**: Basic Access **approved** (15,000 ops/day), dev token active in API Center
+- **OAuth client**: Desktop app in GCP project `rdmi-ga4` (a different Google account than Ads is fine — what matters is *who consents* must have MCC access)
+- **GA4**: property "rdmi web services", measurement ID `G-4WWE6FCNBF`
 
-### To build when requested (Phase 2 — needs Google Ads Basic Access + one OAuth consent)
-- `scripts/ads/to-ads-api.mts` — implement push: CampaignBudget → Campaign (PAUSED) → AdGroup → keywords (phrase+exact) → RSA, via `google-ads-api`.
+### Credentials — all in `.env.local` (gitignored, never commit values)
+```
+# GA4
+NEXT_PUBLIC_GA_MEASUREMENT_ID, GA4_MEASUREMENT_ID, GA4_API_SECRET (MP, write-only)
+# Google Ads API
+GOOGLE_ADS_DEVELOPER_TOKEN, GOOGLE_ADS_CLIENT_ID, GOOGLE_ADS_CLIENT_SECRET,
+GOOGLE_ADS_REFRESH_TOKEN, GOOGLE_ADS_LOGIN_CUSTOMER_ID, GOOGLE_ADS_CUSTOMER_ID
+```
+For CI (the autonomous cron), the same Ads vars go in GitHub Secrets.
+
+### Scripts & commands (all built and working)
+- `npm run ads:sync [slug]` — `scripts/ads/sync.mts`: reads `src/data/keyword-groups.ts` → emits `docs/ads/<slug>.csv` (Editor import) + companion `.md` + `all-campaigns.csv`. One campaign / one ad group per page, PAUSED, ai.rdmi.in URLs, RSAs within 30/90 char limits. Self-correcting slug→route map (`route-map.mts` scans `src/app` for `SLUG=`).
+- `npm run ads:sync <slug> -- --push` — **live API push** (`scripts/ads/to-ads-api.mts`, `google-ads-api`): Budget → Campaign (PAUSED, Search, Maximize Clicks, Search-only network) → India geo + EN/HI languages + negative list → AdGroup → keywords (phrase+exact) → RSA. **Verified working** — pushed the web-dev campaign live (PAUSED) on 2026-05-22.
+- `npm run ads:oauth` — `scripts/ads/oauth-setup.mts`: one-time localhost OAuth flow → writes `GOOGLE_ADS_REFRESH_TOKEN` straight into `.env.local`.
+- `node scripts/ads/list-accounts.mts` — list ad accounts under the MCC (find customer id).
+- `node scripts/ads/verify.mts` — read-back check: campaigns, keyword/ad counts.
+- `node scripts/ga4/create-key-events.mts` — GA4 Admin API key-event creation (needs OAuth; service-account path blocked by a GA4 UI bug — see gotchas).
+- `python3 scripts/md-to-pdf.py <file.md>` — markdown → PDF (reportlab).
+- **GA4 tracking (live in app)**: client gtag in `layout.tsx` (`src/lib/gtag.ts`) + server-side Measurement Protocol from `/api/contact` (`src/lib/ga4-server.ts`). Events: `generate_lead` (server, all forms) + `whatsapp_click` (client).
+- `google-ads-api` is a **devDependency** (build-time scripts only; not in the app bundle). Scripts are `.mts`, run via Node 24 type-stripping; `scripts/` is excluded from `tsconfig`.
+
+### Still to build (Phase 2 continuation)
 - `scripts/ads/report.mts` — GAQL pulls of keyword/search-term/campaign performance → ranked opportunity + waste tables.
-- `scripts/ads/optimize.mts` — rules engine: pause waste, add negatives, adjust bids; dry-run flag; summary output.
-- `scripts/ads/keyword-research.mts` — Google Ads Keyword Planner (or DataForSEO) → volume × growth × competition scoring → opportunity list that feeds `ads:sync`.
-- `.github/workflows/ads-optimize.yml` — scheduled cron running `optimize.mts` daily + posting a summary. Ads creds as GitHub Secrets.
-- Conversion-action creation + GA4↔Ads link via API (Ads `ConversionActionService` + GA4 Admin `GoogleAdsLink`).
+- `scripts/ads/optimize.mts` — rules engine: pause waste (e.g. >N clicks & 0 conv & cost > threshold), add negatives, adjust bids; dry-run flag; summary output.
+- `scripts/ads/keyword-research.mts` — Keyword Planner (or DataForSEO) → volume × growth × competition scoring → feeds `ads:sync`.
+- `.github/workflows/ads-optimize.yml` — daily cron running `optimize.mts` + posting a summary. Ads creds as GitHub Secrets.
+- **Ad extensions** in the push — sitelinks/callouts/structured snippets via assets + `campaign_asset` (not yet added; campaign currently has none).
+- **Conversion actions + GA4↔Ads link** via API (`ConversionActionService` + GA4 Admin `GoogleAdsLink`).
 
 ### Hard constraints / gotchas (learned)
-- **Google Ads API needs Basic Access** (apply inside the MCC's API Center; design doc at `docs/google-ads-api-design.md`). Explorer access = test accounts only.
-- **One interactive OAuth consent is unavoidable** for the Ads API on a normal account (no fully-headless path); mint the refresh token once, reuse forever.
-- **GA4 Measurement Protocol secret is write-only** — cannot do config; key-event/link creation needs GA4 Admin API via OAuth (or a working service account).
-- **Claude is not a daemon** — true 24/7 autonomy requires a scheduler (GitHub Actions cron preferred); Claude writes the logic, the cron runs it.
-- **All new campaigns created PAUSED** for human review before spend.
-- **Launch default**: Maximize Clicks → switch to Maximize Conversions after 15–20 conversions.
-- Never commit secrets — `.env.local` and `.ga4-service-account.json` are gitignored.
+- **Campaign create requires `contains_eu_political_advertising`** (EU transparency rule) — set `enums.EuPoliticalAdvertisingStatus.DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` or the create fails with "required field not present."
+- **One interactive OAuth consent is unavoidable** for the Ads API; `ads:oauth` handles it, token reused forever. The OAuth client's GCP project can be a different Google account than Ads — but the consenting user must have MCC access (and be an org/test user if the consent screen is restricted).
+- **GA4 Measurement Protocol secret is write-only** — cannot do config; key-event/link creation needs GA4 Admin API via OAuth. The **service-account path is blocked** by a GA4 UI bug that refuses SA emails ("doesn't match a Google Account") — use user OAuth for GA4 Admin, or just create the 2 key events in the UI (one-time).
+- **MP events need `engagement_time_msec` + `session_id`** or they're dropped from GA4 reports.
+- **GA4 reports lag up to 24–48h**; Realtime / DebugView are the only instant checks. "Key events" tab only shows already-starred events.
+- **Claude is not a daemon** — 24/7 autonomy needs a scheduler (GitHub Actions cron); Claude writes the logic, the cron runs it.
+- **All campaigns created PAUSED**; enabling (authorizing spend) is always a human step. **Launch default**: Maximize Clicks → Maximize Conversions after 15–20 conversions.
+- **Deploy** is Netlify via GitHub Actions on push to `main` (~2.5 min). Node 20 actions deprecation forced to Node 24 on 2026-06-02 — bump `actions/checkout` + `setup-node`.
+- Never commit secrets — `.env.local` and `.ga4-service-account.json` are gitignored. Tokens shared in chat (dev token, client secret) should be rotated.
 
 ---
 
