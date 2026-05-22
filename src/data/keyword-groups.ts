@@ -586,16 +586,16 @@ export const keywordGroups: KeywordGroup[] = [
     },
     meta: {
       title: "Web Development Company India — Get a Website That Brings Leads, Not a Brochure | RDMI",
-      description: "Get a website that brings 50–200 qualified leads every month — not just a static brochure. Senior Indian web developer (not a sales rep) WhatsApps you in 2 hours. Free 48-hour prototype before you pay. Money-back if we miss the deadline. 200+ websites live."
+      description: "A website built to win you more enquiries — not just a static brochure. Senior Indian web developer (not a sales rep) WhatsApps you in 2 hours. Free 48-hour prototype before you pay. 200+ websites shipped."
     },
     hero: {
       badge: "💬 Talk to a Senior Indian Web Developer on WhatsApp · 2-Hour Callback",
       h1: "Get a Website That Brings You Leads — Not a Brochure That Sits There.",
-      subtitle: "Most websites are expensive brochures. We build sites that bring 50–200 qualified leads every month — through Google rankings, a 24/7 AI chat agent that books demos, and pages that load in under 1 second. Built by senior Indian developers who've shipped 200+ websites. Talk direct on WhatsApp in 2 hours. Free 48-hour prototype. Money-back if we miss the deadline.",
+      subtitle: "Most websites are expensive brochures. We build sites designed to turn visitors into enquiries — through Google rankings, a 24/7 AI chat assistant, and pages that load in under 1 second. Built by senior Indian developers who've shipped 200+ websites. Talk direct on WhatsApp in 2 hours. Free 48-hour prototype.",
       cta1: "Talk to Web Developer on WhatsApp",
       cta2: "↓ See Live Websites",
       trustPoints: [
-        "Brings 50–200 qualified leads every month — without extra ad spend",
+        "Built to turn visitors into enquiries — not just a brochure",
         "Senior Indian web developer WhatsApps you in 2 hours — not a sales rep",
         "Free 48-hour clickable prototype before you pay a rupee",
         "Money-back if we miss the deadline — written into the contract"
@@ -717,8 +717,8 @@ export const keywordGroups: KeywordGroup[] = [
         label: "Page Load on Any Device"
       },
       {
-        value: "50–200",
-        label: "Qualified Leads / Month per Site"
+        value: "24/7",
+        label: "AI Chat Assistant Built In"
       },
       {
         value: "14 days",
@@ -840,7 +840,7 @@ export const keywordGroups: KeywordGroup[] = [
     ],
     ctaSection: {
       headline: "Stop Paying for Websites That Just Sit There.",
-      subtitle: "Get a website that pays for itself in 90 days. WhatsApp a senior Indian web developer in 2 hours — not a sales rep with a slide deck. Free 48-hour prototype before you pay. Money-back if we miss the deadline. Source code yours from day one.",
+      subtitle: "Get a website that earns its keep. WhatsApp a senior Indian web developer in 2 hours — not a sales rep with a slide deck. Free 48-hour prototype before you pay. Source code yours from day one.",
       buttonText: "Talk to Web Developer on WhatsApp"
     },
     targetKeywords: [
