@@ -1,30 +1,29 @@
-name: Deploy to Netlify
+name: CI
 
+# Deploys happen via Netlify's Git integration (auto-build on push to main).
+# This workflow only validates the build + types so breakages surface on GitHub.
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
         run: npm ci
 
+      - name: Type check
+        run: npx tsc --noEmit
+
       - name: Build
         run: npm run build
-
-      - name: Deploy to Netlify
-        run: npx netlify-cli deploy --prod --dir .next --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --site ${{ secrets.NETLIFY_SITE_ID }}
-        env:
-          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
-          MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN }}
-          MAILGUN_FROM_EMAIL: ${{ secrets.MAILGUN_FROM_EMAIL }}
-          MAILGUN_REGION: ${{ secrets.MAILGUN_REGION }}
