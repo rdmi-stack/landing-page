@@ -557,7 +557,7 @@ export const keywordGroups: KeywordGroup[] = [
   },
   {
     slug: "web-development-company",
-    primaryKeyword: "AI-First Web Design & Software Agency",
+    primaryKeyword: "Web Development Company",
     adGroupMatch: "Web Development Company",
     minimalForm: true,
     lean: true,
@@ -569,35 +569,35 @@ export const keywordGroups: KeywordGroup[] = [
       icon: "🌐"
     },
     form: {
-      title: "Talk to a Senior AI Software Consultant",
-      subtitle: "Senior Indian consultant-engineer (not a sales rep) WhatsApps you in 2 hours",
+      title: "Talk to a Senior Web Developer",
+      subtitle: "Senior Indian web developer (not a sales rep) WhatsApps you in 2 hours",
       projectTypes: [
-        "AI-First Software Strategy",
-        "Custom Software / SaaS",
-        "AI Agent or Automation",
-        "Growth Website + Lead Engine",
-        "E-Commerce / Marketplace",
-        "Legacy System Modernization",
+        "Business / Lead-Gen Website",
+        "E-Commerce Store",
+        "Web App / SaaS Platform",
+        "WordPress / CMS",
+        "Website Redesign & Speed",
+        "Landing Pages for Ads",
         "Other"
       ],
-      placeholder: "What business bottleneck should software or AI solve?",
+      placeholder: "What should your website do for your business?",
       buttonText: "Get The Call →",
       formType: "web-dev"
     },
     meta: {
-      title: "Web Design Company India | AI-First Web Development Agency & Software Consulting | RDMI",
-      description: "Looking for a web design company or web development agency in India? RDMI builds AI-first websites, custom software, automation, SaaS, and growth systems with senior consultant-engineers."
+      title: "Web Development Company India — Get a Website That Brings Leads, Not a Brochure | RDMI",
+      description: "Get a website that brings 50–200 qualified leads every month — not just a static brochure. Senior Indian web developer (not a sales rep) WhatsApps you in 2 hours. Free 48-hour prototype before you pay. Money-back if we miss the deadline. 200+ websites live."
     },
     hero: {
-      badge: "💬 Talk to a Senior AI Software Consultant on WhatsApp · 2-Hour Callback",
-      h1: "AI-First Web Design Agency for Software, Automation, and Growth Systems.",
-      subtitle: "Looking for a web design company or web development agency? RDMI gives you the senior AI-first team behind the page too: custom software, AI agents, automation, analytics, SaaS, growth websites, and consulting that turns operations into leverage. Talk direct to a senior consultant-engineer in 2 hours. Free 48-hour strategy plan. Money-back if we miss the deadline.",
-      cta1: "Talk to AI Software Consultant",
-      cta2: "↓ See Systems We Built",
+      badge: "💬 Talk to a Senior Indian Web Developer on WhatsApp · 2-Hour Callback",
+      h1: "Get a Website That Brings You Leads — Not a Brochure That Sits There.",
+      subtitle: "Most websites are expensive brochures. We build sites that bring 50–200 qualified leads every month — through Google rankings, a 24/7 AI chat agent that books demos, and pages that load in under 1 second. Built by senior Indian developers who've shipped 200+ websites. Talk direct on WhatsApp in 2 hours. Free 48-hour prototype. Money-back if we miss the deadline.",
+      cta1: "Talk to Web Developer on WhatsApp",
+      cta2: "↓ See Live Websites",
       trustPoints: [
-        "AI-first strategy before screens or code",
-        "Senior Indian consultant-engineer WhatsApps you in 2 hours",
-        "Free 48-hour software growth plan before you pay",
+        "Brings 50–200 qualified leads every month — without extra ad spend",
+        "Senior Indian web developer WhatsApps you in 2 hours — not a sales rep",
+        "Free 48-hour clickable prototype before you pay a rupee",
         "Money-back if we miss the deadline — written into the contract"
       ]
     },
@@ -688,41 +688,41 @@ export const keywordGroups: KeywordGroup[] = [
     process: [
       {
         step: "01",
-        title: "AI Strategy Call in 2 Hours",
-        description: "A senior Indian consultant-engineer (not a sales rep) WhatsApps you within 2 hours. We map your business goal, software bottlenecks, AI opportunities, data sources, and fastest route to measurable ROI."
+        title: "WhatsApp Call in 2 Hours",
+        description: "A senior Indian web developer (not a sales rep) WhatsApps you within 2 hours. We map what your website needs to do — leads, sales, bookings — your content, and the fastest route to measurable results."
       },
       {
         step: "02",
-        title: "Free 48-Hour System Plan",
-        description: "You get a concrete software growth plan: recommended architecture, AI/automation opportunities, buyer journey, MVP scope, timeline, risks, and what to build first. Walk away at zero cost if it misses."
+        title: "Free 48-Hour Clickable Prototype",
+        description: "You get a real working preview of your website — your brand, your content, your goals. Test it, show your team, show investors. Walk away at zero cost if it misses. No prototype invoice, ever."
       },
       {
         step: "03",
-        title: "Prototype or Staging Build",
-        description: "We turn the plan into a clickable prototype or staging build with the core workflow visible early: AI agent, dashboard, lead engine, content system, marketplace, or custom app flow."
+        title: "Live Staging Site in 14 Days",
+        description: "Your full site goes live on a staging URL you can share. Loads under 1 second on any phone, any city. AI chat agent already answering visitors. You approve every screen before launch."
       },
       {
         step: "04",
-        title: "Production Launch + Hypercare",
-        description: "Launch with analytics, deployment, observability, documentation, and 30 days of free support. Full source code in your GitHub from day one — yours to keep forever."
+        title: "Launch + 30 Days Free Support",
+        description: "Site goes live with analytics, SEO, and the AI agent already booking demos. 30 days of free bug fixes and content tweaks. Full source code in your GitHub from day one — yours to keep forever."
       }
     ],
     stats: [
       {
         value: "200+",
-        label: "Software, AI and Web Systems Shipped"
+        label: "Websites & Web Apps Shipped"
       },
       {
         value: "Sub-1s",
-        label: "Time-to-First-Byte on Vercel Edge"
+        label: "Page Load on Any Device"
       },
       {
-        value: "90+",
-        label: "Lighthouse Score Guaranteed"
+        value: "50–200",
+        label: "Qualified Leads / Month per Site"
       },
       {
-        value: "30%+",
-        label: "Buyers Researching in ChatGPT (2026)"
+        value: "14 days",
+        label: "To a Live Staging Site"
       }
     ],
     services: [
@@ -794,16 +794,16 @@ export const keywordGroups: KeywordGroup[] = [
     },
     faq: [
       {
-        q: "Is RDMI only about websites?",
-        a: "No. Web is one surface we build, but the core offer is AI-first software and business systems: custom platforms, automation, AI agents, growth websites, analytics, and consulting. If all you need is a basic brochure site, we are probably overkill."
+        q: "How is RDMI different from other web development companies?",
+        a: "Three things. You talk directly to a senior developer on WhatsApp within 2 hours — not a sales rep. You get a free working prototype in 48 hours and pay only after you approve. And every contract has a money-back clause if we miss the deadline. Most Indian agencies promise these in proposals but won't put them in the contract. We do."
       },
       {
-        q: "What if the system doesn't create business value after launch?",
-        a: "We don't just hand over screens and disappear. The first 30 days after launch are free — we tune copy, workflows, AI behavior, analytics, and bugs with you. If the bottleneck is traffic, positioning, automation, or CRM handoff, we diagnose it and propose the next fix."
+        q: "What if my website doesn't bring leads after launch?",
+        a: "We don't hand over a site and disappear. The first 30 days are free — we tune copy, the AI chat agent, analytics, and bugs with you. If it isn't bringing traffic we diagnose it (usually SEO, copy, or chat setup) and fix it. Average client sees their first qualified lead within 14 days of launch."
       },
       {
-        q: "How much does an AI-first software or growth system cost?",
-        a: "Depends on scope. A strategy-led growth website with AI chat starts around ₹1.5L. Lead-generation systems run ₹2.5L–₹5L. E-commerce and marketplaces run ₹4L–₹10L. Custom SaaS, automation, or AI systems run ₹8L–₹25L+. We share a fixed-price quote on the first WhatsApp call."
+        q: "How much does a website cost?",
+        a: "Depends on scope. A business website with AI chat starts around ₹1.5L. Lead-generation sites run ₹2.5L–₹5L. E-commerce stores ₹4L–₹10L. Custom web apps or SaaS ₹8L–₹25L+. We share a fixed-price quote on the first WhatsApp call — no hourly billing, no surprise change orders."
       },
       {
         q: "Can you also handle SEO, Google Ads, and AI search visibility?",
@@ -839,9 +839,9 @@ export const keywordGroups: KeywordGroup[] = [
       }
     ],
     ctaSection: {
-      headline: "Stop Buying Commodity Websites. Build the System That Runs Growth.",
-      subtitle: "WhatsApp a senior AI software consultant in 2 hours — not a sales rep with a slide deck. Get a free 48-hour software growth plan before you pay. Money-back if we miss the deadline. Source code yours from day one.",
-      buttonText: "Talk to AI Software Consultant"
+      headline: "Stop Paying for Websites That Just Sit There.",
+      subtitle: "Get a website that pays for itself in 90 days. WhatsApp a senior Indian web developer in 2 hours — not a sales rep with a slide deck. Free 48-hour prototype before you pay. Money-back if we miss the deadline. Source code yours from day one.",
+      buttonText: "Talk to Web Developer on WhatsApp"
     },
     targetKeywords: [
       "web development company",
