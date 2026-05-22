@@ -70,6 +70,8 @@ export default function Footer({ onCTA }: FooterProps) {
           <div className={`flex items-center gap-4 text-xs ${isLandingPage ? "text-gray-400" : "text-zinc-700"}`}>
             <Link href="/about" className={`transition-colors ${isLandingPage ? "hover:text-gray-600" : "hover:text-zinc-400"}`}>About</Link>
             <Link href="/contact" className={`transition-colors ${isLandingPage ? "hover:text-gray-600" : "hover:text-zinc-400"}`}>Contact</Link>
+            <Link href="/privacy" className={`transition-colors ${isLandingPage ? "hover:text-gray-600" : "hover:text-zinc-400"}`}>Privacy Policy</Link>
+            <Link href="/terms" className={`transition-colors ${isLandingPage ? "hover:text-gray-600" : "hover:text-zinc-400"}`}>Terms</Link>
             <Link href="/get-quote" className={`transition-colors ${isLandingPage ? "hover:text-gray-600" : "hover:text-zinc-400"}`}>Get Quote</Link>
           </div>
         </div>
