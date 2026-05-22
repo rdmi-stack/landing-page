@@ -34,9 +34,32 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function WebDevelopmentCompanyPage() {
+// Sanitize a ?kw= value into a clean, Title-Cased keyword for ad message-match.
+// Allow only letters/digits/space/&/- ; collapse spaces; cap length; Title Case.
+function sanitizeKeyword(raw?: string): string | undefined {
+  if (!raw) return undefined;
+  const cleaned = raw
+    .replace(/[^A-Za-z0-9 &-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 60);
+  if (cleaned.length < 3) return undefined;
+  return cleaned
+    .split(" ")
+    .map((w) => (w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w))
+    .join(" ");
+}
+
+export default async function WebDevelopmentCompanyPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ kw?: string }>;
+}) {
   const data = getKeywordGroup(SLUG);
   if (!data) notFound();
+
+  const kw = sanitizeKeyword((await searchParams).kw);
+  const headlineOverride = kw ? `${kw} in India — Talk to a Senior Web Developer in 2 Hours` : undefined;
 
   const url = `https://ai.rdmi.in/${SLUG}`;
 
@@ -73,7 +96,7 @@ export default function WebDevelopmentCompanyPage() {
     <main className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <KeywordLandingPage data={data} />
+      <KeywordLandingPage data={data} headlineOverride={headlineOverride} keywordLabel={kw} />
     </main>
   );
 }

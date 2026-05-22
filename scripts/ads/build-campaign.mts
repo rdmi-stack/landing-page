@@ -20,6 +20,7 @@ export interface Campaign {
   keywords: { text: string; matchType: string }[];
   headlines: string[]; // ≤15, each ≤30 chars, unique
   descriptions: string[]; // ≤4, each ≤90 chars, unique
+  pinnedH1?: string; // SKAG: headline to pin to position 1 (the keyword)
 }
 
 /**
@@ -151,5 +152,37 @@ export function buildCampaign(d: KeywordGroup, routePath: string): Campaign {
     keywords,
     headlines: buildHeadlines(d),
     descriptions: buildDescriptions(d),
+  };
+}
+
+function titleCase(s: string): string {
+  return clean(s)
+    .split(" ")
+    .map((w) => (w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w))
+    .join(" ");
+}
+
+/**
+ * Build a single-keyword-ad-group (SKAG) Campaign object for one keyword.
+ * The keyword is pinned to Headline 1 and reflected in the Final URL (?kw=)
+ * so the landing page H1 mirrors it — maximising Quality Score message-match.
+ */
+export function buildSkagCampaign(d: KeywordGroup, keyword: string, routePath: string): Campaign {
+  const kw = clean(keyword);
+  const kwTitle = titleCase(kw);
+  const pinnedH1 = fit(kwTitle, LIMITS.headline); // ≤30, word-boundary safe
+  // Pinned keyword headline first, then shared benefit/CTA headlines (deduped).
+  const headlines = [pinnedH1, ...buildHeadlines(d).filter((h) => h.toLowerCase() !== pinnedH1.toLowerCase())].slice(0, 15);
+  const baseUrl = resolveUrl(DOMAIN, routePath);
+  return {
+    slug: d.slug,
+    adGroup: `SKAG | ${kwTitle}`,
+    finalUrl: `${baseUrl}?kw=${encodeURIComponent(kw)}`,
+    path1: pathSeg(kw.split(" ").slice(0, 2).join("-")),
+    path2: "india",
+    keywords: MATCH_TYPES.map((matchType) => ({ text: kw, matchType })),
+    headlines,
+    descriptions: buildDescriptions(d),
+    pinnedH1,
   };
 }

@@ -42,7 +42,11 @@ const MATCH = {
   Exact: enums.KeywordMatchType.EXACT,
 } as const;
 
-export async function pushToGoogleAds(campaigns: Campaign[]): Promise<void> {
+export async function pushToGoogleAds(
+  campaigns: Campaign[],
+  opts: { campaignName?: string } = {},
+): Promise<void> {
+  const campaignName = opts.campaignName || CAMPAIGN_NAME;
   const missing = REQUIRED_ENV.filter((k) => !process.env[k]);
   if (missing.length) throw new Error(`Missing env: ${missing.join(", ")}`);
 
@@ -63,7 +67,7 @@ export async function pushToGoogleAds(campaigns: Campaign[]): Promise<void> {
   const [{ resource_name: budget }] = (
     await customer.campaignBudgets.create([
       {
-        name: `${CAMPAIGN_NAME} budget ${stamp}`,
+        name: `${campaignName} budget ${stamp}`,
         amount_micros: toMicros(DAILY_BUDGET),
         delivery_method: enums.BudgetDeliveryMethod.STANDARD,
         explicitly_shared: false,
@@ -76,7 +80,7 @@ export async function pushToGoogleAds(campaigns: Campaign[]): Promise<void> {
   const [{ resource_name: campaign }] = (
     await customer.campaigns.create([
       {
-        name: `${CAMPAIGN_NAME} · ${stamp}`,
+        name: `${campaignName} · ${stamp}`,
         status: enums.CampaignStatus.PAUSED,
         advertising_channel_type: enums.AdvertisingChannelType.SEARCH,
         campaign_budget: budget,
@@ -93,7 +97,7 @@ export async function pushToGoogleAds(campaigns: Campaign[]): Promise<void> {
       },
     ])
   ).results;
-  console.log(`  ✓ campaign (PAUSED) — ${CAMPAIGN_NAME}`);
+  console.log(`  ✓ campaign (PAUSED) — ${campaignName}`);
 
   // 3. Campaign criteria — India geo, languages, negatives
   await customer.campaignCriteria.create([
@@ -135,7 +139,11 @@ export async function pushToGoogleAds(campaigns: Campaign[]): Promise<void> {
         ad: {
           final_urls: [c.finalUrl],
           responsive_search_ad: {
-            headlines: c.headlines.map((text) => ({ text })),
+            headlines: c.headlines.map((text) =>
+              c.pinnedH1 && text === c.pinnedH1
+                ? { text, pinned_field: enums.ServedAssetFieldType.HEADLINE_1 }
+                : { text },
+            ),
             descriptions: c.descriptions.map((text) => ({ text })),
             path1: c.path1,
             path2: c.path2,

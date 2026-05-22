@@ -132,7 +132,7 @@ function AnimatedCounter({ value, className }: { value: string; className?: stri
   );
 }
 
-function WebDevelopmentLandingPage({ data }: { data: KeywordGroup }) {
+function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { data: KeywordGroup; headlineOverride?: string; keywordLabel?: string }) {
   const router = useRouter();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", budget: "", challenge: "" });
@@ -169,6 +169,10 @@ function WebDevelopmentLandingPage({ data }: { data: KeywordGroup }) {
   const heroBadge = isEnterprise ? "Senior enterprise architect callback in 2 hours" : isAgent ? "Senior AI agent architect callback in 2 hours" : isCustomSoftware ? "Senior software architect callback in 2 hours" : isMobile ? "Senior mobile app architect callback in 2 hours" : isEcommerce ? "Senior commerce architect callback in 2 hours" : isAI ? "Senior AI engineer callback in 2 hours" : "Senior AI consultant callback in 2 hours";
   const supportLine = isEnterprise ? "Get a senior enterprise architect callback in 2 hours." : isAgent ? "Get a senior AI agent architect callback in 2 hours." : isCustomSoftware ? "Get a senior software architect callback in 2 hours." : isMobile ? "Get a senior mobile app architect callback in 2 hours." : isEcommerce ? "Get a senior commerce architect callback in 2 hours." : isAI ? "Get a senior AI engineer callback in 2 hours." : "Get a senior consultant callback in 2 hours.";
   const stickyHeadline = isEnterprise ? "Need enterprise software that removes manual work?" : isAgent ? "Need an AI agent that actually finishes work?" : isCustomSoftware ? "Need custom software that becomes an operating advantage?" : isMobile ? "Need a mobile app that users keep using?" : isEcommerce ? "Need ecommerce that lifts conversion and AOV?" : isAI ? "Need production AI that works beyond the demo?" : "Need AI-first software that creates leverage?";
+  // SKAG keyword-injection overrides for message-match (from ?kw= on the route).
+  const h1Text = headlineOverride || data.hero.h1;
+  const badgeText = keywordLabel ? `${keywordLabel} · Senior developer callback in 2 hours` : heroBadge;
+  const formTitleText = keywordLabel ? `Get a free ${keywordLabel} quote in 48 hours` : formTitle;
   const waText = encodeURIComponent(
     isEnterprise
       ? "Hi RDMI, I want to discuss an enterprise software, ERP, CRM, or workflow automation project."
@@ -424,10 +428,10 @@ function WebDevelopmentLandingPage({ data }: { data: KeywordGroup }) {
             <div>
               <div className="inline-flex flex-wrap items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1.5 text-xs font-bold text-cyan-100">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                {heroBadge}
+                {badgeText}
               </div>
               <h1 className="mt-6 text-[2.4rem] sm:text-5xl lg:text-6xl font-black leading-[1.02] tracking-tight">
-                {data.hero.h1}
+                {h1Text}
               </h1>
               <p className="mt-6 max-w-2xl text-base sm:text-lg text-white/72 leading-relaxed">
                 {data.hero.subtitle}
@@ -455,7 +459,7 @@ function WebDevelopmentLandingPage({ data }: { data: KeywordGroup }) {
                 <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">{formEyebrow}</p>
-                    <h2 className="mt-1 text-xl font-black">{formTitle}</h2>
+                    <h2 className="mt-1 text-xl font-black">{formTitleText}</h2>
                   </div>
                   <Shield className="w-5 h-5 text-emerald-300" />
                 </div>
@@ -727,9 +731,9 @@ function WebDevelopmentLandingPage({ data }: { data: KeywordGroup }) {
   );
 }
 
-export default function KeywordLandingPage({ data }: { data: KeywordGroup }) {
+export default function KeywordLandingPage({ data, headlineOverride, keywordLabel }: { data: KeywordGroup; headlineOverride?: string; keywordLabel?: string }) {
   const promotedSlugs = new Set(["web-development-company", "enterprise-saas-development", "ai-software-development", "ai-agent-development", "custom-software-development", "mobile-app-development", "ecommerce-development"]);
-  return promotedSlugs.has(data.slug) ? <WebDevelopmentLandingPage data={data} /> : <KeywordLandingPageLegacy data={data} />;
+  return promotedSlugs.has(data.slug) ? <WebDevelopmentLandingPage data={data} headlineOverride={headlineOverride} keywordLabel={keywordLabel} /> : <KeywordLandingPageLegacy data={data} />;
 }
 
 function KeywordLandingPageLegacy({ data }: { data: KeywordGroup }) {
