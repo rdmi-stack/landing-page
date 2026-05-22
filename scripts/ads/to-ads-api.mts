@@ -81,6 +81,9 @@ export async function pushToGoogleAds(campaigns: Campaign[]): Promise<void> {
         advertising_channel_type: enums.AdvertisingChannelType.SEARCH,
         campaign_budget: budget,
         target_spend: {}, // Maximize Clicks
+        // Required since EU political-ad transparency rules.
+        contains_eu_political_advertising:
+          enums.EuPoliticalAdvertisingStatus.DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING,
         network_settings: {
           target_google_search: true,
           target_search_network: false,

@@ -72,11 +72,18 @@ const server = http.createServer(async (req, res) => {
     });
     const json = await tokenRes.json();
     if (!json.refresh_token) throw new Error(JSON.stringify(json));
+    // Persist directly into .env.local so the token never leaves this machine.
+    let env = fs.existsSync(envPath) ? fs.readFileSync(envPath, "utf8") : "";
+    if (/^GOOGLE_ADS_REFRESH_TOKEN=.*$/m.test(env)) {
+      env = env.replace(/^GOOGLE_ADS_REFRESH_TOKEN=.*$/m, `GOOGLE_ADS_REFRESH_TOKEN=${json.refresh_token}`);
+    } else {
+      env += `\nGOOGLE_ADS_REFRESH_TOKEN=${json.refresh_token}\n`;
+    }
+    fs.writeFileSync(envPath, env);
     res.writeHead(200, { "Content-Type": "text/html" }).end(
-      "<h2>✓ Done — refresh token captured.</h2><p>Return to your terminal. You can close this tab.</p>",
+      "<h2>✓ Done — refresh token saved to .env.local.</h2><p>Return to your terminal. You can close this tab.</p>",
     );
-    console.log("\n✓ Refresh token (paste into .env.local as GOOGLE_ADS_REFRESH_TOKEN):\n");
-    console.log("GOOGLE_ADS_REFRESH_TOKEN=" + json.refresh_token + "\n");
+    console.log("\n✓ GOOGLE_ADS_REFRESH_TOKEN written to .env.local\n");
     server.close();
     process.exit(0);
   } catch (e) {
