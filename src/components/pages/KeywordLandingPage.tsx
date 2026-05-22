@@ -717,12 +717,12 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
             <p className="text-xs text-white/50">{supportLine}</p>
           </div>
           <div className="flex w-full sm:w-auto gap-2">
-            <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-black text-white">
+            <button onClick={scrollToForm} className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-black text-[#0a0a0a]">
+              {primaryCta} <ArrowRight className="w-4 h-4" />
+            </button>
+            <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/8 px-5 py-3 text-sm font-bold text-white hover:bg-white/14 transition-colors">
               <MessageCircle className="w-4 h-4" /> WhatsApp
             </a>
-            <button onClick={scrollToForm} className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-black text-[#0a0a0a]">
-              {primaryCta}
-            </button>
           </div>
         </div>
       </div>

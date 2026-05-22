@@ -134,9 +134,14 @@ function buildDescriptions(d: KeywordGroup): string[] {
   return out.slice(0, 4);
 }
 
-/** Display-path segment: letters/numbers/hyphen only, ≤15 chars. */
+/** Display-path segment: letters/numbers/hyphen only, ≤15 chars, no mid-word cut. */
 function pathSeg(s: string): string {
-  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, LIMITS.path);
+  const slug = s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  if (slug.length <= LIMITS.path) return slug;
+  // Truncate at a hyphen boundary so we never leave a chopped word (e.g. "websi").
+  const cut = slug.slice(0, LIMITS.path);
+  const lastHyphen = cut.lastIndexOf("-");
+  return (lastHyphen > 0 ? cut.slice(0, lastHyphen) : cut).replace(/-+$/g, "");
 }
 
 export function buildCampaign(d: KeywordGroup, routePath: string): Campaign {

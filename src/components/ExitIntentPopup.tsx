@@ -41,6 +41,11 @@ export default function ExitIntentPopup() {
     openModal();
   };
 
+  // Suppress the exit-intent interstitial on paid ad landing pages — intrusive
+  // interstitials can trip Google Ads destination/policy review.
+  const isAdLandingPage = pathname === "/web-development-company" || /-company$/.test(pathname || "");
+  if (isAdLandingPage) return null;
+
   return (
     <>
       {showPopup && (
