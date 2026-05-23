@@ -55,7 +55,7 @@ console.log("─".repeat(60));
 // CSV preview
 const OUT = path.resolve(process.cwd(), "docs/ads");
 fs.mkdirSync(OUT, { recursive: true });
-fs.writeFileSync(path.join(OUT, "skag-web-development.csv"), toEditorCsv(campaigns));
+fs.writeFileSync(path.join(OUT, "skag-web-development.csv"), toEditorCsv(campaigns, "RDMI | Web Dev SKAG | CSV"));
 console.log(`  ${campaigns.length} ad groups → docs/ads/skag-web-development.csv`);
 
 if (push) {

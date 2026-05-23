@@ -31,19 +31,18 @@ function row(map: Record<string, string | number>): string {
 }
 void TOTAL_COLS;
 
-const campaignCols = {
-  Campaign: CAMPAIGN_NAME,
-  "Campaign Type": CAMPAIGN_TYPE,
-  Status: CAMPAIGN_STATUS,
-  Budget: DAILY_BUDGET,
-  "Budget Type": BUDGET_TYPE,
-  "Bid Strategy Type": BID_STRATEGY,
-  Networks: NETWORKS,
-  Languages: LANGUAGES,
-};
-
 /** Render one or more campaigns (ad groups) into a single Editor-importable CSV. */
-export function toEditorCsv(campaigns: Campaign[]): string {
+export function toEditorCsv(campaigns: Campaign[], campaignName: string = CAMPAIGN_NAME): string {
+  const campaignCols = {
+    Campaign: campaignName,
+    "Campaign Type": CAMPAIGN_TYPE,
+    Status: CAMPAIGN_STATUS,
+    Budget: DAILY_BUDGET,
+    "Budget Type": BUDGET_TYPE,
+    "Bid Strategy Type": BID_STRATEGY,
+    Networks: NETWORKS,
+    Languages: LANGUAGES,
+  };
   const lines = [HEADER.join(",")];
   // Single campaign-settings row.
   lines.push(row({ ...campaignCols }));
