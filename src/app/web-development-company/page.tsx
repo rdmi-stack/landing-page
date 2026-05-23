@@ -93,7 +93,7 @@ export default async function WebDevelopmentCompanyPage({
   };
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
+    <main className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <KeywordLandingPage data={data} headlineOverride={headlineOverride} keywordLabel={kw} />

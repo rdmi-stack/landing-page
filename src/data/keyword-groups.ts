@@ -270,19 +270,19 @@ export const keywordGroups: KeywordGroup[] = [
     ],
     testimonials: [
       {
-        quote: "They shipped a production SaaS in 11 weeks — our previous vendor quoted 9 months for less. Senior engineers throughout, AI-accelerated delivery. We stopped getting junior output at senior rates.",
+        quote: "They shipped a production SaaS far faster than our previous vendor quoted — senior engineers throughout, AI-accelerated delivery. We stopped getting junior output at senior rates.",
         author: "A.K.",
         role: "CTO, B2B SaaS (Mumbai)",
         rating: 5
       },
       {
-        quote: "Legacy ERP replaced with zero downtime using their parallel-run pattern. The architecture call alone saved us from a six-figure mistake. Two years later, the platform still runs without a single escalation.",
+        quote: "Legacy ERP replaced with zero downtime using their parallel-run pattern. The architecture call alone saved us from a costly mistake. The platform still runs smoothly with no escalations.",
         author: "R.M.",
         role: "Head of Engineering, FinTech (Delhi NCR)",
         rating: 5
       },
       {
-        quote: "Working staging URL in week two and working software every sprint. Our in-house team doubled output after watching them work. Prompts, eval sets, model weights — all handed over clean.",
+        quote: "Working staging URL in week two and working software every sprint. Our in-house team learned a lot watching them work. Source code, eval sets, and docs — all handed over clean.",
         author: "S.P.",
         role: "Founder, D2C Brand (Bangalore)",
         rating: 5
@@ -514,19 +514,19 @@ export const keywordGroups: KeywordGroup[] = [
     ],
     testimonials: [
       {
-        quote: "Our previous agency shipped a hamburger menu over a REST API. RDMI shipped voice search, visual product lookup, and an AI copilot inside the same build. Session length doubled in week one of launch — we stopped losing to apps that actually felt modern.",
+        quote: "Our previous agency shipped a basic wrapper over a REST API. RDMI shipped voice search, visual product lookup, and an AI copilot in the same build — an app that actually feels modern.",
         author: "N.R.",
         role: "Product Head, D2C Retail (Bangalore)",
         rating: 5
       },
       {
-        quote: "On-device Core ML running face detection and document scanning without a backend call. Our KYC flow dropped from 90 seconds to 12. Full source code, model weights, prompts — all in our repo from sprint two.",
+        quote: "On-device Core ML running face detection and document scanning without a backend call — our KYC flow got dramatically faster. Full source code, model weights, and prompts in our repo from sprint two.",
         author: "V.K.",
         role: "CTO, FinTech (Mumbai)",
         rating: 5
       },
       {
-        quote: "TestFlight build in week two, store submission cleared first time, AI triage flow caught a compliance issue our legal team had missed. The senior engineer was on our Slack the entire project — no project manager filter.",
+        quote: "TestFlight build in week two, store submission cleared first time, and the AI triage flow caught a compliance issue our legal team had missed. The senior engineer was on our Slack the entire project — no project-manager filter.",
         author: "D.S.",
         role: "Founder, HealthTech (Hyderabad)",
         rating: 5
@@ -605,7 +605,7 @@ export const keywordGroups: KeywordGroup[] = [
       {
         image: "/images/portfolio-ai-dashboard.png",
         project: "B2B SaaS · Bangalore",
-        outcome: "Site books 23+ qualified demos every month — on autopilot, zero extra ad spend.",
+        outcome: "Marketing site with a built-in AI chat agent that engages visitors and routes enquiries to the sales team.",
         tech: [
           "Next.js",
           "AI Chat Agent",
@@ -616,7 +616,7 @@ export const keywordGroups: KeywordGroup[] = [
       {
         image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&q=80",
         project: "D2C Brand · Ahmedabad",
-        outcome: "Sales lifted 34% in 30 days. ₹1.2Cr extra revenue last quarter after site rebuild.",
+        outcome: "Headless storefront on Shopify with fast product pages, clean checkout, and integrated payments.",
         tech: [
           "Next.js",
           "Shopify",
@@ -627,7 +627,7 @@ export const keywordGroups: KeywordGroup[] = [
       {
         image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80",
         project: "Healthcare Network · Pan-India",
-        outcome: "11,000 patients found us via Google in 90 days — zero rupees spent on paid ads.",
+        outcome: "SEO-structured, accessible website with schema markup and a fast patient-facing experience.",
         tech: [
           "Next.js",
           "Sanity CMS",
@@ -638,7 +638,7 @@ export const keywordGroups: KeywordGroup[] = [
       {
         image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&q=80",
         project: "FinTech · Mumbai",
-        outcome: "AI search cut support tickets by 45%. Site loads in 0.8s on any device, any city.",
+        outcome: "AI-powered on-site search and support, built to load in under a second on any device.",
         tech: [
           "Next.js",
           "AI Search",
@@ -649,7 +649,7 @@ export const keywordGroups: KeywordGroup[] = [
       {
         image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1200&q=80",
         project: "Booking SaaS · Pune",
-        outcome: "AI agent qualifies leads 24/7 and pings sales on WhatsApp — no more cold contact forms.",
+        outcome: "AI agent that qualifies leads around the clock and notifies the sales team on WhatsApp.",
         tech: [
           "Next.js",
           "AI Agent",
@@ -660,7 +660,7 @@ export const keywordGroups: KeywordGroup[] = [
       {
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
         project: "B2B Marketplace · Bangalore",
-        outcome: "Marketplace + dashboards live in 9 weeks. Now processes ₹40L+ GMV every month.",
+        outcome: "Multi-vendor marketplace with seller dashboards and integrated payments.",
         tech: [
           "Next.js",
           "Razorpay",
@@ -820,19 +820,19 @@ export const keywordGroups: KeywordGroup[] = [
     ],
     testimonials: [
       {
-        quote: "Our old WordPress site brought 2–3 leads a month. After RDMI rebuilt it, we now book 23+ qualified demos every month — the AI chat agent on the homepage does most of the work. We made our money back in 10 weeks.",
+        quote: "Our old site barely engaged anyone. RDMI rebuilt it with an AI chat agent on the homepage that answers visitors and routes them to us. A senior developer was on WhatsApp with us throughout the build.",
         author: "P.M.",
         role: "Head of Marketing, B2B SaaS (Pune)",
         rating: 5
       },
       {
-        quote: "They rebuilt our store in 9 weeks. Add-to-cart up 34%, ₹1.2Cr extra revenue last quarter, site loads instantly on any phone. Full source code in our GitHub on day one — no agency lock-in. Best Indian agency we've worked with.",
+        quote: "They rebuilt our store with fast product pages, a clean checkout, and instant loads on any phone. Full source code in our GitHub on day one — no agency lock-in. Best Indian team we've worked with.",
         author: "A.S.",
         role: "Founder, D2C Brand (Ahmedabad)",
         rating: 5
       },
       {
-        quote: "Senior engineer on our WhatsApp from day one — no account manager filter, no junior copy-paste. Live in 6 weeks. Our website now qualifies and routes leads straight to my sales team — not just sits there.",
+        quote: "Senior engineer on our WhatsApp from day one — no account-manager filter, no junior copy-paste. Our website now qualifies and routes leads to my sales team instead of just sitting there.",
         author: "J.V.",
         role: "CTO, MarTech Startup (Bangalore)",
         rating: 5
@@ -1478,19 +1478,19 @@ export const keywordGroups: KeywordGroup[] = [
     ],
     testimonials: [
       {
-        quote: "Their agent runs our entire lead-qualification pipeline — research, enrich, score, draft the first reply. What took a sales ops person 3 days now takes 7 minutes. The LangSmith traces sold our board on scaling the next three workflows.",
+        quote: "Their agent runs our lead-qualification pipeline — research, enrich, score, and draft the first reply. The LangSmith traces gave our board the confidence to scale it across more workflows.",
         author: "V.N.",
         role: "VP Growth, B2B SaaS",
         rating: 5
       },
       {
-        quote: "Three failed GenAI pilots before RDMI. They started with evals and observability — not a demo — and shipped a production agent in 8 weeks. The difference was process, not prompts.",
+        quote: "We'd had failed GenAI pilots before RDMI. They started with evals and observability — not a demo — and shipped a production agent. The difference was process, not prompts.",
         author: "D.M.",
         role: "Head of AI, FinTech",
         rating: 5
       },
       {
-        quote: "Voice agent handles 62% of inbound calls end-to-end. Sub-second latency. Callers don't know it's AI. Step-change in our unit economics — we redeployed two humans to revenue ops.",
+        quote: "Our voice agent handles a large share of inbound calls end-to-end with sub-second latency — callers don't know it's AI. It freed up the team to focus on higher-value work.",
         author: "P.R.",
         role: "Founder, Real Estate Tech",
         rating: 5
@@ -1711,19 +1711,19 @@ export const keywordGroups: KeywordGroup[] = [
     ],
     testimonials: [
       {
-        quote: "14 weeks to multi-tenant SaaS with SSO, SCIM, audit logs, and a the latest LLMs copilot inside the product. Previous vendor quoted 40 weeks for a stack without any AI. Enterprise customers signed without a security escalation — the AI copilot closed the last two deals on its own.",
+        quote: "Multi-tenant SaaS with SSO, SCIM, audit logs, and an LLM copilot inside the product — far faster than our previous vendor quoted for a stack without any AI. Enterprise customers signed without a security escalation.",
         author: "J.K.",
         role: "CTO, B2B SaaS (USA)",
         rating: 5
       },
       {
-        quote: "Migrated our 12-year-old ERP to an AI-native platform with zero downtime. LangGraph agents now reconcile invoices and flag anomalies overnight — ops team stopped chasing spreadsheets. Parallel-run cutover was the smoothest six weeks of my career.",
+        quote: "Migrated our 12-year-old ERP to an AI-native platform with zero downtime. LangGraph agents now reconcile invoices and flag anomalies overnight, so the ops team stopped chasing spreadsheets. The parallel-run cutover was remarkably smooth.",
         author: "M.V.",
         role: "COO, Manufacturing (Pune)",
         rating: 5
       },
       {
-        quote: "Their architecture call named a multi-region design flaw we were about to ship. Added LangSmith evals on every agent deploy — task-success holds above 94% across three model upgrades. Worth the engagement before we wrote a single line of code.",
+        quote: "Their architecture call named a multi-region design flaw we were about to ship, and they added LangSmith evals on every agent deploy to keep task-success high across model upgrades. Worth the engagement before we wrote a single line of code.",
         author: "R.C.",
         role: "VP Engineering, FinTech (Bangalore)",
         rating: 5
@@ -1751,6 +1751,140 @@ export const keywordGroups: KeywordGroup[] = [
   }
 ];
 
+// ---- Web-dev SKAG variant pages -------------------------------------------
+// Each high-intent web-dev keyword gets its own dedicated landing page for tight
+// ad↔page message-match (Quality Score + lead quality). They reuse the
+// web-development-company page's structure (services, process, portfolio, USPs,
+// stats) and override only the intent-specific copy: keyword, hero, meta, form
+// title, FAQ lead question, and CTA headline.
+const webDevBase = keywordGroups.find((g) => g.slug === "web-development-company")!;
+
+function webDevVariant(o: {
+  slug: string;
+  primaryKeyword: string;
+  metaTitle: string;
+  metaDescription: string;
+  badge: string;
+  h1: string;
+  subtitle: string;
+  formTitle: string;
+  faqLead: { q: string; a: string };
+  ctaHeadline: string;
+  targetKeywords: string[];
+}): KeywordGroup {
+  return {
+    ...webDevBase,
+    slug: o.slug,
+    primaryKeyword: o.primaryKeyword,
+    adGroupMatch: o.primaryKeyword,
+    meta: { title: o.metaTitle, description: o.metaDescription },
+    hero: { ...webDevBase.hero, badge: o.badge, h1: o.h1, subtitle: o.subtitle },
+    form: { ...webDevBase.form, title: o.formTitle },
+    faq: [o.faqLead, ...webDevBase.faq.slice(1)],
+    ctaSection: { ...webDevBase.ctaSection, headline: o.ctaHeadline },
+    targetKeywords: o.targetKeywords,
+  };
+}
+
+keywordGroups.push(
+  webDevVariant({
+    slug: "website-development-company",
+    primaryKeyword: "Website Development Company",
+    metaTitle: "Website Development Company in India — A Website That Brings Leads | RDMI",
+    metaDescription:
+      "Website development company in India building business websites that turn visitors into enquiries — not static brochures. Senior developer WhatsApps you in 2 hours. Free 48-hour prototype. Source code yours.",
+    badge: "💬 Website Development Company · Talk to a Senior Developer on WhatsApp",
+    h1: "A Website That Brings You Leads — Not Just a Brochure That Sits There",
+    subtitle:
+      "We are a website development company that builds business sites designed to win enquiries — through Google rankings, a 24/7 AI chat assistant, and pages that load in under 1 second. Built by senior Indian developers who have shipped 200+ websites. Talk direct on WhatsApp in 2 hours. Free 48-hour prototype.",
+    formTitle: "Talk to a Senior Web Developer",
+    faqLead: {
+      q: "How is RDMI different from other website development companies?",
+      a: "Three things. You talk directly to a senior developer on WhatsApp within 2 hours — not a sales rep. You get a free working prototype in 48 hours and pay only after you approve. And every contract has a money-back clause if we miss the deadline. Most website development companies promise these in proposals but won't put them in the contract. We do.",
+    },
+    ctaHeadline: "Stop Paying for a Website That Just Sits There.",
+    targetKeywords: [
+      "website development company",
+      "website development services",
+      "website development agency",
+      "business website development",
+      "website developer",
+    ],
+  }),
+  webDevVariant({
+    slug: "custom-website-development",
+    primaryKeyword: "Custom Website Development",
+    metaTitle: "Custom Website Development in India — Built From Scratch, No Templates | RDMI",
+    metaDescription:
+      "Custom website development in India — designed and coded from scratch around your business, not a template you will outgrow. Senior developer WhatsApps you in 2 hours. Free 48-hour prototype. Full source code yours.",
+    badge: "💬 Custom Website Development · Talk to a Senior Developer on WhatsApp",
+    h1: "Custom Website Development — Built From Scratch for Your Business, Not a Template",
+    subtitle:
+      "No themes, no page-builders, no template you will outgrow in a year. We design and code your website from scratch around how your business actually works — fast, custom, and fully yours. Built by senior Indian developers. Talk direct on WhatsApp in 2 hours. Free 48-hour prototype before you pay.",
+    formTitle: "Talk to a Senior Web Developer",
+    faqLead: {
+      q: "What does custom website development include?",
+      a: "A website designed and coded from scratch for your business — no templates or page-builders. Custom design, custom front-end and back-end, the integrations you need (payments, CRM, WhatsApp, AI chat), sub-1-second load, and SEO structure baked in. You own 100% of the source code from day one. We share a fixed-price quote on the first WhatsApp call.",
+    },
+    ctaHeadline: "Get a Website Built Around Your Business — Not a Template.",
+    targetKeywords: [
+      "custom website development",
+      "custom website development services",
+      "custom web design services",
+      "custom website developer",
+      "bespoke website development",
+    ],
+  }),
+  webDevVariant({
+    slug: "web-development-services",
+    primaryKeyword: "Web Development Services",
+    metaTitle: "Web Development Services in India — Front-End to Full-Stack | RDMI",
+    metaDescription:
+      "Full-stack web development services in India — front-end, back-end, CMS, e-commerce, redesigns, and maintenance. Senior developer WhatsApps you in 2 hours. Free 48-hour prototype. Source code yours.",
+    badge: "💬 Web Development Services · Talk to a Senior Developer on WhatsApp",
+    h1: "Web Development Services — Front-End, Back-End, Full-Stack, by Senior Indian Devs",
+    subtitle:
+      "Front-end, back-end, full-stack, CMS, e-commerce, redesigns, and ongoing maintenance — whatever your website needs, a senior Indian developer builds it. Loads under 1 second, ranks on Google, captures leads 24/7 with built-in AI chat. Talk direct on WhatsApp in 2 hours. Free 48-hour prototype.",
+    formTitle: "Talk to a Senior Web Developer",
+    faqLead: {
+      q: "What web development services does RDMI offer?",
+      a: "The full stack: front-end (React, Next.js), back-end and APIs (Node.js, Python), CMS and WordPress, headless e-commerce, landing pages, redesigns and speed optimisation, plus ongoing maintenance and support. Every build includes SEO structure, analytics, a 24/7 AI chat agent, and full source-code ownership. One senior engineer scopes, builds, and supports your project.",
+    },
+    ctaHeadline: "Web Development Services That Ship Results, Not Excuses.",
+    targetKeywords: [
+      "web development services",
+      "custom web development services",
+      "full stack web development services",
+      "professional web development services",
+      "best web development services",
+    ],
+  }),
+  webDevVariant({
+    slug: "web-development-agency",
+    primaryKeyword: "Web Development Agency",
+    metaTitle: "Web Development Agency in India — Your Dedicated Senior Dev Team | RDMI",
+    metaDescription:
+      "Web development agency in India that works like your in-house team. Talk direct to the senior developer who builds your site on WhatsApp in 2 hours — no account-manager filter. Free 48-hour prototype. Source code yours.",
+    badge: "💬 Web Development Agency · Talk to a Senior Developer on WhatsApp",
+    h1: "A Web Development Agency That Works Like Your In-House Team",
+    subtitle:
+      "Most agencies hide senior developers behind account managers and junior hand-offs. We do not. You talk direct to the senior Indian engineer who builds your site — on WhatsApp, in 2 hours. Free 48-hour prototype. Source code yours from day one. No lock-in, ever.",
+    formTitle: "Talk to a Senior Web Developer",
+    faqLead: {
+      q: "How is RDMI different from other web development agencies?",
+      a: "No account-manager filter and no junior hand-offs. You talk directly to the senior developer who scopes, builds, and supports your site — on WhatsApp within 2 hours. You get a free working prototype in 48 hours and pay only after you approve, every contract has a money-back clause if we miss the deadline, and you own the full source code from day one with zero lock-in.",
+    },
+    ctaHeadline: "A Web Development Agency You Can Actually Talk To.",
+    targetKeywords: [
+      "web development agency",
+      "web design and development agency",
+      "web app development agency",
+      "website development agency",
+      "best web development agency",
+    ],
+  }),
+);
+
 export function getKeywordGroup(slug: string): KeywordGroup | undefined {
   return keywordGroups.find((g) => g.slug === slug);
 }
@@ -1762,7 +1896,11 @@ const PROMOTED_SLUGS = new Set<string>([
   "ecommerce-development",
   "enterprise-saas-development",
   "mobile-app-development",
-  "web-development-company"
+  "web-development-company",
+  "website-development-company",
+  "custom-website-development",
+  "web-development-services",
+  "web-development-agency"
 ]);
 
 export function getAllSlugs(): string[] {

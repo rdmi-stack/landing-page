@@ -3,15 +3,12 @@ import { notFound } from "next/navigation";
 import { getKeywordGroup } from "@/data/keyword-groups";
 import KeywordLandingPage from "@/components/pages/KeywordLandingPage";
 
-const SLUG = "enterprise-saas-development";
-const ROUTE = "enterprise-software-development-company";
+const SLUG = "custom-website-development";
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
   const data = getKeywordGroup(SLUG);
   if (!data) return {};
-
-  const url = `https://rdmi-landing-page.netlify.app/${ROUTE}`;
-
+  const url = `https://ai.rdmi.in/${SLUG}`;
   return {
     title: data.meta.title,
     description: data.meta.description,
@@ -35,12 +32,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function EnterpriseSoftwareDevelopmentCompanyPage() {
+export default function CustomWebsiteDevelopmentPage() {
   const data = getKeywordGroup(SLUG);
   if (!data) notFound();
 
-  const url = `https://rdmi-landing-page.netlify.app/${ROUTE}`;
-
+  const url = `https://ai.rdmi.in/${SLUG}`;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -50,7 +46,6 @@ export default function EnterpriseSoftwareDevelopmentCompanyPage() {
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
   };
-
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -59,8 +54,8 @@ export default function EnterpriseSoftwareDevelopmentCompanyPage() {
     provider: {
       "@type": "Organization",
       name: "RDMI Tech Ventures Pvt. Ltd.",
-      url: "https://rdmi-landing-page.netlify.app",
-      logo: "https://rdmi-landing-page.netlify.app/icon.svg",
+      url: "https://ai.rdmi.in",
+      logo: "https://ai.rdmi.in/icon.svg",
       email: "info@rdmi.in",
       telephone: "+91-9818565561",
       address: { "@type": "PostalAddress", addressCountry: "IN" },

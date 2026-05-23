@@ -1,72 +1,85 @@
 /**
- * Add ad extensions (assets) to the campaign via the Google Ads API:
- * sitelinks, callouts, structured snippets. Idempotent-ish — creates fresh
- * assets and links them; safe to run once after the push.
+ * Add campaign-level ad assets (sitelinks, callouts, structured snippets) to a
+ * web-dev campaign via the Google Ads API. Extensions lift CTR and Ad Strength
+ * (Google's "add 6 more sitelinks" tip). Idempotent: skips a field type that's
+ * already linked to the campaign.
  *
- *   node scripts/ads/add-extensions.mts
+ *   node scripts/ads/add-extensions.mts                 # default: CSV Import campaign
+ *   node scripts/ads/add-extensions.mts "Search | India" # match a different campaign by name
  */
 
 import { GoogleAdsApi, enums } from "google-ads-api";
 import fs from "node:fs";
 import path from "node:path";
-import { DOMAIN, CALLOUTS, STRUCTURED_SNIPPET } from "./config.mts";
+import { DOMAIN, SITELINKS, CALLOUTS, STRUCTURED_SNIPPET } from "./config.mts";
 
 const envPath = path.resolve(process.cwd(), ".env.local");
-if (fs.existsSync(envPath)) {
-  for (const line of fs.readFileSync(envPath, "utf8").split("\n")) {
-    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
-    if (m) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
-  }
+for (const line of fs.readFileSync(envPath, "utf8").split("\n")) {
+  const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
+  if (m) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
 }
 
-const LP = `${DOMAIN}/web-development-company`;
-const SITELINKS = [
-  { link_text: "Get a Free Quote", description1: "Senior dev replies in 2 hours", description2: "Free 48-hour prototype", final_urls: [`${LP}#lead-form`] },
-  { link_text: "See Live Work", description1: "Real projects, real outcomes", description2: "200+ websites shipped", final_urls: [LP] },
-  { link_text: "Contact Us", description1: "Email, phone, WhatsApp", description2: "Talk to a real developer", final_urls: [`${DOMAIN}/contact`] },
-  { link_text: "About RDMI", description1: "India-based senior team", description2: "200+ products shipped", final_urls: [`${DOMAIN}/about`] },
-];
+const NAME_MATCH = process.argv.slice(2).find((a) => !a.startsWith("--")) ?? "CSV Import";
 
 const client = new GoogleAdsApi({
   client_id: process.env.GOOGLE_ADS_CLIENT_ID!,
   client_secret: process.env.GOOGLE_ADS_CLIENT_SECRET!,
   developer_token: process.env.GOOGLE_ADS_DEVELOPER_TOKEN!,
 });
+const cid = process.env.GOOGLE_ADS_CUSTOMER_ID!.replace(/-/g, "");
 const customer = client.Customer({
-  customer_id: process.env.GOOGLE_ADS_CUSTOMER_ID!.replace(/-/g, ""),
+  customer_id: cid,
   login_customer_id: process.env.GOOGLE_ADS_LOGIN_CUSTOMER_ID!.replace(/-/g, ""),
   refresh_token: process.env.GOOGLE_ADS_REFRESH_TOKEN!,
 });
 
-const camp = await customer.query(`
-  SELECT campaign.resource_name FROM campaign
-  WHERE campaign.name LIKE 'RDMI | Search | India%' AND campaign.status != 'REMOVED'
-  ORDER BY campaign.id DESC LIMIT 1`);
-const campaign = camp[0].campaign!.resource_name!;
+const camps = await customer.query(`
+  SELECT campaign.id, campaign.name FROM campaign
+  WHERE campaign.name LIKE '%${NAME_MATCH}%' AND campaign.status != 'REMOVED'
+  ORDER BY campaign.id DESC
+`);
+if (!camps.length) throw new Error(`No campaign matching "${NAME_MATCH}"`);
+const campaignId = camps[0].campaign!.id!;
+const campaign = `customers/${cid}/campaigns/${campaignId}`;
+console.log(`Target: ${camps[0].campaign!.name}  (id ${campaignId})`);
 
-// 1. Create assets
-const sitelinkAssets = (
-  await customer.assets.create(
-    SITELINKS.map((s) => ({ sitelink_asset: { link_text: s.link_text, description1: s.description1, description2: s.description2 }, final_urls: s.final_urls })),
-  )
-).results.map((r) => r.resource_name!);
+// What's already linked? Skip those field types so reruns don't duplicate.
+const linked = await customer.query(`
+  SELECT campaign.id, campaign_asset.field_type FROM campaign_asset
+  WHERE campaign.id = ${campaignId} AND campaign_asset.status != 'REMOVED'
+`);
+const have = new Set(linked.map((r) => r.campaign_asset!.field_type));
 
-const calloutAssets = (
-  await customer.assets.create(CALLOUTS.map((callout_text) => ({ callout_asset: { callout_text } })))
-).results.map((r) => r.resource_name!);
+async function linkAssets(assets: object[], fieldType: number, label: string) {
+  if (have.has(fieldType)) {
+    console.log(`  • ${label} already linked — skipped`);
+    return;
+  }
+  const res = await customer.assets.create(assets);
+  const links = res.results!.map((r) => ({ campaign, asset: r.resource_name!, field_type: fieldType }));
+  await customer.campaignAssets.create(links);
+  console.log(`  ✓ ${label}: ${links.length} linked`);
+}
 
-const [{ resource_name: snippetAsset }] = (
-  await customer.assets.create([
-    { structured_snippet_asset: { header: STRUCTURED_SNIPPET.header, values: STRUCTURED_SNIPPET.values } },
-  ])
-).results;
-console.log(`✓ assets created — ${sitelinkAssets.length} sitelinks, ${calloutAssets.length} callouts, 1 structured snippet`);
+await linkAssets(
+  SITELINKS.map((s) => ({
+    final_urls: [`${DOMAIN}${s.path}`],
+    sitelink_asset: { link_text: s.text, description1: s.desc1, description2: s.desc2 },
+  })),
+  enums.AssetFieldType.SITELINK,
+  "Sitelinks",
+);
 
-// 2. Link assets to the campaign
-await customer.campaignAssets.create([
-  ...sitelinkAssets.map((asset) => ({ campaign, asset, field_type: enums.AssetFieldType.SITELINK })),
-  ...calloutAssets.map((asset) => ({ campaign, asset, field_type: enums.AssetFieldType.CALLOUT })),
-  { campaign, asset: snippetAsset, field_type: enums.AssetFieldType.STRUCTURED_SNIPPET },
-]);
-console.log(`✓ linked to campaign — sitelinks + callouts + structured snippet (Services)`);
-console.log("  Extensions go live with the campaign once it's enabled + reviewed.");
+await linkAssets(
+  CALLOUTS.map((text) => ({ callout_asset: { callout_text: text } })),
+  enums.AssetFieldType.CALLOUT,
+  "Callouts",
+);
+
+await linkAssets(
+  [{ structured_snippet_asset: { header: STRUCTURED_SNIPPET.header, values: STRUCTURED_SNIPPET.values } }],
+  enums.AssetFieldType.STRUCTURED_SNIPPET,
+  "Structured snippet",
+);
+
+console.log("\n✓ Extensions linked. Ad Strength recalculates within a few minutes.");

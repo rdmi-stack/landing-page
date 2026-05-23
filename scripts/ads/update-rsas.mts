@@ -9,19 +9,14 @@
 import { GoogleAdsApi, enums } from "google-ads-api";
 import fs from "node:fs";
 import path from "node:path";
-import { keywordGroups } from "../../src/data/keyword-groups.ts";
-import { buildRouteMap } from "./route-map.mts";
-import { buildCampaign, buildSkagCampaign, type Campaign } from "./build-campaign.mts";
+import { type Campaign } from "./build-campaign.mts";
+import { campaignForAdGroup } from "./skag-keywords.mts";
 
 const envPath = path.resolve(process.cwd(), ".env.local");
 for (const line of fs.readFileSync(envPath, "utf8").split("\n")) {
   const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
   if (m) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
 }
-
-const SLUG = "web-development-company";
-const group = keywordGroups.find((g) => g.slug === SLUG)!;
-const routePath = buildRouteMap().get(SLUG)!;
 
 const client = new GoogleAdsApi({
   client_id: process.env.GOOGLE_ADS_CLIENT_ID!,
@@ -34,19 +29,21 @@ const customer = client.Customer({
   refresh_token: process.env.GOOGLE_ADS_REFRESH_TOKEN!,
 });
 
-// Every ad group across both web-dev campaigns + its current ad.
+// Every SKAG ad group + its current ad (skip non-SKAG groups like the broad campaign).
 const rows = await customer.query(`
   SELECT campaign.name, ad_group.name, ad_group.resource_name, ad_group_ad.resource_name
   FROM ad_group_ad
-  WHERE campaign.name LIKE 'RDMI %' AND ad_group_ad.status != 'REMOVED'
+  WHERE ad_group.name LIKE 'SKAG | %' AND ad_group_ad.status != 'REMOVED'
 `);
 
+let refreshed = 0;
 for (const r of rows) {
   const agName = r.ad_group!.name!;
-  const isSkag = agName.startsWith("SKAG | ");
-  const c: Campaign = isSkag
-    ? buildSkagCampaign(group, agName.replace(/^SKAG \| /, "").toLowerCase(), routePath)
-    : buildCampaign(group, routePath);
+  const c: Campaign | null = campaignForAdGroup(agName);
+  if (!c) {
+    console.log(`  · ${agName} — no mapping, skipped`);
+    continue;
+  }
 
   await customer.adGroupAds.create([
     {
@@ -56,7 +53,7 @@ for (const r of rows) {
         final_urls: [c.finalUrl],
         responsive_search_ad: {
           headlines: c.headlines.map((text) =>
-            c.pinnedH1 && text === c.pinnedH1
+            c.pinnedHeadlines?.includes(text)
               ? { text, pinned_field: enums.ServedAssetFieldType.HEADLINE_1 }
               : { text },
           ),
@@ -68,6 +65,7 @@ for (const r of rows) {
     },
   ]);
   await customer.adGroupAds.remove([r.ad_group_ad!.resource_name!]);
-  console.log(`  ✓ ${agName} — RSA refreshed (softened copy)`);
+  refreshed++;
+  console.log(`  ✓ ${agName} → ${c.finalUrl}  (pinned: ${(c.pinnedHeadlines ?? []).length})`);
 }
-console.log(`\n✓ ${rows.length} RSAs refreshed across both web-dev campaigns.`);
+console.log(`\n✓ ${refreshed} SKAG RSAs refreshed (intent copy + dedicated pages + pinned variants).`);

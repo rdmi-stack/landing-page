@@ -46,3 +46,6 @@ next-env.d.ts
 
 # Lead data (local storage)
 /data/leads.json
+
+# GA4 service-account key (secret — never commit)
+.ga4-service-account.json

@@ -27,12 +27,23 @@ export const MATCH_TYPES = ["Phrase", "Exact"] as const;
 
 /** Shared negative keyword list — strips students, jobseekers, DIY, freelancer traffic. */
 export const NEGATIVES = [
+  // Education / jobs / freebie seekers
   "free", "free website", "tutorial", "how to", "course", "classes", "training",
   "certification", "learn", "w3schools", "jobs", "job", "salary", "internship",
   "intern", "freelance", "freelancer", "fiverr", "upwork", "resume", "sample",
   "download", "template free", "wordpress theme free", "github", "youtube",
   "pdf", "wikipedia", "what is", "meaning", "beginner", "practice",
   "project for students", "college project",
+  // DIY self-serve builders + page-builder plugins (they build it themselves)
+  "wix", "squarespace", "godaddy", "weebly", "zyro", "carrd", "framer", "lovable",
+  "durable", "hostinger", "blogspot", "blogger", "elementor", "divi", "spectra",
+  "builder", "maker", "making", "creating", "no code", "low code", "nocode",
+  "create website", "create own website", "make website", "google sites", "google website",
+  // Design-only intent (this is a web DEVELOPMENT campaign, not design)
+  "web design", "website design", "web designer", "website designer",
+  "web designing", "website designing", "logo design", "graphic design",
+  // Cheap / DIY price-shoppers + irrelevant platforms/brands
+  "diy", "cheap", "cheapest", "how much", "odoo", "websenor", "ease2web", "wix studio", "ai website",
 ];
 
 /** Callout assets (campaign level — added manually, not via CSV). */
@@ -45,6 +56,19 @@ export const STRUCTURED_SNIPPET = {
   header: "Services",
   values: ["Business Websites", "E-Commerce", "Web Apps", "Landing Pages", "WordPress", "Redesign"],
 };
+
+/**
+ * Sitelink assets (campaign level). link_text ≤25 chars, each description line
+ * ≤35 chars. Paths must resolve on DOMAIN (ai.rdmi.in) or Google disapproves.
+ */
+export const SITELINKS = [
+  { text: "Get a Free Quote", path: "/get-quote", desc1: "Senior dev WhatsApps in 2 hrs", desc2: "Free 48-hour prototype" },
+  { text: "See Our Work", path: "/case-studies", desc1: "200+ websites delivered", desc2: "Real results, real clients" },
+  { text: "How It Works", path: "/how-it-works", desc1: "Discovery to launch in weeks", desc2: "Clear scope, senior delivery" },
+  { text: "50+ Products", path: "/products", desc1: "SaaS, apps, AI, e-commerce", desc2: "Built for Indian businesses" },
+  { text: "Our Services", path: "/services", desc1: "Web, mobile, AI, enterprise", desc2: "Senior engineers, no juniors" },
+  { text: "Contact Us", path: "/contact", desc1: "WhatsApp, call, or email", desc2: "Based in India, ships global" },
+];
 
 export const PHONE = "+91 98185 65561";
 

@@ -140,7 +140,7 @@ export async function pushToGoogleAds(
           final_urls: [c.finalUrl],
           responsive_search_ad: {
             headlines: c.headlines.map((text) =>
-              c.pinnedH1 && text === c.pinnedH1
+              c.pinnedHeadlines?.includes(text)
                 ? { text, pinned_field: enums.ServedAssetFieldType.HEADLINE_1 }
                 : { text },
             ),

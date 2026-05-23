@@ -138,7 +138,9 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", budget: "", challenge: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [scrollProgress, setScrollProgress] = useState(0);
-  const budgets = ["Under ₹1L", "₹1L - ₹5L", "₹5L - ₹15L", "₹15L - ₹50L", "₹50L+", "Not sure yet"];
+  const budgets = data.slug === "web-development-company"
+    ? ["₹50K - ₹1L", "₹1L - ₹5L", "₹5L - ₹15L", "₹15L - ₹50L", "₹50L+", "Not sure yet"]
+    : ["Under ₹1L", "₹1L - ₹5L", "₹5L - ₹15L", "₹15L - ₹50L", "₹50L+", "Not sure yet"];
   const isEnterprise = data.slug === "enterprise-saas-development";
   const isAI = data.slug === "ai-software-development";
   const isAgent = data.slug === "ai-agent-development";
@@ -397,94 +399,94 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
       <div className="fixed top-0 left-0 right-0 h-1 z-[200] pointer-events-none">
         <div className="h-full bg-gradient-to-r from-cyan-400 via-violet-500 to-emerald-400 transition-[width] duration-100 ease-out" style={{ width: `${scrollProgress}%` }} />
       </div>
 
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0a0a0a]/85 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/85 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3" aria-label="RDMI home">
-            <span className="w-9 h-9 rounded-xl bg-white text-[#0a0a0a] flex items-center justify-center font-black">R</span>
-            <span className="font-bold tracking-tight">RDMI AI Services</span>
+            <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 text-white flex items-center justify-center font-black">R</span>
+            <span className="font-bold tracking-tight text-slate-900">RDMI AI Services</span>
           </Link>
-          <div className="hidden md:flex items-center gap-6 text-sm text-white/65">
-            <a href="#work" className="hover:text-white transition-colors">Work</a>
-            <a href="#services" className="hover:text-white transition-colors">Services</a>
-            <a href="#process" className="hover:text-white transition-colors">Process</a>
-            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+          <div className="hidden md:flex items-center gap-6 text-sm text-slate-500">
+            <a href="#work" className="hover:text-slate-900 transition-colors">Work</a>
+            <a href="#services" className="hover:text-slate-900 transition-colors">Services</a>
+            <a href="#process" className="hover:text-slate-900 transition-colors">Process</a>
+            <a href="#faq" className="hover:text-slate-900 transition-colors">FAQ</a>
           </div>
-          <button onClick={scrollToForm} className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-[#0a0a0a] hover:bg-cyan-100 transition-colors">
+          <button onClick={scrollToForm} className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] transition-all">
             {primaryCta} <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       </header>
 
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(14,165,233,0.14),transparent_34%,rgba(124,58,237,0.18)_66%,rgba(16,185,129,0.12))]" />
-        <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.7) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
+      <section className="relative overflow-hidden border-b border-slate-200">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(14,165,233,0.08),transparent_34%,rgba(124,58,237,0.10)_66%,rgba(16,185,129,0.06))]" />
+        <div className="absolute inset-0 opacity-[0.5]" style={{ backgroundImage: "linear-gradient(rgba(15,23,42,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <div>
-              <div className="inline-flex flex-wrap items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1.5 text-xs font-bold text-cyan-100">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="inline-flex flex-wrap items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-bold text-indigo-700">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 {badgeText}
               </div>
-              <h1 className="mt-6 text-[2.4rem] sm:text-5xl lg:text-6xl font-black leading-[1.02] tracking-tight">
+              <h1 className="mt-6 text-[2.4rem] sm:text-5xl lg:text-6xl font-black leading-[1.02] tracking-tight text-slate-900">
                 {h1Text}
               </h1>
-              <p className="mt-6 max-w-2xl text-base sm:text-lg text-white/72 leading-relaxed">
+              <p className="mt-6 max-w-2xl text-base sm:text-lg text-slate-700 leading-relaxed">
                 {data.hero.subtitle}
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-7 py-4 font-bold text-white shadow-[0_18px_45px_rgba(37,211,102,0.22)] hover:bg-[#1fba56] transition-colors">
+                <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-7 py-4 font-bold text-white shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] transition-all">
                   {primaryCta} <ArrowRight className="w-5 h-5" />
                 </button>
-                <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/18 bg-white/8 px-7 py-4 font-bold text-white hover:bg-white/14 transition-colors">
+                <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-4 font-bold text-slate-800 hover:bg-slate-50 transition-colors">
                   <MessageCircle className="w-5 h-5" /> {secondaryCta}
                 </a>
               </div>
               <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
                 {data.stats.slice(0, 4).map((stat) => (
-                  <div key={stat.label} className="border-l border-white/14 pl-4">
-                    <AnimatedCounter value={stat.value} className="text-2xl font-black text-white" />
-                    <p className="mt-1 text-xs leading-snug text-white/55">{stat.label}</p>
+                  <div key={stat.label} className="border-l border-slate-200 pl-4">
+                    <AnimatedCounter value={stat.value} className="text-2xl font-black text-slate-900" />
+                    <p className="mt-1 text-xs leading-snug text-slate-500">{stat.label}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div id={leadFormId} className="rounded-3xl border border-white/14 bg-white/[0.06] p-4 sm:p-5 shadow-2xl shadow-black/35 backdrop-blur-xl">
-              <div className="rounded-2xl border border-white/10 bg-[#111111] overflow-hidden">
-                <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+            <div id={leadFormId} className="rounded-3xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xl shadow-slate-300/40">
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden">
+                <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">{formEyebrow}</p>
-                    <h2 className="mt-1 text-xl font-black">{formTitleText}</h2>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-600">{formEyebrow}</p>
+                    <h2 className="mt-1 text-xl font-black text-slate-900">{formTitleText}</h2>
                   </div>
-                  <Shield className="w-5 h-5 text-emerald-300" />
+                  <Shield className="w-5 h-5 text-emerald-500" />
                 </div>
                 <form onSubmit={handleSubmit} className="p-4 sm:p-5 space-y-3">
                   <div className="grid sm:grid-cols-2 gap-3">
-                    <input required type="text" placeholder="Full name" value={formData.name} onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))} className="w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition-colors focus:border-cyan-300/60" />
-                    <input required type="tel" placeholder="WhatsApp number" value={formData.phone} onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))} className="w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition-colors focus:border-cyan-300/60" />
+                    <input required type="text" placeholder="Full name" value={formData.name} onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))} className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors focus:border-indigo-500" />
+                    <input required type="tel" placeholder="WhatsApp number" value={formData.phone} onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))} className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors focus:border-indigo-500" />
                   </div>
-                  <input required type="email" placeholder="Work email" value={formData.email} onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))} className="w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition-colors focus:border-cyan-300/60" />
+                  <input required type="email" placeholder="Work email" value={formData.email} onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))} className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors focus:border-indigo-500" />
                   <div className="grid sm:grid-cols-2 gap-3">
-                    <select required value={formData.projectType} onChange={(e) => setFormData((prev) => ({ ...prev, projectType: e.target.value }))} className={`w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm outline-none transition-colors focus:border-cyan-300/60 ${formData.projectType ? "text-white" : "text-white/40"}`}>
-                      <option value="" className="bg-zinc-950">What do you want to build?</option>
-                      {projectTypes.map((item) => <option key={item} value={item} className="bg-zinc-950 text-white">{item}</option>)}
+                    <select required value={formData.projectType} onChange={(e) => setFormData((prev) => ({ ...prev, projectType: e.target.value }))} className={`w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-indigo-500 ${formData.projectType ? "text-slate-900" : "text-slate-400"}`}>
+                      <option value="" className="bg-white text-slate-900">What do you want to build?</option>
+                      {projectTypes.map((item) => <option key={item} value={item} className="bg-white text-slate-900">{item}</option>)}
                     </select>
-                    <select value={formData.budget} onChange={(e) => setFormData((prev) => ({ ...prev, budget: e.target.value }))} className={`w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm outline-none transition-colors focus:border-cyan-300/60 ${formData.budget ? "text-white" : "text-white/40"}`}>
-                      <option value="" className="bg-zinc-950">Budget range</option>
-                      {budgets.map((item) => <option key={item} value={item} className="bg-zinc-950 text-white">{item}</option>)}
+                    <select value={formData.budget} onChange={(e) => setFormData((prev) => ({ ...prev, budget: e.target.value }))} className={`w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-indigo-500 ${formData.budget ? "text-slate-900" : "text-slate-400"}`}>
+                      <option value="" className="bg-white text-slate-900">Budget range</option>
+                      {budgets.map((item) => <option key={item} value={item} className="bg-white text-slate-900">{item}</option>)}
                     </select>
                   </div>
-                  <textarea rows={3} placeholder={formPlaceholder} value={formData.challenge} onChange={(e) => setFormData((prev) => ({ ...prev, challenge: e.target.value }))} className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition-colors focus:border-cyan-300/60" />
-                  {formStatus === "error" && <p className="rounded-lg border border-rose-400/25 bg-rose-500/10 px-3 py-2 text-xs text-rose-100">Submission failed. WhatsApp us directly at +91 98185 65561.</p>}
-                  <button type="submit" disabled={formStatus === "loading"} className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-black text-[#0a0a0a] hover:bg-cyan-100 transition-colors disabled:opacity-70">
+                  <textarea rows={3} placeholder={formPlaceholder} value={formData.challenge} onChange={(e) => setFormData((prev) => ({ ...prev, challenge: e.target.value }))} className="w-full resize-none rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors focus:border-indigo-500" />
+                  {formStatus === "error" && <p className="rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-xs text-rose-700">Submission failed. WhatsApp us directly at +91 98185 65561.</p>}
+                  <button type="submit" disabled={formStatus === "loading"} className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-4 font-black text-white shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] transition-all disabled:opacity-70">
                     {formStatus === "loading" ? <><Loader2 className="w-5 h-5 animate-spin" /> Sending...</> : <>{submitLabel} <ArrowRight className="w-5 h-5" /></>}
                   </button>
-                  <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[11px] text-white/50">
+                  <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[11px] text-slate-500">
                     <span>NDA before strategy call</span>
                     <span>Fixed scope quote</span>
                     <span>No sales rep</span>
@@ -496,28 +498,28 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-[#0f0f0f] py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-white/58">
+      <section className="border-b border-slate-200 bg-white py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-slate-500">
           {chips.map((item) => (
             <span key={item} className="font-bold">{item}</span>
           ))}
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-[#0a0a0a]">
+      <section className="py-20 lg:py-28 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-[0.9fr,1.1fr] gap-10 lg:gap-14 items-start">
             <div className="lg:sticky lg:top-24">
-              <p className="text-sm font-bold text-cyan-300">{systemSection.eyebrow}</p>
-              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight">{systemSection.title}</h2>
-              <p className="mt-5 text-white/64 leading-relaxed">{systemSection.text}</p>
+              <p className="text-sm font-bold text-indigo-600">{systemSection.eyebrow}</p>
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-slate-900">{systemSection.title}</h2>
+              <p className="mt-5 text-slate-700 leading-relaxed">{systemSection.text}</p>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               {systemSection.cards.map(({ icon: Icon, title, text }) => (
-                <div key={title} className="rounded-2xl border border-white/10 bg-white/[0.045] p-6 hover:border-cyan-300/30 transition-colors">
-                  <Icon className="w-6 h-6 text-cyan-300" />
-                  <h3 className="mt-5 text-xl font-black">{title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/60">{text}</p>
+                <div key={title} className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 hover:shadow-lg hover:border-indigo-300 transition-all">
+                  <Icon className="w-6 h-6 text-indigo-600" />
+                  <h3 className="mt-5 text-xl font-black text-slate-900">{title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-700">{text}</p>
                 </div>
               ))}
             </div>
@@ -525,30 +527,30 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
         </div>
       </section>
 
-      <section id="work" className="py-20 lg:py-28 bg-[#101010] border-y border-white/10">
+      <section id="work" className="py-20 lg:py-28 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
             <div>
-              <p className="text-sm font-bold text-emerald-300">NDA-safe work snapshots</p>
-              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">{workHeadline}</h2>
+              <p className="text-sm font-bold text-emerald-600">NDA-safe work snapshots</p>
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900">{workHeadline}</h2>
             </div>
-            <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/14 px-5 py-3 font-bold text-white hover:bg-white/10 transition-colors">
+            <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-800 hover:bg-slate-50 transition-colors">
               Get similar result <ArrowRight className="w-4 h-4" />
             </button>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {portfolio.slice(0, 6).map((item, index) => (
-              <article key={item.project} className="group overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0a]">
+              <article key={item.project} className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all">
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image src={item.image} alt={item.project} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
                   <span className="absolute left-4 top-4 rounded-full bg-black/55 px-3 py-1 text-xs font-bold text-white backdrop-blur">{String(index + 1).padStart(2, "0")}</span>
                 </div>
                 <div className="p-5">
-                  <h3 className="text-lg font-black">{item.project}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/62">{item.outcome}</p>
+                  <h3 className="text-lg font-black text-slate-900">{item.project}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.outcome}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {item.tech.slice(0, 4).map((tech) => <span key={tech} className="rounded-lg bg-white/[0.07] px-2.5 py-1 text-xs text-white/64">{tech}</span>)}
+                    {item.tech.slice(0, 4).map((tech) => <span key={tech} className="rounded-lg bg-slate-100 px-2.5 py-1 text-xs text-slate-600">{tech}</span>)}
                   </div>
                 </div>
               </article>
@@ -557,19 +559,19 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
         </div>
       </section>
 
-      <section id="services" className="py-20 lg:py-28 bg-[#0a0a0a]">
+      <section id="services" className="py-20 lg:py-28 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="text-sm font-bold text-violet-300">What we build</p>
-            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">{serviceHeadline}</h2>
+            <p className="text-sm font-bold text-violet-600">What we build</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900">{serviceHeadline}</h2>
           </div>
           <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {data.services.map((service) => (
-              <button key={service.title} onClick={scrollToForm} className="group text-left rounded-2xl border border-white/10 bg-white/[0.04] p-6 hover:border-violet-300/35 hover:bg-white/[0.065] transition-colors">
-                <h3 className="text-xl font-black leading-snug">{service.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">{service.description}</p>
+              <button key={service.title} onClick={scrollToForm} className="group text-left rounded-2xl border border-slate-200 bg-white shadow-sm p-6 hover:border-violet-300 hover:shadow-lg transition-all">
+                <h3 className="text-xl font-black leading-snug text-slate-900">{service.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-700">{service.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {service.tags.slice(0, 4).map((tag) => <span key={tag} className="rounded-lg border border-white/10 px-2.5 py-1 text-xs text-white/55">{tag}</span>)}
+                  {service.tags.slice(0, 4).map((tag) => <span key={tag} className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs text-slate-500">{tag}</span>)}
                 </div>
               </button>
             ))}
@@ -577,21 +579,21 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
         </div>
       </section>
 
-      <section id="process" className="py-20 lg:py-28 bg-[#101010] border-y border-white/10">
+      <section id="process" className="py-20 lg:py-28 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-[0.85fr,1.15fr] gap-10 lg:gap-14">
             <div>
-              <p className="text-sm font-bold text-cyan-300">Clear delivery path</p>
-              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">{processHeadline}</h2>
-              <p className="mt-5 text-white/62 leading-relaxed">You get senior thinking first, working prototypes early, and source code ownership from day one.</p>
+              <p className="text-sm font-bold text-indigo-600">Clear delivery path</p>
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900">{processHeadline}</h2>
+              <p className="mt-5 text-slate-700 leading-relaxed">You get senior thinking first, working prototypes early, and source code ownership from day one.</p>
             </div>
             <div className="space-y-4">
               {data.process.map((step) => (
-                <div key={step.step} className="grid sm:grid-cols-[5rem,1fr] gap-4 rounded-2xl border border-white/10 bg-[#0a0a0a] p-5">
-                  <div className="text-3xl font-black text-cyan-300">{step.step}</div>
+                <div key={step.step} className="grid sm:grid-cols-[5rem,1fr] gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <div className="text-3xl font-black text-indigo-600">{step.step}</div>
                   <div>
-                    <h3 className="text-xl font-black">{step.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/60">{step.description}</p>
+                    <h3 className="text-xl font-black text-slate-900">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-700">{step.description}</p>
                   </div>
                 </div>
               ))}
@@ -600,7 +602,7 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-[#0a0a0a]">
+      <section className="py-20 lg:py-28 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-5">
             {[
@@ -608,40 +610,40 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
               { title: "No lock-in ownership", text: data.uspHeadlines.cost, icon: Shield },
               { title: "AI-native lead capture", text: data.uspHeadlines.ai, icon: Bot },
             ].map(({ title, text, icon: Icon }) => (
-              <div key={title} className="rounded-2xl border border-white/10 bg-white/[0.045] p-7">
-                <Icon className="w-7 h-7 text-emerald-300" />
-                <h3 className="mt-5 text-2xl font-black">{title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-white/62">{text}</p>
+              <div key={title} className="rounded-2xl border border-slate-200 bg-white shadow-sm p-7 hover:shadow-lg transition-all">
+                <Icon className="w-7 h-7 text-emerald-600" />
+                <h3 className="mt-5 text-2xl font-black text-slate-900">{title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-slate-700">{text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-[#101010] border-y border-white/10">
+      <section className="py-20 lg:py-28 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-10">
-            <p className="text-sm font-bold text-amber-300">Why buyers choose RDMI</p>
-            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">{comparisonHeadline}</h2>
+            <p className="text-sm font-bold text-amber-600">Why buyers choose RDMI</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900">{comparisonHeadline}</h2>
           </div>
-          <div className="overflow-hidden rounded-2xl border border-white/10">
+          <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[720px] text-left">
-                <thead className="bg-white/[0.06] text-xs uppercase tracking-[0.18em] text-white/48">
+                <thead className="bg-slate-100 text-xs uppercase tracking-[0.18em] text-slate-500">
                   <tr>
                     <th className="px-5 py-4">Decision factor</th>
-                    <th className="px-5 py-4 text-emerald-300">RDMI</th>
+                    <th className="px-5 py-4 text-emerald-600">RDMI</th>
                     <th className="px-5 py-4">Commodity agency</th>
                     <th className="px-5 py-4">Freelancer</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/10 text-sm">
+                <tbody className="divide-y divide-slate-200 text-sm bg-white">
                   {comparisonRows.map((row) => (
-                    <tr key={row[0]} className="hover:bg-white/[0.035] transition-colors">
-                      <td className="px-5 py-4 font-bold text-white">{row[0]}</td>
-                      <td className="px-5 py-4 font-bold text-emerald-300"><CheckCircle2 className="mr-2 inline w-4 h-4" />{row[1]}</td>
-                      <td className="px-5 py-4 text-white/58">{row[2]}</td>
-                      <td className="px-5 py-4 text-white/58">{row[3]}</td>
+                    <tr key={row[0]} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-5 py-4 font-bold text-slate-900">{row[0]}</td>
+                      <td className="px-5 py-4 font-bold text-emerald-600"><CheckCircle2 className="mr-2 inline w-4 h-4" />{row[1]}</td>
+                      <td className="px-5 py-4 text-slate-500">{row[2]}</td>
+                      <td className="px-5 py-4 text-slate-500">{row[3]}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -651,22 +653,22 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-[#0a0a0a]">
+      <section className="py-20 lg:py-28 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-10">
-            <p className="text-sm font-bold text-cyan-300">Client notes</p>
-            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">Proof from teams that needed more than a pretty interface.</h2>
+            <p className="text-sm font-bold text-indigo-600">Client notes</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900">Proof from teams that needed more than a pretty interface.</h2>
           </div>
           <div className="grid lg:grid-cols-3 gap-5">
             {data.testimonials?.slice(0, 3).map((item) => (
-              <figure key={item.quote} className="rounded-2xl border border-white/10 bg-white/[0.045] p-6">
+              <figure key={item.quote} className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 hover:shadow-lg transition-all">
                 <div className="flex gap-1">
-                  {Array.from({ length: item.rating }).map((_, i) => <Star key={i} className="w-4 h-4 fill-amber-300 text-amber-300" />)}
+                  {Array.from({ length: item.rating }).map((_, i) => <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
                 </div>
-                <blockquote className="mt-5 text-base leading-relaxed text-white/78">&ldquo;{item.quote}&rdquo;</blockquote>
-                <figcaption className="mt-6 border-t border-white/10 pt-4">
-                  <p className="font-black">{item.author}</p>
-                  <p className="mt-1 text-sm text-white/50">{item.role}</p>
+                <blockquote className="mt-5 text-base leading-relaxed text-slate-800">&ldquo;{item.quote}&rdquo;</blockquote>
+                <figcaption className="mt-6 border-t border-slate-200 pt-4">
+                  <p className="font-black text-slate-900">{item.author}</p>
+                  <p className="mt-1 text-sm text-slate-500">{item.role}</p>
                 </figcaption>
               </figure>
             ))}
@@ -674,34 +676,34 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
         </div>
       </section>
 
-      <section id="faq" className="py-20 lg:py-28 bg-[#101010] border-y border-white/10">
+      <section id="faq" className="py-20 lg:py-28 bg-white border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-bold text-violet-300">FAQ</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">Questions before we build your AI-first software layer.</h2>
-          <div className="mt-10 divide-y divide-white/10 rounded-2xl border border-white/10 bg-[#0a0a0a]">
+          <p className="text-sm font-bold text-violet-600">FAQ</p>
+          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900">Questions before we build your AI-first software layer.</h2>
+          <div className="mt-10 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-slate-50">
             {data.faq.map((faq, index) => (
               <div key={faq.q}>
-                <button onClick={() => setOpenFaq(openFaq === index ? null : index)} className="w-full flex items-center justify-between gap-4 px-5 py-5 text-left hover:bg-white/[0.035] transition-colors">
-                  <span className="font-bold text-white">{faq.q}</span>
-                  <ChevronDown className={`w-5 h-5 text-white/45 transition-transform ${openFaq === index ? "rotate-180" : ""}`} />
+                <button onClick={() => setOpenFaq(openFaq === index ? null : index)} className="w-full flex items-center justify-between gap-4 px-5 py-5 text-left hover:bg-slate-100 transition-colors">
+                  <span className="font-bold text-slate-900">{faq.q}</span>
+                  <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform ${openFaq === index ? "rotate-180" : ""}`} />
                 </button>
-                {openFaq === index && <div className="px-5 pb-5 text-sm leading-relaxed text-white/62">{faq.a}</div>}
+                {openFaq === index && <div className="px-5 pb-5 text-sm leading-relaxed text-slate-700">{faq.a}</div>}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-20 lg:py-28 bg-[#0a0a0a]">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,211,238,0.12),rgba(124,58,237,0.16),rgba(16,185,129,0.10))]" />
+      <section className="relative overflow-hidden py-20 lg:py-28 bg-gradient-to-b from-indigo-50 to-violet-50">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,211,238,0.08),rgba(124,58,237,0.10),rgba(16,185,129,0.06))]" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight leading-tight">{data.ctaSection.headline}</h2>
-          <p className="mt-6 text-lg text-white/70 leading-relaxed">{data.ctaSection.subtitle}</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight leading-tight text-slate-900">{data.ctaSection.headline}</h2>
+          <p className="mt-6 text-lg text-slate-700 leading-relaxed">{data.ctaSection.subtitle}</p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
-            <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 font-black text-[#0a0a0a] hover:bg-cyan-100 transition-colors">
+            <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-4 font-black text-white shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] transition-all">
               Start With {primaryCta} <ArrowRight className="w-5 h-5" />
             </button>
-            <a href="tel:+919818565561" className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-8 py-4 font-black text-white hover:bg-white/10 transition-colors">
+            <a href="tel:+919818565561" className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-8 py-4 font-black text-slate-800 hover:bg-slate-50 transition-colors">
               <Phone className="w-5 h-5" /> Call +91 98185 65561
             </a>
           </div>
@@ -710,17 +712,17 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
 
       <Footer onCTA={scrollToForm} />
 
-      <div className={`fixed bottom-0 left-0 right-0 z-[100] border-t border-white/10 bg-[#0a0a0a]/92 backdrop-blur-xl transition-all duration-300 ${scrollProgress > 5 ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
+      <div className={`fixed bottom-0 left-0 right-0 z-[100] border-t border-slate-200 bg-white/95 backdrop-blur-xl shadow-[0_-8px_30px_rgba(15,23,42,0.08)] transition-all duration-300 ${scrollProgress > 5 ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-center sm:text-left">
-            <p className="text-sm font-black">{stickyHeadline}</p>
-            <p className="text-xs text-white/50">{supportLine}</p>
+            <p className="text-sm font-black text-slate-900">{stickyHeadline}</p>
+            <p className="text-xs text-slate-500">{supportLine}</p>
           </div>
           <div className="flex w-full sm:w-auto gap-2">
-            <button onClick={scrollToForm} className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-black text-[#0a0a0a]">
+            <button onClick={scrollToForm} className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-5 py-3 text-sm font-black text-white shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] transition-all">
               {primaryCta} <ArrowRight className="w-4 h-4" />
             </button>
-            <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/8 px-5 py-3 text-sm font-bold text-white hover:bg-white/14 transition-colors">
+            <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 hover:bg-slate-50 transition-colors">
               <MessageCircle className="w-4 h-4" /> WhatsApp
             </a>
           </div>
@@ -732,7 +734,7 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
 }
 
 export default function KeywordLandingPage({ data, headlineOverride, keywordLabel }: { data: KeywordGroup; headlineOverride?: string; keywordLabel?: string }) {
-  const promotedSlugs = new Set(["web-development-company", "enterprise-saas-development", "ai-software-development", "ai-agent-development", "custom-software-development", "mobile-app-development", "ecommerce-development"]);
+  const promotedSlugs = new Set(["web-development-company", "website-development-company", "custom-website-development", "web-development-services", "web-development-agency", "enterprise-saas-development", "ai-software-development", "ai-agent-development", "custom-software-development", "mobile-app-development", "ecommerce-development"]);
   return promotedSlugs.has(data.slug) ? <WebDevelopmentLandingPage data={data} headlineOverride={headlineOverride} keywordLabel={keywordLabel} /> : <KeywordLandingPageLegacy data={data} />;
 }
 

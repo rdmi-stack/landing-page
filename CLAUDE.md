@@ -168,11 +168,33 @@ For CI (the autonomous cron), the same Ads vars go in GitHub Secrets.
 - `scripts/ads/optimize.mts` — rules engine: pause waste (e.g. >N clicks & 0 conv & cost > threshold), add negatives, adjust bids; dry-run flag; summary output.
 - `scripts/ads/keyword-research.mts` — Keyword Planner (or DataForSEO) → volume × growth × competition scoring → feeds `ads:sync`.
 - `.github/workflows/ads-optimize.yml` — daily cron running `optimize.mts` + posting a summary. Ads creds as GitHub Secrets.
-- **Ad extensions** in the push — sitelinks/callouts/structured snippets via assets + `campaign_asset` (not yet added; campaign currently has none).
 - **Conversion actions + GA4↔Ads link** via API (`ConversionActionService` + GA4 Admin `GoogleAdsLink`).
+
+### Done since (Phase 2)
+- **Ad extensions push** — `scripts/ads/add-extensions.mts`: creates sitelink + callout + structured-snippet assets and links them via `campaign_asset` (idempotent — skips a field type already linked). Config in `config.mts` (`SITELINKS`, `CALLOUTS`, `STRUCTURED_SNIPPET`). Sitelink final URLs must resolve on `DOMAIN` (ai.rdmi.in) or Google disapproves.
+- **SKAG campaign** — `npm run ads:skag [-- --push]`: one campaign, one single-keyword ad group per keyword, 6 web-dev keywords. `scripts/ads/update-rsas.mts` refreshes RSAs in place (create-new + remove-old).
+
+### "Evasive Ad Content" disapproval — cause + fix (RESOLVED 2026-05-23)
+
+For days every RSA in the account was flagged **"Abusing the ad network: Evasive ad content"** (`APPROVED_LIMITED`, decision type "Google investigation"). After rebuilding the SKAG ad copy + adding extensions, all 6 ads re-reviewed to **`REVIEWED` with zero policy topics** — the evasive flag cleared (only remaining "Not eligible" reason is "Campaign is paused").
+
+**Most likely cause (high confidence):** the RSA generator was emitting **truncated, mid-sentence headline/description fragments** — e.g. "Built to turn visitors", "Free 48-hour clickable", "Money-back if we miss", and near-empty descriptions (22–38 chars). Incoherent, low-effort, gibberish-looking ad text is exactly what "evasive ad content" targets. Contributing factors: non-ASCII typography (en/em dashes, smart quotes), unverifiable claims ("50–200 leads", "pays for itself in 90 days"), and thin landing-page trust signals (no privacy/terms). Can't be 100% certain it wasn't partly Google's account review simply completing — but the rules below cost nothing and address the real trigger.
+
+**What fixed it (apply to EVERY future campaign):**
+1. **No truncated fragments — ever.** Every headline/description must be a complete, coherent phrase. Use a **curated copy bank** (`SKAG_BENEFIT_HEADLINES`, `skagDescriptions()` in `build-campaign.mts`), NOT naive substring-truncation of hero/body text. `fit()` is for length-checking curated lines, not for chopping prose into ad assets.
+2. **ASCII-only** — `clean()` strips emoji + normalises en/em dashes, smart quotes, ellipsis to ASCII. Keep it.
+3. **No unverifiable / exaggerated claims** — no invented lead counts, ROI %, or payback periods. Defensible language only.
+4. **Fill the descriptions** — use ~80–90 of the 90 chars with real content, not 1-line stubs.
+5. **Don't pin** keyword to H1 — pinning both tanks Ad Strength (Poor) AND reduces combination diversity; weave the keyword into several **unpinned** complete headlines instead. (Exact/phrase SKAG still surfaces the keyword.)
+6. **Landing page trust** — live `/privacy` + `/terms`, real contact, ad↔page message-match, no deceptive interstitials/exit-popups on ad destinations (`ExitIntentPopup` is suppressed on `/*-company` routes).
+7. **Add extensions** (`add-extensions.mts`) — sitelinks/callouts/structured snippets: trust signal + CTR + Ad Strength.
+
+Result the build now produces per SKAG ad: 15 complete unique headlines (keyword in up to 4), 4 full descriptions, 0 pins → Ad Strength **Good** (Average only when the keyword is too long to spawn headline variants, e.g. "ecommerce website development company").
 
 ### Hard constraints / gotchas (learned)
 - **Campaign create requires `contains_eu_political_advertising`** (EU transparency rule) — set `enums.EuPoliticalAdvertisingStatus.DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` or the create fails with "required field not present."
+- **Maximize Clicks (`TARGET_SPEND`) has no CPC cap by default** — set `campaign.target_spend.cpc_bid_ceiling_micros` (e.g. ₹70 = `70_000_000`) or a few expensive keywords can eat the daily budget. The ad-group `cpc_bid_micros` is ignored under automated bidding.
+- **Editor CSV import gotchas**: with >1 account loaded, every row needs an **"Account" column** (customer-id digits); the **"Languages" column** is rejected (`English;Hindi`) — omit it (defaults to all languages). Posting needs the Editor login to have **edit access** to the target account or you get "No Eligible Accounts" (the API push bypasses this entirely — prefer it).
 - **One interactive OAuth consent is unavoidable** for the Ads API; `ads:oauth` handles it, token reused forever. The OAuth client's GCP project can be a different Google account than Ads — but the consenting user must have MCC access (and be an org/test user if the consent screen is restricted).
 - **GA4 Measurement Protocol secret is write-only** — cannot do config; key-event/link creation needs GA4 Admin API via OAuth. The **service-account path is blocked** by a GA4 UI bug that refuses SA emails ("doesn't match a Google Account") — use user OAuth for GA4 Admin, or just create the 2 key events in the UI (one-time).
 - **MP events need `engagement_time_msec` + `session_id`** or they're dropped from GA4 reports.

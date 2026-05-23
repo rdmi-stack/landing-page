@@ -20,7 +20,7 @@ export interface Campaign {
   keywords: { text: string; matchType: string }[];
   headlines: string[]; // ≤15, each ≤30 chars, unique
   descriptions: string[]; // ≤4, each ≤90 chars, unique
-  pinnedH1?: string; // SKAG: headline to pin to position 1 (the keyword)
+  pinnedHeadlines?: string[]; // SKAG: keyword-variant headlines pinned to position 1 (keeps keyword in H1 AND Ad Strength up)
 }
 
 /**
@@ -168,26 +168,128 @@ function titleCase(s: string): string {
 }
 
 /**
- * Build a single-keyword-ad-group (SKAG) Campaign object for one keyword.
- * The keyword is pinned to Headline 1 and reflected in the Final URL (?kw=)
- * so the landing page H1 mirrors it — maximising Quality Score message-match.
+ * Curated, complete (never truncated) benefit/CTA/trust headlines for the
+ * web-dev SKAG ads. All ASCII, all ≤30 chars, all unique — diversity here is
+ * what lifts Ad Strength out of "Poor".
+ */
+const SKAG_BENEFIT_HEADLINES = [
+  "Talk to a Senior Developer", "WhatsApp Reply in 2 Hours", "Free 48-Hour Prototype",
+  "Money-Back If We're Late", "Senior Indian Developers", "Source Code Yours Day One",
+  "No Sales Reps, Just Devs", "Pay Only After Prototype", "Direct WhatsApp, No Lock-In",
+  "200+ Projects Shipped", "Built in Weeks, Not Months", "NDA Before First Call",
+];
+
+/**
+ * Keyword-rich headline variants (complete, never truncated). Gives Google the
+ * search term in several headlines — the "more keywords in headlines" fix —
+ * without pinning, so the ad keeps full combination flexibility.
+ */
+function keywordHeadlines(kwTitle: string, max: number): string[] {
+  const out: string[] = [];
+  const add = (s: string) => {
+    if (s.length <= max && !out.some((x) => x.toLowerCase() === s.toLowerCase())) out.push(s);
+  };
+  if (kwTitle.length <= max) {
+    add(kwTitle);
+    add(`${kwTitle} India`);
+    add(`Top ${kwTitle}`);
+    add(`Best ${kwTitle}`);
+  } else {
+    add(fit(kwTitle, max)); // long keyword: at least the fitted form
+  }
+  return out;
+}
+
+/** Cross-theme descriptions used to fill after the intent-specific ones. */
+function sharedDescriptions(): string[] {
+  return [
+    "Talk direct to a senior Indian developer in 2 hours. No sales rep. Source code yours.",
+    "Free 48-hour prototype before you pay. Money-back if we miss the deadline. 200+ shipped.",
+    "Senior engineers only, no juniors. NDA before the first call. Walk away anytime.",
+  ];
+}
+
+/**
+ * Intent-specific ad copy per dedicated landing-page slug. Each ad group's copy
+ * matches its keyword's intent AND its dedicated page's hero — tightening ad↔
+ * keyword↔page relevance (Quality Score) and lifting lead quality. All entries
+ * are complete phrases, ASCII-clean and within length limits.
+ */
+const INTENT_COPY: Record<string, { headlines: string[]; descriptions: string[] }> = {
+  "web-development-company": {
+    headlines: ["Websites Built to Convert", "Not a Brochure, a Lead Engine", "Ranks, Loads Fast, Converts"],
+    descriptions: ["A web development company that builds sites to win enquiries, not just look pretty."],
+  },
+  "website-development-company": {
+    headlines: ["Business Sites That Convert", "More Enquiries, Not Just Looks", "Built to Win You Leads"],
+    descriptions: ["A website development company building business sites that turn visitors into leads."],
+  },
+  "custom-website-development": {
+    headlines: ["Built From Scratch", "No Templates, No Page-Builders", "Coded Around Your Business"],
+    descriptions: ["Custom website development from scratch - no templates. Coded around your business."],
+  },
+  "web-development-services": {
+    headlines: ["Front-End to Full-Stack", "CMS, E-Commerce, Redesign", "React, Next.js, Node.js"],
+    descriptions: ["Full-stack web development services - front-end, back-end, CMS, e-commerce, support."],
+  },
+  "web-development-agency": {
+    headlines: ["Your Dedicated Dev Team", "No Account-Manager Filter", "Talk Direct to Your Engineer"],
+    descriptions: ["A web development agency that works like your in-house team. Talk direct, no filter."],
+  },
+  "ecommerce-development": {
+    headlines: ["Online Stores That Convert", "Shopify and Headless Stores", "Built to Lift Add-to-Cart"],
+    descriptions: ["E-commerce website development - Shopify or headless stores built to convert more."],
+  },
+  "custom-software-development": {
+    headlines: ["Custom Software, Built to Fit", "Dashboards, Portals, CRMs", "React, Node.js, Python", "Built Around Your Workflow"],
+    descriptions: [
+      "Custom software development: dashboards, portals, CRMs and SaaS for your workflow.",
+      "Senior Indian engineers build your software end to end. Source code yours, no lock-in.",
+    ],
+  },
+  "mobile-app-development": {
+    headlines: ["iOS, Android, Flutter Apps", "Apps Built to Scale", "Flutter, React Native, Native", "From MVP to App Store"],
+    descriptions: [
+      "Mobile app development for iOS and Android - Flutter or native, built to scale.",
+      "From MVP to App Store launch. Senior Indian app developers. Source code yours, no lock-in.",
+    ],
+  },
+};
+
+/**
+ * Build a single-keyword-ad-group (SKAG) Campaign object for one keyword, using
+ * its dedicated landing page (`d`) for intent + final URL. Keyword-variant
+ * headlines are PINNED to position 1 (2-4 of them, so the search term always
+ * shows in H1 AND Ad Strength stays high), then intent-specific and shared
+ * benefit headlines fill the rest. Final URL is the dedicated page (no ?kw=).
  */
 export function buildSkagCampaign(d: KeywordGroup, keyword: string, routePath: string): Campaign {
   const kw = clean(keyword);
   const kwTitle = titleCase(kw);
-  const pinnedH1 = fit(kwTitle, LIMITS.headline); // ≤30, word-boundary safe
-  // Pinned keyword headline first, then shared benefit/CTA headlines (deduped).
-  const headlines = [pinnedH1, ...buildHeadlines(d).filter((h) => h.toLowerCase() !== pinnedH1.toLowerCase())].slice(0, 15);
-  const baseUrl = resolveUrl(DOMAIN, routePath);
+  const M = LIMITS.headline;
+  const intent = INTENT_COPY[d.slug] ?? { headlines: [], descriptions: [] };
+
+  // Keyword variants → pinned to H1.
+  const pinned: string[] = [];
+  for (const h of keywordHeadlines(kwTitle, M)) dedupePush(pinned, h, M, 15);
+
+  const headlines: string[] = [...pinned];
+  for (const h of intent.headlines) dedupePush(headlines, h, M, 15);
+  for (const h of SKAG_BENEFIT_HEADLINES) dedupePush(headlines, h, M, 15);
+
+  const descriptions: string[] = [];
+  for (const dsc of intent.descriptions) dedupePush(descriptions, dsc, LIMITS.description, 4);
+  for (const dsc of sharedDescriptions()) dedupePush(descriptions, dsc, LIMITS.description, 4);
+
   return {
     slug: d.slug,
     adGroup: `SKAG | ${kwTitle}`,
-    finalUrl: `${baseUrl}?kw=${encodeURIComponent(kw)}`,
+    finalUrl: resolveUrl(DOMAIN, routePath), // dedicated page — message-matched, no ?kw=
     path1: pathSeg(kw.split(" ").slice(0, 2).join("-")),
     path2: "india",
     keywords: MATCH_TYPES.map((matchType) => ({ text: kw, matchType })),
-    headlines,
-    descriptions: buildDescriptions(d),
-    pinnedH1,
+    headlines: headlines.slice(0, 15),
+    descriptions: descriptions.slice(0, 4),
+    pinnedHeadlines: pinned.filter((h) => headlines.slice(0, 15).includes(h)),
   };
 }

@@ -200,6 +200,7 @@ export default function QuoteModal({ isOpen, onClose, productName }: QuoteModalP
                         className={field}
                       >
                         <option value="" className="bg-zinc-900">Select budget range</option>
+                        <option value="₹50,000 - ₹1,50,000" className="bg-zinc-900">₹50,000 – ₹1,50,000</option>
                         <option value="₹1,50,000 - ₹3,00,000" className="bg-zinc-900">₹1,50,000 – ₹3,00,000</option>
                         <option value="₹3,00,000 - ₹5,00,000" className="bg-zinc-900">₹3,00,000 – ₹5,00,000</option>
                         <option value="₹5,00,000 - ₹10,00,000" className="bg-zinc-900">₹5,00,000 – ₹10,00,000</option>

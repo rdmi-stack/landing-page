@@ -8,17 +8,28 @@
 
 import {
   CAMPAIGN_NAME, CAMPAIGN_TYPE, CAMPAIGN_STATUS, DAILY_BUDGET, BUDGET_TYPE,
-  BID_STRATEGY, NETWORKS, LANGUAGES,
+  BID_STRATEGY, NETWORKS,
 } from "./config.mts";
 import type { Campaign } from "./build-campaign.mts";
 
+// "Languages" is intentionally omitted: Editor rejects the CSV value format
+// ("English;Hindi") with a warning. Language targeting defaults to all
+// languages on import and is set once in the UI/API instead.
 const HEADER = [
+  "Account",
   "Campaign", "Campaign Type", "Status", "Budget", "Budget Type", "Bid Strategy Type",
-  "Networks", "Languages", "Ad Group", "Max CPC", "Keyword", "Match Type", "Ad Type",
+  "Networks", "Ad Group", "Max CPC", "Keyword", "Match Type", "Ad Type",
   ...Array.from({ length: 15 }, (_, i) => `Headline ${i + 1}`),
   ...Array.from({ length: 4 }, (_, i) => `Description ${i + 1}`),
   "Path 1", "Path 2", "Final URL",
 ];
+
+/**
+ * When multiple accounts are loaded in Editor, the import requires an "Account"
+ * column on every row (the account name or customer ID) to disambiguate the
+ * target. Set via the `account` arg to toEditorCsv(); left blank for single-
+ * account imports where Editor infers the active account.
+ */
 
 const cell = (v: string | number = "") => {
   const s = String(v);
@@ -32,8 +43,13 @@ function row(map: Record<string, string | number>): string {
 void TOTAL_COLS;
 
 /** Render one or more campaigns (ad groups) into a single Editor-importable CSV. */
-export function toEditorCsv(campaigns: Campaign[], campaignName: string = CAMPAIGN_NAME): string {
+export function toEditorCsv(
+  campaigns: Campaign[],
+  campaignName: string = CAMPAIGN_NAME,
+  account: string = "",
+): string {
   const campaignCols = {
+    Account: account,
     Campaign: campaignName,
     "Campaign Type": CAMPAIGN_TYPE,
     Status: CAMPAIGN_STATUS,
@@ -41,7 +57,6 @@ export function toEditorCsv(campaigns: Campaign[], campaignName: string = CAMPAI
     "Budget Type": BUDGET_TYPE,
     "Bid Strategy Type": BID_STRATEGY,
     Networks: NETWORKS,
-    Languages: LANGUAGES,
   };
   const lines = [HEADER.join(",")];
   // Single campaign-settings row.
