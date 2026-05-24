@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { saveLead } from "@/data/leads";
 import { sendServerEvent } from "@/lib/ga4-server";
+import { appendLeadRow, budgetToValue } from "@/lib/leads-sheet";
 
 const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY!;
 const MAILGUN_DOMAIN = process.env.MAILGUN_DOMAIN!;
@@ -724,7 +725,7 @@ const formTypeLabels: Record<FormType, string> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, phone, company, budget, message, clientId, sessionId } = await req.json();
+    const { name, email, phone, company, budget, message, clientId, sessionId, gclid, utm_source, utm_campaign, page } = await req.json();
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: "Name, email, and message are required." }, { status: 400 });
@@ -738,15 +739,30 @@ export async function POST(req: NextRequest) {
     const referer = req.headers.get("referer") || "";
     const sourcePage = referer ? new URL(referer).pathname : "unknown";
 
+    // Budget-derived conversion value — bigger budget = more valuable lead.
+    const leadValue = budgetToValue(budget || "");
+
     // Server-side GA4 conversion — reliable even when client gtag is ad-blocked.
     // Fired here so every lead (main form, sticky bar, global modal) is captured once.
+    // Value is budget-derived so value-based bidding optimizes toward bigger deals.
     await sendServerEvent(clientId || "", "generate_lead", {
       currency: "INR",
-      value: 1500,
+      value: leadValue,
       form_type: formType,
       source_page: sourcePage,
       sticky: fromSticky,
     }, sessionId || "");
+
+    // Append the lead (with gclid) to the Google Sheet for offline-conversion upload.
+    // Fire-and-forget — must never block or fail the form response.
+    void appendLeadRow({
+      name, email, phone: phone || "", budget: budget || "",
+      page: page || formType || sourcePage,
+      gclid: gclid || "",
+      utmSource: utm_source || "",
+      utmCampaign: utm_campaign || "",
+      value: leadValue,
+    });
     try {
       await saveLead({
         id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,

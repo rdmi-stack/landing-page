@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import Footer from "@/components/Footer";
 import { trackWhatsAppClick, getGAClientId, getGASessionId } from "@/lib/gtag";
+import { captureAttribution, getAttribution } from "@/lib/attribution";
 import type { KeywordGroup } from "@/data/keyword-groups";
 
 /* ─── helpers ─── */
@@ -346,6 +347,9 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
       ["Post-launch support", "30 days included", "Paid retainer", "Limited"],
     ];
 
+  // Capture gclid / gbraid / wbraid + UTM on landing, persist for OCI attribution.
+  useEffect(() => { captureAttribution(); }, []);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     let ticking = false;
@@ -382,10 +386,17 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
         formData.budget ? `Budget: ${formData.budget}` : "",
         formData.challenge || "",
       ].filter(Boolean).join("\n");
+      const attr = getAttribution();
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message, clientId: getGAClientId(), sessionId: getGASessionId() }),
+        body: JSON.stringify({
+          name: formData.name, email: formData.email, phone: formData.phone, message,
+          clientId: getGAClientId(), sessionId: getGASessionId(),
+          budget: formData.budget, page: data.slug,
+          gclid: attr.gclid || attr.gbraid || attr.wbraid || "",
+          utm_source: attr.utm_source || "", utm_campaign: attr.utm_campaign || "",
+        }),
       });
       if (!res.ok) throw new Error("contact failed");
       const params = new URLSearchParams();

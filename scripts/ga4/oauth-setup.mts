@@ -1,9 +1,11 @@
 /**
- * One-time OAuth2 consent for the GA4 Admin + Data APIs.
+ * One-time OAuth2 consent for the GA4 Admin + Data APIs + Google Sheets.
  *
  * Reuses the same OAuth client as Google Ads (GOOGLE_ADS_CLIENT_ID/SECRET) but
- * requests the Analytics scopes, then writes GA4_OAUTH_REFRESH_TOKEN to
- * .env.local. Sign in as the account that owns the GA4 property.
+ * requests the Analytics + Spreadsheets scopes, then writes GA4_OAUTH_REFRESH_TOKEN
+ * to .env.local. Sign in as the account that owns the GA4 property (and that will
+ * own the leads/OCI Google Sheet). The Sheets scope lets the app create + write
+ * the sheet end-to-end with no manual setup.
  *
  *   npm run ga4:oauth
  */
@@ -28,6 +30,7 @@ const REDIRECT_URI = `http://localhost:${PORT}/oauth2callback`;
 const SCOPES = [
   "https://www.googleapis.com/auth/analytics.edit",
   "https://www.googleapis.com/auth/analytics.readonly",
+  "https://www.googleapis.com/auth/spreadsheets", // create + read/write the leads/OCI sheet
   "openid",
   "email",
 ].join(" ");
