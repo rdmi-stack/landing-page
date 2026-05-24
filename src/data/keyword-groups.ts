@@ -2210,6 +2210,468 @@ export const keywordGroups: KeywordGroup[] = [
       "ai automation consulting",
       "ai automation company"
     ]
+  },
+  {
+    slug: "ai-consulting-company",
+    primaryKeyword: "AI Consulting Company",
+    adGroupMatch: "AI Consulting Company",
+    theme: {
+      heroGradient: "linear-gradient(135deg, #6d28d9, #4f46e5, #5b21b6)",
+      ctaGradient: "linear-gradient(135deg, #6d28d9, #4f46e5, #5b21b6)",
+      urgencyColor: "#6d28d9",
+      accent: "violet",
+      icon: "🧭"
+    },
+    form: {
+      title: "Get a Free AI Opportunity Assessment",
+      subtitle: "An AI consultant who also builds (not a salesperson) calls you back within 2 hours",
+      projectTypes: [
+        "AI Opportunity Assessment",
+        "AI Strategy & Roadmap",
+        "Build a Specific AI Use Case",
+        "GenAI / LLM Integration",
+        "AI Automation of a Workflow",
+        "AI for My Industry",
+        "Other"
+      ],
+      placeholder: "What part of your business do you think AI could help with — and what's the goal?",
+      buttonText: "Get My Free Assessment →",
+      formType: "ai-consulting"
+    },
+    meta: {
+      title: "AI Consulting Company | AI Strategy, Roadmap & Use-Case Discovery — Then We Build | RDMI",
+      description: "AI consulting company that finds where AI actually pays off in your business, prioritises it into a clear roadmap, then builds it. Free AI opportunity assessment, a prioritised roadmap in weeks, and consultants who ship — not just advise. GenAI, LLMs, agents and automation. You own the strategy and the code."
+    },
+    hero: {
+      badge: "🧭 AI Consulting Company — Free Assessment, Roadmap in Weeks, Then We Build",
+      h1: "AI Consulting Company That Finds Where AI Actually Pays Off — Then Builds It",
+      subtitle: "Looking for an AI consulting company? RDMI cuts through the AI hype to find the use cases that actually move your numbers, prioritises them into a clear roadmap, and then builds them — we don't just hand you a deck. Start with a free AI opportunity assessment from a consultant who also ships production AI.",
+      cta1: "Get Free AI Assessment",
+      cta2: "Talk to an AI Consultant",
+      trustPoints: [
+        "Free AI opportunity assessment before you commit",
+        "A prioritised, honest roadmap — not a 100-slide deck",
+        "Consultants who also build production AI, not just advise",
+        "You own the strategy, the prompts, and any code we write"
+      ]
+    },
+    images: {
+      hero: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1600&q=80",
+      process: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
+      team: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
+      services: [
+        "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+      ],
+      portfolio: [
+        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+        "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=80",
+        "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=80"
+      ],
+      cta: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80"
+    },
+    process: [
+      {
+        step: "01",
+        title: "Free AI Opportunity Assessment — Within 2 Hours",
+        description: "An AI consultant maps where AI could realistically help your business — which workflows, what data you have, what's feasible today versus hype. You leave with a shortlist of use cases ranked by impact and effort, and an honest view of what's worth doing first. No charge, no obligation."
+      },
+      {
+        step: "02",
+        title: "Prioritised Roadmap in Weeks — Not a 100-Slide Deck",
+        description: "We turn the shortlist into a practical roadmap: the use case to start with, what it takes to build, the data and integrations needed, risks, and a rough cost and timeline. Short, honest, and built to act on — not to sit in a drawer."
+      },
+      {
+        step: "03",
+        title: "Build the First Use Case — Fixed Scope",
+        description: "Unlike advice-only consultancies, we build. We scope the first use case into a fixed deliverable and ship it on your real data and tools, so you can measure it before committing further. You decide if the results justify the next step."
+      },
+      {
+        step: "04",
+        title: "Scale What Works, Govern What You Run",
+        description: "Roll out the use cases that prove their value, with evals, monitoring, and governance so they keep working in production. We advise on team, tooling, and data as you mature — or keep building alongside you on a retainer."
+      }
+    ],
+    stats: [
+      {
+        value: "Free",
+        label: "AI Opportunity Assessment"
+      },
+      {
+        value: "Weeks",
+        label: "To a Prioritised Roadmap"
+      },
+      {
+        value: "Build",
+        label: "We Ship It, Not Just Advise"
+      },
+      {
+        value: "100%",
+        label: "Strategy & Code Yours"
+      }
+    ],
+    services: [
+      {
+        title: "AI Opportunity Assessment",
+        description: "We look at your actual workflows, data, and goals and tell you — honestly — where AI will pay off, where it won't yet, and what to do first. The opposite of a generic 'AI strategy' deck: a ranked, feasible shortlist you can act on.",
+        tags: [
+          "Use-Case Discovery",
+          "Feasibility",
+          "Impact vs Effort",
+          "Data Readiness"
+        ]
+      },
+      {
+        title: "AI Strategy & Roadmap",
+        description: "A practical roadmap that sequences the use cases by value and effort, with the data, integrations, risks, cost, and timeline for each. Built to act on, sized for your business — whether you're a startup or an enterprise function.",
+        tags: [
+          "Roadmap",
+          "Build vs Buy",
+          "Risk & Governance",
+          "Cost & Timeline"
+        ]
+      },
+      {
+        title: "GenAI & LLM Integration",
+        description: "Bring large language models into your products and operations the right way — grounded on your data, with guardrails, evals, and cost control. OpenAI, Anthropic, and open-source models, integrated with the systems you already run.",
+        tags: [
+          "OpenAI",
+          "Anthropic",
+          "RAG",
+          "Evals & Guardrails"
+        ]
+      },
+      {
+        title: "Build & Implementation",
+        description: "We don't stop at advice. We build the first use case — agent, automation, chatbot, or model integration — on your real data and tools, shipped to production so you can measure the outcome instead of imagining it.",
+        tags: [
+          "Production Build",
+          "Agents",
+          "Automation",
+          "Integrations"
+        ]
+      },
+      {
+        title: "AI Automation of Workflows",
+        description: "Many of the highest-ROI AI projects are simply automating repetitive work. We identify those workflows in the assessment and automate them with agents and orchestration wired into your existing stack.",
+        tags: [
+          "Workflow Automation",
+          "AI Agents",
+          "n8n / Custom",
+          "Human-in-the-Loop"
+        ]
+      },
+      {
+        title: "Private & Compliant AI",
+        description: "For regulated or sensitive data, we design AI that runs on private or self-hosted models inside your own cloud, with the access controls and audit trails healthcare, BFSI, and legal require. Strategy and build, your infrastructure.",
+        tags: [
+          "Private LLM",
+          "VPC Deploy",
+          "Access Controls",
+          "Compliance-Aware"
+        ]
+      }
+    ],
+    uspHeadlines: {
+      direct: "You talk to an AI consultant who actually ships production AI — on a call within 2 hours, not a salesperson with slides. Free assessment first. A practical roadmap, not a drawer-filler. We build the first use case so you can measure it.",
+      cost: "No army of junior analysts billed by the hour. A senior consultant scopes the opportunity, gives you an honest roadmap, and builds the first use case at a fixed price. The strategy, prompts, and code are yours — no lock-in.",
+      ai: "Most AI projects stall because they start with hype, not a use case. We start with your data and your numbers, prioritise what's feasible, and prove the first use case in production before anyone commits to scaling it."
+    },
+    faq: [
+      {
+        q: "What does an AI consulting company actually do?",
+        a: "We help you decide where AI is worth using in your business and then make it real. That means a free assessment of your workflows and data, a prioritised roadmap of feasible use cases ranked by impact and effort, and — unlike advice-only firms — building the first use case so you can measure the result before scaling."
+      },
+      {
+        q: "How are you different from a big consultancy?",
+        a: "Two ways. First, you talk to a senior consultant who also builds production AI, not a deck-making analyst. Second, we don't stop at strategy — we ship the first use case on your real data and tools at a fixed scope. You get something working and measurable in weeks, not a long engagement that ends with recommendations."
+      },
+      {
+        q: "Can you guarantee a specific ROI from AI?",
+        a: "No — and anyone who promises a fixed ROI percentage before seeing your data is guessing. What we do is honest: the assessment estimates the likely payback for each use case, we start with the ones that have the clearest case, and we build the first one so you can measure the real result and decide whether to scale. The proof is in the pilot, not the pitch."
+      },
+      {
+        q: "Which industries and use cases do you work with?",
+        a: "Common high-value use cases are customer support automation, sales and lead workflows, document and data processing, internal knowledge assistants, and process automation. We work across services, SaaS, fintech, healthcare, and more — the assessment is tailored to your specific workflows rather than a one-size template."
+      },
+      {
+        q: "What about data privacy and sensitive information?",
+        a: "We design around your constraints. For sensitive or regulated data we use private or self-hosted models in your own cloud, with access controls and audit trails. We sign an NDA before the first detailed call, and you decide what data is in scope."
+      },
+      {
+        q: "Do we own the strategy and anything you build?",
+        a: "Yes. The roadmap, the prompts, and any source code we write are yours. We build directly on the underlying tools and models rather than locking you into a black-box platform, so you can run and extend everything we deliver without us."
+      }
+    ],
+    testimonials: [
+      {
+        quote: "Every other firm sent a strategy deck. RDMI ran a free assessment, told us which two use cases were actually worth doing, and built the first one. We could measure it instead of guessing.",
+        author: "A.M.",
+        role: "COO, B2B Services",
+        rating: 5
+      },
+      {
+        quote: "They were honest about what wasn't worth automating yet — which is why we trusted the roadmap. The first use case shipped on a fixed scope and we own the code.",
+        author: "S.V.",
+        role: "Founder, SaaS Startup",
+        rating: 5
+      },
+      {
+        quote: "Senior consultant on the first call, not a junior with a template. They understood our data constraints and proposed a private deployment from the start.",
+        author: "R.K.",
+        role: "Head of Digital, FinTech",
+        rating: 5
+      }
+    ],
+    ctaSection: {
+      headline: "Stop Buying AI Strategy Decks. Get One Use Case That Works.",
+      subtitle: "Start with a free AI opportunity assessment, get a prioritised roadmap in weeks, and let us build the first use case so you can measure it before scaling. An AI consultant who also ships (not a salesperson) calls you back within 2 hours.",
+      buttonText: "Get Free AI Assessment"
+    },
+    targetKeywords: [
+      "ai consulting company",
+      "ai consultant",
+      "ai consultancy",
+      "artificial intelligence consultancy",
+      "ai consulting services",
+      "ai consulting firms",
+      "ai consulting",
+      "ai strategy consulting",
+      "artificial intelligence consulting companies",
+      "ai consulting company india"
+    ]
+  },
+  {
+    slug: "ai-chatbot-development",
+    primaryKeyword: "AI Chatbot Development Company",
+    adGroupMatch: "AI Chatbot Development Company",
+    theme: {
+      heroGradient: "linear-gradient(135deg, #0891b2, #0ea5e9, #0e7490)",
+      ctaGradient: "linear-gradient(135deg, #0891b2, #0ea5e9, #0e7490)",
+      urgencyColor: "#0891b2",
+      accent: "cyan",
+      icon: "💬"
+    },
+    form: {
+      title: "See Your AI Chatbot on Your Content",
+      subtitle: "A chatbot engineer (not a salesperson) calls you back within 2 hours",
+      projectTypes: [
+        "AI Support Chatbot",
+        "AI Sales / Lead Chatbot",
+        "Website AI Assistant",
+        "WhatsApp AI Chatbot",
+        "RAG / Knowledge-Base Chatbot",
+        "Multilingual Chatbot",
+        "Other"
+      ],
+      placeholder: "What should your chatbot do — answer support, qualify leads, or both? On which channels?",
+      buttonText: "See a Demo on My Content →",
+      formType: "ai-chatbot"
+    },
+    meta: {
+      title: "AI Chatbot Development Company | Custom Support, Sales & RAG Chatbots on Your Data | RDMI",
+      description: "AI chatbot development company building custom chatbots that answer from your own content — support, sales, and website assistants for web, WhatsApp, and app. RAG-grounded so it answers from your knowledge base instead of hallucinating, with human handoff and CRM sync. You own the prompts and source code."
+    },
+    hero: {
+      badge: "💬 AI Chatbot Development — Grounded on Your Content, Live on Web & WhatsApp",
+      h1: "AI Chatbot Development Company for Support, Sales, and Website Assistants",
+      subtitle: "Looking for an AI chatbot development company? RDMI builds custom AI chatbots that answer from your own content and knowledge base — not generic guesses — to handle support, qualify and capture leads, and assist visitors 24/7 across your website, WhatsApp, and app. Grounded with RAG, with human handoff and CRM sync built in.",
+      cta1: "See a Demo on My Content",
+      cta2: "Talk to a Chatbot Engineer",
+      trustPoints: [
+        "Answers from your content and knowledge base, not hallucinations",
+        "Live on your website, WhatsApp, and app — 24/7",
+        "Qualifies and captures leads, hands off to a human when needed",
+        "You own the prompts and source code — no per-message lock-in"
+      ]
+    },
+    images: {
+      hero: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1600&q=80",
+      process: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80",
+      team: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80",
+      services: [
+        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&q=80",
+        "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&q=80",
+        "https://images.unsplash.com/photo-1655720828018-edd71a68420e?w=800&q=80"
+      ],
+      portfolio: [
+        "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=800&q=80",
+        "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=800&q=80",
+        "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=80"
+      ],
+      cta: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80"
+    },
+    process: [
+      {
+        step: "01",
+        title: "Chatbot Scope & Content Review — Within 2 Hours",
+        description: "A chatbot engineer maps what the bot should do — answer support, qualify leads, book, or all three — and what it should answer from: your website, docs, FAQs, product data. You leave with a clear scope, the channels (web, WhatsApp, app), and an honest view of what to automate first."
+      },
+      {
+        step: "02",
+        title: "See a Working Demo on Your Content",
+        description: "We build a working chatbot grounded on your actual content so you can talk to it and check the answers before go-live. You tune the tone, the guardrails, and the handoff rules until it answers the way you'd want your team to."
+      },
+      {
+        step: "03",
+        title: "Integrate, Ground, Go Live",
+        description: "RAG grounding on your knowledge base, channel integration (website widget, WhatsApp, app), CRM and lead capture, human-handoff rules, and guardrails so it stays on-topic and says 'let me connect you' instead of guessing. Live across your channels."
+      },
+      {
+        step: "04",
+        title: "Monitor & Improve",
+        description: "Every conversation logged with outcome tags (answered, lead captured, handed off, unanswered). We review real chats, close knowledge gaps, and refine the prompts and guardrails on a retainer as your content and questions evolve."
+      }
+    ],
+    stats: [
+      {
+        value: "24/7",
+        label: "Support & Lead Capture"
+      },
+      {
+        value: "RAG",
+        label: "Grounded on Your Content"
+      },
+      {
+        value: "Web + WhatsApp",
+        label: "Live Across Channels"
+      },
+      {
+        value: "100%",
+        label: "Prompts & Source Code Yours"
+      }
+    ],
+    services: [
+      {
+        title: "AI Support Chatbot",
+        description: "Deflect repetitive support questions 24/7 with a chatbot that answers from your help docs, FAQs, and policies — accurately, because it's grounded on your content. Escalates to a human with full context when it should, so customers never hit a dead end.",
+        tags: [
+          "RAG",
+          "Knowledge Base",
+          "Human Handoff",
+          "Ticket Deflection"
+        ]
+      },
+      {
+        title: "AI Sales & Lead-Qualification Chatbot",
+        description: "Engage website visitors, answer pre-sales questions, qualify with your criteria, capture the lead, and push it to your CRM — so enquiries convert instead of bouncing. Flags hot leads for instant follow-up, day or night.",
+        tags: [
+          "Lead Capture",
+          "Qualifying Flows",
+          "CRM Sync",
+          "Hot-Lead Alerts"
+        ]
+      },
+      {
+        title: "Website AI Assistant",
+        description: "A branded assistant embedded on your site that helps visitors find products, answers, and the right next step. Looks and sounds like your brand, grounded on your real content, no generic canned replies.",
+        tags: [
+          "Web Widget",
+          "Branded UX",
+          "Product Search",
+          "Guided Help"
+        ]
+      },
+      {
+        title: "RAG / Knowledge-Base Chatbot",
+        description: "An internal or external chatbot that answers from your documents — manuals, policies, contracts, wikis — with citations, so answers are grounded and checkable. The fix for hallucination: it retrieves from your knowledge, it doesn't invent.",
+        tags: [
+          "Retrieval-Augmented",
+          "Citations",
+          "Document Ingestion",
+          "Vector Search"
+        ]
+      },
+      {
+        title: "WhatsApp & Multichannel Chatbots",
+        description: "Meet customers where they are — WhatsApp, your website, and your app — with one chatbot brain across channels. Bookings, support, and lead capture over the channels your customers actually use.",
+        tags: [
+          "WhatsApp Business API",
+          "Web",
+          "App",
+          "Unified Brain"
+        ]
+      },
+      {
+        title: "Private & Compliant Chatbots",
+        description: "For sensitive data, run the chatbot on private or self-hosted models inside your own cloud, with access controls and audit logs. Suited to healthcare, BFSI, and legal where conversation content must stay protected.",
+        tags: [
+          "Private LLM",
+          "VPC Deploy",
+          "Access Controls",
+          "Audit Logs"
+        ]
+      }
+    ],
+    uspHeadlines: {
+      direct: "You talk to the chatbot engineer who builds your bot — on a call within 2 hours, not a salesperson with slides. You see a working demo on your own content, tune it, and approve before a single customer talks to it.",
+      cost: "No per-message reseller markup on a black-box platform. We build your chatbot directly on the underlying models and channels — and the prompts, flows, and source code are yours. You pay providers' usage directly, no lock-in.",
+      ai: "A chatbot that makes things up costs you trust. Every bot we ship is grounded on your content with RAG, answers with citations where it matters, stays on-topic with guardrails, and hands off to a human instead of guessing."
+    },
+    faq: [
+      {
+        q: "How is a custom AI chatbot different from a template or website plugin?",
+        a: "A plugin gives generic canned flows or an ungrounded model that can make things up. We build a custom chatbot grounded on your own content with RAG, so it answers from your docs, FAQs, and product data accurately — with your qualifying logic, your CRM integration, your guardrails, and human handoff. You own the prompts and code, not a monthly black-box subscription."
+      },
+      {
+        q: "Will it make up answers (hallucinate)?",
+        a: "We design against it. The chatbot is grounded on your content with retrieval-augmented generation, answers with citations where it matters, and is given guardrails so that when it doesn't know, it says so and offers a human handoff instead of guessing. You review the answers on your own content before it goes live."
+      },
+      {
+        q: "Which channels can it run on — website, WhatsApp, app?",
+        a: "All of them. We deploy a website widget, connect WhatsApp via the WhatsApp Business API, and integrate into your mobile app — with one chatbot brain across channels so the experience and knowledge are consistent everywhere."
+      },
+      {
+        q: "Can it capture leads and update our CRM?",
+        a: "Yes. The chatbot can run your qualifying questions, capture the lead's details and intent, push them to your CRM, and flag hot leads for instant follow-up. For support, it logs conversations and outcomes so you can see what's being asked and answered."
+      },
+      {
+        q: "What about sensitive data and privacy?",
+        a: "For sensitive or regulated data we can run the chatbot on private or self-hosted models inside your own cloud, with access controls and audit logs. We sign an NDA before detailed discussions and you decide what content and data the bot can access."
+      },
+      {
+        q: "Do we own the chatbot, or are we locked into a subscription?",
+        a: "You own the prompts, conversation flows, and source code. We build directly on the underlying models and channels rather than reselling a per-message platform, so there's no lock-in — you pay the providers' usage directly and keep what we build."
+      }
+    ],
+    testimonials: [
+      {
+        quote: "It answers from our actual help docs, so the answers are right — and it hands off to our team with context when it isn't sure. Support volume on repetitive questions dropped noticeably.",
+        author: "P.S.",
+        role: "Support Lead, SaaS",
+        rating: 5
+      },
+      {
+        quote: "The sales chatbot qualifies website visitors after hours and drops the leads straight into our CRM. We stopped losing enquiries that used to come in overnight.",
+        author: "D.G.",
+        role: "Marketing Head, B2B",
+        rating: 5
+      },
+      {
+        quote: "They showed us a working demo on our own content before we paid, and handed over the prompts and code. No per-message markup, no lock-in.",
+        author: "V.A.",
+        role: "Founder, E-Commerce",
+        rating: 5
+      }
+    ],
+    ctaSection: {
+      headline: "Give Every Visitor an Answer — and Every Lead a Follow-Up.",
+      subtitle: "See a working AI chatbot on your own content before you pay — answering support 24/7, qualifying leads into your CRM, and handing off to a human when it should, across web and WhatsApp. A chatbot engineer (not a salesperson) calls you back within 2 hours.",
+      buttonText: "See a Demo on My Content"
+    },
+    targetKeywords: [
+      "ai chatbot development company",
+      "ai chatbot development",
+      "ai chatbot development services",
+      "custom ai chatbot development",
+      "chatbot development company",
+      "ai chatbot for website",
+      "rag chatbot development",
+      "conversational ai chatbot development",
+      "ai chatbot development company india",
+      "chatbot development services"
+    ]
   }
 ];
 

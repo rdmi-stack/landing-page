@@ -68,6 +68,26 @@ export const SKAG_THEMES: Record<string, SkagTheme> = {
       "business process automation": "ai-automation-agency",
     },
   },
+  "ai-consulting": {
+    campaignName: "RDMI | AI Consulting SKAG | India",
+    keywordToSlug: {
+      "ai consulting company": "ai-consulting-company",
+      "ai consultant": "ai-consulting-company",
+      "ai consultancy": "ai-consulting-company",
+      "ai consulting services": "ai-consulting-company",
+      "ai consulting firms": "ai-consulting-company",
+    },
+  },
+  "ai-chatbot": {
+    campaignName: "RDMI | AI Chatbot SKAG | India",
+    keywordToSlug: {
+      "ai chatbot development company": "ai-chatbot-development",
+      "ai chatbot development": "ai-chatbot-development",
+      "ai chatbot development services": "ai-chatbot-development",
+      "custom ai chatbot development": "ai-chatbot-development",
+      "chatbot development company": "ai-chatbot-development",
+    },
+  },
 };
 
 /** Merged keyword→slug across all themes (for ad-group name resolution). */
