@@ -476,8 +476,8 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
                       <option value="" className="bg-white text-slate-900">What do you want to build?</option>
                       {projectTypes.map((item) => <option key={item} value={item} className="bg-white text-slate-900">{item}</option>)}
                     </select>
-                    <select value={formData.budget} onChange={(e) => setFormData((prev) => ({ ...prev, budget: e.target.value }))} className={`w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-indigo-500 ${formData.budget ? "text-slate-900" : "text-slate-400"}`}>
-                      <option value="" className="bg-white text-slate-900">Budget range</option>
+                    <select required value={formData.budget} onChange={(e) => setFormData((prev) => ({ ...prev, budget: e.target.value }))} className={`w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-indigo-500 ${formData.budget ? "text-slate-900" : "text-slate-400"}`}>
+                      <option value="" className="bg-white text-slate-900">Budget range *</option>
                       {budgets.map((item) => <option key={item} value={item} className="bg-white text-slate-900">{item}</option>)}
                     </select>
                   </div>

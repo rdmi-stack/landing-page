@@ -44,6 +44,10 @@ export const NEGATIVES = [
   "web designing", "website designing", "logo design", "graphic design",
   // Cheap / DIY price-shoppers + irrelevant platforms/brands
   "diy", "cheap", "cheapest", "how much", "odoo", "websenor", "ease2web", "wix studio", "ai website",
+  // Leak terms exposed by live search-term reports (DIY "create/make", AI builders, brands)
+  "creation", "tilda", "landingsite", "create a website", "make a website", "web site creation",
+  "website ai", "website build", "ai website builder", "low cost", "near me", "how to make",
+  "creware", "appinventiv", "praharx", "flikt",
 ];
 
 /** Callout assets (campaign level — added manually, not via CSV). */
