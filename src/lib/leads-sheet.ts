@@ -69,7 +69,10 @@ export async function appendLeadRow(lead: LeadRow): Promise<void> {
       "", "", // Uploaded, Upload Time — set by the OCI upload script
     ];
     await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Leads!A:M:append?valueInputOption=USER_ENTERED`,
+      // RAW: store values literally — a phone like "+91 98185 65561" must not be
+      // parsed as a formula (→ #ERROR!), and RAW also neutralizes formula-injection
+      // from lead-supplied fields (name/message starting with = + - @).
+      `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Leads!A:M:append?valueInputOption=RAW`,
       {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },

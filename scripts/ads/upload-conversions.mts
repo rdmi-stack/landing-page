@@ -85,16 +85,17 @@ const customer = client.Customer({
   refresh_token: process.env.GOOGLE_ADS_REFRESH_TOKEN!,
 });
 const when = istNow();
-const res = await customer.conversionUploads.uploadClickConversions(
-  pending.map((p) => ({
+const res = await customer.conversionUploads.uploadClickConversions({
+  customer_id: cid,
+  conversions: pending.map((p) => ({
     conversion_action: `customers/${cid}/conversionActions/${OCI_ID}`,
     gclid: p.gclid,
     conversion_date_time: when,
     conversion_value: p.value,
     currency_code: "INR",
   })),
-  { partial_failure: true },
-);
+  partial_failure: true,
+});
 const failures = (res.partial_failure_error?.details?.length ?? 0) > 0;
 console.log(`\n✓ Uploaded ${pending.length} conversion(s) to 'Qualified Lead (OCI)'.${failures ? " (some partial failures — check gclid validity/age)" : ""}`);
 if (res.partial_failure_error) console.log("  partial_failure:", res.partial_failure_error.message);
