@@ -59,14 +59,18 @@ const H = { Authorization: `Bearer ${token}`, "Content-Type": "application/json"
 const get = await (await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Leads!A2:M`, { headers: H })).json();
 const rows: string[][] = get.values || [];
 
-type Pending = { rowNumber: number; gclid: string; value: number };
+type Pending = { rowNumber: number; gclid: string; value: number; convTime: string };
 const pending: Pending[] = [];
 rows.forEach((r, i) => {
   const qualified = (r[9] || "").trim().toLowerCase() === "yes";
   const uploaded = (r[11] || "").trim() !== "";
   const gclid = (r[6] || "").trim();
+  // Conversion time = the lead's own (ISO IST) submission time so the cron and
+  // the native Sheets import upload an identical time → Google counts it once.
+  const ts = (r[0] || "").trim();
+  const convTime = /^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d$/.test(ts) ? `${ts}+05:30` : istNow();
   if (qualified && !uploaded && gclid) {
-    pending.push({ rowNumber: i + 2, gclid, value: Number(r[10]) || 50000 });
+    pending.push({ rowNumber: i + 2, gclid, value: Number(r[10]) || 50000, convTime });
   }
 });
 
@@ -90,7 +94,7 @@ const res = await customer.conversionUploads.uploadClickConversions({
   conversions: pending.map((p) => ({
     conversion_action: `customers/${cid}/conversionActions/${OCI_ID}`,
     gclid: p.gclid,
-    conversion_date_time: when,
+    conversion_date_time: p.convTime,
     conversion_value: p.value,
     currency_code: "INR",
   })),

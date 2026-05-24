@@ -60,7 +60,14 @@ export async function appendLeadRow(lead: LeadRow): Promise<void> {
   try {
     const token = await accessToken();
     if (!token) return;
-    const ts = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+    // ISO IST "yyyy-MM-dd HH:mm:ss" — used verbatim as the OCI conversion time
+    // (by both the cron and the native Sheets import) so Google de-dupes to 1.
+    const p = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false,
+    }).formatToParts(new Date());
+    const gp = (t: string) => p.find((x) => x.type === t)!.value;
+    const ts = `${gp("year")}-${gp("month")}-${gp("day")} ${gp("hour")}:${gp("minute")}:${gp("second")}`;
     const row = [
       ts, lead.name, lead.email, lead.phone, lead.budget, lead.page,
       lead.gclid, lead.utmSource, lead.utmCampaign,

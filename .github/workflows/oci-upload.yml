@@ -1,0 +1,38 @@
+name: OCI Upload — Qualified Leads → Google Ads
+
+# Uploads leads marked Qualified=yes in the leads Google Sheet to Google Ads
+# as "Qualified Lead (OCI)" offline conversions (via gclid). Runs every 4 hours.
+# Safe alongside the native Google Ads daily Sheets import: both upload each
+# lead's own submission time, so Google de-dupes to a single conversion.
+
+on:
+  schedule:
+    - cron: "0 */4 * * *" # every 4 hours (UTC)
+  workflow_dispatch: {} # manual run button
+
+# Don't let two runs overlap.
+concurrency:
+  group: oci-upload
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - name: Upload qualified conversions
+        run: node scripts/ads/upload-conversions.mts
+        env:
+          GOOGLE_ADS_DEVELOPER_TOKEN: ${{ secrets.GOOGLE_ADS_DEVELOPER_TOKEN }}
+          GOOGLE_ADS_CLIENT_ID: ${{ secrets.GOOGLE_ADS_CLIENT_ID }}
+          GOOGLE_ADS_CLIENT_SECRET: ${{ secrets.GOOGLE_ADS_CLIENT_SECRET }}
+          GOOGLE_ADS_REFRESH_TOKEN: ${{ secrets.GOOGLE_ADS_REFRESH_TOKEN }}
+          GOOGLE_ADS_LOGIN_CUSTOMER_ID: ${{ secrets.GOOGLE_ADS_LOGIN_CUSTOMER_ID }}
+          GOOGLE_ADS_CUSTOMER_ID: ${{ secrets.GOOGLE_ADS_CUSTOMER_ID }}
+          GA4_OAUTH_REFRESH_TOKEN: ${{ secrets.GA4_OAUTH_REFRESH_TOKEN }}
+          LEADS_SHEET_ID: ${{ secrets.LEADS_SHEET_ID }}
+          OCI_CONVERSION_ACTION_ID: ${{ secrets.OCI_CONVERSION_ACTION_ID }}
