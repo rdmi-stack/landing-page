@@ -1748,6 +1748,468 @@ export const keywordGroups: KeywordGroup[] = [
       "enterprise application development",
       "multi tenant saas development"
     ]
+  },
+  {
+    slug: "ai-receptionist",
+    primaryKeyword: "AI Receptionist",
+    adGroupMatch: "AI Receptionist",
+    theme: {
+      heroGradient: "linear-gradient(135deg, #0ea5e9, #6366f1, #0284c7)",
+      ctaGradient: "linear-gradient(135deg, #0ea5e9, #6366f1, #0284c7)",
+      urgencyColor: "#0ea5e9",
+      accent: "sky",
+      icon: "📞"
+    },
+    form: {
+      title: "Hear Your AI Receptionist Live",
+      subtitle: "A voice-AI engineer (not a salesperson) calls you back within 2 hours",
+      projectTypes: [
+        "AI Receptionist (Inbound Calls)",
+        "AI Appointment Booking Agent",
+        "AI Lead-Qualification Voice Agent",
+        "AI Receptionist for Clinics / Dental",
+        "AI Receptionist for Law Firm",
+        "AI Receptionist for Insurance Agency",
+        "Other"
+      ],
+      placeholder: "Which calls do you want answered and booked 24/7 — and how many do you miss now?",
+      buttonText: "Hear a Live Demo →",
+      formType: "ai-receptionist"
+    },
+    meta: {
+      title: "AI Receptionist & AI Voice Agent | 24/7 Call Answering, Booking & Lead Capture | RDMI",
+      description: "AI receptionist that answers every call 24/7, books appointments into your calendar, qualifies leads, and routes urgent calls to a human. Built for clinics, law firms, insurance agencies and home services. Custom voice AI on OpenAI Realtime, Deepgram, ElevenLabs and Twilio. Source code yours."
+    },
+    hero: {
+      badge: "📞 AI Receptionist — Answers Every Call, Books Every Lead, 24/7",
+      h1: "AI Receptionist That Answers Every Call and Books Every Appointment, 24/7",
+      subtitle: "Looking for an AI receptionist? RDMI builds custom AI voice agents that pick up on the first ring, book appointments straight into your calendar, qualify and capture leads, answer FAQs, and hand off urgent calls to a human — day, night, weekends and holidays. Built on OpenAI Realtime, Deepgram, ElevenLabs and Twilio, integrated with your calendar and CRM.",
+      cta1: "Hear a Live Demo",
+      cta2: "Talk to a Voice-AI Engineer",
+      trustPoints: [
+        "Answers 24/7 — never a missed call or voicemail",
+        "Sub-second, natural voice that books into your calendar",
+        "Qualifies leads and warm-transfers urgent callers to a human",
+        "Custom-built and integrated with your CRM — source code yours"
+      ]
+    },
+    images: {
+      hero: "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=1600&q=80",
+      process: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80",
+      team: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80",
+      services: [
+        "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=800&q=80",
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+        "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?w=800&q=80"
+      ],
+      portfolio: [
+        "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=800&q=80",
+        "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
+        "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80"
+      ],
+      cta: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80"
+    },
+    process: [
+      {
+        step: "01",
+        title: "Call Audit & Voice Scope — Within 2 Hours",
+        description: "A voice-AI engineer maps the calls you handle and miss — bookings, FAQs, after-hours, overflow — and the actions the agent must take: check the calendar, book, qualify, transfer. You leave with a scoped agent spec, the integrations needed, and an honest view of what voice AI should and shouldn't answer."
+      },
+      {
+        step: "02",
+        title: "Hear a Working Agent in Days",
+        description: "We build a live voice agent on your scripts and FAQs, connected to a test calendar, so you can call in and break it before go-live. You tune the voice, the wording, the booking rules and the escalation triggers until it sounds like your front desk."
+      },
+      {
+        step: "03",
+        title: "Integrate, Harden, Go Live",
+        description: "Calendar and CRM integration, your phone number ported or forwarded, business-hours and after-hours routing, human warm-transfer rules, call logging and transcripts. Guardrails so the agent stays on-script and hands off when it's unsure."
+      },
+      {
+        step: "04",
+        title: "Monitor & Keep Improving",
+        description: "Every call transcribed and logged with outcome tags (booked, qualified, transferred, FAQ). We review real calls, refine the prompts and booking logic, and tune the voice on a retainer as your business and call patterns change."
+      }
+    ],
+    stats: [
+      {
+        value: "24/7",
+        label: "Calls Answered — Nights & Weekends"
+      },
+      {
+        value: "Sub-1s",
+        label: "Voice Response Latency"
+      },
+      {
+        value: "Days",
+        label: "To a Working Live Demo"
+      },
+      {
+        value: "100%",
+        label: "Source Code & Prompts Yours"
+      }
+    ],
+    services: [
+      {
+        title: "24/7 Inbound Call Answering",
+        description: "A natural-sounding AI voice agent that picks up on the first ring, every hour of every day. It greets callers in your business's voice, answers your most common questions from your own knowledge base, and never sends a caller to voicemail. Spillover and after-hours calls stop leaking revenue.",
+        tags: [
+          "OpenAI Realtime",
+          "Deepgram",
+          "ElevenLabs",
+          "Twilio"
+        ]
+      },
+      {
+        title: "Appointment Booking Into Your Calendar",
+        description: "The agent checks real availability and books, reschedules, or cancels appointments directly in your calendar or practice-management system — then sends the confirmation. Built-in rules for buffers, slot types, and reminders to cut no-shows.",
+        tags: [
+          "Google Calendar",
+          "Calendly",
+          "Cal.com",
+          "Practice Mgmt APIs"
+        ]
+      },
+      {
+        title: "Lead Qualification & Capture",
+        description: "For sales and service calls, the agent asks your qualifying questions, captures name, intent, and budget, logs the lead to your CRM, and flags hot leads for instant follow-up. No more lost enquiries from a busy or after-hours line.",
+        tags: [
+          "CRM Sync",
+          "Custom Qualifying Flows",
+          "Lead Scoring",
+          "Webhooks"
+        ]
+      },
+      {
+        title: "Human Warm-Transfer & Escalation",
+        description: "When a caller is urgent, upset, or asks something outside scope, the agent warm-transfers to the right human with context — or takes a detailed message. Confidence thresholds and escalation rules keep it from guessing on high-stakes calls.",
+        tags: [
+          "Live Transfer",
+          "Confidence Thresholds",
+          "Escalation Rules",
+          "Voicemail-to-Text"
+        ]
+      },
+      {
+        title: "Vertical Voice Agents",
+        description: "Configured for how your industry actually answers the phone: dental and medical clinics, law firm intake, insurance agencies, and home-services dispatch. Industry scripts, intake questions, and compliance-aware handling of sensitive callers.",
+        tags: [
+          "Clinics & Dental",
+          "Law Firm Intake",
+          "Insurance Agencies",
+          "Home Services"
+        ]
+      },
+      {
+        title: "Multilingual & Private Deployment",
+        description: "Answer callers in multiple languages with one agent, and — for regulated data — run on private or self-hosted models in your cloud. Required for healthcare and BFSI where call content is sensitive. Same agent logic, your infrastructure.",
+        tags: [
+          "Multilingual",
+          "HIPAA-Aware",
+          "Private LLM",
+          "VPC Deploy"
+        ]
+      }
+    ],
+    uspHeadlines: {
+      direct: "You talk to the voice-AI engineer who builds your agent — on a call within 2 hours, not a salesperson with slides. You hear a working agent in days, tune it on real calls, and approve before it answers a single customer.",
+      cost: "No per-minute reseller markup on top of someone else's platform. We build your agent on the underlying voice and LLM providers directly — and the prompts, call flows, and source code are yours. No lock-in to a black-box subscription.",
+      ai: "A voice agent that guesses on the wrong call costs you a customer. Every agent ships with confidence thresholds, human warm-transfer, on-script guardrails, and full call transcripts — so it answers what it should and hands off what it shouldn't."
+    },
+    faq: [
+      {
+        q: "What is an AI receptionist and how is it different from voicemail or an IVR menu?",
+        a: "An AI receptionist is a natural-sounding voice agent that actually talks with callers — it answers questions, books appointments, qualifies leads, and transfers urgent calls to a human. Unlike voicemail it never makes a caller wait or hang up, and unlike a 'press 1 for…' IVR menu there are no rigid menus: the caller just speaks normally and the agent understands and acts."
+      },
+      {
+        q: "Will callers be able to tell it's an AI?",
+        a: "It uses sub-second, natural speech and your own greeting, so most callers experience a smooth, professional conversation. We're transparent by design — the agent can disclose it's an AI assistant where you want it to, and it warm-transfers to a human the moment a call needs one. The goal is no missed calls and no frustrating menus, not deception."
+      },
+      {
+        q: "Does it actually book appointments into my calendar?",
+        a: "Yes. The agent connects to your calendar or practice-management system, checks real availability, and books, reschedules, or cancels — then sends the confirmation. We configure your slot types, buffers, and reminder rules to reduce no-shows."
+      },
+      {
+        q: "What happens with urgent calls or questions it can't handle?",
+        a: "You define the escalation rules. When a caller is urgent, sounds upset, or asks something outside the agent's scope, it warm-transfers to the right person with context — or takes a detailed message and flags it immediately. Confidence thresholds stop it from guessing on high-stakes calls."
+      },
+      {
+        q: "Can it handle a healthcare clinic, law firm, or insurance agency specifically?",
+        a: "Yes — we build the agent around your industry's intake. Clinics get appointment booking and patient FAQs with HIPAA-aware handling; law firms get new-client intake and conflict-screening questions; insurance agencies get policy questions and lead qualification. For sensitive data we can run on private or self-hosted models in your own cloud."
+      },
+      {
+        q: "Do I own the agent, or am I locked into a subscription?",
+        a: "You own the prompts, call flows, and source code. We build your agent directly on the underlying voice and LLM providers rather than reselling a black-box platform with per-minute markup, so there's no lock-in. You pay the providers' usage directly and keep what we build."
+      }
+    ],
+    testimonials: [
+      {
+        quote: "After-hours calls used to go to voicemail and we'd lose the booking. The AI receptionist now answers every one and books straight into our calendar — we hear about it in the morning log.",
+        author: "S.K.",
+        role: "Practice Manager, Dental Clinic",
+        rating: 5
+      },
+      {
+        quote: "New-client calls get answered and screened around the clock now. The warm-transfer rules mean genuinely urgent matters still reach us, and everything else is captured cleanly.",
+        author: "A.R.",
+        role: "Partner, Law Firm",
+        rating: 5
+      },
+      {
+        quote: "They built it on our own stack and handed over the prompts and code — no per-minute reseller markup. It answers, qualifies, and logs every lead to our CRM.",
+        author: "M.T.",
+        role: "Owner, Insurance Agency",
+        rating: 5
+      }
+    ],
+    ctaSection: {
+      headline: "Stop Losing Customers to a Missed Call.",
+      subtitle: "Hear a working AI receptionist on your own scripts in days — answering 24/7, booking into your calendar, qualifying leads, and transferring urgent callers to a human. A voice-AI engineer (not a salesperson) calls you back within 2 hours.",
+      buttonText: "Hear a Live Demo"
+    },
+    targetKeywords: [
+      "ai receptionist",
+      "ai voice agent",
+      "ai phone answering service",
+      "virtual receptionist software",
+      "ai answering service",
+      "ai receptionist for clinics",
+      "ai receptionist for law firms",
+      "ai voice agent development",
+      "conversational ai phone agent",
+      "ai appointment booking agent"
+    ]
+  },
+  {
+    slug: "ai-automation-agency",
+    primaryKeyword: "AI Automation Agency",
+    adGroupMatch: "AI Automation Agency",
+    theme: {
+      heroGradient: "linear-gradient(135deg, #059669, #0d9488, #047857)",
+      ctaGradient: "linear-gradient(135deg, #059669, #0d9488, #047857)",
+      urgencyColor: "#059669",
+      accent: "emerald",
+      icon: "⚙️"
+    },
+    form: {
+      title: "Get Your Free Automation Audit",
+      subtitle: "An automation engineer (not a salesperson) calls you back within 2 hours",
+      projectTypes: [
+        "AI Workflow Automation",
+        "Business Process Automation",
+        "AI Agent for a Workflow",
+        "CRM / Sales Automation",
+        "Back-Office / Ops Automation",
+        "Document / Data Automation",
+        "Other"
+      ],
+      placeholder: "Which repetitive, manual process is eating your team's hours right now?",
+      buttonText: "Get My Free Audit →",
+      formType: "ai-automation"
+    },
+    meta: {
+      title: "AI Automation Agency | AI Workflow & Business Process Automation, Live in Weeks | RDMI",
+      description: "AI automation agency that automates the repetitive, manual work draining your team — workflow automation, AI agents, and business process automation across your CRM, email, docs and back office. Free automation audit, a working pilot in weeks, on time or your money back. Built on n8n, Make and custom code. Source code yours, no lock-in."
+    },
+    hero: {
+      badge: "⚙️ AI Automation Agency — Working Pilot in Weeks, On Time or Money-Back",
+      h1: "AI Automation Agency That Automates the Busywork — Live in Weeks, or Your Money Back",
+      subtitle: "Looking for an AI automation agency? RDMI automates the repetitive, manual work that drains your team — lead follow-up, data entry, reporting, document handling, approvals and hand-offs — with AI agents and workflow automation wired into your CRM, email, and back office. We start with a free automation audit, ship a working pilot in weeks, and guarantee it: on time and on scope, or your money back.",
+      cta1: "Get Free Automation Audit",
+      cta2: "Talk to an Automation Engineer",
+      trustPoints: [
+        "Free automation audit before you commit a rupee",
+        "Working pilot live in weeks — on time and on scope, or money back",
+        "AI agents + workflows across your CRM, email, docs and back office",
+        "You own the workflows and source code — no per-task reseller markup"
+      ]
+    },
+    images: {
+      hero: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1600&q=80",
+      process: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+      team: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
+      services: [
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+        "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&q=80"
+      ],
+      portfolio: [
+        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+        "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=80",
+        "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=80"
+      ],
+      cta: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80"
+    },
+    process: [
+      {
+        step: "01",
+        title: "Free Automation Audit — Within 2 Hours",
+        description: "An automation engineer maps your most repetitive, time-draining workflows — what's manual, how often it runs, which tools it touches, and where the hand-offs break. You leave with a prioritised automation plan and a clear, honest view of what's worth automating first. No charge, no obligation."
+      },
+      {
+        step: "02",
+        title: "Fixed-Scope Pilot — You Approve Before We Build",
+        description: "We scope one high-impact workflow into a fixed-price pilot with a defined deliverable and timeline written into the contract. You know exactly what you're getting, what it costs, and when it's live — before any work starts."
+      },
+      {
+        step: "03",
+        title: "Working Automation Live in Weeks — Or Money Back",
+        description: "We build and ship the automation wired into your real tools, running on real data. If we miss the agreed scope or timeline, you get your money back — the guarantee is in the contract, not just the pitch. You test it end-to-end before go-live."
+      },
+      {
+        step: "04",
+        title: "Measure, Expand, Keep Improving",
+        description: "Every automation logs what it ran, what it saved, and where it failed. We review real runs with you, harden the edge cases, then roll automation into the next workflow. Retainer for ongoing build-out as your processes evolve."
+      }
+    ],
+    stats: [
+      {
+        value: "Free",
+        label: "Automation Audit & Plan"
+      },
+      {
+        value: "Weeks",
+        label: "To a Working Pilot — Not Months"
+      },
+      {
+        value: "Money-Back",
+        label: "If We Miss Scope or Timeline"
+      },
+      {
+        value: "100%",
+        label: "Workflows & Source Code Yours"
+      }
+    ],
+    services: [
+      {
+        title: "AI Workflow Automation",
+        description: "Connect the tools you already use and let work flow between them automatically — leads route to the right rep, data syncs across systems, follow-ups send themselves, reports build overnight. The repetitive copy-paste between apps disappears.",
+        tags: [
+          "n8n",
+          "Make",
+          "Zapier",
+          "Custom Orchestration"
+        ]
+      },
+      {
+        title: "AI Agents That Do the Work, Not Just Chat",
+        description: "Agents that read, decide, and act on a workflow end-to-end — triage inbound email, qualify and enrich leads, draft replies, update the CRM, run compliance checks. Built with guardrails and human approval where the stakes are high.",
+        tags: [
+          "LangGraph",
+          "CrewAI",
+          "Tool Use",
+          "Human-in-the-Loop"
+        ]
+      },
+      {
+        title: "Business Process Automation",
+        description: "The back-office work that quietly eats hours — invoice processing, onboarding, order handling, approvals, reconciliation — automated with clear audit trails. Your team stops doing manual data entry and starts doing the work that needs a human.",
+        tags: [
+          "Process Mapping",
+          "Approvals",
+          "Audit Logs",
+          "Exception Handling"
+        ]
+      },
+      {
+        title: "Document & Data Automation",
+        description: "Pull structured data out of invoices, forms, contracts, and emails; validate it; and push it into your systems automatically. Document AI that ends manual re-keying and the errors that come with it.",
+        tags: [
+          "Document AI",
+          "OCR + LLM Extraction",
+          "Validation",
+          "System Sync"
+        ]
+      },
+      {
+        title: "CRM & Sales Automation",
+        description: "Capture every lead, enrich and score it, route it to the right person, and trigger timely follow-up — so nothing slips through the cracks. The pipeline keeps itself updated instead of relying on someone remembering to.",
+        tags: [
+          "Lead Routing",
+          "Enrichment",
+          "Follow-Up Sequences",
+          "CRM Sync"
+        ]
+      },
+      {
+        title: "Private & Compliant Deployment",
+        description: "For regulated data, run automations and agents on private or self-hosted models inside your own cloud. Required for healthcare, BFSI, and legal. Same automation logic, your infrastructure, full control of where data goes.",
+        tags: [
+          "Private LLM",
+          "VPC Deploy",
+          "Access Controls",
+          "Compliance-Aware"
+        ]
+      }
+    ],
+    uspHeadlines: {
+      direct: "You talk to the automation engineer who builds your workflows — on a call within 2 hours, not a salesperson with slides. Free audit first, fixed scope, working pilot in weeks. You approve before we build.",
+      cost: "No per-task reseller markup on top of someone else's platform. We build your automations directly on the underlying tools and models — and the workflows, prompts, and source code are yours. No lock-in to a black-box subscription.",
+      ai: "Automation that breaks silently costs more than the manual work did. Every workflow we ship has run logs, error handling, exception alerts, and human approval where the stakes are high — so it keeps working when reality gets messy."
+    },
+    faq: [
+      {
+        q: "What exactly does an AI automation agency do?",
+        a: "We find the repetitive, manual work that drains your team's time — things like lead follow-up, data entry, reporting, document handling, and approvals — and automate them using a mix of workflow tools (n8n, Make, custom code) and AI agents. The result is work that happens automatically and reliably, so your people focus on what actually needs a human."
+      },
+      {
+        q: "How does the 'live in weeks or money back' guarantee work?",
+        a: "After the free audit, we scope one workflow into a fixed-price pilot with a specific deliverable and timeline written into the contract. If we miss the agreed scope or the agreed timeline, you get your money back. The guarantee is on what we control — delivery — and it's in the contract, not just the sales call."
+      },
+      {
+        q: "Will this actually save us money, or is it just hype?",
+        a: "We don't promise a magic ROI number — anyone who guarantees a specific percentage before seeing your workflows is guessing. What we do is start with a free audit that estimates the time each automation should save, prioritise the ones with the clearest payback, and ship a pilot you can measure for yourself before expanding. You decide if the numbers justify the next step."
+      },
+      {
+        q: "Which tools and platforms do you build on?",
+        a: "Workflow automation on n8n, Make, and Zapier where they fit, and custom code (Python, Node.js) where they don't. AI agents on LangGraph and CrewAI using OpenAI, Anthropic, and open-source models. We integrate with your existing CRM, email, calendar, databases, and internal APIs — we automate around your stack, we don't make you switch."
+      },
+      {
+        q: "What happens when an automation hits something unexpected?",
+        a: "Every workflow we build has error handling, exception alerts, and human-approval steps on high-stakes actions. When something falls outside the rules, it pauses and flags a human rather than guessing. You get run logs and a dashboard so you can see exactly what ran, what it did, and where it needed attention."
+      },
+      {
+        q: "Do we own the automations, or are we locked into a subscription?",
+        a: "You own the workflows, prompts, and source code. We build directly on the underlying tools and models instead of reselling a black-box platform with per-task markup, so there's no lock-in. You pay the platforms' usage directly and keep everything we build."
+      }
+    ],
+    testimonials: [
+      {
+        quote: "They started with an audit, not a pitch, and put the timeline in the contract. The first workflow went live on schedule and our team stopped doing the manual data entry that used to swallow mornings.",
+        author: "R.S.",
+        role: "Operations Head, B2B Services",
+        rating: 5
+      },
+      {
+        quote: "We'd been burned by an 'AI' vendor before. RDMI scoped a fixed pilot, shipped it, and handed over the workflows and code. No lock-in, no per-task markup — we run it ourselves now.",
+        author: "K.A.",
+        role: "Founder, FinTech Startup",
+        rating: 5
+      },
+      {
+        quote: "Lead follow-up used to slip through the cracks after hours. The automation captures, enriches, and routes every enquiry into our CRM now, and flags the hot ones immediately.",
+        author: "N.D.",
+        role: "Sales Director, SaaS",
+        rating: 5
+      }
+    ],
+    ctaSection: {
+      headline: "Stop Paying People to Do Work a Workflow Should.",
+      subtitle: "Start with a free automation audit, get a fixed-scope pilot live in weeks, and only scale what you can measure. On time and on scope, or your money back. An automation engineer (not a salesperson) calls you back within 2 hours.",
+      buttonText: "Get Free Automation Audit"
+    },
+    targetKeywords: [
+      "ai automation agency",
+      "ai automation services",
+      "ai workflow automation",
+      "workflow automation services",
+      "business process automation",
+      "ai process automation",
+      "intelligent automation services",
+      "ai automation for business",
+      "ai automation consulting",
+      "ai automation company"
+    ]
   }
 ];
 

@@ -48,6 +48,26 @@ export const SKAG_THEMES: Record<string, SkagTheme> = {
       "flutter app development company": "mobile-app-development",
     },
   },
+  "ai-receptionist": {
+    campaignName: "RDMI | AI Receptionist SKAG | Global",
+    keywordToSlug: {
+      "ai receptionist": "ai-receptionist",
+      "ai voice agent": "ai-receptionist",
+      "ai phone answering service": "ai-receptionist",
+      "virtual receptionist software": "ai-receptionist",
+      "ai answering service": "ai-receptionist",
+    },
+  },
+  "ai-automation": {
+    campaignName: "RDMI | AI Automation SKAG | Global",
+    keywordToSlug: {
+      "ai automation agency": "ai-automation-agency",
+      "ai automation services": "ai-automation-agency",
+      "ai workflow automation": "ai-automation-agency",
+      "workflow automation services": "ai-automation-agency",
+      "business process automation": "ai-automation-agency",
+    },
+  },
 };
 
 /** Merged keyword→slug across all themes (for ad-group name resolution). */
