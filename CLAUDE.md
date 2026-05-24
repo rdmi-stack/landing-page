@@ -206,6 +206,48 @@ Result the build now produces per SKAG ad: 15 complete unique headlines (keyword
 
 ---
 
+## Scaling Plan — 100 SKAG Landing Pages (MongoDB Atlas + Cloudinary)
+
+**Goal:** target ~100 **high-intent, high-CPC "money" keywords** (BOFU / commercial only — no informational/DIY/learning terms) across **6 verticals: AI Consulting, Software Development, App Development, Web Development, AI Agents/Chatbots, Workflow/AI Automation**. These are the categories with real buyer intent and budget.
+
+### Page strategy (decided)
+- **Cluster, don't carbon-copy.** The 100 keywords map into **~20–30 genuinely distinct, rich landing pages** (one per real service/intent). Each SKAG ad group (one per keyword) points to its **best-match cluster page** with a **keyword-injected H1** (`?kw=` / dynamic-headline pattern already built) — keeps ad↔keyword↔page message-match (high Quality Score) without thin pages.
+- **Paid-ads only → `noindex,nofollow`** on every page. Sidesteps SEO duplicate-content penalties; only Google Ads landing-page quality matters.
+- **#1 risk = Google "doorway pages" policy** (penalized in Ads + SEO — same family as the "evasive content" issue). Mitigation: real per-cluster differentiation (distinct angle + FAQ), keyword-injected H1 for the rest, **no fabricated metrics** (see the no-fake-results rule above), `noindex`.
+
+### Stack & architecture (planned — not yet built)
+- **MongoDB Atlas** — source of truth. Collections: `landingPages` (one doc per slug = current `KeywordGroup` shape + `status: draft|published`, `noindex`, `keywords[]`, `clusterId`) and `leads` (submission + `slug` + `utm_*` + **`gclid`** for attribution). Serverless caveat: cache the `MongoClient` on a `global` singleton (Netlify Lambdas reuse one connection, or Atlas pool exhausts).
+- **Cloudinary** — image hosting; URLs in docs, `res.cloudinary.com` in `next.config.ts` `images.remotePatterns`, `f_auto,q_auto` transforms via `next/image`.
+- **One dynamic route** `app/[slug]/page.tsx` (not 100 folders): fetch published doc → render the existing light landing component → `robots: noindex` → `generateStaticParams()` from Mongo (**SSG**) + `revalidate` (**ISR**, edit-without-redeploy). Root `[slug]` is a catch-all; static routes (`/about`, `/products`…) still win; `notFound()` if slug not in Mongo.
+- **SKAG generation from Mongo** — refactor `skag-keywords.mts` / `build-campaign.mts` to read clusters from Mongo; 100 keyword ad groups grouped into **~8–12 themed campaigns** (NOT 100 separate campaigns — unmanageable budgets); push PAUSED via the existing API pipeline (intent copy + pinned variants + 78-negative list all scale as-is).
+- **Admin panel** — CRUD on `landingPages`, publish/unpublish, lead viewer (the planned admin).
+- **New env vars:** `MONGODB_URI`, `CLOUDINARY_CLOUD_NAME` (+ upload preset if admin uploads). All gitignored.
+
+### Build phases
+1. Infra — `src/lib/mongo.ts` (cached client), schema/types, Cloudinary config, seed script to migrate the existing ~15 TS keyword-groups into Mongo (TS file stays as fallback until cutover; live pages never break).
+2. Dynamic `app/[slug]/page.tsx` (SSG + ISR + noindex + `?kw=` H1).
+3. Content — author the ~20–30 cluster pages as Mongo drafts → review → publish.
+4. SKAG-from-Mongo push (themed campaigns, PAUSED).
+5. Admin + lead/gclid capture.
+
+### The 100 Target Keywords (high-intent / money, 6 verticals)
+
+**AI Consulting & AI Development (~17)**: ai consulting services · ai consulting company · ai consulting firm · ai development company · ai software development company · ai software development · ai app development company · generative ai development company · enterprise ai solutions · ai integration services · ai implementation services · llm development company · machine learning development company · ai product development company · ai mvp development · hire ai developers · ai development agency
+
+**Software Development (~17)**: custom software development · custom software development company · custom software development services · custom software development agency · bespoke software development services · software development company · software development services · offshore software development company · saas development company · saas product development services · enterprise software development · erp software development company · crm development company · software outsourcing company · product engineering services · fintech software development company · software development for startups
+
+**App Development (~16)**: mobile app development company · app development company · android app development company · ios app development company · flutter app development company · react native development company · cross platform app development company · custom mobile app development company · healthcare app development company · fintech app development company · ecommerce app development company · on demand app development company · mvp app development company · mobile app development services · enterprise mobile app development · mobile app development agency
+
+**Web Development (~16)**: web development company · web development agency · web development services · website development company · custom website development · web application development company · ecommerce website development company · shopify development company · wordpress development company · saas web app development · progressive web app development · frontend development services · full stack development company · custom web app development services · headless commerce development · web design and development company
+
+**AI Agents / Chatbots / Conversational AI (~17)**: ai agent development company · ai agent development · custom ai agent development · agentic ai development company · ai voice agent development · voice ai development company · ai chatbot development company · ai chatbot development services · custom ai chatbot development · whatsapp ai chatbot development · rag chatbot development company · conversational ai development company · ai customer service agent · ai sales agent development · llm agent development · ai receptionist development · ai automation chatbot
+
+**Workflow & AI Automation (~17)**: ai automation agency · ai automation services · ai automation consulting · ai automation for business · workflow automation services · enterprise workflow automation · business process automation company · ai workflow automation · ai process automation company · robotic process automation services · intelligent automation services · n8n automation agency · make automation agency · zapier automation services · document automation services · invoice automation services · ai data entry automation
+
+> Geo layering (per the AI Business Intelligence section): USA 55% / India 25% / Dubai-UAE 20% budget split; append market modifiers (e.g. "…company usa", "…dubai") to the highest-intent terms as separate ad groups when scaling.
+
+---
+
 ## Keyword-Specific Landing Pages Strategy
 
 ### Overview

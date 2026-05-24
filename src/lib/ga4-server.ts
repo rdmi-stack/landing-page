@@ -18,16 +18,19 @@ export async function sendServerEvent(
   clientId: string,
   name: string,
   params: Record<string, string | number | boolean> = {},
+  sessionId = "",
 ): Promise<void> {
   if (!MEASUREMENT_ID || !API_SECRET) return;
   // Fall back to a random client_id so the event still lands (unattributed).
   const cid = clientId || `${Date.now()}.${Math.floor(Math.random() * 1e9)}`;
   // engagement_time_msec + session_id are required for MP events to register a
-  // session and surface in Realtime / standard reports — without them GA4
-  // silently drops the event from most views.
+  // session and surface in Realtime / standard reports. Critically, session_id
+  // MUST be the visitor's REAL GA4 session id (passed from the browser) so the
+  // conversion stitches to the gclid session and attributes to Google Ads.
+  // A synthetic fallback id keeps the event landing, but unattributed ("(not set)").
   const enrichedParams = {
     engagement_time_msec: 100,
-    session_id: `${Date.now()}`,
+    session_id: sessionId || `${Date.now()}`,
     ...params,
   };
   try {

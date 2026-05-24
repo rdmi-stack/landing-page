@@ -724,7 +724,7 @@ const formTypeLabels: Record<FormType, string> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, phone, company, budget, message, clientId } = await req.json();
+    const { name, email, phone, company, budget, message, clientId, sessionId } = await req.json();
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: "Name, email, and message are required." }, { status: 400 });
@@ -746,7 +746,7 @@ export async function POST(req: NextRequest) {
       form_type: formType,
       source_page: sourcePage,
       sticky: fromSticky,
-    });
+    }, sessionId || "");
     try {
       await saveLead({
         id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,

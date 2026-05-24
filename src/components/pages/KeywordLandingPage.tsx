@@ -31,7 +31,7 @@ import {
   X,
 } from "lucide-react";
 import Footer from "@/components/Footer";
-import { trackWhatsAppClick, getGAClientId } from "@/lib/gtag";
+import { trackWhatsAppClick, getGAClientId, getGASessionId } from "@/lib/gtag";
 import type { KeywordGroup } from "@/data/keyword-groups";
 
 /* ─── helpers ─── */
@@ -385,7 +385,7 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message, clientId: getGAClientId() }),
+        body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message, clientId: getGAClientId(), sessionId: getGASessionId() }),
       });
       if (!res.ok) throw new Error("contact failed");
       const params = new URLSearchParams();
@@ -442,7 +442,7 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
                 <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-7 py-4 font-bold text-white shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] transition-all">
                   {primaryCta} <ArrowRight className="w-5 h-5" />
                 </button>
-                <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-4 font-bold text-slate-800 hover:bg-slate-50 transition-colors">
+                <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick({ source: `${data.slug}-hero` })} className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-4 font-bold text-slate-800 hover:bg-slate-50 transition-colors">
                   <MessageCircle className="w-5 h-5" /> {secondaryCta}
                 </a>
               </div>
@@ -722,7 +722,7 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
             <button onClick={scrollToForm} className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-5 py-3 text-sm font-black text-white shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] transition-all">
               {primaryCta} <ArrowRight className="w-4 h-4" />
             </button>
-            <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 hover:bg-slate-50 transition-colors">
+            <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick({ source: `${data.slug}-cta` })} className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 hover:bg-slate-50 transition-colors">
               <MessageCircle className="w-4 h-4" /> WhatsApp
             </a>
           </div>
@@ -801,7 +801,7 @@ function KeywordLandingPageLegacy({ data }: { data: KeywordGroup }) {
     setStickyStatus("loading");
     try {
       const message = [`[formType:${data.form.formType}-sticky]`, `[${data.primaryKeyword} — WhatsApp Bar]`, `Source: sticky whatsapp bar on ${data.slug}`].join("\n");
-      await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: stickyForm.name || "WhatsApp Bar Lead", email: stickyForm.email || "whatsapp@rdmi.in", phone: stickyForm.phone, message, clientId: getGAClientId() }) });
+      await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: stickyForm.name || "WhatsApp Bar Lead", email: stickyForm.email || "whatsapp@rdmi.in", phone: stickyForm.phone, message, clientId: getGAClientId(), sessionId: getGASessionId() }) });
       trackWhatsAppClick({ source: `${data.slug}-sticky-bar` });
       const waMsg = encodeURIComponent(`Hi RDMI, I'm ${stickyForm.name || "interested"} and I'd like to discuss ${data.primaryKeyword}.`);
       window.open(`https://wa.me/919818565561?text=${waMsg}`, "_blank");
@@ -876,7 +876,7 @@ function KeywordLandingPageLegacy({ data }: { data: KeywordGroup }) {
     setFormStatus("loading");
     try {
       const message = [`[formType:${f.formType}]`, `[${data.primaryKeyword} Consultation]`, formData.projectType ? `Project: ${formData.projectType}` : "", formData.budget ? `Budget: ${formData.budget}` : "", formData.challenge || ""].filter(Boolean).join("\n");
-      const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message, clientId: getGAClientId() }) });
+      const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message, clientId: getGAClientId(), sessionId: getGASessionId() }) });
       if (!res.ok) throw new Error();
       const params = new URLSearchParams();
       if (formData.name) params.set("name", formData.name);

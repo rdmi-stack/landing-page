@@ -41,6 +41,21 @@ export function getGAClientId(): string {
 }
 
 /**
+ * Read the GA4 *session_id* from the per-stream `_ga_<STREAM>` cookie so a
+ * server-side Measurement Protocol event can be stitched to the SAME session
+ * the visitor is in — which carries the gclid and lets GA4 attribute the
+ * conversion to Google Ads. Cookie format: `_ga_4WWE6FCNBF=GS1.1.<sessionId>.<...>`.
+ * Without this the server invents a fake session and the conversion lands as
+ * source "(not set)" — unattributed, never imported into Google Ads.
+ */
+export function getGASessionId(): string {
+  if (typeof document === "undefined") return "";
+  const stream = GA_MEASUREMENT_ID.replace(/^G-/, "");
+  const m = document.cookie.match(new RegExp(`_ga_${stream}=GS\\d\\.\\d\\.(\\d+)`));
+  return m ? m[1] : "";
+}
+
+/**
  * WhatsApp CTA clicked (secondary conversion / contact intent).
  * Lead-form conversions are fired server-side from /api/contact (see lib/ga4-server.ts).
  */

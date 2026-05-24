@@ -1,16 +1,18 @@
 /**
- * Refresh the RSA in every web-dev ad group (broad + SKAG) to the current
+ * Refresh the RSA in the enabled SKAG campaign for one theme to the current
  * generated copy (create-new + remove-old, since RSA text isn't editable in
- * place). Used after softening ad copy in keyword-groups.ts.
+ * place). Defaults to web-dev and preserves each live Final URL unless
+ * `--update-urls` is passed.
  *
  *   node scripts/ads/update-rsas.mts
+ *   node scripts/ads/update-rsas.mts web-dev -- --update-urls
  */
 
 import { GoogleAdsApi, enums } from "google-ads-api";
 import fs from "node:fs";
 import path from "node:path";
 import { type Campaign } from "./build-campaign.mts";
-import { campaignForAdGroup } from "./skag-keywords.mts";
+import { campaignForAdGroup, SKAG_THEMES } from "./skag-keywords.mts";
 
 const envPath = path.resolve(process.cwd(), ".env.local");
 for (const line of fs.readFileSync(envPath, "utf8").split("\n")) {
@@ -29,12 +31,31 @@ const customer = client.Customer({
   refresh_token: process.env.GOOGLE_ADS_REFRESH_TOKEN!,
 });
 
-// Every SKAG ad group + its current ad (skip non-SKAG groups like the broad campaign).
+const args = process.argv.slice(2);
+const themeKey = args.find((a) => !a.startsWith("--")) ?? "web-dev";
+const theme = SKAG_THEMES[themeKey];
+if (!theme) {
+  console.error(`Unknown theme "${themeKey}". Options: ${Object.keys(SKAG_THEMES).join(", ")}`);
+  process.exit(1);
+}
+const updateUrls = args.includes("--update-urls");
+
+// Every enabled SKAG ad group + current ad in the selected enabled campaign.
 const rows = await customer.query(`
-  SELECT campaign.name, ad_group.name, ad_group.resource_name, ad_group_ad.resource_name
+  SELECT campaign.name, ad_group.name, ad_group.resource_name,
+         ad_group_ad.resource_name, ad_group_ad.ad.final_urls
   FROM ad_group_ad
-  WHERE ad_group.name LIKE 'SKAG | %' AND ad_group_ad.status != 'REMOVED'
+  WHERE campaign.name LIKE '${theme.campaignName}%'
+    AND campaign.status = ENABLED
+    AND ad_group.name LIKE 'SKAG | %'
+    AND ad_group.status = ENABLED
+    AND ad_group_ad.status = ENABLED
 `);
+
+if (!rows.length) {
+  console.log(`No enabled SKAG RSAs found for theme "${themeKey}" (${theme.campaignName}).`);
+  process.exit(0);
+}
 
 let refreshed = 0;
 for (const r of rows) {
@@ -50,7 +71,7 @@ for (const r of rows) {
       ad_group: r.ad_group!.resource_name!,
       status: enums.AdGroupAdStatus.ENABLED,
       ad: {
-        final_urls: [c.finalUrl],
+        final_urls: updateUrls ? [c.finalUrl] : r.ad_group_ad!.ad!.final_urls!,
         responsive_search_ad: {
           headlines: c.headlines.map((text) =>
             c.pinnedHeadlines?.includes(text)
@@ -66,6 +87,6 @@ for (const r of rows) {
   ]);
   await customer.adGroupAds.remove([r.ad_group_ad!.resource_name!]);
   refreshed++;
-  console.log(`  ✓ ${agName} → ${c.finalUrl}  (pinned: ${(c.pinnedHeadlines ?? []).length})`);
+  console.log(`  ✓ ${agName} → ${updateUrls ? c.finalUrl : r.ad_group_ad!.ad!.final_urls![0]}  (pinned: ${(c.pinnedHeadlines ?? []).length})`);
 }
-console.log(`\n✓ ${refreshed} SKAG RSAs refreshed (intent copy + dedicated pages + pinned variants).`);
+console.log(`\n✓ ${refreshed} ${themeKey} SKAG RSAs refreshed (intent copy, ${updateUrls ? "updated URLs" : "preserved URLs"}).`);

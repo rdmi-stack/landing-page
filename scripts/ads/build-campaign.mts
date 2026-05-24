@@ -20,7 +20,7 @@ export interface Campaign {
   keywords: { text: string; matchType: string }[];
   headlines: string[]; // ≤15, each ≤30 chars, unique
   descriptions: string[]; // ≤4, each ≤90 chars, unique
-  pinnedHeadlines?: string[]; // SKAG: keyword-variant headlines pinned to position 1 (keeps keyword in H1 AND Ad Strength up)
+  pinnedHeadlines?: string[]; // Optional only; SKAG ads should usually stay unpinned for RSA flexibility.
 }
 
 /**
@@ -173,10 +173,21 @@ function titleCase(s: string): string {
  * what lifts Ad Strength out of "Poor".
  */
 const SKAG_BENEFIT_HEADLINES = [
-  "Talk to a Senior Developer", "WhatsApp Reply in 2 Hours", "Free 48-Hour Prototype",
-  "Money-Back If We're Late", "Senior Indian Developers", "Source Code Yours Day One",
-  "No Sales Reps, Just Devs", "Pay Only After Prototype", "Direct WhatsApp, No Lock-In",
-  "200+ Projects Shipped", "Built in Weeks, Not Months", "NDA Before First Call",
+  "Lead-Ready Business Website",
+  "Senior Web Dev on WhatsApp",
+  "Prototype Before You Pay",
+  "No Sales Call, Talk to Dev",
+  "Source Code Handover",
+  "SEO-Ready Website Build",
+  "Clear Scope Before Build",
+  "Fast, Mobile-Ready Sites",
+  "Custom UI and CMS Builds",
+  "Launch Support Included",
+  "Built for Leads and Calls",
+  "Direct Engineer Contact",
+  "Lead Forms and Analytics",
+  "Business Website Experts",
+  "NDA Before Project Call",
 ];
 
 /**
@@ -192,8 +203,8 @@ function keywordHeadlines(kwTitle: string, max: number): string[] {
   if (kwTitle.length <= max) {
     add(kwTitle);
     add(`${kwTitle} India`);
-    add(`Top ${kwTitle}`);
-    add(`Best ${kwTitle}`);
+    add(`${kwTitle} Team`);
+    add(`${kwTitle} Experts`);
   } else {
     add(fit(kwTitle, max)); // long keyword: at least the fitted form
   }
@@ -203,9 +214,10 @@ function keywordHeadlines(kwTitle: string, max: number): string[] {
 /** Cross-theme descriptions used to fill after the intent-specific ones. */
 function sharedDescriptions(): string[] {
   return [
-    "Talk direct to a senior Indian developer in 2 hours. No sales rep. Source code yours.",
-    "Free 48-hour prototype before you pay. Money-back if we miss the deadline. 200+ shipped.",
-    "Senior engineers only, no juniors. NDA before the first call. Walk away anytime.",
+    "Talk direct to a senior web developer on WhatsApp. Clear scope before build. Code yours.",
+    "Get a prototype before you pay, then launch with SEO, forms, analytics and support.",
+    "Built for Indian businesses that need faster pages, clearer leads and no vendor lock-in.",
+    "Senior engineers handle strategy, UX, development, integrations and launch support.",
   ];
 }
 
@@ -217,28 +229,28 @@ function sharedDescriptions(): string[] {
  */
 const INTENT_COPY: Record<string, { headlines: string[]; descriptions: string[] }> = {
   "web-development-company": {
-    headlines: ["Websites Built to Convert", "Not a Brochure, a Lead Engine", "Ranks, Loads Fast, Converts"],
-    descriptions: ["A web development company that builds sites to win enquiries, not just look pretty."],
+    headlines: ["Websites That Win Leads", "SEO-Ready Web Builds", "Conversion-Focused Sites"],
+    descriptions: ["Web development company for SEO-ready business sites that turn visitors into leads."],
   },
   "website-development-company": {
-    headlines: ["Business Sites That Convert", "More Enquiries, Not Just Looks", "Built to Win You Leads"],
-    descriptions: ["A website development company building business sites that turn visitors into leads."],
+    headlines: ["Business Sites That Convert", "Lead Forms Built In", "Built for Calls and Leads"],
+    descriptions: ["Website development company for business sites with lead forms, SEO and launch support."],
   },
   "custom-website-development": {
-    headlines: ["Built From Scratch", "No Templates, No Page-Builders", "Coded Around Your Business"],
-    descriptions: ["Custom website development from scratch - no templates. Coded around your business."],
+    headlines: ["Built Around Your Business", "No Template Website Builds", "Custom UI, CMS and Forms"],
+    descriptions: ["Custom website development around your brand, workflow, integrations and lead funnel."],
   },
   "web-development-services": {
-    headlines: ["Front-End to Full-Stack", "CMS, E-Commerce, Redesign", "React, Next.js, Node.js"],
+    headlines: ["Front-End to Back-End", "CMS and E-Commerce Builds", "Support After Launch"],
     descriptions: ["Full-stack web development services - front-end, back-end, CMS, e-commerce, support."],
   },
   "web-development-agency": {
-    headlines: ["Your Dedicated Dev Team", "No Account-Manager Filter", "Talk Direct to Your Engineer"],
-    descriptions: ["A web development agency that works like your in-house team. Talk direct, no filter."],
+    headlines: ["Talk Direct to Engineers", "No Account-Manager Filter", "Your Senior Web Team"],
+    descriptions: ["A web development agency where you talk directly to the senior engineer on your build."],
   },
   "ecommerce-development": {
-    headlines: ["Online Stores That Convert", "Shopify and Headless Stores", "Built to Lift Add-to-Cart"],
-    descriptions: ["E-commerce website development - Shopify or headless stores built to convert more."],
+    headlines: ["Stores Built to Convert", "Checkout and CRO Support", "Shopify or Headless"],
+    descriptions: ["E-commerce website development for Shopify, headless stores, checkout and conversion."],
   },
   "custom-software-development": {
     headlines: ["Custom Software, Built to Fit", "Dashboards, Portals, CRMs", "React, Node.js, Python", "Built Around Your Workflow"],
@@ -258,10 +270,9 @@ const INTENT_COPY: Record<string, { headlines: string[]; descriptions: string[] 
 
 /**
  * Build a single-keyword-ad-group (SKAG) Campaign object for one keyword, using
- * its dedicated landing page (`d`) for intent + final URL. Keyword-variant
- * headlines are PINNED to position 1 (2-4 of them, so the search term always
- * shows in H1 AND Ad Strength stays high), then intent-specific and shared
- * benefit headlines fill the rest. Final URL is the dedicated page (no ?kw=).
+ * its dedicated landing page (`d`) for intent + final URL. Keyword variants,
+ * intent-specific benefits, and shared trust headlines stay unpinned so Google
+ * can assemble combinations freely while preserving message-match.
  */
 export function buildSkagCampaign(d: KeywordGroup, keyword: string, routePath: string): Campaign {
   const kw = clean(keyword);
@@ -269,11 +280,10 @@ export function buildSkagCampaign(d: KeywordGroup, keyword: string, routePath: s
   const M = LIMITS.headline;
   const intent = INTENT_COPY[d.slug] ?? { headlines: [], descriptions: [] };
 
-  // Keyword variants → pinned to H1.
-  const pinned: string[] = [];
-  for (const h of keywordHeadlines(kwTitle, M)) dedupePush(pinned, h, M, 15);
+  const keywordVariants: string[] = [];
+  for (const h of keywordHeadlines(kwTitle, M)) dedupePush(keywordVariants, h, M, 15);
 
-  const headlines: string[] = [...pinned];
+  const headlines: string[] = [...keywordVariants];
   for (const h of intent.headlines) dedupePush(headlines, h, M, 15);
   for (const h of SKAG_BENEFIT_HEADLINES) dedupePush(headlines, h, M, 15);
 
@@ -290,6 +300,5 @@ export function buildSkagCampaign(d: KeywordGroup, keyword: string, routePath: s
     keywords: MATCH_TYPES.map((matchType) => ({ text: kw, matchType })),
     headlines: headlines.slice(0, 15),
     descriptions: descriptions.slice(0, 4),
-    pinnedHeadlines: pinned.filter((h) => headlines.slice(0, 15).includes(h)),
   };
 }
