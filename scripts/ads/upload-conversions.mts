@@ -96,14 +96,32 @@ const res = await customer.conversionUploads.uploadClickConversions({
   })),
   partial_failure: true,
 });
-const failures = (res.partial_failure_error?.details?.length ?? 0) > 0;
-console.log(`\n✓ Uploaded ${pending.length} conversion(s) to 'Qualified Lead (OCI)'.${failures ? " (some partial failures — check gclid validity/age)" : ""}`);
-if (res.partial_failure_error) console.log("  partial_failure:", res.partial_failure_error.message);
 
-// 3. Mark rows Uploaded (col L) + time (col M)
-const data = pending.map((p) => ({ range: `Leads!L${p.rowNumber}:M${p.rowNumber}`, values: [["yes", when]] }));
-await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values:batchUpdate`, {
-  method: "POST", headers: H,
-  body: JSON.stringify({ valueInputOption: "USER_ENTERED", data }),
+// Determine which conversions Google ACCEPTED. With partial_failure, results[i]
+// is populated for a success and empty for a failure. Only mark accepted rows
+// uploaded — failures (bad/expired gclid) stay un-marked so they retry next run.
+const results = (res.results ?? []) as { gclid?: string; conversion_action?: string }[];
+const hasErr = !!res.partial_failure_error?.message;
+const ok: Pending[] = [];
+const failed: Pending[] = [];
+pending.forEach((p, i) => {
+  const r = results[i];
+  const accepted = !hasErr || !!(r && (r.gclid || r.conversion_action));
+  (accepted ? ok : failed).push(p);
 });
-console.log("✓ Marked uploaded rows in the sheet.");
+
+console.log(`\n✓ ${ok.length} accepted by Google Ads, ${failed.length} rejected.`);
+if (hasErr) console.log("  reason:", res.partial_failure_error!.message);
+for (const f of failed) console.log(`  ✗ row ${f.rowNumber} gclid=${f.gclid.slice(0, 18)}… (left un-marked; retries next run)`);
+
+// 3. Mark ONLY accepted rows Uploaded (col L) + time (col M)
+if (ok.length) {
+  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values:batchUpdate`, {
+    method: "POST", headers: H,
+    body: JSON.stringify({
+      valueInputOption: "RAW",
+      data: ok.map((p) => ({ range: `Leads!L${p.rowNumber}:M${p.rowNumber}`, values: [["yes", when]] })),
+    }),
+  });
+  console.log(`✓ Marked ${ok.length} row(s) uploaded in the sheet.`);
+}
