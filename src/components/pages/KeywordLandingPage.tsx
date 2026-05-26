@@ -148,6 +148,7 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
   const isCustomSoftware = data.slug === "custom-software-development";
   const isMobile = data.slug === "mobile-app-development";
   const isEcommerce = data.slug === "ecommerce-development";
+  const isAutomation = data.slug === "ai-automation-agency";
   const projectTypes = isEnterprise
     ? ["Custom ERP System", "Sales & Service CRM", "Workflow & Approvals Engine", "AI Agent Automation", "Reporting & BI Dashboards", "Legacy ERP Migration"]
     : isAgent
@@ -380,7 +381,7 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
     setFormStatus("loading");
     try {
       const message = [
-        `[formType:${isEnterprise ? "enterprise-software-premium" : isAgent ? "ai-agent-premium" : isCustomSoftware ? "custom-software-premium" : isMobile ? "mobile-app-premium" : isEcommerce ? "ecommerce-premium" : isAI ? "ai-software-premium" : "web-dev-premium"}]`,
+        `[formType:${isEnterprise ? "enterprise-software-premium" : isAgent ? "ai-agent-premium" : isAutomation ? "ai-automation-premium" : isCustomSoftware ? "custom-software-premium" : isMobile ? "mobile-app-premium" : isEcommerce ? "ecommerce-premium" : isAI ? "ai-software-premium" : "web-dev-premium"}]`,
         `[${data.primaryKeyword} Consultation]`,
         formData.projectType ? `Project: ${formData.projectType}` : "",
         formData.budget ? `Budget: ${formData.budget}` : "",
@@ -745,7 +746,7 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
 }
 
 export default function KeywordLandingPage({ data, headlineOverride, keywordLabel }: { data: KeywordGroup; headlineOverride?: string; keywordLabel?: string }) {
-  const promotedSlugs = new Set(["web-development-company", "website-development-company", "custom-website-development", "web-development-services", "web-development-agency", "enterprise-saas-development", "ai-software-development", "ai-agent-development", "custom-software-development", "mobile-app-development", "ecommerce-development"]);
+  const promotedSlugs = new Set(["web-development-company", "website-development-company", "custom-website-development", "web-development-services", "web-development-agency", "enterprise-saas-development", "ai-software-development", "ai-agent-development", "custom-software-development", "mobile-app-development", "ecommerce-development", "ai-automation-agency"]);
   return promotedSlugs.has(data.slug) ? <WebDevelopmentLandingPage data={data} headlineOverride={headlineOverride} keywordLabel={keywordLabel} /> : <KeywordLandingPageLegacy data={data} />;
 }
 

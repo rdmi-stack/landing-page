@@ -18,6 +18,7 @@ const PREMIUM_FORM_TYPE_MAP: Record<string, FormType> = {
   "ecommerce-premium": "ecommerce",
   "ai-software-premium": "ai-software",
   "ai-agent-premium": "ai-agent",
+  "ai-automation-premium": "ai-automation",
   "enterprise-software": "enterprise-saas",
   "enterprise-software-premium": "enterprise-saas",
 };

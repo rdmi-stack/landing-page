@@ -2824,7 +2824,8 @@ const PROMOTED_SLUGS = new Set<string>([
   "website-development-company",
   "custom-website-development",
   "web-development-services",
-  "web-development-agency"
+  "web-development-agency",
+  "ai-automation-agency"
 ]);
 
 export function getAllSlugs(): string[] {

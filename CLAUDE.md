@@ -248,6 +248,36 @@ Result the build now produces per SKAG ad: 15 complete unique headlines (keyword
 
 ---
 
+## OCI-Guided Broad-Match Expansion (Phase-2 Acquisition Plan)
+
+**Thesis:** Offline Conversion Import (qualified-lead value signal) is the steering wheel that makes broad match safe. Junk leads never get marked `Qualified=yes` → never upload → Smart Bidding learns to *avoid* them; qualified high-value leads upload → bidding finds *more like them*. **Do not open broad match until there is a conversion base to steer with** — broad + no conversion data = money pit.
+
+### OCI loop (BUILT — 2026-05-24)
+Lead (gclid captured) → appended to the leads Google Sheet (`LEADS_SHEET_ID`) → you mark `Qualified=yes` → uploaded to Google Ads conversion action **"Qualified Lead (OCI)"** (`OCI_CONVERSION_ACTION_ID`, type UPLOAD_CLICKS) via gclid, valued by budget tier (`budgetToValue` in `src/lib/leads-sheet.ts`). Two upload paths, de-dup safe (both use the lead's own ISO-IST submission time):
+- **GitHub cron** `.github/workflows/oci-upload.yml` — `scripts/ads/upload-conversions.mts` every 4h (only marks Google-*accepted* rows uploaded; rejects retry).
+- **Google Ads native daily scheduler** — reads the "Google Ads Import" sheet tab (Google-spec: params row + headers + FILTER formulas pulling only `Qualified=yes` rows).
+- gclid/gbraid/wbraid + UTM capture: `src/lib/attribution.ts` (90-day cookie) → form → `/api/contact`.
+
+### Trigger to advance phases
+**~15–30 qualified conversions** (uploaded) over a trailing ~30 days — Smart Bidding's minimum to navigate value strategies / broad. Don't advance early.
+
+### Phases
+- **Phase 0 — Gather signal (NOW):** tight exact/phrase on proven hire-intent keywords only (5 web-dev ad groups live; software/app paused). Maximize Conversions (or Max Clicks + ₹70 cap if delivery thin). Mark good leads `Qualified=yes` daily; prune negatives from search-term reports. Goal: reach ~15–30 qualified conversions.
+- **Phase 1 — Value bidding (~15+ conv):** switch to **Maximize Conversion Value** (OCI uploads carry budget/deal value → bids toward bigger qualified leads). Add **Target ROAS** only after ~50 conv with stable value data.
+- **Phase 2 — Open broad (~30+ qualified conv):** a **separate broad-match campaign** mirroring the winners (watched + capped independently). Bidding = Max Conversion Value. Guardrails: full negative list (95+ in `config.mts`), conservative separate daily budget (~₹1,000–1,500 to start), India geo, same dedicated pages. Watch search terms daily for the first 2 weeks → aggressive negative pruning (broad explores hard early). Expect *more* junk leads to sift while it learns — that's the loop working.
+- **Phase 3 — Scale winners:** graduate broad's converting search terms into their own exact/phrase SKAG ad groups; feed new themes into the 100-keyword scaling plan; shift budget to best CPA/ROAS on *qualified* leads.
+
+### Always-on guardrails
+- Never run broad without a conversion signal **and** Max Conversion Value.
+- Broad always in its own campaign (separate, capped, watchable).
+- Full negative list on every campaign; only `Qualified=yes` uploads (quality gate); leaving junk unqualified IS the avoid-signal.
+- Budget field required on the form (pre-qualifies); consider removing "Not sure yet" to filter the undecided.
+
+### Monitor (qualified, not raw)
+Qualified-conversion count (the trigger) · CPA / ROAS **on qualified leads** · search-term waste · broad spend vs qualified-lead yield.
+
+---
+
 ## Keyword-Specific Landing Pages Strategy
 
 ### Overview
