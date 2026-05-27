@@ -35,9 +35,24 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function CustomSoftwareDevelopmentCompanyPage() {
+// Sanitize a ?kw= value into a clean Title-Cased keyword for ad message-match.
+function sanitizeKeyword(raw?: string): string | undefined {
+  if (!raw) return undefined;
+  const cleaned = raw.replace(/[^A-Za-z0-9 &-]/g, " ").replace(/\s+/g, " ").trim().slice(0, 60);
+  if (cleaned.length < 3) return undefined;
+  return cleaned.split(" ").map((w) => (w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w)).join(" ");
+}
+
+export default async function CustomSoftwareDevelopmentCompanyPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ kw?: string }>;
+}) {
   const data = getKeywordGroup(SLUG);
   if (!data) notFound();
+
+  const kw = sanitizeKeyword((await searchParams).kw);
+  const headlineOverride = kw ? `${kw} in India — Talk to a Senior Developer in 2 Hours` : undefined;
 
   const url = `https://rdmi-landing-page.netlify.app/${ROUTE}`;
 
@@ -74,7 +89,7 @@ export default function CustomSoftwareDevelopmentCompanyPage() {
     <main className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <KeywordLandingPage data={data} />
+      <KeywordLandingPage data={data} headlineOverride={headlineOverride} keywordLabel={kw} />
     </main>
   );
 }
