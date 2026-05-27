@@ -139,6 +139,13 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", budget: "", challenge: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [slide, setSlide] = useState(0);
+  // Hero showcase slider: project screenshots if present, else stock service images.
+  const heroSlides = (data.heroPortfolio && data.heroPortfolio.length
+    ? data.heroPortfolio.map((p) => ({ img: p.image, label: p.project }))
+    : [...(data.images.portfolio ?? []), ...(data.images.services ?? [])].map((img) => ({ img, label: "" }))
+  ).slice(0, 6);
   const budgets = data.slug === "web-development-company"
     ? ["₹50K - ₹1L", "₹1L - ₹5L", "₹5L - ₹15L", "₹15L - ₹50L", "₹50L+", "Not sure yet"]
     : ["Under ₹1L", "₹1L - ₹5L", "₹5L - ₹15L", "₹15L - ₹50L", "₹50L+", "Not sure yet"];
@@ -167,12 +174,12 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
     : ["AI-First Software Strategy", "Custom Software / SaaS", "AI Agent or Automation", "Growth Website + Lead Engine", "E-Commerce / Marketplace", "Legacy System Modernization"];
   const portfolio = data.heroPortfolio ?? [];
   const leadFormId = isEnterprise ? "enterprise-lead-form" : isAgent ? "ai-agent-lead-form" : isCustomSoftware ? "custom-software-lead-form" : isMobile ? "mobile-app-lead-form" : isEcommerce ? "ecommerce-lead-form" : isAI ? "ai-software-lead-form" : "web-lead-form";
-  const primaryCta = isEnterprise ? "Get Architecture Audit" : isAgent ? "Get Agent Build Plan" : isCustomSoftware ? "Get Software Build Plan" : isMobile ? "Get App Build Plan" : isEcommerce ? "Get Commerce Growth Plan" : isAI ? "Get AI Build Plan" : "Get AI Strategy Audit";
+  const primaryCta = "Get A Free Quote";
   const secondaryCta = isEnterprise ? "Talk to Enterprise Architect" : isAgent ? "Talk to AI Agent Architect" : isCustomSoftware ? "Talk to Software Architect" : isMobile ? "Talk to App Architect" : isEcommerce ? "Talk to Commerce Architect" : isAI ? "Talk to AI Engineer" : "Talk to AI Consultant";
   const formEyebrow = isEnterprise ? "Free enterprise architecture audit" : isAgent ? "Free AI agent workflow audit" : isCustomSoftware ? "Free custom software scope audit" : isMobile ? "Free mobile app product audit" : isEcommerce ? "Free ecommerce growth audit" : isAI ? "Free AI build audit" : "Free AI strategy audit";
   const formTitle = isEnterprise ? "Get a 48-hour ERP/CRM modernization plan" : isAgent ? "Get a 48-hour AI agent build plan" : isCustomSoftware ? "Get a 48-hour custom software build plan" : isMobile ? "Get a 48-hour mobile app build plan" : isEcommerce ? "Get a 48-hour ecommerce growth plan" : isAI ? "Get a 48-hour production AI build plan" : "Get a 48-hour software growth plan";
   const formPlaceholder = isEnterprise ? "Which enterprise workflow, department, or legacy system needs modernization?" : isAgent ? "Which workflow should an AI agent own end-to-end?" : isCustomSoftware ? "What business process, product, or internal system should this software improve?" : isMobile ? "What should the app do, who will use it, and what should happen after launch?" : isEcommerce ? "What are you selling, current GMV, platform, and biggest growth bottleneck?" : isAI ? "What workflow, product feature, or knowledge process should AI handle?" : "What business bottleneck should software or AI solve?";
-  const submitLabel = isEnterprise ? "Send My Architecture Request" : isAgent ? "Send My Agent Build Request" : isCustomSoftware ? "Send My Software Build Request" : isMobile ? "Send My App Build Request" : isEcommerce ? "Send My Commerce Build Request" : isAI ? "Send My AI Build Request" : "Send My Strategy Request";
+  const submitLabel = "Get A Free Quote";
   const heroBadge = isEnterprise ? "Senior enterprise architect callback in 2 hours" : isAgent ? "Senior AI agent architect callback in 2 hours" : isCustomSoftware ? "Senior software architect callback in 2 hours" : isMobile ? "Senior mobile app architect callback in 2 hours" : isEcommerce ? "Senior commerce architect callback in 2 hours" : isAI ? "Senior AI engineer callback in 2 hours" : "Senior AI consultant callback in 2 hours";
   const supportLine = isEnterprise ? "Get a senior enterprise architect callback in 2 hours." : isAgent ? "Get a senior AI agent architect callback in 2 hours." : isCustomSoftware ? "Get a senior software architect callback in 2 hours." : isMobile ? "Get a senior mobile app architect callback in 2 hours." : isEcommerce ? "Get a senior commerce architect callback in 2 hours." : isAI ? "Get a senior AI engineer callback in 2 hours." : "Get a senior consultant callback in 2 hours.";
   const stickyHeadline = isEnterprise ? "Need enterprise software that removes manual work?" : isAgent ? "Need an AI agent that actually finishes work?" : isCustomSoftware ? "Need custom software that becomes an operating advantage?" : isMobile ? "Need a mobile app that users keep using?" : isEcommerce ? "Need ecommerce that lifts conversion and AOV?" : isAI ? "Need production AI that works beyond the demo?" : "Need AI-first software that creates leverage?";
@@ -354,6 +361,13 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
   // Capture gclid / gbraid / wbraid + UTM on landing, persist for OCI attribution.
   useEffect(() => { captureAttribution(); }, []);
 
+  // Auto-advance the hero slider every 3.5s.
+  useEffect(() => {
+    if (heroSlides.length <= 1) return;
+    const id = setInterval(() => setSlide((s) => (s + 1) % heroSlides.length), 3500);
+    return () => clearInterval(id);
+  }, [heroSlides.length]);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     let ticking = false;
@@ -374,10 +388,8 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToForm = () => {
-    const el = document.getElementById(leadFormId);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-  };
+  // All CTAs open the quote modal (the hero now shows a showcase slider, not the form).
+  const scrollToForm = () => setModalOpen(true);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -477,7 +489,32 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
               </div>
             </div>
 
-            <div id={leadFormId} className="rounded-3xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xl shadow-slate-300/40">
+            <div id={leadFormId} className="relative">
+              <div className="relative aspect-[4/3] sm:aspect-[16/12] rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-300/40 overflow-hidden">
+                {heroSlides.map((s, i) => (
+                  <div key={i} className={`absolute inset-0 transition-opacity duration-700 ${slide === i ? "opacity-100" : "opacity-0"}`}>
+                    <Image src={s.img} alt={s.label || data.primaryKeyword} fill sizes="(min-width:1024px) 48vw, 100vw" priority={i === 0} className="object-cover" />
+                    {s.label && (
+                      <div className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-slate-900/70 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />{s.label}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+              {heroSlides.length > 1 && (
+                <div className="mt-4 flex justify-center gap-2">
+                  {heroSlides.map((_, i) => (
+                    <button key={i} type="button" onClick={() => setSlide(i)} aria-label={`Slide ${i + 1}`} className={`h-2 rounded-full transition-all ${slide === i ? "w-6 bg-indigo-600" : "w-2 bg-slate-300 hover:bg-slate-400"}`} />
+                  ))}
+                </div>
+              )}
+            </div>
+            {modalOpen && (
+              <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={() => setModalOpen(false)} />
+                <div className="relative w-full max-w-lg rounded-3xl border border-slate-200 bg-white p-4 sm:p-5 shadow-2xl shadow-slate-900/30 max-h-[92vh] overflow-y-auto">
+                  <button type="button" onClick={() => setModalOpen(false)} aria-label="Close" className="absolute right-4 top-4 z-10 grid h-8 w-8 place-items-center rounded-full border border-slate-200 bg-white/90 text-slate-500 hover:bg-slate-100 hover:text-slate-900">✕</button>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden">
                 <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
                   <div>
@@ -514,7 +551,9 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
                   </div>
                 </form>
               </div>
-            </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -722,7 +761,7 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
           <p className="mt-6 text-lg text-slate-700 leading-relaxed">{data.ctaSection.subtitle}</p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
             <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-4 font-black text-white shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] transition-all">
-              Start With {primaryCta} <ArrowRight className="w-5 h-5" />
+              {primaryCta} <ArrowRight className="w-5 h-5" />
             </button>
             <a href="tel:+919818565561" className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-8 py-4 font-black text-slate-800 hover:bg-slate-50 transition-colors">
               <Phone className="w-5 h-5" /> Call +91 98185 65561
