@@ -149,6 +149,9 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
   const isMobile = data.slug === "mobile-app-development";
   const isEcommerce = data.slug === "ecommerce-development";
   const isAutomation = data.slug === "ai-automation-agency";
+  // App + Software pages: form-only — WhatsApp leads skewed low-quality, so the
+  // form is the sole CTA (no WhatsApp button, no floating WhatsApp widget).
+  const formOnly = isMobile || isCustomSoftware;
   const projectTypes = isEnterprise
     ? ["Custom ERP System", "Sales & Service CRM", "Workflow & Approvals Engine", "AI Agent Automation", "Reporting & BI Dashboards", "Legacy ERP Migration"]
     : isAgent
@@ -454,9 +457,15 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
                 <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-7 py-4 font-bold text-white shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] transition-all">
                   {primaryCta} <ArrowRight className="w-5 h-5" />
                 </button>
-                <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick({ source: `${data.slug}-hero` })} className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-4 font-bold text-slate-800 hover:bg-slate-50 transition-colors">
-                  <MessageCircle className="w-5 h-5" /> {secondaryCta}
-                </a>
+                {formOnly ? (
+                  <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-4 font-bold text-slate-800 hover:bg-slate-50 transition-colors">
+                    <ArrowRight className="w-5 h-5" /> {secondaryCta}
+                  </button>
+                ) : (
+                  <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick({ source: `${data.slug}-hero` })} className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-4 font-bold text-slate-800 hover:bg-slate-50 transition-colors">
+                    <MessageCircle className="w-5 h-5" /> {secondaryCta}
+                  </a>
+                )}
               </div>
               <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
                 {data.stats.slice(0, 4).map((stat) => (
