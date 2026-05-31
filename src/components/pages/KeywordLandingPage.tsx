@@ -471,7 +471,7 @@ function WebDevelopmentLandingPage({ data, headlineOverride, keywordLabel }: { d
                 </button>
                 {formOnly ? (
                   <button onClick={scrollToForm} className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-4 font-bold text-slate-800 hover:bg-slate-50 transition-colors">
-                    <ArrowRight className="w-5 h-5" /> {secondaryCta}
+                    <ArrowRight className="w-5 h-5" /> {primaryCta}
                   </button>
                 ) : (
                   <a href={`https://wa.me/919818565561?text=${waText}`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick({ source: `${data.slug}-hero` })} className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-4 font-bold text-slate-800 hover:bg-slate-50 transition-colors">

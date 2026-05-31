@@ -147,20 +147,20 @@ export const keywordGroups: KeywordGroup[] = [
     ],
     stats: [
       {
-        value: "200+",
-        label: "Custom Products Shipped to Production"
+        value: "Senior",
+        label: "Engineers Only, No Juniors on Your Build"
       },
       {
-        value: "48 hrs",
-        label: "Free Working Prototype — Before You Pay"
+        value: "48-Hr",
+        label: "Free Build Plan Before You Pay"
       },
       {
-        value: "100%",
-        label: "Money-Back Deadline Guarantee"
+        value: "Source",
+        label: "Code & IP Fully Yours, No Lock-In"
       },
       {
-        value: "98%",
-        label: "On-Time Delivery Across All Projects"
+        value: "NDA",
+        label: "Signed Before the First Call"
       }
     ],
     services: [
@@ -395,20 +395,20 @@ export const keywordGroups: KeywordGroup[] = [
     ],
     stats: [
       {
-        value: "60+",
-        label: "Mobile Apps Shipped to Production"
+        value: "Senior",
+        label: "App Engineers, No Juniors on Your Build"
       },
       {
-        value: "72 hrs",
-        label: "Free Working Prototype on Your Phone"
+        value: "48-Hr",
+        label: "Free Build Plan Before You Pay"
       },
       {
-        value: "100%",
-        label: "Money-Back Deadline Guarantee"
+        value: "Source",
+        label: "Code & IP Fully Yours, No Lock-In"
       },
       {
-        value: "98%",
-        label: "First-Submission Store Approval Rate"
+        value: "Store",
+        label: "Launch & Submission Handled for You"
       }
     ],
     services: [

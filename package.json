@@ -14,6 +14,8 @@
     "ga4:report": "node scripts/ga4/report.mts",
     "ga4:link-ads": "node scripts/ga4/link-google-ads.mts",
     "ads:extensions": "node scripts/ads/add-extensions.mts",
+    "ads:extensions-dev": "node scripts/ads/add-extensions-dev.mts",
+    "ads:dashboard": "node scripts/ads/dashboard.mts -- --open",
     "ads:skag": "node scripts/ads/skag.mts"
   },
   "dependencies": {

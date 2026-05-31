@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: data.meta.description,
       images: [data.images.hero],
     },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+    robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
   };
 }
 
@@ -82,7 +82,6 @@ export default async function MobileAppDevelopmentCompanyPage({
     },
     areaServed: ["IN", "US", "GB", "AE"],
     url,
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
   };
 
   return (
