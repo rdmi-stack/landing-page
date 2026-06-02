@@ -16,7 +16,9 @@
     "ads:extensions": "node scripts/ads/add-extensions.mts",
     "ads:extensions-dev": "node scripts/ads/add-extensions-dev.mts",
     "ads:dashboard": "node scripts/ads/dashboard.mts -- --open",
-    "ads:skag": "node scripts/ads/skag.mts"
+    "ads:skag": "node scripts/ads/skag.mts",
+    "ads:report": "node scripts/ads/report.mts",
+    "ads:optimize": "node scripts/ads/optimize.mts"
   },
   "dependencies": {
     "jose": "^6.2.1",

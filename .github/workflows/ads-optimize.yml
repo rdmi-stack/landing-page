@@ -1,0 +1,48 @@
+name: Ads Optimizer — Daily Waste Pruning
+
+# Runs the rules engine once a day: pauses zero-conversion waste keywords and
+# adds exact negatives for wasteful search terms, then publishes a summary to
+# the workflow run. Only ENABLED campaigns are touched — while campaigns are
+# PAUSED this is a safe no-op. Tune thresholds in scripts/ads/optimize.mts (RULES).
+#
+# Creds come from GitHub Secrets (same set as the OCI upload workflow).
+
+on:
+  schedule:
+    - cron: "30 1 * * *" # 01:30 UTC = 07:00 IST daily
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Apply changes (true) or dry-run (false)"
+        type: boolean
+        default: true
+
+concurrency:
+  group: ads-optimize
+  cancel-in-progress: false
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+
+      # Scheduled runs always APPLY; manual runs honour the apply input.
+      - name: Run optimizer
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.apply }}" = "false" ]; then
+            node scripts/ads/optimize.mts
+          else
+            node scripts/ads/optimize.mts --apply
+          fi
+        env:
+          GOOGLE_ADS_DEVELOPER_TOKEN: ${{ secrets.GOOGLE_ADS_DEVELOPER_TOKEN }}
+          GOOGLE_ADS_CLIENT_ID: ${{ secrets.GOOGLE_ADS_CLIENT_ID }}
+          GOOGLE_ADS_CLIENT_SECRET: ${{ secrets.GOOGLE_ADS_CLIENT_SECRET }}
+          GOOGLE_ADS_REFRESH_TOKEN: ${{ secrets.GOOGLE_ADS_REFRESH_TOKEN }}
+          GOOGLE_ADS_LOGIN_CUSTOMER_ID: ${{ secrets.GOOGLE_ADS_LOGIN_CUSTOMER_ID }}
+          GOOGLE_ADS_CUSTOMER_ID: ${{ secrets.GOOGLE_ADS_CUSTOMER_ID }}
